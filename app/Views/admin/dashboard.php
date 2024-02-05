@@ -38,7 +38,7 @@
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                         <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                             <div class="chart">
-                                <canvas id="chart-bars1" class="chart-canvas" height="170"></canvas>
+                            <div id="GoogleLineChart" style="height: 400px; width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                         <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
                             <div class="chart">
-                                <canvas id="chart-bars3" class="chart-canvas" height="170"></canvas>
+                             		<div id="GoogleLineChart" style="height: 400px; width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -151,5 +151,31 @@
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
+        <script type="text/javascript" src="<?php site_url()?>/js/chart.js"></script>
+        <script>
+             google.charts.load('current', {'packages':['corechart', 'bar']});
+			google.charts.setOnLoadCallback(drawLineChart);
+			google.charts.setOnLoadCallback(drawBarChart);
+            // Line Chart
+			function drawLineChart() {
+				var data = google.visualization.arrayToDataTable([
+					['Day', 'Products Count'],
+						<?php 
+							foreach ($products as $row){
+							   echo "['".$row['day']."',".$row['sell']."],";
+						} ?>
+				]);
+				var options = {
+					title: 'Line chart product sell wise',
+					curveType: 'function',
+					legend: {
+						position: 'top'
+					}
+				};
+				var chart = new google.visualization.LineChart(document.getElementById('GoogleLineChart'));
+				chart.draw(data, options);
+			}
+			
+        </script>
     </body>
 </html>
