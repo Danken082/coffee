@@ -33,66 +33,48 @@
         </nav>
                 
         <div class="row mt-4">
-            <div class="col-lg-4 col-md-6 mt-4 mb-4">
-                <div class="card z-index-2 ">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                            <div class="chart">
-                            <div id="GoogleLineChart" style="height: 400px; width: 100%"></div>
+        <div class="col-lg-6 col-md-6 mt-4 mb-10">
+                    <div class="card z-index-2 ">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                            <div class="bg-gradient-success shadow-primary border-radius-lg py-3 pe-1">
+                                <div class="chart">
+                                <div id="GoogleLineChart" style="height: 400px; width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="mb-0">Day by Day Sales</h6>
+                            <p class="text-sm">Sales</p>
+                            <hr class="dark horizontal">
+                            <div class="d-flex">
+                                <i class="material-icons text-sm my-auto me-1">schedule</i>
+                                <p class="mb-0 text-sm">just updated</p>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h6 class="mb-0">Total Sales</h6>
-                        <p class="text-sm">Overall Sales for the year</p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm" id="total-sales">Just updated</p>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mt-4 mb-4">
-                <div class="card z-index-2  ">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
-                            <div class="chart">
-                                <canvas id="chart-bars2" class="chart-canvas" height="170"></canvas>
+                <div class="col-lg-6 col-md-6 mt-4 mb-10">
+                    <div class="card z-index-2 ">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                            <div class="bg-gradient-success shadow-primary border-radius-lg py-3 pe-1">
+                                <div class="chart">
+                                <div id="GoogleLineChart" style="height: 400px; width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="mb-0">Day by Day Sales</h6>
+                            <p class="text-sm">Sales</p>
+                            <hr class="dark horizontal">
+                            <div class="d-flex">
+                                <i class="material-icons text-sm my-auto me-1">schedule</i>
+                                <p class="mb-0 text-sm">just updated</p>
                             </div>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h6 class="mb-0 "> Total Revenue </h6>
-                        <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today sales.</p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm"> updated 4 min ago </p>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 mt-4 mb-3">
-                <div class="card z-index-2 ">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-                            <div class="chart">
-                             		<div id="GoogleLineChart" style="height: 400px; width: 100%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="mb-0 ">Top Users</h6>
-                        <p class="text-sm ">Overall performance</p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex ">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm">just updated</p>
-                        </div>
-                    </div>
-                </div>
-            </div></div>
+       
+
             <div class="row mt-4">
                 <div class="col-lg-6 col-md-6 mt-4 mb-10">
                     <div class="card z-index-2 ">
@@ -153,7 +135,7 @@
         <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
         <script type="text/javascript" src="<?php site_url()?>/js/chart.js"></script>
         <script>
-             google.charts.load('current', {'packages':['corechart', 'bar']});
+            google.charts.load('current', {'packages':['corechart', 'bar']});
 			google.charts.setOnLoadCallback(drawLineChart);
 			google.charts.setOnLoadCallback(drawBarChart);
             // Line Chart

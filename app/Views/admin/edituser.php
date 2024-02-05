@@ -23,17 +23,23 @@
                 </div>
 
                 <div class="card-body px-4 pb-3">
-                    <form action="<?= base_url('/updateuser/'. $euser['user_id'])?>" class="row g-3" method="POST">
+                    <form action="<?= base_url('/updateuser/'. $euser['UserID'])?>" class="row g-3" method="POST">
                         <div class="col-md-5">
-                            <label for="name" class="form-label">Name</label>
+                            <label for="lastname" class="form-label">Last Name</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="name" name="name" value="<?=$euser['name'] ?>">
+                                <input type="text" class="form-control" id="lastname" name="LastName" value="<?=$euser['LastName'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <label for="username" class="form-label">User Name</label>
+                            <label for="firstname" class="form-label">First Name</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="username" name="username" value="<?=$euser['username'] ?>">
+                                <input type="text" class="form-control" id="firstname" name="FirstName" value="<?=$euser['FirstName'] ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="email" class="form-label">First Name</label>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="disabled" disabled class="form-control" id="email" name="FirstName" value="<?=$euser['FirstName'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">

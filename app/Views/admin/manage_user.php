@@ -48,16 +48,12 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">User ID</th>
 
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Name</th>
+
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center ">Name</th>
 
                                         <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Username</th>
-                                        
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Password</th>
-
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Date Created</th>
-
+                                    
                                         <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Role</th>
 
                                         <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Actions</th>
@@ -67,31 +63,24 @@
                                         <?php foreach($mnguser as $user): ?>
                                             <tr>
                                                 <td class="text-center">
-                                                    <p class="text-xs text-secondary mb-0"><?=$user['user_id'] ?></p>
+                                                    <p class="text-xs text-uppercase text-secondary mb-0"><?=$user['FirstName'], '  ', $user['LastName'] ?></p>
                                                 </td>
+                                            
                                                 <td class="text-center">
-                                                    <p class="text-xs text-secondary mb-0"><?=$user['name'] ?></p>
+                                                    <p class="text-xs text-secondary mb-0"><?=$user['Username'] ?></p>
                                                 </td>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-secondary mb-0"><?=$user['username'] ?></p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-secondary mb-0"><?=$user['password'] ?></p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-secondary mb-0"><?=$user['Created_at'] ?></p>
-                                                </td>
-                                                <td class="text-center">
+                                               
+                                                <td class="text-center text-xs">
                                                     <!-- nakalagay dito kung anong role nung naglogin example admin, staff, manager or owner tingnan mo na lang to dun sa coffee na file kung paano ang pagkakagawa-->
-                                                    <?=$user['role'] ?>
+                                                    <?=$user['UserRole'] ?>
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    <a href="<?= base_url('/adminedituser/' .$user['user_id']) ?>" id='user_id'
+                                                    <a href="<?= base_url('/adminedituser/' .$user['UserID']) ?>" id='user_id'
                                                         class="text-success font-weight-bold text-xs me-2"
                                                         data-toggle="tooltip" data-original-title="Edit Coffee">
                                                         Edit
                                                     </a>||
-                                                    <a href="<?= base_url('/deleteuser/' .$user['user_id']) ?>" class="text-danger font-weight-bold text-xs"
+                                                    <a href="<?= base_url('/deleteuser/' .$user['UserID']) ?>" class="text-danger font-weight-bold text-xs"
                                                         id='user_id' data-toggle="tooltip" data-original-title="Delete User">Delete</a>
                                                 </td>
                                             </tr>
