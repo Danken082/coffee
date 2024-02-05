@@ -99,4 +99,17 @@ class UserController extends BaseController
         session_destroy();
         return redirect()->to('/');
     }
+
+    public function home(){
+        return view('user/home');
+    }
+
+    public function home_menu(){
+        return view('user/menu');
+    }
+
+    public function header()
+    {
+        return view('user/header');
+    }
 }

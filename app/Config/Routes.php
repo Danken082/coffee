@@ -102,3 +102,11 @@ $routes->post('/addother', 'InventoryController::addother');
 $routes->get('/editother/(:any)', 'InventoryController::editother/$1');
 $routes->post('/updateother/(:any)', 'InventoryController::updateother/$1');
 $routes->get('/deleteother/(:any)', 'InventoryController::deleteother/$1');
+
+
+/*For UserSide(Home/landing page keneme)*/ 
+$routes->get('user/header', 'UserController::header');
+$routes->get('user/home', 'UserController::home');
+$routes->get('user/menu', 'UserController::home_menu');
+
+/*For UserSide(Menu)*/ 
