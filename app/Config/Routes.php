@@ -10,7 +10,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'AdminController::login',['filter'=>'guestFilter']);
 $routes->get('/register', 'AdminController::register', ['filter'=>'guestFilter']);
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
-$routes->get('/admindash', 'AdminController::dashboard', ['filter'=>'authFilter']);
+$routes->match(['get', 'post'],'/admindash','VisualizationController::initDayChart', ['filter'=>'authFilter']);
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
