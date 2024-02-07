@@ -141,7 +141,7 @@
             // Line Chart
 			function drawLineChart() {
 				var data = google.visualization.arrayToDataTable([
-					['Day', 'Products Count'],
+					['Day', 'Sales Count'],
 						<?php 
 							foreach ($products as $row){
 							   echo "['".$row['day']."',".$row['sell']."],";

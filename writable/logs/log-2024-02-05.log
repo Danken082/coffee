@@ -1659,3 +1659,147 @@ in APPPATH\Views\admin\dashboard.php on line 51.
  7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-02-05 16:08:36 --> mysqli_sql_exception: FUNCTION coffeeledgerdb.YEARNAME does not exist in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(or...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(or...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(or...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(or...', Array, false)
+#4 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-02-05 16:08:36 --> FUNCTION coffeeledgerdb.YEARNAME does not exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(order_id) as count, `total_amount` as `s`, YEARNAME(order_date) as year
+FROM `tbl_orders`
+WHERE YEAR(order_date) GROUP BY YEARNAME(order_date), s', [], false)
+ 2 APPPATH\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-02-05 16:08:38 --> mysqli_sql_exception: FUNCTION coffeeledgerdb.YEARNAME does not exist in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(or...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(or...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(or...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(or...', Array, false)
+#4 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-02-05 16:08:38 --> FUNCTION coffeeledgerdb.YEARNAME does not exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(order_id) as count, `total_amount` as `s`, YEARNAME(order_date) as year
+FROM `tbl_orders`
+WHERE YEAR(order_date) GROUP BY YEARNAME(order_date), s', [], false)
+ 2 APPPATH\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-02-05 16:08:39 --> mysqli_sql_exception: FUNCTION coffeeledgerdb.YEARNAME does not exist in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(or...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(or...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(or...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(or...', Array, false)
+#4 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-02-05 16:08:39 --> FUNCTION coffeeledgerdb.YEARNAME does not exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(order_id) as count, `total_amount` as `s`, YEARNAME(order_date) as year
+FROM `tbl_orders`
+WHERE YEAR(order_date) GROUP BY YEARNAME(order_date), s', [], false)
+ 2 APPPATH\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-02-05 16:08:39 --> mysqli_sql_exception: FUNCTION coffeeledgerdb.YEARNAME does not exist in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(or...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(or...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(or...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(or...', Array, false)
+#4 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-02-05 16:08:39 --> FUNCTION coffeeledgerdb.YEARNAME does not exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(order_id) as count, `total_amount` as `s`, YEARNAME(order_date) as year
+FROM `tbl_orders`
+WHERE YEAR(order_date) GROUP BY YEARNAME(order_date), s', [], false)
+ 2 APPPATH\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-02-05 16:10:06 --> mysqli_sql_exception: FUNCTION coffeeledgerdb.TOTAL does not exist in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT TOTAL(to...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT TOTAL(to...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT TOTAL(to...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT TOTAL(to...', Array, false)
+#4 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-02-05 16:10:06 --> FUNCTION coffeeledgerdb.TOTAL does not exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT TOTAL(total_amount) as count, `total_amount` as `s`, YEAR(order_date) as year
+FROM `tbl_orders`
+WHERE YEAR(order_date) GROUP BY YEAR(order_date), s', [], false)
+ 2 APPPATH\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-02-05 16:12:03 --> mysqli_sql_exception: Invalid use of group function in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT SUM(tota...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT SUM(tota...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT SUM(tota...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT SUM(tota...', Array, false)
+#4 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+CRITICAL - 2024-02-05 16:12:03 --> Invalid use of group function
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT SUM(total_amount) as count, `total_amount` as `s`, SUM(order_date) as year
+FROM `tbl_orders`
+WHERE SUM(order_date) GROUP BY YEAR(order_date), s', [], false)
+ 2 APPPATH\Controllers\VisualizationController.php(15): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

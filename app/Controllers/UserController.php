@@ -79,18 +79,13 @@ class UserController extends BaseController
             'address' => $user['address'],
             'isLoggedIn' => TRUE
         ];
-        if($user['UserRole']== 'admin')
-        {
+        // if($user['UserRole']== 'admin')
+        // {
           $session->set($ses_data);
            return redirect()->to('/adminhome');
           
-        }
-        elseif($user['UserRole']== 'customer'){
-            
-          $session->set($ses_data);
-            echo 'hi';
-           
-        }
+        //}
+        
                 }
                 else{
                     $session->setFlashdata('msg', 'Password is incorrect.');
