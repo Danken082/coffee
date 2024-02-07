@@ -108,5 +108,11 @@ $routes->get('/deleteother/(:any)', 'InventoryController::deleteother/$1');
 $routes->get('user/header', 'UserController::header');
 $routes->get('user/home', 'UserController::home');
 $routes->get('user/menu', 'UserController::home_menu');
+$routes->get('user/services', 'UserController::home_services');
+$routes->get('user/blog', 'UserController::home_blog');
+$routes->get('user/about', 'UserController::home_about');
+$routes->get('user/shop', 'UserController::home_shop');
+$routes->get('user/contact', 'UserController::home_contact');
+$routes->get('user/cart', 'UserController::home_cart');
 
 /*For UserSide(Menu)*/ 
