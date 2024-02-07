@@ -10,7 +10,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'AdminController::login',['filter'=>'guestFilter']);
 $routes->get('/register', 'AdminController::register', ['filter'=>'guestFilter']);
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
-$routes->get('/admindash', 'AdminController::dashboard', ['filter'=>'authFilter']);
+$routes->match(['get', 'post'],'/admindash','VisualizationController::initDayChart', ['filter'=>'authFilter']);
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
@@ -110,5 +110,11 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 $routes->get('user/header', 'UserController::header');
 $routes->get('user/home', 'UserController::home');
 $routes->get('user/menu', 'UserController::home_menu');
+$routes->get('user/services', 'UserController::home_services');
+$routes->get('user/blog', 'UserController::home_blog');
+$routes->get('user/about', 'UserController::home_about');
+$routes->get('user/shop', 'UserController::home_shop');
+$routes->get('user/contact', 'UserController::home_contact');
+$routes->get('user/cart', 'UserController::home_cart');
 
 /*For UserSide(Menu)*/ 
