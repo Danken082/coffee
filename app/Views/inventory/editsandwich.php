@@ -24,36 +24,36 @@
 
                 <div class="card-body px-4 pb-3">
 
-                    <form action="<?= base_url('/updateother/'. $eother['prod_id'])?>" class="row g-3" method="POST">
+                    <form action="<?= base_url('/updatesandwich/'. $esand['prod_id'])?>" class="row g-3" method="POST">
                     <div class="col-md-5">
                             <label for="Name" class="form-label">Product Name</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="name" name="prod_name" value="<?=$eother['prod_name'] ?>">
+                                <input type="text" class="form-control" id="name" name="prod_name" value="<?=$esand['prod_name'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <label for="Quantity" class="form-label">Quantity</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="number" class="form-control" id="quantity" name="prod_quantity" value="<?=$eother['prod_quantity'] ?>">
+                                <input type="number" class="form-control" id="quantity" name="prod_quantity" value="<?=$esand['prod_quantity'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <label for="Medium" class="form-label">Price</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="medium" name="prod_mprice" value="<?=$eother['prod_mprice'] ?>">
+                                <input type="text" class="form-control" id="medium" name="prod_mprice" value="<?=$esand['prod_mprice'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <label for="Barcode" class="form-label">BarCode</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="barcode" name="prod_code" value="<?=$eother['prod_code'] ?>">
+                                <input type="text" class="form-control" id="barcode" name="prod_code" value="<?=$esand['prod_code'] ?>">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="input-group input-group-outline my-3">
                                 <button type="submit" class="btn btn-success">Update Product</button>
                             </div>
-                            <a href="<?= base_url('/inventoryother')?>" class="btn btn-info">BACK</a>
+                            <a href="<?= base_url('/inventorysandwich')?>" class="btn btn-info">BACK</a>
                         </div>
                     </form>
                 </div>

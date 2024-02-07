@@ -36,13 +36,9 @@
                             <label for="medium" class="form-label"></label>
                             <input type="text" class="form-control" id="medium" name="prod_mprice" placeholder="Price">
                         </div>
-                        <h5>Meal Category</h5>
-                        <div class="input-group input-group-outline my-3">
-                            <label for="Category" class="form-label"></label>
-                            <select name="prod_categ" id="Category">
-                                <option value="Pasta">Pasta</option>
-                            </select>
-                        </div>
+
+                        <input type="hidden" name="prod_categ" value="Pasta">
+
                         <div class="input-group input-group-outline my-3">
                             <label for="Code" class="form-label"></label>
                             <input type="text" class="form-control" id="Code" name="prod_code" placeholder="Product Code">

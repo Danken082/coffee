@@ -3,11 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\HotCoffeeModel;
-use App\Models\IcedCoffeeModel;
-use App\Models\FlavorCoffeeModel;
-use App\Models\NonCoffeeModel;
-use App\Models\CoffeeFrappeModel;
 use App\Models\ProductModel;
 
 class InventoryController extends BaseController
@@ -557,21 +552,21 @@ class InventoryController extends BaseController
         return redirect()->to(base_url('inventorysoup'));
     }
 
-    public function getother()
+    public function getsandwich()
     {
-        $categ = 'Others';
+        $categ = 'Sandwich';
         $prod = new ProductModel();
-        $data['prod'] = $prod->others($categ);
-        return view ('/inventory/others', $data);
+        $data['prod'] = $prod->sandwich($categ);
+        return view ('/inventory/sandwich', $data);
     }
 
-    public function other(){
-        return view('/inventory/addothers');
+    public function sandwich(){
+        return view('/inventory/addsandwich');
     }
 
-    public function addother()
+    public function addsandwich()
     {
-        $other = new ProductModel();
+        $sand = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
@@ -579,34 +574,34 @@ class InventoryController extends BaseController
             'prod_categ' => $this->request->getPost('prod_categ'),
             'prod_code' => $this->request->getPost('prod_code'),
         ];
-        $other->save($data);
-        return redirect()->to(base_url('inventoryother'));
+        $sand->save($data);
+        return redirect()->to(base_url('inventorysandwich'));
     }
 
-    public function editother($id)
+    public function editsandwich($id)
     {
-        $eother = new ProductModel();
-        $data['eother'] = $eother->find($id);
-        return view('/inventory/editothers', $data);
+        $esand = new ProductModel();
+        $data['esand'] = $esand->find($id);
+        return view('/inventory/editsandwich', $data);
     }
 
-    public function updateother($id)
+    public function updatesandwich($id)
     {
-        $other = new ProductModel();
+        $sand = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
         ];
-        $other->update($id, $data);
-        return redirect()->to(base_url('inventoryother'));
+        $sand->update($id, $data);
+        return redirect()->to(base_url('inventorysandwich'));
     }
     
-    public function deleteother($id)
+    public function deletesandwich($id)
     {
-        $other = new ProductModel();
-        $other->delete($id);
-        return redirect()->to(base_url('inventoryother'));
+        $sand = new ProductModel();
+        $sand->delete($id);
+        return redirect()->to(base_url('inventorysandwich'));
     }
 }

@@ -118,7 +118,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table><br>
-                <a href="<?= base_url('/admininventory')?>" class="btn btn-info">BACK</a>
+                <a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a>
             </div>
         </div>
     </body>

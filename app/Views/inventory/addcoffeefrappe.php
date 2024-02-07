@@ -40,12 +40,9 @@
                             <label for="large" class="form-label"></label>
                             <input type="text" class="form-control" id="large" name="prod_lprice" placeholder="Large Price">
                         </div>
-                        <div class="input-group input-group-outline my-3">
-                            <label for="Category" class="form-label"></label>
-                            <select name="prod_categ" id="Category">
-                                <option value="Coffee Frappe">Coffee Frappe</option>
-                            </select>
-                        </div>
+                        
+                        <input type="hidden" name="prod_categ" value="Coffee Frappe">
+
                         <div class="input-group input-group-outline my-3">
                             <label for="Code" class="form-label"></label>
                             <input type="text" class="form-control" id="Code" name="prod_code" placeholder="Product Code">

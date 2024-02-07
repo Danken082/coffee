@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Inventory</title>
         <link rel="icon" type="image/png" href=/images/coffeelogo2.png>
+        <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
     </head>
     <body>
         <style>
@@ -27,44 +28,18 @@
 
             .prodcontainer .cards .card{
                 width: 450px;
-                height: 500px;
+                height: 400px;
                 background: white;
                 margin: 10px 50px;
-                border-radius: 20px;
+                border-radius: 10px;
             }
         </style>
-        
-        <?php 
-            $page = isset($_GET['page']) ?$_GET['page'] : "sidetopbar";
-            include $page.'.php';
-        ?> 
-        
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-            data-scroll="true">
-            <div class="container-fluid py-1 px-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
-                        </li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Inventory</li>
-                    </ol>
-                    <h6 class="font-weight-bolder mb-0">Inventory</h6>
-                </nav>
-                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                        <div class="input-group input-group-outline"></div>
-                    </div>
-                    </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
 
         <div class="container">
             <div class="col-12">
                 <div class="card my-4">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                        <h4 class="text-white text-capitalize ps-3">Inventory Items</h4>
+                        <h4 class="text-white text-capitalize ps-3">Equipment Items</h4>
                     </div>
                 </div><br>
             </div>
@@ -74,23 +49,25 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/images/equip.png" alt="equipment" style="height: 90%; width:100%;">
+                        <img src="/images/coffeewlp6.jpg" alt="hotcoffee" style="width:100%; border-radius: 20px;">
                         <div class="container"><br>
-                            <a href="/adminequip" class="btn btn-success btn-sm me-3 text-center">Equipments</a>
+                            <a href="/inventoryhotcoffee" class="btn btn-success btn-sm me-3 text-center">Cafe Equipment</a>
                         </div>
-                    </div>
+                    </div><br>
                 </div>
 
                 <div class="card">
                     <div class="box">
-                        <img src="/images/prod.jpg" alt="products" style="height: 85%; width:100%;">
+                        <img src="/images/icedcoffee.jpg" alt="icedcoffee" style="width:100%; border-radius: 20px;">
                         <div class="container"><br>
-                            <a href="/adminprod" class="btn btn-success btn-sm me-3 text-center">Products</a>
+                            <a href="/inventoryicedcoffee" class="btn btn-success btn-sm me-3 text-center">Stocks</a>
                         </div>
                     </div><br>
                 </div>
             </div>
         </div>
+
+        <a href="<?= base_url('/admininventory')?>" class="btn btn-info">BACK</a>
 
             <script src="/assets/js/core/popper.min.js"></script>
             <script src="/assets/js/core/bootstrap.min.js"></script>

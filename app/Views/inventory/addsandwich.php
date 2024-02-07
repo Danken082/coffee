@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="card-body px-4 pb-3">
-                <form action="<?= base_url('addother')?>" class="row g-3" method="POST">
+                <form action="<?= base_url('addsandwich')?>" class="row g-3" method="POST">
                         <div class="input-group input-group-outline my-3">
                             <label for="coffee-name" class="form-label"></label>
                             <input type="text" class="form-control" id="product-name" name="prod_name" placeholder="Product Name">
@@ -36,13 +36,9 @@
                             <label for="medium" class="form-label"></label>
                             <input type="text" class="form-control" id="medium" name="prod_mprice" placeholder="Price">
                         </div>
-                        <h5>Meal Category</h5>
-                        <div class="input-group input-group-outline my-3">
-                            <label for="Category" class="form-label"></label>
-                            <select name="prod_categ" id="Category">
-                                <option value="Others">Other</option>
-                            </select>
-                        </div>
+
+                        <input type="hidden" name="prod_categ" value="Sandwich">
+
                         <div class="input-group input-group-outline my-3">
                             <label for="Code" class="form-label"></label>
                             <input type="text" class="form-control" id="Code" name="prod_code" placeholder="Product Code">
@@ -50,7 +46,7 @@
                         <div class="input-group input-group-outline my-3">
                             <button type="submit" class="btn btn-success">Add Product</button>
                         </div>
-                        <div><a href="<?= base_url('/inventoryother')?>" class="btn btn-info">BACK</a></div>
+                        <div><a href="<?= base_url('/inventorysandwich')?>" class="btn btn-info">BACK</a></div>
                     </form>
                 </div>
             </div>

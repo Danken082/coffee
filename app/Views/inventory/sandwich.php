@@ -69,7 +69,7 @@
                 <div class="card my-4">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
                         <h4 class="text-white text-capitalize ps-3">Product List</h4>
-                        <a href="/other" class="btn btn-success btn-sm me-3 text-center">Add Product</a>
+                        <a href="/sandwich" class="btn btn-success btn-sm me-3 text-center">Add Product</a>
                     </div>
                 </div><br>
             </div>
@@ -106,19 +106,19 @@
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_code'] ?></p>
                                 </td>
                                 <td class="align-middle text-center">
-                                    <a href="<?= base_url('/editother/' .$p['prod_id']) ?>" id='id'
+                                    <a href="<?= base_url('/editsandwich/' .$p['prod_id']) ?>" id='id'
                                         class="text-info font-weight-bold text-xs me-2"
                                         data-toggle="tooltip" data-original-title="Edit Coffee">
                                         Edit
                                     </a>||
-                                    <a href="<?= base_url('/deleteother/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs"
+                                    <a href="<?= base_url('/deletesandwich/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs"
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table><br>
-                <a href="<?= base_url('/admininventory')?>" class="btn btn-info">BACK</a>
+                <a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a>
             </div>
         </div>
     </body>

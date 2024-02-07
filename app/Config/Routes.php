@@ -17,6 +17,8 @@ $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFil
 $routes->get('/adminmanage_user', 'AdminController::getmanageuser', ['filter'=>'authFilter']);
 $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter']);
 $routes->post('/adminadduser', 'AdminController::adduser', ['filter'=>'authFilter']);
+$routes->get('/adminequip', 'AdminController::equip', ['filter'=>'authFilter']);
+$routes->get('/adminprod', 'AdminController::products', ['filter'=>'authFilter']);
 $routes->get('/adminedituser/(:any)', 'AdminController::edituser/$1');
 $routes->post('/updateuser/(:any)', 'AdminController::updateuser/$1');
 $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
@@ -95,13 +97,13 @@ $routes->post('/addsoup', 'InventoryController::addsoup');
 $routes->get('/editsoup/(:any)', 'InventoryController::editsoup/$1');
 $routes->post('/updatesoup/(:any)', 'InventoryController::updatesoup/$1');
 $routes->get('/deletesoup/(:any)', 'InventoryController::deletesoup/$1');
-/* For Others */
-$routes->get('/inventoryother', 'InventoryController::getother');
-$routes->get('/other', 'InventoryController::other');
-$routes->post('/addother', 'InventoryController::addother');
-$routes->get('/editother/(:any)', 'InventoryController::editother/$1');
-$routes->post('/updateother/(:any)', 'InventoryController::updateother/$1');
-$routes->get('/deleteother/(:any)', 'InventoryController::deleteother/$1');
+/* For Sanwiches */
+$routes->get('/inventorysandwich', 'InventoryController::getsandwich');
+$routes->get('/sandwich', 'InventoryController::sandwich');
+$routes->post('/addsandwich', 'InventoryController::addsandwich');
+$routes->get('/editsandwich/(:any)', 'InventoryController::editsandwich/$1');
+$routes->post('/updatesandwich/(:any)', 'InventoryController::updatesandwich/$1');
+$routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1');
 
 
 /*For UserSide(Home/landing page keneme)*/ 

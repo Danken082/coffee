@@ -1,0 +1,76 @@
+ERROR - 2024-02-07 03:11:10 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'coffeeledgerdb-2' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'coffeeledgerdb-...', 3306, '', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#4 C:\laragon\www\coffee\system\Validation\StrictRules\Rules.php(206): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\Validation\Validation.php(309): CodeIgniter\Validation\StrictRules\Rules->is_unique('gutierreznicoll...', 'email', Array, NULL, 'email')
+#6 C:\laragon\www\coffee\system\Validation\Validation.php(195): CodeIgniter\Validation\Validation->processRules('email', 'email', 'gutierreznicoll...', Array, Array)
+#7 C:\laragon\www\coffee\system\Controller.php(150): CodeIgniter\Validation\Validation->run()
+#8 C:\laragon\www\coffee\app\Controllers\UserController.php(30): CodeIgniter\Controller->validate(Array)
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#10 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#11 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#13 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'coffeeledgerdb-2' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT 1\nFROM `...', Array, false)
+#3 C:\laragon\www\coffee\system\Validation\StrictRules\Rules.php(206): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\coffee\system\Validation\Validation.php(309): CodeIgniter\Validation\StrictRules\Rules->is_unique('gutierreznicoll...', 'email', Array, NULL, 'email')
+#5 C:\laragon\www\coffee\system\Validation\Validation.php(195): CodeIgniter\Validation\Validation->processRules('email', 'email', 'gutierreznicoll...', Array, Array)
+#6 C:\laragon\www\coffee\system\Controller.php(150): CodeIgniter\Validation\Validation->run()
+#7 C:\laragon\www\coffee\app\Controllers\UserController.php(30): CodeIgniter\Controller->validate(Array)
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#10 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-02-07 03:11:10 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'coffeeledgerdb-2'
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT 1
+FROM `user`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Validation\StrictRules\Rules.php(206): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\Validation\Validation.php(309): CodeIgniter\Validation\StrictRules\Rules->is_unique('gutierreznicollecatly@gmail.com', 'email', [...], null, 'email')
+ 5 SYSTEMPATH\Validation\Validation.php(195): CodeIgniter\Validation\Validation->processRules('email', 'email', 'gutierreznicollecatly@gmail.com', [...], [...])
+ 6 SYSTEMPATH\Controller.php(150): CodeIgniter\Validation\Validation->run()
+ 7 APPPATH\Controllers\UserController.php(30): CodeIgniter\Controller->validate([...])
+ 8 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 9 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+10 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-07 03:12:43 --> Undefined array key "user_id"
+in APPPATH\Views\admin\manage_user.php on line 70.
+ 1 APPPATH\Views\admin\manage_user.php(70): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "user_id"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\manage_user.php', 70)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\manage_user.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/manage_user', [], true)
+ 5 APPPATH\Controllers\AdminController.php(67): view('/admin/manage_user', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->getmanageuser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-07 05:26:03 --> Undefined variable $eother
+in APPPATH\Views\inventory\editsandwich.php on line 27.
+ 1 APPPATH\Views\inventory\editsandwich.php(27): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $eother', 'C:\\laragon\\www\\coffee\\app\\Views\\inventory\\editsandwich.php', 27)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\inventory\\editsandwich.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/inventory/editsandwich', [], true)
+ 5 APPPATH\Controllers\InventoryController.php(585): view('/inventory/editsandwich', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->editsandwich('93')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

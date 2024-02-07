@@ -90,7 +90,7 @@ class ProductModel extends Model
         return $this->where('prod_categ', $categ)->findAll();
     }
 
-    public function others($categ)
+    public function sandwich($categ)
     {
         return $this->where('prod_categ', $categ)->findAll();
     }

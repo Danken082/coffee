@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\AdminUserModel;
 use App\Models\HistoryModel;
 use App\Models\ProductModel;
 
@@ -47,6 +48,14 @@ class AdminController extends BaseController
     public function inventory()
     {
         return view ('/admin/inventory');
+    }
+
+    public function equip(){
+        return view('/admin/equipments');
+    }
+
+    public function products(){
+        return view('/admin/product');
     }
 
     public function order(){
@@ -114,11 +123,8 @@ class AdminController extends BaseController
     }
     
     public function deleteuser($id)
-    {
-        
+    {  
         $this->user->delete($id);
         return redirect()->to(base_url('adminmanage_user'));
     }
-
-    
 }
