@@ -107,7 +107,6 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 
 
 /*For UserSide(Home/landing page keneme)*/ 
-$routes->get('user/header', 'UserController::header');
 $routes->get('user/home', 'UserController::home');
 $routes->get('user/menu', 'UserController::home_menu');
 $routes->get('user/services', 'UserController::home_services');

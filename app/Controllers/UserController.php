@@ -105,39 +105,37 @@ class UserController extends BaseController
     }
 
     public function home(){
-        return view('user/home');
+        return view('/user/home');
     }
 
     public function home_menu(){
-        return view('user/menu');
+        return view('/user/menu');
     }
 
     public function home_services()
     {
-        return view('user/services');
+        return view('/user/services');
     }
 
     public function home_blog()
     {
-        return view('user/blog');
+        return view('/user/blog');
     }
 
     public function home_about()
     {
-        return view('user/about');
+        return view('/user/about');
     }
     public function home_shop()
     {
-        return view('user/shop');
+        return view('/user/shop');
     }
     public function home_contact()
     {
-        return view('user/contact');
+        return view('/user/contact');
     }
     public function home_cart()
     {
-        return view('user/cart');
+        return view('/user/cart');
     }
-
-
 }
