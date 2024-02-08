@@ -7,9 +7,11 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-        <link rel="stylesheet" href="/assets/css/open-iconic-bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css"/>
         <link rel="stylesheet" href="/assets/css/userside.css"/>
         <link rel="stylesheet" href="/assets/css/userside2.css">
+        <link rel="stylesheet" href="/assets/css/userside3.css">
         <link rel="stylesheet" href="/css/animate.css"/>
         <link rel="stylesheet" href="/css/owl.carousel.min.css"/>
         <link rel="stylesheet" href="/css/owl.theme.default.min.css"/>
@@ -25,7 +27,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="home">Coffee<small>Ledger</small></a>
+                <a class="navbar-brand" href="home">Cross<small>Roads</small></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="oi oi-menu"></span> Menu
                 </button>
