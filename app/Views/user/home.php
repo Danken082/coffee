@@ -1,130 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Crossroad</title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	</head>
-	<body>	
-
-    <?php 
-      $page = isset($_GET['page']) ?$_GET['page'] : "header";
-      include $page.'.php';
-    ?> 
-		<div class="fill" style="background-image: url(/assets/userimg/bg1.jpg);">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-					<div class="col-md-8 col-sm-12 text-center ftco-animate">
-						<span class="subheading">Welcome</span>
-						<h1 class="mb-4">The Best Coffee Testing Experience</h1>
-						<p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-						<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+	<head>
+		<title>Crossroad</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		</head>
+		<body>	
+			<section class="home-slider owl-carousel">
+				<div class="slider-item" style="background-image: url(/assets/user/images/bg1.jpg);">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+							<div class="col-md-8 col-sm-12 text-center ftco-animate">
+								<span class="subheading">Welcome</span>
+								<h1 class="mb-4">The Best Coffee Testing Experience</h1>
+								<p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+								<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<div class="slider-item" style="background-image: url(/assets/userimg/bg2.jpg);">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-					<div class="col-md-8 col-sm-12 text-center ftco-animate">
-						<span class="subheading">Welcome</span>
-						<h1 class="mb-4">Amazing Taste &amp; Beautiful Place</h1>
-						<p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-						<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+				<div class="slider-item" style="background-image: url(/assets/user/images/bg2.jpg);">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+							<div class="col-md-8 col-sm-12 text-center ftco-animate">
+								<span class="subheading">Welcome</span>
+								<h1 class="mb-4">Amazing Taste &amp; Beautiful Place</h1>
+								<p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+								<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
 
-		<div class="slider-item" style="background-image: url(/assets/userimg/bg3.jpg);">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
-					<div class="col-md-8 col-sm-12 text-center ftco-animate">
-						<span class="subheading">Welcome</span>
-						<h1 class="mb-4">Creamy Hot and Ready to Serve</h1>
-						<p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-						<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+				<div class="slider-item" style="background-image: url(/assets/user/images/bg3.jpg);">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+							<div class="col-md-8 col-sm-12 text-center ftco-animate">
+								<span class="subheading">Welcome</span>
+								<h1 class="mb-4">Creamy Hot and Ready to Serve</h1>
+								<p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+								<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
+			</section>
 
+			<section class="ftco-intro">
+				<div class="container-wrap">
+					<div class="wrap d-md-flex align-items-xl-end">
+						<div class="info">
+							<div class="row no-gutters">
+								<div class="col-md-4 d-flex ftco-animate">
+									<div class="icon"><span class="icon-phone"></span></div>
+									<div class="text">
+										<h3>000 (123) 456 7890</h3>
+										<p>A small river named Duden flows by their place and supplies.</p>
+									</div>
+								</div>
+								<div class="col-md-4 d-flex ftco-animate">
+									<div class="icon"><span class="icon-my_location"></span></div>
+									<div class="text">
+										<h3>198 West 21th Street</h3>
+										<p>	203 Fake St. Mountain View, San Francisco, California, USA</p>
+									</div>
+								</div>
+								<div class="col-md-4 d-flex ftco-animate">
+									<div class="icon"><span class="icon-clock-o"></span></div>
+									<div class="text">
+										<h3>Open Monday-Friday</h3>
+										<p>8:00am - 9:00pm</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="book p-4">
+							<h3>Book a Table</h3>
+							<form action="#" class="appointment-form">
+								<div class="d-md-flex">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="First Name">
+									</div>
+									<div class="form-group ml-md-4">
+										<input type="text" class="form-control" placeholder="Last Name">
+									</div>
+								</div>
+								<div class="d-md-flex">
+									<div class="form-group">
+										<div class="input-wrap">
+											<div class="icon"><span class="ion-md-calendar"></span></div>
+											<input type="text" class="form-control appointment_date" placeholder="Date">
+										</div>
+		    						</div>
+									<div class="form-group ml-md-4">
+										<div class="input-wrap">
+											<div class="icon"><span class="ion-ios-clock"></span></div>
+											<input type="text" class="form-control appointment_time" placeholder="Time">
+										</div>
+		    						</div>
+									<div class="form-group ml-md-4">
+										<input type="text" class="form-control" placeholder="Phone">
+									</div>
+								</div>
+								<div class="d-md-flex">
+									<div class="form-group">
+										<textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+									</div>
+									<div class="form-group ml-md-4">
+										<input type="submit" value="Appointment" class="btn btn-white py-3 px-4">
+									</div>
+								</div>
+	    					</form>
+	    				</div>
+    				</div>
+    			</div>
+    		</section>
 
-    <footer class="ftco-footer ftco-section img">
-    	<div class="overlay"></div>
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">About Us</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-5 mb-md-5">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Recent Blog</h2>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
-                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-6 mb-5 mb-md-5">
-             <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">Services</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Cooked</a></li>
-                <li><a href="#" class="py-2 d-block">Deliver</a></li>
-                <li><a href="#" class="py-2 d-block">Quality Foods</a></li>
-                <li><a href="#" class="py-2 d-block">Mixed</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
-            <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
+			<?php 
+				$page = isset($_GET['page']) ?$_GET['page'] : "header";
+				include $page.'.php';
+			?> 
+			<?php 
+				$page = isset($_GET['page']) ?$_GET['page'] : "footer";
+				include $page.'.php';
+			?> 
+		<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+  	</body>
 </html>
