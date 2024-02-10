@@ -49,7 +49,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/images/coffeewlp6.jpg" alt="hotcoffee" style="width:100%; border-radius: 20px;">
+                        <img src="/assets/images/coffeewlp6.jpg" alt="hotcoffee" style="width:100%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventoryhotcoffee" class="btn btn-success btn-sm me-3 text-center">Cafe Equipment</a>
                         </div>
@@ -58,7 +58,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/images/icedcoffee.jpg" alt="icedcoffee" style="width:100%; border-radius: 20px;">
+                        <img src="/assets/images/icedcoffee.jpg" alt="icedcoffee" style="width:100%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventoryicedcoffee" class="btn btn-success btn-sm me-3 text-center">Stocks</a>
                         </div>

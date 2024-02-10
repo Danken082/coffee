@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Inventory</title>
-        <link rel="icon" type="image/png" href=/images/coffeelogo2.png>
+        <link rel="icon" type="image/png" href=/assets/images/coffeelogo2.png>
     </head>
     <body>
         <style>
@@ -74,7 +74,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/images/equip.png" alt="equipment" style="height: 90%; width:100%;">
+                        <img src="/assets/images/equip.png" alt="equipment" style="height: 90%; width:100%;">
                         <div class="container"><br>
                             <a href="/adminequip" class="btn btn-success btn-sm me-3 text-center">Equipments</a>
                         </div>
@@ -83,7 +83,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/images/prod.jpg" alt="products" style="height: 85%; width:100%;">
+                        <img src="/assets/images/prod.jpg" alt="products" style="height: 85%; width:100%;">
                         <div class="container"><br>
                             <a href="/adminprod" class="btn btn-success btn-sm me-3 text-center">Products</a>
                         </div>

@@ -22,7 +22,7 @@
             </div>
             <main class="main-content  mt-0">
                 <div class="page-header align-items-start min-vh-100"
-                    style="background-image: url('/images/blog-img-012.jpg');">
+                    style="background-image: url('/assets/images/blog-img-012.jpg');">
                     <span class="mask bg-gradient-dark opacity-6"></span>
                     <div class="container my-auto">
                         <div class="row">

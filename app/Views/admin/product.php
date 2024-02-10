@@ -49,7 +49,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/images/coffeewlp6.jpg" alt="hotcoffee" style="width:100%; border-radius: 20px;">
+                        <img src="/assets/images/coffeewlp6.jpg" alt="hotcoffee" style="width:100%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventoryhotcoffee" class="btn btn-success btn-sm me-3 text-center">Hot Coffee</a>
                         </div>
@@ -58,7 +58,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/images/icedcoffee.jpg" alt="icedcoffee" style="width:100%; border-radius: 20px;">
+                        <img src="/assets/images/icedcoffee.jpg" alt="icedcoffee" style="width:100%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventoryicedcoffee" class="btn btn-success btn-sm me-3 text-center">Iced Coffee</a>
                         </div>
@@ -68,7 +68,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/images/flaviced.jpg" alt="flavoredcoffee" style="width:100%; height:77%; border-radius: 20px;">
+                        <img src="/assets/images/flaviced.jpg" alt="flavoredcoffee" style="width:100%; height:77%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventoryflavoredcoffee" class="btn btn-success btn-sm me-3 text-center">Flavored Iced Coffee</a>
                         </div>
@@ -77,7 +77,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/images/noncoffee.jpg" alt="noncoffee" style="width:100%; height:61%; border-radius: 20px;">
+                        <img src="/assets/images/noncoffee.jpg" alt="noncoffee" style="width:100%; height:61%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorynoncoffee" class="btn btn-success btn-sm me-3 text-center">Non Coffee Frappe</a>
                         </div>
@@ -87,7 +87,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/images/coffeefrappe.jpg" alt="coffeefrappe" style="width:100%; height:60%; border-radius: 20px;">
+                        <img src="/assets/images/coffeefrappe.jpg" alt="coffeefrappe" style="width:100%; height:60%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorycoffeefrappe" class="btn btn-success btn-sm me-3 text-center">Coffee Frappe</a>
                         </div>
@@ -97,7 +97,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/images/meals.jpg" alt="meals" style="width:100%; height:98%; border-radius: 20px;">
+                        <img src="/assets/images/meals.jpg" alt="meals" style="width:100%; height:98%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorymeal" class="btn btn-success btn-sm me-3 text-center">Rice Meals</a>
                         </div>
@@ -106,7 +106,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/images/pasta.jpg" alt="pasta" style="width:100%; height:60%; border-radius: 20px;">
+                        <img src="/assets/images/pasta.jpg" alt="pasta" style="width:100%; height:60%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorypasta" class="btn btn-success btn-sm me-3 text-center">Pasta</a>
                         </div>
@@ -116,7 +116,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/images/appetizer.jpg" alt="appetizer" style="width:100%; height:98%; border-radius: 20px;">
+                        <img src="/assets/images/appetizer.jpg" alt="appetizer" style="width:100%; height:98%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventoryappetizer" class="btn btn-success btn-sm me-3 text-center">Appetizer</a>
                         </div>
@@ -125,7 +125,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/images/salad.jpg" alt="salad" style="width:100%; height:83%; border-radius: 20px;">
+                        <img src="/assets/images/salad.jpg" alt="salad" style="width:100%; height:83%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorysalad" class="btn btn-success btn-sm me-3 text-center">Salad</a>
                         </div>
@@ -135,7 +135,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/images/soup.jpg" alt="soup" style="width:100%; height:77%; border-radius: 20px;">
+                        <img src="/assets/images/soup.jpg" alt="soup" style="width:100%; height:77%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorysoup" class="btn btn-success btn-sm me-3 text-center">Soup</a>
                         </div>
@@ -144,7 +144,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/images/sandwich.jpg" alt="sandwich" style="width:100%; height:60%; border-radius: 20px;">
+                        <img src="/assets/images/sandwich.jpg" alt="sandwich" style="width:100%; height:60%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorysandwich" class="btn btn-success btn-sm me-3 text-center">Sandwiches</a>
                         </div>

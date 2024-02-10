@@ -1,0 +1,13 @@
+CRITICAL - 2024-02-09 04:34:12 --> include(hader.php): Failed to open stream: No such file or directory
+in APPPATH\Views\user\home.php on line 12.
+ 1 APPPATH\Views\user\home.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(hader.php): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php', 12)
+ 2 APPPATH\Views\user\home.php(12): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(108): view('/user/home')
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
