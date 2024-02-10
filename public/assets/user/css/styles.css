@@ -7274,7 +7274,7 @@ body {
   line-height: 1.8;
   font-weight: 300;
   color: gray;
-  background: url(../images/bg_4.jpg) no-repeat fixed;
+  background: url(/assets/user/images/bg4.jpg) no-repeat fixed;
   background-size: cover; }
   body.menu-show {
     overflow: hidden;
@@ -7772,7 +7772,8 @@ h1, h2, h3, h4, h5,
   width: 100%; }
   .ftco-intro .wrap .info {
     background: #000;
-    padding: 30px; }
+    padding: 30px;
+    height: 170px; }
     @media (min-width: 1200px) {
       .ftco-intro .wrap .info {
         width: calc(100% - 35%);
@@ -7949,21 +7950,21 @@ h1, h2, h3, h4, h5,
       font-size: 18px; }
       .pricing-entry .text h3 span {
         background: #151111;
-        background: url(../images/bg_4.jpg) no-repeat fixed;
+        background: url(/assets/user/images/bg4.jpg) no-repeat fixed;
         padding-right: 20px; }
     .pricing-entry .text .price {
       width: 80px;
       color: #c49b63;
       text-align: right;
       background: #151111;
-      background: url(../images/bg_4.jpg) no-repeat fixed;
+      background: url(/assets/user/images/bg4.jpg) no-repeat fixed;
       font-size: 16px; }
 
 .menu-entry {
   margin-bottom: 30px; }
   .menu-entry .img {
     display: block;
-    height: 200px; }
+    height: 300px; }
   .menu-entry .text h3 {
     font-size: 18px;
     text-transform: uppercase; }
@@ -8215,7 +8216,8 @@ h1, h2, h3, h4, h5,
   margin-bottom: 60px; }
   .menu-wrap .menu-img {
     display: block;
-    height: 270px; }
+    height: 300px;
+    width: 330px; }
   .menu-wrap .text h3 {
     font-size: 18px;
     text-transform: uppercase; }

@@ -25,7 +25,7 @@
                             <div
                                 class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
                                 <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
-                                    style="background-image: url('/images/hotcofee2.jpg'); background-size:cover; ">
+                                    style="background-image: url('/assets/images/hotcofee2.jpg'); background-size:cover; ">
                                 </div>
                             </div>
                             <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
@@ -43,67 +43,64 @@
                                                 <label class="form-label">Last Name</label>
                                                 <input type="text" name="LastName" class="form-control" required>
                                                 <?php if(isset($validation)):?>
-                                <small class="text-danger"><?= $validation->getError('LastName') ?></small>
-                            <?php endif;?>
+                                                    <small class="text-danger"><?= $validation->getError('LastName') ?></small>
+                                                <?php endif;?>
                                             </div>
                                             
                                             <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label">First Name</label>
                                                 <input type="text" name="FirstName" class="form-control" required>
                                                 <?php if(isset($validation)):?>
-                                <small class="text-danger"><?= $validation->getError('FirstName') ?></small>
-                            <?php endif;?>
+                                                    <small class="text-danger"><?= $validation->getError('FirstName') ?></small>
+                                                <?php endif;?>
                                             </div>
                                             <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label">Username</label>
                                                 <input type="text" name="Username" class="form-control" required>
                                                 <?php if(isset($validation)):?>
-                                <small class="text-danger"><?= $validation->getError('Username') ?></small>
-                            <?php endif;?>
+                                                    <small class="text-danger"><?= $validation->getError('Username') ?></small>
+                                                <?php endif;?>
                                             </div>
                                             <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label">Email</label>
                                                 <input type="text" name="email" class="form-control" required>
-                                     
                                             </div>
                                             <?php if(isset($validation)):?>
-                                <small class="text-danger"><?= $validation->getError('email') ?></small>
-                            <?php endif;?>
+                                                <small class="text-danger"><?= $validation->getError('email') ?></small>
+                                            <?php endif;?>
                                             <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label">Password</label>
                                                 <input type="password" name="Password" class="form-control" required>
                                                 <?php if(isset($validation)):?>
-                                <small class="text-danger"><?= $validation->getError('Password') ?></small>
-                            <?php endif;?>
+                                                    <small class="text-danger"><?= $validation->getError('Password') ?></small>
+                                                <?php endif;?>
                                             </div>
                                             <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label">Contact Number</label>
                                                 <input type="text" name="ContactNo" class="form-control" required>
-                                             
                                             </div>
                                             <?php if(isset($validation)):?>
-                                <small class="text-danger"><?= $validation->getError('ContactNo') ?></small>
-                            <?php endif;?>
+                                                <small class="text-danger"><?= $validation->getError('ContactNo') ?></small>
+                                            <?php endif;?>
                                             <div class="input-group input-group-outline mb-3">
-                                            <select name="gender" id="" class="form-control "><option disabled selected>Gender</option><option value="male">Male</option><option value="female">Female</option></select>    
-                                            <?php if(isset($validation)):?>
-                                <small class="text-danger"><?= $validation->getError('gender') ?></small>
-                            <?php endif;?>
+                                                <select name="gender" id="" class="form-control "><option disabled selected>Gender</option><option value="male">Male</option><option value="female">Female</option></select>    
+                                                <?php if(isset($validation)):?>
+                                                    <small class="text-danger"><?= $validation->getError('gender') ?></small>
+                                                <?php endif;?>
                                             </div>
+                                            <label>Birthday:</label>
                                             <div class="input-group input-group-outline mb-3">
-                                            <label>Birth Day:</label>
-                                        
                                                 <input type="date" name="birthdate" class="form-control" required>
                                                 <?php if(isset($validation)):?>
-                                <small class="text-danger"><?= $validation->getError('birthdate') ?></small>
-                            <?php endif;?>
+                                                    <small class="text-danger"><?= $validation->getError('birthdate') ?></small>
+                                                <?php endif;?>
                                             </div>
                                             <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label">Address</label>
                                                 <input type="text" name="address" class="form-control" required>
                                                 <?php if(isset($validation)):?>
-                                <small class="text-danger"><?= $validation->getError('address') ?></small>
-                            <?php endif;?>
+                                                    <small class="text-danger"><?= $validation->getError('address') ?></small>
+                                                <?php endif;?>
                                             </div>
                                             <input type="hidden" name="UserRole" value="customer">
                                             <div class="text-center">

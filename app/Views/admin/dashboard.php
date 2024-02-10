@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Dashboard</title>
-        <link rel="icon" type="image/png" href=/images/coffeelogo2.png>
+        <link rel="icon" type="image/png" href=/assets/images/coffeelogo2.png>
     </head>
     <body>
         
@@ -120,8 +120,8 @@
         </div>
         </div>
 
-        <script src="chart.min.js"></script>
-        <script src="jquery.min.js"></script>
+        <script src="/assets/js/chart.min.js"></script>
+        <script src="/assets/js/jquery.min.js"></script>
 
         <script src="/assets/js/core/popper.min.js"></script>
         <script src="/assets/js/core/bootstrap.min.js"></script>
@@ -129,11 +129,9 @@
         <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
         <script src="/assets/js/plugins/chartjs.min.js"></script>
 
-        <!-- Github buttons -->
         <script async defer src="https://buttons.github.io/buttons.js"></script>
-        <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
-        <script type="text/javascript" src="<?php site_url()?>/js/chart.js"></script>
+        <script type="text/javascript" src="<?php site_url()?>/assets/user/js/chart.js"></script>
         <script>
             google.charts.load('current', {'packages':['corechart', 'bar']});
 			google.charts.setOnLoadCallback(drawLineChart);

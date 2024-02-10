@@ -37,10 +37,9 @@
                         <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="<?= site_url("user/shop"); ?>" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="shop">Shop</a>
-                            <a class="dropdown-item" href="product-single">Single Product</a>
-                            <a class="dropdown-item" href="room">Cart</a>
-                            <a class="dropdown-item" href="checkout">Checkout</a>
+                            <a class="dropdown-item" href="<?= site_url("user/shop"); ?>">Shop</a>
+                            <a class="dropdown-item" href="<?= site_url("user/cart"); ?>">Cart</a>
+                            <a class="dropdown-item" href="<?= site_url("user/checkout"); ?>">Checkout</a>
                         </div>
                         </li>
                         <li class="nav-item"><a href="<?= site_url("user/contact"); ?>" class="nav-link">Contact</a></li>
