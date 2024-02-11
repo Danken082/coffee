@@ -29,39 +29,36 @@ $routes->get('logout', 'UserController::logout', ['filter'=>'authFilter']);
 
 /* For Hot Coffee */
 $routes->get('/inventoryhotcoffee', 'InventoryController::gethotcoffee');
-$routes->get('/hotcoffee', 'InventoryController::hotcoffee');
-$routes->post('/addhotcoffee', 'InventoryController::addhotcoffee');
+$routes->get('/drinks', 'InventoryController::drinks');
+$routes->post('/adddrinks', 'InventoryController::adddrink');
 $routes->get('/edithot/(:any)', 'InventoryController::edithot/$1');
 $routes->post('/updatehot/(:any)', 'InventoryController::updatehot/$1');
 $routes->get('/deletehot/(:any)', 'InventoryController::deletehot/$1');
 /* For Iced Coffee */
 $routes->get('/inventoryicedcoffee', 'InventoryController::geticedcoffee');
-$routes->get('/icedcoffee', 'InventoryController::icedcoffee');
-$routes->post('/addiced', 'InventoryController::addicedcoffee');
 $routes->get('/editiced/(:any)', 'InventoryController::editiced/$1');
 $routes->post('/updateiced/(:any)', 'InventoryController::updateiced/$1');
 $routes->get('/deleteiced/(:any)', 'InventoryController::deleteiced/$1');
 /* For Flavored Coffee */
 $routes->get('/inventoryflavoredcoffee', 'InventoryController::getflavoredcoffee');
-$routes->get('/flavoredcoffee', 'InventoryController::flavoredcoffee');
-$routes->post('/addflavored', 'InventoryController::addflavoredcoffee');
 $routes->get('/editflavored/(:any)', 'InventoryController::editflavored/$1');
 $routes->post('/updateflavored/(:any)', 'InventoryController::updateflavored/$1');
 $routes->get('/deleteflavored/(:any)', 'InventoryController::deleteflavored/$1');
 /* For Non Coffee Frappe */
 $routes->get('/inventorynoncoffee', 'InventoryController::getnoncoffee');
-$routes->get('/noncoffee', 'InventoryController::noncoffee');
-$routes->post('/addnon', 'InventoryController::addnoncoffee');
 $routes->get('/editnon/(:any)', 'InventoryController::editnoncoffee/$1');
 $routes->post('/updatenon/(:any)', 'InventoryController::updatenoncoffee/$1');
 $routes->get('/deletenon/(:any)', 'InventoryController::deletenoncoffee/$1');
 /* For Coffee Frappe */
 $routes->get('/inventorycoffeefrappe', 'InventoryController::getcoffeefrappe');
-$routes->get('/coffeefrappe', 'InventoryController::coffeefrappe');
-$routes->post('/addcoffeefrappe', 'InventoryController::addcoffeefrappe');
 $routes->get('/editcoffeefrappe/(:any)', 'InventoryController::editcoffeefrappe/$1');
 $routes->post('/updatecoffeefrappe/(:any)', 'InventoryController::updatecoffeefrappe/$1');
 $routes->get('/deletecoffeefrappe/(:any)', 'InventoryController::deletecoffeefrappe/$1');
+/* For Others */
+$routes->get('/inventoryothers', 'InventoryController::getothers');
+$routes->get('/editothers/(:any)', 'InventoryController::editothers/$1');
+$routes->post('/updateothers/(:any)', 'InventoryController::updateothers/$1');
+$routes->get('/deleteothers/(:any)', 'InventoryController::deleteothers/$1');
 /* For Rice Meal */
 $routes->get('/inventorymeal', 'InventoryController::getmeal');
 $routes->get('/meals', 'InventoryController::meals');
@@ -71,42 +68,32 @@ $routes->post('/updatemeal/(:any)', 'InventoryController::updatemeal/$1');
 $routes->get('/deletemeal/(:any)', 'InventoryController::deletemeal/$1');
 /* For Pasta */
 $routes->get('/inventorypasta', 'InventoryController::getpasta');
-$routes->get('/pasta', 'InventoryController::pasta');
-$routes->post('/addpasta', 'InventoryController::addpasta');
 $routes->get('/editpasta/(:any)', 'InventoryController::editpasta/$1');
 $routes->post('/updatepasta/(:any)', 'InventoryController::updatepasta/$1');
 $routes->get('/deletepasta/(:any)', 'InventoryController::deletepasta/$1');
 /* For Appetizer */
 $routes->get('/inventoryappetizer', 'InventoryController::getappetizer');
-$routes->get('/appetizer', 'InventoryController::appetizer');
-$routes->post('/addappetizer', 'InventoryController::addappetizer');
 $routes->get('/editappetizer/(:any)', 'InventoryController::editappetizer/$1');
 $routes->post('/updateappetizer/(:any)', 'InventoryController::updateappetizer/$1');
 $routes->get('/deleteappetizer/(:any)', 'InventoryController::deleteappetizer/$1');
 /* For Salad */
 $routes->get('/inventorysalad', 'InventoryController::getsalad');
-$routes->get('/salad', 'InventoryController::salad');
-$routes->post('/addsalad', 'InventoryController::addsalad');
 $routes->get('/editsalad/(:any)', 'InventoryController::editsalad/$1');
 $routes->post('/updatesalad/(:any)', 'InventoryController::updatesalad/$1');
 $routes->get('/deletesalad/(:any)', 'InventoryController::deletesalad/$1');
 /* For Soup */
 $routes->get('/inventorysoup', 'InventoryController::getsoup');
-$routes->get('/soup', 'InventoryController::soup');
-$routes->post('/addsoup', 'InventoryController::addsoup');
 $routes->get('/editsoup/(:any)', 'InventoryController::editsoup/$1');
 $routes->post('/updatesoup/(:any)', 'InventoryController::updatesoup/$1');
 $routes->get('/deletesoup/(:any)', 'InventoryController::deletesoup/$1');
 /* For Sanwiches */
 $routes->get('/inventorysandwich', 'InventoryController::getsandwich');
-$routes->get('/sandwich', 'InventoryController::sandwich');
-$routes->post('/addsandwich', 'InventoryController::addsandwich');
 $routes->get('/editsandwich/(:any)', 'InventoryController::editsandwich/$1');
 $routes->post('/updatesandwich/(:any)', 'InventoryController::updatesandwich/$1');
 $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1');
 
 
-/*For UserSide(Home/landing page keneme)*/ 
+/*For UserSide*/ 
 $routes->get('user/home', 'UserController::home');
 $routes->get('user/menu', 'UserController::home_menu');
 $routes->get('user/services', 'UserController::home_services');
@@ -115,5 +102,3 @@ $routes->get('user/about', 'UserController::home_about');
 $routes->get('user/shop', 'UserController::home_shop');
 $routes->get('user/contact', 'UserController::home_contact');
 $routes->get('user/cart', 'UserController::home_cart');
-
-/*For UserSide(Menu)*/ 

@@ -18,35 +18,49 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div
                         class="bg-gradient-success shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                        <h6 class="text-white text-capitalize ps-3">Add Pasta</h6>
+                        <h6 class="text-white text-capitalize ps-3">Add Drinks</h6>
                     </div>
                 </div>
 
                 <div class="card-body px-4 pb-3">
-                <form action="<?= base_url('addpasta')?>" class="row g-3" method="POST">
+                <form action="<?= base_url('adddrinks')?>" class="row g-3" method="POST">
                         <div class="input-group input-group-outline my-3">
                             <label for="coffee-name" class="form-label"></label>
                             <input type="text" class="form-control" id="product-name" name="prod_name" placeholder="Product Name">
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="Quantity" class="form-label"></label>
-                            <input type="text" class="form-control" id="quantity" name="prod_quantity" placeholder="Quantity">
+                            <input type="number" class="form-control" id="quantity" name="prod_quantity" placeholder="Quantity">
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="medium" class="form-label"></label>
-                            <input type="text" class="form-control" id="medium" name="prod_mprice" placeholder="Price">
+                            <input type="text" class="form-control" id="medium" name="prod_mprice" placeholder="Medium Price">
                         </div>
-
-                        <input type="hidden" name="prod_categ" value="Pasta">
+                        <div class="input-group input-group-outline my-3">
+                            <label for="large" class="form-label"></label>
+                            <input type="text" class="form-control" id="large" name="prod_lprice" placeholder="Large Price">
+                        </div>
+                        <h6>Select Drinks</h6>
+                        <div class="input-group input-group-outline my-3">
+                            <label for="category" class="form-label"></label>
+                            <select name="prod_categ" id="category">
+                                <option value="Hot Coffee">Hot Coffee</option>
+                                <option value="Iced Coffee">Iced Coffee</option>
+                                <option value="Flavored Coffee">Flavored Iced Coffee</option>
+                                <option value="Non Coffee Frappe">Non Coffee Frappe</option>
+                                <option value="Coffee Frappe">Coffee Frappe</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
 
                         <div class="input-group input-group-outline my-3">
                             <label for="Code" class="form-label"></label>
                             <input type="text" class="form-control" id="Code" name="prod_code" placeholder="Product Code">
                         </div>
                         <div class="input-group input-group-outline my-3">
-                            <button type="submit" class="btn btn-success">Add Pasta</button>
+                            <button type="submit" class="btn btn-success">Add Drinks</button>
                         </div>
-                        <div><a href="<?= base_url('/inventorypasta')?>" class="btn btn-info">BACK</a></div>
+                        <div><a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a></div>
                     </form>
                 </div>
             </div>

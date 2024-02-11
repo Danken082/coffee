@@ -13,20 +13,11 @@ class InventoryController extends BaseController
         $this->prod = new ProductModel();
     }
 
-    public function gethotcoffee()
-    {
-        $categ = 'Hot Coffee';
-        $prod = new ProductModel();
-        $data['prod'] = $prod->hotcoffee($categ);
-        return view ('/inventory/hotcoffee', $data);
+    public function drinks(){
+        return view('/inventory/adddrinks');
     }
 
-    public function hotcoffee(){
-        return view('/inventory/addhotcoffee');
-    }
-
-    public function addhotcoffee()
-    {
+    public function adddrink(){
         $prod = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
@@ -37,7 +28,15 @@ class InventoryController extends BaseController
             'prod_code' => $this->request->getPost('prod_code'),
         ];
         $prod->save($data);
-        return redirect()->to(base_url('inventoryhotcoffee'));
+        return redirect()->to(base_url('/adminprod'));
+    }
+
+    public function gethotcoffee()
+    {
+        $categ = 'Hot Coffee';
+        $prod = new ProductModel();
+        $data['prod'] = $prod->hotcoffee($categ);
+        return view ('/inventory/hotcoffee', $data);
     }
 
     public function edithot($id)
@@ -76,25 +75,6 @@ class InventoryController extends BaseController
         return view ('/inventory/icedcoffee', $data);
     }
 
-    public function icedcoffee(){
-        return view('/inventory/addicedcoffee');
-    }
-
-    public function addicedcoffee()
-    {
-        $prod = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $prod->save($data);
-        return redirect()->to(base_url('inventoryicedcoffee'));
-    }
-
     public function editiced($id)
     {
         $eiced = new ProductModel();
@@ -131,25 +111,6 @@ class InventoryController extends BaseController
         return view ('/inventory/flavoredcoffee', $data);
     }
 
-    public function flavoredcoffee(){
-        return view('/inventory/addflavoredcoffee');
-    }
-
-    public function addflavoredcoffee()
-    {
-        $prod = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $prod->save($data);
-        return redirect()->to(base_url('inventoryflavoredcoffee'));
-    }
-
     public function editflavored($id)
     {
         $eflav = new ProductModel();
@@ -178,84 +139,12 @@ class InventoryController extends BaseController
         return redirect()->to(base_url('inventoryflavoredcoffee'));
     }
 
-    public function getmeal()
-    {
-        $categ = 'Meals';
-        $prod = new ProductModel();
-        $data['prod'] = $prod->meal($categ);
-        return view ('/inventory/meal', $data);
-    }
-
-    public function meals(){
-        return view('/inventory/addmeal');
-    }
-
-    public function addmeals()
-    {
-        $prod = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $prod->save($data);
-        return redirect()->to(base_url('inventorymeal'));
-    }
-
-    public function editmeal($id)
-    {
-        $emeal = new ProductModel();
-        $data['emeal'] = $emeal->find($id);
-        return view('/inventory/editmeal', $data);
-    }
-
-    public function updatemeal($id)
-    {
-        $meal = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $meal->update($id, $data);
-        return redirect()->to(base_url('inventorymeal'));
-    }
-    
-    public function deletemeal($id)
-    {
-        $meal = new ProductModel();
-        $meal->delete($id);
-        return redirect()->to(base_url('inventorymeal'));
-    }
-
     public function getnoncoffee()
     {
         $categ = 'Non Coffee Frappe';
         $prod = new ProductModel();
         $data['prod'] = $prod->noncoffee($categ);
         return view ('/inventory/noncoffee', $data);
-    }
-
-    public function noncoffee(){
-        return view('/inventory/addnoncoffee');
-    }
-
-    public function addnoncoffee()
-    {
-        $prod = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $prod->save($data);
-        return redirect()->to(base_url('inventorynoncoffee'));
     }
 
     public function editnoncoffee($id)
@@ -294,25 +183,6 @@ class InventoryController extends BaseController
         return view ('/inventory/coffeefrappe', $data);
     }
 
-    public function coffeefrappe(){
-        return view('/inventory/addcoffeefrappe');
-    }
-
-    public function addcoffeefrappe()
-    {
-        $prod = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $prod->save($data);
-        return redirect()->to(base_url('inventorycoffeefrappe'));
-    }
-
     public function editcoffeefrappe($id)
     {
         $efrap = new ProductModel();
@@ -341,19 +211,46 @@ class InventoryController extends BaseController
         return redirect()->to(base_url('inventorycoffeefrappe'));
     }
 
-    public function getpasta()
+    public function getothers()
     {
-        $categ = 'Pasta';
+        $categ = 'Others';
         $prod = new ProductModel();
-        $data['prod'] = $prod->pasta($categ);
-        return view ('/inventory/pasta', $data);
+        $data['prod'] = $prod->others($categ);
+        return view ('/inventory/others', $data);
     }
 
-    public function pasta(){
-        return view('/inventory/addpasta');
+    public function editothers($id)
+    {
+        $eother = new ProductModel();
+        $data['eother'] = $eother->find($id);
+        return view('/inventory/editothers', $data);
     }
 
-    public function addpasta()
+    public function updateothers($id)
+    {
+        $other = new ProductModel();
+        $data = [
+            'prod_name' => $this->request->getPost('prod_name'),
+            'prod_quantity' => $this->request->getPost('prod_quantity'),
+            'prod_mprice' => $this->request->getPost('prod_mprice'),
+            'prod_code' => $this->request->getPost('prod_code'),
+        ];
+        $other->update($id, $data);
+        return redirect()->to(base_url('inventoryothers'));
+    }
+    
+    public function deleteothers($id)
+    {
+        $other = new ProductModel();
+        $other->delete($id);
+        return redirect()->to(base_url('inventoryothers'));
+    }
+
+    public function meals(){
+        return view('/inventory/addmeals');
+    }
+
+    public function addmeals()
     {
         $prod = new ProductModel();
         $data = [
@@ -364,7 +261,50 @@ class InventoryController extends BaseController
             'prod_code' => $this->request->getPost('prod_code'),
         ];
         $prod->save($data);
-        return redirect()->to(base_url('inventorypasta'));
+        return redirect()->to(base_url('/adminprod'));
+    }
+
+    public function getmeal()
+    {
+        $categ = 'Meals';
+        $prod = new ProductModel();
+        $data['prod'] = $prod->meal($categ);
+        return view ('/inventory/meal', $data);
+    }
+
+    public function editmeal($id)
+    {
+        $emeal = new ProductModel();
+        $data['emeal'] = $emeal->find($id);
+        return view('/inventory/editmeal', $data);
+    }
+
+    public function updatemeal($id)
+    {
+        $meal = new ProductModel();
+        $data = [
+            'prod_name' => $this->request->getPost('prod_name'),
+            'prod_quantity' => $this->request->getPost('prod_quantity'),
+            'prod_mprice' => $this->request->getPost('prod_mprice'),
+            'prod_code' => $this->request->getPost('prod_code'),
+        ];
+        $meal->update($id, $data);
+        return redirect()->to(base_url('inventorymeal'));
+    }
+    
+    public function deletemeal($id)
+    {
+        $meal = new ProductModel();
+        $meal->delete($id);
+        return redirect()->to(base_url('inventorymeal'));
+    }
+
+    public function getpasta()
+    {
+        $categ = 'Pasta';
+        $prod = new ProductModel();
+        $data['prod'] = $prod->pasta($categ);
+        return view ('/inventory/pasta', $data);
     }
 
     public function editpasta($id)
@@ -402,24 +342,6 @@ class InventoryController extends BaseController
         return view ('/inventory/appetizer', $data);
     }
 
-    public function appetizer(){
-        return view('/inventory/addappetizer');
-    }
-
-    public function addappetizer()
-    {
-        $prod = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $prod->save($data);
-        return redirect()->to(base_url('inventoryappetizer'));
-    }
-
     public function editappetizer($id)
     {
         $eapp = new ProductModel();
@@ -453,24 +375,6 @@ class InventoryController extends BaseController
         $prod = new ProductModel();
         $data['prod'] = $prod->salad($categ);
         return view ('/inventory/salad', $data);
-    }
-
-    public function salad(){
-        return view('/inventory/addsalad');
-    }
-
-    public function addsalad()
-    {
-        $salad = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $salad->save($data);
-        return redirect()->to(base_url('inventorysalad'));
     }
 
     public function editsalad($id)
@@ -507,24 +411,6 @@ class InventoryController extends BaseController
         return view ('/inventory/soup', $data);
     }
 
-    public function soup(){
-        return view('/inventory/addsoup');
-    }
-
-    public function addsoup()
-    {
-        $soup = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $soup->save($data);
-        return redirect()->to(base_url('inventoryflavoredcoffee'));
-    }
-
     public function editsoup($id)
     {
         $esoup = new ProductModel();
@@ -558,24 +444,6 @@ class InventoryController extends BaseController
         $prod = new ProductModel();
         $data['prod'] = $prod->sandwich($categ);
         return view ('/inventory/sandwich', $data);
-    }
-
-    public function sandwich(){
-        return view('/inventory/addsandwich');
-    }
-
-    public function addsandwich()
-    {
-        $sand = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-        ];
-        $sand->save($data);
-        return redirect()->to(base_url('inventorysandwich'));
     }
 
     public function editsandwich($id)

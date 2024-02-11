@@ -69,7 +69,6 @@
                 <div class="card my-4">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
                         <h4 class="text-white text-capitalize ps-3">Product List</h4>
-                        <a href="/coffeefrappe" class="btn btn-success btn-sm me-3 text-center">Add Drink</a>
                     </div>
                 </div><br>
             </div>
@@ -83,7 +82,7 @@
 
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Quantity</th>
 
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Medium Price</th>
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Regular Price</th>
 
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Large Price</th>
 

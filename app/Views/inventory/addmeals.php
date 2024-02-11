@@ -36,9 +36,18 @@
                             <label for="medium" class="form-label"></label>
                             <input type="text" class="form-control" id="medium" name="prod_mprice" placeholder="Price">
                         </div>
-                        
-                        <input type="hidden" name="prod_categ" value="Meals">
-
+                        <h6>Select Meals</h6>
+                        <div class="input-group input-group-outline my-3">
+                            <label for="category" class="form-label"></label>
+                            <select name="prod_categ" id="category">
+                                <option value="Meals">Meals</option>
+                                <option value="Pasta">Pasta</option>
+                                <option value="Appetizer">Appetizer</option>
+                                <option value="Salad">Salad</option>
+                                <option value="Soup">Soup</option>
+                                <option value="Sandwich">Sandwiches</option>
+                            </select>
+                        </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="Code" class="form-label"></label>
                             <input type="text" class="form-control" id="Code" name="prod_code" placeholder="Product Code">
@@ -46,7 +55,7 @@
                         <div class="input-group input-group-outline my-3">
                             <button type="submit" class="btn btn-success">Add Meals</button>
                         </div>
-                        <div><a href="<?= base_url('/inventorymeal')?>" class="btn btn-info">BACK</a></div>
+                        <div><a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a></div>
                     </form>
                 </div>
             </div>

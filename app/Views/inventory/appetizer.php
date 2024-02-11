@@ -69,7 +69,6 @@
                 <div class="card my-4">
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
                         <h4 class="text-white text-capitalize ps-3">Appetizer List</h4>
-                        <a href="/appetizer" class="btn btn-success btn-sm me-3 text-center">Add Appetizer</a>
                     </div>
                 </div><br>
             </div>

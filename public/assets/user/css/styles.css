@@ -7948,6 +7948,10 @@ h1, h2, h3, h4, h5,
     .pricing-entry .text h3 {
       width: calc(100% - 80px);
       font-size: 18px; }
+      .pricing-entry h6 {
+        text-align: right;
+        color: white;
+        word-spacing: 15px;}
       .pricing-entry .text h3 span {
         background: #151111;
         background: url(/assets/user/images/bg4.jpg) no-repeat fixed;
@@ -7955,7 +7959,7 @@ h1, h2, h3, h4, h5,
     .pricing-entry .text .price {
       width: 80px;
       color: #c49b63;
-      text-align: right;
+      text-align: center;
       background: #151111;
       background: url(/assets/user/images/bg4.jpg) no-repeat fixed;
       font-size: 16px; }

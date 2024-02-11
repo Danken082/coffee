@@ -121,7 +121,7 @@
 						<div class="overlap">
 							<div class="heading-section ftco-animate ">
 								<span class="subheading">Discover</span>
-							<h2 class="mb-4">Our Story</h2>
+								<h2 class="mb-4">Our Story</h2>
 							</div>
 						<div>
 							<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
@@ -314,7 +314,7 @@
 				<div class="row justify-content-center mb-5">
 						<div class="col-md-7 heading-section text-center ftco-animate">
 							<span class="subheading">Discover</span>
-							<h2 class="mb-4">Our Customers</h2>
+							<h2 class="mb-4">Our Dear Customers</h2>
 						</div>
 					</div>
 					<div class="row no-gutters">

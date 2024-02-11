@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\ProductModel;
 class UserController extends BaseController
 {
     private $user;
@@ -109,7 +110,20 @@ class UserController extends BaseController
     }
 
     public function home_menu(){
-        return view('/user/menu');
+        $menu = new ProductModel();
+        $prod['meal'] = $menu->products('Meals');
+        $prod['pasta'] = $menu->products('Pasta');
+        $prod['app'] = $menu->products('Appetizer');
+        $prod['salad'] = $menu->products('Salad');
+        $prod['soup'] = $menu->products('Soup');
+        $prod['sand'] = $menu->products('Sandwich');
+        $prod['hot'] = $menu->products('Hot Coffee');
+        $prod['iced'] = $menu->products('Iced Coffee');
+        $prod['flav'] = $menu->products('Flavored Coffee');
+        $prod['non'] = $menu->products('Non Coffee Frappe');
+        $prod['coffee'] = $menu->products('Coffee Frappe');
+        $prod['other'] = $menu->products('Others');
+        return view('/user/menu', $prod);
     }
 
     public function home_services()
@@ -126,9 +140,21 @@ class UserController extends BaseController
     {
         return view('/user/about');
     }
-    public function home_shop()
-    {
-        return view('/user/shop');
+    public function home_shop(){
+        $shop = new ProductModel();
+        $prod['meal'] = $shop->products('Meals');
+        $prod['pasta'] = $shop->products('Pasta');
+        $prod['app'] = $shop->products('Appetizer');
+        $prod['salad'] = $shop->products('Salad');
+        $prod['soup'] = $shop->products('Soup');
+        $prod['sand'] = $shop->products('Sandwich');
+        $prod['hot'] = $shop->products('Hot Coffee');
+        $prod['iced'] = $shop->products('Iced Coffee');
+        $prod['flav'] = $shop->products('Flavored Coffee');
+        $prod['non'] = $shop->products('Non Coffee Frappe');
+        $prod['coffee'] = $shop->products('Coffee Frappe');
+        $prod['other'] = $shop->products('Others');
+        return view('/user/shop', $prod);
     }
     public function home_contact()
     {

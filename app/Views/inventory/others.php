@@ -105,12 +105,12 @@
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_code'] ?></p>
                                 </td>
                                 <td class="align-middle text-center">
-                                    <a href="<?= base_url('/editpasta/' .$p['prod_id']) ?>" id='id'
+                                    <a href="<?= base_url('/editothers/' .$p['prod_id']) ?>" id='id'
                                         class="text-info font-weight-bold text-xs me-2"
                                         data-toggle="tooltip" data-original-title="Edit Coffee">
                                         Edit
                                     </a>||
-                                    <a href="<?= base_url('/deletepasta/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs"
+                                    <a href="<?= base_url('/deleteothers/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs"
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
                             </tr>

@@ -65,6 +65,11 @@ class ProductModel extends Model
         return $this->where('prod_categ', $categ)->findAll();
     }
 
+    public function others($categ)
+    {
+        return $this->where('prod_categ', $categ)->findAll();
+    }
+
     public function meal($categ)
     {
         return $this->where('prod_categ', $categ)->findAll();
@@ -95,8 +100,8 @@ class ProductModel extends Model
         return $this->where('prod_categ', $categ)->findAll();
     }
 
-    public function products()
+    public function products($categ)
     {
-        return $this->where('prod_name')->findAll();
+        return $this->where('prod_categ', $categ)->findAll();
     }    
 }

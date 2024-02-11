@@ -41,9 +41,11 @@
                     <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
                         <h4 class="text-white text-capitalize ps-3">Product Items</h4>
                     </div>
-                </div><br>
+                </div>
             </div>
         </div>
+        <a href="/drinks" class="btn btn-success btn-sm me-3 text-center">Add Drink</a>
+        <a href="/meals" class="btn btn-success btn-sm me-3 text-center">Add Meal</a>
                         
         <div class="prodcontainer"><h2>Drinks</h2>
             <div class="cards">
@@ -90,6 +92,14 @@
                         <img src="/assets/images/coffeefrappe.jpg" alt="coffeefrappe" style="width:100%; height:60%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorycoffeefrappe" class="btn btn-success btn-sm me-3 text-center">Coffee Frappe</a>
+                        </div>
+                    </div><br>
+                </div>
+                <div class="card">
+                    <div class="box">
+                        <img src="/assets/images/coffeewlp2.jpg" alt="others" style="width:100%; height:80%; border-radius: 20px;">
+                        <div class="container"><br>
+                            <a href="/inventoryothers" class="btn btn-success btn-sm me-3 text-center">Others</a>
                         </div>
                     </div><br>
                 </div>
