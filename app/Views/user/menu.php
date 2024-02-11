@@ -2,25 +2,22 @@
 <html lang="en">
   <head>
     <title>CoffeeLedger</title>
-
-    <?php 
-      $page = isset($_GET['page']) ?$_GET['page'] : "header";
-      include $page.'.php';
-    ?> 
+</head>
+<body>
 
     <section class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image: url(/assets/user/images/bg3.jpg);" data-stellar-background-ratio="0.5">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center">
-            <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">Our Menu</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="home">Home</a></span> <span>Menu</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+		<div class="slider-item" style="background-image: url(/assets/user/images/bg3.jpg);" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+			<div class="row slider-text justify-content-center align-items-center">
+				<div class="col-md-7 col-sm-12 text-center ftco-animate">
+					<h1 class="mb-3 mt-5 bread">Our Menu</h1>
+					<p class="breadcrumbs"><span class="mr-2"><a href="home">Home</a></span> <span>Menu</span></p>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
 
     <section class="ftco-intro">
     	<div class="container-wrap">
@@ -551,11 +548,7 @@
     	</div>
     </section>
 
-   
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-		  <?php 
+		  	<?php 
 				$page = isset($_GET['page']) ?$_GET['page'] : "header";
 				include $page.'.php';
 			?> 
@@ -563,10 +556,6 @@
 				$page = isset($_GET['page']) ?$_GET['page'] : "footer";
 				include $page.'.php';
 			?> 
-          </div>
-        </div>
-      </div>
 
-    
   </body>
 </html>
