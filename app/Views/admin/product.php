@@ -70,7 +70,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/assets/images/flaviced.jpg" alt="flavoredcoffee" style="width:100%; height:77%; border-radius: 20px;">
+                        <img src="/assets/images/icedspanishlatte.jpg" alt="flavoredcoffee" style="width:100%; height:77%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventoryflavoredcoffee" class="btn btn-success btn-sm me-3 text-center">Flavored Iced Coffee</a>
                         </div>
@@ -89,7 +89,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/assets/images/coffeefrappe.jpg" alt="coffeefrappe" style="width:100%; height:60%; border-radius: 20px;">
+                        <img src="/assets/images/coffeefrappe1.jpg" alt="coffeefrappe" style="width:100%; height:60%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorycoffeefrappe" class="btn btn-success btn-sm me-3 text-center">Coffee Frappe</a>
                         </div>
@@ -116,7 +116,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/assets/images/pasta.jpg" alt="pasta" style="width:100%; height:60%; border-radius: 20px;">
+                        <img src="/assets/images/carbonara.jpg" alt="pasta" style="width:100%; height:60%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorypasta" class="btn btn-success btn-sm me-3 text-center">Pasta</a>
                         </div>
@@ -126,7 +126,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/assets/images/appetizer.jpg" alt="appetizer" style="width:100%; height:98%; border-radius: 20px;">
+                        <img src="/assets/images/nachos.jpg" alt="appetizer" style="width:100%; height:65%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventoryappetizer" class="btn btn-success btn-sm me-3 text-center">Appetizer</a>
                         </div>
@@ -135,7 +135,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/assets/images/salad.jpg" alt="salad" style="width:100%; height:83%; border-radius: 20px;">
+                        <img src="/assets/images/chefsalad.jpg" alt="salad" style="width:100%; height:83%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorysalad" class="btn btn-success btn-sm me-3 text-center">Salad</a>
                         </div>
@@ -145,7 +145,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="box">
-                        <img src="/assets/images/soup.jpg" alt="soup" style="width:100%; height:77%; border-radius: 20px;">
+                        <img src="/assets/images/crabandcornsoup.jpg" alt="soup" style="width:100%; height:77%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorysoup" class="btn btn-success btn-sm me-3 text-center">Soup</a>
                         </div>
@@ -154,7 +154,7 @@
 
                 <div class="card">
                     <div class="box">
-                        <img src="/assets/images/sandwich.jpg" alt="sandwich" style="width:100%; height:60%; border-radius: 20px;">
+                        <img src="/assets/images/cheesybacon.jpg" alt="sandwich" style="width:100%; height:60%; border-radius: 20px;">
                         <div class="container"><br>
                             <a href="/inventorysandwich" class="btn btn-success btn-sm me-3 text-center">Sandwiches</a>
                         </div>

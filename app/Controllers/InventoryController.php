@@ -26,6 +26,7 @@ class InventoryController extends BaseController
             'prod_lprice' => $this->request->getPost('prod_lprice'),
             'prod_categ' => $this->request->getPost('prod_categ'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $prod->save($data);
         return redirect()->to(base_url('/adminprod'));
@@ -55,6 +56,7 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $hot->update($id, $data);
         return redirect()->to(base_url('inventoryhotcoffee'));
@@ -91,6 +93,7 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $iced->update($id, $data);
         return redirect()->to(base_url('inventoryicedcoffee'));
@@ -127,6 +130,7 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $flav->update($id, $data);
         return redirect()->to(base_url('inventoryflavoredcoffee'));
@@ -163,6 +167,7 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $non->update($id, $data);
         return redirect()->to(base_url('inventorynoncoffee'));
@@ -199,6 +204,7 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $frap->update($id, $data);
         return redirect()->to(base_url('inventorycoffeefrappe'));
@@ -234,6 +240,7 @@ class InventoryController extends BaseController
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $other->update($id, $data);
         return redirect()->to(base_url('inventoryothers'));
@@ -259,6 +266,7 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_categ' => $this->request->getPost('prod_categ'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $prod->save($data);
         return redirect()->to(base_url('/adminprod'));
@@ -287,6 +295,7 @@ class InventoryController extends BaseController
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $meal->update($id, $data);
         return redirect()->to(base_url('inventorymeal'));
@@ -322,6 +331,7 @@ class InventoryController extends BaseController
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $pasta->update($id, $data);
         return redirect()->to(base_url('inventorypasta'));
@@ -357,6 +367,7 @@ class InventoryController extends BaseController
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $app->update($id, $data);
         return redirect()->to(base_url('inventoryappetizer'));
@@ -392,6 +403,7 @@ class InventoryController extends BaseController
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $salad->update($id, $data);
         return redirect()->to(base_url('inventorysalad'));
@@ -426,6 +438,7 @@ class InventoryController extends BaseController
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $soup->update($id, $data);
         return redirect()->to(base_url('inventorysoup'));
@@ -461,6 +474,7 @@ class InventoryController extends BaseController
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
+            'prod_img' => $this->request->getPost('prod_img'),
         ];
         $sand->update($id, $data);
         return redirect()->to(base_url('inventorysandwich'));

@@ -85,6 +85,8 @@
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Price</th>
 
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Barcode</th>
+                            
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Image</th>
 
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Actions</th>
                         </tr>
@@ -103,6 +105,9 @@
                                 </td>
                                 <td class="text-center">
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_code'] ?></p>
+                                </td>
+                                <td class="text-center">
+                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_img'] ?></p>
                                 </td>
                                 <td class="align-middle text-center">
                                     <a href="<?= base_url('/editsandwich/' .$p['prod_id']) ?>" id='id'

@@ -50,6 +50,12 @@
                                 <input type="text" class="form-control" id="barcode" name="prod_code" value="<?=$epasta['prod_code'] ?>">
                             </div>
                         </div>
+                        <div class="col-md-5">
+                            <label for="Images" class="form-label">Images</label>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="file" id="images" name="prod_img" value="<?=$epasta['prod_img'] ?>">
+                            </div>
+                        </div>
                         <div class="col-12">
                             <div class="input-group input-group-outline my-3">
                                 <button type="submit" class="btn btn-success">Update pasta</button>

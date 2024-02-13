@@ -8217,14 +8217,15 @@ h1, h2, h3, h4, h5,
       height: 300px; } }
 
 .menu-wrap {
-  margin-bottom: 60px; }
+  margin-bottom: 60px; 
+  float: left;}
   .menu-wrap .menu-img {
     display: block;
     height: 300px;
     width: 330px; }
   .menu-wrap .text h3 {
     font-size: 18px;
-    text-transform: uppercase; }
+    text-transform: uppercase;}
     .menu-wrap .text h3 a {
       color: #fff; }
   .menu-wrap .text .price {

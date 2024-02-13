@@ -86,6 +86,8 @@
 
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Code</th>
 
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Image</th>
+
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Actions</th>
                         </tr>
                     </thead>
@@ -103,6 +105,9 @@
                                 </td>
                                 <td class="text-center">
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?=$a['prod_code'] ?></p>
+                                </td>
+                                <td class="text-center">
+                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$a['prod_img'] ?></p>
                                 </td>
                                 <td class="align-middle text-center">
                                     <a href="<?= base_url('/editappetizer/' .$a['prod_id']) ?>" id='id'

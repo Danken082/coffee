@@ -52,6 +52,10 @@
                             <label for="Code" class="form-label"></label>
                             <input type="text" class="form-control" id="Code" name="prod_code" placeholder="Product Code">
                         </div>
+                        <h6>Select Image for Product</h6>
+                        <div class="input-group input-group-outline my-3">
+                            <input type="file" id="images" name="prod_img">
+                        </div>
                         <div class="input-group input-group-outline my-3">
                             <button type="submit" class="btn btn-success">Add Meals</button>
                         </div>

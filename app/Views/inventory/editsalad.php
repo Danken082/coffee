@@ -44,6 +44,12 @@
                             </div>
                         </div>
                         <div class="col-md-5">
+                            <label for="Images" class="form-label">Images</label>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="file" id="images" name="prod_img" value="<?=$esalad['prod_img'] ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
                             <label for="Barcode" class="form-label">BarCode</label>
                             <div class="input-group input-group-outline my-3">
                                 <input type="text" class="form-control" id="barcode" name="prod_code" value="<?=$esalad['prod_code'] ?>">

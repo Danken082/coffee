@@ -83,6 +83,9 @@
 									<div class="form-group ml-md-4">
 										<input type="text" class="form-control" placeholder="Last Name">
 									</div>
+									<div class="form-group ml-md-4">
+										<input type="text" class="form-control" placeholder="Email">
+									</div>
 								</div>
 								<div class="d-md-flex">
 									<div class="form-group">
@@ -98,7 +101,7 @@
 										</div>
 		    						</div>
 									<div class="form-group ml-md-4">
-										<input type="text" class="form-control" placeholder="Phone">
+										<input type="text" class="form-control" placeholder="Phone Number">
 									</div>
 								</div>
 								<div class="d-md-flex">
