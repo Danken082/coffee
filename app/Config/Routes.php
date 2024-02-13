@@ -5,8 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-
-
+$routes->get('/dailysales', 'VisualizationController::dailySales');
+$routes->get('/monthlysales', 'VisualizationController::initMonthChart');
+$routes->get('/yearsales', 'VisualizationController::initYearChart');
 $routes->get('/', 'AdminController::login',['filter'=>'guestFilter']);
 $routes->get('/register', 'AdminController::register', ['filter'=>'guestFilter']);
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
