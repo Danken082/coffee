@@ -164,4 +164,12 @@ class UserController extends BaseController
     {
         return view('/user/cart');
     }
+    public function home_checkout()
+    {
+        return view('/user/checkout');
+    }
+    public function home_single_product()
+    {
+        return view('/user/single_product');
+    }
 }

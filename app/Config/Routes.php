@@ -103,3 +103,5 @@ $routes->get('user/about', 'UserController::home_about');
 $routes->get('user/shop', 'UserController::home_shop');
 $routes->get('user/contact', 'UserController::home_contact');
 $routes->get('user/cart', 'UserController::home_cart');
+$routes->get('user/checkout', 'UserController::home_checkout');
+$routes->get('user/single_product', 'UserController::home_single_product');
