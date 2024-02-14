@@ -1,0 +1,10 @@
+CRITICAL - 2024-02-14 11:49:20 --> Invalid file: "/user/single_product.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/user/single_product.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/single_product', [], true)
+ 3 APPPATH\Controllers\UserController.php(173): view('/user/single_product')
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_single_product()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
