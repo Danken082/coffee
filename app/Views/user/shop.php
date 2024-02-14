@@ -54,7 +54,7 @@
 													<img class="menu-img img mb-4" src="<?="/assets/images/" .$a['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
 														<h3><a><?=$a['prod_name']?></a></h3>
-														<p class="price"><span><?=$a['prod_mprice'] ?></span></p>
+														<p class="price"><span>₱ <?=$a['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -62,7 +62,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade show active" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+								<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
@@ -70,7 +70,7 @@
 													<img class="menu-img img mb-4" src="<?="/assets/images/" .$p['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
 														<h3><a><?=$p['prod_name']?></a></h3>
-														<p class="price"><span><?=$p['prod_mprice'] ?></span></p>
+														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -78,7 +78,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade show active" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+								<div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
@@ -86,7 +86,151 @@
 													<img class="menu-img img mb-4" src="<?="/assets/images/" .$m['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
 														<h3><a><?=$m['prod_name']?></a></h3>
-														<p class="price"><span><?=$m['prod_mprice'] ?></span></p>
+														<p class="price"><span>₱ <?=$m['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($salad as $s): ?>
+													<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>" height="300px" width="330px" alt="pictures">
+													<div class="text">
+														<h3><a><?=$s['prod_name']?></a></h3>
+														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($soup as $s): ?>
+													<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>" height="300px" width="330px" alt="pictures">
+													<div class="text">
+														<h3><a><?=$s['prod_name']?></a></h3>
+														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($sand as $s): ?>
+													<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>" height="300px" width="330px" alt="pictures">
+													<div class="text">
+														<h3><a><?=$s['prod_name']?></a></h3>
+														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($hot as $h): ?>
+													<img class="menu-img img mb-4" src="<?="/assets/images/" .$h['prod_img']?>" height="300px" width="330px" alt="pictures">
+													<div class="text">
+														<h3><a><?=$h['prod_name']?></a></h3>
+														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-8-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($iced as $i): ?>
+													<img class="menu-img img mb-4" src="<?="/assets/images/" .$i['prod_img']?>" height="300px" width="330px" alt="pictures">
+													<div class="text">
+														<h3><a><?=$i['prod_name']?></a></h3>
+														<p class="price"><span>Regular ₱ <?=$i['prod_mprice'] ?><br>Large ₱ <?=$i['prod_lprice'] ?> </span></p>
+														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-9" role="tabpanel" aria-labelledby="v-pills-9-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($flav as $f): ?>
+													<img class="menu-img img mb-4" src="<?="/assets/images/" .$f['prod_img']?>" height="300px" width="330px" alt="pictures">
+													<div class="text">
+														<h3><a><?=$f['prod_name']?></a></h3>
+														<p class="price"><span>Regular ₱ <?=$f['prod_mprice'] ?><br>Large ₱ <?=$f['prod_lprice'] ?> </span></p>
+														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-10" role="tabpanel" aria-labelledby="v-pills-10-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($non as $n): ?>
+													<img class="menu-img img mb-4" src="<?="/assets/images/" .$n['prod_img']?>" height="300px" width="330px" alt="pictures">
+													<div class="text">
+														<h3><a><?=$n['prod_name']?></a></h3>
+														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
+														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-11" role="tabpanel" aria-labelledby="v-pills-11-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($coffee as $c): ?>
+													<img class="menu-img img mb-4" src="<?="/assets/images/" .$c['prod_img']?>" height="300px" width="330px" alt="pictures">
+													<div class="text">
+														<h3><a><?=$c['prod_name']?></a></h3>
+														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
+														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-12" role="tabpanel" aria-labelledby="v-pills-12-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($other as $o): ?>
+													<img class="menu-img img mb-4" src="<?="/assets/images/" .$o['prod_img']?>" height="300px" width="330px" alt="pictures">
+													<div class="text">
+														<h3><a><?=$o['prod_name']?></a></h3>
+														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>

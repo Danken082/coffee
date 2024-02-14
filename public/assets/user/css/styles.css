@@ -8217,7 +8217,7 @@ h1, h2, h3, h4, h5,
       height: 300px; } }
 
 .menu-wrap {
-  margin-bottom: 60px; 
+  margin-bottom: 30px; 
   float: left;}
   .menu-wrap .menu-img {
     display: block;
@@ -8230,7 +8230,8 @@ h1, h2, h3, h4, h5,
       color: #fff; }
   .menu-wrap .text .price {
     font-size: 18px;
-    font-weight: 400; }
+    font-weight: 400; 
+    margin-bottom: 10px;}
     .menu-wrap .text .price span {
       color: #fff; }
 
