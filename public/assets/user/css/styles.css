@@ -8218,8 +8218,10 @@ h1, h2, h3, h4, h5,
 
 .menu-wrap {
   margin-bottom: 30px; 
-  float: left;}
+  float: left;
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 20px; }
   .menu-wrap .menu-img {
     display: block;
     height: 300px;
