@@ -34,7 +34,9 @@
               </div>
               <div class="media-body">
                 <h3 class="heading">Easy to Order</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p>Experience the inviting aroma of freshly brewed coffee and create your own
+                   mouthwatering sandwich or salad at Crossroads Coffee and Deli. Our friendly 
+                   staff is ready to make your cravings a delicious reality!</p>
               </div>
             </div>      
           </div>
@@ -45,7 +47,8 @@
               </div>
               <div class="media-body">
                 <h3 class="heading">Fastest Delivery</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p>Swiftly savor the aromatic brews and craft your personalized sandwich or salad at Crossroads Coffee 
+                  and Deli – where fast delivery meets flavorful satisfaction!</p>
               </div>
             </div>      
           </div>
@@ -55,7 +58,8 @@
               	<span class="flaticon-coffee-bean"></span></div>
               <div class="media-body">
                 <h3 class="heading">Quality Coffee</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+                <p></p>Experience the pinnacle of coffee perfection at Crossroads Coffee and Deli,
+                 where each cup is a testament to our unwavering commitment to quality.
               </div>
             </div>    
           </div>
