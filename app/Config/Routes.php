@@ -95,13 +95,13 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 
 
 /*For UserSide*/ 
-$routes->get('user/home', 'UserController::home');
-$routes->get('user/menu', 'UserController::home_menu');
-$routes->get('user/services', 'UserController::home_services');
-$routes->get('user/blog', 'UserController::home_blog');
-$routes->get('user/about', 'UserController::home_about');
-$routes->get('user/shop', 'UserController::home_shop');
-$routes->get('user/contact', 'UserController::home_contact');
-$routes->get('user/cart', 'UserController::home_cart');
-$routes->get('user/checkout', 'UserController::home_checkout');
-$routes->get('user/single_product', 'UserController::home_single_product');
+$routes->get('user/home', 'UserController::home',['filter'=>'cusFilter']);
+$routes->get('user/menu', 'UserController::home_menu',['filter'=>'cusFilter']);
+$routes->get('user/services', 'UserController::home_services',['filter'=>'cusFilter']);
+$routes->get('user/blog', 'UserController::home_blog',['filter'=>'cusFilter']);
+$routes->get('user/about', 'UserController::home_about',['filter'=>'cusFilter']);
+$routes->get('user/shop', 'UserController::home_shop',['filter'=>'cusFilter']);
+$routes->get('user/contact', 'UserController::home_contact',['filter'=>'cusFilter']);
+$routes->get('user/cart', 'UserController::home_cart',['filter'=>'cusFilter']);
+$routes->get('user/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
+$routes->get('user/single_product', 'UserController::home_single_product',['filter'=>'cusFilter']);

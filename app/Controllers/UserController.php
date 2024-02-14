@@ -80,21 +80,29 @@ class UserController extends BaseController
             'address' => $user['address'],
             'isLoggedIn' => TRUE
         ];
-        // if($user['UserRole']== 'admin')
-        // {
+
           $session->set($ses_data);
-           return redirect()->to('/adminhome');
-          
-        //}
-        
-                }
-                else{
-                    $session->setFlashdata('msg', 'Password is incorrect.');
+            switch($user['UserRole'])
+            {
+                case 'admin':
+                    return redirect()->to('/adminhome');
+                    break;
+                case 'customer':
+                    return redirect()->to('/user/home');
+                    break;
+                case 'staff':
+                    return redirect()->to('/user/home');
+                    break;
+                default:
                     return redirect()->to('/');
-                }
             }
-            else{
-                $session->setFlashdata('msg', 'Email does not exist.');
+          
+        }
+        
+        }
+                
+        else{
+                $session->setFlashdata('msg', 'Incorect email or password.');
                 return redirect()->to('/');
             }
 
