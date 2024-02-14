@@ -7968,7 +7968,8 @@ h1, h2, h3, h4, h5,
   margin-bottom: 30px; }
   .menu-entry .img {
     display: block;
-    height: 300px; }
+    height: 300px; 
+    width: 280px;}
   .menu-entry .text h3 {
     font-size: 18px;
     text-transform: uppercase; }

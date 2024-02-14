@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Coffeeledger</title>
+        <title>Crossroad</title>
    </head>
    <body>
         <footer class="ftco-footer ftco-section img">
@@ -65,7 +65,7 @@
                             <div class="block-23 mb-3">
                                 <ul>
                                     <li><span class="icon icon-map-marker"></span><span class="text">Tawiran, Calapan Oriental Mindoro Philippines</span></li>
-                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">09178901067</span></a></li>
+                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">0917 890 1067</span></a></li>
                                     <li><a href="#"><span class="icon icon-envelope"></span><span class="text">crossroad@gmail.com</span></a></li>
                                 </ul>
                             </div>
@@ -74,7 +74,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | </i><a href="https://www.facebook.com/crossroadcafedeli" target="_blank">Crossroads Coffee and Deli</a></p>
+                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights Reserved | </i><a href="https://www.facebook.com/crossroadcafedeli" target="_blank">Crossroads Coffee and Deli</a></p>
                     </div>
                 </div>
             </div>
