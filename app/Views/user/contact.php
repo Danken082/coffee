@@ -35,10 +35,10 @@
 	              <p><span>Phone:</span> <a href="tel://1234567920">09178901067</a></p>
 	            </div>
 	            <div class="col-md-12 mb-3">
-	              <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+	              <p><span>Email:</span> <a href="mailto:info@yoursite.com">crossroad@gmail.com</a></p>
 	            </div>
 	            <div class="col-md-12 mb-3">
-	              <p><span>Website:</span> <a href="#">yoursite.com</a></p>
+	              <p><span>Website:</span>  <a href="https://www.facebook.com/crossroadcafedeli" target="_blank">Crossroads Coffee and Deli</a></p>
 	            </div>
 						</div>
 					</div>
