@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Croassroad</title>
+    <title>Crossroad</title>
   </head>
   <body>
 
@@ -51,8 +51,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($app as $a): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$a['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$a['prod_img']?>">
 														<h3><a><?=$a['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$a['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -67,8 +67,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($pasta as $p): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$p['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$p['prod_img']?>">
 														<h3><a><?=$p['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -83,8 +83,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($meal as $m): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$m['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$m['prod_img']?>">
 														<h3><a><?=$m['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$m['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -99,8 +99,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($salad as $s): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
 														<h3><a><?=$s['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -115,8 +115,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($soup as $s): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
 														<h3><a><?=$s['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -131,8 +131,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($sand as $s): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
 														<h3><a><?=$s['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -147,8 +147,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($hot as $h): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$h['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$h['prod_img']?>">
 														<h3><a><?=$h['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -163,8 +163,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($iced as $i): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$i['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$i['prod_img']?>">
 														<h3><a><?=$i['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$i['prod_mprice'] ?><br>Large ₱ <?=$i['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -179,8 +179,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($flav as $f): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$f['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$f['prod_img']?>">
 														<h3><a><?=$f['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$f['prod_mprice'] ?><br>Large ₱ <?=$f['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -195,8 +195,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($non as $n): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$n['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$n['prod_img']?>">
 														<h3><a><?=$n['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -211,8 +211,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($coffee as $c): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$c['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$c['prod_img']?>">
 														<h3><a><?=$c['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
@@ -227,8 +227,8 @@
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
 												<?php foreach($other as $o): ?>
-													<img class="menu-img img mb-4" src="<?="/assets/images/" .$o['prod_img']?>" height="300px" width="330px" alt="pictures">
 													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/" .$o['prod_img']?>">
 														<h3><a><?=$o['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>

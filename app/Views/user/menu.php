@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CoffeeLedger</title>
+    <title>Crossroad</title>
 </head>
 <body>
 
