@@ -66,7 +66,7 @@ class UserController extends BaseController
                 $pass = $user['Password'];
                 $authenticatePassword = password_verify($password, $pass);
                 if($authenticatePassword){
-    $ses_data = [
+        $ses_data = [
             'UserID' => $user['UserID'],
             'LastName' => $user['LastName'],
             'FirstName' => $user['FirstName'],
@@ -96,8 +96,7 @@ class UserController extends BaseController
                 default:
                     return redirect()->to('/');
             }
-          
-        }
+        
         
         }
                 
@@ -107,7 +106,8 @@ class UserController extends BaseController
             }
 
     }
-
+    }
+    
     public function logout(){
         session_destroy();
         return redirect()->to('/');
@@ -180,4 +180,5 @@ class UserController extends BaseController
     {
         return view('/user/single_product');
     }
+
 }

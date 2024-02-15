@@ -78,7 +78,8 @@
 							<form action="#" class="appointment-form">
 								<div class="d-md-flex">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="First Name">
+									
+									<input type="text" class="form-control" placeholder="First Name">
 									</div>
 									<div class="form-group ml-md-4">
 										<input type="text" class="form-control" placeholder="Last Name">

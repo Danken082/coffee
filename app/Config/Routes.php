@@ -105,3 +105,6 @@ $routes->get('user/contact', 'UserController::home_contact',['filter'=>'cusFilte
 $routes->get('user/cart', 'UserController::home_cart',['filter'=>'cusFilter']);
 $routes->get('user/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
 $routes->get('user/single_product', 'UserController::home_single_product',['filter'=>'cusFilter']);
+
+/*add to cart*/
+$routes->match(['get', 'post'], '/addtomycart/(:any)', 'ProductController::Cart');

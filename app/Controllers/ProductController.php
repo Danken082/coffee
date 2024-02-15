@@ -4,14 +4,17 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProductModel;
+use App\Models\CartModel;
 
 class ProductController extends BaseController
 {
     private $product;
+    private $cart;
 
     public function __construct()
     {
         $this->product = new ProductModel();
+        $this->cart = new CartModel();
     }
 
 
@@ -94,4 +97,38 @@ class ProductController extends BaseController
 
         return redirect();
     }
+    public function Cart($productID){
+      $product=  $this->product->find($productID);
+      
+      if(!$product)
+      {
+        return redirect()->to('user/shop');
+      }
+
+      if (!session()->has('user_id')) {
+        return redirect()->to('/login')->with('error', 'Please log in to add items to your cart.');
+        }
+
+        $userID = session('userID');
+        
+        $existingItem = $this->cart->where('CustomerID', $userID)->where('ProductID')->first();
+
+        if($existingItem)
+        {
+            $update = $existingItem['quantity'] + 1;
+            $this-cart->update($existingItem['id'], ['quantity' => $update]);
+        }
+        else
+        {
+            $data = [
+                'CustomerID' => $userID,
+                'ProductID' => $productID,
+                'qunatity' => 1,
+                'Status' => $this->request->getVar('Status')
+            ];
+            $this->cart->save($data);
+        }
+
+        return redirect()->to('user/cart');
+}
 }
