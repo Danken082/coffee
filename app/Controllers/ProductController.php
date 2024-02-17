@@ -116,7 +116,7 @@ class ProductController extends BaseController
         if($existingItem)
         {
             $update = $existingItem['quantity'] + 1;
-            $this-cart->update($existingItem['id'], ['quantity' => $update]);
+            $this->cart->update($existingItem['id'], ['quantity' => $update]);
         }
         else
         {
