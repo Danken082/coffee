@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 CRITICAL - 2024-02-15 03:33:04 --> syntax error, unexpected end of file
 in APPPATH\Config\Routes.php on line 110.
  1 SYSTEMPATH\CodeIgniter.php(787): CodeIgniter\Router\RouteCollection->loadRoutes()
@@ -184,11 +185,70 @@ in APPPATH\Views\user\shop.php on line 58.
  3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
  4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/shop', [], true)
  5 APPPATH\Controllers\UserController.php(166): view('/user/shop', [...])
+=======
+CRITICAL - 2024-02-15 03:19:43 --> Too few arguments to function App\Controllers\UserController::home_cart(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 173.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_cart()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-15 03:20:11 --> Too few arguments to function App\Controllers\UserController::home_cart(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 173.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_cart()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-15 03:20:20 --> Too few arguments to function App\Controllers\UserController::home_cart(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 173.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_cart()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-15 03:20:40 --> Too few arguments to function App\Controllers\UserController::home_cart(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 173.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_cart()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-15 03:20:41 --> Too few arguments to function App\Controllers\UserController::home_cart(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 173.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_cart()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-15 03:20:42 --> Too few arguments to function App\Controllers\UserController::home_cart(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 173.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_cart()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-15 03:20:42 --> Too few arguments to function App\Controllers\UserController::home_cart(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 173.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_cart()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-15 03:27:01 --> Undefined variable $product
+in APPPATH\Views\user\shop.php on line 58.
+ 1 APPPATH\Views\user\shop.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $product', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\shop.php', 58)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\shop.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/shop', [], true)
+ 5 APPPATH\Controllers\UserController.php(165): view('/user/shop', [...])
+>>>>>>> Stashed changes
  6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_shop()
  7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+<<<<<<< Updated upstream
 CRITICAL - 2024-02-15 03:47:10 --> Undefined array key "prodd_id"
 in APPPATH\Views\user\shop.php on line 58.
  1 APPPATH\Views\user\shop.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "prodd_id"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\shop.php', 58)
@@ -196,11 +256,21 @@ in APPPATH\Views\user\shop.php on line 58.
  3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
  4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/shop', [], true)
  5 APPPATH\Controllers\UserController.php(166): view('/user/shop', [...])
+=======
+CRITICAL - 2024-02-15 03:27:21 --> Attempt to read property "id" on array
+in APPPATH\Views\user\shop.php on line 58.
+ 1 APPPATH\Views\user\shop.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on array', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\shop.php', 58)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\shop.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/shop', [], true)
+ 5 APPPATH\Controllers\UserController.php(165): view('/user/shop', [...])
+>>>>>>> Stashed changes
  6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_shop()
  7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+<<<<<<< Updated upstream
 CRITICAL - 2024-02-15 03:47:52 --> Too few arguments to function App\Controllers\ProductController::Cart(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
 in APPPATH\Controllers\ProductController.php on line 100.
  1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->Cart()
@@ -308,3 +378,29 @@ in APPPATH\Controllers\ProductController.php on line 100.
  3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+=======
+CRITICAL - 2024-02-15 03:27:31 --> Attempt to read property "prod_id" on array
+in APPPATH\Views\user\shop.php on line 58.
+ 1 APPPATH\Views\user\shop.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "prod_id" on array', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\shop.php', 58)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\shop.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/shop', [], true)
+ 5 APPPATH\Controllers\UserController.php(165): view('/user/shop', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_shop()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-15 03:27:39 --> Array to string conversion
+in APPPATH\Views\user\shop.php on line 58.
+ 1 APPPATH\Views\user\shop.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\shop.php', 58)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\shop.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/shop', [], true)
+ 5 APPPATH\Controllers\UserController.php(165): view('/user/shop', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home_shop()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+>>>>>>> Stashed changes

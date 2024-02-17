@@ -2,23 +2,20 @@
 <html lang="en">
   <head>
     <title>Crossroad</title>
-
+  </head>
+  <body>
 
     <section class="home-slider owl-carousel">
-
-    <div class="slider-item" style="background-image: url(/assets/images/blog_bg.jpg);" data-stellar-background-ratio="0.5">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center">
-
-            <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">Blog</h1>
-	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Blog</span></p>
+      <div class="slider-item" style="background-image: url(/assets/images/blog_bg.jpg);" data-stellar-background-ratio="0.5">
+      	  <div class="overlay"></div>
+          <div class="container">
+            <div class="row slider-text justify-content-center align-items-center">
+              <div class="col-md-7 col-sm-12 text-center ftco-animate">
+            	  <h1 class="mb-3 mt-5 bread">Blog</h1>
+              </div>
             </div>
-
           </div>
         </div>
-      </div>
     </section>
 
     <section class="ftco-section">
@@ -26,8 +23,7 @@
         <div class="row d-flex">
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-              </a>
+              <a href="blog-single.html" class="block-20" style="background-image: url('images/image_1.jpg');"></a>
               <div class="text py-4 d-block">
               	<div class="meta">
                   <div><a href="#">Sept 28, 2018</a></div>
@@ -133,13 +129,8 @@
       </div>
     </section>
 
-    <?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "header";
-				include $page.'.php';
-			?> 
-			<?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "footer";
-				include $page.'.php';
-			?> 
+    <?php include('header.php'); ?>
+		<?php include('footer.php'); ?>
+
   </body>
 </html>

@@ -74,14 +74,8 @@
 
     <div id="map"></div>
 
-    <?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "header";
-				include $page.'.php';
-			?> 
-			<?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "footer";
-				include $page.'.php';
-			?>        
-  </body>
-
+	<?php include('header.php'); ?>
+	<?php include('footer.php'); ?>
+     
+  	</body>
 </html>

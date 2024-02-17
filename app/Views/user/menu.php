@@ -8,12 +8,13 @@
     <section class="home-slider owl-carousel">
 		<div class="slider-item" style="background-image: url(/assets/user/images/bg3.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
-			<div class="container">
-			<div class="row slider-text justify-content-center align-items-center">
-				<div class="col-md-7 col-sm-12 text-center ftco-animate">
-					<h1 class="mb-3 mt-5 bread">Crossroad Menu</h1>
+				<div class="container">
+					<div class="row slider-text justify-content-center align-items-center">
+						<div class="col-md-7 col-sm-12 text-center ftco-animate">
+							<h1 class="mb-3 mt-5 bread">Crossroad Menu</h1>
+						</div>
+					</div>
 				</div>
-			</div>
 			</div>
 		</div>
 	</section>
@@ -265,14 +266,8 @@
     	</div>
     </section>
 
-		  	<?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "header";
-				include $page.'.php';
-			?> 
-			<?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "footer";
-				include $page.'.php';
-			?> 
+	<?php include('header.php'); ?>
+	<?php include('footer.php'); ?>
 
-  </body>
+  	</body>
 </html>

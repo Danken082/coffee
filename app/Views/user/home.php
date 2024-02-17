@@ -91,14 +91,8 @@
 								<div class="d-md-flex">
 									<div class="form-group">
 										<div class="input-wrap">
-											<div class="icon"><span class="ion-md-calendar"></span></div>
-											<input type="text" class="form-control appointment_date" placeholder="Date">
-										</div>
-		    						</div>
-									<div class="form-group ml-md-4">
-										<div class="input-wrap">
-											<div class="icon"><span class="ion-ios-clock"></span></div>
-											<input type="text" class="form-control appointment_time" placeholder="Time">
+											<label for="table reservation" style="color:white;">Date & Time</label>
+											<input type="datetime-local" class="form-control datetimepicker">
 										</div>
 		    						</div>
 									<div class="form-group ml-md-4">
@@ -110,7 +104,7 @@
 										<textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="submit" value="Appointment" class="btn btn-white py-3 px-4">
+										<input type="submit" value="Reserve" class="btn btn-white py-3 px-4">
 									</div>
 								</div>
 	    					</form>
@@ -265,7 +259,7 @@
 					<div class="row justify-content-center mb-5 pb-3">
 						<div class="col-md-7 heading-section ftco-animate text-center">
 							<span class="subheading">Discover</span>
-							<h2 class="mb-4">Our Best Coffee</h2>
+							<h2 class="mb-4">Our Coffee Best Seller</h2>
 						</div>
 					</div>
 					<div class="row">
@@ -274,8 +268,6 @@
 								<a class="img" style="background-image: url(/assets/images/icedcookiesncream.jpg);"></a>
 								<div class="text text-center pt-4">
 									<h3><a>Cookies and Cream</a></h3>
-									<p class="price"><span>₱ 150</span></p>
-									<p><a class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
 								</div>
 							</div>
 						</div>
@@ -284,8 +276,6 @@
 								<a class="img" style="background-image: url(/assets/images/noncoffee.jpg);"></a>
 								<div class="text text-center pt-4">
 									<h3><a>Caramel</a></h3>
-									<p class="price"><span>₱ 145</span></p>
-									<p><a class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
 								</div>
 							</div>
 						</div>
@@ -294,8 +284,6 @@
 								<a class="img" style="background-image: url(/assets/images/javafrap.jpg);"></a>
 								<div class="text text-center pt-4">
 									<h3><a>Java Chip</a></h3>
-									<p class="price"><span>₱ 155</span></p>
-									<p><a class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
 								</div>
 							</div>
 						</div>
@@ -304,8 +292,6 @@
 								<a class="img" style="background-image: url(/assets/images/cappuccino.jpg);"></a>
 								<div class="text text-center pt-4">
 									<h3><a>Hot Capuccino</a></h3>
-									<p class="price"><span>₱ 80</span></p>
-									<p><a class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
 								</div>
 							</div>
 						</div>
@@ -390,22 +376,10 @@
 						<h2 class="mb-4">Where we Are</h2>
 					</div>
 				</div>
-				<div class="container-wrap">
-					<div class="row no-gutters d-md-flex align-items-center">
-						<div class="col-md-6 d-flex align-self-stretch">
-							<div id="map"></div>
-						</div>
-					</div>
-				</div>
+				<div id="map"></div>
 			</section>
 
-			<?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "header";
-				include $page.'.php';
-			?> 
-			<?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "footer";
-				include $page.'.php';
-			?> 
+			<?php include('header.php'); ?>
+			<?php include('footer.php'); ?>
   	</body>
 </html>

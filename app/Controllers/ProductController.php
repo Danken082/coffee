@@ -130,5 +130,5 @@ class ProductController extends BaseController
         }
 
         return redirect()->to('user/cart');
-}
+    }
 }

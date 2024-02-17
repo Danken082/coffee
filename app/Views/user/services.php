@@ -67,15 +67,8 @@
     	</div>
     </section>
      
-    <?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "header";
-				include $page.'.php';
-			?> 
-			<?php 
-				$page = isset($_GET['page']) ?$_GET['page'] : "footer";
-				include $page.'.php';
-			?> 
-
+    <?php include('header.php'); ?>
+		<?php include('footer.php'); ?>
     
   </body>
 </html>
