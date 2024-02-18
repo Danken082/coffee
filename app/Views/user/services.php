@@ -2,27 +2,23 @@
 <html lang="en">
   <head>
     <title>Crossroad</title>
-</head>
+    <link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
+  </head>
+  <body>
 
-<body>
-
-<section class="home-slider owl-carousel">
-
-<div class="slider-item" style="background-image: url(/assets/images/48fc9fa4f633e59656a9be4a360696f5.jpg);"  data-stellar-background-ratio="0.5">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row slider-text justify-content-center align-items-center">
-
-      <div class="col-md-7 col-sm-12 text-center ftco-animate">
-        <h1 class="mb-3 mt-5 bread">Services</h1>
+  <section class="home-slider owl-carousel">
+    <div class="slider-item" style="background-image: url(/assets/images/48fc9fa4f633e59656a9be4a360696f5.jpg);"  data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text justify-content-center align-items-center">
+          <div class="col-md-7 col-sm-12 text-center ftco-animate">
+            <h1 class="mb-3 mt-5 bread">Services</h1>
+          </div>
+        </div>
       </div>
-
     </div>
-  </div>
-</div>
-</section>
+  </section>
 
-	</section>
 
   <section class="ftco-section ftco-services">
     	<div class="container">

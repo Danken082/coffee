@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Crossroad</title>
+	<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
 
     <section class="home-slider owl-carousel">
 		<div class="slider-item" style="background-image: url(/assets/images/hotcofee2.jpg);" data-stellar-background-ratio="0.5">
@@ -38,8 +39,8 @@
 	        	<div class="col-md-7 heading-section text-center ftco-animate">
 					<span class="subheading">Testimony</span>
 					<h2 class="mb-4">Customer's Feedback</h2>
-					<p>"The greatest happiness of life is the conviction that we are loved; loved for ourselves, or rater, loved in spite of ourselves."
-						<br> -Victor Hugo
+					<p>"Good ideas start with brainstorming, great ideas start with coffee"
+						<br> -Crossroads Coffee and deli
 					</p>
 				</div>
 			</div>
@@ -49,65 +50,65 @@
 				<div class="col-lg align-self-sm-end">
 					<div class="testimony">
 						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small.&rdquo;</p>
+							<p>&ldquo;Crossroads Coffee and Deli never fails to delight my taste buds. Such an amazing gastranonic treat. Thanks for the delicious food and very accomodating cafe hosts. 5 star. rapsa &rdquo;</p>
 						</blockquote>
 						<div class="author d-flex mt-4">
 							<div class="image mr-3 align-self-center">
 								<img src="images/person_1.jpg" alt="">
 							</div>
-							<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+							<div class="name align-self-center">Mr. Pehyzhd <span class="position">Customer</span></div>
 						</div>
 					</div>
 	        	</div>
 				<div class="col-lg align-self-sm-end">
 					<div class="testimony overlay">
 						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+							<p>&ldquo;I just discovered Crossroads Coffee and Deli yesterday. Ordered some for delivery. Surprisingly, I liked their sub sandwiches, salads and coffee which is reasonably priced vs. other cafes. And the service is so oh so fine. You might want to check them out.&rdquo;</p>
 						</blockquote>
 						<div class="author d-flex mt-4">
 							<div class="image mr-3 align-self-center">
 								<img src="images/person_2.jpg" alt="">
 							</div>
-							<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+							<div class="name align-self-center">Ms. Joji Feraren <span class="position">Customer</span></div>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg align-self-sm-end">
 					<div class="testimony">
 						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small  line of blind text by the name. &rdquo;</p>
+							<p>&ldquo;Masarap po yung salad and sandwich. Hindi po overcooked yung macaroni. Well done po ang luto. Thank u po..&rdquo;</p>
 						</blockquote>
 						<div class="author d-flex mt-4">
 							<div class="image mr-3 align-self-center">
 								<img src="images/person_3.jpg" alt="">
 							</div>
-							<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+							<div class="name align-self-center">Ms. Memen Lee <span class="position">Customer</span></div>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg align-self-sm-end">
 					<div class="testimony overlay">
 						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however.&rdquo;</p>
+							<p>&ldquo;Crossroads Coffee and Deli Burger is one of the most tastiest burger I've had! Juicy and definitely mouthwatering. Sulit at hindi tinipid. Even the buns has its toasted grilled marks on it meaning hindi basta niluto (well prepared recipe). Very affordable yet the quality and taste of food is a big kapow!. Legit taste of burger!!!!!&rdquo;</p>
 						</blockquote>
 						<div class="author d-flex mt-4">
 							<div class="image mr-3 align-self-center">
 								<img src="images/person_2.jpg" alt="">
 							</div>
-							<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+							<div class="name align-self-center">Mr. Unkown <span class="position">Customer</span></div>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg align-self-sm-end">
 					<div class="testimony">
 						<blockquote>
-							<p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small  line of blind text by the name. &rdquo;</p>
+							<p>&ldquo;the foods are yummy num num and their coffee's...the owner is very approachable...💯❤&rdquo;</p>
 						</blockquote>
 						<div class="author d-flex mt-4">
 							<div class="image mr-3 align-self-center">
 								<img src="images/person_3.jpg" alt="">
 							</div>
-							<div class="name align-self-center">Louise Kelly <span class="position">Illustrator Designer</span></div>
+							<div class="name align-self-center">Mr. Ernesto Marmo <span class="position">Customer</span></div>
 						</div>
 					</div>
 				</div>
@@ -122,30 +123,29 @@
     				<div class="heading-section text-md-right ftco-animate">
 						<span class="subheading">Discover</span>
 						<h2 class="mb-4">Our Menu</h2>
-						<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						<p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+						<p><a href="<?= site_url("user/menu"); ?>" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
 	          		</div>
     			</div>
     			<div class="col-md-6">
     				<div class="row">
     					<div class="col-md-6">
     						<div class="menu-entry">
-		    					<a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>
+		    					<a href="#" class="img" style="background-image: url(/assets/images/coffeefrappe1.jpg);"></a>
 		    				</div>
     					</div>
     					<div class="col-md-6">
     						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
+		    					<a href="#" class="img" style="background-image: url(/assets/images/chefsalad.jpg);"></a>
 		    				</div>
     					</div>
     					<div class="col-md-6">
     						<div class="menu-entry">
-		    					<a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
+		    					<a href="#" class="img" style="background-image: url(/assets/images/crabandcornsoup.jpg);"></a>
 		    				</div>
     					</div>
     					<div class="col-md-6">
     						<div class="menu-entry mt-lg-4">
-		    					<a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
+		    					<a href="#" class="img" style="background-image: url(/assets/images/brewedcoffee.jpg);"></a>
 		    				</div>
     					</div>
     				</div>
@@ -154,7 +154,7 @@
     	</div>
     </section>
 
-    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(/assets/user/images/bg2.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row justify-content-center">

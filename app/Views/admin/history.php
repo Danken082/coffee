@@ -8,10 +8,7 @@
     </head>
     <body>
         
-        <?php 
-            $page = isset($_GET['page']) ?$_GET['page'] : "sidetopbar";
-            include $page.'.php';
-        ?> 
+    <?php include('sidetopbar.php'); ?>
         
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
             <div class="container-fluid py-1 px-3">

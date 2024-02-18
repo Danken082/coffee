@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Crossroad</title>
+    <link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
   </head>
   <body>
 

@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <title>Crossroad</title>
+	<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
 </head>
 <body>
 
     <section class="home-slider owl-carousel">
-		<div class="slider-item" style="background-image: url(/assets/user/images/bg3.jpg);" data-stellar-background-ratio="0.5">
+		<div class="slider-item" style="background-image: url(/assets/images/hmpg2.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 				<div class="container">
 					<div class="row slider-text justify-content-center align-items-center">
