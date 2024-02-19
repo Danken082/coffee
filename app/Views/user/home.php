@@ -4,8 +4,6 @@
 		<title>Crossroads</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="https://www.openstreetmap.org/copyright">
-		<link rel="stylesheet" href="https://tile.openstreetmap.org/{z}/{x}/{y}.png">
 		<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
 		</head>
 		<body>	
