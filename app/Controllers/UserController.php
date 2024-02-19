@@ -35,7 +35,7 @@ class UserController extends BaseController
                 'gender' => $this->request->getVar('gender'),
                 'email' => $this->request->getVar('email'),
                 'ContactNo' => $this->request->getVar('ContactNo'),
-                'UserRole' => $this->request->getVar('UserRole'),
+                'UserRole'   => $this->request->getVar('UserRole'),
                 'Username' => $this->request->getVar('Username'),
                 'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
                 'address' => $this->request->getVar('address'),
@@ -114,7 +114,20 @@ class UserController extends BaseController
     }
 
     public function home(){
-        return view('/user/home');
+        $session = session();
+
+        $userData['rsv'] = [
+            'UserID' => $session->get('UserID'),
+            'FirstName' => $session->get('FirstName'),
+            'email' => $session->get('email'),
+            'LastName' => $session->get('LastName'),
+            'Username' => $session->get('Username'),
+            'birthdate' => $session->get('birthdate'),
+            'ContactNo' => $session->get('ContactNo'),
+            
+        ];
+       
+        return view('/user/home', $userData);
     }
 
     public function home_menu(){

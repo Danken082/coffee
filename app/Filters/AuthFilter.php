@@ -25,18 +25,11 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->has('UserRole')) {
+        if(!session()->get('isLoggedIn'))
+        {
             return redirect()->to('/');
         }
-
-        // Check if the user has the required role
-        $requiredRole = $arguments['role'] ?? null;
-
-        if ($requiredRole && session('role') !== $requiredRole) {
-            return redirect()->to('/dashboard')->with('error', 'Access denied. Insufficient privileges.');
-        }
-
-        return $request;
+   
     }
 
     /**

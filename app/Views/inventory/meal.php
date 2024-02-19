@@ -107,7 +107,7 @@
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_code'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_img'] ?></p>
+                                <img src="<?php base_url();?>/assets/images/<?= $p['prod_img'] ?>" alt="img">
                                 </td>
                                 <td class="align-middle text-center">
                                     <a href="<?= base_url('/editmeal/' .$p['prod_id']) ?>" id='id'
@@ -123,6 +123,12 @@
                     </tbody>
                 </table><br>
                 <a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a>
+                <style>
+                    img{
+                        width:50px;
+                        height:40px;
+                    }
+                </style>
             </div>
         </div>
     </body>
