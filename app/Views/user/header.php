@@ -7,7 +7,8 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-        <link href="https://www.google.com/maps/" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
         <link rel="stylesheet" href="/assets/user/css/open-iconic-bootstrap.min.css"/>
         <link rel="stylesheet" href="/assets/user/css/animate.css"/>
         <link rel="stylesheet" href="/assets/user/css/owl.carousel.min.css"/>
@@ -64,7 +65,6 @@
         <script src="/assets/user/js/bootstrap-datepicker.js"></script>
         <script src="/assets/user/js/jquery.timepicker.min.js"></script>
         <script src="/assets/user/js/scrollax.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCv_7YW_LnLhmWrL2-UGpH8bY-chhZn_j4&sensor=false"></script>
         <script src="/assets/user/js/google-map.js"></script>
         <script src="/assets/user/js/main.js"></script>
     </body>

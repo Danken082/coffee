@@ -1,22 +1,10 @@
-function initMap()
-{
-  const options = {
-    zoom: 10,
-    center:{lat:13.391300211231535, lng:121.16590874436679}
-  }
+var map = L.map('map').setView([13.391242572256562, 121.16589193500313], 13);
 
-  let map = new google.maps.Map(
-    document.getElementById('map'),
-    options
-  )
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 50,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 
-  let marker = new google.maps.Marker(
-    {
-      position: {lat:13.391244082497877, lng:121.16588676438288},
-      map: map,
-      icon: '/assets/user/images/loc.png'
-    }
-  )
-}
-
-initMap()
+L.marker([13.391242572256562, 121.16589193500313]).addTo(map)
+    .bindPopup('Crossroads Cafe and Deli')
+    .openPopup();
