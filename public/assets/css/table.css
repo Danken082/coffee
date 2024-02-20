@@ -1,0 +1,54 @@
+body {
+    background-color: #f6f5f5;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #452f1b;
+    color: #fff;
+    border-radius: 15px;
+}
+
+.card a {
+    color: #fff;
+}
+
+.table th {
+    color: #452f1b;
+}
+
+.table td {
+    color: #452f1b;
+    border: 1px solid black;
+}
+
+.table thead th {
+    background-color: #8e6d49;
+}
+
+.table tbody tr {
+    background-color: #f2e5d7;
+    border: 1px solid black;
+}
+
+.table tbody tr:hover {
+    background-color: #d0b086;
+}
+
+img{
+    width:50px;
+    height:40px;
+}
+
+.btn-info {
+    background-color: #8e6d49;
+    border-color: #8e6d49;
+}
+
+.btn-info:hover {
+    background-color: #452f1b;
+    border-color: #452f1b;
+}

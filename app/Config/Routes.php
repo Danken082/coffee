@@ -25,7 +25,7 @@ $routes->post('/updateuser/(:any)', 'AdminController::updateuser/$1');
 $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
 $routes->post('/adminregister', 'UserController::register');
 $routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
-$routes->get('logout', 'UserController::logout', ['filter'=>'authFilter']);
+$routes->get('/logout', 'UserController::logout', ['filter'=>'authFilter']);
                     /* For Inventory */
 
 /* For Hot Coffee */

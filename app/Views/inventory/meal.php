@@ -11,59 +11,9 @@
         <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
         <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+        <link href="/assets/css/table.css" rel="stylesheet" />
     </head>
     <body>
-    <style>
-        body {
-            background-color: #f6f5f5;
-        }
-
-        .container {
-            margin-top: 30px;
-        }
-
-        .card {
-            background-color: #452f1b;
-            color: #fff;
-            border-radius: 15px;
-        }
-
-        .card a {
-            color: #fff;
-        }
-
-        .table th {
-            color: #452f1b;
-        }
-
-        .table td {
-            color: #452f1b;
-            border: 1px solid black;
-        }
-
-        .table thead th {
-            background-color: #8e6d49;
-        }
-
-        .table tbody tr {
-            background-color: #f2e5d7;
-            border: 1px solid black;
-        }
-
-        .table tbody tr:hover {
-            background-color: #d0b086;
-        }
-
-        .btn-info {
-            background-color: #8e6d49;
-            border-color: #8e6d49;
-        }
-
-        .btn-info:hover {
-            background-color: #452f1b;
-            border-color: #452f1b;
-        }
-    </style>
     <div class="container">
             <div class="col-12">
                 <div class="card my-4">
@@ -107,7 +57,7 @@
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_code'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                <img src="<?php base_url();?>/assets/images/<?= $p['prod_img'] ?>" alt="img">
+                                    <img src="<?php base_url();?>/assets/images/<?= $p['prod_img'] ?>" alt="img">
                                 </td>
                                 <td class="align-middle text-center">
                                     <a href="<?= base_url('/editmeal/' .$p['prod_id']) ?>" id='id'
@@ -123,12 +73,6 @@
                     </tbody>
                 </table><br>
                 <a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a>
-                <style>
-                    img{
-                        width:50px;
-                        height:40px;
-                    }
-                </style>
             </div>
         </div>
     </body>

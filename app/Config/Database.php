@@ -29,7 +29,7 @@ class Database extends Config
         'hostname'     => 'localhost',
         'username'     => 'root',
        'password'     => '',
-        'database'     => 'coffeeledgerdb',
+        'database'     => 'coffeeledgerdb-1',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

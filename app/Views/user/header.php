@@ -46,6 +46,20 @@
                         </li>
                         <li class="nav-item"><a href="<?= site_url("user/contact"); ?>" class="nav-link">Contact</a></li>
                         <li class="nav-item cart"><a href="<?= site_url("user/cart"); ?>" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
+                        <li class="nav-item nav-profile dropdown">
+                            <a class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="nav-profile-img">
+                                    <img src="/assets/user/images/<?= session()->get('profile_img') ?>" alt="pfp"><p class="mb-1 text-black"><?= session()->get('LastName')?> <?= session()->get('FirstName')?></p>
+                                    <span class="availability-status online"></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                                <a class="dropdown-item" href="#"><i class="mdi mdi-cached me-2 text-success"></i>See Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="<?= site_url("logout"); ?>">
+                                <i class="mdi mdi-logout me-2 text-primary"></i> Logout </a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
