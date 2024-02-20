@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Crossroad</title>
+	<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
   </head>
   <body>
 
@@ -55,6 +56,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$a['prod_img']?>">
 														<h3><a><?=$a['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$a['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?> 
@@ -73,6 +75,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$p['prod_img']?>">
 														<h3><a><?=$p['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -89,6 +92,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$m['prod_img']?>">
 														<h3><a><?=$m['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$m['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -105,6 +109,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
 														<h3><a><?=$s['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -121,6 +126,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
 														<h3><a><?=$s['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -137,6 +143,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
 														<h3><a><?=$s['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -153,6 +160,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$h['prod_img']?>">
 														<h3><a><?=$h['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -169,6 +177,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$i['prod_img']?>">
 														<h3><a><?=$i['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$i['prod_mprice'] ?><br>Large ₱ <?=$i['prod_lprice'] ?> </span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -185,6 +194,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$f['prod_img']?>">
 														<h3><a><?=$f['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$f['prod_mprice'] ?><br>Large ₱ <?=$f['prod_lprice'] ?> </span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -201,6 +211,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$n['prod_img']?>">
 														<h3><a><?=$n['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -217,6 +228,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$c['prod_img']?>">
 														<h3><a><?=$c['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -233,6 +245,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$o['prod_img']?>">
 														<h3><a><?=$o['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
@@ -248,14 +261,8 @@
     	</div>
     </section>
 
-	<?php 
-      $page = isset($_GET['page']) ?$_GET['page'] : "header";
-      include $page.'.php';
-    ?> 
-
-<?php 
-      $page = isset($_GET['page']) ?$_GET['page'] : "footer";
-      include $page.'.php';
-    ?> 
+	<?php include('header.php'); ?>
+	<?php include('footer.php'); ?>
+	
   </body>
 </html>

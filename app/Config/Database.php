@@ -28,7 +28,7 @@ class Database extends Config
         'DSN'          => '',
         'hostname'     => 'localhost',
         'username'     => 'root',
-       'password'     => 'dankeneth22113344',
+       'password'     => '',
         'database'     => 'coffeeledgerdb',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
