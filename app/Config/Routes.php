@@ -102,10 +102,11 @@ $routes->get('user/blog', 'UserController::home_blog',['filter'=>'cusFilter']);
 $routes->get('user/about', 'UserController::home_about',['filter'=>'cusFilter']);
 $routes->get('user/shop', 'UserController::home_shop',['filter'=>'cusFilter']);
 $routes->get('user/contact', 'UserController::home_contact',['filter'=>'cusFilter']);
-$routes->get('user/cart', 'UserController::home_cart',['filter'=>'cusFilter']);
+$routes->get('user/cart', 'CartController::home_cart',['filter'=>'cusFilter']);
 $routes->get('user/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
 $routes->get('user/single_product', 'UserController::home_single_product',['filter'=>'cusFilter']);
 
 /*add to cart*/
 $routes->match(['get', 'post'],'/addtocart', 'CartController::addtocart');
 $routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');
+$routes->get('ans', 'CartController::myCart');

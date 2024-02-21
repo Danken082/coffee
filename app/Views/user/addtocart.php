@@ -14,7 +14,7 @@
     <img src="<?php base_url(); ?>assets/images/<?= $cart['prod_img'];?>" alt="">
     <input type="number" name="quantity">
     <input type="hidden" name="Status" value="oncart">
-    <button type="submit">go</button>
+    <button type="submit">add to cart</button>
     </form>
 </body>
 </html>

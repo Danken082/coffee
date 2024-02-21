@@ -17,10 +17,31 @@ class CartController extends BaseController
             // $this->load->model('ProductModel');
     }
 
+    public function sum($id)
+    {
+        $data = $this->product->select('prod_mprice')->findAll();
+
+        
+    }
    
+    public function home_cart()
+    {
+
+        $session = session();
+        $user = $session->get('UserID');
+        $data['myCart'] = $this->crt->select('cart_tbl.id, product_tbl.prod_id, product_tbl.prod_name, cart_tbl.quantity, cart_tbl.total, product_tbl.prod_img, product_tbl.prod_mprice')
+        ->join('product_tbl', 'cart_tbl.id = product_tbl.prod_id')->where('cart_tbl.CustomerID', $user)
+        ->findAll();
+
+        return view('/user/cart', $data);
+    }
 
     public function addtocart()
     {
+
+       $data = $this->product->findAll();
+
+          
         $prod = [
           'CustomerID' => $this->request->getVar('CustomerID'),
           'ProductID' => $this->request->getVar('ProductID'),
@@ -29,7 +50,7 @@ class CartController extends BaseController
         ];
         
         $this->crt->save($prod);
-
+        return redirect()->to('user/cart');
         
     }
     public function Cart($productID){

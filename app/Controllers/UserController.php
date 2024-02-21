@@ -183,6 +183,10 @@ class UserController extends BaseController
     }
     public function home_cart()
     {
+        $data['myCart'] = $this->crt->select('cart_tbl.id, product_tbl.prod_id, product_tbl.prod_name, cart_tbl.quantity, cart_tbl.total, product_tbl.prod_img, product_tbl.prod_mprice')
+        ->join('product_tbl', 'cart_tbl.id = product_tbl.prod_id')
+        ->findAll();
+
         return view('/user/cart');
     }
     public function home_checkout()
