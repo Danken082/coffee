@@ -106,6 +106,10 @@ $routes->get('user/cart', 'CartController::home_cart',['filter'=>'cusFilter']);
 $routes->get('user/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
 $routes->get('user/single_product', 'UserController::home_single_product',['filter'=>'cusFilter']);
 
+
+$routes->get('admin/sidebar', 'AdminController::admin_side');
+
+
 /*add to cart*/
 $routes->match(['get', 'post'],'/addtocart', 'CartController::addtocart');
 $routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');
