@@ -21,6 +21,12 @@ class AdminController extends BaseController
         $this->orderprod = new ProductModel();
     }
 
+
+    public function admin_side(){
+        return view('/admin/sidebar');
+    }
+
+
     public function edit($id)
     {
     
