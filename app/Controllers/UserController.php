@@ -8,10 +8,10 @@ use App\Models\ProductModel;
 class UserController extends BaseController
 {
     private $user;
-
+    private $product;
     public function __construct(){
         $this->user = new UserModel();
-
+        $this->product = new ProductModel();
         helper(['form']);
     }
     public function register()
@@ -193,5 +193,5 @@ class UserController extends BaseController
     {
         return view('/user/single_product');
     }
-
+ 
 }

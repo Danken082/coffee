@@ -107,4 +107,5 @@ $routes->get('user/checkout', 'UserController::home_checkout',['filter'=>'cusFil
 $routes->get('user/single_product', 'UserController::home_single_product',['filter'=>'cusFilter']);
 
 /*add to cart*/
-$routes->match(['get', 'post'], '/addtomycart/(:any)', 'ProductController::Cart');
+$routes->match(['get', 'post'],'/addtocart', 'CartController::addtocart');
+$routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');

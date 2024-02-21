@@ -131,4 +131,10 @@ class ProductController extends BaseController
 
         return redirect()->to('user/cart');
     }
+    public function prod()
+    {
+      $data = $this->product->findAll();
+
+      var_dump($data);
+    }
 }

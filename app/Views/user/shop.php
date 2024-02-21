@@ -57,7 +57,7 @@
 														<h3><a><?=$a['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$a['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/') .$a['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?> 
 											</div>
@@ -76,7 +76,7 @@
 														<h3><a><?=$p['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $a['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
