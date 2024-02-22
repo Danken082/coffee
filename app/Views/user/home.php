@@ -86,7 +86,7 @@
 										<input type="text" disabled name="FirstName" class="form-control" value="<?= $rsv['FirstName'] ?>" placeholder="Last Name">
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="text" name="Email"class="form-control" value="<?= $rsv['email'] ?>" placeholder="Email">
+										<input type="text" disabled name="Email"class="form-control" value="<?= $rsv['email'] ?>" placeholder="Email">
 									</div>
 								</div>
 								<div class="d-md-flex">
@@ -97,7 +97,7 @@
 										</div>
 		    						</div>
 									<div class="form-group ml-md-4">
-										<input type="text" name="ConactNo" value="<?= $rsv['ContactNo'];?>" class="form-control" placeholder="Phone Number">
+										<input type="text" name="ConactNo"  value="<?= $rsv['ContactNo'];?>" class="form-control" placeholder="Phone Number">
 									</div>
 								</div>
 								<div class="d-md-flex">

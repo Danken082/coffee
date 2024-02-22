@@ -111,6 +111,6 @@ $routes->get('admin/sidebar', 'AdminController::admin_side');
 
 
 /*add to cart*/
-$routes->match(['get', 'post'],'/addtocart', 'CartController::addtocart');
+$routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1');
 $routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');
-$routes->get('ans', 'CartController::myCart');
+

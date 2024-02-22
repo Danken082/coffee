@@ -44,7 +44,7 @@
 									<td class="image-prod"><div class="img" style="background-image:url(images/menu-2.jpg);"></div></td>
 									<td class="product-name">
 										
-								
+									
 										<h3><?= $cart['prod_name']?></h3>
 										<p>Far far away, behind the word mountains, far from the countries</p>
 									</td>
@@ -54,7 +54,7 @@
 											<input type="text" name="quantity" class="quantity form-control input-number" value="<?= $cart['quantity']?>" min="1" max="100">
 										</div>
 									</td>
-						        	<td class="total">$4.90</td>
+						        	<td class="total">₱ <?= $cart['total']?></td>
 						      	</tr>
 								<?php endforeach;?>
 						      

@@ -36,17 +36,19 @@ class CartController extends BaseController
         return view('/user/cart', $data);
     }
 
-    public function addtocart()
-    {
+    public function addtocart($price)
+    {   
+    
+       $data = $this->product->where('prod_mprice', $price)->first();
+       $total = $data['prod_mprice'] * $this->request->getVar('quantity');
+       
 
-       $data = $this->product->findAll();
-
-          
         $prod = [
           'CustomerID' => $this->request->getVar('CustomerID'),
           'ProductID' => $this->request->getVar('ProductID'),
           'quantity' => $this->request->getVar('quantity'),
-          'Status' => $this->request->getVar('Status')
+          'Status' => $this->request->getVar('Status'),
+          'total' => $total
         ];
         
         $this->crt->save($prod);
@@ -89,9 +91,19 @@ class CartController extends BaseController
       }
       public function getProd($productID)
       {
-        $session = session();
+   
         $data['cart'] =  $this->product->where('prod_id', $productID)->first();
                         
         return view('user/addtocart', $data);
       }
+
+    //   public function prod()
+    //   {
+
+    //     $data = 
+    //     [
+    //         'CustomerID' => $this->request->getVar('CustomerID'),
+    //         'ProductID' => $this->request
+    //     ]
+    //   }
 }
