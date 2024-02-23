@@ -17,23 +17,22 @@ class CartController extends BaseController
             // $this->load->model('ProductModel');
     }
 
-    public function sum($id)
-    {
-        $data = $this->product->select('prod_mprice')->findAll();
-
-        
-    }
+    
    
     public function home_cart()
     {
-
+        
         $session = session();
         $user = $session->get('UserID');
-        $data['myCart'] = $this->crt->select('cart_tbl.id, product_tbl.prod_id, product_tbl.prod_name, cart_tbl.quantity, cart_tbl.total, product_tbl.prod_img, product_tbl.prod_mprice')
-        ->join('product_tbl', 'cart_tbl.id = product_tbl.prod_id')->where('cart_tbl.CustomerID', $user)
+        $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
+        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice')
+        ->join('product_tbl', 'product_tbl.prod_id = cart_tbl.ProductID')
+        ->where('cart_tbl.CustomerID', $user)
         ->findAll();
 
-        return view('/user/cart', $data);
+       $data['mycart'] = $this->crt->select('(SUM(total)) as sum')->where('cart_tbl.CustomerID', $user)->findAll();    
+    
+     return view('/user/cart', $data);
     }
 
     public function addtocart($price)

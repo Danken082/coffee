@@ -129,6 +129,8 @@ class ProductController extends BaseController
             $this->cart->save($data);
         }
 
+        
+
         return redirect()->to('user/cart');
     }
     public function prod()

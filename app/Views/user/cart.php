@@ -43,8 +43,6 @@
 						        	<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
 									<td class="image-prod"><div class="img" style="background-image:url(images/menu-2.jpg);"></div></td>
 									<td class="product-name">
-										
-									
 										<h3><?= $cart['prod_name']?></h3>
 										<p>Far far away, behind the word mountains, far from the countries</p>
 									</td>
@@ -68,8 +66,11 @@
     				<div class="cart-total mb-3">
     					<h3>Cart Totals</h3>
     					<p class="d-flex">
+
     						<span>Subtotal</span>
-    						<span>$20.60</span>
+							<?php foreach($mycart as $cart):?>
+    						<span>₱ <?= $cart['sum']?></span>
+							<?php endforeach;?>
     					</p>
     					<p class="d-flex">
     						<span>Delivery</span>
