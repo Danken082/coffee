@@ -24,7 +24,7 @@ class UserController extends BaseController
             'email' => 'required|min_length[4]|valid_email|is_unique[user.email]',
             'ContactNo' => 'required|regex_match[/^[0-9]{11}$/]',
             'UserRole' => 'required',
-            'Password' => 'required|alpha_numeric_punc|min_length[7]',
+            'Password' => 'required|alpha_numeric_punct|min_length[7]',
             'birthdate' => 'required|valid_date'
         ];
 

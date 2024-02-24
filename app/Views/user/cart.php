@@ -99,13 +99,13 @@
 		<?php include('footer.php'); ?>
 <script>
     function selectAllItems() {
-        // Get the "Select All" checkbox
+      
         var selectAllCheckbox = document.getElementById("selectAll");
 
-        // Get all item checkboxes
+      
         var itemCheckboxes = document.querySelectorAll(".item-checkbox");
 
-        // Set the checked property of each item checkbox to match the "Select All" checkbox
+      
         itemCheckboxes.forEach(function (checkbox) {
             checkbox.checked = selectAllCheckbox.checked;
         });

@@ -102,6 +102,11 @@ class CartController extends BaseController
         return view('user/addtocart', $data);
       }
 
+      public function orderNow($price)
+      {
+        $this->product->where('')->findAll();
+      }
+
     //   public function prod()
     //   {
 

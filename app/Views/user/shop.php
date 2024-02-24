@@ -76,7 +76,7 @@
 														<h3><a><?=$p['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $a['prod_id'] ?>">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $p['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -93,7 +93,7 @@
 														<h3><a><?=$m['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?= $m['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('/viewProd/'). $m['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -110,7 +110,7 @@
 														<h3><a><?=$s['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $s['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -127,7 +127,7 @@
 														<h3><a><?=$s['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/addtomycart/'). $a['prod_id'] ?>">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $s['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -144,7 +144,7 @@
 														<h3><a><?=$s['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $s['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -161,7 +161,7 @@
 														<h3><a><?=$h['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('/viewProd/'). $h['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -178,7 +178,7 @@
 														<h3><a><?=$i['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$i['prod_mprice'] ?><br>Large ₱ <?=$i['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $i['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -195,7 +195,7 @@
 														<h3><a><?=$f['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$f['prod_mprice'] ?><br>Large ₱ <?=$f['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $f['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -212,7 +212,7 @@
 														<h3><a><?=$n['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $n['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -229,9 +229,9 @@
 														<h3><a><?=$c['prod_name']?></a></h3>
 														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $c['prod_id'] ?>">Add to cart</a></p>
 													</div>
-												<?php endforeach; ?>
+												<?php endforeach; ?>	
 											</div>
 										</div>
 									</div>
@@ -246,7 +246,7 @@
 														<h3><a><?=$o['prod_name']?></a></h3>
 														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary">Add to cart</a></p>
+														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $o['prod_id'] ?>">Add to cart</a></p>
 													</div>
 												<?php endforeach; ?>
 											</div>
