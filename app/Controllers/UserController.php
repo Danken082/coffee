@@ -22,9 +22,9 @@ class UserController extends BaseController
             'FirstName' => 'required|min_length[2]',
             'gender' => 'required|min_length[2]',
             'email' => 'required|min_length[4]|valid_email|is_unique[user.email]',
-            'ContactNo' => 'required|numeric',
+            'ContactNo' => 'required|regex_match[/^[0-9]{11}$/]',
             'UserRole' => 'required',
-            'Password' => 'required|min_length[7]',
+            'Password' => 'required|alpha_numeric_punc|min_length[7]',
             'birthdate' => 'required|valid_date'
         ];
 
@@ -44,7 +44,7 @@ class UserController extends BaseController
             $this->user->save($data);
             return redirect()->to('/');
 
-
+            
         }
         else{
             $data['validation']= $this->validator;

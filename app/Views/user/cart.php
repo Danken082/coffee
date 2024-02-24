@@ -35,12 +35,13 @@
 									<th>Price</th>
 									<th>Quantity</th>
 									<th>Total</th>
+									<th><input type="checkbox" id="selectAll" onclick="selectAllItems()"></th>
 			      				</tr>
 			    			</thead>
 				    		<tbody>
 							<?php foreach($myCart as $cart):?>
 						      	<tr class="text-center">
-						        	<td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
+						        	<td class="product-remove"><a href="<?= base_url('/removetocart/') .$cart['id']?>" onclick="return confirm('are you sure you want to remove this to your cart?')"><span class="icon-close"></span></a></td>
 									<td class="image-prod"><div class="img" style="background-image:url(images/menu-2.jpg);"></div></td>
 									<td class="product-name">
 										<h3><?= $cart['prod_name']?></h3>
@@ -53,7 +54,9 @@
 										</div>
 									</td>
 						        	<td class="total">₱ <?= $cart['total']?></td>
+									<td><input type="checkbox" class="item-checkbox"></td>
 						      	</tr>
+								
 								<?php endforeach;?>
 						      
 						    </tbody>
@@ -94,5 +97,18 @@
 
 		<?php include('header.php'); ?>
 		<?php include('footer.php'); ?>
-  	</body>
+<script>
+    function selectAllItems() {
+        // Get the "Select All" checkbox
+        var selectAllCheckbox = document.getElementById("selectAll");
+
+        // Get all item checkboxes
+        var itemCheckboxes = document.querySelectorAll(".item-checkbox");
+
+        // Set the checked property of each item checkbox to match the "Select All" checkbox
+        itemCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+    }
+</script>  	</body>
 </html>

@@ -54,6 +54,12 @@ class CartController extends BaseController
         return redirect()->to('user/cart');
         
     }
+
+    public function remove($id)
+    {
+      $this->crt->delete($id);
+      return redirect()->to('/user/cart');
+    }
     public function Cart($productID){
         $product=  $this->product->find($productID);
         
