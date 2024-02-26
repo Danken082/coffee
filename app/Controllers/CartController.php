@@ -85,8 +85,9 @@ class CartController extends BaseController
     public function remove($id)
     {
       $this->crt->delete($id);
-      return redirect()->to('/user/cart');
+      return redirect()->to(base_url('user/cart'));
     }
+    
     public function Cart($productID){
         $product=  $this->product->find($productID);
         
@@ -101,12 +102,12 @@ class CartController extends BaseController
   
           $userID = session('userID');
           
-          $existingItem = $this->cart->where('CustomerID', $userID)->where('ProductID')->first();
+          $existingItem = $this->crt->where('CustomerID', $userID)->where('ProductID')->first();
   
           if($existingItem)
           {
               $update = $existingItem['quantity'] + 1;
-              $this->cart->update($existingItem['id'], ['quantity' => $update]);
+              $this->crt->update($existingItem['id'], ['quantity' => $update]);
           }
           else
           {
@@ -116,7 +117,7 @@ class CartController extends BaseController
                   'qunatity' => 1,
                   'Status' => $this->request->getVar('Status')
               ];
-              $this->cart->save($data);
+              $this->crt->save($data);
           }
   
           return redirect()->to('user/cart');

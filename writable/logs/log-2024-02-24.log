@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 CRITICAL - 2024-02-24 02:28:57 --> Call to undefined function baset_url()
 in APPPATH\Views\user\cart.php on line 43.
  1 SYSTEMPATH\View\View.php(226): include()
@@ -10,29 +11,639 @@ in APPPATH\Views\user\cart.php on line 43.
  8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
 CRITICAL - 2024-02-24 02:39:50 --> Trying to access array offset on value of type null
+=======
+CRITICAL - 2024-02-24 01:15:16 --> Trying to access array offset on value of type null
+>>>>>>> Stashed changes
 in APPPATH\Views\user\addtocart.php on line 75.
  1 APPPATH\Views\user\addtocart.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\addtocart.php', 75)
  2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\addtocart.php')
  3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
  4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/addtocart', [], true)
+<<<<<<< Updated upstream
  5 APPPATH\Controllers\CartController.php(102): view('user/addtocart', [...])
+=======
+ 5 APPPATH\Controllers\CartController.php(96): view('user/addtocart', [...])
+>>>>>>> Stashed changes
  6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->getProd('assets', 'images', 'quesadillas.jpg')
  7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+<<<<<<< Updated upstream
 CRITICAL - 2024-02-24 14:27:23 --> Trying to access array offset on value of type null
+=======
+CRITICAL - 2024-02-24 02:21:18 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 02:26:01 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 02:29:19 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-02-24 02:34:08 --> mysqli_sql_exception: Unknown column 'user.id' in 'where clause' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(196): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(563): CodeIgniter\Model->doFind(true, '5')
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(107): CodeIgniter\BaseModel->find('5')
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->edituser('5')
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-02-24 02:34:08 --> Unknown column 'user.id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `user`.`id` = :user.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(196): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(563): CodeIgniter\Model->doFind(true, '5')
+ 4 APPPATH\Controllers\AdminController.php(107): CodeIgniter\BaseModel->find('5')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->edituser('5')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 02:34:47 --> Undefined array key "password"
+in APPPATH\Views\admin\edituser.php on line 48.
+ 1 APPPATH\Views\admin\edituser.php(48): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\edituser.php', 48)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\edituser.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/edituser', [], true)
+ 5 APPPATH\Controllers\AdminController.php(108): view('/admin/edituser', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->edituser('5')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 02:36:04 --> Undefined array key "Created_at"
+in APPPATH\Views\admin\edituser.php on line 54.
+ 1 APPPATH\Views\admin\edituser.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "Created_at"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\edituser.php', 54)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\edituser.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/edituser', [], true)
+ 5 APPPATH\Controllers\AdminController.php(108): view('/admin/edituser', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->edituser('5')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 02:36:57 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\AdminController.php(126): CodeIgniter\Model->update('5', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->updateuser('5')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 02:41:37 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\AdminController.php(126): CodeIgniter\Model->update('5', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->updateuser('5')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 02:57:55 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:07:01 --> Undefined variable $eprof
+in APPPATH\Views\user\edit_profile.php on line 33.
+ 1 APPPATH\Views\user\edit_profile.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $eprof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 33)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:07:44 --> Undefined array key "UserID"
+in APPPATH\Views\user\edit_profile.php on line 33.
+ 1 APPPATH\Views\user\edit_profile.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UserID"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 33)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:08:59 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:11:53 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:11:54 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:13:47 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:16:54 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:16:54 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:17:00 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:19:13 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 201.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:21:34 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 201.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:27:24 --> Undefined variable $user
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 03:28:01 --> Undefined variable $user
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:13:14 --> Undefined variable $eprof
+in APPPATH\Views\user\edit_profile.php on line 33.
+ 1 APPPATH\Views\user\edit_profile.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $eprof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 33)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(195): view('/user/edit_profile')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:13:45 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:14:05 --> Undefined array key "UserID"
+in APPPATH\Views\user\edit_profile.php on line 33.
+ 1 APPPATH\Views\user\edit_profile.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UserID"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 33)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:15:10 --> Undefined array key "LastName"
+in APPPATH\Views\user\edit_profile.php on line 39.
+ 1 APPPATH\Views\user\edit_profile.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LastName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 39)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:15:24 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 193.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:16:12 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 201.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:16:13 --> Too few arguments to function App\Controllers\UserController::edit_profile(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 201.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:49:47 --> Undefined array key "UserID"
+in APPPATH\Views\user\edit_profile.php on line 33.
+ 1 APPPATH\Views\user\edit_profile.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UserID"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 33)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:50:21 --> Undefined array key "LastName"
+in APPPATH\Views\user\edit_profile.php on line 39.
+ 1 APPPATH\Views\user\edit_profile.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "LastName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 39)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:51:32 --> Undefined array key "UserID"
+in APPPATH\Views\user\edit_profile.php on line 33.
+ 1 APPPATH\Views\user\edit_profile.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UserID"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 33)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 04:52:10 --> Undefined array key "UserID"
+in APPPATH\Views\user\edit_profile.php on line 33.
+ 1 APPPATH\Views\user\edit_profile.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UserID"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 33)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:21:22 --> Undefined array key "UserID"
+in APPPATH\Views\user\edit_profile.php on line 33.
+ 1 APPPATH\Views\user\edit_profile.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UserID"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 33)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:22:18 --> Undefined array key "UserID"
+in APPPATH\Views\user\edit_profile.php on line 33.
+ 1 APPPATH\Views\user\edit_profile.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UserID"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 33)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(202): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:22:26 --> Undefined array key "UserID"
+in APPPATH\Views\user\profile.php on line 32.
+ 1 APPPATH\Views\user\profile.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "UserID"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\profile.php', 32)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:38:53 --> Undefined variable $eprof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $eprof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:41:42 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:42:56 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:43:45 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:43:46 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:43:55 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:44:01 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:44:11 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:44:12 --> Undefined variable $rsv
+in APPPATH\Views\user\home.php on line 83.
+ 1 APPPATH\Views\user\home.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rsv', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/home', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->profile()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:44:31 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:48:37 --> Undefined variable $mnguser
+in APPPATH\Views\admin\manage_user.php on line 58.
+ 1 APPPATH\Views\admin\manage_user.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $mnguser', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\manage_user.php', 58)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\manage_user.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/manage_user', [], true)
+ 5 APPPATH\Controllers\AdminController.php(72): view('/admin/manage_user', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->getmanageuser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:50:17 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:50:48 --> Undefined variable $prof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $prof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 05:50:58 --> Undefined variable $eprof
+in APPPATH\Views\user\header.php on line 57.
+ 1 APPPATH\Views\user\header.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $eprof', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 57)
+ 2 APPPATH\Views\user\home.php(383): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 6 APPPATH\Controllers\UserController.php(130): view('/user/home', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 06:04:59 --> Call to undefined function http://localhost:8080/user/editprofile/()
+in APPPATH\Controllers\UserController.php on line 213.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('6')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 06:11:26 --> Call to undefined function http://localhost:8080/user/editprofile/()
+in APPPATH\Controllers\UserController.php on line 213.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('6')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 06:12:04 --> Call to undefined function http://localhost:8080/user/editprofile/()
+in APPPATH\Controllers\UserController.php on line 213.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('6')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 06:12:07 --> Call to undefined function http://localhost:8080/user/editprofile/()
+in APPPATH\Controllers\UserController.php on line 213.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('6')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 06:12:31 --> Trying to access array offset on value of type null
+in APPPATH\Views\user\edit_profile.php on line 32.
+ 1 APPPATH\Views\user\edit_profile.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 32)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile('()')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 06:12:44 --> Trying to access array offset on value of type null
+in APPPATH\Views\user\edit_profile.php on line 32.
+ 1 APPPATH\Views\user\edit_profile.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 32)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(196): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile('()')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 06:49:12 --> Trying to access array offset on value of type null
+>>>>>>> Stashed changes
 in APPPATH\Views\user\addtocart.php on line 75.
  1 APPPATH\Views\user\addtocart.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\addtocart.php', 75)
  2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\addtocart.php')
  3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
  4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/addtocart', [], true)
+<<<<<<< Updated upstream
  5 APPPATH\Controllers\CartController.php(102): view('user/addtocart', [...])
  6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->getProd('assets', 'images', 'fchicken.jpg')
+=======
+ 5 APPPATH\Controllers\CartController.php(96): view('user/addtocart', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->getProd('assets', 'images', 'fries.jpg')
+>>>>>>> Stashed changes
  7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+<<<<<<< Updated upstream
 CRITICAL - 2024-02-24 14:30:02 --> Trying to access array offset on value of type null
 in APPPATH\Views\user\addtocart.php on line 75.
  1 APPPATH\Views\user\addtocart.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\addtocart.php', 75)
@@ -42,6 +653,41 @@ in APPPATH\Views\user\addtocart.php on line 75.
  5 APPPATH\Controllers\CartController.php(102): view('user/addtocart', [...])
  6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->getProd('assets', 'images', 'vanillafrap.jpg')
  7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+=======
+CRITICAL - 2024-02-24 07:47:19 --> Undefined variable $customer
+in APPPATH\Views\admin\customermanage_user.php on line 57.
+ 1 APPPATH\Views\admin\customermanage_user.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $customer', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\customermanage_user.php', 57)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\customermanage_user.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/customermanage_user', [], true)
+ 5 APPPATH\Controllers\AdminController.php(74): view('/admin/customermanage_user', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->getcustomeruser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 08:07:46 --> Undefined variable $staff
+in APPPATH\Views\admin\adminmanage_user.php on line 117.
+ 1 APPPATH\Views\admin\adminmanage_user.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $staff', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\adminmanage_user.php', 117)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\adminmanage_user.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/adminmanage_user', [], true)
+ 5 APPPATH\Controllers\AdminController.php(90): view('/admin/adminmanage_user', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->getmanageuser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 08:15:26 --> Undefined variable $user
+in APPPATH\Views\admin\adminmanage_user.php on line 58.
+ 1 APPPATH\Views\admin\adminmanage_user.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\adminmanage_user.php', 58)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\adminmanage_user.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/adminmanage_user', [], true)
+ 5 APPPATH\Controllers\AdminController.php(83): view('/admin/adminmanage_user', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->getmanageuser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+>>>>>>> Stashed changes
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

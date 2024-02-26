@@ -16,7 +16,7 @@ class AdminController extends BaseController
     private $load;
     
     public function __construct(){
-        $this->user = new UserModel();
+        $this->user = new AdminUserModel();
         $this->history = new HistoryModel();
         $this->orderprod = new ProductModel();
     }
@@ -24,15 +24,6 @@ class AdminController extends BaseController
 
     public function admin_side(){
         return view('/admin/sidebar');
-    }
-
-
-    public function edit($id)
-    {
-    
-        $data = $this->user->where('user_id', $id)->findAll();
-
-        var_dump($data);
     }
 
     public function register(){
@@ -75,11 +66,20 @@ class AdminController extends BaseController
         return view ('/admin/history', $data);
     }
 
+    public function getcustomeruser()
+    {
+        $role = 'Customer';
+        $user = new AdminUserModel();
+        $data['customer'] = $user->customeruser($role);
+        return view ('/admin/customermanage_user', $data);
+    }
+
     public function getmanageuser()
     {
-       
-        $data['mnguser'] = $this->user->findAll();
-        return view ('/admin/manage_user', $data);
+        $role = 'Admin';
+        $user = new AdminUserModel();
+        $data['admin'] = $user->adminuser($role);
+        return view ('/admin/adminmanage_user', $data);
     }
 
     public function mnguser(){
@@ -91,20 +91,20 @@ class AdminController extends BaseController
         $data = [
             'LastName' => $this->request->getVar('LastName'),
             'FirstName' => $this->request->getVar('FirstName'),
-            'gender' => $this->request->getVar('gender'),
-            'email' => $this->request->getVar('email'),
-            'ContactNo' => $this->request->getVar('ContactNo'),
-            'UserRole' => $this->request->getVar('UserRole'),
             'Username' => $this->request->getVar('Username'),
-            'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
-            'address' => $this->request->getVar('address'),
+            'email' => $this->request->getVar('email'),
             'birthdate' => $this->request->getVar('birthdate'),
+            'ContactNo' => $this->request->getVar('ContactNo'),
+            'address' => $this->request->getVar('address'),
+            'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
+            'UserRole' => $this->request->getVar('UserRole')
         ];
         $this->user->save($data);
+        return redirect()->to(base_url('adminmanage_user'));
     }
+
     public function edituser($id)
     {
-     
         $data['euser'] = $this->user->find($id);
         return view('/admin/edituser', $data);
     }

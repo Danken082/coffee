@@ -83,6 +83,7 @@
                 <option value="Large">Large</option>
             </select>
             <label for="ProductPrice">Product Price:</label>
+
             <input type="text" name="prod_mprice" value="<?= $cart['prod_mprice']?> Medium" readonly>
             <input type="text" name="prod_lprice" value="<?= $cart['prod_lprice']?> Large" readonly>
             <img src="<?php base_url(); ?>assets/images/<?= $cart['prod_img'];?>" alt="">

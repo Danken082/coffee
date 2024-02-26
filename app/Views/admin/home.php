@@ -35,8 +35,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <!--dapat ang nakalagay dun sa katabi ng welcome back ay kung anong name ang naglogin like admin, staff, owner or manager siya -->
-                                <p>Welcome Back Administrator!</p>
+                                <p>Welcome Back <?= session()->get('UserRole')?>!</p>
                                 <hr>
                             </div>
                         </div>      			

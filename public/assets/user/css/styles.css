@@ -3253,8 +3253,8 @@ input[type="button"].btn-block {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 1rem; }
-  .navbar > .container,
-  .navbar > .container-fluid {
+
+.navbar > .container, .navbar > .container-fluid {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -3275,8 +3275,10 @@ input[type="button"].btn-block {
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap; }
-  .navbar-brand:hover, .navbar-brand:focus {
-    text-decoration: none; }
+
+.navbar-brand:hover, .navbar-brand:focus 
+{
+  text-decoration: none; }
 
 .navbar-nav {
   display: -webkit-box;
@@ -3289,10 +3291,12 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none; }
-  .navbar-nav .nav-link {
+
+.navbar-nav .nav-link {
     padding-right: 0;
     padding-left: 0; }
-  .navbar-nav .dropdown-menu {
+
+.navbar-nav .dropdown-menu {
     position: static;
     float: none; }
 
@@ -3318,9 +3322,11 @@ input[type="button"].btn-block {
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem; }
-  .navbar-toggler:hover, .navbar-toggler:focus {
+
+.navbar-toggler:hover, .navbar-toggler:focus {
     text-decoration: none; }
-  .navbar-toggler:not(:disabled):not(.disabled) {
+
+.navbar-toggler:not(:disabled):not(.disabled) {
     cursor: pointer; }
 
 .navbar-toggler-icon {

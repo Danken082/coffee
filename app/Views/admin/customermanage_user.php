@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Users</title>
+        <title>Customer Users</title>
         <link rel="icon" type="image/png" href=/images/coffeelogo2.png>
     </head>
     <body>
@@ -15,9 +15,9 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Manage Users</li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Manage Customer Users</li>
                     </ol>
-                    <h6 class="font-weight-bolder mb-0">Manage Users</h6>
+                    <h6 class="font-weight-bolder mb-0">Manage Customer Users</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -35,8 +35,7 @@
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div
                             class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                            <h6 class="text-white text-capitalize ps-3">List of Users</h6>
-                            <a href="/adminmnguser" class="btn btn-success btn-sm me-3">Add User</a>
+                            <h6 class="text-white text-capitalize ps-3">Lists of Users</h6>
                         </div>
                     </div>
 
@@ -45,40 +44,50 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-
-
                                         <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center ">Name</th>
 
                                         <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Username</th>
                                     
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Role</th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Birthdate</th>
 
-                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Actions</th>
+                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Email</th>
+
+                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Contact Number</th>
+
+                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Gender</th>
+
+                                        <th class="text-center text-uppercase text-secondary text-sm font-weight-bolder opacity-7">Address</th>
                                     </tr>
                                 </thead>
                                     <tbody>
-                                        <?php foreach($mnguser as $user): ?>
+                                        <?php foreach($customer as $c): ?>
                                             <tr>
                                                 <td class="text-center">
-                                                    <p class="text-xs text-uppercase text-secondary mb-0"><?=$user['FirstName'], '  ', $user['LastName'] ?></p>
+                                                    <p class="text-xs text-uppercase text-secondary mb-0"><?=$c['FirstName'], '  ', $c['LastName'] ?></p>
                                                 </td>
                                             
                                                 <td class="text-center">
-                                                    <p class="text-xs text-secondary mb-0"><?=$user['Username'] ?></p>
+                                                    <p class="text-xs text-secondary mb-0"><?=$c['Username'] ?></p>
                                                 </td>
                                                
                                                 <td class="text-center text-xs">
-                                                    <!-- nakalagay dito kung anong role nung naglogin example admin, staff, manager or owner tingnan mo na lang to dun sa coffee na file kung paano ang pagkakagawa-->
-                                                    <?=$user['UserRole'] ?>
+                                                    <?=$c['birthdate'] ?>
                                                 </td>
-                                                <td class="align-middle text-center">
-                                                    <a href="<?= base_url('/adminedituser/' .$user['UserID']) ?>" id='user_id'
-                                                        class="text-success font-weight-bold text-xs me-2"
-                                                        data-toggle="tooltip" data-original-title="Edit Coffee">
-                                                        Edit
-                                                    </a>||
-                                                    <a href="<?= base_url('/deleteuser/' .$user['UserID']) ?>" class="text-danger font-weight-bold text-xs"
-                                                        id='user_id' data-toggle="tooltip" data-original-title="Delete User">Delete</a>
+
+                                                <td class="text-center text-xs">
+                                                    <?=$c['email'] ?>
+                                                </td>
+
+                                                <td class="text-center text-xs">
+                                                    <?=$c['ContactNo'] ?>
+                                                </td>
+
+                                                <td class="text-center text-xs">
+                                                    <?=$c['gender'] ?>
+                                                </td>
+
+                                                <td class="text-center text-xs">
+                                                    <?=$c['address'] ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

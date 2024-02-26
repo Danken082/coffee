@@ -73,7 +73,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights Reserved | </i><a href="https://www.facebook.com/crossroadcafedeli" target="_blank">Crossroads Coffee and Deli</a></p>
+                        <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights Reserved | </i><a target="_blank">Crossroads Coffee and Deli</a></p>
                     </div>
                 </div>
             </div>

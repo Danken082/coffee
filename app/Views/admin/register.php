@@ -83,12 +83,12 @@
                                                 <small class="text-danger"><?= $validation->getError('ContactNo') ?></small>
                                             <?php endif;?>
                                             <div class="input-group input-group-outline mb-3">
-                                                <select name="gender" id="" class="form-control "><option disabled selected>Gender</option><option value="male">Male</option><option value="female">Female</option></select>    
+                                                <select name="gender" id="" class="form-control "><option disabled selected>Gender</option><option value="Male">Male</option><option value="Female">Female</option></select>    
                                                 <?php if(isset($validation)):?>
                                                     <small class="text-danger"><?= $validation->getError('gender') ?></small>
                                                 <?php endif;?>
                                             </div>
-                                            <label>Birthday:</label>
+                                            <label>Birthdate:</label>
                                             <div class="input-group input-group-outline mb-3">
                                                 <input type="date" name="birthdate" class="form-control" required>
                                                 <?php if(isset($validation)):?>
@@ -102,14 +102,14 @@
                                                     <small class="text-danger"><?= $validation->getError('address') ?></small>
                                                 <?php endif;?>
                                             </div>
-                                            <input type="hidden" name="UserRole" value="customer">
+                                            <input type="hidden" name="UserRole" value="Customer">
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Register</button>
                                             </div>
                                         </form>
                                     </div><br>
                                     <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                                        <p class="mb-2 text-sm mx-auto">Already have an account?<a href="<?= site_url(); ?>" class="text-primary text-gradient font-weight-bold">Sign in</a></p><br>
+                                        <p class="mb-2 text-sm mx-auto">Already have an account?<a href="<?= site_url(); ?>" class="text-primary text-gradient font-weight-bold"> Sign in</a></p><br>
                                     </div>
                                 </div>
                             </div>
