@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class AdminUserModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'adminusers';
-    protected $primaryKey       = 'user_id';
+    protected $table            = 'user';
+    protected $primaryKey       = 'UserID';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'username', 'password', 'role', 'Created_at'];
+    protected $allowedFields    = ['LastName', 'FirstName', 'gender', 'UserRole',  'birthdate','Username', 'email', 'ContactNo', 'age', 'address', 'Password'];
 
     // Dates
     protected $useTimestamps = false;
@@ -38,4 +38,14 @@ class AdminUserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function adminuser($role)
+    {
+        return $this->where('UserRole', $role)->findAll();
+    }
+
+    public function customeruser($role)
+    {
+        return $this->where('UserRole', $role)->findAll();
+    }
 }

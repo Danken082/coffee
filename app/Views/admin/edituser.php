@@ -13,15 +13,13 @@
     </head>
     <body>
         <div class="col-md-12">
-            <!-- Edit Product Form -->
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div
                         class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                        <h6 class="text-white text-capitalize ps-3">Edit User</h6>
+                        <h6 class="text-white text-capitalize ps-3">Edit Admin User</h6>
                     </div>
                 </div>
-
                 <div class="card-body px-4 pb-3">
                     <form action="<?= base_url('/updateuser/'. $euser['UserID'])?>" class="row g-3" method="POST">
                         <div class="col-md-5">
@@ -37,26 +35,37 @@
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <label for="email" class="form-label">First Name</label>
+                            <label for="username" class="form-label">Username</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="disabled" disabled class="form-control" id="email" name="FirstName" value="<?=$euser['FirstName'] ?>">
+                                <input type="text" class="form-control" id="username" name="Username" value="<?=$euser['Username'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="email" class="form-label">Email</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="password" name="password" value="<?=$euser['password'] ?>">
+                                <input type="text" class="form-control" id="email" name="email" value="<?=$euser['email'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <label for="datecreated" class="form-label">Date Created</label>
+                            <label for="birthdate" class="form-label">Birthdate</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="datetime-local"  class="form-control datetimepicker" name="Created_at" value="<?=$euser['Created_at'] ?>">
+                                <input type="date" class="form-control" id="birthdate" name="birthdate" value="<?=$euser['birthdate'] ?>">
                             </div>
                         </div>
-                        <select name="role">
+                        <div class="col-md-5">
+                            <label for="contact number" class="form-label">Contact Number</label>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="text" class="form-control" id="contact number" name="ContactNo" value="<?=$euser['ContactNo'] ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="address" class="form-label">Address</label>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="text" class="form-control" id="address" name="address" value="<?=$euser['address'] ?>">
+                            </div>
+                        </div>
+                        <select name="UserRole">
                             <option>Admin</option>
-                            <option>Manager</option>
                             <option>Owner</option>
                             <option>Staff</option>
                         </select>

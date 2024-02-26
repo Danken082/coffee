@@ -84,13 +84,13 @@ class UserController extends BaseController
           $session->set($ses_data);
             switch($user['UserRole'])
             {
-                case 'admin':
+                case 'Admin':
                     return redirect()->to('/adminhome');
                     break;
-                case 'customer':
+                case 'Customer':
                     return redirect()->to('/user/home');
                     break;
-                case 'staff':
+                case 'Staff':
                     return redirect()->to('/user/home');
                     break;
                 default:
@@ -188,6 +188,30 @@ class UserController extends BaseController
     public function home_single_product()
     {
         return view('/user/single_product');
+    }
+
+    public function edit_profile($id)
+    {
+        $data['eprof'] = $this->user->find($id);
+        return view('/user/edit_profile', $data);
+    }
+
+    public function updateprofile($id)
+    {
+        $user = new UserModel();
+        $data = [
+            'LastName' => $this->request->getVar('LastName'),
+            'FirstName' => $this->request->getVar('FirstName'),
+            'gender' => $this->request->getVar('gender'),
+            'email' => $this->request->getVar('email'),
+            'ContactNo' => $this->request->getVar('ContactNo'),
+            'Username' => $this->request->getVar('Username'),
+            'address' => $this->request->getVar('address'),
+            'birthdate' => $this->request->getVar('birthdate'),
+            'profile' => $this->request->getVar('profile_img'),
+        ];
+        $user->update($id, $data);
+        return redirect()->to(base_url('/user/home'));
     }
  
 }

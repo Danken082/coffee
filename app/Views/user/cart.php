@@ -41,7 +41,7 @@
 				    		<tbody>
 							<?php foreach($myCart as $cart):?>
 						      	<tr class="text-center">
-						        	<td class="product-remove"><a href="<?= base_url('/removetocart/') .$cart['id']?>" onclick="return confirm('are you sure you want to remove this to your cart?')"><span class="icon-close"></span></a></td>
+						        	<td class="product-remove"><a href="<?= base_url('/removetocart/') .$cart['prod_id']?>" onclick="return confirm('Are you sure you want to remove this to your cart?')"><span class="icon-close"></span></a></td>
 									<td class="image-prod"><div class="img" style="background-image:url(images/menu-2.jpg);"></div></td>
 									<td class="product-name">
 										<h3><?= $cart['prod_name']?></h3>
@@ -56,9 +56,7 @@
 						        	<td class="total">₱ <?= $cart['total']?></td>
 									<td><input type="checkbox" class="item-checkbox"></td>
 						      	</tr>
-								
 								<?php endforeach;?>
-						      
 						    </tbody>
 						</table>
 					</div>
@@ -97,18 +95,19 @@
 
 		<?php include('header.php'); ?>
 		<?php include('footer.php'); ?>
-<script>
-    function selectAllItems() {
-      
-        var selectAllCheckbox = document.getElementById("selectAll");
+		<script>
+			function selectAllItems() {
+			
+				var selectAllCheckbox = document.getElementById("selectAll");
 
-      
-        var itemCheckboxes = document.querySelectorAll(".item-checkbox");
+			
+				var itemCheckboxes = document.querySelectorAll(".item-checkbox");
 
-      
-        itemCheckboxes.forEach(function (checkbox) {
-            checkbox.checked = selectAllCheckbox.checked;
-        });
-    }
-</script>  	</body>
+			
+				itemCheckboxes.forEach(function (checkbox) {
+					checkbox.checked = selectAllCheckbox.checked;
+				});
+			}
+		</script>  	
+</body>
 </html>

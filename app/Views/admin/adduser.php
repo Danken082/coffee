@@ -24,24 +24,39 @@
                 <div class="card-body px-4 pb-3">
                     <form action="<?= base_url('adminadduser')?>" class="row g-3" method="POST">
                         <div class="input-group input-group-outline my-3">
-                            <label for="name" class="form-label"></label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                            <label for="lastname" class="form-label"></label>
+                            <input type="text" class="form-control" id="lastname" name="LastName" placeholder="LastName" required>
+                        </div>
+                        <div class="input-group input-group-outline my-3">
+                            <label for="firstname" class="form-label"></label>
+                            <input type="text" class="form-control" id="firstname" name="FirstName" placeholder="FirstName" required>
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="username" class="form-label"></label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                            <input type="text" class="form-control" id="username" name="Username" placeholder="Username" required>
+                        </div>
+                        <div class="input-group input-group-outline my-3">
+                            <label class="form-label"></label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <label for="birthdate" class="form-label">Birthdate:</label>
+                        <div class="input-group input-group-outline my-3">
+                            <input type="date" class="form-control" id="birthdate" name="birthdate"required>
+                        </div>
+                        <div class="input-group input-group-outline my-3">
+                            <label for="contact number" class="form-label"></label>
+                            <input type="text" class="form-control" id="contact number" name="ContactNo" placeholder="ContactNo" required>
+                        </div>
+                        <div class="input-group input-group-outline my-3">
+                            <label for="address" class="form-label"></label>
+                            <input type="text" class="form-control" id="address" name="address" placeholder="address" required>
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="password" class="form-label"></label>
-                            <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
+                            <input type="text" class="form-control" id="password" name="Password" placeholder="Password" required>
                         </div>
-                        <label for="datecreate" class="form-label">Date Created</label>
-                        <div class="input-group input-group-outline my-3">
-                            <input type="datetime-local"  class="form-control datetimepicker" name="Created_at" required>
-                        </div>
-                        <select name="role">
+                        <select name="UserRole">
                             <option>Admin</option>
-                            <option>Manager</option>
                             <option>Owner</option>
                             <option>Staff</option>
                         </select>

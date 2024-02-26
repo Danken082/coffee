@@ -49,12 +49,12 @@
                         <li class="nav-item nav-profile dropdown">
                             <a class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="nav-profile-img">
-                                    <img src="/assets/user/images/<?= session()->get('profile_img') ?>" alt="pfp"><p class="mb-1 text-black"><?= session()->get('LastName')?> <?= session()->get('FirstName')?></p>
+                                    <img src="/assets/user/images/<?= session()->get('profile_img') ?>" alt="pfp" class="rounded-circle" width="150"><p style="font-size:x-small"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p>
                                     <span class="availability-status online"></span>
                                 </div>
                             </a>
                             <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item" href="#"><i class="mdi mdi-cached me-2 text-success"></i>See Profile</a>
+                                <a class="dropdown-item" href="<?= site_url("user/editprofile/"); ?><?= session()->get('UserID')?>"><i class="mdi mdi-cached me-2 text-success"></i>Edit Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?= site_url("logout"); ?>">
                                 <i class="mdi mdi-logout me-2 text-primary"></i> Logout </a>

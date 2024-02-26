@@ -80,7 +80,7 @@
            
             <label for="ProductPrice">Product Price:</label>
             <input type="text" name="prod_mprice" value="<?= $cart['prod_mprice']?>" readonly>
-            <img src="<?php base_url(); ?>assets/images/<?= $cart['prod_img'];?>" alt="">
+            <img src="<?php base_url(); ?>/assets/images/<?= $cart['prod_img'];?>" alt="">
             <input type="number" name="quantity" placeholder="Enter Quantity" required>
             <input type="hidden" name="Status" value="oncart">
             <button type="submit">Add to Cart</button>

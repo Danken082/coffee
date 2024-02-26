@@ -18,6 +18,7 @@ $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFil
 $routes->get('/adminmanage_user', 'AdminController::getmanageuser', ['filter'=>'authFilter']);
 $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter']);
 $routes->post('/adminadduser', 'AdminController::adduser', ['filter'=>'authFilter']);
+$routes->get('/admincustomer_user', 'AdminController::getcustomeruser', ['filter'=>'authFilter']);
 $routes->get('/adminequip', 'AdminController::equip', ['filter'=>'authFilter']);
 $routes->get('/adminprod', 'AdminController::products', ['filter'=>'authFilter']);
 $routes->get('/adminedituser/(:any)', 'AdminController::edituser/$1');
@@ -96,6 +97,8 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 
 /*For UserSide*/ 
 $routes->get('user/home', 'UserController::home',['filter'=>'cusFilter']);
+$routes->get('user/editprofile/(:any)', 'UserController::edit_profile/$1');
+$routes->post('user/updateprofile/(:any)', 'UserController::updateprofile/$1');
 $routes->get('user/menu', 'UserController::home_menu',['filter'=>'cusFilter']);
 $routes->get('user/services', 'UserController::home_services',['filter'=>'cusFilter']);
 $routes->get('user/blog', 'UserController::home_blog',['filter'=>'cusFilter']);
@@ -114,4 +117,3 @@ $routes->get('admin/sidebar', 'AdminController::admin_side');
 $routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1');
 $routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');
 $routes->get('/removetocart/(:any)', 'CartController::remove/$1');
-
