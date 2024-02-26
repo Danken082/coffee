@@ -87,6 +87,7 @@
             <input type="text" name="prod_mprice" value="<?= $cart['prod_mprice']?> Medium" readonly>
             <input type="text" name="prod_lprice" value="<?= $cart['prod_lprice']?> Large" readonly>
             <img src="<?php base_url(); ?>assets/images/<?= $cart['prod_img'];?>" alt="">
+
             <input type="number" name="quantity" placeholder="Enter Quantity" required>
             <input type="hidden" name="Status" value="oncart">
             <button type="submit">Add to Cart</button>
