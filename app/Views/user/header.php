@@ -22,6 +22,13 @@
         <link rel="stylesheet" href="/assets/user/css/icomoon.css"/>
         <link rel="stylesheet" href="/assets/user/css/styles.css"/>
     </head>
+    <style>
+        .img{
+            width: 50px;
+            height: 50px;
+            float:right;          
+        }
+    </style>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
@@ -49,11 +56,12 @@
                         <li class="nav-item nav-profile dropdown">
                             <a class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="nav-profile-img">
-                                    <img src="/assets/user/images/<?= session()->get('profile_img') ?>" alt="pfp" class="rounded-circle" width="150"><p style="font-size:x-small"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p>
+                                  <p style="font-size:x-small"><?= session()->get('FirstName')?> <?= session()->get('LastName')?> <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="150"></p>
                                     <span class="availability-status online"></span>
+ 
                                 </div>
                             </a>
-                            <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
                                 <a class="dropdown-item" href="<?= site_url("user/editprofile/"); ?><?= session()->get('UserID')?>"><i class="mdi mdi-cached me-2 text-success"></i>Edit Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?= site_url("logout"); ?>">

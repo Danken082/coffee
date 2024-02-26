@@ -15,7 +15,8 @@ class UserController extends BaseController
         helper(['form']);
     }
     public function register()
-    {
+    {   
+       
         $rules = [
 
             'LastName' => 'required|min_length[2]',
@@ -29,12 +30,14 @@ class UserController extends BaseController
         ];
 
         if($this->validate($rules)){
-            $data = [
+        
+                $data = [
                 'LastName' => $this->request->getVar('LastName'),
                 'FirstName' => $this->request->getVar('FirstName'),
                 'gender' => $this->request->getVar('gender'),
                 'email' => $this->request->getVar('email'),
                 'ContactNo' => $this->request->getVar('ContactNo'),
+                'profile_img' => 'default.avif',
                 'UserRole'   => $this->request->getVar('UserRole'),
                 'Username' => $this->request->getVar('Username'),
                 'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
@@ -73,6 +76,7 @@ class UserController extends BaseController
             'UserRole' => $user['UserRole'],
             'birthdate' => $user['birthdate'],
             'email' => $user['email'],
+            'profile_img' => $user['profile_img'],
             'Username' => $user['Username'],
             'Password' => $user['Password'],
             'ContactNo' => $user['ContactNo'],

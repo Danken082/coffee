@@ -23,7 +23,8 @@
                     <div class="d-flex flex-column">
                       <div class="align-items-center text-center">
                       <h4><p class="mb-1 text-black"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p></h4><br>
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="pfp" class="rounded-circle" width="150" value="<?=$eprof['profile_img'] ?>"><br><br>
+                        <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle" width="150" value="<?=$eprof['profile_img'] ?>"><br><br>
+   
                         <button id="editProfileBtn" class="btn btn-primary" type="button">Edit Profile</button><br><br>
                         <input type="file" id="fileInput" name="profile_img" style="display: none;">
                       </div>

@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img src="<?php base_url()?> assets/user/image/ <?= session()->get('profile_img')?>" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
                     <h4><p class="mb-1 text-black"><?= session()->get('LastName')?> <?= session()->get('FirstName')?></p></h4>
                     </div>
