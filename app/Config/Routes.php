@@ -117,3 +117,4 @@ $routes->get('admin/sidebar', 'AdminController::admin_side');
 $routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1');
 $routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');
 $routes->get('/removetocart/(:any)', 'CartController::remove/$1');
+$routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::placeOrder');

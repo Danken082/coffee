@@ -20,7 +20,6 @@
             <option value="takeout">Take Out</option>
             
         </Select>
-        <input type="hidden" name="order_status" value="notPaid">
         </form>
 </body>
 </html>

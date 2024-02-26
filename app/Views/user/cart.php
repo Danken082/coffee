@@ -6,6 +6,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
   	</head>
+
 	<body>
 
     <section class="home-slider owl-carousel">
@@ -20,7 +21,14 @@
 			</div>
 		</div>
     </section>
-		
+	<?php if(session()->getFlashdata('msg')):?>
+	<div class="alert alert-warning">
+		<?= session()->getFlashdata('msg') ?>
+
+	</div>
+	<?php endif;?>
+
+	<form action="<?= base_url('CartController/placeOrder')?>">
 	<section class="ftco-section ftco-cart">
 		<div class="container">
 			<div class="row">
@@ -39,22 +47,24 @@
 			      				</tr>
 			    			</thead>
 				    		<tbody>
-							<?php foreach($myCart as $cart):?>
+						
+							<?php foreach($myCart as $item):?>
+								
 						      	<tr class="text-center">
-						        	<td class="product-remove"><a href="<?= base_url('/removetocart/') .$cart['prod_id']?>" onclick="return confirm('Are you sure you want to remove this to your cart?')"><span class="icon-close"></span></a></td>
+						        	<td class="product-remove"><a href="<?= base_url('/removetocart/') .$item['prod_id']?>" onclick="return confirm('Are you sure you want to remove this to your cart?')"><span class="icon-close"></span></a></td>
 									<td class="image-prod"><div class="img" style="background-image:url(images/menu-2.jpg);"></div></td>
 									<td class="product-name">
-										<h3><?= $cart['prod_name']?></h3>
+										<h3><?= $item['prod_name']?></h3>
 										<p>Far far away, behind the word mountains, far from the countries</p>
 									</td>
-									<td class="price">₱ <?= $cart['prod_mprice']?></td>
+									<td class="price">₱ <?= $item['prod_mprice']?></td>
 									<td class="quantity">
 										<div class="input-group mb-3">
-											<input type="text" name="quantity" class="quantity form-control input-number" value="<?= $cart['quantity']?>" min="1" max="100">
+											<input type="text" name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
 										</div>
 									</td>
-						        	<td class="total">₱ <?= $cart['total']?></td>
-									<td><input type="checkbox" class="item-checkbox"></td>
+						        	<td class="total">₱ <?= $item['total']?></td>
+									<td><input type="checkbox" name="items[]" value= "<?= $item['id']?>"class="item-checkbox"></td>
 						      	</tr>
 								<?php endforeach;?>
 						    </tbody>
@@ -87,12 +97,12 @@
     						<span>$17.60</span>
     					</p>
     				</div>
-    				<p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+    				<p class="text-center"><button type="submit" class="btn btn-primary py-3 px-4 button">Proceed to Checkout</button></p>
     			</div>
     		</div>
 		</div>
 	</section>
-
+	</form>
 		<?php include('header.php'); ?>
 		<?php include('footer.php'); ?>
 		<script>

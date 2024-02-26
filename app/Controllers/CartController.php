@@ -182,8 +182,57 @@ class CartController extends BaseController
         }
       }
 
+      public function placeOrder()
+      {
+        $selectedItems = $this->request->getVar('items');
+
+        if(empty($selectedItems))
+        {
+          return redirect()->to('user/cart')->with('msg', 'No items selected for order');
+        }
+       $cartItems = $this->getCartItems($selectedItems);
+       $this->insertOrder($cartItems);
+       $this->removedItemsFromcart($selectedItems);
+
+        return redirect()->to('user/cart')->with('msg', 'Order Placed succesfully');
+      }
+
+
+      
+      private function getCartItems($selectedItems)
+      {
+        $cartItems = $this->crt->where('id', $selectedItems)->get()->getResultArray();
+
+        return $cartItems;
+      }
+      private function insertOrder($cartItems)
+      {
+        $oData = [];
+
+        foreach($cartItems as $item)
+        {
+          $oData[]= [
+            'CustomerID' => $item['CustomerID'],
+            'ProductID' => $item['ProductID'],
+            'total' => $item['total'],
+            'quantity' => $item['quantity'],
+            'size' => $item['size'],
+            'orderStatus' => 'onProccess',
+            'pamentStatus' => 'notPaid',
+            'orderType' => 'onHouse'            
+
+          ];
+        }
+
+        $this->order->insertBatch($oData);
+      }
+      private function removedItemsFromcart($selectedItems)
+      {
+        $this->crt->whereIn('id', $selectedItems)->delete();
+      }
+
     //   public function prod()
-    //   {
+    //   { 
 
     //     $data = 
     //     [
