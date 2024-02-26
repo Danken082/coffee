@@ -45,3 +45,46 @@ in APPPATH\Views\user\addtocart.php on line 75.
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 15:54:21 --> Undefined variable $i
+in APPPATH\Views\user\pos.php on line 42.
+ 1 APPPATH\Views\user\pos.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $i', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\pos.php', 42)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\pos.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/pos', [], true)
+ 5 APPPATH\Controllers\ChatController.php(24): view('user/pos')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChatController->try()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChatController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 15:55:07 --> Undefined variable $i
+in APPPATH\Views\user\pos.php on line 42.
+ 1 APPPATH\Views\user\pos.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $i', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\pos.php', 42)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\pos.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/pos', [], true)
+ 5 APPPATH\Controllers\ChatController.php(24): view('user/pos')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChatController->try()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChatController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 16:00:34 --> Class "App\Controllers\ProductModel" not found
+in APPPATH\Controllers\ChatController.php on line 24.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ChatController->try()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChatController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-24 16:14:38 --> Trying to access array offset on value of type null
+in APPPATH\Views\user\addtocart.php on line 75.
+ 1 APPPATH\Views\user\addtocart.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\addtocart.php', 75)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\addtocart.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/addtocart', [], true)
+ 5 APPPATH\Controllers\CartController.php(102): view('user/addtocart', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->getProd('assets', 'images', 'fries.jpg')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

@@ -15,7 +15,8 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "laminas/laminas-escaper": "^2.9",
-        "psr/log": "^1.1"
+        "psr/log": "^1.1",
+        "stripe/stripe-php": "^13.12"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.5",

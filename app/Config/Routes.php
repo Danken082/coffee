@@ -115,3 +115,7 @@ $routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$
 $routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');
 $routes->get('/removetocart/(:any)', 'CartController::remove/$1');
 
+
+
+
+$routes->get('try', 'ChatController::try');

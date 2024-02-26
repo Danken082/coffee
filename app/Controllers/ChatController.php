@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-
+use App\Models\ProductModel;
 class ChatController extends BaseController
 {
     // public function index()
@@ -18,4 +18,11 @@ class ChatController extends BaseController
     // {
     //     if()
     // }
+
+    public function try()
+    {
+        $menu = new ProductModel();
+        $prod['app'] = $menu->products('Appetizer');
+        return view('user/pos', $prod);
+    }
 }

@@ -72,14 +72,19 @@
 <body>
     <div class="container">
         <h1>Add to Cart</h1>
-        <form action="<?= base_url('/addtocart/' .$cart['prod_mprice'])?>">
+        <form action="<?= base_url('/addtocart/' .$cart['prod_id'])?>">
             <input type="hidden" name="ProductID" value ="<?= $cart['prod_id']?>" readonly>
             <input type="hidden" name ="CustomerID" value ="<?= session()->get('UserID')?>" readonly>
             <label for="ProductName">Product Name:</label>
             <input type="text" name="prod_name" value= "<?= $cart['prod_name']?>" readonly>
-           
+            <select name="size" id="size">
+                <option selected disabled>Size</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
             <label for="ProductPrice">Product Price:</label>
-            <input type="text" name="prod_mprice" value="<?= $cart['prod_mprice']?>" readonly>
+            <input type="text" name="prod_mprice" value="<?= $cart['prod_mprice']?> Medium" readonly>
+            <input type="text" name="prod_lprice" value="<?= $cart['prod_lprice']?> Large" readonly>
             <img src="<?php base_url(); ?>assets/images/<?= $cart['prod_img'];?>" alt="">
             <input type="number" name="quantity" placeholder="Enter Quantity" required>
             <input type="hidden" name="Status" value="oncart">
