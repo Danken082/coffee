@@ -102,6 +102,13 @@
                                                     <small class="text-danger"><?= $validation->getError('address') ?></small>
                                                 <?php endif;?>
                                             </div>
+                                            <div class="input-group input-group-outline mb-3">
+                                                <label class="form-label"></label>
+                                                <input type="file" name="profile_img" class="form-control" required>
+                                                <?php if(isset($validation)):?>
+                                                    <small class="text-danger"><?= $validation->getError('profile_img') ?></small>
+                                                <?php endif;?>
+                                            </div>
                                             <input type="hidden" name="UserRole" value="Customer">
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Register</button>

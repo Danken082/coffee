@@ -56,7 +56,7 @@
                         <li class="nav-item nav-profile dropdown">
                             <a class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="nav-profile-img">
-                                    <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="150"><p style="font-size:x-small"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p>
+                                    <img src="<?= base_url()?>assets/uploads/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="150"><p style="font-size:x-small"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p>
                                     <span class="availability-status online"></span>
                                 </div>
                             </a>

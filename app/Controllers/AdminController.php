@@ -59,6 +59,10 @@ class AdminController extends BaseController
         return view('/admin/order');
     }
 
+    public function orderpayment(){
+        return view('/admin/orderpayment');
+    }
+
     public function gethistory()
     {
         $history = new HistoryModel();

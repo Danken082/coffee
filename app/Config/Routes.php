@@ -14,6 +14,7 @@ $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::initDayChart', ['filter'=>'authFilter']);
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
+$routes->get('/adminorderpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
 $routes->get('/adminmanage_user', 'AdminController::getmanageuser', ['filter'=>'authFilter']);
 $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter']);

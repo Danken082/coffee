@@ -44,3 +44,15 @@ WHERE `email` = :email:
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-02-27 12:10:45 --> Undefined variable $p
+in APPPATH\Views\admin\orderpayment.php on line 55.
+ 1 APPPATH\Views\admin\orderpayment.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $p', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 55)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(63): view('/admin/orderpayment')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->orderpayment()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
