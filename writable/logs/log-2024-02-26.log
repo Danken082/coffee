@@ -956,7 +956,11 @@ in APPPATH\Views\user\addtocart.php on line 75.
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+<<<<<<< Updated upstream
 ERROR - 2024-02-26 08:52:29 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
+=======
+ERROR - 2024-02-26 09:30:17 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
+>>>>>>> Stashed changes
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'coffeeledgerdb', 3306, '', 0)
 #1 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
@@ -972,7 +976,11 @@ Stack trace:
 #11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
 #12 {main}
 
+<<<<<<< Updated upstream
 Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:229
+=======
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:229
+>>>>>>> Stashed changes
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
 #1 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
@@ -986,8 +994,13 @@ Stack trace:
 #9 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
 #10 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
 #11 {main}
+<<<<<<< Updated upstream
 CRITICAL - 2024-02-26 08:52:29 --> Unable to connect to the database.
 Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+=======
+CRITICAL - 2024-02-26 09:30:17 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+>>>>>>> Stashed changes
 in SYSTEMPATH\Database\BaseConnection.php on line 427.
  1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
  2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
@@ -1002,6 +1015,7 @@ WHERE `email` = :email:
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+<<<<<<< Updated upstream
 CRITICAL - 2024-02-26 11:25:08 --> Undefined variable $cart
 in APPPATH\Views\user\cart.php on line 49.
  1 APPPATH\Views\user\cart.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cart', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php', 49)
@@ -1799,3 +1813,5 @@ in APPPATH\Views\user\edit_profile.php on line 21.
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+=======
+>>>>>>> Stashed changes

@@ -80,13 +80,13 @@
 								<div class="d-md-flex">
 									<div class="form-group">
 									
-									<input type="text" disabled name="LastName" class="form-control" value="<?= $rsv['LastName'] ?>" placeholder="First Name">
+									<input type="text" disabled name="LastName" class="form-control" value="<?= $rsv['LastName'] ?>">
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="text" disabled name="FirstName" class="form-control" value="<?= $rsv['FirstName'] ?>" placeholder="Last Name">
+										<input type="text" disabled name="FirstName" class="form-control" value="<?= $rsv['FirstName'] ?>">
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="text" disabled name="Email"class="form-control" value="<?= $rsv['email'] ?>" placeholder="Email">
+										<input type="text" disabled name="Email"class="form-control" value="<?= $rsv['email'] ?>">
 									</div>
 								</div>
 								<div class="d-md-flex">
@@ -302,7 +302,7 @@
 
 			<section class="ftco-gallery">
 				<div class="container-wrap">
-				<div class="row justify-content-center mb-5">
+					<div class="row justify-content-center mb-5">
 						<div class="col-md-7 heading-section text-center ftco-animate">
 							<span class="subheading">Discover</span>
 							<h2 class="mb-4">Our Dear Customers</h2>

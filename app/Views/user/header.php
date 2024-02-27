@@ -23,10 +23,10 @@
         <link rel="stylesheet" href="/assets/user/css/styles.css"/>
     </head>
     <style>
-        .img{
+        .rounded-circle{
             width: 50px;
             height: 50px;
-            float:right;          
+            float: right;          
         }
     </style>
     <body>
@@ -56,9 +56,8 @@
                         <li class="nav-item nav-profile dropdown">
                             <a class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="nav-profile-img">
-                                  <p style="font-size:x-small"><?= session()->get('FirstName')?> <?= session()->get('LastName')?> <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="150"></p>
+                                    <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="150"><p style="font-size:x-small"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p>
                                     <span class="availability-status online"></span>
- 
                                 </div>
                             </a>
                                <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">

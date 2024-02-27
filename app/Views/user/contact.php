@@ -26,7 +26,7 @@
 					<div class="col-md-4 contact-info ftco-animate">
 						<div class="row">
 							<div class="col-md-12 mb-4">
-	              <h2 class="h4">Contact Information</h2>
+	              <h2>Contact Information</h2>
 	            </div>
 	            <div class="col-md-12 mb-3">
 	              <p><span>Address:</span> Tawiran, Calapan Oriental Mindoro Philippines</p>
@@ -48,12 +48,12 @@
             	<div class="row">
             		<div class="col-md-6">
 	                <div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Your Name">
+	                  <input type="text" disabled class="form-control" placeholder="<?= session()->get('FirstName')?> <?= session()->get('LastName')?>">
 	                </div>
                 </div>
                 <div class="col-md-6">
 	                <div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Your Email">
+	                  <input type="text" disabled class="form-control" placeholder="<?= session()->get('email')?>">
 	                </div>
 	                </div>
               </div>
