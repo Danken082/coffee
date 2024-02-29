@@ -7724,13 +7724,13 @@ h1, h2, h3, h4, h5,
   .btn:hover, .btn:active, .btn:focus {
     outline: none; }
   .btn.btn-primary {
-    background: #c49b63;
+    background: transparent;
     border: 1px solid #c49b63;
-    color: #000; }
+    color: white; }
     .btn.btn-primary:hover {
       border: 1px solid #c49b63;
-      background: transparent;
-      color: #c49b63; }
+      background: #c49b63;
+      color: black; }
     .btn.btn-primary.btn-outline-primary {
       border: 1px solid #c49b63;
       background: transparent;
@@ -7738,7 +7738,7 @@ h1, h2, h3, h4, h5,
       .btn.btn-primary.btn-outline-primary:hover {
         border: 1px solid transparent;
         background: #c49b63;
-        color: #fff; }
+        color: black; }
   .btn.btn-white {
     background: #fff;
     border: 1px solid #fff;

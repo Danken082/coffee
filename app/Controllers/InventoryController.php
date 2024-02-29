@@ -21,6 +21,7 @@ class InventoryController extends BaseController
         $prod = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
@@ -52,6 +53,7 @@ class InventoryController extends BaseController
         $hot = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
@@ -89,6 +91,7 @@ class InventoryController extends BaseController
         $iced = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
@@ -126,6 +129,7 @@ class InventoryController extends BaseController
         $flav = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
@@ -163,6 +167,7 @@ class InventoryController extends BaseController
         $non = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
@@ -200,6 +205,7 @@ class InventoryController extends BaseController
         $frap = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
@@ -237,6 +243,7 @@ class InventoryController extends BaseController
         $other = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
@@ -262,6 +269,7 @@ class InventoryController extends BaseController
         $prod = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_categ' => $this->request->getPost('prod_categ'),
@@ -292,6 +300,7 @@ class InventoryController extends BaseController
         $meal = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
@@ -328,6 +337,7 @@ class InventoryController extends BaseController
         $pasta = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
@@ -364,6 +374,7 @@ class InventoryController extends BaseController
         $app = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
@@ -400,6 +411,7 @@ class InventoryController extends BaseController
         $salad = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
@@ -435,6 +447,7 @@ class InventoryController extends BaseController
         $soup = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),
@@ -471,6 +484,7 @@ class InventoryController extends BaseController
         $sand = new ProductModel();
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
+            'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_code' => $this->request->getPost('prod_code'),

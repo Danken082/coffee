@@ -54,7 +54,8 @@
 												<?php foreach($app as $a): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$a['prod_img']?>">
-														<h3><a><?=$a['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$a['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$a['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?= $a['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/') .$a['prod_id'] ?>">Add to cart</a></p>
@@ -73,7 +74,8 @@
 												<?php foreach($pasta as $p): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$p['prod_img']?>">
-														<h3><a><?=$p['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$p['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$p['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $p['prod_id'] ?>">Add to cart</a></p>
@@ -90,7 +92,8 @@
 												<?php foreach($meal as $m): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$m['prod_img']?>">
-														<h3><a><?=$m['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$m['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$m['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?= $m['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('/viewProd/'). $m['prod_id'] ?>">Add to cart</a></p>
@@ -107,7 +110,8 @@
 												<?php foreach($salad as $s): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
-														<h3><a><?=$s['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $s['prod_id'] ?>">Add to cart</a></p>
@@ -124,7 +128,8 @@
 												<?php foreach($soup as $s): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
-														<h3><a><?=$s['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $s['prod_id'] ?>">Add to cart</a></p>
@@ -141,7 +146,8 @@
 												<?php foreach($sand as $s): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
-														<h3><a><?=$s['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $s['prod_id'] ?>">Add to cart</a></p>
@@ -158,7 +164,8 @@
 												<?php foreach($hot as $h): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$h['prod_img']?>">
-														<h3><a><?=$h['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$h['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$h['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('/viewProd/'). $h['prod_id'] ?>">Add to cart</a></p>
@@ -175,7 +182,8 @@
 												<?php foreach($iced as $i): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$i['prod_img']?>">
-														<h3><a><?=$i['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$i['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$i['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$i['prod_mprice'] ?><br>Large ₱ <?=$i['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $i['prod_id'] ?>">Add to cart</a></p>
@@ -192,7 +200,8 @@
 												<?php foreach($flav as $f): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$f['prod_img']?>">
-														<h3><a><?=$f['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$f['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$f['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$f['prod_mprice'] ?><br>Large ₱ <?=$f['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $f['prod_id'] ?>">Add to cart</a></p>
@@ -209,7 +218,8 @@
 												<?php foreach($non as $n): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$n['prod_img']?>">
-														<h3><a><?=$n['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$n['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$n['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $n['prod_id'] ?>">Add to cart</a></p>
@@ -226,7 +236,8 @@
 												<?php foreach($coffee as $c): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$c['prod_img']?>">
-														<h3><a><?=$c['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$c['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$c['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $c['prod_id'] ?>">Add to cart</a></p>
@@ -243,7 +254,8 @@
 												<?php foreach($other as $o): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/" .$o['prod_img']?>">
-														<h3><a><?=$o['prod_name']?></a></h3>
+														<h3 style="font-weight:bold;"><a><?=$o['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$o['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $o['prod_id'] ?>">Add to cart</a></p>

@@ -25,10 +25,16 @@
                 <div class="card-body px-4 pb-3">
 
                     <form action="<?= base_url('/updateappetizer/'. $eapp['prod_id'])?>" class="row g-3" method="POST">
-                    <div class="col-md-5">
+                        <div class="col-md-5">
                             <label for="Name" class="form-label">Product Name</label>
                             <div class="input-group input-group-outline my-3">
                                 <input type="text" class="form-control" id="name" name="prod_name" value="<?=$eapp['prod_name'] ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="Description" class="form-label">Product Description</label>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="text" class="form-control" id="description" name="prod_desc" value="<?=$eapp['prod_desc'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">

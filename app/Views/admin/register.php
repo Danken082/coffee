@@ -69,13 +69,6 @@
                                                 <small class="text-danger"><?= $validation->getError('email') ?></small>
                                             <?php endif;?>
                                             <div class="input-group input-group-outline mb-3">
-                                                <label class="form-label">Password</label>
-                                                <input type="password" name="Password" class="form-control" required>
-                                                <?php if(isset($validation)):?>
-                                                    <small class="text-danger"><?= $validation->getError('Password') ?></small>
-                                                <?php endif;?>
-                                            </div>
-                                            <div class="input-group input-group-outline mb-3">
                                                 <label class="form-label">Contact Number</label>
                                                 <input type="text" name="ContactNo" class="form-control" required>
                                             </div>
@@ -103,10 +96,10 @@
                                                 <?php endif;?>
                                             </div>
                                             <div class="input-group input-group-outline mb-3">
-                                                <label class="form-label"></label>
-                                                <input type="file" name="profile_img" class="form-control" required>
+                                                <label class="form-label">Password</label>
+                                                <input type="password" name="Password" class="form-control" required>
                                                 <?php if(isset($validation)):?>
-                                                    <small class="text-danger"><?= $validation->getError('profile_img') ?></small>
+                                                    <small class="text-danger"><?= $validation->getError('Password') ?></small>
                                                 <?php endif;?>
                                             </div>
                                             <input type="hidden" name="UserRole" value="Customer">
