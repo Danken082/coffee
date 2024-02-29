@@ -39,7 +39,7 @@
                 <table class="table align-items-center">
                     <thead>
                         <tr>
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">#</th>
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Customer Name</th>
 
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Name</th>
 
@@ -47,33 +47,41 @@
 
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Status</th>
 
+                            <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Order Type</th>
+
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <?php foreach($order as $orP): ?>
                         <tr>
+
                         <td class="text-center">
-                                <p class="text-xs text-primary mb-0 font-weight-bold"></p>
+                                <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['FirstName'];?> <?= $orP['LastName'];?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"></p>
+                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['prod_name'];?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"></p>
+                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['total'];?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"></p>
+                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['orderStatus'];?></p>
+                                </td>
+                                     <td class="text-center">
+                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['orderType'];?></p>
                                 </td>
                                 <td class="align-middle text-center">
-                                    <a href="" id='id'
-                                        class="text-info font-weight-bold text-xs me-2"
-                                        data-toggle="tooltip" data-original-title="Edit Coffee">
-                                        Accept
-                                    </a>||
+                                    <form action="<?= base_url('/aOrder/')?>" method="post">
+                                    <input type="hidden" name="accept" value="<?= $orP['orderID']?>">
+                                    <button type="submit"   class="text-info font-weight-bold text-xs me-2"
+                                        data-toggle="tooltip" data-original-title="Edit Coffee">Accept</button>
+                                    </form>
                                     <a href="" class="text-danger font-weight-bold text-xs"
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Decline</a>
                                 </td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

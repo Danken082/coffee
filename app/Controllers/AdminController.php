@@ -7,18 +7,20 @@ use App\Models\UserModel;
 use App\Models\AdminUserModel;
 use App\Models\HistoryModel;
 use App\Models\ProductModel;
-
+use App\Models\PaymentModel;
 class AdminController extends BaseController
 {
     private $user;
     private $history;
     private $orderprod;
     private $load;
-    
+    private $payment;
+
     public function __construct(){
         $this->user = new AdminUserModel();
         $this->history = new HistoryModel();
         $this->orderprod = new ProductModel();
+        $this->payment = new PaymentModel();
     }
 
 
@@ -60,9 +62,25 @@ class AdminController extends BaseController
     }
 
     public function orderpayment(){
-        return view('/admin/orderpayment');
-    }
 
+        $data['order'] = $this->payment->select('order.orderID, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
+        order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
+        user.FirstName, user.Username, user.ContactNo, user.address, user.gender, 
+        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_lprice, product_tbl.prod_decs')->join('product_tbl', 
+        'order.ProductID = product_tbl.prod_id')->join( 'user', 'order.CustomerID = user.UserID')->findAll();
+        return view('/admin/orderpayment', $data);
+    }
+    public function acceptOrder()
+    {
+        $aOrder = $this->request->getVar('accept');
+        $this->payment->where('orderID', $aOrder)->first();
+
+        $data =[
+            'orderStatus' => 'Accept'
+        ];
+
+        $this->payment->update($aOrder, $data);
+    }
     public function gethistory()
     {
         $history = new HistoryModel();

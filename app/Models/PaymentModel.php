@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class OrderModel extends Model
+class PaymentModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'order';
@@ -13,7 +13,7 @@ class OrderModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['CustomerID', 'ProductID', 'paymendStatus', 'orderType', 'orderDate', 'total', 'quantity', 'size', 'orderStatus', 'barcode'];
+    protected $allowedFields    = ['CustomerID','ProductID', 'paymentStatus', 'orderType', 'orderDate', 'total', 'quantity', 'size', 'orderstatus'];
 
     // Dates
     protected $useTimestamps = false;

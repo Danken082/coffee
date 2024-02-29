@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use BaconQrCode\Encoder\QrCode;
+use BaconQrCode\Common\Mode;
 use App\Models\ProductModel;
 use App\Models\CartModel;
 use App\Models\OrderModel;
@@ -18,9 +20,7 @@ class CartController extends BaseController
         $this->order = new OrderModel();
             // $this->load->library('/user/cart');
             // $this->load->model('ProductModel');
-    }
-
-    
+    }    
    
     public function home_cart()
     {
@@ -182,62 +182,73 @@ class CartController extends BaseController
         }
       }
 
-      public function placeOrder()
-      {
-        $selectedItems = $this->request->getVar('items');
+      // app/Controllers/CartController.php
 
-        if(empty($selectedItems))
+        public function placeOrder()
         {
-          return redirect()->to('user/cart')->with('msg', 'No items selected for order');
+            $selectedItems = $this->request->getVar('items');
+
+            if (empty($selectedItems)) {
+                return redirect()->to('user/cart')->with('msg', 'No items selected for order');
+            }
+
+            $cartItems = $this->getCartItems($selectedItems);
+
+            // Generate a single barcode for the entire order
+            $orderBarcode = $this->generateAlphanumericBarcode();
+
+            // Insert the same barcode for each item in the order
+            foreach ($cartItems as &$item) {
+                $item['barcode'] = $orderBarcode;
+            }
+
+            $this->insertOrder($cartItems);
+            $this->removedItemsFromcart($selectedItems);
+
+            return redirect()->to('user/cart')->with('msg', 'Order Placed successfully');
         }
-       $cartItems = $this->getCartItems($selectedItems);
-       $this->insertOrder($cartItems);
-       $this->removedItemsFromcart($selectedItems);
 
-        return redirect()->to('user/cart')->with('msg', 'Order Placed succesfully');
-      }
-
-
-      
       private function getCartItems($selectedItems)
       {
-        $cartItems = $this->crt->where('id', $selectedItems)->get()->getResultArray();
+        $cartItems = $this->crt->whereIn('id', $selectedItems)->get()->getResultArray();
 
         return $cartItems;
       }
+      
+      private function generateAlphanumericBarcode($length = 5)
+      {
+          $characters = '0123456789ASDFTYUIKMN';
+          $barcodeData = '';
+      
+          for ($i = 0; $i < $length; $i++) {
+              $barcodeData .= $characters[rand(0, strlen($characters) - 1)];
+          }
+      
+          return $barcodeData;
+      }
+      
       private function insertOrder($cartItems)
       {
-        $oData = [];
-
-        foreach($cartItems as $item)
-        {
-          $oData[]= [
-            'CustomerID' => $item['CustomerID'],
-            'ProductID' => $item['ProductID'],
-            'total' => $item['total'],
-            'quantity' => $item['quantity'],
-            'size' => $item['size'],
-            'orderStatus' => 'onProccess',
-            'pamentStatus' => 'notPaid',
-            'orderType' => 'onHouse'            
-
-          ];
-        }
-
-        $this->order->insertBatch($oData);
-      }
+          $oData = [];
+      
+          foreach ($cartItems as $item) {
+              $oData[] = [
+                  'CustomerID' => $item['CustomerID'],
+                  'ProductID' => $item['ProductID'],
+                  'total' => $item['total'],
+                  'quantity' => $item['quantity'],
+                  'size' => $item['size'],
+                  'orderStatus' => 'onProcess',
+                  'paymentStatus' => 'notPaid',
+                  'orderType' => 'onHouse',
+                  'barcode' => $item['barcode'], // Include barcode in the order data
+              ];
+          }
+      
+          $this->order->insertBatch($oData);
+      }      
       private function removedItemsFromcart($selectedItems)
       {
-        $this->crt->whereIn('id', $selectedItems)->delete();
+          $this->crt->whereIn('id', $selectedItems)->delete();
       }
-
-    //   public function prod()
-    //   { 
-
-    //     $data = 
-    //     [
-    //         'CustomerID' => $this->request->getVar('CustomerID'),
-    //         'ProductID' => $this->request
-    //     ]
-    //   }
-}
+      }
