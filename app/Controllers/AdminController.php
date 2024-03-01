@@ -70,16 +70,18 @@ class AdminController extends BaseController
         'order.ProductID = product_tbl.prod_id')->join( 'user', 'order.CustomerID = user.UserID')->findAll();
         return view('/admin/orderpayment', $data);
     }
-    public function acceptOrder()
+    public function viewOrder($id)
     {
-        $aOrder = $this->request->getVar('accept');
-        $this->payment->where('orderID', $aOrder)->first();
+    
+        $data['order'] = $this->payment->select('order.orderID, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
+        order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
+        user.FirstName, user.Username, user.ContactNo, user.address, user.gender, 
+        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_lprice, product_tbl.prod_decs')->join('product_tbl', 
+        'order.ProductID = product_tbl.prod_id')->join( 'user', 'order.CustomerID = user.UserID')->first($id);
 
-        $data =[
-            'orderStatus' => 'Accept'
-        ];
-
-        $this->payment->update($aOrder, $data);
+        return view('admin/OrderView', $data);
+        
+        
     }
     public function gethistory()
     {

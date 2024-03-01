@@ -11,7 +11,8 @@
         <p><?= $order['LastName']?></p>
 
         <p><?= $order['prod_name']?></p>
-        <p> <?= $order['paymentStatus']?></p>
+        <p><?= $order['paymentStatus']?></p>
+        <p><?= $order['total']?></p>
     </form>
 </body>
 </html>

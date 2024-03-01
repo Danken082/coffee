@@ -46,8 +46,9 @@
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Price</th>
 
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Status</th>
-
+                            <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Payment Status</th>   
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Order Type</th>
+                            <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Order Code</th>
 
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Actions</th>
                         </tr>
@@ -68,8 +69,14 @@
                                 <td class="text-center">
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['orderStatus'];?></p>
                                 </td>
+                                <td class="text-center">
+                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['paymentStatus'];?></p>
+                                </td>
                                      <td class="text-center">
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['orderType'];?></p>
+                                </td>
+                                <td class="text-center">
+                                    <p class="text-xs text-primary mb-0 font-weight-bold"></p>
                                 </td>
                                 <td class="align-middle text-center">
                                     <form action="<?= base_url('/aOrder/')?>" method="post">

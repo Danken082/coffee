@@ -28,12 +28,13 @@
 	</div>
 	<?php endif;?>
 
-	<form action="<?= base_url('CartController/placeOrder')?>">
+	<form action="<?= base_url('CartController/placeOrder')?>" method="post">
 	<section class="ftco-section ftco-cart">
 		<div class="container">
 			<div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class="cart-list">
+					
 	    				<table class="table">
 			    			<thead class="thead-primary">
 			      				<tr class="text-center">
@@ -51,7 +52,7 @@
 							<?php foreach($myCart as $item):?>
 								
 						      	<tr class="text-center">
-								  	<td><input type="checkbox" name="items[]" value= "<?= $item['prod_id']?>"class="item-checkbox"></td>
+								  	<td><input type="checkbox" name="items[]" value= "<?= $item['id']?>" class="item-checkbox"></td>
 									<td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/" .$item['prod_img']?>">
 									<td class="product-name">
 										<h3><?= $item['prod_name']?></h3>
@@ -63,11 +64,12 @@
 										</div>
 									</td>
 						        	<td class="total">₱ <?= $item['total']?></td>
-									<td class="product-remove"><a href="<?= base_url('/removetocart/') .$item['prod_id']?>" onclick="return confirm('Are you sure you want to remove this to your cart?')"><span class="icon-close"></span></a></td>
+									<td class="product-remove"><a href="<?= base_url('/removetocart/') .$item['id']?>" onclick="return confirm('Are you sure you want to remove this to your cart?')"><span class="icon-close"></span></a></td>
 						      	</tr>
 								<?php endforeach;?>
 						    </tbody>
 						</table>
+				
 					</div>
     			</div>
     		</div>
@@ -98,6 +100,7 @@
     				</div>
     				<p class="text-center"><button type="submit" class="btn btn-primary py-3 px-4 button">Proceed to Checkout</button></p>
     			</div>
+				
     		</div>
 		</div>
 	</section>

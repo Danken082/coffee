@@ -28,7 +28,7 @@ class CartController extends BaseController
         $session = session();
         $user = $session->get('UserID');
         $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
-        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.prod_lprice')
+        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_mprice')
         ->join('product_tbl', 'product_tbl.prod_id = cart_tbl.ProductID')
         ->where('cart_tbl.CustomerID', $user)
         ->findAll();
@@ -184,40 +184,34 @@ class CartController extends BaseController
 
       // app/Controllers/CartController.php
 
-        public function placeOrder()
-        {
-            $selectedItems = $this->request->getVar('items');
+public function placeOrder()
+{
+    $selectedItems = $this->request->getVar('items');
 
-            if (empty($selectedItems)) {
-                return redirect()->to('user/cart')->with('msg', 'No items selected for order');
-            }
+    if (empty($selectedItems)) {
+        return redirect()->to('user/cart')->with('msg', 'No items selected for order');
+    }
 
-            $cartItems = $this->getCartItems($selectedItems);
+    $cartItems = $this->getCartItems($selectedItems);
 
-            // Generate a single barcode for the entire order
-            $orderBarcode = $this->generateAlphanumericBarcode();
+    // Generate a single barcode for the entire order
+    $orderBarcode = $this->generateAlphanumericBarcode();
 
-            // Insert the same barcode for each item in the order
-            foreach ($cartItems as &$item) {
-                $item['barcode'] = $orderBarcode;
-            }
+    // Insert the same barcode for each item in the order
+    foreach ($cartItems as &$item) {
+        $item['barcode'] = $orderBarcode;
+    }
 
-            $this->insertOrder($cartItems);
-            $this->removedItemsFromcart($selectedItems);
+    $this->insertOrder($cartItems);
+    $this->removedItemsFromcart($selectedItems);
 
-            return redirect()->to('user/cart')->with('msg', 'Order Placed successfully');
-        }
+    return redirect()->to('user/cart')->with('msg', 'Order Placed successfully');
+}
 
-      private function getCartItems($selectedItems)
-      {
-        $cartItems = $this->crt->whereIn('id', $selectedItems)->get()->getResultArray();
-
-        return $cartItems;
-      }
       
-      private function generateAlphanumericBarcode($length = 5)
+      private function generateAlphanumericBarcode($length = 10)
       {
-          $characters = '0123456789ASDFTYUIKMN';
+          $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
           $barcodeData = '';
       
           for ($i = 0; $i < $length; $i++) {
@@ -226,7 +220,12 @@ class CartController extends BaseController
       
           return $barcodeData;
       }
-      
+      private function getCartItems($selectedItems)
+      {
+        $cartItems = $this->crt->whereIn('id', $selectedItems)->get()->getResultArray();
+
+        return $cartItems;
+      }
       private function insertOrder($cartItems)
       {
           $oData = [];
@@ -241,14 +240,16 @@ class CartController extends BaseController
                   'orderStatus' => 'onProcess',
                   'paymentStatus' => 'notPaid',
                   'orderType' => 'onHouse',
-                  'barcode' => $item['barcode'], // Include barcode in the order data
-              ];
+                  'paymentStatus' => 'COD',
+                  'barcode' => $item['barcode'],
+                    ];
           }
       
           $this->order->insertBatch($oData);
-      }      
+      }
+      
       private function removedItemsFromcart($selectedItems)
       {
           $this->crt->whereIn('id', $selectedItems)->delete();
       }
-      }
+            }
