@@ -30,6 +30,8 @@
                         <tr>
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Name</th>
 
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Description</th>
+
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Quantity</th>
 
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Price</th>
@@ -46,6 +48,9 @@
                             <tr>
                                 <td class="text-center">
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_name'] ?></p>
+                                </td>
+                                <td class="text-center">
+                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_desc'] ?></p>
                                 </td>
                                 <td class="text-center">
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_quantity'] ?></p>

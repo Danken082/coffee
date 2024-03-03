@@ -29,6 +29,10 @@
                             <input type="text" class="form-control" id="product-name" name="prod_name" placeholder="Product Name">
                         </div>
                         <div class="input-group input-group-outline my-3">
+                            <label for="coffee-name" class="form-label"></label>
+                            <input type="text" class="form-control" id="product-name" name="prod_name" placeholder="Product Name">
+                        </div>
+                        <div class="input-group input-group-outline my-3">
                             <label for="Quantity" class="form-label"></label>
                             <input type="number" class="form-control" id="quantity" name="prod_quantity" placeholder="Quantity">
                         </div>
