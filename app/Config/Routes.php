@@ -120,6 +120,6 @@ $routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1')
 $routes->get('/removetocart/(:any)', 'CartController::remove/$1');
 $routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::placeOrder');
 $routes->match(['get', 'post'], '/aOrder/', 'AdminController::acceptOrder');
-
+$routes->match(['get', 'post'], 'reservation', 'ReservationController::reservation');
 
 // $routes->get('pos', 'ChatController::try');

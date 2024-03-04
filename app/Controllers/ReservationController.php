@@ -18,24 +18,17 @@ class ReservationController extends BaseController
     }
     public function reservation(){
 
-
           $reservation = new ReservationModel(); 
 
             $data = [
-            
-            'LastName' => $this->request->getVar('LastName'),
-            'FirstName' => $this->request->getVar('FirstName'),
-            'email' => $this->request->getVar('email'),
-            'contactNo' => $this->request->getVar('contactNo'),
-            'appointmentDate' => $this->request->getVar('appointmentDate'),
-            'totalPayment' => $this->request->getVar('totalPayment'),
-            'paymentStatus' => $this->request->getVar('paymentStatus'),
-            'TableCategory' => $this->request->getVar('TableCategory'),
-            'ReservationDate' => $this->request->getVar('ReservationDate'),
-            ];
+            'CustomerID' => $this->request->getVar('CustomerID'),
+            'apppointmentDate' => $this->request->getVar('apppointmentDate'),
+            'Message' => $this->request->getVar('message'),
+            'TableType' => $this->request->getVar('TableType')
+                  ];
 
-        $reservation->save($data);
-        
+            $reservation->save($data);
+        return redirect()->to('user/home');
     }
     //for order
     public function viewProd($prod)

@@ -76,7 +76,7 @@
 						</div>
 						<div class="book p-4">
 							<h3>Book a Table</h3>
-							<form action="#" class="appointment-form">
+							<form action="<?= base_url('reservation')?>" method ="post"class="appointment-form">
 								<div class="d-md-flex">
 									<div class="form-group">
 									
@@ -93,21 +93,31 @@
 									<div class="form-group">
 										<div class="input-wrap">
 											<label for="table reservation" style="color:white;">Date & Time</label>
-											<input type="datetime-local" class="form-control datetimepicker">
+											<input type="datetime-local" name="apppointmentDate" class="form-control datetimepicker">
 										</div>
 		    						</div>
 									<div class="form-group ml-md-4">
 										<input type="text" name="ConactNo"  value="<?= $rsv['ContactNo'];?>" class="form-control" placeholder="Phone Number">
 									</div>
+									<div class="form-group ml-md-4">
+										<select name="TableType"class="form-control" >
+											<option selected disabled>Table Type</option>
+											<option value="Triple">Triple</option>
+											<option value="Tropa_size">Tropa Size</option>
+										</select>
+									</div>
 								</div>
+				
+
 								<div class="d-md-flex">
 									<div class="form-group">
-										<textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+										<textarea name="message" max-length="60" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
 									</div>
 									<div class="form-group ml-md-4">
 										<input type="submit" value="Reserve" class="btn btn-white py-3 px-4">
 									</div>
 								</div>
+								<input type="hidden" name="CustomerID" value ="<?= session()->get('UserID')?>">
 	    					</form>
 	    				</div>
     				</div>

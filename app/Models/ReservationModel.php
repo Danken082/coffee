@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class ReservationModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'reservations';
+    protected $table            = 'tablereservation';
     protected $primaryKey       = 'TableID';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['CustomerID', 'productID', 'employeeID', 'totalPayment', 'TableCategory', 'TableType', 'pamentStatus', 'reservationDate'];
+    protected $allowedFields    = ['CustomerID', 'productID', 'employeeID', 'totalPayment', 'TableType', 'Message', 'pamentStatus', 'apppointmentDate'];
 
     // Dates
     protected $useTimestamps = false;

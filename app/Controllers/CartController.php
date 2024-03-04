@@ -24,8 +24,7 @@ class CartController extends BaseController
    
     public function home_cart()
     {
-        
-        $session = session();
+       $session = session();
         $user = $session->get('UserID');
         $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
         product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_mprice')
@@ -184,29 +183,29 @@ class CartController extends BaseController
 
       // app/Controllers/CartController.php
 
-public function placeOrder()
-{
-    $selectedItems = $this->request->getVar('items');
+      public function placeOrder()
+      {
+          $selectedItems = $this->request->getVar('items');
 
-    if (empty($selectedItems)) {
-        return redirect()->to('user/cart')->with('msg', 'No items selected for order');
-    }
+          if (empty($selectedItems)) {
+              return redirect()->to('user/cart')->with('msg', 'No items selected for order');
+          }
 
-    $cartItems = $this->getCartItems($selectedItems);
+          $cartItems = $this->getCartItems($selectedItems);
 
-    // Generate a single barcode for the entire order
-    $orderBarcode = $this->generateAlphanumericBarcode();
+          // Generate a single barcode for the entire order
+          $orderBarcode = $this->generateAlphanumericBarcode();
 
-    // Insert the same barcode for each item in the order
-    foreach ($cartItems as &$item) {
-        $item['barcode'] = $orderBarcode;
-    }
+          // Insert the same barcode for each item in the order
+          foreach ($cartItems as &$item) {
+              $item['barcode'] = $orderBarcode;
+          }
 
-    $this->insertOrder($cartItems);
-    $this->removedItemsFromcart($selectedItems);
+          $this->insertOrder($cartItems);
+          $this->removedItemsFromcart($selectedItems);
 
-    return redirect()->to('user/cart')->with('msg', 'Order Placed successfully');
-}
+          return redirect()->to('user/cart')->with('msg', 'Order Placed successfully');
+      }
 
       
       private function generateAlphanumericBarcode($length = 10)
