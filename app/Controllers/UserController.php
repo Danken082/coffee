@@ -86,20 +86,13 @@ class UserController extends BaseController
         ];
 
           $session->set($ses_data);
-            switch($user['UserRole'])
-            {
-                case 'Admin':
-                    return redirect()->to('/adminhome');
-                    break;
-                case 'Customer':
-                    return redirect()->to('/user/home');
-                    break;
-                case 'Staff':
-                    return redirect()->to('/user/home');
-                    break;
-                default:
-                    return redirect()->to('/');
-            }
+           if($user['UserRole'] == 'Admin')
+           {
+            return redirect()->to('/adminhome');
+           }
+           else{
+            return redirect()->to('/user/home');
+           }
         
         
         }
@@ -142,7 +135,7 @@ class UserController extends BaseController
         $prod['salad'] = $menu->products('Salad');
         $prod['soup'] = $menu->products('Soup');
         $prod['sand'] = $menu->products('Sandwich');
-        $prod['hot'] = $menu->products('Hot Coffee');
+        $prod['hot'] = $mexnu->products('Hot Coffee');
         $prod['iced'] = $menu->products('Iced Coffee');
         $prod['flav'] = $menu->products('Flavored Coffee');
         $prod['non'] = $menu->products('Non Coffee Frappe');

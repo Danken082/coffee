@@ -27,7 +27,15 @@ class GuestFilter implements FilterInterface
     {
         if(session()->get('isLoggedIn'))
         {
+
+            if(session()->get('UserRole') == 'Admin')
+            {
             return redirect()->to('/adminhome');
+            }
+            elseif(session()->get('UserRole') == 'Customer')
+            {
+                return redirect()->to('/user/home');
+            }
         }
     }
 
