@@ -1,0 +1,538 @@
+CRITICAL - 2024-03-07 03:06:06 --> Undefined variable $rsv
+in APPPATH\Views\user\home.php on line 83.
+ 1 APPPATH\Views\user\home.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rsv', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(132): view('/user/home', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:09:46 --> Undefined variable $userData
+in APPPATH\Controllers\UserController.php on line 118.
+ 1 APPPATH\Controllers\UserController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userData', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:09:58 --> Undefined variable $rsv
+in APPPATH\Views\user\home.php on line 100.
+ 1 APPPATH\Views\user\home.php(100): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rsv', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php', 100)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(118): view('/user/home')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:10:00 --> Undefined variable $rsv
+in APPPATH\Views\user\home.php on line 100.
+ 1 APPPATH\Views\user\home.php(100): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rsv', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php', 100)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(118): view('/user/home')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:10:02 --> Undefined variable $rsv
+in APPPATH\Views\user\home.php on line 100.
+ 1 APPPATH\Views\user\home.php(100): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rsv', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php', 100)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\home.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(118): view('/user/home')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:15:55 --> Call to a member function where() on int
+in APPPATH\Controllers\UserController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:16:12 --> Call to a member function where() on null
+in APPPATH\Controllers\UserController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:16:14 --> Call to a member function where() on null
+in APPPATH\Controllers\UserController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:17:45 --> Call to a member function where() on int
+in APPPATH\Controllers\UserController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:17:47 --> Call to a member function where() on int
+in APPPATH\Controllers\UserController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:17:48 --> Call to a member function where() on int
+in APPPATH\Controllers\UserController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:17:48 --> Call to a member function where() on int
+in APPPATH\Controllers\UserController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:17:54 --> Call to undefined method App\Models\CartModel::count
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\UserController.php(120): CodeIgniter\Model->__call('count', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:18:54 --> Call to undefined method App\Models\CartModel::count
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\UserController.php(120): CodeIgniter\Model->__call('count', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:18:55 --> Call to undefined method App\Models\CartModel::count
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\UserController.php(120): CodeIgniter\Model->__call('count', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:18:55 --> Call to undefined method App\Models\CartModel::count
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\UserController.php(120): CodeIgniter\Model->__call('count', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:18:56 --> Call to undefined method App\Models\CartModel::count
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\UserController.php(120): CodeIgniter\Model->__call('count', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:28:19 --> Array to string conversion
+in APPPATH\Controllers\UserController.php on line 122.
+ 1 APPPATH\Controllers\UserController.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 122)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:28:26 --> Array to string conversion
+in APPPATH\Controllers\UserController.php on line 122.
+ 1 APPPATH\Controllers\UserController.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 122)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:28:27 --> Array to string conversion
+in APPPATH\Controllers\UserController.php on line 122.
+ 1 APPPATH\Controllers\UserController.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 122)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:28:27 --> Array to string conversion
+in APPPATH\Controllers\UserController.php on line 122.
+ 1 APPPATH\Controllers\UserController.php(122): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 122)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:32:57 --> Undefined variable $crt
+in APPPATH\Views\user\header.php on line 54.
+ 1 APPPATH\Views\user\header.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $crt', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 54)
+ 2 APPPATH\Views\user\cart.php(110): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(37): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:33:17 --> Undefined variable $count
+in APPPATH\Views\user\header.php on line 54.
+ 1 APPPATH\Views\user\header.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 54)
+ 2 APPPATH\Views\user\cart.php(110): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(37): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:33:18 --> Undefined variable $count
+in APPPATH\Views\user\header.php on line 54.
+ 1 APPPATH\Views\user\header.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 54)
+ 2 APPPATH\Views\user\cart.php(110): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(37): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:33:19 --> Undefined variable $count
+in APPPATH\Views\user\header.php on line 54.
+ 1 APPPATH\Views\user\header.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 54)
+ 2 APPPATH\Views\user\cart.php(110): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(37): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:33:48 --> Undefined variable $count
+in APPPATH\Views\user\header.php on line 54.
+ 1 APPPATH\Views\user\header.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 54)
+ 2 APPPATH\Views\user\cart.php(110): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(37): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:34:56 --> Undefined variable $count
+in APPPATH\Views\user\header.php on line 54.
+ 1 APPPATH\Views\user\header.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 54)
+ 2 APPPATH\Views\user\cart.php(110): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(37): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:34:57 --> Undefined variable $count
+in APPPATH\Views\user\header.php on line 54.
+ 1 APPPATH\Views\user\header.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 54)
+ 2 APPPATH\Views\user\cart.php(110): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(37): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:35:20 --> Undefined variable $count
+in APPPATH\Views\user\header.php on line 54.
+ 1 APPPATH\Views\user\header.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 54)
+ 2 APPPATH\Views\user\cart.php(110): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(37): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 03:35:26 --> Undefined variable $count
+in APPPATH\Views\user\header.php on line 54.
+ 1 APPPATH\Views\user\header.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php', 54)
+ 2 APPPATH\Views\user\cart.php(110): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\header.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(37): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-03-07 04:49:01 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') as count
+FROM `cart_tbl`
+WHERE `CustomerID` = '17'
+ LIMIT 1' at line 1 in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT (Count))...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT (Count))...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT (Count))...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT (Count))...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\coffee\app\Controllers\UserController.php(120): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->home()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-03-07 04:49:01 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') as count
+FROM `cart_tbl`
+WHERE `CustomerID` = '17'
+ LIMIT 1' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT (Count)) as count
+FROM `cart_tbl`
+WHERE `CustomerID` = :CustomerID:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(120): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-03-07 04:51:41 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as count) AS Count(CustomerID) as count
+FROM `cart_tbl`
+WHERE `CustomerID` = '17' at line 1 in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(Co...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(Co...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(Co...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(Co...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\coffee\app\Controllers\UserController.php(120): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->home()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-03-07 04:51:41 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as count) AS Count(CustomerID) as count
+FROM `cart_tbl`
+WHERE `CustomerID` = '17' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(Count(CustomerID) as count) AS Count(CustomerID) as count
+FROM `cart_tbl`
+WHERE `CustomerID` = :CustomerID:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(120): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-07 04:52:48 --> Call to a member function As() on int
+in APPPATH\Controllers\UserController.php on line 120.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-03-07 04:53:42 --> mysqli_sql_exception: Unknown column 'all' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `all`\nFR...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `all`\nFR...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `all`\nFR...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `all`\nFR...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\coffee\app\Controllers\UserController.php(120): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->home()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-03-07 04:53:42 --> Unknown column 'all' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `all`
+FROM `cart_tbl`
+WHERE `CustomerID` = :CustomerID:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(120): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-03-07 04:54:21 --> mysqli_sql_exception: Unknown column 'Count' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `Count`\n...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Count`\n...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Count`\n...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `Count`\n...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->home()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-03-07 04:54:21 --> Unknown column 'Count' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `Count`
+FROM `cart_tbl`
+WHERE `CustomerID` = :CustomerID:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-03-07 04:56:06 --> mysqli_sql_exception: FUNCTION coffeeledgerdb.CountAll does not exist in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT CountAll...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT CountAll...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT CountAll...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT CountAll...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->home()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-03-07 04:56:06 --> FUNCTION coffeeledgerdb.CountAll does not exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT CountAll()
+FROM `cart_tbl`
+WHERE `CustomerID` = :CustomerID:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-03-07 04:56:12 --> mysqli_sql_exception: FUNCTION coffeeledgerdb.countAll does not exist in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT countAll...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT countAll...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT countAll...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT countAll...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->home()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-03-07 04:56:12 --> FUNCTION coffeeledgerdb.countAll does not exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT countAll()
+FROM `cart_tbl`
+WHERE `CustomerID` = :CustomerID:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-03-07 04:56:27 --> mysqli_sql_exception: FUNCTION coffeeledgerdb.countAll does not exist in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT countAll...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT countAll...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT countAll...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT countAll...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->home()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-03-07 04:56:27 --> FUNCTION coffeeledgerdb.countAll does not exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT countAll(size)
+FROM `cart_tbl`
+WHERE `CustomerID` = :CustomerID:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-03-07 04:56:28 --> mysqli_sql_exception: FUNCTION coffeeledgerdb.countAll does not exist in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT countAll...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT countAll...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT countAll...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT countAll...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->home()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-03-07 04:56:28 --> FUNCTION coffeeledgerdb.countAll does not exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT countAll(size)
+FROM `cart_tbl`
+WHERE `CustomerID` = :CustomerID:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserController.php(120): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->home()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

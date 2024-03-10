@@ -19,6 +19,7 @@ class InventoryController extends BaseController
 
     public function adddrink(){
         $prod = new ProductModel();
+        
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),

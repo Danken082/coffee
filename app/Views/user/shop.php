@@ -57,9 +57,19 @@
 														<h3 style="font-weight:bold;"><a><?=$a['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$a['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?= $a['prod_mprice'] ?></span></p>
+
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/') .$a['prod_id'] ?>">Add to cart</a></p>
+														
+															<form action="<?= base_url('/viewProd/') .$a['prod_id'] ?>" method="post">
+															<?php if($a['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>
 													</div>
+													
 												<?php endforeach; ?> 
 											</div>
 										</div>
@@ -78,7 +88,14 @@
 														<div class="d-block" style="color:white;"><p><?=$p['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $p['prod_id'] ?>">Add to cart</a></p>
+														<form action="<?= base_url('/viewProd/') .$p['prod_id'] ?>" method="post">
+															<?php if($p['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -96,7 +113,14 @@
 														<div class="d-block" style="color:white;"><p><?=$m['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?= $m['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('/viewProd/'). $m['prod_id'] ?>">Add to cart</a></p>
+														<form action="<?= base_url('/viewProd/') .$m['prod_id'] ?>" method="post">
+															<?php if($m['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -114,13 +138,20 @@
 														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $s['prod_id'] ?>">Add to cart</a></p>
-													</div>
+														<form action="<?= base_url('/viewProd/') .$s['prod_id'] ?>" method="post">
+															<?php if($s['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
 									</div>
 								</div>
+
 								<div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
@@ -132,8 +163,14 @@
 														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $s['prod_id'] ?>">Add to cart</a></p>
-													</div>
+														<form action="<?= base_url('/viewProd/') .$s['prod_id'] ?>" method="post">
+															<?php if($s['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -150,8 +187,15 @@
 														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $s['prod_id'] ?>">Add to cart</a></p>
-													</div>
+														<form action="<?= base_url('/viewProd/') .$s['prod_id'] ?>" method="post">
+															<?php if($s['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>
+															</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -168,8 +212,14 @@
 														<div class="d-block" style="color:white;"><p><?=$h['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('/viewProd/'). $h['prod_id'] ?>">Add to cart</a></p>
-													</div>
+														<form action="<?= base_url('/viewProd/') .$h['prod_id'] ?>" method="post">
+															<?php if($h['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -186,8 +236,14 @@
 														<div class="d-block" style="color:white;"><p><?=$i['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$i['prod_mprice'] ?><br>Large ₱ <?=$i['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $i['prod_id'] ?>">Add to cart</a></p>
-													</div>
+														<form action="<?= base_url('/viewProd/') .$i['prod_id'] ?>" method="post">
+															<?php if($i['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -204,8 +260,14 @@
 														<div class="d-block" style="color:white;"><p><?=$f['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$f['prod_mprice'] ?><br>Large ₱ <?=$f['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $f['prod_id'] ?>">Add to cart</a></p>
-													</div>
+														<form action="<?= base_url('/viewProd/') .$f['prod_id'] ?>" method="post">
+															<?php if($f['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -222,8 +284,14 @@
 														<div class="d-block" style="color:white;"><p><?=$n['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $n['prod_id'] ?>">Add to cart</a></p>
-													</div>
+														<form action="<?= base_url('/viewProd/') .$n['prod_id'] ?>" method="post">
+															<?php if($n['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -240,8 +308,14 @@
 														<div class="d-block" style="color:white;"><p><?=$c['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $c['prod_id'] ?>">Add to cart</a></p>
-													</div>
+														<form action="<?= base_url('/viewProd/') .$c['prod_id'] ?>" method="post">
+															<?php if($c['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>													</div>
 												<?php endforeach; ?>	
 											</div>
 										</div>
@@ -258,8 +332,15 @@
 														<div class="d-block" style="color:white;"><p><?=$o['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
 														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/'). $o['prod_id'] ?>">Add to cart</a></p>
-													</div>
+														<form action="<?= base_url('/viewProd/') .$o['prod_id'] ?>" method="post">
+															<?php if($o['product_status'] === 'Unavailable'):?>
+														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<?php else:?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+														<?php endif;?>
+
+													</form>													
+												</div>
 												<?php endforeach; ?>
 											</div>
 										</div>

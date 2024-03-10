@@ -1,0 +1,364 @@
+ERROR - 2024-03-05 13:17:03 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'coffeeledgerdb', 3306, '', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT SUM(tota...', Array, false)
+#4 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(22): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT SUM(tota...', Array, false)
+#3 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(22): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+#5 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#8 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#9 {main}
+CRITICAL - 2024-03-05 13:17:03 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT SUM(total_amount) as count, `total_amount` as `s`, DAYNAME(order_date) as day
+FROM `tbl_orders`
+WHERE DAY(order_date) GROUP BY DAYNAME(order_date), s', [], false)
+ 3 APPPATH\Controllers\VisualizationController.php(22): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->initDayChart()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 13:54:27 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Model->update(null, [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd(null)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:02:41 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Model->update([...], [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:07:08 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Model->update([...], [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:07:14 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Model->update([...], [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:14:17 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Model->update([...], [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:14:19 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Model->update([...], [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:16:36 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(165): CodeIgniter\Model->update('50', [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd('50', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:16:42 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(165): CodeIgniter\Model->update('50', [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd('50', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:16:54 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ProductController.php(165): CodeIgniter\Model->update(null, [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd(null, null)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:16:59 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\ProductController.php(165): CodeIgniter\Model->update(null, [...])
+ 4 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd(null, null)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:20:20 --> Undefined array key 0
+in APPPATH\Controllers\ProductController.php on line 164.
+ 1 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\laragon\\www\\coffee\\app\\Controllers\\ProductController.php', 164)
+ 2 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:20:59 --> Undefined array key "prod_id"
+in APPPATH\Controllers\ProductController.php on line 164.
+ 1 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "prod_id"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\ProductController.php', 164)
+ 2 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:21:12 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1724.
+ 1 SYSTEMPATH\BaseModel.php(1724): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(916): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Model->update([...])
+ 5 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:21:18 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1724.
+ 1 SYSTEMPATH\BaseModel.php(1724): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(916): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\ProductController.php(164): CodeIgniter\Model->update([...])
+ 5 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-03-05 14:21:59 --> Update failed: $updateAvailability is empty or does not have the expected structure.
+ERROR - 2024-03-05 14:22:25 --> Update failed: $updateAvailability is empty or does not have the expected structure.
+CRITICAL - 2024-03-05 14:22:47 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1724.
+ 1 SYSTEMPATH\BaseModel.php(1724): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(916): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\ProductController.php(165): CodeIgniter\Model->update([...])
+ 5 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:22:53 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1724.
+ 1 SYSTEMPATH\BaseModel.php(1724): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(916): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\ProductController.php(165): CodeIgniter\Model->update([...])
+ 5 APPPATH\Controllers\ProductController.php(148): App\Controllers\ProductController->updateProd([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:24:00 --> Too few arguments to function App\Controllers\ProductController::availability(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\ProductController.php on line 143.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:24:31 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update([...], [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('1')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:25:19 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update([...], [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('1')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:25:59 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update('1', [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '1')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('1')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:26:00 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update('1', [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '1')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('1')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:26:15 --> Undefined variable $dta
+in APPPATH\Controllers\ProductController.php on line 163.
+ 1 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $dta', 'C:\\laragon\\www\\coffee\\app\\Controllers\\ProductController.php', 163)
+ 2 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '1')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('1')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:26:23 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update('1', [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '1')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('1')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:28:29 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(160): CodeIgniter\Model->update('1', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->Availability('1')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:29:17 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update('1', [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '1')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('1')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:29:19 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update('1', [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '1')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('1')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:29:47 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update('50', [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '50')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('50')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:30:49 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update('50', [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '50')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('50')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:30:51 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update('50', [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '50')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('50')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-05 14:31:14 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\ProductController.php(163): CodeIgniter\Model->update([...], [...])
+ 4 APPPATH\Controllers\ProductController.php(147): App\Controllers\ProductController->updateProd([...], '50')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ProductController->availability('50')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProductController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

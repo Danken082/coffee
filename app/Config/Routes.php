@@ -122,4 +122,8 @@ $routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::pla
 $routes->match(['get', 'post'], '/aOrder/', 'AdminController::acceptOrder');
 $routes->match(['get', 'post'], 'reservation', 'ReservationController::reservation');
 
+
+//status
+$routes->match(['get','post'], '/available/', 'ProductController::availability');
+$routes->match(['get', 'post'], '/unavailable/', 'ProductController::Unavailable');
 // $routes->get('pos', 'ChatController::try');

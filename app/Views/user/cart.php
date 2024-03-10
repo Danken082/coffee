@@ -57,7 +57,9 @@
 									<td class="product-name">
 										<h3><?= $item['prod_name']?></h3>
 									</td>
+									<?php if($item['size'] == 'Medium')?>
 									<td class="price">₱ <?= $item['prod_mprice']?></td>
+							
 									<td class="quantity">
 										<div class="input-group mb-3">
 											<input type="text" name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">

@@ -68,7 +68,8 @@
                             <a href="<?= base_url('/inventorysandwich')?>" class="btn btn-info">BACK</a>
                         </div>
                     </form>
-                </div>
+
+                </div>   
             </div>
         </div>
     </body>

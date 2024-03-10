@@ -139,4 +139,59 @@ class ProductController extends BaseController
 
       var_dump($data);
     }
+
+    public function availability()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventoryflavoredcoffee')->with('msg', 'Product is now available');     
+    }
+
+    private function myProduct($update)
+    {
+        $updateAvailability = $this->product->where('prod_id', $update)->first();
+
+        return $updateAvailability;
+    }
+  
+    private function updateProd($updateAvailability, $update)
+    {
+            $data = [
+                'product_status' => $this->request->getPost('prod_status')
+            ];
+
+        $this->product->update($updateAvailability, $data);
+    }
+
+    public function Unavailable()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+
+        
+        return redirect()->to('inventoryflavoredcoffee')->with('msg', 'Product is now unavailable');
+    }
+
+    private function UnavailableProduct($unavailable)
+    {
+       $updateUnavailability = $this->product->where('prod_id', $unavailable)->first();
+
+        return $updateUnavailability;
+    }
+
+    private function updateAvailable($updateUnavailability)
+    {
+        $data = [
+            'product_status' => $this->request->getPost('prod_status')
+        ];
+
+        $this->product->update($updateUnavailability, $data);
+    }
+
+    
 }
+

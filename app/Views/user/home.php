@@ -80,13 +80,13 @@
 								<div class="d-md-flex">
 									<div class="form-group">
 									
-									<input type="text" disabled name="LastName" class="form-control" value="<?= $rsv['LastName'] ?>">
+									<input type="text" disabled name="LastName" class="form-control" value="<?= session()->get('LastName')?>">
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="text" disabled name="FirstName" class="form-control" value="<?= $rsv['FirstName'] ?>">
+										<input type="text" disabled name="FirstName" class="form-control" value="<?= session()->get('FirstName') ?>">
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="text" disabled name="Email"class="form-control" value="<?= $rsv['email'] ?>">
+										<input type="text" disabled name="Email"class="form-control" value="<?= session()->get('email') ?>">
 									</div>
 								</div>
 								<div class="d-md-flex">
@@ -97,7 +97,7 @@
 										</div>
 		    						</div>
 									<div class="form-group ml-md-4">
-										<input type="text" name="ConactNo"  value="<?= $rsv['ContactNo'];?>" class="form-control" placeholder="Phone Number">
+										<input type="text" name="ConactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
 									</div>
 									<div class="form-group ml-md-4">
 										<select name="TableType"class="form-control" >

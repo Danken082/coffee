@@ -5,13 +5,16 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 use App\Models\ProductModel;
+use App\Models\CartModel;
 class UserController extends BaseController
 {
     private $user;
     private $product;
+    private $crt;
     public function __construct(){
         $this->user = new UserModel();
         $this->product = new ProductModel();
+        $this->crt = new CartModel();
         helper(['form']);
     }
     public function register()
@@ -112,19 +115,12 @@ class UserController extends BaseController
 
     public function home(){
         $session = session();
-
-        $userData['rsv'] = [
-            'UserID' => $session->get('UserID'),
-            'FirstName' => $session->get('FirstName'),
-            'email' => $session->get('email'),
-            'LastName' => $session->get('LastName'),
-            'Username' => $session->get('Username'),
-            'birthdate' => $session->get('birthdate'),
-            'ContactNo' => $session->get('ContactNo'),
-            
-        ];
-       
-        return view('/user/home', $userData);
+        $user = $session->get('UserID');
+        $data = 
+            $this->crt->select("Count(size)")->where('CustomerID', $user)->first();    
+    
+        return view('user/home', $data);
+        // var_dump($data);
     }
 
     public function home_menu(){
@@ -209,6 +205,13 @@ class UserController extends BaseController
         ];
         $user->update($id, $data);
         return redirect()->to(base_url('/user/home'));
+    }
+
+
+    public function CartCount()
+    {
+        $data['count'] = $this->crt->countAll();
+
     }
  
 }
