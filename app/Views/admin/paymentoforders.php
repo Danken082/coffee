@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Order Payment</title>
-        <link rel="icon" type="image/png" href=/images/coffeelogo2.png>
-        <link href="/assets/css/table.css" rel="stylesheet" />
-        
-    </head>
-   
-    <body>
-        
-    <?php include('sidetopbar.php'); ?>
-    <?php include('orderview.php'); ?>
-
-    <div class="modal fade" id="vieworderdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php include('include/header.php')?>
+<div class="modal fade" id="vieworderdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -26,8 +11,10 @@
 
         <div class="view_order_data">
 
+                       
         </div>
-              <br>
+    
+          <br>
               
         </div>
         <div class="modal-footer">
@@ -39,7 +26,7 @@
     </div>
   </div>
 
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+<nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
             data-scroll="true">
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
@@ -52,6 +39,7 @@
                 </nav>
             </div>
         </nav><br>
+
 
         <div class="container">
             <div class="col-12">
@@ -75,8 +63,10 @@
                     <tbody>
                     <?php foreach($order as $orP): ?>
                         <tr>
-
+                        <!-- <input type="text" class="order_id" value=""> -->
+                        <td class="orderID" hidden><?= $orP['orderID']?></td>
                         <td class="text-center">
+                       
                                 <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['FirstName'];?> <?= $orP['LastName'];?></p>
                                 </td>
                                 <td class="text-center">
@@ -85,7 +75,7 @@
                                 
                                 <td class="align-middle text-center">
                           
-                                <a href="<?= base_url('viewOrders/' . $orP['orderID'])?>" class="btn" data-bs-toggle="modal" data-bs-target="#vieworderdata">View Order</a>
+                                <a href="#" class="btn btn-info btn-sm view_data">View Order</a>
 
                                     <a href="" class="text-danger font-weight-bold text-xs"
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Decline</a>
@@ -97,37 +87,31 @@
             </div>
         </div>
 
-            <script src="/assets/js/core/popper.min.js"></script>
-            <script src="/assets/js/core/bootstrap.min.js"></script>
-            <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
-            <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
-            <script src="/assets/js/plugins/chartjs.min.js"></script>
-            <script async defer src="https://buttons.github.io/buttons.js"></script>
-            <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
-            <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <?php include('include/footer.php')?> 
     <script>
-            $(document).ready(function (){
-                const modal= $('#myModal');
-                const modalData = $('#modalData');
-                const myOrderID = $('#myOrderID');
-                function openModalWithData(dataId){
-                    
-                    modalData.text("Data ID: " + dataId);
-                    musicID.val(dataId);
+             $(document).ready(function (){
+                $('.view_data').click(function (e){
+                    e.preventDefault();
+                   
 
-                    //diplay the modal
-                    modal.css("display", "block");
-                }
-
-                
-                modal.click(function (event){
-                    if(event.target === modal[0] || $(event.target).hasClass("close"))
+                   var orderID = $(this).closest('tr').find('.orderID').text();
+                        
+                   $.ajax({
+                    method: "POST",
+                    url:"/viewOrders",
+                    data:{
+                        'click_view_btn': true,
+                        'orderID': orderID,
+                    },
+                    success: function(response)
                     {
-                        modal.css("display", "none");
+                        console.log(response);
+                        $('.view_order_data').html(response);
+                        $('#vieworderdata').modal('show');
                     }
+                   });
                 });
             });
-        </script>
 
-            </body>
-</html>
+            </script>

@@ -19,7 +19,7 @@ class InventoryController extends BaseController
 
     public function adddrink(){
         $prod = new ProductModel();
-        
+
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
@@ -99,6 +99,7 @@ class InventoryController extends BaseController
             'prod_code' => $this->request->getPost('prod_code'),
             'prod_img' => $this->request->getPost('prod_img'),
         ];
+        
         $iced->update($id, $data);
         return redirect()->to(base_url('inventoryicedcoffee'));
     }

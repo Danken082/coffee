@@ -63,24 +63,62 @@ class AdminController extends BaseController
 
     public function orderpayment(){
 
-        $data['order'] = $this->payment->select('order.orderID, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
-        order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
-        user.FirstName, user.Username, user.ContactNo, user.address, user.gender, 
-        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_lprice, product_tbl.prod_decs')->join('product_tbl', 
-        'order.ProductID = product_tbl.prod_id')->join( 'user', 'order.CustomerID = user.UserID')->findAll();
-        return view('/admin/orderpayment', $data);
-    }
-    public function viewOrder($id)
-    {
-    
-        $data['order'] = $this->payment->select('order.orderID, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
-        order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
-        user.FirstName, user.Username, user.ContactNo, user.address, user.gender, 
-        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_lprice, product_tbl.prod_decs')->join('product_tbl', 
-        'order.ProductID = product_tbl.prod_id')->join( 'user', 'order.CustomerID = user.UserID')->first($id);
-
-        return view('admin/OrderView', $data);
         
+        $data['order'] = $this->payment->select('order.orderID,order.barcode, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
+        order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
+        user.FirstName, user.Username, user.ContactNo, user.address, user.gender, 
+        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_lprice, product_tbl.prod_decs')
+        ->join('product_tbl', 
+        'order.ProductID = product_tbl.prod_id')
+        ->join( 'user', 'order.CustomerID = user.UserID')
+        ->orderBy('order.orderID', 'ASC')
+        ->findAll();
+        if(isset($_POST['click_view_btn']))
+        {
+            $id = $_POST['orderID'];
+            $data['order'] = $this->payment->select('order.orderID,order.barcode, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
+            order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
+            user.FirstName, user.Username, user.ContactNo, user.address, user.gender, 
+            product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_lprice, product_tbl.prod_decs')
+            ->join('product_tbl', 
+            'order.ProductID = product_tbl.prod_id')
+            ->join( 'user', 'order.CustomerID = user.UserID')
+            ->orderBy('order.orderID', 'ASC')
+            ->findAll();
+            $result = $data->getResult();
+            if(mysqli_num_rows($result)>0){
+                while ($row = mysqli_fetch_array($result))
+
+                echo '<h6>'.$row.'</h6>';
+            }
+            else{
+                echo '<h4> no data found </h4>';
+            }            
+        }
+        return view('/admin/paymentoforders', $data);
+    }
+    public function viewOrder()
+    {
+        
+        if(isset($_POST['click_view_btn']))
+        {
+       $orderID = $this->request->getPost('orderID');
+       $data['order'] = $this->payment->where('orderID', $orderID)->find();
+       
+       if(count($data['order']) > 0) {
+        foreach ($data['order'] as $row) {
+            // Output each field from the row
+            echo '<h6>'.$row['barcode'].'</h6>'; // Adjust the field name as needed
+        }
+    } else {
+        echo '<h4> no data found </h4>';
+    }            
+        
+        
+
+        }
+
+
         
     }
     public function gethistory()

@@ -14,7 +14,7 @@ $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::initDayChart', ['filter'=>'authFilter']);
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
-$routes->get('/adminorderpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
+$routes->get( '/adminorderpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
 $routes->get('/adminmanage_user', 'AdminController::getmanageuser', ['filter'=>'authFilter']);
 $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter']);
@@ -28,8 +28,8 @@ $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
 $routes->post('/adminregister', 'UserController::register');
 $routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
 $routes->get('/logout', 'UserController::logout', ['filter'=>'authFilter']);
-                    /* For Inventory */
-
+$routes->post('viewOrders', 'AdminController::viewOrder');
+/* For Inventory */
 /* For Hot Coffee */
 $routes->get('/inventoryhotcoffee', 'InventoryController::gethotcoffee');
 $routes->get('/drinks', 'InventoryController::drinks');

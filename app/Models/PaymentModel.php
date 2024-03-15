@@ -13,7 +13,7 @@ class PaymentModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['CustomerID','ProductID', 'paymentStatus', 'orderType', 'orderDate', 'total', 'quantity', 'size', 'orderstatus'];
+    protected $allowedFields    = ['CustomerID','ProductID', 'paymentStatus', 'orderType', 'orderDate', 'total', 'quantity', 'size', 'orderstatus', 'barcode'];
 
     // Dates
     protected $useTimestamps = false;
