@@ -76,11 +76,10 @@
 						</div>
 						<div class="book p-4">
 							<h3>Book a Table</h3>
-							<form action="<?= base_url('reservation')?>" method ="post"class="appointment-form">
+							<form action="<?= base_url('reservation')?>" method ="post" class="appointment-form">
 								<div class="d-md-flex">
 									<div class="form-group">
-									
-									<input type="text" disabled name="LastName" class="form-control" value="<?= session()->get('LastName')?>">
+										<input type="text" disabled name="LastName" class="form-control" value="<?= session()->get('LastName')?>">
 									</div>
 									<div class="form-group ml-md-4">
 										<input type="text" disabled name="FirstName" class="form-control" value="<?= session()->get('FirstName') ?>">
@@ -97,10 +96,10 @@
 										</div>
 		    						</div>
 									<div class="form-group ml-md-4">
-										<input type="text" name="ConactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
+										<input type="text" name="ContactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
 									</div>
 									<div class="form-group ml-md-4">
-										<select name="TableType"class="form-control" >
+										<select name="TableType"class="booktable" >
 											<option selected disabled>Table Type</option>
 											<option value="Triple">Triple</option>
 											<option value="Tropa_size">Tropa Size</option>
@@ -108,7 +107,6 @@
 									</div>
 								</div>
 				
-
 								<div class="d-md-flex">
 									<div class="form-group">
 										<textarea name="message" max-length="60" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>

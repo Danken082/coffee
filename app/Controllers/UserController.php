@@ -40,7 +40,7 @@ class UserController extends BaseController
                 'gender' => $this->request->getVar('gender'),
                 'email' => $this->request->getVar('email'),
                 'ContactNo' => $this->request->getVar('ContactNo'),
-                'profile_img' => 'default.avif',
+                'profile_img' => 'profile.png',
                 'UserRole'   => $this->request->getVar('UserRole'),
                 'Username' => $this->request->getVar('Username'),
                 'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
@@ -131,7 +131,7 @@ class UserController extends BaseController
         $prod['salad'] = $menu->products('Salad');
         $prod['soup'] = $menu->products('Soup');
         $prod['sand'] = $menu->products('Sandwich');
-        $prod['hot'] = $mexnu->products('Hot Coffee');
+        $prod['hot'] = $menu->products('Hot Coffee');
         $prod['iced'] = $menu->products('Iced Coffee');
         $prod['flav'] = $menu->products('Flavored Coffee');
         $prod['non'] = $menu->products('Non Coffee Frappe');
@@ -181,6 +181,12 @@ class UserController extends BaseController
     public function home_single_product()
     {
         return view('/user/single_product');
+    }
+
+    public function profile($id)
+    {
+        $data['prof'] = $this->user->find($id);
+        return view('/user/header', $data);
     }
 
     public function edit_profile($id)

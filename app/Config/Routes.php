@@ -29,6 +29,7 @@ $routes->post('/adminregister', 'UserController::register');
 $routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
 $routes->get('/logout', 'UserController::logout', ['filter'=>'authFilter']);
 $routes->post('viewOrders', 'AdminController::viewOrder');
+
 /* For Inventory */
 /* For Hot Coffee */
 $routes->get('/inventoryhotcoffee', 'InventoryController::gethotcoffee');
@@ -112,7 +113,6 @@ $routes->get('user/single_product', 'UserController::home_single_product',['filt
 
 
 $routes->get('admin/sidebar', 'AdminController::admin_side');
-
 
 /*add to cart*/
 $routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1');
