@@ -26,13 +26,9 @@ class CartController extends BaseController
     {
        $session = session();
         $user = $session->get('UserID');
-<<<<<<< Updated upstream
-        $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
-        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.product_status')
-=======
+
         $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.size, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
         product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.product_status', 'product_tbl.prod_mprice')
->>>>>>> Stashed changes
         ->join('product_tbl', 'product_tbl.prod_id = cart_tbl.ProductID')
         ->where('cart_tbl.CustomerID', $user)
         ->findAll();
