@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">View Orders</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -64,21 +64,19 @@
                     <?php foreach($order as $orP): ?>
                         <tr>
                         <!-- <input type="text" class="order_id" value=""> -->
-                        <td class="orderID" hidden><?= $orP['orderID']?></td>
                         <td class="text-center">
                        
                                 <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['FirstName'];?> <?= $orP['LastName'];?></p>
                                 </td>
                                 <td class="text-center">
-                                <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['barcode']?></p>
+                                <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $orP['barcode']?></p>
                                 </td>
                                 
                                 <td class="align-middle text-center">
                           
                                 <a href="#" class="btn btn-info btn-sm view_data">View Order</a>
 
-                                    <a href="" class="text-danger font-weight-bold text-xs"
-                                        id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Decline</a>
+                                
                                 </td>
                         </tr>
                         <?php endforeach; ?>
@@ -95,14 +93,14 @@
                     e.preventDefault();
                    
 
-                   var orderID = $(this).closest('tr').find('.orderID').text();
+                   var barcode = $(this).closest('tr').find('.barcode').text();
                         
                    $.ajax({
                     method: "POST",
                     url:"/viewOrders",
                     data:{
                         'click_view_btn': true,
-                        'orderID': orderID,
+                        'barcode': barcode,
                     },
                     success: function(response)
                     {

@@ -139,3 +139,59 @@ in APPPATH\Controllers\AdminController.php on line 109.
  4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-15 16:32:38 --> Undefined variable $bacode
+in APPPATH\Controllers\AdminController.php on line 110.
+ 1 APPPATH\Controllers\AdminController.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $bacode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-15 16:32:40 --> Undefined variable $bacode
+in APPPATH\Controllers\AdminController.php on line 110.
+ 1 APPPATH\Controllers\AdminController.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $bacode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-15 16:32:52 --> Undefined variable $bacode
+in APPPATH\Controllers\AdminController.php on line 110.
+ 1 APPPATH\Controllers\AdminController.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $bacode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-15 16:32:55 --> Undefined variable $bacode
+in APPPATH\Controllers\AdminController.php on line 110.
+ 1 APPPATH\Controllers\AdminController.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $bacode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-15 16:33:12 --> Undefined variable $bacode
+in APPPATH\Controllers\AdminController.php on line 110.
+ 1 APPPATH\Controllers\AdminController.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $bacode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-15 16:33:44 --> Undefined variable $bacode
+in APPPATH\Controllers\AdminController.php on line 110.
+ 1 APPPATH\Controllers\AdminController.php(110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $bacode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-03-15 16:39:49 --> Undefined array key "OrderID"
+in APPPATH\Controllers\AdminController.php on line 97.
+ 1 APPPATH\Controllers\AdminController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "OrderID"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
