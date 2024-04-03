@@ -6,9 +6,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
   	</head>
-
 	<body>
-
     <section class="home-slider owl-carousel">
 		<div class="slider-item" style="background-image: url(/assets/images/blog-img-012.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
@@ -62,7 +60,7 @@
 							
 									<td class="quantity">
 										<div class="input-group mb-3">
-											<input type="text" name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
+											<input type="number" name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
 										</div>
 									</td>
 						        	<td class="total">₱ <?= $item['total']?></td>
@@ -80,7 +78,6 @@
     				<div class="cart-total mb-3">
     					<h3>Cart Totals</h3>
     					<p class="d-flex">
-
     						<span>Subtotal</span>
 							<?php foreach($mycart as $cart):?>
     						<span>₱ <?= $cart['sum']?></span>
@@ -100,7 +97,7 @@
     						<span>₱ 17.60</span>
     					</p>
     				</div>
-    				<p class="text-center"><button type="submit" class="btn btn-primary py-3 px-4 button">Proceed to Checkout</button></p>
+					<a href="<?= site_url("user/checkout"); ?>" class="btn btn-primary py-3 px-4 button">Proceed to Checkout</a>
     			</div>
 				
     		</div>

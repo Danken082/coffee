@@ -28,6 +28,7 @@ class AuthFilter implements FilterInterface
         if(!session()->get('isLoggedIn'))
         {
             return redirect()->to('/');
+
         }
    
     }

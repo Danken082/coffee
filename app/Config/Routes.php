@@ -99,11 +99,10 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 
 /*For UserSide*/ 
 $routes->get('user/home', 'UserController::home',['filter'=>'cusFilter']);
-$routes->get('user/editprofile/(:any)', 'UserController::edit_profile/$1');
-$routes->post('user/updateprofile/(:any)', 'UserController::updateprofile/$1');
+$routes->get('user/editprofile/(:any)', 'UserController::edit_profile/$1',['filter'=>'cusFilter']);
+$routes->post('user/updateprofile/(:any)', 'UserController::updateprofile/$1',['filter'=>'cusFilter']);
 $routes->get('user/menu', 'UserController::home_menu',['filter'=>'cusFilter']);
 $routes->get('user/services', 'UserController::home_services',['filter'=>'cusFilter']);
-$routes->get('user/blog', 'UserController::home_blog',['filter'=>'cusFilter']);
 $routes->get('user/about', 'UserController::home_about',['filter'=>'cusFilter']);
 $routes->get('user/shop', 'UserController::home_shop',['filter'=>'cusFilter']);
 $routes->get('user/contact', 'UserController::home_contact',['filter'=>'cusFilter']);
@@ -115,10 +114,10 @@ $routes->get('user/single_product', 'UserController::home_single_product',['filt
 $routes->get('admin/sidebar', 'AdminController::admin_side');
 
 /*add to cart*/
-$routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1');
-$routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');
-$routes->get('/removetocart/(:any)', 'CartController::remove/$1');
-$routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::placeOrder');
+$routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1',['filter'=>'cusFilter']);
+$routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1',['filter'=>'cusFilter']);
+$routes->get('/removetocart/(:any)', 'CartController::remove/$1',['filter'=>'cusFilter']);
+$routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::placeOrder',['filter'=>'cusFilter']);
 $routes->match(['get', 'post'], '/aOrder/', 'AdminController::acceptOrder');
 $routes->match(['get', 'post'], 'reservation', 'ReservationController::reservation');
 

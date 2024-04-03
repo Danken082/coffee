@@ -8055,6 +8055,13 @@ h1, h2, h3, h4, h5,
   color: #c49b63 !important;
   padding: 0; }
 
+  .ftco-cart button:hover {
+    height: 54px !important;
+    text-align: center;
+    bordeR: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: black !important;
+    padding: 0; }
+
 .ftco-cart .form-group {
   position: relative; }
   .ftco-cart .form-group .form-control {
@@ -8178,15 +8185,15 @@ h1, h2, h3, h4, h5,
     appearance: none; }
 
 .billing-form .form-control {
-  font-weight: 300;
+  font-weight: bold;
   border: transparent !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   height: 58px !important;
   padding-left: 15px;
   padding-right: 15px;
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.4) !important;
-  font-size: 14px;
+  color: white !important;
+  font-size: 18px;
   border-radius: 0px;
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }

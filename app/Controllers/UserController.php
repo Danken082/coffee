@@ -145,11 +145,6 @@ class UserController extends BaseController
         return view('/user/services');
     }
 
-    public function home_blog()
-    {
-        return view('/user/blog');
-    }
-
     public function home_about()
     {
         return view('/user/about');
@@ -178,6 +173,7 @@ class UserController extends BaseController
     {
         return view('/user/checkout');
     }
+
     public function home_single_product()
     {
         return view('/user/single_product');
@@ -213,11 +209,9 @@ class UserController extends BaseController
         return redirect()->to(base_url('/user/home'));
     }
 
-
     public function CartCount()
     {
         $data['count'] = $this->crt->countAll();
 
     }
- 
 }

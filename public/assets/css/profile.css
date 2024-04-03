@@ -14,14 +14,12 @@ body{
 }
 
 .container{
-    display: center;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 500%;
+    max-width: 800px;
+    margin: 50px auto;
 }
 
 .card {
+    padding: 20px;
     border: none;
     background-color: #fff;
     border-radius: 10px;

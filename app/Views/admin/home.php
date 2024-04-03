@@ -15,7 +15,6 @@
         
         <main id="view-panel" class="col-lg-9">
             <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
-                <!-- Your navbar content -->
             </nav>
 
             <div class="container">

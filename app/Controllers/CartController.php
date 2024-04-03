@@ -28,7 +28,7 @@ class CartController extends BaseController
         $user = $session->get('UserID');
 
         $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.size, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
-        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.product_status', 'product_tbl.prod_mprice')
+        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
         ->join('product_tbl', 'product_tbl.prod_id = cart_tbl.ProductID')
         ->where('cart_tbl.CustomerID', $user)
         ->findAll();
@@ -57,7 +57,7 @@ class CartController extends BaseController
         ];
         
         $this->crt->save($prod);
-        return redirect()->to('user/cart');
+        return redirect()->to('user/shop');
       }  
       elseif($size === 'Medium'){
         $data = $this->product->where('prod_id', $price)->first();
@@ -72,7 +72,7 @@ class CartController extends BaseController
         ];
         
         $this->crt->save($prod);
-        return redirect()->to('user/cart');
+        return redirect()->to('user/shop');
       }  
 
       else 

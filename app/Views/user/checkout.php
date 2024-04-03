@@ -7,6 +7,14 @@
 	<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
   </head>
   <body>
+	<style>
+		.categ{
+			color: white;
+		}
+		.tagcloud{
+			color: white;
+		}
+	</style>
 
     <section class="home-slider owl-carousel">
       	<div class="slider-item" style="background-image: url(/assets/images/hmpg4.jpg);" data-stellar-background-ratio="0.5">
@@ -30,33 +38,16 @@
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstname">Firt Name</label>
-									<input type="text" class="form-control" placeholder="">
+									<label for="firstname">First Name</label>
+									<input type="text" disabled name="FirstName" class="form-control" value="<?= session()->get('FirstName') ?>">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="lastname">Last Name</label>
-									<input type="text" class="form-control" placeholder="">
+									<input type="text" disabled name="LastName" class="form-control" value="<?= session()->get('LastName')?>">
 								</div>
 							</div>
-							<div class="w-100"></div>
-							<div class="col-md-12">
-								<div class="form-group">
-									<label for="country">State / Country</label>
-									<div class="select-wrap">
-										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-										<select name="" id="" class="form-control">
-											<option value="">France</option>
-											<option value="">Italy</option>
-											<option value="">Philippines</option>
-											<option value="">South Korea</option>
-											<option value="">Hongkong</option>
-											<option value="">Japan</option>
-										</select>
-									</div>
-								</div>
-		            		</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
@@ -86,13 +77,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="phone">Phone</label>
-									<input type="text" class="form-control" placeholder="">
+									<input type="text" name="ContactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="emailaddress">Email Address</label>
-									<input type="text" class="form-control" placeholder="">
+									<input type="text" disabled name="Email"class="form-control" value="<?= session()->get('email') ?>">
 								</div>
 							</div>
 							<div class="w-100"></div>
@@ -136,14 +127,14 @@
 								<div class="form-group">
 									<div class="col-md-12">
 										<div class="radio">
-											<label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
+											<label><input type="radio" name="optradio" class="mr-2"> Gcash</label>
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-md-12">
 										<div class="radio">
-											<label><input type="radio" name="optradio" class="mr-2"> Check Payment</label>
+											<label><input type="radio" name="optradio" class="mr-2"> Paymaya</label>
 										</div>
 									</div>
 								</div>
@@ -168,82 +159,39 @@
           		</div>
 
 				<div class="col-xl-4 sidebar ftco-animate">
-					<div class="sidebar-box">
-						<form action="#" class="search-form">
-							<div class="form-group">
-								<div class="icon">
-									<span class="icon-search"></span>
-								</div>
-								<input type="text" class="form-control" placeholder="Search...">
-							</div>
-						</form>
-					</div>
 					<div class="sidebar-box ftco-animate">
-						<div class="categories">
-							<h3>Categories</h3>
-							<li><a href="#">Tour <span>(12)</span></a></li>
-							<li><a href="#">Hotel <span>(22)</span></a></li>
-							<li><a href="#">Coffee <span>(37)</span></a></li>
-							<li><a href="#">Drinks <span>(42)</span></a></li>
-							<li><a href="#">Foods <span>(14)</span></a></li>
-							<li><a href="#">Travel <span>(140)</span></a></li>
-						</div>
-					</div>
-
-            		<div class="sidebar-box ftco-animate">
-						<h3>Recent Blog</h3>
-						<div class="block-21 mb-4 d-flex">
-							<a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
-							<div class="text">
-								<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-								<div class="meta">
-									<div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-									<div><a href="#"><span class="icon-person"></span> Admin</a></div>
-									<div><a href="#"><span class="icon-chat"></span> 19</a></div>
-								</div>
-							</div>
-						</div>
-						<div class="block-21 mb-4 d-flex">
-							<a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
-							<div class="text">
-							<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-								<div class="meta">
-									<div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-									<div><a href="#"><span class="icon-person"></span> Admin</a></div>
-									<div><a href="#"><span class="icon-chat"></span> 19</a></div>
-								</div>
-							</div>
-						</div>
-						<div class="block-21 mb-4 d-flex">
-							<a class="blog-img mr-4" style="background-image: url(images/image_3.jpg);"></a>
-							<div class="text">
-								<h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-								<div class="meta">
-									<div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
-									<div><a href="#"><span class="icon-person"></span> Admin</a></div>
-									<div><a href="#"><span class="icon-chat"></span> 19</a></div>
-								</div>
-							</div>
+						<div class="categ">
+							<h2>Categories</h2><br>
+							<h3 style="text-align:center;">Meals</h3>
+							<li><a>Appetizer</a></li>
+							<li><a>Pasta</a></li>
+							<li><a>Rice Meals</a></li>
+							<li><a>Salad</a></li>
+							<li><a>Soup</a></li>
+							<li><a>Sandwiches</a></li>
+							<h3 style="text-align:center;">Drinks</h3>
+							<li><a>Hot Coffee</a></li>
+							<li><a>Iced Coffee</a></li>
+							<li><a>Flavored Iced Coffee</a></li>
+							<li><a>Non Coffee Frappe</a></li>
+							<li><a>Coffee Frappe</a></li>
+							<li><a>Others</a></li>
 						</div>
 					</div>
 
 					<div class="sidebar-box ftco-animate">
 						<h3>Tag Cloud</h3>
 						<div class="tagcloud">
-							<a href="#" class="tag-cloud-link">dish</a>
-							<a href="#" class="tag-cloud-link">menu</a>
-							<a href="#" class="tag-cloud-link">food</a>
-							<a href="#" class="tag-cloud-link">sweet</a>
-							<a href="#" class="tag-cloud-link">tasty</a>
-							<a href="#" class="tag-cloud-link">delicious</a>
-							<a href="#" class="tag-cloud-link">desserts</a>
-							<a href="#" class="tag-cloud-link">drinks</a>
+							<a class="tag-cloud-link">Dish</a>
+							<a class="tag-cloud-link">Menu</a>
+							<a class="tag-cloud-link">Food</a>
+							<a class="tag-cloud-link">Sweet</a>
+							<a class="tag-cloud-link">Tasty</a>
+							<a class="tag-cloud-link">Meals</a>
+							<a class="tag-cloud-link">Delicious</a>
+							<a class="tag-cloud-link">Desserts</a>
+							<a class="tag-cloud-link">Drinks</a>
 						</div>
-					</div>
-
-					<div class="sidebar-box ftco-animate">
-						<h3>Paragraph</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
 					</div>
 				</div>
         	</div>

@@ -41,15 +41,8 @@
                         <li class="nav-item"><a href="<?= site_url("user/home"); ?>" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="<?= site_url("user/menu"); ?>" class="nav-link">Menu</a></li>
                         <li class="nav-item"><a href="<?= site_url("user/services"); ?>" class="nav-link">Services</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/blog"); ?>" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="<?= site_url("user/about"); ?>" class="nav-link">About</a></li>
-                        <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="<?= site_url("user/shop"); ?>" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="<?= site_url("user/shop"); ?>">Shop</a>
-                            <a class="dropdown-item" href="<?= site_url("user/checkout"); ?>">Checkout</a>
-                        </div>
-                        </li>
+                        <li class="nav-item"><a href="<?= site_url("user/shop"); ?>" class="nav-link">Shop</a></li>
                         <li class="nav-item"><a href="<?= site_url("user/contact"); ?>" class="nav-link">Contact</a></li>
                         <li class="nav-item cart"><a href="<?= site_url("user/cart"); ?>" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
                         <li class="nav-item nav-profile dropdown">
