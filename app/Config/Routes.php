@@ -28,8 +28,11 @@ $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
 $routes->post('/adminregister', 'UserController::register');
 $routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
 $routes->get('/logout', 'UserController::logout', ['filter'=>'authFilter']);
-$routes->post('viewOrders', 'AdminController::viewOrder');
+$routes->get('viewOrders', 'AdminController::viewOrder');
 
+
+#rawDataTotal
+$routes->get('total', 'RawController::dataUpdating');
 /* For Inventory */
 /* For Hot Coffee */
 $routes->get('/inventoryhotcoffee', 'InventoryController::gethotcoffee');
@@ -109,6 +112,9 @@ $routes->get('user/contact', 'UserController::home_contact',['filter'=>'cusFilte
 $routes->get('user/cart', 'CartController::home_cart',['filter'=>'cusFilter']);
 $routes->get('user/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
 $routes->get('user/single_product', 'UserController::home_single_product',['filter'=>'cusFilter']);
+#second part of user side
+
+$routes->get('userCheckOut', 'CartController::GotoCheckOut');
 
 
 $routes->get('admin/sidebar', 'AdminController::admin_side');

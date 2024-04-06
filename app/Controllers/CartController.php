@@ -182,6 +182,28 @@ class CartController extends BaseController
         }
       }
 
+      public function GotoCheckOut()
+      {
+        $selectedItemsOnly = $this->request->getVar('items');
+
+          if(empty($selectedItemsOnly))
+          {
+            return redirect()->to('user/cart')->with('msg', 'No items selected for checkOut');
+          }
+
+       $getSelected = $this->getItems($selectedItemsOnly);    
+          return view('user/checkout');
+      }
+
+      private function getItems($selectedItemsOnly)
+      {
+        $getSelected['carts'] = $this->crt->whereIn('id', $selectedItemsOnly)->get()->getResultArray();
+
+        return $getSelected;
+      }
+
+
+
       // app/Controllers/CartController.php
 
       public function placeOrder()

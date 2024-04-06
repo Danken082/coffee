@@ -22,11 +22,10 @@
 	<?php if(session()->getFlashdata('msg')):?>
 	<div class="alert alert-warning">
 		<?= session()->getFlashdata('msg') ?>
-
 	</div>
 	<?php endif;?>
 
-	<form action="<?= base_url('CartController/placeOrder')?>" method="post">
+	<form action="<?= base_url('userCheckOut')?>" method="get">
 	<section class="ftco-section ftco-cart">
 		<div class="container">
 			<div class="row">
@@ -51,11 +50,15 @@
 								
 						      	<tr class="text-center">
 								  	<td><input type="checkbox" name="items[]" value= "<?= $item['id']?>" class="item-checkbox"></td>
+									
 									<td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/" .$item['prod_img']?>">
+									
 									<td class="product-name">
 										<h3><?= $item['prod_name']?></h3>
 									</td>
+
 									<?php if($item['size'] == 'Medium')?>
+									
 									<td class="price">₱ <?= $item['prod_mprice']?></td>
 							
 									<td class="quantity">
@@ -83,24 +86,25 @@
     						<span>₱ <?= $cart['sum']?></span>
 							<?php endforeach;?>
     					</p>
+
     					<p class="d-flex">
     						<span>Delivery</span>
-    						<span>₱ 0.00</span>
+    						<span>₱ </span>
     					</p>
-    					<p class="d-flex">
-    						<span>Discount</span>
-    						<span>₱ 3.00</span>
-    					</p>
+
     					<hr>
     					<p class="d-flex total-price">
     						<span>Total</span>
     						<span>₱ 17.60</span>
     					</p>
     				</div>
-					<a href="<?= site_url("user/checkout"); ?>" class="btn btn-primary py-3 px-4 button">Proceed to Checkout</a>
+				<!-- wag nang baguhin itong button na to hehe ty -->
+					<button type="submit" class="btn btn-primary">Place to Checkout</button>
+					
+	
     			</div>
 				
-    		</div>
+    		</div>  
 		</div>
 	</section>
 	</form>

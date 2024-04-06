@@ -74,6 +74,17 @@
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
                             </tr>
+                            <td>
+                                    <form action="<?= base_url('available/')?>" method="POST">
+                                    <input type="hidden" name="update" value="<?= $p['prod_id']?>">
+                                    <input type="hidden" name="prod_status" value="Available">
+                                    <button type="submit">Available</button>
+                                </form> <br><form action="<?= base_url('unavailable/')?>" method="POST">
+                                    <input type="hidden" name="update" value="<?= $p['prod_id']?>">
+                                    <input type="hidden" name="prod_status" value="Unavailable">
+                                    <button type="submit">Unavailable</button>
+                                </form></td>
+                            </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table><br>

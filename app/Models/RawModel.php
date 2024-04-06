@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class RawModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'raws';
-    protected $primaryKey       = 'id';
+    protected $table            = 'rawproducttable';
+    protected $primaryKey       = 'rawID';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['rawmaterials', 'quantity', 'stocks'];
 
     // Dates
     protected $useTimestamps = false;

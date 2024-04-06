@@ -171,10 +171,12 @@ class ProductController extends BaseController
 
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
+                               
+         return redirect()->to('inventoryflavoredcoffee')->with('msg', 'Product is now available');     
+
 
         
-        return redirect()->to('inventoryflavoredcoffee')->with('msg', 'Product is now unavailable');
-    }
+         }
 
     private function UnavailableProduct($unavailable)
     {
@@ -191,7 +193,10 @@ class ProductController extends BaseController
 
         $this->product->update($updateUnavailability, $data);
     }
+    public function rawProd()
+    {
 
+    }
     
 }
 

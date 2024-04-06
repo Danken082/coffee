@@ -1,0 +1,69 @@
+CRITICAL - 2024-04-06 14:14:37 --> Call to undefined function App\Controllers\emty()
+in APPPATH\Controllers\CartController.php on line 189.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->GotoCheckOut()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-06 14:19:06 --> Undefined variable $myCar
+in APPPATH\Views\user\cart.php on line 49.
+ 1 APPPATH\Views\user\cart.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $myCar', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php', 49)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 5 APPPATH\Controllers\CartController.php(38): view('/user/cart', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-06 15:22:51 --> Undefined variable $selectedItem
+in APPPATH\Controllers\CartController.php on line 246.
+ 1 APPPATH\Controllers\CartController.php(246): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selectedItem', 'C:\\laragon\\www\\coffee\\app\\Controllers\\CartController.php', 246)
+ 2 APPPATH\Controllers\CartController.php(216): App\Controllers\CartController->getCartItems([...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-06 15:23:17 --> Undefined variable $length
+in APPPATH\Controllers\CartController.php on line 238.
+ 1 APPPATH\Controllers\CartController.php(238): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $length', 'C:\\laragon\\www\\coffee\\app\\Controllers\\CartController.php', 238)
+ 2 APPPATH\Controllers\CartController.php(219): App\Controllers\CartController->generateAlphanumericBarcode()
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-06 15:25:23 --> insertBatch() has no data.
+in SYSTEMPATH\Database\BaseBuilder.php on line 1771.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 2 SYSTEMPATH\Model.php(353): CodeIgniter\Database\BaseBuilder->insertBatch([], null, 100)
+ 3 SYSTEMPATH\BaseModel.php(880): CodeIgniter\Model->doInsertBatch([], null, 100, false)
+ 4 APPPATH\Controllers\CartController.php(269): CodeIgniter\BaseModel->insertBatch([])
+ 5 APPPATH\Controllers\CartController.php(226): App\Controllers\CartController->insertOrder([])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-06 15:26:23 --> insertBatch() has no data.
+in SYSTEMPATH\Database\BaseBuilder.php on line 1771.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 2 SYSTEMPATH\Model.php(353): CodeIgniter\Database\BaseBuilder->insertBatch([], null, 100)
+ 3 SYSTEMPATH\BaseModel.php(880): CodeIgniter\Model->doInsertBatch([], null, 100, false)
+ 4 APPPATH\Controllers\CartController.php(270): CodeIgniter\BaseModel->insertBatch([])
+ 5 APPPATH\Controllers\CartController.php(227): App\Controllers\CartController->insertOrder([])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-06 15:38:49 --> view(): Argument #2 ($data) must be of type array, null given, called in C:\laragon\www\coffee\app\Controllers\CartController.php on line 195
+in SYSTEMPATH\Common.php on line 1176.
+ 1 APPPATH\Controllers\CartController.php(195): view('user/checkout', null)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->GotoCheckOut()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

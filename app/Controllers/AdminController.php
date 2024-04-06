@@ -91,16 +91,15 @@ class AdminController extends BaseController
             ->where('order.barcode', $barcode)
             ->orderBy('order.orderID', 'ASC')
             ->findAll();      
+            
        if(count($data['order']) > 0) {
         foreach ($data['order'] as $row) {
-            // Output each field from the row
             echo '<h6>'.$row['orderID'].'</h6>';
-        //     echo '<h6>'.$row['prod_name'].'</h6>'; // Adjust the field name as needed
          }
     } else {
         echo '<h4> no data found </h4>';
     }            
-           
+   
      }  
  }
     public function gethistory()
