@@ -24,7 +24,7 @@
                 <label for="ProductPrice">Product Price:</label>
                 <input type="text" name="prod_mprice" value="Medium: <?= $cart['prod_mprice'] ?>" readonly>
                 <input type="text" name="prod_lprice" value="Large: <?= $cart['prod_lprice'] ?>" readonly>
-                <img src="<?= base_url(); ?>/assets/images/<?= $cart['prod_img']; ?>" alt="">
+                <img src="<?= base_url(); ?>/assets/images/products/<?= $cart['prod_img']; ?>" alt="">
                 <input type="number" name="quantity" placeholder="Enter Quantity" required>
                 <input type="hidden" name="Status" value="oncart">
                 <button type="submit">Add to Cart</button>

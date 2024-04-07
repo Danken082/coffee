@@ -8,7 +8,7 @@
 		</head>
 		<body>	
 			<section class="home-slider owl-carousel">
-				<div class="slider-item" style="background-image: url(/assets/images/blog-img-012.jpg);">
+				<div class="slider-item" style="background-image: url(/assets/images/bgimg1.jpg);">
 					<div class="overlay"></div>
 					<div class="container">
 						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -21,7 +21,7 @@
 					</div>
 				</div>
 
-				<div class="slider-item" style="background-image: url(/assets/images/hmpg3.jpg);">
+				<div class="slider-item" style="background-image: url(/assets/images/bgimg4.jpg);">
 					<div class="overlay"></div>
 					<div class="container">
 						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -34,7 +34,7 @@
 					</div>
 				</div>
 
-				<div class="slider-item" style="background-image: url(/assets/images/hmpg2.jpg);">
+				<div class="slider-item" style="background-image: url(/assets/images/bgimg5.jpg);">
 					<div class="overlay"></div>
 					<div class="container">
 						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -123,7 +123,7 @@
     		</section>
 
 			<section class="ftco-about d-md-flex">
-				<div class="one-half img" style="background-image: url(/assets/images/hmpg4.jpg);"></div>
+				<div class="one-half img" style="background-image: url(/assets/images/bgimg2.jpg);"></div>
 					<div class="one-half ftco-animate">
 						<div class="overlap">
 							<div class="heading-section ftco-animate ">
@@ -131,7 +131,7 @@
 								<h2 class="mb-4">Our Story</h2>
 							</div>
 						<div>
-							<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+							<p style="color:white">On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
 						</div>
 					</div>
 				</div>
@@ -191,24 +191,23 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="menu-entry">
-										<a class="img" style="background-image: url(/assets/images/coffeefrappe1.jpg);"></a>
-									</div>
+									<a class="img" style="background-image: url(/assets/images/products/hotmocha.jpg);"></a>
 								</div>
-								<div class="col-md-6">
-									<div class="menu-entry mt-lg-4">
-										<a class="img" style="background-image: url(/assets/images/chefsalad.jpg);"></a>
-									</div>
+							</div>
+							<div class="col-md-6">
+								<div class="menu-entry mt-lg-4">
+									<a class="img" style="background-image: url(/assets/images/products/chickenparmegiana.jpg);"></a>
 								</div>
-								<div class="col-md-6">
-									<div class="menu-entry">
-										<a class="img" style="background-image: url(/assets/images/crabandcornsoup.jpg);"></a>
-									</div>
+							</div>
+							<div class="col-md-6">
+								<div class="menu-entry">
+									<a class="img" style="background-image: url(/assets/images/products/crabandcornsoup.jpg);"></a>
 								</div>
-								<div class="col-md-6">
-									<div class="menu-entry mt-lg-4">
-										<a class="img" style="background-image: url(/assets/images/brewedcoffee.jpg);"></a>
-									</div>
-    							</div>
+							</div>
+							<div class="col-md-6">
+								<div class="menu-entry mt-lg-4">
+									<a class="img" style="background-image: url(/assets/images/products/javafrap.jpg);"></a>
+								</div>
     						</div>
     					</div>
     				</div>
@@ -274,7 +273,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="menu-entry">
-								<a class="img" style="background-image: url(/assets/images/icedcookiesncream.jpg);"></a>
+								<a class="img" style="background-image: url(/assets/images/products/icedcookiesncream.jpg);"></a>
 								<div class="text text-center pt-4">
 									<h3><a>Cookies and Cream</a></h3>
 								</div>
@@ -282,7 +281,7 @@
 						</div>
 						<div class="col-md-3">
 							<div class="menu-entry">
-								<a class="img" style="background-image: url(/assets/images/noncoffee.jpg);"></a>
+								<a class="img" style="background-image: url(/assets/images/products/saltedcaramelfrap.jpg);"></a>
 								<div class="text text-center pt-4">
 									<h3><a>Caramel</a></h3>
 								</div>
@@ -290,7 +289,7 @@
 						</div>
 						<div class="col-md-3">
 							<div class="menu-entry">
-								<a class="img" style="background-image: url(/assets/images/javafrap.jpg);"></a>
+								<a class="img" style="background-image: url(/assets/images/products/javafrap.jpg);"></a>
 								<div class="text text-center pt-4">
 									<h3><a>Java Chip</a></h3>
 								</div>
@@ -298,7 +297,7 @@
 						</div>
 						<div class="col-md-3">
 							<div class="menu-entry">
-								<a class="img" style="background-image: url(/assets/images/cappuccino.jpg);"></a>
+								<a class="img" style="background-image: url(/assets/images/products/hotcappuccino.jpg);"></a>
 								<div class="text text-center pt-4">
 									<h3><a>Hot Capuccino</a></h3>
 								</div>

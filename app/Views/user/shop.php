@@ -7,7 +7,7 @@
   <body>
 
     <section class="home-slider owl-carousel">
-		<div class="slider-item" style="background-image: url(/assets/user/images/bg3.jpg);" data-stellar-background-ratio="0.5">
+		<div class="slider-item" style="background-image: url(/assets/images/hmpg4.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center">
@@ -53,29 +53,24 @@
 											<div class="menu-wrap">
 												<?php foreach($app as $a): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$a['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$a['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$a['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$a['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?= $a['prod_mprice'] ?></span></p>
-
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-														
-															<form action="<?= base_url('/viewProd/') .$a['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd/') .$a['prod_id'] ?>" method="post">
 															<?php if($a['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>
+																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<?php endif;?>
+														</form>
 													</div>
-													
 												<?php endforeach; ?> 
 											</div>
 										</div>
 									</div>
 								</div>
-
 
 								<div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
 									<div class="row">
@@ -83,19 +78,18 @@
 											<div class="menu-wrap">
 												<?php foreach($pasta as $p): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$p['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$p['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$p['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$p['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$p['prod_id'] ?>" method="post">
 															<?php if($p['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>
+																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<?php endif;?>
+														</form>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -108,19 +102,18 @@
 											<div class="menu-wrap">
 												<?php foreach($meal as $m): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$m['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$m['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$m['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$m['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?= $m['prod_mprice'] ?></span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$m['prod_id'] ?>" method="post">
 															<?php if($m['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>
+																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<?php endif;?>
+														</form>
 													</div>
 												<?php endforeach; ?>
 											</div>
@@ -133,19 +126,19 @@
 											<div class="menu-wrap">
 												<?php foreach($salad as $s): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$s['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$s['prod_id'] ?>" method="post">
 															<?php if($s['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>													</div>
+																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<?php endif;?>
+														</form>													
+													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -158,19 +151,19 @@
 											<div class="menu-wrap">
 												<?php foreach($soup as $s): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$s['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$s['prod_id'] ?>" method="post">
 															<?php if($s['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>													</div>
+																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<?php endif;?>
+														</form>													
+													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -182,20 +175,19 @@
 											<div class="menu-wrap">
 												<?php foreach($sand as $s): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$s['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$s['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$s['prod_id'] ?>" method="post">
 															<?php if($s['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>
-															</div>
+																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<?php endif;?>
+														</form>
+													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -207,19 +199,19 @@
 											<div class="menu-wrap">
 												<?php foreach($hot as $h): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$h['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$h['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$h['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$h['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$h['prod_id'] ?>" method="post">
 															<?php if($h['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
-																<?php else:?>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>													</div>
+															<?php endif;?>
+														</form>
+													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -231,19 +223,19 @@
 											<div class="menu-wrap">
 												<?php foreach($iced as $i): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$i['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$i['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$i['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$i['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$i['prod_mprice'] ?><br>Large ₱ <?=$i['prod_lprice'] ?> </span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$i['prod_id'] ?>" method="post">
 															<?php if($i['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
-																<?php else:?>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>													</div>
+															<?php endif;?>
+														</form>													
+													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -255,19 +247,19 @@
 											<div class="menu-wrap">
 												<?php foreach($flav as $f): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$f['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$f['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$f['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$f['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$f['prod_mprice'] ?><br>Large ₱ <?=$f['prod_lprice'] ?> </span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$f['prod_id'] ?>" method="post">
 															<?php if($f['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
-																<?php else:?>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>													</div>
+															<?php endif;?>
+														</form>													
+													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -279,19 +271,19 @@
 											<div class="menu-wrap">
 												<?php foreach($non as $n): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$n['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$n['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$n['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$n['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$n['prod_id'] ?>" method="post">
 															<?php if($n['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
-																<?php else:?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>													</div>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit">Add to cart</button>
+															<?php endif;?>
+														</form>													
+													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>
@@ -303,19 +295,19 @@
 											<div class="menu-wrap">
 												<?php foreach($coffee as $c): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$c['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$c['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$c['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$c['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$c['prod_id'] ?>" method="post">
 															<?php if($c['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
-																<?php else:?>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>													</div>
+															<?php endif;?>
+														</form>												
+													</div>
 												<?php endforeach; ?>	
 											</div>
 										</div>
@@ -327,20 +319,19 @@
 											<div class="menu-wrap">
 												<?php foreach($other as $o): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/" .$o['prod_img']?>">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$o['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$o['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$o['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
-														<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 														<form action="<?= base_url('/viewProd/') .$o['prod_id'] ?>" method="post">
 															<?php if($o['product_status'] === 'Unavailable'):?>
-														<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
-																<?php else:?>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-														<?php endif;?>
-
-													</form>													
-												</div>
+															<?php endif;?>
+														</form>													
+													</div>
 												<?php endforeach; ?>
 											</div>
 										</div>

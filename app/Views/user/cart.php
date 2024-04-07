@@ -8,7 +8,7 @@
   	</head>
 	<body>
     <section class="home-slider owl-carousel">
-		<div class="slider-item" style="background-image: url(/assets/images/blog-img-012.jpg);" data-stellar-background-ratio="0.5">
+		<div class="slider-item" style="background-image: url(/assets/images/bgimg.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row slider-text justify-content-center align-items-center">
@@ -50,9 +50,7 @@
 								
 						      	<tr class="text-center">
 								  	<td><input type="checkbox" name="items[]" value= "<?= $item['id']?>" class="item-checkbox"></td>
-									
-									<td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/" .$item['prod_img']?>">
-									
+									<td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>">
 									<td class="product-name">
 										<h3><?= $item['prod_name']?></h3>
 									</td>
