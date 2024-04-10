@@ -192,7 +192,7 @@ class CartController extends BaseController
           }
 
        $getSelected = $this->getItems($selectedItemsOnly);    
-          return view('user/checkout');
+          return view('user/checkout', $getSelected);
       }
 
       private function getItems($selectedItemsOnly)

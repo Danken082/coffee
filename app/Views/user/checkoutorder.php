@@ -32,15 +32,11 @@
     <section class="ftco-section">
 		<div class="container">
 			<div class="row">
+               
 				<div class="col-xl-8 ftco-animate">
 					<form action="#" class="billing-form ftco-bg-dark p-3 p-md-5">
 						<h3 class="mb-4 ordered-billing">Products Ordered</h3>
-						<?php foreach($carts as $crt):?>
-					<input type="hidden" value="	<?= $crt['ProductID']?>">
-					<input type="hidden" value="<?= session()->get('UserID')?>">
-					<input type="hidden" value="<?= $crt['quantity']?>">
-
-						<?php endforeach;?>
+                        
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
@@ -52,6 +48,8 @@
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
+                                
+						
 									<label for="firstname">First Name</label>
 									<input type="text" disabled name="FirstName" class="form-control" value="<?= session()->get('FirstName') ?>">
 								</div>

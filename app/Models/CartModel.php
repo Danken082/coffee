@@ -13,7 +13,7 @@ class CartModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['CustomerID', 'ProductID', 'quantity', 'Status', 'total', 'size'];
+    protected $allowedFields    = ['CustomerID', 'ProductID', 'quantity', 'Status', 'total', 'size', 'paymentstatus'];
 
     // Dates
     protected $useTimestamps = false;

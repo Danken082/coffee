@@ -29,6 +29,7 @@ $routes->post('/adminregister', 'UserController::register');
 $routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
 $routes->get('/logout', 'UserController::logout', ['filter'=>'authFilter']);
 $routes->get('viewOrders', 'AdminController::viewOrder');
+$routes->get('admin/sidebar', 'AdminController::admin_side');
 
 
 #rawDataTotal
@@ -112,12 +113,11 @@ $routes->get('user/contact', 'UserController::home_contact',['filter'=>'cusFilte
 $routes->get('user/cart', 'CartController::home_cart',['filter'=>'cusFilter']);
 $routes->get('user/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
 $routes->get('user/single_product', 'UserController::home_single_product',['filter'=>'cusFilter']);
+$routes->post('user/checkouts/', 'OrderController::placeToOrder');
+$routes->get('OrderNow/(:any)', 'OrderController::myOrders/$1');
 #second part of user side
-
 $routes->get('userCheckOut', 'CartController::GotoCheckOut');
 
-
-$routes->get('admin/sidebar', 'AdminController::admin_side');
 
 /*add to cart*/
 $routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1',['filter'=>'cusFilter']);
@@ -126,7 +126,6 @@ $routes->get('/removetocart/(:any)', 'CartController::remove/$1',['filter'=>'cus
 $routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::placeOrder',['filter'=>'cusFilter']);
 $routes->match(['get', 'post'], '/aOrder/', 'AdminController::acceptOrder');
 $routes->match(['get', 'post'], 'reservation', 'ReservationController::reservation');
-
 
 //status
 $routes->match(['get','post'], '/available/', 'ProductController::availability');

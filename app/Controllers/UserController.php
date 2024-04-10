@@ -47,7 +47,7 @@ class UserController extends BaseController
                 'address' => $this->request->getVar('address'),
                 'birthdate' => $this->request->getVar('birthdate'),
             ];
-            $this->user->save($data);
+            $this->user->save($data);   
             return redirect()->to('/');
 
             
@@ -191,6 +191,7 @@ class UserController extends BaseController
         return view('/user/edit_profile', $data);
     }
 
+
     public function updateprofile($id)
     {
         $user = new UserModel();
@@ -213,5 +214,39 @@ class UserController extends BaseController
     {
         $data['count'] = $this->crt->countAll();
 
+    }
+
+
+
+    public function orderProd()
+    {
+        $orderAgad = $this->request->getVar('item');
+
+        if(empty($orderAgad)){
+            return redirect()-to('user/shop')->with('Please Select Product');
+        }
+
+        $prodOrder = $this->myOrder($orderAgad);
+        
+        $this->insertOrder($prodOrder);
+
+        return redirect()->to('user/shop')->with('msg', 'Your Product has been Ordered');
+    }
+
+    private function myOrder($orderAgad)
+    {
+        $prodOrder = $this->prod->whereIn('id', $orderAgad)->get()->getResultArray();
+
+        return $prodOrder;
+    }
+
+    private function insertOrder($prodOrder)
+    {
+        $order = [];
+
+        foreach($prodOrder as $ord)
+        {
+
+        }
     }
 }

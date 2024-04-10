@@ -61,7 +61,7 @@
 															<?php if($a['product_status'] === 'Unavailable'):?>
 																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$a['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>
