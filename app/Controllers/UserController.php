@@ -47,10 +47,15 @@ class UserController extends BaseController
                 'address' => $this->request->getVar('address'),
                 'birthdate' => $this->request->getVar('birthdate'),
             ];
+<<<<<<< Updated upstream
             $this->user->save($data);   
             return redirect()->to('/');
 
             
+=======
+            $this->user->save($data);
+            return redirect()->to('/login');
+>>>>>>> Stashed changes
         }
         else{
             $data['validation']= $this->validator;
@@ -94,17 +99,14 @@ class UserController extends BaseController
             return redirect()->to('/adminhome');
            }
            else{
-            return redirect()->to('/user/home');
+            return redirect()->to('/user/mainhome');
            }
-        
-        
         }
                 
         else{
                 $session->setFlashdata('msg', 'Incorect email or password.');
                 return redirect()->to('/');
             }
-
         }
     }
 
@@ -120,6 +122,16 @@ class UserController extends BaseController
             $this->crt->select("Count(size)")->where('CustomerID', $user)->first();    
     
         return view('user/home', $data);
+        // var_dump($data);
+    }
+
+    public function mainhome(){
+        $session = session();
+        $user = $session->get('UserID');
+        $data = 
+            $this->crt->select("Count(size)")->where('CustomerID', $user)->first();    
+    
+        return view('user/mainhome', $data);
         // var_dump($data);
     }
 

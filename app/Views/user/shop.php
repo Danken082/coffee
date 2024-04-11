@@ -2,10 +2,12 @@
 <html lang="en">
   <head>
     <title>Crossroad</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
+	<link rel="stylesheet" href="/assets/css/preloader.css">
   </head>
   <body>
-
+  	<div id="preloader"></div>
     <section class="home-slider owl-carousel">
 		<div class="slider-item" style="background-image: url(/assets/images/hmpg4.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
@@ -345,8 +347,18 @@
     	</div>
     </section>
 
-	<?php include('header.php'); ?>
+	<?php include('mainheader.php'); ?>
 	<?php include('footer.php'); ?>
+
+	<script>
+		var loader = document.getElementById("preloader");
+
+		window.addEventListener("load", function () {
+			setTimeout(function () {
+				loader.style.display = "none";
+			}, 1500);
+		});
+	</script>
 	
   </body>
 </html>

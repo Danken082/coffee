@@ -38,27 +38,15 @@
                 </button>
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="<?= site_url("user/home"); ?>" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/"); ?>" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="<?= site_url("user/menu"); ?>" class="nav-link">Menu</a></li>
                         <li class="nav-item"><a href="<?= site_url("user/services"); ?>" class="nav-link">Services</a></li>
                         <li class="nav-item"><a href="<?= site_url("user/about"); ?>" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="<?= site_url("user/shop"); ?>" class="nav-link">Shop</a></li>
                         <li class="nav-item"><a href="<?= site_url("user/contact"); ?>" class="nav-link">Contact</a></li>
                         <li class="nav-item cart"><a href="<?= site_url("user/cart"); ?>" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
-                        <li class="nav-item nav-profile dropdown">
-                            <a class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class="nav-profile-img">
-                                    <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="150"><p style="font-size:x-small"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p>
-                                    <span class="availability-status online"></span>
-                                </div>
-                            </a>
-                               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item" href="<?= site_url("user/editprofile/"); ?><?= session()->get('UserID')?>"><i class="mdi mdi-cached me-2 text-success"></i>Edit Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= site_url("logout"); ?>">
-                                <i class="mdi mdi-logout me-2 text-primary"></i> Logout </a>
-                            </div>
-                        </li>
+                        <li class="nav-item"><a href="<?= site_url("/login"); ?>" class="nav-link">Login</a></li>
+                        <li class="nav-item"><a href="<?= site_url("register"); ?>" class="nav-link">SignUp</a></li>
                     </ul>
                 </div>
             </div>
