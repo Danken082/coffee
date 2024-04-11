@@ -19,6 +19,8 @@ class UserController extends BaseController
     }
     public function register()
     {   
+        $verificationToken = substr(md5(rand()), 0, 8);
+
        
         $rules = [
 
@@ -35,17 +37,19 @@ class UserController extends BaseController
         if($this->validate($rules)){
         
                 $data = [
-                'LastName' => $this->request->getVar('LastName'),
-                'FirstName' => $this->request->getVar('FirstName'),
-                'gender' => $this->request->getVar('gender'),
-                'email' => $this->request->getVar('email'),
-                'ContactNo' => $this->request->getVar('ContactNo'),
+                'LastName'    => $this->request->getVar('LastName'),
+                'FirstName'   => $this->request->getVar('FirstName'),
+                'gender'      => $this->request->getVar('gender'),
+                'email'       => $this->request->getVar('email'),
+                'ContactNo'   => $this->request->getVar('ContactNo'),
                 'profile_img' => 'profile.png',
-                'UserRole'   => $this->request->getVar('UserRole'),
-                'Username' => $this->request->getVar('Username'),
-                'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
-                'address' => $this->request->getVar('address'),
-                'birthdate' => $this->request->getVar('birthdate'),
+                'UserRole'    => $this->request->getVar('UserRole'),
+                'Username'    => $this->request->getVar('Username'),
+                'Password'    => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
+                'address'     => $this->request->getVar('address'),
+                'birthdate'   => $this->request->getVar('birthdate'),
+                'code'        =>$verificationToken,
+                'status'      => 'pending'
             ];
             $this->user->save($data);   
             return redirect()->to('/');

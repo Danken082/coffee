@@ -86,7 +86,7 @@
 															<?php if($p['product_status'] === 'Unavailable'):?>
 																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$p['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>
@@ -110,7 +110,7 @@
 															<?php if($m['product_status'] === 'Unavailable'):?>
 																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$m['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>
@@ -134,7 +134,7 @@
 															<?php if($s['product_status'] === 'Unavailable'):?>
 																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$s['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>													
@@ -183,7 +183,7 @@
 															<?php if($s['product_status'] === 'Unavailable'):?>
 																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$s['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>
@@ -207,7 +207,7 @@
 															<?php if($h['product_status'] === 'Unavailable'):?>
 															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$h['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>
@@ -231,7 +231,7 @@
 															<?php if($i['product_status'] === 'Unavailable'):?>
 															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$i['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>													
@@ -255,7 +255,7 @@
 															<?php if($f['product_status'] === 'Unavailable'):?>
 															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$f['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>													
@@ -279,7 +279,7 @@
 															<?php if($n['product_status'] === 'Unavailable'):?>
 															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$n['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit">Add to cart</button>
 															<?php endif;?>
 														</form>													
@@ -303,7 +303,7 @@
 															<?php if($c['product_status'] === 'Unavailable'):?>
 															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$c['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>												
@@ -327,7 +327,7 @@
 															<?php if($o['product_status'] === 'Unavailable'):?>
 															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$o['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>													

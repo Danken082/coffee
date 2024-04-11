@@ -96,7 +96,7 @@ class OrderController extends BaseController
                      'quantity'  => $this->request->getPost('quantity'),
                      'status'    =>$this->request->getPost('Status'),
                      ]; 
-                    
+                     
                     return view('user/checkoutorder', $data);
 
     }
