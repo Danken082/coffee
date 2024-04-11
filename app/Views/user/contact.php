@@ -3,22 +3,24 @@
   <head>
     <title>Crossroad</title>
     <link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
+    <link rel="stylesheet" href="/assets/css/preloader.css">
+    </head>
+		<body>	
+			<div id="preloader"></div>
+      <section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image: url(/assets/images/coffeewlp2.jpg);"  data-stellar-background-ratio="0.5">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row slider-text justify-content-center align-items-center">
 
-    <section class="home-slider owl-carousel">
+              <div class="col-md-7 col-sm-12 text-center ftco-animate">
+                <h1 class="mb-3 mt-5 bread">Contact Us</h1>
+              </div>
 
-    <div class="slider-item" style="background-image: url(/assets/images/coffeewlp2.jpg);"  data-stellar-background-ratio="0.5">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center">
-
-            <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<h1 class="mb-3 mt-5 bread">Contact Us</h1>
             </div>
-
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     <section class="ftco-section contact-section">
       <div class="container mt-5">
@@ -74,8 +76,18 @@
 
     <div id="map"></div>
 
-	<?php include('header.php'); ?>
-	<?php include('footer.php'); ?>
+    <?php include('mainheader.php'); ?>
+    <?php include('footer.php'); ?>
+
+    <script>
+      var loader = document.getElementById("preloader");
+
+      window.addEventListener("load", function () {
+      	setTimeout(function () {
+      		loader.style.display = "none";
+      	}, 1500);
+      });
+		</script>
      
   	</body>
 </html>

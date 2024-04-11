@@ -1,83 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
-        <link rel="icon" type="image/png" href=/images/coffeelogo2.png>
-        <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-        <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
-        <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
-        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-        <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
-        <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-    </head>
-
-        <body class="bg-gray-200">
-            <div class="container position-sticky z-index-sticky top-0">
-                <div class="row">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-signin-client_id" content="485291892730-tfveu4ohrd1iq9k0u10c7v9rp8o8680v.apps.googleusercontent.com">
+    <link rel="icon" type="image/png" href="/images/coffeelogo2.png">
+    <title>Crossroads Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h4>Log in to your Account</h4>
+            <?php if(session()->getFlashdata('msg')):?>
+                <div class="alert alert-warning">
+                    <?= session()->getFlashdata('msg') ?>
                 </div>
-            </div>
-            <main class="main-content  mt-0">
-                <div class="page-header align-items-start min-vh-100"
-                    style="background-image: url('/assets/images/coffeewlp2.jpg');">
-                    <span class="mask bg-gradient-dark opacity-6"></span>
-                    <div class="container my-auto">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-8 col-12 mx-auto">
-                                <div class="card z-index-0 fadeIn3 fadeInBottom">
-                                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                                        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                                            <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Log in</h4>
-                                            <?php if(session()->getFlashdata('msg')):?>
-                                                <div class="alert alert-warning">
-                                                    <?= session()->getFlashdata('msg') ?>
-
-                                                </div>
-                                                <?php endif;?>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <form action="<?= base_url("loginAuth"); ?>" role="form" class="text-start" method="POST">
-                                            <div class="input-group input-group-outline my-3">
-                                                <label class="form-label">Email</label>
-                                                <input type="email" name="email" class="form-control" required>
-                                            </div>
-                                            <div class="input-group input-group-outline mb-3">
-                                                <label class="form-label">Password</label>
-                                                <input type="password" name="password" class="form-control" required>
-                                            </div>
-                                            <div class="text-center">
-                                                <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Login</button><br>
-                                            </div>
-                                            <p class="small fw-bold mt-2 pt-1 mb-0" style="color: black">Don't have an account yet?<a href="<?= site_url("register"); ?>" class="link-danger"> Register Now</a></p>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+            <?php endif;?>
+            <form action="<?= base_url("loginAuth"); ?>" role="form" method="POST">
+                <div class="input-group input-group-outline mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" required>
                 </div>
-            </main>
+                <div class="input-group input-group-outline mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-login">Login</button>
+                </div>
+                <p class="register-link">Don't have an account yet? <a href="<?= site_url("register"); ?>">Register Now</a></p>
+            </form>
+        </div>
+    </div>
 
-            <script src="/assets/js/core/popper.min.js"></script>
-            <script src="/assets/js/core/bootstrap.min.js"></script>
-            <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
-            <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
-            <script>
-                var win = navigator.platform.indexOf('Win') > -1;
-                if (win && document.querySelector('#sidenav-scrollbar')) {
-                    var options = {
-                        damping: '0.5'
-                    }
-                    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-                }
-            </script>
-            <script async defer src="https://buttons.github.io/buttons.js"></script>
-            <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
-
-    </body>               
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="/assets/js/core/popper.min.js"></script>
+    <script src="/assets/js/core/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
+</body>
 </html>

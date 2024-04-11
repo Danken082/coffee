@@ -8,7 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/dailysales', 'VisualizationController::dailySales');
 $routes->get('/monthlysales', 'VisualizationController::initMonthChart');
 $routes->get('/yearsales', 'VisualizationController::initYearChart');
-$routes->get('/', 'AdminController::login',['filter'=>'guestFilter']);
+$routes->get('/login', 'AdminController::login',['filter'=>'guestFilter']);
 $routes->get('/register', 'AdminController::register', ['filter'=>'guestFilter']);
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::initDayChart', ['filter'=>'authFilter']);
@@ -102,7 +102,8 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 
 
 /*For UserSide*/ 
-$routes->get('user/home', 'UserController::home',['filter'=>'cusFilter']);
+$routes->get('/', 'UserController::home');
+$routes->get('user/mainhome', 'UserController::mainhome',['filter'=>'cusFilter']);
 $routes->get('user/editprofile/(:any)', 'UserController::edit_profile/$1',['filter'=>'cusFilter']);
 $routes->post('user/updateprofile/(:any)', 'UserController::updateprofile/$1',['filter'=>'cusFilter']);
 $routes->get('user/menu', 'UserController::home_menu',['filter'=>'cusFilter']);

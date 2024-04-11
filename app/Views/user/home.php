@@ -5,8 +5,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
+		<link rel="stylesheet" href="/assets/css/preloader.css">
 		</head>
 		<body>	
+			<div id="preloader"></div>
 			<section class="home-slider owl-carousel">
 				<div class="slider-item" style="background-image: url(/assets/images/bgimg1.jpg);">
 					<div class="overlay"></div>
@@ -79,13 +81,13 @@
 							<form action="<?= base_url('reservation')?>" method ="post" class="appointment-form">
 								<div class="d-md-flex">
 									<div class="form-group">
-										<input type="text" disabled name="LastName" class="form-control" value="<?= session()->get('LastName')?>">
+										<input type="text" name="LastName" class="form-control" placeholder="Lastname" required>
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="text" disabled name="FirstName" class="form-control" value="<?= session()->get('FirstName') ?>">
+										<input type="text" name="FirstName" class="form-control" placeholder="Firstname" required>
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="text" disabled name="Email"class="form-control" value="<?= session()->get('email') ?>">
+										<input type="text" name="Email"class="form-control" placeholder="Email" required>
 									</div>
 								</div>
 								<div class="d-md-flex">
@@ -96,7 +98,7 @@
 										</div>
 		    						</div>
 									<div class="form-group ml-md-4">
-										<input type="text" name="ContactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
+										<input type="text" name="ContactNo" class="form-control" placeholder="Phone Number" required>
 									</div>
 									<div class="form-group ml-md-4">
 										<select name="TableType"class="booktable" >
@@ -115,7 +117,6 @@
 										<input type="submit" value="Reserve" class="btn btn-white py-3 px-4">
 									</div>
 								</div>
-								<input type="hidden" name="CustomerID" value ="<?= session()->get('UserID')?>">
 	    					</form>
 	    				</div>
     				</div>
@@ -389,5 +390,15 @@
 
 			<?php include('header.php'); ?>
 			<?php include('footer.php'); ?>
+
+			<script>
+				var loader = document.getElementById("preloader");
+
+				window.addEventListener("load", function () {
+					setTimeout(function () {
+						loader.style.display = "none";
+					}, 1500);
+				});
+			</script>
   	</body>
 </html>
