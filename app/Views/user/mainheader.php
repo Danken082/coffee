@@ -53,7 +53,7 @@
                                 </div>
                             </a>
                                <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                                <a class="dropdown-item" href="<?= site_url("user/editprofile/"); ?><?= session()->get('UserID')?>"><i class="mdi mdi-cached me-2 text-success"></i>Edit Profile</a>
+                                <a class="dropdown-item" href="<?= site_url("user/profile/"); ?>"><i class="mdi mdi-cached me-2 text-success"></i>See Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="<?= site_url("logout"); ?>">
                                 <i class="mdi mdi-logout me-2 text-primary"></i> Logout </a>

@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
+    <link rel="icon" type="image/png" href="/assets/images/coffeelogo.jpg">
     <link rel="stylesheet" href="/assets/user/css/bootstrap/bootstrap.min1.css"/>
+    <link href="https://fontawesome.com/"/>
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/css/profile.css">
 </head>
 <body>
@@ -13,77 +16,93 @@
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="<?= site_url("user/mainhome"); ?>">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?= site_url("user/profile"); ?>">User</a></li>
               <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
             </ol>
           </nav>
           <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card mb-3">
-                <form action="<?= base_url('/user/updateprofile/'. $eprof['UserID'])?>" class="row g-3" method="POST">
+                <h2 class="row justify-content-center">Edit Profile</h2>
+                <form action="<?= base_url('/user/updateprofile/'. $eprof['UserID'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
-                      <div class="d-flex flex-column">
-                        <div class="align-items-center text-center">
-                        <h4><p class="mb-1 text-black"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p></h4><br>
-                          <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle" width="150" value="<?=$eprof['profile_img'] ?>"><br><br>
-                          <button id="editProfileBtn" class="btn btn-primary" type="button">Edit Profile</button><br><br>
-                          <input type="file" id="fileInput" name="profile_img" style="display: none;">
+                      <div class="upload">
+                        <img src="/assets/user/images/<?php echo $eprof['profile_img']?>" alt="pfp" id="profile" class="rounded-circle" width="150">
+                        <div class="rightRound" id="upload">
+                          <input type="file" name="profile_img" id="profile_img" accept=".jpg, .jpeg, .png">
+                          <i class="fa fa-solid fa-camera"></i>
                         </div>
-                        <div class="row">
-                          <div class="col-sm-3">
-                            <h6 class="mb-0">Last Name</h6>
+                        <div class="leftRound">
+                          <button id="remove">
+                            <i class="fa fa-solid fa-trash"></i>
+                        </button>
+                        </div>
+                        <div class="rightRound" id="confirm" style="display: none;">
+                          <input type="submit" name="" value="">
+                          <i class="fa fa-check"></i>
+                        </div>
+                        <div class="leftRound" id="cancel" style="display: none;">
+                          <i class="fa fa-times"></i>
+                        </div>
+                      </div>
+                      <br><br>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6>Last Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="lastname" name="LastName" value="<?= session()->get('LastName') ?>"></div>
+                      </div><br>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6>First Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="firstname" name="FirstName" value="<?= session()->get('FirstName') ?>"></div>
+                      </div><br>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6>Gender</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="gender" id="male" value="Male" <?php echo (session()->get('gender') == 'Male') ? 'checked' : ''; ?>>
+                              <label class="form-check-label" for="male">Male</label>
                           </div>
-                          <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="lastname" name="LastName" value="<?=$eprof['LastName'] ?>"></div>
+                          <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="gender" id="female" value="Female" <?php echo (session()->get('gender') == 'Female') ? 'checked' : ''; ?>>
+                              <label class="form-check-label" for="female">Female</label>
+                          </div>
                         </div>
-                        <hr>
+                      </div><br>
                       <div class="row">
                         <div class="col-sm-3">
-                          <h6 class="mb-0">First Name</h6>
+                          <h6>Email</h6>
                         </div>
-                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="firstname" name="FirstName" value="<?=$eprof['FirstName'] ?>"></div>
-                      </div>
-                      <hr>
+                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="email" name="email" value="<?= session()->get('email') ?>"></div>
+                      </div><br>
                       <div class="row">
                         <div class="col-sm-3">
-                          <h6 class="mb-0">Gender</h6>
+                          <h6>Phone Number</h6>
                         </div>
-                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="gender" name="gender" value="<?=$eprof['gender'] ?>"></div>
-                      </div>
-                      <hr>
+                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="contact number" name="ContactNo" value="<?= session()->get('ContactNo') ?>"></div>
+                      </div><br>
                       <div class="row">
                         <div class="col-sm-3">
-                          <h6 class="mb-0">Email</h6>
+                          <h6>Username</h6>
                         </div>
-                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="email" name="email" value="<?=$eprof['email'] ?>"></div>
-                      </div>
-                      <hr>
+                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="username" name="Username" value="<?= session()->get('Username') ?>"></div>
+                      </div><br>
                       <div class="row">
                         <div class="col-sm-3">
-                          <h6 class="mb-0">Phone Number</h6>
+                          <h6>Address</h6>
                         </div>
-                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="contact number" name="ContactNo" value="<?=$eprof['ContactNo'] ?>"></div>
-                      </div>
-                      <hr>
+                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="address" name="address" value="<?= session()->get('address') ?>"></div>
+                      </div><br>
                       <div class="row">
                         <div class="col-sm-3">
-                          <h6 class="mb-0">Username</h6>
+                          <h6>Birthdate</h6>
                         </div>
-                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="username" name="Username" value="<?=$eprof['Username'] ?>"></div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Address</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary"><input type="text" class="form-control" id="address" name="address" value="<?=$eprof['address'] ?>"></div>
-                      </div>
-                      <hr>
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">Birthdate</h6>
-                        </div>
-                        <div class="col-sm-9 text-secondary"><input type="date" class="form-control" id="birthdate" name="birthdate" value="<?=$eprof['birthdate'] ?>"></div>
-                      </div>
-                      <hr>
+                        <div class="col-sm-9 text-secondary"><input type="date" class="form-control" id="birthdate" name="birthdate" value="<?= session()->get('birthdate') ?>"></div>
+                      </div><br>
                       <div class="row">
                         <div class="col-sm-12">
                           <button type="submit" class="btn-info">Save Changes</button>
@@ -101,11 +120,46 @@
       <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
-      <script>
-        document.getElementById('editProfileBtn').addEventListener('click', function() {
-            document.getElementById('fileInput').click();
-        });
-    </script>
+      <script type="text/javascript">
+        document.getElementById("profile_img").onchange = function() {
+          document.getElementById("profile").src = URL.createObjectURL(profile_img.files[0]);
 
+          document.getElementById("cancel").style.display = "block";
+          document.getElementById("confirm").style.display = "block";
+          document.getElementById("remove").style.display = "block";
+
+          document.getElementById("upload").style.display = "none";
+        }
+
+        var userImage = document.getElementById('profile').src;
+        document.getElementById("cancel").onclick = function(){;
+          document.getElementById("profile").src = userImage;
+
+          document.getElementById("cancel").style.display = "none";
+          document.getElementById("confirm").style.display = "none";
+
+          document.getElementById("upload").style.display = "block";
+        }
+
+          document.getElementById("remove").onclick = function() {
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                  if (xhr.status === 500) {
+                      document.getElementById("profile").src = "/assets/user/images/profile.png";
+
+                      document.getElementById("cancel").style.display = "none";
+                      document.getElementById("confirm").style.display = "none";
+
+                      document.getElementById("upload").style.display = "block";
+                  } else {
+                      console.error('Error:', xhr.responseText);
+                  }
+              }
+          };
+          xhr.open('GET', '<?= base_url('/user/removeprofile/'. $eprof['UserID'])?>');
+          xhr.send();
+      };
+      </script>
 </body>
 </html>

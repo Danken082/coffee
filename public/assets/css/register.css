@@ -11,6 +11,7 @@ body {
     width: 100%;
     max-width: 400px;
     margin: auto;
+    margin-bottom: 20px;
 }
 
 .register-card h4 {
@@ -30,7 +31,7 @@ body {
 }
 
 .register-card .form-control {
-    border: 1px solid #ccc; 
+    border: 5px solid #ccc; 
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 15px;
@@ -61,4 +62,9 @@ body {
 .register-card .login-link a {
     color: #654321;
     font-weight: bold;
+}
+
+label{
+    color:black; 
+    font-weight:bold;
 }

@@ -30,6 +30,7 @@ $routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
 $routes->get('/logout', 'UserController::logout', ['filter'=>'authFilter']);
 $routes->get('viewOrders', 'AdminController::viewOrder');
 $routes->get('admin/sidebar', 'AdminController::admin_side');
+$routes->get('/adminpos', 'AdminController::pos');
 
 
 #rawDataTotal
@@ -104,8 +105,10 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 /*For UserSide*/ 
 $routes->get('/', 'UserController::home');
 $routes->get('user/mainhome', 'UserController::mainhome',['filter'=>'cusFilter']);
+$routes->get('user/profile', 'UserController::profile',['filter'=>'cusFilter']);
 $routes->get('user/editprofile/(:any)', 'UserController::edit_profile/$1',['filter'=>'cusFilter']);
 $routes->post('user/updateprofile/(:any)', 'UserController::updateprofile/$1',['filter'=>'cusFilter']);
+$routes->get('user/removeprofile/(:any)', 'UserController::removeProfilePicture/$1',['filter'=>'cusFilter']);
 $routes->get('user/menu', 'UserController::home_menu',['filter'=>'cusFilter']);
 $routes->get('user/services', 'UserController::home_services',['filter'=>'cusFilter']);
 $routes->get('user/about', 'UserController::home_about',['filter'=>'cusFilter']);
@@ -113,7 +116,6 @@ $routes->get('user/shop', 'UserController::home_shop',['filter'=>'cusFilter']);
 $routes->get('user/contact', 'UserController::home_contact',['filter'=>'cusFilter']);
 $routes->get('user/cart', 'CartController::home_cart',['filter'=>'cusFilter']);
 $routes->get('user/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
-$routes->get('user/single_product', 'UserController::home_single_product',['filter'=>'cusFilter']);
 $routes->post('user/checkouts/', 'OrderController::placeToOrder');
 $routes->get('OrderNow/(:any)', 'OrderController::myOrders/$1');
 #second part of user side
