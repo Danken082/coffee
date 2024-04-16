@@ -24,7 +24,7 @@
             <div class="col-md-10">
                 <div class="card mb-3">
                 <h2 class="row justify-content-center">Edit Profile</h2>
-                <form action="<?= base_url('/user/updateprofile/'. $eprof['UserID'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('/updateprofile/'. $eprof['UserID'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
                       <div class="upload">
                         <img src="/assets/user/images/<?php echo $eprof['profile_img']?>" alt="pfp" id="profile" class="rounded-circle" width="150">
@@ -157,7 +157,7 @@
                   }
               }
           };
-          xhr.open('GET', '<?= base_url('/user/removeprofile/'. $eprof['UserID'])?>');
+          xhr.open('GET', '<?= base_url('/removeprofile/'. $eprof['UserID'])?>');
           xhr.send();
       };
       </script>

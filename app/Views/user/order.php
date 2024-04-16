@@ -9,12 +9,10 @@
 </head>
     <body>
         <div class="container">
-            <h1>Add to Cart</h1>
             <form action="<?= base_url('user/checkouts/') ?>" method="post">
+            <label for="ProductName" style="font-size:30px"><?= $order['prod_name'] ?></label>
                 <input type="hidden" name="ProductID" value="<?= $order['prod_id'] ?>" readonly>
                 <input type="hidden" name="CustomerID" value="<?= session()->get('UserID') ?>" readonly>
-                <label for="ProductName">Product Name:</label>
-                <input type="text" name="prod_name" value="<?= $order['prod_name'] ?>" readonly>
                 <label for="ProductSize">Pick Product Size:</label>
                 <select name="size" id="size" class="size" required>
                     <option selected disabled></option>
@@ -27,10 +25,10 @@
                 <img src="<?= base_url(); ?>/assets/images/products/<?= $order['prod_img']; ?>" alt="">
                 <input type="number" name="quantity" placeholder="Enter Quantity" required>
                 <input type="hidden" name="Status" value="oncart">
-                <button type="submit">Add to Cart</button>
+                <button type="submit">Buy Now</button>
             </form><br><br>
             <div class= 'backbtn'>
-                <a href="<?= site_url('user/shop') ?>" class="btn-back">BACK</a>
+                <a href="<?= site_url('/mainshop') ?>" class="btn-back">BACK</a>
             </div>
         </div>
     </body>

@@ -64,18 +64,18 @@
     	</div>
     </section>
      
-    <?php include('header.php'); ?>
-		<?php include('footer.php'); ?>
+    <?php include('mainheader.php'); ?>
+	  <?php include('footer.php'); ?>
 
     <script>
-				var loader = document.getElementById("preloader");
+	    var loader = document.getElementById("preloader");
 
-				window.addEventListener("load", function () {
-					setTimeout(function () {
-						loader.style.display = "none";
-					}, 1500);
-				});
-			</script>
+		window.addEventListener("load", function () {
+			setTimeout(function () {
+				loader.style.display = "none";
+				}, 1500);
+			});
+	</script>
     
   </body>
 </html>

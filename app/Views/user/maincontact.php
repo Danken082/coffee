@@ -40,10 +40,10 @@
 	              <p><span>Email:</span> <a href="mailto:info@yoursite.com">crossroad@gmail.com</a></p>
 	            </div>
               <div class="col-md-12 mb-3">
-	              <p><span>Message Us:</span> <a href="https://web.facebook.com/messages/t/106550545381263/">Crossroads Coffee and Deli Message</a></p>
+	              <p><span>Messenger:</span> <a href="https://web.facebook.com/messages/t/106550545381263/">crossroad@gmail.com</a></p>
 	            </div>
 	            <div class="col-md-12 mb-3">
-	              <p><span>Facebook:</span>  <a href="https://www.facebook.com/crossroadcafedeli" target="_blank">Crossroads Coffee and Deli</a></p>
+	              <p><span>Website:</span>  <a href="https://www.facebook.com/crossroadcafedeli" target="_blank">Crossroads Coffee and Deli</a></p>
 	            </div>
 						</div>
 					</div>
@@ -53,12 +53,12 @@
             	<div class="row">
             		<div class="col-md-6">
 	                <div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Enter your Full Name">
+	                  <input type="text" disabled class="form-control" placeholder="<?= session()->get('FirstName')?> <?= session()->get('LastName')?>">
 	                </div>
                 </div>
                 <div class="col-md-6">
 	                <div class="form-group">
-	                  <input type="text" class="form-control" placeholder="Enter your Email">
+	                  <input type="text" disabled class="form-control" placeholder="<?= session()->get('email')?>">
 	                </div>
 	                </div>
               </div>
@@ -79,7 +79,7 @@
 
     <div id="map"></div>
 
-    <?php include('header.php'); ?>
+    <?php include('mainheader.php'); ?>
     <?php include('footer.php'); ?>
 
     <script>

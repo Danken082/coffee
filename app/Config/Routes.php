@@ -104,27 +104,31 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 
 /*For UserSide*/ 
 $routes->get('/', 'UserController::home');
-$routes->get('user/mainhome', 'UserController::mainhome',['filter'=>'cusFilter']);
-$routes->get('user/profile', 'UserController::profile',['filter'=>'cusFilter']);
-$routes->get('user/editprofile/(:any)', 'UserController::edit_profile/$1',['filter'=>'cusFilter']);
-$routes->post('user/updateprofile/(:any)', 'UserController::updateprofile/$1',['filter'=>'cusFilter']);
-$routes->get('user/removeprofile/(:any)', 'UserController::removeProfilePicture/$1',['filter'=>'cusFilter']);
-$routes->get('user/menu', 'UserController::home_menu',['filter'=>'cusFilter']);
-$routes->get('user/services', 'UserController::home_services',['filter'=>'cusFilter']);
-$routes->get('user/about', 'UserController::home_about',['filter'=>'cusFilter']);
-$routes->get('user/shop', 'UserController::home_shop',['filter'=>'cusFilter']);
-$routes->get('user/contact', 'UserController::home_contact',['filter'=>'cusFilter']);
-$routes->get('user/cart', 'CartController::home_cart',['filter'=>'cusFilter']);
-$routes->get('user/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
+$routes->get('/mainhome', 'UserController::mainhome',['filter'=>'cusFilter']);
+$routes->get('/profile', 'UserController::profile',['filter'=>'cusFilter']);
+$routes->get('/editprofile/(:any)', 'UserController::edit_profile/$1',['filter'=>'cusFilter']);
+$routes->post('/updateprofile/(:any)', 'UserController::updateprofile/$1',['filter'=>'cusFilter']);
+$routes->get('/removeprofile/(:any)', 'UserController::removeProfilePicture/$1',['filter'=>'cusFilter']);
+$routes->get('/menu', 'UserController::home_menu');
+$routes->get('/mainmenu', 'UserController::home_mainmenu',['filter'=>'cusFilter']);
+$routes->get('/services', 'UserController::home_services');
+$routes->get('/mainservices', 'UserController::home_mainservices',['filter'=>'cusFilter']);
+$routes->get('/about', 'UserController::home_about');
+$routes->get('/mainabout', 'UserController::home_mainabout',['filter'=>'cusFilter']);
+$routes->get('/shop', 'UserController::home_shop');
+$routes->get('/mainshop', 'UserController::home_mainshop',['filter'=>'cusFilter']);
+$routes->get('/contact', 'UserController::home_contact');
+$routes->get('/maincontact', 'UserController::home_maincontact',['filter'=>'cusFilter']);
+$routes->get('/cart', 'CartController::home_cart');
+$routes->get('/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
 $routes->post('user/checkouts/', 'OrderController::placeToOrder');
 $routes->get('OrderNow/(:any)', 'OrderController::myOrders/$1');
 #second part of user side
 $routes->get('userCheckOut', 'CartController::GotoCheckOut');
 
-
 /*add to cart*/
-$routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1',['filter'=>'cusFilter']);
-$routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1',['filter'=>'cusFilter']);
+$routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1');
+$routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');
 $routes->get('/removetocart/(:any)', 'CartController::remove/$1',['filter'=>'cusFilter']);
 $routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::placeOrder',['filter'=>'cusFilter']);
 $routes->match(['get', 'post'], '/aOrder/', 'AdminController::acceptOrder');

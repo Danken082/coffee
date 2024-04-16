@@ -98,7 +98,7 @@ class UserController extends BaseController
             return redirect()->to('/adminhome');
            }
            else{
-            return redirect()->to('/user/mainhome');
+            return redirect()->to('/mainhome');
            }
         }
                 
@@ -120,7 +120,7 @@ class UserController extends BaseController
         $data = 
             $this->crt->select("Count(size)")->where('CustomerID', $user)->first();    
     
-        return view('user/home', $data);
+        return view('/user/home', $data);
     }
 
     public function mainhome(){
@@ -129,7 +129,7 @@ class UserController extends BaseController
         $data = 
             $this->crt->select("Count(size)")->where('CustomerID', $user)->first();    
     
-        return view('user/mainhome', $data);
+        return view('/user/mainhome', $data);
     }
 
     public function home_menu(){
@@ -149,15 +149,43 @@ class UserController extends BaseController
         return view('/user/menu', $prod);
     }
 
+    public function home_mainmenu(){
+        $menu = new ProductModel();
+        $prod['meal'] = $menu->products('Meals');
+        $prod['pasta'] = $menu->products('Pasta');
+        $prod['app'] = $menu->products('Appetizer');
+        $prod['salad'] = $menu->products('Salad');
+        $prod['soup'] = $menu->products('Soup');
+        $prod['sand'] = $menu->products('Sandwich');
+        $prod['hot'] = $menu->products('Hot Coffee');
+        $prod['iced'] = $menu->products('Iced Coffee');
+        $prod['flav'] = $menu->products('Flavored Coffee');
+        $prod['non'] = $menu->products('Non Coffee Frappe');
+        $prod['coffee'] = $menu->products('Coffee Frappe');
+        $prod['other'] = $menu->products('Others');
+        return view('/user/mainmenu', $prod);
+    }
+
     public function home_services()
     {
         return view('/user/services');
+    }
+
+    public function home_mainservices()
+    {
+        return view('/user/mainservices');
     }
 
     public function home_about()
     {
         return view('/user/about');
     }
+
+    public function home_mainabout()
+    {
+        return view('/user/mainabout');
+    }
+
     public function home_shop(){
         $shop = new ProductModel();
         $prod['meal'] = $shop->products('Meals');
@@ -174,10 +202,32 @@ class UserController extends BaseController
         $prod['other'] = $shop->products('Others');
         return view('/user/shop', $prod);
     }
+    public function home_mainshop(){
+        $shop = new ProductModel();
+        $prod['meal'] = $shop->products('Meals');
+        $prod['pasta'] = $shop->products('Pasta');
+        $prod['app'] = $shop->products('Appetizer');
+        $prod['salad'] = $shop->products('Salad');
+        $prod['soup'] = $shop->products('Soup');
+        $prod['sand'] = $shop->products('Sandwich');
+        $prod['hot'] = $shop->products('Hot Coffee');
+        $prod['iced'] = $shop->products('Iced Coffee');
+        $prod['flav'] = $shop->products('Flavored Coffee');
+        $prod['non'] = $shop->products('Non Coffee Frappe');
+        $prod['coffee'] = $shop->products('Coffee Frappe');
+        $prod['other'] = $shop->products('Others');
+        return view('/user/mainshop', $prod);
+    }
+    
     public function home_contact()
     {
         return view('/user/contact');
     }
+    public function home_maincontact()
+    {
+        return view('/user/maincontact');
+    }
+    
     public function home_checkout()
     {
         return view('/user/checkout');
@@ -216,7 +266,7 @@ class UserController extends BaseController
                 }
             $this->user->updateUserProfile($userId, $data);
             session()->set($data);
-            return redirect()->to(base_url('/user/profile'));
+            return redirect()->to(base_url('/profile'));
         }
     }
 
@@ -226,7 +276,7 @@ class UserController extends BaseController
         $userModel->update($userId, ['profile_img' => 'profile.png']);
         session()->set('profile_img', 'profile.png');
 
-        return redirect()->to(base_url('/user/profile'));
+        return redirect()->to(base_url('/profile'));
     }
 
     public function CartCount()

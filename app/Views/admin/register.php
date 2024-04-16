@@ -17,9 +17,9 @@
         <link rel="stylesheet" href="/assets/css/profile.css">
     </head>
     <body>
-        <section class="register-card">
+            
+        <div class="register-card">
             <h4>Sign Up</h4>
-            <div class="card-body">
                 <form action="<?= base_url("adminregister"); ?>" role="form" class="text-start" method="POST">
                 <div class="input-group input-group-outline mb-3">
                         <label class="form-label">Last Name</label>
@@ -89,11 +89,10 @@
                         <button type="submit" class="btn btn-register">Register</button>
                     </div>
                 </form>
-            </div>
-            <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                <div class="card-footer text-center pt-0 px-lg-2 px-1">
                 <p class="login-link">Already have an account?<a href="<?= site_url("/login"); ?>"> Sign in</a></p>
             </div>
-        </section>
+        </div>
 
         <script src="/assets/js/core/popper.min.js"></script>
         <script src="/assets/js/core/bootstrap.min.js"></script>

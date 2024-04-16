@@ -75,16 +75,11 @@ class OrderController extends BaseController
                     ];  
                     $this->prod->save($data);
                     return redirect()->to('user/shop')->with('msg', 'Your Order Has Been Successfully Ordered');
-      
             }
             else{
                 return redirect()->to('/shop')->with('msg', 'Ensure your Order is Correct');
               }
-
         }
-
-     
-    
     }
 
 
@@ -103,6 +98,12 @@ class OrderController extends BaseController
 
     public function myOrders($prdOrder)
     {
+        $session = session();
+        $user = $session->get('UserID');
+        if (!$user) {
+            $session->setFlashdata('error', 'You need to login first');
+            return redirect()->to('/login');
+        }
         $data['order'] = $this->prod->where('prod_id', $prdOrder)->first();
 
         return view('user/order', $data);
