@@ -1,0 +1,1 @@
+<?php print('Your Authentication code is: ' . $verificationToken); ?>

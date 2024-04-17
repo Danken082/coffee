@@ -172,6 +172,8 @@ class CartController extends BaseController
             'totalPrice' => $total,
             'size' => $size
           ];
+            
+
           $this->order->save($data);
 
           return redirect()->to('/pendingOrder');

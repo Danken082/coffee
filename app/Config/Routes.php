@@ -132,3 +132,7 @@ $routes->match(['get', 'post'], 'reservation', 'ReservationController::reservati
 $routes->match(['get','post'], '/available/', 'ProductController::availability');
 $routes->match(['get', 'post'], '/unavailable/', 'ProductController::Unavailable');
 // $routes->get('pos', 'ChatController::try');
+
+
+//viewing of orders
+$routes->get('myOrders', 'OrderController::viewOrders');
