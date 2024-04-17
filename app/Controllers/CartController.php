@@ -24,23 +24,27 @@ class CartController extends BaseController
    
     public function home_cart()
     {
-       $session = session();
+        $session = session();
         $user = $session->get('UserID');
-
+        if (!$user) {
+            $session->setFlashdata('error', 'You need to login first before proceeding to the cart.');
+            return redirect()->to('/login');
+        }
+    
         $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.size, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
         product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
         ->join('product_tbl', 'product_tbl.prod_id = cart_tbl.ProductID')
         ->where('cart_tbl.CustomerID', $user)
         ->findAll();
-
-       $data['mycart'] = $this->crt->select('(SUM(total)) as sum')->where('cart_tbl.CustomerID', $user)->findAll();    
     
-     return view('/user/cart', $data);
+        $data['mycart'] = $this->crt->select('(SUM(total)) as sum')->where('cart_tbl.CustomerID', $user)->findAll();    
+        
+        return view('/user/cart', $data);
     }
+    
 
     public function addtocart($price)
     {   
-    
        $size = $this->request->getVar('size'); 
 
       if($size ==='Large'){
@@ -57,7 +61,7 @@ class CartController extends BaseController
         ];
         
         $this->crt->save($prod);
-        return redirect()->to('user/shop');
+        return redirect()->to('/mainshop');
       }  
       elseif($size === 'Medium'){
         $data = $this->product->where('prod_id', $price)->first();
@@ -72,12 +76,12 @@ class CartController extends BaseController
         ];
         
         $this->crt->save($prod);
-        return redirect()->to('user/shop');
+        return redirect()->to('/mainshop');
       }  
 
       else 
       {
-        return redirect()->to('/user/shop')->with('msg', 'Please Check Your Product');
+        return redirect()->to('/mainshop')->with('msg', 'Please Check Your Product');
       }
       
     }
@@ -85,7 +89,7 @@ class CartController extends BaseController
     public function remove($id)
     {
       $this->crt->delete($id);
-      return redirect()->to(base_url('user/cart'));
+      return redirect()->to(base_url('/cart'));
     }
     
     public function Cart($productID){
@@ -122,12 +126,19 @@ class CartController extends BaseController
   
           return redirect()->to('user/cart');
       }
+
       public function getProd($productID)
       {
-   
-        $data['cart'] =  $this->product->where('prod_id', $productID)->first();
-                        
-        return view('user/addtocart', $data);
+        $session = session();
+        $user = $session->get('UserID');
+        if (!$user) {
+            $session->setFlashdata('error', 'You need to login first');
+            return redirect()->to('/login');
+        }
+      
+          $data['cart'] =  $this->product->where('prod_id', $productID)->first();
+                          
+          return view('user/addtocart', $data);
       }
 
       public function orderNow($price)
@@ -190,7 +201,7 @@ class CartController extends BaseController
 
           if(empty($selectedItemsOnly))
           {
-            return redirect()->to('user/cart')->with('msg', 'No items selected for checkOut');
+            return redirect()->to('/cart')->with('msg', 'No items selected for checkOut');
           }
 
        $getSelected = $this->getItems($selectedItemsOnly);    

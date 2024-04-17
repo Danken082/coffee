@@ -39,12 +39,12 @@
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a href="<?= site_url("/"); ?>" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/menu"); ?>" class="nav-link">Menu</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/services"); ?>" class="nav-link">Services</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/about"); ?>" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/shop"); ?>" class="nav-link">Shop</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/contact"); ?>" class="nav-link">Contact</a></li>
-                        <li class="nav-item cart"><a href="<?= site_url("user/cart"); ?>" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
+                        <li class="nav-item"><a href="<?= site_url("/menu"); ?>" class="nav-link">Menu</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/services"); ?>" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/about"); ?>" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/shop"); ?>" class="nav-link">Shop</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/contact"); ?>" class="nav-link">Contact</a></li>
+                        <li class="nav-item cart"><a href="<?= site_url("/cart"); ?>" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
                         <li class="nav-item"><a href="<?= site_url("/login"); ?>" class="nav-link">Login</a></li>
                         <li class="nav-item"><a href="<?= site_url("register"); ?>" class="nav-link">SignUp</a></li>
                     </ul>

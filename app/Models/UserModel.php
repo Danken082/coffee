@@ -4,8 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class UserModel extends \CodeIgniter\Model
 {
+    private $user;
+
     protected $DBGroup          = 'default';
     protected $table            = 'user';
     protected $primaryKey       = 'UserID';
@@ -37,5 +39,12 @@ class UserModel extends Model
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $afterDelete    = [];  
+    
+    public function updateUserProfile($userId, $data) {
+            $builder = $this->db->table('user');
+            $builder->where('UserID', $userId);
+            $builder->update($data);
+    }    
+    
 }

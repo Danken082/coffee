@@ -21,11 +21,6 @@
 			</div>
 		</div>
     </section>
-	<?php if(session()->getFlashdata('msg')):?>
-	<div class="alert alert-warning">
-		<?= session()->getFlashdata('msg') ?>
-	</div>
-	<?php endif;?>
 
 	<form action="<?= base_url('user/checkouts/')?>" method="post">
 	<section class="ftco-section ftco-cart">
@@ -98,10 +93,8 @@
     						<span>₱ 17.60</span>
     					</p>
     				</div>
-				<!-- wag nang baguhin itong button na to hehe ty -->
 					<button type="submit" class="btn btn-primary">Place to Checkout</button>
     			</div>
-				
     		</div>  
 		</div>
 	</section>

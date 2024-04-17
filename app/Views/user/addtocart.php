@@ -28,7 +28,7 @@
                 <button type="submit">Add to Cart</button>
             </form><br><br>
             <div class= 'backbtn'>
-                <a href="<?= site_url('user/shop') ?>" class="btn-back">BACK</a>
+                <a href="<?= site_url('/mainshop') ?>" class="btn-back">BACK</a>
             </div>
         </div>
     </body>

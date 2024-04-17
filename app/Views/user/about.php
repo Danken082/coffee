@@ -190,7 +190,7 @@
 			</div>
 		</section>
 
-		<?php include('mainheader.php'); ?>
+		<?php include('header.php'); ?>
 		<?php include('footer.php'); ?>
 
 		<script>

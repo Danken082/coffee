@@ -1,0 +1,97 @@
+CRITICAL - 2024-04-15 08:14:28 --> Could not move file "php966E.tmp" to "C:\laragon\www\coffee\public/assets/user/images/". Reason: 
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 158.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(158): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php966E.tmp', 'C:\\laragon\\www\\coffee\\public/assets/user/images/', '')
+ 2 APPPATH\Controllers\UserController.php(214): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\laragon\\www\\coffee\\public/assets/user/images/', 'C:\\Users\\ACER\\AppData\\Local\\Temp\\php966E.tmp')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('18')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-15 08:15:20 --> Could not move file "php617F.tmp" to "C:\laragon\www\coffee\public/assets/user/images/". Reason: 
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 158.
+ 1 SYSTEMPATH\HTTP\Files\UploadedFile.php(158): CodeIgniter\HTTP\Exceptions\HTTPException::forMoveFailed('php617F.tmp', 'C:\\laragon\\www\\coffee\\public/assets/user/images/', '')
+ 2 APPPATH\Controllers\UserController.php(214): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\laragon\\www\\coffee\\public/assets/user/images/', 'C:\\Users\\ACER\\AppData\\Local\\Temp\\php617F.tmp')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('18')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-15 08:21:47 --> Undefined variable $userId
+in APPPATH\Views\user\edit_profile.php on line 42.
+ 1 APPPATH\Views\user\edit_profile.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userId', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 42)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(194): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile('18')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-15 08:22:02 --> Array to string conversion
+in APPPATH\Views\user\edit_profile.php on line 42.
+ 1 APPPATH\Views\user\edit_profile.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 42)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(194): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile('18')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-15 08:23:50 --> Undefined variable $userId
+in APPPATH\Views\user\edit_profile.php on line 42.
+ 1 APPPATH\Views\user\edit_profile.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userId', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 42)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(194): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile('18')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-15 08:23:58 --> Array to string conversion
+in APPPATH\Views\user\edit_profile.php on line 42.
+ 1 APPPATH\Views\user\edit_profile.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 42)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(194): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile('18')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-15 08:27:15 --> Undefined variable $userId
+in APPPATH\Views\user\edit_profile.php on line 41.
+ 1 APPPATH\Views\user\edit_profile.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userId', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 41)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(194): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile('18')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-15 10:42:31 --> Trying to access array offset on value of type null
+in APPPATH\Views\user\edit_profile.php on line 26.
+ 1 APPPATH\Views\user\edit_profile.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php', 26)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\edit_profile.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/edit_profile', [], true)
+ 5 APPPATH\Controllers\UserController.php(194): view('/user/edit_profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->edit_profile('profile.png')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-15 11:02:43 --> Call to a member function isValid() on null
+in APPPATH\Controllers\UserController.php on line 228.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->removeProfilePicture('18')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

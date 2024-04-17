@@ -176,4 +176,8 @@ class AdminController extends BaseController
         $this->user->delete($id);
         return redirect()->to(base_url('adminmanage_user'));
     }
+
+    public function pos(){
+        return view('/admin/pos');
+    }
 }

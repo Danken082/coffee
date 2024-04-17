@@ -13,7 +13,6 @@
     </head>
     <body>
         <div class="col-md-12">
-            <!-- Edit Product Form -->
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div
@@ -23,7 +22,6 @@
                 </div>
 
                 <div class="card-body px-4 pb-3">
-
                     <form action="<?= base_url('/updateflavored/'. $eflav['prod_id'])?>" class="row g-3" method="POST">
                         <div class="col-md-5">
                             <label for="Name" class="form-label">Product Name</label>

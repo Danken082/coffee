@@ -38,13 +38,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="<?= site_url("user/mainhome"); ?>" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/menu"); ?>" class="nav-link">Menu</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/services"); ?>" class="nav-link">Services</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/about"); ?>" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/shop"); ?>" class="nav-link">Shop</a></li>
-                        <li class="nav-item"><a href="<?= site_url("user/contact"); ?>" class="nav-link">Contact</a></li>
-                        <li class="nav-item cart"><a href="<?= site_url("user/cart"); ?>" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
+                        <li class="nav-item"><a href="<?= site_url("/mainhome"); ?>" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/mainmenu"); ?>" class="nav-link">Menu</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/mainservices"); ?>" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/mainabout"); ?>" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/mainshop"); ?>" class="nav-link">Shop</a></li>
+                        <li class="nav-item"><a href="<?= site_url("/maincontact"); ?>" class="nav-link">Contact</a></li>
+                        <li class="nav-item cart"><a href="<?= site_url("/cart"); ?>" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a></li>
                         <li class="nav-item nav-profile dropdown">
                             <a class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="nav-profile-img">

@@ -4,10 +4,9 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
-        <link rel="icon" type="image/png" href=/images/coffeelogo2.png>
+        <link rel="icon" type="image/png" href="/assets/images/coffeelogo.jpg">
         <title>Register</title>
-        <link rel="stylesheet" type="text/css"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
         <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
         <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
         <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -15,11 +14,12 @@
         <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
         <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
         <link rel="stylesheet" href="/assets/css/register.css">
+        <link rel="stylesheet" href="/assets/css/profile.css">
     </head>
     <body>
-        <section class="register-card">
+            
+        <div class="register-card">
             <h4>Sign Up</h4>
-            <div class="card-body">
                 <form action="<?= base_url("adminregister"); ?>" role="form" class="text-start" method="POST">
                 <div class="input-group input-group-outline mb-3">
                         <label class="form-label">Last Name</label>
@@ -63,7 +63,7 @@
                             <small class="text-danger"><?= $validation->getError('gender') ?></small>
                         <?php endif;?>
                     </div>
-                    <label style="color:black; font-weight:bold;">Birthdate:</label>
+                    <label>Birthdate:</label>
                     <div class="input-group input-group-outline mb-3">
                         <input type="date" name="birthdate" class="form-control" required>
                         <?php if(isset($validation)):?>
@@ -86,28 +86,18 @@
                     </div>
                     <input type="hidden" name="UserRole" value="Customer">
                     <div class="text-center">
-                        <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Register</button>
+                        <button type="submit" class="btn btn-register">Register</button>
                     </div>
                 </form>
-            </div><br>
-            <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                <p class="mb-2 text-sm mx-auto">Already have an account?<a href="<?= site_url("/login"); ?>" class="text-primary text-gradient font-weight-bold"> Sign in</a></p><br>
+                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                <p class="login-link">Already have an account?<a href="<?= site_url("/login"); ?>"> Sign in</a></p>
             </div>
-        </section>
+        </div>
 
         <script src="/assets/js/core/popper.min.js"></script>
         <script src="/assets/js/core/bootstrap.min.js"></script>
         <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
         <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
-        <script>
-            var win = navigator.platform.indexOf('Win') > -1;
-            if (win && document.querySelector('#sidenav-scrollbar')) {
-                var options = {
-                    damping: '0.5'
-                }
-                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-            }
-        </script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
 
