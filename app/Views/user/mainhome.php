@@ -17,7 +17,7 @@
 							<div class="col-md-8 col-sm-12 text-center ftco-animate">
 								<span class="subheading">Welcome</span>
 								<h1 class="mb-4">The Best Coffee Testing Experience</h1>
-								<p><a href="<?= site_url("/shop"); ?>" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?= site_url("/menu"); ?>" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+								<p><a href="<?= site_url("/mainshop"); ?>" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?= site_url("/mainmenu"); ?>" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 							</div>
 						</div>
 					</div>
@@ -30,7 +30,7 @@
 							<div class="col-md-8 col-sm-12 text-center ftco-animate">
 								<span class="subheading">Welcome</span>
 								<h1 class="mb-4">Amazing Taste &amp; Beautiful Place</h1>
-								<p><a href="<?= site_url("/shop"); ?>" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?= site_url("/menu"); ?>" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+								<p><a href="<?= site_url("/mainshop"); ?>" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?= site_url("/mainmenu"); ?>" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 							</div>
 						</div>
 					</div>
@@ -43,7 +43,7 @@
 							<div class="col-md-8 col-sm-12 text-center ftco-animate">
 								<span class="subheading">Welcome</span>
 								<h1 class="mb-4">Creamy Hot and Ready to Serve</h1>
-								<p><a href="<?= site_url("/shop"); ?>" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?= site_url("/menu"); ?>" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+								<p><a href="<?= site_url("/mainshop"); ?>" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="<?= site_url("/mainmenu"); ?>" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
 							</div>
 						</div>
 					</div>
@@ -108,7 +108,6 @@
 										</select>
 									</div>
 								</div>
-				
 								<div class="d-md-flex">
 									<div class="form-group">
 										<textarea name="message" max-length="60" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
@@ -391,6 +390,21 @@
 
 			<?php include('mainheader.php'); ?>
 			<?php include('footer.php'); ?>
+
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					var form = document.querySelector('.appointment-form');
+					form.addEventListener('submit', function(event) {
+						var appointmentDate = new Date(form.querySelector('input[name="apppointmentDate"]').value);
+						var currentDate = new Date();
+
+						if (appointmentDate <= currentDate || appointmentDate.getHours() < 10 || appointmentDate.getHours() >= 22) {
+							event.preventDefault();
+							alert('Please select a valid date and time for reservation. Reservations must be made for a future time between 10 AM and 10 PM only.');
+						}
+					});
+				});
+			</script>
 
 			<script>
 				var loader = document.getElementById("preloader");

@@ -122,13 +122,15 @@ $routes->get('/maincontact', 'UserController::home_maincontact',['filter'=>'cusF
 $routes->get('/cart', 'CartController::home_cart');
 $routes->get('/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
 $routes->post('user/checkouts/', 'OrderController::placeToOrder');
-$routes->get('OrderNow/(:any)', 'OrderController::myOrders/$1');
+$routes->get('OrderMeal/(:any)', 'OrderController::myOrdersmeal/$1');
+$routes->get('OrderDrink/(:any)', 'OrderController::myOrdersdrink/$1');
 #second part of user side
 $routes->get('userCheckOut', 'CartController::GotoCheckOut');
 
 /*add to cart*/
 $routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1');
-$routes->match(['get','post'], '/viewProd/(:any)', 'CartController::getProd/$1');
+$routes->match(['get','post'], '/viewProd1/(:any)', 'CartController::getmeal/$1');
+$routes->match(['get','post'], '/viewProd2/(:any)', 'CartController::getdrink/$1');
 $routes->get('/removetocart/(:any)', 'CartController::remove/$1',['filter'=>'cusFilter']);
 $routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::placeOrder',['filter'=>'cusFilter']);
 $routes->match(['get', 'post'], '/aOrder/', 'AdminController::acceptOrder');

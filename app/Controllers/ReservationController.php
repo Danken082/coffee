@@ -16,7 +16,14 @@ class ReservationController extends BaseController
         $this->rsv = new ReservationModel();
         $this->prod = new ProductModel();
     }
-    public function reservation(){
+    public function reservation()
+    {
+        $session = session();
+        $user = $session->get('UserID');
+        if (!$user) {
+            $session->setFlashdata('error', 'You need to login first');
+            return redirect()->to('/login');
+        }
 
           $reservation = new ReservationModel(); 
 
@@ -28,7 +35,7 @@ class ReservationController extends BaseController
                   ];
 
             $reservation->save($data);
-        return redirect()->to('user/home');
+        return redirect()->to('/mainhome');
     }
     //for order
     public function viewProd($prod)

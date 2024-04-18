@@ -65,7 +65,7 @@ class CartController extends BaseController
       }  
       elseif($size === 'Medium'){
         $data = $this->product->where('prod_id', $price)->first();
-     $total = $this->request->getVar('quantity') * $data['prod_mprice']; 
+        $total = $this->request->getVar('quantity') * $data['prod_mprice']; 
         $prod = [
           'CustomerID' => $this->request->getVar('CustomerID'),
           'ProductID' => $this->request->getVar('ProductID'),
@@ -127,7 +127,7 @@ class CartController extends BaseController
           return redirect()->to('user/cart');
       }
 
-      public function getProd($productID)
+      public function getmeal($productID)
       {
         $session = session();
         $user = $session->get('UserID');
@@ -138,7 +138,21 @@ class CartController extends BaseController
       
           $data['cart'] =  $this->product->where('prod_id', $productID)->first();
                           
-          return view('user/addtocart', $data);
+          return view('user/addtocartmeal', $data);
+      }
+
+      public function getdrink($productID)
+      {
+        $session = session();
+        $user = $session->get('UserID');
+        if (!$user) {
+            $session->setFlashdata('error', 'You need to login first');
+            return redirect()->to('/login');
+        }
+      
+          $data['cart'] =  $this->product->where('prod_id', $productID)->first();
+                          
+          return view('user/addtocartdrink', $data);
       }
 
       public function orderNow($price)
@@ -202,7 +216,7 @@ class CartController extends BaseController
             return redirect()->to('/cart')->with('msg', 'No items selected for checkOut');
           }
 
-       $getSelected = $this->getItems($selectedItemsOnly);    
+          $getSelected = $this->getItems($selectedItemsOnly);    
           return view('user/checkout', $getSelected);
       }
 

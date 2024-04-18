@@ -96,7 +96,7 @@ class OrderController extends BaseController
 
     }
 
-    public function myOrders($prdOrder)
+    public function myOrdersmeal($prdOrder)
     {
         $session = session();
         $user = $session->get('UserID');
@@ -106,8 +106,19 @@ class OrderController extends BaseController
         }
         $data['order'] = $this->prod->where('prod_id', $prdOrder)->first();
 
-        return view('user/order', $data);
+        return view('user/ordermeal', $data);
     }
 
-        
+    public function myOrdersdrink($prdOrder)
+    {
+        $session = session();
+        $user = $session->get('UserID');
+        if (!$user) {
+            $session->setFlashdata('error', 'You need to login first');
+            return redirect()->to('/login');
+        }
+        $data['order'] = $this->prod->where('prod_id', $prdOrder)->first();
+
+        return view('user/orderdrink', $data);
+    }    
 }

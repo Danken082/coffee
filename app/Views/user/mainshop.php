@@ -59,11 +59,11 @@
 														<h3 style="font-weight:bold;"><a><?=$a['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$a['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?= $a['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd/') .$a['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd1/') .$a['prod_id'] ?>" method="post">
 															<?php if($a['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$a['prod_id'])?>">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$a['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>
@@ -84,11 +84,11 @@
 														<h3 style="font-weight:bold;"><a><?=$p['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$p['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd/') .$p['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd1/') .$p['prod_id'] ?>" method="post">
 															<?php if($p['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$p['prod_id'])?>">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$p['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>
@@ -108,11 +108,11 @@
 														<h3 style="font-weight:bold;"><a><?=$m['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$m['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?= $m['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd/') .$m['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd1/') .$m['prod_id'] ?>" method="post">
 															<?php if($m['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$m['prod_id'])?>">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$m['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>
@@ -132,11 +132,11 @@
 														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd/') .$s['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd1/') .$s['prod_id'] ?>" method="post">
 															<?php if($s['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$s['prod_id'])?>">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>													
@@ -157,11 +157,11 @@
 														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd/') .$s['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd1/') .$s['prod_id'] ?>" method="post">
 															<?php if($s['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>													
@@ -181,11 +181,11 @@
 														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd/') .$s['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd1/') .$s['prod_id'] ?>" method="post">
 															<?php if($s['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$s['prod_id'])?>">Order Now</a></p>
+																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
 																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 																<?php endif;?>
 														</form>
@@ -205,11 +205,11 @@
 														<h3 style="font-weight:bold;"><a><?=$h['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$h['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd/') .$h['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd2/') .$h['prod_id'] ?>" method="post">
 															<?php if($h['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$h['prod_id'])?>">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$h['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>
@@ -229,11 +229,11 @@
 														<h3 style="font-weight:bold;"><a><?=$i['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$i['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$i['prod_mprice'] ?><br>Large ₱ <?=$i['prod_lprice'] ?> </span></p>
-														<form action="<?= base_url('/viewProd/') .$i['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd2/') .$i['prod_id'] ?>" method="post">
 															<?php if($i['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$i['prod_id'])?>">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$i['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>													
@@ -253,11 +253,11 @@
 														<h3 style="font-weight:bold;"><a><?=$f['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$f['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$f['prod_mprice'] ?><br>Large ₱ <?=$f['prod_lprice'] ?> </span></p>
-														<form action="<?= base_url('/viewProd/') .$f['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd2/') .$f['prod_id'] ?>" method="post">
 															<?php if($f['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$f['prod_id'])?>">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$f['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>													
@@ -277,11 +277,11 @@
 														<h3 style="font-weight:bold;"><a><?=$n['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$n['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
-														<form action="<?= base_url('/viewProd/') .$n['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd2/') .$n['prod_id'] ?>" method="post">
 															<?php if($n['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$n['prod_id'])?>">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$n['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit">Add to cart</button>
 															<?php endif;?>
 														</form>													
@@ -301,11 +301,11 @@
 														<h3 style="font-weight:bold;"><a><?=$c['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$c['prod_desc']?></p></div>
 														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
-														<form action="<?= base_url('/viewProd/') .$c['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd2/') .$c['prod_id'] ?>" method="post">
 															<?php if($c['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$c['prod_id'])?>">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$c['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>												
@@ -325,11 +325,11 @@
 														<h3 style="font-weight:bold;"><a><?=$o['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$o['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd/') .$o['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd2/') .$o['prod_id'] ?>" method="post">
 															<?php if($o['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>This product is not available</button>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderNow/' .$o['prod_id'])?>">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$o['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
 															<?php endif;?>
 														</form>													

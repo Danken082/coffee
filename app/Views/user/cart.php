@@ -28,7 +28,6 @@
 			<div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class="cart-list">
-					
 	    				<table class="table">
 			    			<thead class="thead-primary">
 			      				<tr class="text-center">
@@ -36,26 +35,21 @@
 									<th>Image</th>
 									<th>Product</th>
 									<th>Price</th>
-									<th>Quantity</th>
-									<th>Total</th>
+									<th>Total Quantity</th>
+									<th>Total Price</th>
 									<th>&nbsp;</th>
 			      				</tr>
 			    			</thead>
 				    		<tbody>
-						
 							<?php foreach($myCart as $item):?>
-								
 						      	<tr class="text-center">
 								  	<td><input type="checkbox" name="items[]" value= "<?= $item['id']?>" class="item-checkbox"></td>
 									<td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>">
 									<td class="product-name">
 										<h3><?= $item['prod_name']?></h3>
 									</td>
-
 									<?php if($item['size'] == 'Medium')?>
-									
 									<td class="price">₱ <?= $item['prod_mprice']?></td>
-							
 									<td class="quantity">
 										<div class="input-group mb-3">
 											<input type="number" name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
@@ -67,7 +61,6 @@
 								<?php endforeach;?>
 						    </tbody>
 						</table>
-				
 					</div>
     			</div>
     		</div>
@@ -103,22 +96,15 @@
 		<?php include('footer.php'); ?>
 		<script>
 			function selectAllItems() {
-			
 				var selectAllCheckbox = document.getElementById("selectAll");
-
-			
 				var itemCheckboxes = document.querySelectorAll(".item-checkbox");
-
-			
 				itemCheckboxes.forEach(function (checkbox) {
 					checkbox.checked = selectAllCheckbox.checked;
 				});
 			}
-		</script>  	
-
+		</script> 
 		<script>
 			var loader = document.getElementById("preloader");
-
 			window.addEventListener("load", function () {
 				setTimeout(function () {
 					loader.style.display = "none";
