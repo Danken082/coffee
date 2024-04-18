@@ -22,7 +22,7 @@
 		</div>
     </section>
 
-	<form action="<?= base_url('userCheckOut')?>" method="get">
+	<form action="<?= base_url('user/checkouts/')?>" method="post">
 	<section class="ftco-section ftco-cart">
 		<div class="container">
 			<div class="row">

@@ -141,3 +141,5 @@ database.default.port = 3306
 #--------------------------------------------------------------------
 
 # curlrequest.shareOptions = true
+STRIPE_KEY = "pk_test_MaQhP2b8XqG9R7PTL6Umipt2b8XqG9R7PTL6Umipt"
+STRIPE_SECRET = "sk_test_MtVxg0tJfCGJXQY8xZiu69Ie2b8XqG9R7PTL6Umipt"

@@ -21,7 +21,7 @@ class UserController extends BaseController
     }
     public function register()
     {   
-        $verificationToken = substr(md5(rand()), 0, 8);
+        // $verificationToken = substr(md5(rand()), 0, 8);
 
        
         $rules = [
@@ -37,6 +37,7 @@ class UserController extends BaseController
         ];
 
         if($this->validate($rules)){
+               $verificationToken = substr(md5(rand()), 0, 8);
         
                 $data = [
                 'LastName'    => $this->request->getVar('LastName'),
@@ -50,17 +51,44 @@ class UserController extends BaseController
                 'Password'    => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
                 'address'     => $this->request->getVar('address'),
                 'birthdate'   => $this->request->getVar('birthdate'),
-                'code'        =>$verificationToken,
+                'code'        =>  $verificationToken,
                 'status'      => 'pending'
             ];
-            $this->user->save($data);
-            return redirect()->to('/login');
-        }
-        else{
-            $data['validation']= $this->validator;
-            return view('admin/register', $data);
-        }
+
+
+            
+            $this->user->insert($data);
+
+            $email = \Config\Services::email();
+
+            $email->setFrom('rontaledankeneth@gmail.com', 'codeigniter');
+            $email->setTo($this->request->getVar('email'));
+            // $email->setCC('another@another-example.com');
+            // $email->setBCC('them@their-example.com');
+
+            $email->setSubject('Email Test');
+            $email->setMessage(view('foremail/verification', ['verificationToken' => $verificationToken]));
+                if($email->send())
+            {
+                echo('success');
+                // return view('email/activateCode');
+            }
+            else{
+                echo('Failed');
+                // return view('email/activateCode');
+            }
+    
+// =======
+//             $this->user->save($data);
+//             return redirect()->to('/login');
+//         }
+//         else{
+//             $data['validation']= $this->validator;
+//             return view('admin/register', $data);
+//         }
+// >>>>>>> 350b979baeeab26408dd1dba9e885aaf56f9f440
     }
+}
 
     public function login()
     {

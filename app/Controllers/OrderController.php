@@ -4,14 +4,16 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProductModel;
+use App\Models\OrderModel;
 
 class OrderController extends BaseController
 {
     private $prod;
-    
+    private $order;
     public function __construct()
     {
         $this->prod = new ProductModel();
+        $this->order = new OrderModel();
     }
 
 
@@ -120,5 +122,15 @@ class OrderController extends BaseController
         $data['order'] = $this->prod->where('prod_id', $prdOrder)->first();
 
         return view('user/orderdrink', $data);
-    }    
+    }
+    
+    public function viewOrders()
+    {
+        $user = session()->get('UserID');
+        $data['order'] = $this->order->select('order.orderID, order.CustomerID, order.ProductID, 
+        order.paymentStatus, order.orderType, order.orderDate, order.total, order.quantity, order.size,
+        order.barcode, order.orderStatus, product_tbl.prod_id, product_tbl.prod_img, product_tbl.prod_name, 
+        product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
+        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')->where('order.CustomerID', $user)->findAll();
+    }
 }
