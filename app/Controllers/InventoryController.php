@@ -19,7 +19,7 @@ class InventoryController extends BaseController
 
     public function adddrink(){
         $prod = new ProductModel();
-
+        $addDrinks = substr(md5(rand()), 0, 8);
         $data = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
@@ -27,8 +27,9 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
             'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
+            'prod_code' => $addDrinks,
             'prod_img' => $this->request->getPost('prod_img'),
+            'product_status' => 'Available'
         ];
         $prod->save($data);
         return redirect()->to(base_url('/adminprod'));

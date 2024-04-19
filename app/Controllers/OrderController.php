@@ -5,13 +5,16 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ProductModel;
 use App\Models\OrderModel;
+use App\Models\CartModel;
 
 class OrderController extends BaseController
 {
     private $prod;
     private $order;
+    private $crt;
     public function __construct()
     {
+        $this->crt = new CartModel();
         $this->prod = new ProductModel();
         $this->order = new OrderModel();
     }
@@ -26,6 +29,7 @@ class OrderController extends BaseController
 
     public function confirm($price)
     {
+        $mySize = $this->request->getVar('ProductID');
         $size = $this->request->getVar('size');
         $rules = [
             'prod_name' => 'required',

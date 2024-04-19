@@ -38,7 +38,7 @@ $routes->get('total', 'RawController::dataUpdating');
 /* For Inventory */
 /* For Hot Coffee */
 $routes->get('/inventoryhotcoffee', 'InventoryController::gethotcoffee');
-$routes->get('/drinks', 'InventoryController::drinks');
+$routes->get('/myproducts', 'InventoryController::drinks');
 $routes->post('/adddrinks', 'InventoryController::adddrink');
 $routes->get('/edithot/(:any)', 'InventoryController::edithot/$1');
 $routes->post('/updatehot/(:any)', 'InventoryController::updatehot/$1');
@@ -135,6 +135,8 @@ $routes->get('/removetocart/(:any)', 'CartController::remove/$1',['filter'=>'cus
 $routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::placeOrder',['filter'=>'cusFilter']);
 $routes->match(['get', 'post'], '/aOrder/', 'AdminController::acceptOrder');
 $routes->match(['get', 'post'], 'reservation', 'ReservationController::reservation');
+$routes->post('addQuantity/(:any)', 'CartController::addquantity/$1');
+
 
 //status
 $routes->match(['get','post'], '/available/', 'ProductController::availability');

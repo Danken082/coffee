@@ -40,22 +40,30 @@
                             <label for="large" class="form-label"></label>
                             <input type="text" class="form-control" id="large" name="prod_lprice" placeholder="Large Price">
                         </div>
-                        <h6>Select Drinks</h6>
+                        <h6>Select Category</h6>
                         <div class="input-group input-group-outline my-3">
                             <label for="category" class="form-label"></label>
                             <select name="prod_categ" id="category">
+                                <option disabled selected>Category</option>
                                 <option value="Hot Coffee">Hot Coffee</option>
                                 <option value="Iced Coffee">Iced Coffee</option>
                                 <option value="Flavored Coffee">Flavored Iced Coffee</option>
                                 <option value="Non Coffee Frappe">Non Coffee Frappe</option>
                                 <option value="Coffee Frappe">Coffee Frappe</option>
                                 <option value="Others">Others</option>
+                                <option value="Meals">Meals</option>
+                                <option value="Pasta">Pasta</option>
+                                <option value="Appetizer">Appetizer</option>
+                                <option value="Salad">Salad</option>
+                                <option value="Soup">Soup</option>
+                                <option value="Sandwich">Sandwiches</option>
                             </select>
                         </div>
 
                         <div class="input-group input-group-outline my-3">
                             <label for="Code" class="form-label"></label>
-                            <input type="text" class="form-control" id="Code" name="prod_code" placeholder="Product Code">
+                            <!-- <input type="text" class="form-control" id="Code" name="prod_code" placeholder="Product Code"> -->
+                            <input type="text" name="prod_desc" class="form-control" placeholder ="Product Description">
                         </div>
                         <h6>Select Image for Product</h6>
                         <div class="input-group input-group-outline my-3">

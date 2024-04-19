@@ -35,7 +35,7 @@ class ReservationController extends BaseController
                   ];
 
             $reservation->save($data);
-        return redirect()->to('/mainhome');
+        return redirect()->to('mainhome');
     }
     //for order
     public function viewProd($prod)

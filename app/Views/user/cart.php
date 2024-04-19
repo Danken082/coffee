@@ -8,8 +8,7 @@
 		<link rel="stylesheet" href="/assets/css/preloader.css">
   	</head>
 	<body>
-	<div id="preloader"></div>
-    <section class="home-slider owl-carousel">
+	<section class="home-slider owl-carousel">
 		<div class="slider-item" style="background-image: url(/assets/images/bgimg.jpg);" data-stellar-background-ratio="0.5">
 			<div class="overlay"></div>
 			<div class="container">
@@ -22,14 +21,20 @@
 		</div>
     </section>
 
-	<form action="<?= base_url('user/checkouts/')?>" method="post">
+	<?php if(session()->getFlashdata('msg')):?>
+                <div class="alert alert-warning">
+                    <?= session()->getFlashdata('msg') ?>
+                </div>
+				<?php endif;?>
+		<div id="preloader"></div>
 	<section class="ftco-section ftco-cart">
 		<div class="container">
 			<div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class="cart-list">
+
 	    				<table class="table">
-			    			<thead class="thead-primary">
+	  		    			<thead class="thead-primary">
 			      				<tr class="text-center">
 									<th><input type="checkbox" id="selectAll" onclick="selectAllItems()"></th>
 									<th>Image</th>
@@ -48,11 +53,24 @@
 									<td class="product-name">
 										<h3><?= $item['prod_name']?></h3>
 									</td>
-									<?php if($item['size'] == 'Medium')?>
+									<?php if($item['size'] === 'Medium'):?>
 									<td class="price">₱ <?= $item['prod_mprice']?></td>
+									<?php elseif($item['size'] === 'Large'):?>
+									<td class="price">₱ <?= $item['prod_lprice']?></td>
+									<?php else:?>
+									<td class="price"><?php echo('chech your size')?></td>
+										<?php endif;?>
 									<td class="quantity">
 										<div class="input-group mb-3">
-											<input type="number" name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
+										<input type="number" disabled name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
+
+											<form action="<?= base_url('addQuantity/' .$item['id'])?>" method="post">
+											<input type="hidden" name="mprice" value="<?= $item['prod_mprice']?>">
+									<input type="hidden" name="lprice" value="<?= $item['prod_lprice']?>">
+									<input type="hidden" name="cartID" value= "<?= $item['id']?>" class="item-checkbox">
+											<input type="number" min="1" name="newquantity" id="quantity" class="quantity form-control input-number">
+											<small><button type="submit">add</button></small>	
+										</form>
 										</div>
 									</td>
 						        	<td class="total">₱ <?= $item['total']?></td>
@@ -111,5 +129,13 @@
 				}, 1500);
 			});
 		</script>
+		<script>
+			var inputs = document.getElementById("quantity");
+
+        inputs.addEventListener("input", function(event) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+
 </body>
 </html>

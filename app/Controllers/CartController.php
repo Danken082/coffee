@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
 use BaconQrCode\Encoder\QrCode;
 use BaconQrCode\Common\Mode;
 use App\Models\ProductModel;
@@ -44,9 +46,12 @@ class CartController extends BaseController
     
 
     public function addtocart($price)
-    {   
-       $size = $this->request->getVar('size'); 
+    { 
 
+        $existCart = $this->prod->where('prod_id', $price)->first();
+        $myExist = $this->request->getVar('ProductID');
+        $size = $this->request->getVar('size'); 
+        
       if($size ==='Large'){
         $data = $this->product->where('prod_id', $price)->first();
         $total = $data['prod_lprice'] * $this->request->getVar('quantity');
@@ -62,7 +67,7 @@ class CartController extends BaseController
         
         $this->crt->save($prod);
         return redirect()->to('/mainshop');
-      }  
+      }
       elseif($size === 'Medium'){
         $data = $this->product->where('prod_id', $price)->first();
         $total = $this->request->getVar('quantity') * $data['prod_mprice']; 
@@ -78,13 +83,14 @@ class CartController extends BaseController
         $this->crt->save($prod);
         return redirect()->to('/mainshop');
       }  
-
       else 
       {
         return redirect()->to('/mainshop')->with('msg', 'Please Check Your Product');
       }
       
     }
+
+
 
     public function remove($id)
     {
@@ -301,4 +307,56 @@ class CartController extends BaseController
       {
           $this->crt->whereIn('id', $selectedItems)->delete();
       }
+
+      public function addquantity($cartID)
+{
+    $updateQuantityadd = $this->updatequantity($cartID);
+    $this->newQuantity($updateQuantityadd, $cartID); 
+    return redirect()->to('cart')->with('msg', 'Product is now available');     
+
+}
+
+private function updatequantity($cartID)
+{
+    $updateQuantityadd = $this->crt->find($cartID);
+
+    return $updateQuantityadd;
+}
+
+private function newQuantity($updateQuantityadd, $cartID)
+{
+    // Get the new quantity from the POST data
+    $addQuantity = $this->request->getPost('newquantity');
+
+    // Calculate the new quantity
+    $newQuantity = $addQuantity + $updateQuantityadd['quantity'];
+    
+    // Update the quantity and total based on the size
+    if ($updateQuantityadd['size'] === 'Medium') {
+        $medium = $this->request->getPost('mprice');
+        $newTotal = $medium * $newQuantity;
+    } elseif ($updateQuantityadd['size'] === 'Large') {
+        $large = $this->request->getPost('lprice');
+        $newTotal = $large * $newQuantity;
+    }
+
+    // Prepare data to update
+    $data = [
+        'quantity' => $newQuantity,
+        'total' => $newTotal
+    ];
+
+    // Update the cart item
+    $this->crt->update($cartID, $data);
+}
+
+        public function addToQuantity($cart)
+        {
+            $this->crt->where('id', $cart)->first();
+
+            
+                
+        }
+
+        
     }

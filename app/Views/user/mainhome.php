@@ -78,7 +78,7 @@
 						</div>
 						<div class="book p-4">
 							<h3>Book a Table</h3>
-							<form action="<?= base_url('reservation')?>" method ="post" class="appointment-form">
+							<form id="reservation-form" action="<?= base_url('reservation')?>" method ="post" class="appointment-form">
 								<div class="d-md-flex">
 									<div class="form-group">
 										<input type="text" disabled name="LastName" class="form-control" value="<?= session()->get('LastName')?>">
@@ -94,7 +94,7 @@
 									<div class="form-group">
 										<div class="input-wrap">
 											<label for="table reservation" style="color:white;">Date & Time</label>
-											<input type="datetime-local" name="apppointmentDate" class="form-control datetimepicker">
+											<input type="datetime-local" id="reservation-date" name="apppointmentDate" class="form-control datetimepicker">
 										</div>
 		    						</div>
 									<div class="form-group ml-md-4">
@@ -415,5 +415,35 @@
 					}, 1500);
 				});
 			</script>
+			<script>
+				var today = new Date().toISOString().split('T')[0];
+        var now = new Date().toISOString().split('T')[1].slice(0, 5);
+
+        document.querySelector('.appointment-form').min = today + "T" + now;
+			</script>
+			
+			<script>
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = String(now.getMonth() + 1).padStart(2, '0'); 
+        var day = String(now.getDate()).padStart(2, '0'); 
+        var hour = String(now.getHours()).padStart(2, '0'); 
+        var minute = String(now.getMinutes()).padStart(2, '0'); 
+ 
+        document.querySelector('.appointment-form').min = `${year}-${month}-${day}T${hour}:${minute}`;
+    </script>
+
+	<script>
+		const currentDate = new Date();
+		const year = currentDate.getFullYear();
+		let month = currentDate.getMonth();
+		let day = currentDate.getDate();
+
+		month = month < 10? "0" + month : month;
+		day = day < 10 ? "0" + day : day;
+
+		document.querySelector("#reservation-date").min = `${year}-${month}-${day}`;
+
+	</script>
   	</body>
 </html>

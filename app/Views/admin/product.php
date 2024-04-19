@@ -44,8 +44,7 @@
                 </div>
             </div>
         </div>
-        <a href="/drinks" class="btn btn-success btn-sm me-3 text-center">Add Drink</a>
-        <a href="/meals" class="btn btn-success btn-sm me-3 text-center">Add Meal</a>
+        <a href="/myproducts" class="btn btn-success btn-sm me-3 text-center">Add Product</a>
                         
         <div class="prodcontainer"><h2>Drinks</h2>
             <div class="cards">
