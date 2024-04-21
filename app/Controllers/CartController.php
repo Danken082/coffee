@@ -265,7 +265,7 @@ class CartController extends BaseController
 
       
       private function generateAlphanumericBarcode($length = 10)
-      {
+       {
           $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
           $barcodeData = '';
       
@@ -323,32 +323,32 @@ private function updatequantity($cartID)
     return $updateQuantityadd;
 }
 
-private function newQuantity($updateQuantityadd, $cartID)
-{
-    // Get the new quantity from the POST data
-    $addQuantity = $this->request->getPost('newquantity');
+          private function newQuantity($updateQuantityadd, $cartID)
+          {
+          // Get the new quantity from the POST data
+          $addQuantity = $this->request->getPost('newquantity');
 
-    // Calculate the new quantity
-    $newQuantity = $addQuantity + $updateQuantityadd['quantity'];
-    
-    // Update the quantity and total based on the size
-    if ($updateQuantityadd['size'] === 'Medium') {
-        $medium = $this->request->getPost('mprice');
-        $newTotal = $medium * $newQuantity;
-    } elseif ($updateQuantityadd['size'] === 'Large') {
-        $large = $this->request->getPost('lprice');
-        $newTotal = $large * $newQuantity;
-    }
+          // Calculate the new quantity
+          $newQuantity = $addQuantity + $updateQuantityadd['quantity'];
 
-    // Prepare data to update
-    $data = [
-        'quantity' => $newQuantity,
-        'total' => $newTotal
-    ];
+          // Update the quantity and total based on the size
+          if ($updateQuantityadd['size'] === 'Medium') {
+              $medium = $this->request->getPost('mprice');
+              $newTotal = $medium * $newQuantity;
+          } elseif ($updateQuantityadd['size'] === 'Large') {
+              $large = $this->request->getPost('lprice');
+              $newTotal = $large * $newQuantity;
+          }
 
-    // Update the cart item
-    $this->crt->update($cartID, $data);
-}
+          // Prepare data to update
+          $data = [
+              'quantity' => $newQuantity,
+              'total' => $newTotal
+          ];
+
+          // Update the cart item
+          $this->crt->update($cartID, $data);
+          }
 
         public function addToQuantity($cart)
         {
@@ -356,7 +356,5 @@ private function newQuantity($updateQuantityadd, $cartID)
 
             
                 
-        }
-
-        
-    }
+        }        
+}

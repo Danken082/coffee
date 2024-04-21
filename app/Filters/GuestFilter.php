@@ -34,7 +34,7 @@ class GuestFilter implements FilterInterface
             }
             elseif(session()->get('UserRole') == 'Customer')
             {
-                return redirect()->to('/user/home');
+                return redirect()->to('/mainhome');
             }
         }
     }

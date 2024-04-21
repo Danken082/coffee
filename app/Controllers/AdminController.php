@@ -8,6 +8,7 @@ use App\Models\AdminUserModel;
 use App\Models\HistoryModel;
 use App\Models\ProductModel;
 use App\Models\PaymentModel;
+use App\Models\TableModel;
 class AdminController extends BaseController
 {
     private $user;
@@ -15,14 +16,45 @@ class AdminController extends BaseController
     private $orderprod;
     private $load;
     private $payment;
+    private $tbl;
 
     public function __construct(){
         $this->user = new AdminUserModel();
         $this->history = new HistoryModel();
         $this->orderprod = new ProductModel();
         $this->payment = new PaymentModel();
+        $this->tbl = new TableModel();
     }
 
+    public function viewAddTable()
+    {
+        return view('admin/addingTable');
+    }
+    public function addingTable()
+    {
+        $rules = [
+                'table_Type' => 'required',
+                'Status' => 'required'
+        ];
+
+        if($this->validate($rules))
+        {
+            $data = [
+                'Status' => 'Available'
+
+            ];
+
+            $this->tbl->save($data);
+
+            return redirect()->to('addingTable')->with('msg', 'This Table is Now Available');
+
+        }
+        else{
+            $data['validation'] = $this->validator;
+
+            return view('admin/addingTable', $data);
+        }
+    }
 
     public function admin_side(){
         return view('/admin/sidebar');

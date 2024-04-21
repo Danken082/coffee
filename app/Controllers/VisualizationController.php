@@ -13,13 +13,13 @@ class VisualizationController extends BaseController
     {
         $this->vis = new HistoryModel();
     }
-
+    
     public function initDayChart() {
-        
         $db = \Config\Database::connect();
         $builder = $db->table('tbl_orders');
-        $query = $builder->select("SUM(total_amount) as count, total_amount as s, DAYNAME(order_date) as day");
-        $query = $builder->where("DAY(order_date) GROUP BY DAYNAME(order_date), s")->get();
+        $query = $builder->select("SUM(total_amount) as count, SUM(total_amount) as s, DAYNAME(order_date) as day")
+                        ->groupBy('DAYNAME(order_date)')
+                        ->get();
         $record = $query->getResult();
         $products = [];
         foreach($record as $row) {
@@ -28,13 +28,7 @@ class VisualizationController extends BaseController
                 'sell' => floatval($row->s)
             );
         }
-        
-        $data['products'] = ($products);    
-        return view('admin/dashboard', $data);                
-    }
-
-    public function initMonthChart() {
-        $db = \Config\Database::connect();
+    
         $builder = $db->table('tbl_orders');
         $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
                         ->groupBy('MONTH(order_date)')
@@ -42,8 +36,14 @@ class VisualizationController extends BaseController
         $salesByMonth = $query->getResult();
     
         $data['salesByMonth'] = $salesByMonth;
+       
+        $data['products'] = $products;
+        
         return view('admin/dashboard', $data);
     }
+    
+    
+    
     
     public function initChart(){
         $sales = $this->vis->findAll();

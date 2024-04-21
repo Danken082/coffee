@@ -68,7 +68,6 @@ class OrderController extends BaseController
                 $oprice = $this->prod->where('prod_lprice', $price)->find();
                 $total = $this->request->getVar('quantity') * $oprice['prod_mprice'];
 
-      
                 $data = [
                     'ProductID'     => $this->request->getVar('ProductID'),
                     'CustomerID'    => $this->request->getVar('CustomerID'),

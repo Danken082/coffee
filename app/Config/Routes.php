@@ -31,8 +31,8 @@ $routes->get('/logout', 'UserController::logout', ['filter'=>'authFilter']);
 $routes->get('viewOrders', 'AdminController::viewOrder');
 $routes->get('admin/sidebar', 'AdminController::admin_side');
 $routes->get('/adminpos', 'AdminController::pos');
-
-
+$routes->get('addingTable', 'AdminController::viewAddTable');
+$routes->post('AdminTable', 'AdminController::addingTable');
 #rawDataTotal
 $routes->get('total', 'RawController::dataUpdating');
 /* For Inventory */
@@ -54,7 +54,7 @@ $routes->match(['get','post'], '/availableiced/', 'InventoryController::availabi
 $routes->match(['get', 'post'], '/unavailableiced/', 'InventoryController::Unavailableiced');
 /* For Flavored Coffee */
 $routes->get('/inventoryflavoredcoffee', 'InventoryController::getflavoredcoffee');
-$routes->get('/editflavored/(:any)', 'InventoryController::editflavored/$1');
+$routes->get('/editflavored/(:any)', 'InxventoryController::editflavored/$1');
 $routes->post('/updateflavored/(:any)', 'InventoryController::updateflavored/$1');
 $routes->get('/deleteflavored/(:any)', 'InventoryController::deleteflavored/$1');
 $routes->match(['get','post'], '/availableflavored/', 'InventoryController::availabilityflavored');
