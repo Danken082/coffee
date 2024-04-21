@@ -146,3 +146,10 @@ $routes->match(['get', 'post'], '/unavailable/', 'ProductController::Unavailable
 
 //viewing of orders
 $routes->get('myOrders', 'OrderController::viewOrders');
+
+
+//ito yung table for  product_item(babaguhin kasi gusto ng maam ay nakasama lahat ng product then nakalagay naman yung categories neto)
+$routes->get('/prod_items', 'AdminController::product_item');
+
+
+

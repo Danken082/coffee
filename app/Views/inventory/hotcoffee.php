@@ -13,14 +13,26 @@
         <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
         <link href="/assets/css/table.css" rel="stylesheet" />
     </head>
-    <body>
+
+    <body style="background-color: #191C24">
+    
+    <div style="text-align: center; border: 2px solid lightblue; padding: 10px;">
+    <h4 style="color: white;">Product List</h4>
+</div>
     <div class="container">
+        <div class="col-12">
+        <div class="card my-4">
+   
+</div>
+
+        </div>
+    </div>
+    
+<a href="<?= base_url('/adminprod')?>" class="btn btn-info" style="margin: 20px; background-color: transparent;">BACK</a>
+
+    <div  class="container">
             <div class="col-12">
-                <div class="card my-4">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                        <h4 class="text-white text-capitalize ps-3">Product List</h4>
-                    </div>
-                </div><br>
+                <br>
             </div>
         </div>
         <div class="card-body">
@@ -43,6 +55,8 @@
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Image</th>
 
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Actions</th>
+
+                            <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Availability</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -94,7 +108,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table><br>
-                <a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a>
+               
             </div>
         </div>
     </body>

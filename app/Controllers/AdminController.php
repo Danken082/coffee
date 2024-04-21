@@ -180,4 +180,14 @@ class AdminController extends BaseController
     public function pos(){
         return view('/admin/pos');
     }
+
+
+
+
+
+    public function product_item(){
+        return view('/inventory/product_item/prod_items');
+    }
+
+
 }
