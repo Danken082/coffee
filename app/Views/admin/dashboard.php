@@ -20,7 +20,6 @@
             padding-left: 250px;
         }
     </style>
-
 <body>
     <?php include('sidebar.php'); ?>
     <div class="container-fluid">
@@ -45,7 +44,7 @@
             <div class="col-lg-6 col-md-6 mt-4 mb-10">
                 <div class="card z-index-2 ">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-success shadow-primary border-radius-lg py-3 pe-1">
+                        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                             <div class="chart">
                                 <div id="dailySalesChart" style="height: 400px; width: 100%"></div>
                             </div>
@@ -59,33 +58,30 @@
             <div class="col-lg-6 col-md-6 mt-4 mb-10">
                 <div class="card z-index-2 ">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-success shadow-primary border-radius-lg py-3 pe-1">
+                        <div class="bg-gradient-dark shadow-primary border-radius-lg py-3 pe-1">
                             <div class="chart">
-                                <canvas id="monthlySalesChart" style="height: 390px; width: 100%"></canvas>
+                                <canvas id="monthlySalesChart" style="height: 400px; width: 100%"></canvas>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <h6 class="mb-0">Monthly Sales</h6>
-                        <hr class="dark horizontal">
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div><br><br>
         <div class="row mt-4">
             <div class="col-lg-6 col-md-6 mt-4 mb-10">
                 <div class="card z-index-2 ">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-success shadow-primary border-radius-lg py-3 pe-1">
+                        <div style="background-color: white;">
                             <div class="chart">
-                                <canvas id="chart-bars4" class="chart-canvas" height="300"></canvas>
+                                <canvas id="yearlySalesChart" width="400" height="400"></canvas>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <h6 class="mb-0">Yearly Sales</h6>
-                        <hr class="dark horizontal">
                     </div>
                 </div>
             </div>
@@ -94,18 +90,12 @@
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                         <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                             <div class="chart">
-                                <canvas id="chart-bars5" class="chart-canvas" height="300"></canvas>
+                                <canvas id="chart-bars5" style="height: 400px; width: 100%"></canvas>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <h6 class="mb-0">Stocks</h6>
-                        <p class="text-sm">See Stocks</p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm">just updated</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -120,6 +110,7 @@
     <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="/assets/js/plugins/chartjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -157,19 +148,23 @@
             lineChart.draw(lineChartData, lineChartOptions);
         }
     </script>
-    <!-- Script for the monthly sales bar chart -->
     <script>
-        // Assuming you have fetched the data from your backend and stored it in salesData
         const salesData = <?php echo json_encode($salesByMonth); ?>;
-
-        // Extract labels and sales data from the fetched data
         const labels = salesData.map(item => item.month);
         const sales = salesData.map(item => item.total_sales);
 
-        // Get the canvas element
+        const colors = [
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(54, 162, 235, 0.8)', 
+            'rgba(255, 205, 86, 0.8)', 
+            'rgba(75, 192, 192, 0.8)', 
+            'rgba(153, 102, 255, 0.8)', 
+        ];
+
+        const backgroundColors = colors.slice(0, labels.length);
+
         const ctx = document.getElementById('monthlySalesChart').getContext('2d');
 
-        // Create the bar chart
         const monthlySalesChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -177,14 +172,50 @@
                 datasets: [{
                     label: 'Monthly Sales',
                     data: sales,
-                    backgroundColor: 'rgba(54, 162, 235, 0.5)', // Blue color for bars
-                    borderColor: 'rgba(54, 162, 235, 1)', // Border color
-                    borderWidth: 1
+                    backgroundColor: backgroundColors,
+                    borderColor: 'rgba(148, 255, 251, 0.8)',
+                    borderWidth: 3
                 }]
             },
             options: {
                 scales: {
                     yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <script>
+        const salesByYear = <?php echo json_encode($salesByYear); ?>;
+        const labelsYear = salesByYear.map(item => item.year);
+        const salesYear = salesByYear.map(item => item.total_amount);
+
+        const colorss= [
+            'rgba(255, 99, 132, 0.8)',
+            'rgba(54, 162, 235, 0.8)',
+        ];
+        const backgroundColorss = colorss.slice(0, labelsYear.length);
+
+        const ctxYear = document.getElementById('yearlySalesChart').getContext('2d');
+
+        const yearlySalesChart = new Chart(ctxYear, {
+            type: 'pie',
+            data: {
+                labels: labelsYear,
+                datasets: [{
+                    label: 'Yearly Sales',
+                    data: salesYear,
+                    backgroundColor: backgroundColors,
+                    borderColor: 'rgba(95, 0, 113, 0.8)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
                         ticks: {
                             beginAtZero: true
                         }

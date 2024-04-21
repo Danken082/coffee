@@ -13,9 +13,10 @@ class VisualizationController extends BaseController
     {
         $this->vis = new HistoryModel();
     }
-    
-    public function initDayChart() {
+
+    public function allChart() {
         $db = \Config\Database::connect();
+
         $builder = $db->table('tbl_orders');
         $query = $builder->select("SUM(total_amount) as count, SUM(total_amount) as s, DAYNAME(order_date) as day")
                         ->groupBy('DAYNAME(order_date)')
@@ -28,23 +29,30 @@ class VisualizationController extends BaseController
                 'sell' => floatval($row->s)
             );
         }
-    
+
         $builder = $db->table('tbl_orders');
         $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
                         ->groupBy('MONTH(order_date)')
                         ->get();
         $salesByMonth = $query->getResult();
+
+        usort($salesByMonth, function($a, $b) {
+            return $a->month - $b->month;
+        });
     
+        $salesByYear = $this->vis
+            ->select('YEAR(order_date) as year, SUM(total_amount) as total_amount')
+            ->groupBy('YEAR(order_date)')
+            ->findAll();
+
         $data['salesByMonth'] = $salesByMonth;
-       
+        $data['salesByYear'] = $salesByYear;
         $data['products'] = $products;
-        
+    
         return view('admin/dashboard', $data);
     }
     
-    
-    
-    
+
     public function initChart(){
         $sales = $this->vis->findAll();
 
@@ -59,8 +67,7 @@ class VisualizationController extends BaseController
         ->groupBy('YEAR(order_date)')
         ->findAll();
 
-    // Output sales by year
-    foreach ($salesByYear as $sale) {
+        foreach ($salesByYear as $sale) {
         echo $sale['year'] . ': ' . $sale['total_amount'] . '<br>';
     }
     }

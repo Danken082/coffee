@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Inventory</title>
+    <title>Admin Products</title>
     <link rel="icon" type="image/png" href="/images/coffeelogo2.png">
     <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
 </head>
@@ -73,7 +73,6 @@
                     </div>
                 </div><br>
             </div>
-
             <div class="card">
                 <div class="box">
                     <img src="/assets/images/products/parmegianameatball.png" alt="pasta">
@@ -92,7 +91,6 @@
                     </div>
                 </div><br>
             </div>
-
             <div class="card">
                 <div class="box">
                     <img src="/assets/images/products/chefsalad.jpg" alt="salad">
@@ -111,7 +109,6 @@
                     </div>
                 </div><br>
             </div>
-
             <div class="card">
                 <div class="box">
                     <img src="/assets/images/products/cheesybacon.jpg" alt="sandwich">
@@ -131,7 +128,6 @@
                     </div>
                 </div><br>
             </div>
-
             <div class="card">
                 <div class="box">
                     <img src="/assets/images/products/icedamericano.jpg" alt="icedcoffee">
@@ -150,7 +146,6 @@
                     </div>
                 </div><br>
             </div>
-
             <div class="card">
                 <div class="box">
                     <img src="/assets/images/products/javafrap.jpg" alt="noncoffee">
