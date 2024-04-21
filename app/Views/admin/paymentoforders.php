@@ -66,7 +66,6 @@
                     <tbody>
                     <?php foreach($order as $orP): ?>
                         <tr>
-                        <!-- <input type="text" class="order_id" value=""> -->
                         <td class="text-center">
                        
                                 <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['FirstName'];?> <?= $orP['LastName'];?></p>

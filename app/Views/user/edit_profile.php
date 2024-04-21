@@ -15,8 +15,8 @@
         <div class="main-body">
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="<?= site_url("user/mainhome"); ?>">Home</a></li>
-              <li class="breadcrumb-item"><a href="<?= site_url("user/profile"); ?>">User</a></li>
+              <li class="breadcrumb-item"><a href="<?= site_url("/mainhome"); ?>">Home</a></li>
+              <li class="breadcrumb-item"><a href="<?= site_url("/profile"); ?>">User</a></li>
               <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
             </ol>
           </nav>

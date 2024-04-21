@@ -12,13 +12,14 @@
     <link rel="stylesheet" href="/assets/admin/owl.theme.default.min.css">
     <link rel="stylesheet" href="/assets/admin/style.css">
     <link rel="shortcut icon" href="/assets/images/tea.png" />
+    <link href="https://fontawesome.com/"/>
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="container-scroller">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="navbar-brand" style="color: wh  ite;"><small>CrossRoads</small></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+        <a class="navbar-brand" style="color: white;"><small>Crossroads Coffee and Deli</small></a>
         </div>
         <ul class="nav">
           <li class="nav-item profile">
@@ -70,47 +71,61 @@
               </div>
             </div>
           </li>
-
-          
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/adminhome">
+            <a class="nav-link" href="<?= site_url("adminhome"); ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="fa fa-solid fa-house-user"></i>
               </span>
               <span class="menu-title">Home</span>
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="admindash">
+            <a class="nav-link" href="<?= site_url("admindash"); ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="fa fa-solid fa-chart-line"></i>
               </span>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <li class="nav-item menu-items">
-          <a class="nav-link" href="admininventory">
+          <a class="nav-link" href="<?= site_url("admininventory"); ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="fa fa-solid fa-warehouse"></i>
               </span>
               <span class="menu-title">Inventory</span>
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="adminorder">
+            <a class="nav-link"href="<?= site_url("adminorder"); ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="fa fa-solid fa-receipt"></i>
               </span>
               <span class="menu-title">Order</span>
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="adminhistory">
+            <a class="nav-link" href="<?= site_url("adminorderpayment"); ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
+                <i class="fa fa-solid fa-receipt"></i>
+              </span>
+              <span class="menu-title">Order Payment</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<?= site_url("adminpos"); ?>">
+              <span class="menu-icon">
+                <i class="fa fa-solid fa-cash-register"></i>
+              </span>
+              <span class="menu-title">POS</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+              <a class="nav-link" href="<?= site_url("adminhistory"); ?>">
+              <span class="menu-icon">
+                <i class="fa fa-solid fa-list"></i>
               </span>
               <span class="menu-title">History</span>
             </a>
@@ -119,17 +134,32 @@
             <span class="nav-link">Account Page</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="adminmanage_user">
+            <a class="nav-link" href="<?= site_url("adminmanage_user"); ?>">
               <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
+                <i class="fa fa-solid fa-user"></i>
+              </span>
+              <span class="menu-title">Admin Manage User</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<?= site_url("admincustomer_user"); ?>">
+              <span class="menu-icon">
+                <i class="fa fa-solid fa-user"></i>
               </span>
               <span class="menu-title">Manage User</span>
+            </a>
+          </li><br><br>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<?= site_url("logout"); ?>">
+              <span class="menu-icon">
+                <i class="fa fa-power-off me-sm-1"></i>
+              </span>
+              <span class="menu-title">Log Out</span>
             </a>
           </li>
          
       
       <div class="container-fluid page-body-wrapper">
-      
         <nav class="navbar p-0 fixed-top d-flex flex-row">
           <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
             <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
@@ -278,9 +308,6 @@
               <span class="mdi mdi-format-line-spacing"></span>
             </button>
           </div>
-
-  
-  
       </div>
     </div>
     <script src="/assets/admin/vendor.bundle.base.js"></script>

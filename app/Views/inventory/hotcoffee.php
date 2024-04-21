@@ -13,30 +13,23 @@
         <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
         <link href="/assets/css/table.css" rel="stylesheet" />
     </head>
-
-    <body style="background-color: #191C24">
-    
-    <div style="text-align: center; border: 2px solid lightblue; padding: 10px;">
-    <h4 style="color: white;">Product List</h4>
-</div>
+    <body>
     <div class="container">
-        <div class="col-12">
-        <div class="card my-4">
-   
-</div>
-
-        </div>
-    </div>
-    
-<a href="<?= base_url('/adminprod')?>" class="btn btn-info" style="margin: 20px; background-color: transparent;">BACK</a>
-
-    <div  class="container">
             <div class="col-12">
-                <br>
+                <div class="card my-4">
+                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
+                        <h4 class="text-white text-capitalize ps-3">Product List</h4>
+                    </div>
+                </div><br>
             </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
+                <?php if(session()->getFlashdata('msg')):?>
+                    <div class="alert alert-warning">
+                        <?= session()->getFlashdata('msg') ?>
+                    </div>
+                <?php endif;?>
                 <table class="table align-items-center">
                     <thead>
                         <tr>
@@ -81,7 +74,7 @@
                                     <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_code'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <img src="<?php base_url();?>/assets/images/<?= $p['prod_img'] ?>" alt="img">
+                                    <img src="<?php base_url();?>/assets/images/products/<?= $p['prod_img'] ?>" alt="img">
                                 </td>
                                 <td class="align-middle text-center">
                                     <a href="<?= base_url('/edithot/' .$p['prod_id']) ?>" id='id'
@@ -93,12 +86,12 @@
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
                                             <td>
-                                    <form action="<?= base_url('available/')?>" method="POST">
+                                    <form action="<?= base_url('/availablehot/')?>" method="POST">
                                     <input type="hidden" name="update" value="<?= $p['prod_id']?>">
                                     <input type="hidden" name="prod_status" value="Available">
                                     <button type="submit">Available</button>
                                 </form> 
-                                <br><form action="<?= base_url('unavailable/')?>" method="POST">
+                                <br><form action="<?= base_url('/unavailablehot/')?>" method="POST">
                                     <input type="hidden" name="update" value="<?= $p['prod_id']?>">
                                     <input type="hidden" name="prod_status" value="Unavailable">
                                     <button type="submit">Unavailable</button>
@@ -108,7 +101,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table><br>
-               
+                <a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a>
             </div>
         </div>
     </body>

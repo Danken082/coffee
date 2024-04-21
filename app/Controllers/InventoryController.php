@@ -73,6 +73,58 @@ class InventoryController extends BaseController
         return redirect()->to(base_url('inventoryhotcoffee'));
     }
 
+    public function availabilityhot()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventoryhotcoffee')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailablehot()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventoryhotcoffee')->with('msg', "The product you've selected is now unavailable");     
+    }
+
+    private function myProduct($update)
+    {
+        $updateAvailability = $this->prod->where('prod_id', $update)->first();
+
+        return $updateAvailability;
+    }
+  
+    private function updateProd($updateAvailability, $update)
+    {
+            $data = [
+                'product_status' => $this->request->getPost('prod_status')
+            ];
+
+        $this->prod->update($updateAvailability, $data);
+    }
+
+
+    private function UnavailableProduct($unavailable)
+    {
+       $updateUnavailability = $this->prod->where('prod_id', $unavailable)->first();
+
+        return $updateUnavailability;
+    }
+
+    private function updateAvailable($updateUnavailability)
+    {
+        $data = [
+            'product_status' => $this->request->getPost('prod_status')
+        ];
+
+        $this->prod->update($updateUnavailability, $data);
+    }
+
     public function geticedcoffee()
     {
         $categ = 'Iced Coffee';
@@ -110,6 +162,25 @@ class InventoryController extends BaseController
         $iced = new ProductModel();
         $iced->delete($id);
         return redirect()->to(base_url('inventoryicedcoffee'));
+    }
+
+    public function availabilityiced()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventoryicedcoffee')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailableiced()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventoryicedcoffee')->with('msg', "The product you've selected is now unavailable");     
     }
 
     public function getflavoredcoffee()
@@ -150,6 +221,25 @@ class InventoryController extends BaseController
         return redirect()->to(base_url('inventoryflavoredcoffee'));
     }
 
+    public function availabilityflavored()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventoryflavoredcoffee')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailableflavored()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventoryflavoredcoffee')->with('msg', "The product you've selected is now unavailable");     
+    }
+
     public function getnoncoffee()
     {
         $categ = 'Non Coffee Frappe';
@@ -186,6 +276,25 @@ class InventoryController extends BaseController
         $non = new ProductModel();
         $non->delete($id);
         return redirect()->to(base_url('inventorynoncoffee'));
+    }
+
+    public function availabilitynoncoffee()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventorynoncoffee')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailablenoncoffee()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventorynoncoffee')->with('msg', "The product you've selected is now unavailable");     
     }
 
     public function getcoffeefrappe()
@@ -226,6 +335,25 @@ class InventoryController extends BaseController
         return redirect()->to(base_url('inventorycoffeefrappe'));
     }
 
+    public function availabilitycoffeefrappe()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventorycoffeefrappe')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailablecoffeefrappe()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventorycoffeefrappe')->with('msg', "The product you've selected is now unavailable");     
+    }
+
     public function getothers()
     {
         $categ = 'Others';
@@ -261,6 +389,25 @@ class InventoryController extends BaseController
         $other = new ProductModel();
         $other->delete($id);
         return redirect()->to(base_url('inventoryothers'));
+    }
+
+    public function availabilityothers()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventoryothers')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailableothers()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventoryothers')->with('msg', "The product you've selected is now unavailable");     
     }
 
     public function meals(){
@@ -320,6 +467,25 @@ class InventoryController extends BaseController
         return redirect()->to(base_url('inventorymeal'));
     }
 
+    public function availabilitymeal()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventorymeal')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailablemeal()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventorymeal')->with('msg', "The product you've selected is now unavailable");     
+    }
+
     public function getpasta()
     {
         $categ = 'Pasta';
@@ -355,6 +521,25 @@ class InventoryController extends BaseController
         $pasta = new ProductModel();
         $pasta->delete($id);
         return redirect()->to(base_url('inventorypasta'));
+    }
+
+    public function availabilitypasta()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventorypasta')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailablepasta()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventorypasta')->with('msg', "The product you've selected is now unavailable");     
     }
 
     public function getappetizer()
@@ -394,6 +579,25 @@ class InventoryController extends BaseController
         return redirect()->to(base_url('inventoryappetizer'));
     }
 
+    public function availabilityappetizer()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventoryappetizer')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailableappetizer()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventoryappetizer')->with('msg', "The product you've selected is now unavailable");     
+    }
+
     public function getsalad()
     {
         $categ = 'Salad';
@@ -430,6 +634,26 @@ class InventoryController extends BaseController
         $salad->delete($id);
         return redirect()->to(base_url('inventorysalad'));
     }
+
+    public function availabilitysalad()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventorysalad')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailablesalad()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventorysalad')->with('msg', "The product you've selected is now unavailable");     
+    }
+
     public function getsoup()
     {
         $categ = 'Soup';
@@ -467,6 +691,25 @@ class InventoryController extends BaseController
         return redirect()->to(base_url('inventorysoup'));
     }
 
+    public function availabilitysoup()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventorysoup')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailablesoup()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventorysoup')->with('msg', "The product you've selected is now unavailable");     
+    }
+
     public function getsandwich()
     {
         $categ = 'Sandwich';
@@ -502,5 +745,24 @@ class InventoryController extends BaseController
         $sand = new ProductModel();
         $sand->delete($id);
         return redirect()->to(base_url('inventorysandwich'));
+    }
+
+    public function availabilitysandwich()
+    {
+        $update = $this->request->getVar('update');
+        $updateAvailability = $this->myProduct($update);
+                              $this->updateProd($updateAvailability, $update);
+
+        return redirect()->to('inventorysandwich')->with('msg', "The product you've selected is now available");     
+    }
+
+    public function Unavailablesandwich()
+    {
+        $unavailable = $this->request->getVar('update');
+
+        $updateUnavailability = $this->UnavailableProduct($unavailable);
+                                $this->updateAvailable($updateUnavailability);
+                               
+    return redirect()->to('inventorysandwich')->with('msg', "The product you've selected is now unavailable");     
     }
 }

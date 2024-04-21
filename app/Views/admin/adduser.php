@@ -57,7 +57,6 @@
                         </div>
                         <select name="UserRole">
                             <option>Admin</option>
-                            <option>Owner</option>
                             <option>Staff</option>
                         </select>
                         <br><br>

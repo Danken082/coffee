@@ -73,7 +73,7 @@ class AdminController extends BaseController
         ->join( 'user', 'order.CustomerID = user.UserID')
         ->orderBy('order.orderID', 'ASC')
         ->findAll();
-        return view('/admin/paymentoforders', $data);
+        return view('/admin/orderpayment', $data);
     }
     public function viewOrder()
     {
@@ -180,10 +180,6 @@ class AdminController extends BaseController
     public function pos(){
         return view('/admin/pos');
     }
-
-
-
-
 
     public function product_item(){
         return view('/inventory/product_item/prod_items');

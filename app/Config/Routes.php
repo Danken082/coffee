@@ -43,31 +43,43 @@ $routes->post('/adddrinks', 'InventoryController::adddrink');
 $routes->get('/edithot/(:any)', 'InventoryController::edithot/$1');
 $routes->post('/updatehot/(:any)', 'InventoryController::updatehot/$1');
 $routes->get('/deletehot/(:any)', 'InventoryController::deletehot/$1');
+$routes->match(['get','post'], '/availablehot/', 'InventoryController::availabilityhot');
+$routes->match(['get', 'post'], '/unavailablehot/', 'InventoryController::Unavailablehot');
 /* For Iced Coffee */
 $routes->get('/inventoryicedcoffee', 'InventoryController::geticedcoffee');
 $routes->get('/editiced/(:any)', 'InventoryController::editiced/$1');
 $routes->post('/updateiced/(:any)', 'InventoryController::updateiced/$1');
 $routes->get('/deleteiced/(:any)', 'InventoryController::deleteiced/$1');
+$routes->match(['get','post'], '/availableiced/', 'InventoryController::availabilityiced');
+$routes->match(['get', 'post'], '/unavailableiced/', 'InventoryController::Unavailableiced');
 /* For Flavored Coffee */
 $routes->get('/inventoryflavoredcoffee', 'InventoryController::getflavoredcoffee');
 $routes->get('/editflavored/(:any)', 'InventoryController::editflavored/$1');
 $routes->post('/updateflavored/(:any)', 'InventoryController::updateflavored/$1');
 $routes->get('/deleteflavored/(:any)', 'InventoryController::deleteflavored/$1');
+$routes->match(['get','post'], '/availableflavored/', 'InventoryController::availabilityflavored');
+$routes->match(['get', 'post'], '/unavailableflavored/', 'InventoryController::Unavailableflavored');
 /* For Non Coffee Frappe */
 $routes->get('/inventorynoncoffee', 'InventoryController::getnoncoffee');
 $routes->get('/editnon/(:any)', 'InventoryController::editnoncoffee/$1');
 $routes->post('/updatenon/(:any)', 'InventoryController::updatenoncoffee/$1');
 $routes->get('/deletenon/(:any)', 'InventoryController::deletenoncoffee/$1');
+$routes->match(['get','post'], '/availablenoncoffee/', 'InventoryController::availabilitynoncoffee');
+$routes->match(['get', 'post'], '/unavailablenoncoffee/', 'InventoryController::Unavailablenoncoffee');
 /* For Coffee Frappe */
 $routes->get('/inventorycoffeefrappe', 'InventoryController::getcoffeefrappe');
 $routes->get('/editcoffeefrappe/(:any)', 'InventoryController::editcoffeefrappe/$1');
 $routes->post('/updatecoffeefrappe/(:any)', 'InventoryController::updatecoffeefrappe/$1');
 $routes->get('/deletecoffeefrappe/(:any)', 'InventoryController::deletecoffeefrappe/$1');
+$routes->match(['get','post'], '/availablecoffeefrappe/', 'InventoryController::availabilitycoffeefrappe');
+$routes->match(['get', 'post'], '/unavailablecoffeefrappe/', 'InventoryController::Unavailablecoffeefrappe');
 /* For Others */
 $routes->get('/inventoryothers', 'InventoryController::getothers');
 $routes->get('/editothers/(:any)', 'InventoryController::editothers/$1');
 $routes->post('/updateothers/(:any)', 'InventoryController::updateothers/$1');
 $routes->get('/deleteothers/(:any)', 'InventoryController::deleteothers/$1');
+$routes->match(['get','post'], '/availableother/', 'InventoryController::availabilityothers');
+$routes->match(['get', 'post'], '/unavailableother/', 'InventoryController::Unavailableothers');
 /* For Rice Meal */
 $routes->get('/inventorymeal', 'InventoryController::getmeal');
 $routes->get('/meals', 'InventoryController::meals');
@@ -75,31 +87,43 @@ $routes->post('/addmeals', 'InventoryController::addmeals');
 $routes->get('/editmeal/(:any)', 'InventoryController::editmeal/$1');
 $routes->post('/updatemeal/(:any)', 'InventoryController::updatemeal/$1');
 $routes->get('/deletemeal/(:any)', 'InventoryController::deletemeal/$1');
+$routes->match(['get','post'], '/availablemeal/', 'InventoryController::availabilitymeal');
+$routes->match(['get', 'post'], '/unavailablemeal/', 'InventoryController::Unavailablemeal');
 /* For Pasta */
 $routes->get('/inventorypasta', 'InventoryController::getpasta');
 $routes->get('/editpasta/(:any)', 'InventoryController::editpasta/$1');
 $routes->post('/updatepasta/(:any)', 'InventoryController::updatepasta/$1');
 $routes->get('/deletepasta/(:any)', 'InventoryController::deletepasta/$1');
+$routes->match(['get','post'], '/availablepasta/', 'InventoryController::availabilitypasta');
+$routes->match(['get', 'post'], '/unavailablepasta/', 'InventoryController::Unavailablepasta');
 /* For Appetizer */
 $routes->get('/inventoryappetizer', 'InventoryController::getappetizer');
 $routes->get('/editappetizer/(:any)', 'InventoryController::editappetizer/$1');
 $routes->post('/updateappetizer/(:any)', 'InventoryController::updateappetizer/$1');
 $routes->get('/deleteappetizer/(:any)', 'InventoryController::deleteappetizer/$1');
+$routes->match(['get','post'], '/availableappetizer/', 'InventoryController::availabilityappetizer');
+$routes->match(['get', 'post'], '/unavailableappetizer/', 'InventoryController::Unavailableappetizer');
 /* For Salad */
 $routes->get('/inventorysalad', 'InventoryController::getsalad');
 $routes->get('/editsalad/(:any)', 'InventoryController::editsalad/$1');
 $routes->post('/updatesalad/(:any)', 'InventoryController::updatesalad/$1');
 $routes->get('/deletesalad/(:any)', 'InventoryController::deletesalad/$1');
+$routes->match(['get','post'], '/availablesalad/', 'InventoryController::availabilitysalad');
+$routes->match(['get', 'post'], '/unavailablesalad/', 'InventoryController::Unavailablesalad');
 /* For Soup */
 $routes->get('/inventorysoup', 'InventoryController::getsoup');
 $routes->get('/editsoup/(:any)', 'InventoryController::editsoup/$1');
 $routes->post('/updatesoup/(:any)', 'InventoryController::updatesoup/$1');
 $routes->get('/deletesoup/(:any)', 'InventoryController::deletesoup/$1');
+$routes->match(['get','post'], '/availablesoup/', 'InventoryController::availabilitysoup');
+$routes->match(['get', 'post'], '/unavailablesoup/', 'InventoryController::Unavailablesoup');
 /* For Sanwiches */
 $routes->get('/inventorysandwich', 'InventoryController::getsandwich');
 $routes->get('/editsandwich/(:any)', 'InventoryController::editsandwich/$1');
 $routes->post('/updatesandwich/(:any)', 'InventoryController::updatesandwich/$1');
 $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1');
+$routes->match(['get','post'], '/availablesand/', 'InventoryController::availabilitysandwich');
+$routes->match(['get', 'post'], '/unavailablesand/', 'InventoryController::Unavailablesandwich');
 
 
 /*For UserSide*/ 
@@ -146,10 +170,3 @@ $routes->match(['get', 'post'], '/unavailable/', 'ProductController::Unavailable
 
 //viewing of orders
 $routes->get('myOrders', 'OrderController::viewOrders');
-
-
-//ito yung table for  product_item(babaguhin kasi gusto ng maam ay nakasama lahat ng product then nakalagay naman yung categories neto)
-$routes->get('/prod_items', 'AdminController::product_item');
-
-
-

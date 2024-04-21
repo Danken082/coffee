@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,24 +18,16 @@
         }
     </style>
 </head>
-
 <body>
-
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
             <div class="col-lg-3">
                 <?php include('sidebar.php') ?>
             </div>
-
-            <!-- Content -->
             <div class="col-lg-9">
                 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
-                    <!-- ... Your navigation content ... -->
                 </nav>
-
                 <div class="row">
-                  
                     <div class="col-12">
                         <div class="card my-4">  <br><br><br>
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -45,7 +36,6 @@
                                     <a href="/adminmnguser" class="btn btn-success btn-sm me-3">Add User</a>
                                 </div>
                             </div>
-
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">

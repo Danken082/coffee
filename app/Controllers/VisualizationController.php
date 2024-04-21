@@ -33,6 +33,18 @@ class VisualizationController extends BaseController
         return view('admin/dashboard', $data);                
     }
 
+    public function initMonthChart() {
+        $db = \Config\Database::connect();
+        $builder = $db->table('tbl_orders');
+        $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
+                        ->groupBy('MONTH(order_date)')
+                        ->get();
+        $salesByMonth = $query->getResult();
+    
+        $data['salesByMonth'] = $salesByMonth;
+        return view('admin/dashboard', $data);
+    }
+    
     public function initChart(){
         $sales = $this->vis->findAll();
 
@@ -55,17 +67,7 @@ class VisualizationController extends BaseController
     public function xample(){
         
     }
-    public function initMonthChart(){
-        $salesByMonth = $this->vis
-            ->select('YEAR(order_date) as year, MONTH(order_date) as month, SUM(total_amount) as total_sales')
-            ->groupBy('YEAR(order_date), MONTH(order_date)')
-            ->findAll();
-    
-        // Output sales by month
-        foreach ($salesByMonth as $sale) {
-            echo $sale['year'] . '-' . str_pad($sale['month'], 2, '0', STR_PAD_LEFT) . ': ' . $sale['total_sales'] . '<br>';
-        }
-    }
+
     public function dailySales(){
         $sales = $this->vis->findAll();
     
@@ -80,6 +82,18 @@ class VisualizationController extends BaseController
         // Output daily sales
         foreach ($dailySales as $date => $totalSales) {
             echo $date . ': ' . $totalSales . '<br>';
+        }
+    }
+
+    public function monthlySales(){
+        $salesByMonth = $this->vis
+            ->select('YEAR(order_date) as year, MONTH(order_date) as month, SUM(total_amount) as total_sales')
+            ->groupBy('YEAR(order_date), MONTH(order_date)')
+            ->findAll();
+    
+        // Output sales by month
+        foreach ($salesByMonth as $sale) {
+            echo $sale['year'] . '-' . str_pad($sale['month'], 2, '0', STR_PAD_LEFT) . ': ' . $sale['total_sales'] . '<br>';
         }
     }
     

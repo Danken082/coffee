@@ -13,23 +13,23 @@
             align-items: center;
             width: 100%;
             max-width: 800px;
-            margin-bottom: 20px; /* Add margin to create space between images */
+            margin-bottom: 20px;
         }
 
         .container img {
             width: 50%;
             height: auto;
-            border-radius: 10px; /* Rounded corners */
-            border: 2px solid #ddd; /* Add border to images */
-            overflow: hidden; /* Hide overflowing content if the image is larger than its container */
+            border-radius: 10px;
+            border: 2px solid #ddd; 
+            overflow: hidden;
         }
 
         .container .btn {
-            background-color: transparent; /* Transparent background */
+            background-color: transparent;
             color: #555;
             font-size: 16px;
             padding: 10px 20px;
-            border: 2px solid #555; /* Add border to button */
+            border: 2px solid #555;
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s ease;
@@ -46,13 +46,11 @@
 <div class="container-fluid">
     <div class="row">
         <?php include('sidebar.php'); ?>
-        
         <main id="view-panel" class="col-lg-9">
             <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
             </nav><br><br><br>
             <div style="text-align: center; color: lightblue; font-size: 24px; font-weight: bold;">Equipment and Product</div>
-
-<br><br><br>
+            <br><br><br>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -61,18 +59,15 @@
                         </div>
                     </div>
                 </div><br><br><br>
-
-                
-
                 <div class="container">
                     <div>
-                        <img src="/assets/images/hmpg1.jpg" alt="Snow">
+                        <img src="/assets/images/hmpg1.jpg" alt="Snow" style="height:400px; width:400px;">
                         <div class="btn-container"><br>
                             <a href="/adminequip" class="btn btn-success btn-sm me-3 text-center">Equipments</a>
                         </div>
                     </div>
                     <div>
-                        <img src="/assets/images/productkineme.jpg" alt="Snow">
+                        <img src="/assets/images/coffeewlp2.jpg" alt="Snow" style="height:400px; width:400px;">
                         <div class="btn-container"><br>
                         <a href="/adminprod" class="btn btn-success btn-sm me-3 text-center">Products</a>
                         </div>

@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <style>
-        /* Add any additional styles as needed */
         body {
             display: flex;
             min-height: 100vh;
@@ -18,16 +17,12 @@
 
         .container-fluid {
             flex: 1;
-            padding-left: 250px; /* Adjust this value based on your sidebar width */
+            padding-left: 250px;
         }
-
-        /* You might need to add more styles for proper alignment */
     </style>
 
 <body>
-
     <?php include('sidebar.php'); ?>
-
     <div class="container-fluid">
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
             <div class="container-fluid py-1 px-3">
@@ -52,18 +47,12 @@
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                         <div class="bg-gradient-success shadow-primary border-radius-lg py-3 pe-1">
                             <div class="chart">
-                                <div id="GoogleLineChart" style="height: 400px; width: 100%"></div>
+                                <div id="dailySalesChart" style="height: 400px; width: 100%"></div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
                         <h6 class="mb-0">Day by Day Sales</h6>
-                        <p class="text-sm">Sales</p>
-                        <hr class="dark horizontal">
-                        <div class="d-flex">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm">just updated</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -72,18 +61,13 @@
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                         <div class="bg-gradient-success shadow-primary border-radius-lg py-3 pe-1">
                             <div class="chart">
-                                <div id="GoogleLineChart" style="height: 400px; width: 100%"></div>
+                                <canvas id="monthlySalesChart" style="height: 390px; width: 100%"></canvas>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <h6 class="mb-0">Day by Day Sales</h6>
-                        <p class="text-sm">Sales</p>
+                        <h6 class="mb-0">Monthly Sales</h6>
                         <hr class="dark horizontal">
-                        <div class="d-flex">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm">just updated</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -100,13 +84,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <h6 class="mb-0">Top Products</h6>
-                        <p class="text-sm">Best Sellers</p>
+                        <h6 class="mb-0">Yearly Sales</h6>
                         <hr class="dark horizontal">
-                        <div class="d-flex">
-                            <i class="material-icons text-sm my-auto me-1">schedule</i>
-                            <p class="mb-0 text-sm">just updated</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -133,42 +112,86 @@
         </div>
     </div>
 
-        <script src="/assets/js/chart.min.js"></script>
-        <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/linechart.js"></script>
+    <script src="/assets/js/chart.min.js"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/core/popper.min.js"></script>
+    <script src="/assets/js/core/bootstrap.min.js"></script>
+    <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="/assets/js/plugins/chartjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script type="text/javascript" src="<?php site_url()?>/assets/user/js/chart.js"></script>
+    <script>
+        google.charts.load('current', {
+            'packages': ['corechart', 'bar']
+        });
+        google.charts.setOnLoadCallback(drawCharts);
 
-        <script src="/assets/js/core/popper.min.js"></script>
-        <script src="/assets/js/core/bootstrap.min.js"></script>
-        <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
-        <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
-        <script src="/assets/js/plugins/chartjs.min.js"></script>
+        function drawCharts() {
+            drawLineChart();
+            drawBarChart();
+        }
 
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-        <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
-        <script type="text/javascript" src="<?php site_url()?>/assets/user/js/chart.js"></script>
-        <script>
-            google.charts.load('current', {'packages':['corechart', 'bar']});
-			google.charts.setOnLoadCallback(drawLineChart);
-			google.charts.setOnLoadCallback(drawBarChart);
-            // Line Chart
-			function drawLineChart() {
-				var data = google.visualization.arrayToDataTable([
-					['Day', 'Sales Count'],
-						<?php 
-							foreach ($products as $row){
-							   echo "['".$row['day']."',".$row['sell']."],";
-						} ?>
-				]);
-				var options = {
-					title: 'Line chart product sell wise',
-					curveType: 'function',
-					legend: {
-						position: 'top'
-					}
-				};
-				var chart = new google.visualization.LineChart(document.getElementById('GoogleLineChart'));
-				chart.draw(data, options);
-			}
-			
-        </script>
-    </body>
+        function drawLineChart() {
+            var lineChartData = google.visualization.arrayToDataTable([
+                ['Day', 'Sales Count'],
+                <?php 
+                    foreach ($products as $row) {
+                        echo "['" . $row['day'] . "', " . $row['sell'] . "],";
+                    }
+                ?>
+            ]);
+
+            var lineChartOptions = {
+                title: 'Line chart product sell wise',
+                curveType: 'function',
+                legend: {
+                    position: 'top'
+                }
+            };
+
+            var lineChart = new google.visualization.LineChart(document.getElementById('dailySalesChart'));
+            lineChart.draw(lineChartData, lineChartOptions);
+        }
+    </script>
+    <!-- Script for the monthly sales bar chart -->
+    <script>
+        // Assuming you have fetched the data from your backend and stored it in salesData
+        const salesData = <?php echo json_encode($salesByMonth); ?>;
+
+        // Extract labels and sales data from the fetched data
+        const labels = salesData.map(item => item.month);
+        const sales = salesData.map(item => item.total_sales);
+
+        // Get the canvas element
+        const ctx = document.getElementById('monthlySalesChart').getContext('2d');
+
+        // Create the bar chart
+        const monthlySalesChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Monthly Sales',
+                    data: sales,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)', // Blue color for bars
+                    borderColor: 'rgba(54, 162, 235, 1)', // Border color
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
 </html>
