@@ -26,12 +26,12 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+                  <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="40">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Rhigen Abaca</h5>
-                  <span>Gold Member</span>
+                  <h5 class="mb-0 font-weight-normal"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></h5>
+                  <span><?= session()->get('UserRole')?></span>
                 </div>
               </div>
               <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -270,9 +270,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                   <div class="navbar-profile">
-                    <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Rhigen Abaca</p>
-                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                    <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="40">
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p>
                   </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
