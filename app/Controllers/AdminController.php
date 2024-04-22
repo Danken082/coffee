@@ -257,4 +257,29 @@ class AdminController extends BaseController
         ->findAll();
     return view('admin/orderpayment', $data);
     }
+
+    public function viewToAcceptorders($barcode)
+    {
+        $data['single'] =  $this->order->select('order.orderID, order.CustomerID, order.ProductID, order.paymentStatus, 
+        order.orderType, order.orderDate, order.total, order.quantity, order.size, order.barcode, order.orderStatus,
+        product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, 
+        product_tbl.prod_lprice, product_tbl.prod_desc, product_tbl.prod_img, product_tbl.prod_categ, product_tbl.prod_code,
+        user.UserID, user.LastName, user.FirstName, user.email, user.address, user.ContactNo')
+        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')
+        ->join('user', 'user.UserID = order.CustomerID')
+        ->where('order.barcode', $barcode)->first(); 
+        
+       $data['barcode'] =  $this->order->select('order.orderID, order.CustomerID, order.ProductID, order.paymentStatus, 
+        order.orderType, order.orderDate, order.total, order.quantity, order.size, order.barcode, order.orderStatus,
+        product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, 
+        product_tbl.prod_lprice, product_tbl.prod_desc, product_tbl.prod_img, product_tbl.prod_categ, product_tbl.prod_code,
+        user.UserID, user.LastName, user.FirstName, user.email, user.address, user.ContactNo')
+        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')
+        ->join('user', 'user.UserID = order.CustomerID')
+        ->where('order.barcode', $barcode)->findAll();
+
+        return view('user/viewByBarcode', $data);
+        
+        
+    }
 }

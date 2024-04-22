@@ -32,6 +32,16 @@ class CartController extends BaseController
             $session->setFlashdata('error', 'You need to login first before proceeding to the cart.');
             return redirect()->to('/login');
         }
+        $cartItems = $this->crt->where('CustomerID', $user)->findAll();
+
+        $cartItemCount = count($cartItems);
+
+        $data = [
+            'cartItemCount' => $cartItemCount,
+            'cartItems' => $cartItems
+        ];
+
+
     
         $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.size, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
         product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')

@@ -176,3 +176,9 @@ $routes->match(['get', 'post'], '/unavailable/', 'ProductController::Unavailable
 $routes->get('myOrders', 'OrderController::viewOrders');
 $routes->get('trylang', 'AdminController::viewOrders');
 
+
+
+
+
+$routes->get('theorders/(:any)', 'AdminController::viewToAcceptorders/$1');
+

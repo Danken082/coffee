@@ -242,3 +242,446 @@ in APPPATH\Views\user\mainheader.php on line 47.
  9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-22 11:10:33 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'coffeeledgerdb', 3306, '', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `barcode...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(257): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `barcode...', Array, false)
+#3 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\coffee\app\Controllers\AdminController.php(257): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#11 {main}
+CRITICAL - 2024-04-22 11:10:33 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `barcode`, COUNT(*) as total_orders
+FROM `order`
+WHERE `orderStatus` = :orderStatus:
+GROUP BY `barcode`
+ORDER BY `barcode` ASC', [...], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\AdminController.php(257): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:10:46 --> Undefined variable $orderview
+in APPPATH\Views\admin\orderview.php on line 22.
+ 1 APPPATH\Views\admin\orderview.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $orderview', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php', 22)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderview', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:11:01 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderview.php on line 26.
+ 1 APPPATH\Views\admin\orderview.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php', 26)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderview', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:11:32 --> Undefined array key "orderID"
+in APPPATH\Views\admin\orderview.php on line 31.
+ 1 APPPATH\Views\admin\orderview.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "orderID"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php', 31)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderview', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:12:12 --> Undefined array key "orderID"
+in APPPATH\Views\admin\orderview.php on line 31.
+ 1 APPPATH\Views\admin\orderview.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "orderID"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php', 31)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderview', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:12:13 --> Undefined array key "orderID"
+in APPPATH\Views\admin\orderview.php on line 31.
+ 1 APPPATH\Views\admin\orderview.php(31): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "orderID"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php', 31)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderview', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:13:04 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderview.php on line 26.
+ 1 APPPATH\Views\admin\orderview.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php', 26)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderview.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderview', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderview', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:24:55 --> Too few arguments to function App\Controllers\AdminController::viewToAcceptorders(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\AdminController.php on line 261.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:28:57 --> syntax error, unexpected token "}"
+in APPPATH\Controllers\AdminController.php on line 268.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AdminController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AdminController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\AdminController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-22 11:30:08 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-22 11:30:08 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `order`
+WHERE `barcode` = :barcode:
+GROUP BY `barcode`', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-22 11:31:35 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-22 11:31:35 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `order`
+WHERE `barcode` = :barcode:
+GROUP BY `barcode`', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:32:04 --> Call to undefined method App\Models\OrderModel::selectAll
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\AdminController.php(263): CodeIgniter\Model->__call('selectAll', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:32:05 --> Call to undefined method App\Models\OrderModel::selectAll
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\AdminController.php(263): CodeIgniter\Model->__call('selectAll', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:34:22 --> Too few arguments to function App\Controllers\AdminController::viewToAcceptorders(), 0 passed in C:\laragon\www\coffee\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\AdminController.php on line 261.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:45:31 --> Undefined variable $cartItemCount
+in APPPATH\Views\user\mainheader.php on line 47.
+ 1 APPPATH\Views\user\mainheader.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cartItemCount', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\mainheader.php', 47)
+ 2 APPPATH\Views\user\cart.php(113): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\mainheader.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(45): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-22 12:06:12 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`addres' at line 1 in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(272): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-22 12:06:12 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`addres' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`orderID`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`paymentStatus`, `order`.`orderType`, `order`.`orderDate`, `order`.`total`, `order`.`quantity`, `order`.`size`, `order`.`barcode`, `order`.`orderStatus`, `product_tbl`.`prod_id`, `product_tbl`.`prod_name`, `product_tbl`.`prod_quantity`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_desc`, `product_tbl`.`prod_img`, `product_tbl`.`prod_categ`, `product_tbl`.`prod_code` `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`address`, `user`.`ContactNo`
+FROM `order`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `order`.`ProductID`
+JOIN `user` ON `user`.`UserID` = `order`.`CustomerID`
+WHERE `order`.`barcode` = :order.barcode:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(272): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-22 12:06:43 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`addres' at line 1 in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(270): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-22 12:06:43 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`addres' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`orderID`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`paymentStatus`, `order`.`orderType`, `order`.`orderDate`, `order`.`total`, `order`.`quantity`, `order`.`size`, `order`.`barcode`, `order`.`orderStatus`, `product_tbl`.`prod_id`, `product_tbl`.`prod_name`, `product_tbl`.`prod_quantity`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_desc`, `product_tbl`.`prod_img`, `product_tbl`.`prod_categ`, `product_tbl`.`prod_code` `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`address`, `user`.`ContactNo`
+FROM `order`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `order`.`ProductID`
+JOIN `user` ON `user`.`UserID` = `order`.`CustomerID`
+WHERE `order`.`barcode` = :order.barcode:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(270): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:09:06 --> Undefined array key "FirstName"
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(274): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:09:22 --> Undefined variable $barcode
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $barcode', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(274): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:09:32 --> Undefined array key "FirstName"
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(274): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:09:47 --> Undefined array key "FirstName"
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(273): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:10:44 --> Undefined array key "FirstName"
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(273): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:10:53 --> Undefined array key "FirstName"
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(273): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:12:49 --> Undefined array key "FirstName"
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(273): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:13:04 --> Cannot access offset of type string on string
+in APPPATH\Views\user\viewByBarcode.php on line 10.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 4 APPPATH\Controllers\AdminController.php(273): view('user/viewByBarcode', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:14:22 --> Cannot access offset of type string on string
+in APPPATH\Views\user\viewByBarcode.php on line 10.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 4 APPPATH\Controllers\AdminController.php(273): view('user/viewByBarcode', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:16:53 --> Cannot access offset of type string on string
+in APPPATH\Views\user\viewByBarcode.php on line 10.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 4 APPPATH\Controllers\AdminController.php(273): view('user/viewByBarcode', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:18:10 --> Undefined variable $order
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(273): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:18:54 --> Undefined array key "FirstName"
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(281): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 12:21:33 --> Undefined array key "firstName"
+in APPPATH\Views\user\viewByBarcode.php on line 11.
+ 1 APPPATH\Views\user\viewByBarcode.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "firstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 11)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(281): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
