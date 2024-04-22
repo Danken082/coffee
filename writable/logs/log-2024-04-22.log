@@ -242,6 +242,7 @@ in APPPATH\Views\user\mainheader.php on line 47.
  9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+<<<<<<< Updated upstream
 ERROR - 2024-04-22 11:10:33 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'coffeeledgerdb', 3306, '', 0)
@@ -460,6 +461,16 @@ in APPPATH\Controllers\AdminController.php on line 261.
  4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
 CRITICAL - 2024-04-22 11:45:31 --> Undefined variable $cartItemCount
+=======
+CRITICAL - 2024-04-22 11:42:47 --> Undefined property: App\Controllers\CartController::$prod
+in APPPATH\Controllers\CartController.php on line 52.
+ 1 APPPATH\Controllers\CartController.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\CartController::$prod', 'C:\\laragon\\www\\coffee\\app\\Controllers\\CartController.php', 52)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->addtocart('2')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:43:53 --> Undefined variable $cartItemCount
 in APPPATH\Views\user\mainheader.php on line 47.
  1 APPPATH\Views\user\mainheader.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cartItemCount', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\mainheader.php', 47)
  2 APPPATH\Views\user\cart.php(113): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\mainheader.php')
@@ -472,6 +483,21 @@ in APPPATH\Views\user\mainheader.php on line 47.
  9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 11:46:59 --> Undefined variable $cartItemCount
+>>>>>>> Stashed changes
+in APPPATH\Views\user\mainheader.php on line 47.
+ 1 APPPATH\Views\user\mainheader.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cartItemCount', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\mainheader.php', 47)
+ 2 APPPATH\Views\user\cart.php(113): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\mainheader.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(45): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+<<<<<<< Updated upstream
 ERROR - 2024-04-22 12:06:12 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`addres' at line 1 in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
@@ -681,6 +707,80 @@ in APPPATH\Views\user\viewByBarcode.php on line 11.
  4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
  5 APPPATH\Controllers\AdminController.php(281): view('user/viewByBarcode', [...])
  6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('6I7QND1IAI')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+=======
+>>>>>>> Stashed changes
+ERROR - 2024-04-22 13:53:24 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', 'dankeneth221133...', 'coffeeledgerdb', 3306, '', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(270): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('1')
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#3 C:\laragon\www\coffee\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\coffee\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\coffee\app\Controllers\AdminController.php(270): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('1')
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#11 {main}
+CRITICAL - 2024-04-22 13:53:24 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`orderID`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`paymentStatus`, `order`.`orderType`, `order`.`orderDate`, `order`.`total`, `order`.`quantity`, `order`.`size`, `order`.`barcode`, `order`.`orderStatus`, `product_tbl`.`prod_id`, `product_tbl`.`prod_name`, `product_tbl`.`prod_quantity`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_desc`, `product_tbl`.`prod_img`, `product_tbl`.`prod_categ`, `product_tbl`.`prod_code`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`address`, `user`.`ContactNo`
+FROM `order`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `order`.`ProductID`
+JOIN `user` ON `user`.`UserID` = `order`.`CustomerID`
+WHERE `order`.`barcode` = :order.barcode:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\AdminController.php(270): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('1')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 13:53:36 --> Trying to access array offset on value of type null
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(281): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('1')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-22 13:54:14 --> Trying to access array offset on value of type null
+in APPPATH\Views\user\viewByBarcode.php on line 9.
+ 1 APPPATH\Views\user\viewByBarcode.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php', 9)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\viewByBarcode.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/viewByBarcode', [], true)
+ 5 APPPATH\Controllers\AdminController.php(281): view('user/viewByBarcode', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewToAcceptorders('58')
  7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

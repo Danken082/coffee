@@ -279,7 +279,5 @@ class AdminController extends BaseController
         ->where('order.barcode', $barcode)->findAll();
 
         return view('user/viewByBarcode', $data);
-        
-        
     }
 }

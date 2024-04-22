@@ -40,8 +40,6 @@ class CartController extends BaseController
             'cartItemCount' => $cartItemCount,
             'cartItems' => $cartItems
         ];
-
-
     
         $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.size, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
         product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
@@ -59,7 +57,7 @@ class CartController extends BaseController
     public function addtocart($price)
     { 
 
-        $existCart = $this->prod->where('prod_id', $price)->first();
+        $existCart = $this->product->where('prod_id', $price)->first();
         $myExist = $this->request->getVar('ProductID');
         $size = $this->request->getVar('size'); 
         
