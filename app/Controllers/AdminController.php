@@ -9,6 +9,9 @@ use App\Models\HistoryModel;
 use App\Models\ProductModel;
 use App\Models\PaymentModel;
 use App\Models\TableModel;
+use App\Models\FeedbackModel;
+use App\Models\OrderModel;
+
 class AdminController extends BaseController
 {
     private $user;
@@ -17,13 +20,16 @@ class AdminController extends BaseController
     private $load;
     private $payment;
     private $tbl;
-
+    private $fb;
+    private $order;
     public function __construct(){
         $this->user = new AdminUserModel();
         $this->history = new HistoryModel();
         $this->orderprod = new ProductModel();
         $this->payment = new PaymentModel();
         $this->tbl = new TableModel();
+        $this->fb = new FeedbackModel();
+        $this->order = new OrderModel();
     }
 
     public function viewAddTable()
@@ -106,6 +112,7 @@ class AdminController extends BaseController
         ->orderBy('order.orderID', 'ASC')
         ->findAll();
         return view('/admin/orderpayment', $data);
+        
     }
     public function viewOrder()
     {
@@ -216,6 +223,38 @@ class AdminController extends BaseController
     public function product_item(){
         return view('/inventory/product_item/prod_items');
     }
+    public function getPendingOrders()
+    {
+        $getID = $this->request->getPost('getID');
+        
 
+        $myOrders = $this->viewPendingOrders($getID);
+                    $this->AcceptOrders($myOrders);
+        
+    }
 
+    private function viewPendingOrders($getID)
+    {
+        $myOrders = $this->order->where('barcode', $getID)->findAll();
+
+        return $myOrders;
+    }
+
+    private function AcceptOrders($myOrders)
+    {
+        $data = [
+            'orderStatus' => 'AcceptOrder'
+        ];
+
+        $this->order->update($myOrders, $data);
+    }
+
+    public function viewOrders()
+    {
+     $data['order'] = $this->order->select('barcode, COUNT(*) as total_orders')->where('orderStatus','onProcess')
+        ->groupBy('barcode')
+        ->orderBy('barcode', 'ASC')
+        ->findAll();
+    return view('admin/orderpayment', $data);
+    }
 }

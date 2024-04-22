@@ -52,7 +52,7 @@
                     <?php endif;?>
                     <div class="input-group input-group-outline mb-3">
                         <label class="form-label">Contact Number</label>
-                        <input type="text" name="ContactNo" class="form-control" required>
+                        <input type="text" name="ContactNo" id="ContactNo" class="form-control" required>
                     </div>
                     <?php if(isset($validation)):?>
                         <small class="text-danger"><?= $validation->getError('ContactNo') ?></small>
@@ -79,7 +79,8 @@
                     </div>
                     <div class="input-group input-group-outline mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" name="Password" class="form-control" required>
+                        <input type="password" name="Password" class="form-control" id="password"   required>
+                        <button type="button" id="togglePassword" class="btn btn-outline-secondary"><i class="fa fa-eye"></i></button>
                         <?php if(isset($validation)):?>
                             <small class="text-danger"><?= $validation->getError('Password') ?></small>
                         <?php endif;?>
@@ -93,13 +94,32 @@
                 <p class="login-link">Already have an account?<a href="<?= site_url("/login"); ?>"> Sign in</a></p>
             </div>
         </div>
-
         <script src="/assets/js/core/popper.min.js"></script>
         <script src="/assets/js/core/bootstrap.min.js"></script>
         <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
         <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
+
+        <script>
+			var inputs = document.getElementById("ContactNo");
+
+        inputs.addEventListener("input", function(event) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+       </script>
+       <script>
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function() {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.innerHTML = type === 'password' ? '<i class="fa fa-eye"></i>' : '<i class="fa fa-eye-slash"></i>';
+            });
+        </script>
+
+
 
 </body>
 </html> 

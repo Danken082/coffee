@@ -67,7 +67,7 @@ class UserController extends BaseController
             // $email->setBCC('them@their-example.com');
 
             $email->setSubject('Email Test');
-            $email->setMessage(view('foremail/verification', ['verificationToken' => $verificationToken]));
+            $email->setMessage($verificationToken);
                 if($email->send())
             {
                 echo('success');
@@ -78,15 +78,15 @@ class UserController extends BaseController
                 // return view('email/activateCode');
             }
     
-// =======
-//             $this->user->save($data);
+            // $this->user->save($data);
 //             return redirect()->to('/login');
 //         }
-//         else{
-//             $data['validation']= $this->validator;
-//             return view('admin/register', $data);
-//         }
+        
 // >>>>>>> 350b979baeeab26408dd1dba9e885aaf56f9f440
+    }
+    else{
+        $data['validation']= $this->validator;
+        return view('admin/register', $data);
     }
 }
 
@@ -104,23 +104,23 @@ class UserController extends BaseController
                 $pass = $user['Password'];
                 $authenticatePassword = password_verify($password, $pass);
                 if($authenticatePassword){
-        $ses_data = [
-            'UserID' => $user['UserID'],
-            'LastName' => $user['LastName'],
-            'FirstName' => $user['FirstName'],
-            'UserRole' => $user['UserRole'],
-            'birthdate' => $user['birthdate'],
-            'email' => $user['email'],
-            'profile_img' => $user['profile_img'],
-            'Username' => $user['Username'],
-            'Password' => $user['Password'],
-            'ContactNo' => $user['ContactNo'],
-            'gender' => $user['gender'],
-            'address' => $user['address'],
-            'isLoggedIn' => TRUE
-        ];
+                    $ses_data = [
+                        'UserID' => $user['UserID'],
+                        'LastName' => $user['LastName'],
+                        'FirstName' => $user['FirstName'],
+                        'UserRole' => $user['UserRole'],
+                        'birthdate' => $user['birthdate'],
+                        'email' => $user['email'],
+                        'profile_img' => $user['profile_img'],
+                        'Username' => $user['Username'],
+                        'Password' => $user['Password'],
+                        'ContactNo' => $user['ContactNo'],
+                        'gender' => $user['gender'],
+                        'address' => $user['address'],
+                        'isLoggedIn' => TRUE
+                    ];
 
-          $session->set($ses_data);
+                 $session->set($ses_data);
            if($user['UserRole'] == 'Admin')
            {
             return redirect()->to('/adminhome');
@@ -155,7 +155,16 @@ class UserController extends BaseController
         $session = session();
         $user = $session->get('UserID');
         $data = 
-            $this->crt->select("Count(size)")->where('CustomerID', $user)->first();    
+            $this->crt->select("Count(size)")->where('CustomerID', $user)->first();
+
+            $cartItems = $this->crt->where('CustomerID', $user)->findAll();
+
+            $cartItemCount = count($cartItems);
+    
+            $data = [
+                'cartItemCount' => $cartItemCount,
+                'cartItems' => $cartItems
+            ];
     
         return view('/user/mainhome', $data);
     }
@@ -179,19 +188,35 @@ class UserController extends BaseController
 
     public function home_mainmenu(){
         $menu = new ProductModel();
-        $prod['meal'] = $menu->products('Meals');
-        $prod['pasta'] = $menu->products('Pasta');
-        $prod['app'] = $menu->products('Appetizer');
-        $prod['salad'] = $menu->products('Salad');
-        $prod['soup'] = $menu->products('Soup');
-        $prod['sand'] = $menu->products('Sandwich');
-        $prod['hot'] = $menu->products('Hot Coffee');
-        $prod['iced'] = $menu->products('Iced Coffee');
-        $prod['flav'] = $menu->products('Flavored Coffee');
-        $prod['non'] = $menu->products('Non Coffee Frappe');
-        $prod['coffee'] = $menu->products('Coffee Frappe');
-        $prod['other'] = $menu->products('Others');
-        return view('/user/mainmenu', $prod);
+                $session = session();
+        $user = $session->get('UserID');
+        $data = 
+            $this->crt->select("Count(size)")->where('CustomerID', $user)->first();
+
+            $cartItems = $this->crt->where('CustomerID', $user)->findAll();
+
+            $cartItemCount = count($cartItems);
+    
+            $data = [
+                'cartItemCount' => $cartItemCount,
+                'cartItems' => $cartItems,
+               'meal' => $menu->products('Meals'),
+               'pasta' =>  $menu->products('Pasta'),
+               'app' => $menu->products('Appetizer'),
+               'salad' => $menu->products('Salad'),
+               'soup' => $menu->products('Soup'),
+               'sand' => $menu->products('Sandwich'),
+               'hot' => $menu->products('Hot Coffee'),
+               'iced' => $menu->products('Iced Coffee'),
+               'flav' => $menu->products('Flavored Coffeee'),
+                'non' =>  $menu->products('Non Coffee Frappe'),
+                'coffee' =>$menu->products('Coffee Frappe'),
+                'other' => $menu->products('Others'),
+
+
+            ];
+
+        return view('/user/mainmenu', $data);
     }
 
     public function home_services()
@@ -201,7 +226,21 @@ class UserController extends BaseController
 
     public function home_mainservices()
     {
-        return view('/user/mainservices');
+        $session = session();
+        $user = $session->get('UserID');
+        $data = 
+            $this->crt->select("Count(size)")->where('CustomerID', $user)->first();
+
+            $cartItems = $this->crt->where('CustomerID', $user)->findAll();
+
+            $cartItemCount = count($cartItems);
+    
+            $data = [
+                'cartItemCount' => $cartItemCount,
+                'cartItems' => $cartItems
+            ];
+
+        return view('/user/mainservices',$data);
     }
 
     public function home_about()
@@ -211,7 +250,21 @@ class UserController extends BaseController
 
     public function home_mainabout()
     {
-        return view('/user/mainabout');
+        $session = session();
+        $user = $session->get('UserID');
+        $data = 
+            $this->crt->select("Count(size)")->where('CustomerID', $user)->first();
+
+            $cartItems = $this->crt->where('CustomerID', $user)->findAll();
+
+            $cartItemCount = count($cartItems);
+    
+            $data = [
+                'cartItemCount' => $cartItemCount,
+                'cartItems' => $cartItems
+            ];
+
+        return view('/user/mainabout', $data);
     }
 
     public function home_shop(){
@@ -231,20 +284,34 @@ class UserController extends BaseController
         return view('/user/shop', $prod);
     }
     public function home_mainshop(){
-        $shop = new ProductModel();
-        $prod['meal'] = $shop->products('Meals');
-        $prod['pasta'] = $shop->products('Pasta');
-        $prod['app'] = $shop->products('Appetizer');
-        $prod['salad'] = $shop->products('Salad');
-        $prod['soup'] = $shop->products('Soup');
-        $prod['sand'] = $shop->products('Sandwich');
-        $prod['hot'] = $shop->products('Hot Coffee');
-        $prod['iced'] = $shop->products('Iced Coffee');
-        $prod['flav'] = $shop->products('Flavored Coffee');
-        $prod['non'] = $shop->products('Non Coffee Frappe');
-        $prod['coffee'] = $shop->products('Coffee Frappe');
-        $prod['other'] = $shop->products('Others');
-        return view('/user/mainshop', $prod);
+        $menu = new ProductModel();
+        $session = session();
+    $user = $session->get('UserID');
+    $data = 
+    $this->crt->select("Count(size)")->where('CustomerID', $user)->first();
+
+    $cartItems = $this->crt->where('CustomerID', $user)->findAll();
+
+    $cartItemCount = count($cartItems);
+
+    $data = [
+        'cartItemCount' => $cartItemCount,
+        'cartItems' => $cartItems,
+       'meal' => $menu->products('Meals'),
+       'pasta' =>  $menu->products('Pasta'),
+       'app' => $menu->products('Appetizer'),
+       'salad' => $menu->products('Salad'),
+       'soup' => $menu->products('Soup'),
+       'sand' => $menu->products('Sandwich'),
+       'hot' => $menu->products('Hot Coffee'),
+       'iced' => $menu->products('Iced Coffee'),
+       'flav' => $menu->products('Flavored Coffeee'),
+        'non' =>  $menu->products('Non Coffee Frappe'),
+        'coffee' =>$menu->products('Coffee Frappe'),
+        'other' => $menu->products('Others'),
+
+
+    ];   return view('/user/mainshop', $data);
     }
     
     public function home_contact()
@@ -253,7 +320,21 @@ class UserController extends BaseController
     }
     public function home_maincontact()
     {
-        return view('/user/maincontact');
+        $session = session();
+        $user = $session->get('UserID');
+        $data = 
+            $this->crt->select("Count(size)")->where('CustomerID', $user)->first();
+
+            $cartItems = $this->crt->where('CustomerID', $user)->findAll();
+
+            $cartItemCount = count($cartItems);
+    
+            $data = [
+                'cartItemCount' => $cartItemCount,
+                'cartItems' => $cartItems
+            ];
+
+        return view('/user/maincontact', $data);
     }
     
     public function home_checkout()

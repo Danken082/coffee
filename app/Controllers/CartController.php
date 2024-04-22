@@ -41,6 +41,7 @@ class CartController extends BaseController
     
         $data['mycart'] = $this->crt->select('(SUM(total)) as sum')->where('cart_tbl.CustomerID', $user)->findAll();    
         
+        
         return view('/user/cart', $data);
     }
     
@@ -357,4 +358,15 @@ private function updatequantity($cartID)
             
                 
         }        
+
+        public function countOnCart()
+        {
+          $session = session();
+
+          $user = $session->get('UserID');
+
+          $data = $this->crt->select('Count(*) as countCart')->findAll();
+
+          var_dump($data);
+        }
 }

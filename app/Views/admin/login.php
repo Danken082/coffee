@@ -33,7 +33,8 @@
                 </div>
                 <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" required>
+                    <input type="password" name="password" class="form-control" id="password"required>
+                    <button type="button" id="togglePassword" class="btn btn-outline-secondary"><i class="fa fa-eye"></i></button>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-login">Login</button>
@@ -50,6 +51,16 @@
     <script src="/assets/js/core/bootstrap.min.js"></script>
     <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
+    <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>  
+    <script>
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function() {
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+        this.innerHTML = type === 'password' ? '<i class="fa fa-eye"></i>' : '<i class="fa fa-eye-slash"></i>';
+            });
+        </script>
 </body>
 </html>

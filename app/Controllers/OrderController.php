@@ -6,17 +6,20 @@ use App\Controllers\BaseController;
 use App\Models\ProductModel;
 use App\Models\OrderModel;
 use App\Models\CartModel;
-
+use App\Models\FeedbackModel;
 class OrderController extends BaseController
 {
     private $prod;
     private $order;
     private $crt;
+    private $fb;
+
     public function __construct()
     {
-        $this->crt = new CartModel();
-        $this->prod = new ProductModel();
+        $this->crt   = new CartModel();
+        $this->prod  = new ProductModel();
         $this->order = new OrderModel();
+        $this->fb    = new FeedbackModel();
     }
 
 
@@ -135,5 +138,40 @@ class OrderController extends BaseController
         order.barcode, order.orderStatus, product_tbl.prod_id, product_tbl.prod_img, product_tbl.prod_name, 
         product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
         ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')->where('order.CustomerID', $user)->findAll();
+    }
+
+
+    public function inputFeedback()
+    {
+        return view('user/feedback');
+    }
+
+    public function feedBack()
+    {
+        $rules = [
+         'comment' => 'required|min_length[5]|max_length[150]'
+        ];
+
+        if($this->validate($rules))
+        {
+            $data = [
+                    'ratings' => $this->request->getVar('ratings'),
+                    'CustomerID' => $this->request->getVar('CustomerID'),
+                    'ProductID' => $this->request->getVar('ProductID'),
+                    'orderID' => $this->request->getVar('orderID'),
+                    'comment' => $this->request->getVar('comment') 
+                    ];
+
+                    $this->fb->insert($data);
+
+                    return redirect()->to('myorder')->with('msg', 'Thank Your For Your Feedback');
+        }
+
+        else
+        {
+            $data['validator'] = $this->validator;
+
+            return view('user/feedback', $data);
+        }
     }
 }

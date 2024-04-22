@@ -58,8 +58,7 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Customer</th>
-
+                                       
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order Code</th>
 
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Actions</th>
@@ -68,10 +67,7 @@
                                 <tbody>
                                     <?php foreach($order as $orP): ?>
                                         <tr>
-                                        <td class="text-center">
-                                            <p class="text-xs text-primary mb-0 font-weight-bold"><?= $orP['FirstName'];?> <?= $orP['LastName'];?></p>
-                                        </td>
-                                        <td class="text-center">
+                                         <td class="text-center">
                                             <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $orP['barcode']?></p>
                                         </td>
                                         <td class="align-middle text-center">

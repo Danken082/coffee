@@ -148,7 +148,10 @@ $routes->get('/checkout', 'UserController::home_checkout',['filter'=>'cusFilter'
 $routes->post('user/checkouts/', 'OrderController::placeToOrder');
 $routes->get('OrderMeal/(:any)', 'OrderController::myOrdersmeal/$1');
 $routes->get('OrderDrink/(:any)', 'OrderController::myOrdersdrink/$1');
-#second part of user side
+#for feedback
+$routes->get('feedback', 'OrderController::inputFeedback');
+$routes->post('confirmfeedback', 'OrderController::feedBack');
+#second part of user side 
 $routes->get('userCheckOut', 'CartController::GotoCheckOut');
 
 /*add to cart*/
@@ -160,6 +163,7 @@ $routes->match(['get', 'post'],'CartController/placeOrder', 'CartController::pla
 $routes->match(['get', 'post'], '/aOrder/', 'AdminController::acceptOrder');
 $routes->match(['get', 'post'], 'reservation', 'ReservationController::reservation');
 $routes->post('addQuantity/(:any)', 'CartController::addquantity/$1');
+$routes->get('trycount', 'CartController::countOnCart');
 
 
 //status
@@ -170,3 +174,5 @@ $routes->match(['get', 'post'], '/unavailable/', 'ProductController::Unavailable
 
 //viewing of orders
 $routes->get('myOrders', 'OrderController::viewOrders');
+$routes->get('trylang', 'AdminController::viewOrders');
+

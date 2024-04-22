@@ -1121,3 +1121,1101 @@ in APPPATH\Views\admin\dashboard.php on line 163.
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 08:02:09 --> Invalid file: "/admin/orderpament.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/admin/orderpament.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/orderpament', [], true)
+ 3 APPPATH\Controllers\AdminController.php(108): view('/admin/orderpament', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->orderpayment()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 08:04:29 --> Undefined variable $ord
+in APPPATH\Views\admin\orderpayment.php on line 69.
+ 1 APPPATH\Views\admin\orderpayment.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ord', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 69)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(108): view('/admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->orderpayment()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 08:10:49 --> Invalid file: "foremail/verification.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('foremail/verification.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('foremail/verification', [], true)
+ 3 APPPATH\Controllers\UserController.php(70): view('foremail/verification', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 11:23:12 --> Undefined variable $rules
+in APPPATH\Controllers\OrderController.php on line 156.
+ 1 APPPATH\Controllers\OrderController.php(156): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rules', 'C:\\laragon\\www\\coffee\\app\\Controllers\\OrderController.php', 156)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 11:23:24 --> "require" is not a valid rule.
+in SYSTEMPATH\Validation\Validation.php on line 317.
+ 1 SYSTEMPATH\Validation\Validation.php(317): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('require')
+ 2 SYSTEMPATH\Validation\Validation.php(195): CodeIgniter\Validation\Validation->processRules('ratings', 'ratings', null, [...], [...])
+ 3 SYSTEMPATH\Controller.php(150): CodeIgniter\Validation\Validation->run()
+ 4 APPPATH\Controllers\OrderController.php(156): CodeIgniter\Controller->validate([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 11:24:00 --> mysqli_sql_exception: Column 'ratings' cannot be null in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fe...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fe...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fe...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fe...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\coffee\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\coffee\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\coffee\app\Controllers\OrderController.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+#10 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-04-21 11:24:01 --> Column 'ratings' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `feedback_tbl` (`ratings`, `CustomerID`, `ProductID`, `orderID`, `comment`) VALUES (:ratings:, :CustomerID:, :ProductID:, :orderID:, :comment:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\OrderController.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 11:24:06 --> mysqli_sql_exception: Column 'ratings' cannot be null in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fe...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fe...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fe...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fe...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\coffee\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\coffee\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\coffee\app\Controllers\OrderController.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+#10 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-04-21 11:24:06 --> Column 'ratings' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `feedback_tbl` (`ratings`, `CustomerID`, `ProductID`, `orderID`, `comment`) VALUES (:ratings:, :CustomerID:, :ProductID:, :orderID:, :comment:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\OrderController.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 11:24:25 --> mysqli_sql_exception: Column 'ratings' cannot be null in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fe...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fe...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fe...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fe...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\coffee\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\coffee\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\coffee\app\Controllers\OrderController.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+#10 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-04-21 11:24:25 --> Column 'ratings' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `feedback_tbl` (`ratings`, `CustomerID`, `ProductID`, `orderID`, `comment`) VALUES (:ratings:, :CustomerID:, :ProductID:, :orderID:, :comment:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\OrderController.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 11:24:48 --> mysqli_sql_exception: Column 'ratings' cannot be null in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fe...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fe...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fe...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fe...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\coffee\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\coffee\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\coffee\app\Controllers\OrderController.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+#10 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-04-21 11:24:48 --> Column 'ratings' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `feedback_tbl` (`ratings`, `CustomerID`, `ProductID`, `orderID`, `comment`) VALUES (:ratings:, :CustomerID:, :ProductID:, :orderID:, :comment:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\OrderController.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 11:25:01 --> mysqli_sql_exception: Column 'ratings' cannot be null in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `fe...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fe...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fe...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fe...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\coffee\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\coffee\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\coffee\app\Controllers\OrderController.php(165): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+#10 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-04-21 11:25:01 --> Column 'ratings' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `feedback_tbl` (`ratings`, `CustomerID`, `ProductID`, `orderID`, `comment`) VALUES (:ratings:, :CustomerID:, :ProductID:, :orderID:, :comment:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\OrderController.php(165): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->feedBack()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 14:45:24 --> syntax error, unexpected end of file
+in APPPATH\Config\Routes.php on line 177.
+ 1 SYSTEMPATH\CodeIgniter.php(787): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(442): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 14:49:19 --> Call to a member function limit() on array
+in APPPATH\Controllers\AdminController.php on line 254.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 14:55:19 --> mysqli_sql_exception: Unknown column 'order_code' in 'group statement' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `barcode...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `barcode...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `barcode...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `barcode...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(257): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 14:55:19 --> Unknown column 'order_code' in 'group statement'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `barcode`, COUNT(*) as total_orders
+FROM `order`
+GROUP BY `order_code`
+ORDER BY `order_code` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(257): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 14:56:00 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(256): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 14:56:00 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `order`
+GROUP BY `barcode`
+ORDER BY `barcode` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(256): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 14:57:27 --> mysqli_sql_exception: Unknown column 'barcod' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `barcod`...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `barcod`...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `barcod`...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `barcod`...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(257): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 14:57:27 --> Unknown column 'barcod' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `barcod`, COUNT(*) as total_orders
+FROM `order`
+GROUP BY `barcode`
+ORDER BY `barcode` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(257): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 14:59:33 --> Undefined variable $order
+in APPPATH\Views\admin\orderpayment.php on line 69.
+ 1 APPPATH\Views\admin\orderpayment.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 69)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 14:59:47 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:04:19 --> mysqli_sql_exception: Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:04:19 --> Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`orderID`, `order`.`barcode`, `user`.`UserID`, `product_tbl`.`prod_id`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `barcode`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:04:39 --> mysqli_sql_exception: Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(262): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:04:39 --> Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`orderID`, `order`.`barcode`, `user`.`UserID`, `product_tbl`.`prod_id`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `barcode`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(262): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:04:45 --> mysqli_sql_exception: Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:04:45 --> Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`orderID`, `order`.`barcode`, `user`.`UserID`, `product_tbl`.`prod_id`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `barcode`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:05:11 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:05:11 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`orderID`, `order`.`barcode`, `user`.`UserID`, `product_tbl`.`prod_id`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `barcode`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:05:22 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:05:42 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:05:44 --> mysqli_sql_exception: Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:05:44 --> Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`orderID`, `order`.`barcode`, `user`.`UserID`, `product_tbl`.`prod_id`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `barcode`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:05:55 --> mysqli_sql_exception: In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'coffeeledgerdb.order.barcode'; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(262): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:05:55 --> In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'coffeeledgerdb.order.barcode'; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`orderID`, `order`.`barcode`, `user`.`UserID`, `product_tbl`.`prod_id`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(262): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:06:03 --> mysqli_sql_exception: In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'coffeeledgerdb.order.barcode'; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(261): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:06:03 --> In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'coffeeledgerdb.order.barcode'; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`orderID`, `order`.`barcode`, `user`.`UserID`, `product_tbl`.`prod_id`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(261): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:06:32 --> mysqli_sql_exception: In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'coffeeledgerdb.order.barcode'; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(261): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:06:32 --> In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'coffeeledgerdb.order.barcode'; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`orderID`, `order`.`barcode`, `user`.`UserID`, `product_tbl`.`prod_id`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(261): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:06:50 --> mysqli_sql_exception: Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:06:50 --> Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`orderID`, `order`.`barcode`, `user`.`UserID`, `product_tbl`.`prod_id`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:07:58 --> mysqli_sql_exception: Unknown column 'product_tbl.prod_decs' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:07:58 --> Unknown column 'product_tbl.prod_decs' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_decs`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_decs`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:08:17 --> mysqli_sql_exception: Unknown column 'product_tbl.prod_decs' in 'group statement' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:08:17 --> Unknown column 'product_tbl.prod_decs' in 'group statement'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_decs`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:08:48 --> mysqli_sql_exception: Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:08:48 --> Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:09:24 --> mysqli_sql_exception: Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.CustomerID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:09:24 --> Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.CustomerID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:09:43 --> mysqli_sql_exception: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.CustomerID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:09:43 --> Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.CustomerID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:10:21 --> mysqli_sql_exception: Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.ProductID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:10:21 --> Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.ProductID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`CustomerID`, `order`.`ProductID`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`, `order`.`CustomerID`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:11:41 --> mysqli_sql_exception: Unknown column 'product_tbl.prod_decs' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:11:41 --> Unknown column 'product_tbl.prod_decs' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, MAX(order.ProductID) as ProductID, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_decs`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_decs`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:12:00 --> mysqli_sql_exception: Unknown column 'product_tbl.prod_decs' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:12:00 --> Unknown column 'product_tbl.prod_decs' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, MAX(order.ProductID) as ProductID, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_decs`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:12:03 --> mysqli_sql_exception: Unknown column 'product_tbl.prod_decs' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:12:03 --> Unknown column 'product_tbl.prod_decs' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, MAX(order.ProductID) as ProductID, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_decs`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:12:08 --> mysqli_sql_exception: Unknown column 'product_tbl.prod_decs' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:12:08 --> Unknown column 'product_tbl.prod_decs' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, MAX(order.ProductID) as ProductID, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_decs`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-04-21 15:12:19 --> mysqli_sql_exception: Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `order`....', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `order`....')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `order`....')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`....', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-04-21 15:12:19 --> Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.order.orderID' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `order`.`barcode`, COUNT(*) as total_orders, MAX(order.ProductID) as ProductID, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `order`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `order`.`CustomerID` = `user`.`UserID`
+GROUP BY `order`.`barcode`, `order`.`total`, `order`.`orderStatus`, `order`.`quantity`, `order`.`size`, `order`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_img`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+ORDER BY `order`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(263): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:13:27 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(267): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:14:11 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(267): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:14:57 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(267): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:15:16 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(267): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:16:11 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(267): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:23:46 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(273): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:23:55 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(273): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:24:23 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(264): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:24:52 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(264): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:25:16 --> Undefined array key "FirstName"
+in APPPATH\Views\admin\orderpayment.php on line 72.
+ 1 APPPATH\Views\admin\orderpayment.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "FirstName"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(264): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:30:51 --> Undefined variable $order
+in APPPATH\Views\admin\orderpayment.php on line 69.
+ 1 APPPATH\Views\admin\orderpayment.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 69)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-04-21 15:31:24 --> Undefined variable $order
+in APPPATH\Views\admin\orderpayment.php on line 69.
+ 1 APPPATH\Views\admin\orderpayment.php(69): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php', 69)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\orderpayment.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/orderpayment', [], true)
+ 5 APPPATH\Controllers\AdminController.php(258): view('admin/orderpayment', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->viewOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
