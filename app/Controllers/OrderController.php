@@ -174,4 +174,25 @@ class OrderController extends BaseController
             return view('user/feedback', $data);
         }
     }
+
+    public function coffeereceipt()
+    {
+        // Load necessary helpers
+        helper('date');
+
+        // Sample data for receipt (you can fetch data from your database)
+        $data = [
+            'customer_name' => 'John Doe',
+            'amount_paid' => 25.00,
+            'items' => [
+                ['name' => 'Coffee', 'price' => 5.00],
+                ['name' => 'Sandwich', 'price' => 10.00],
+                ['name' => 'Cake', 'price' => 10.00]
+            ],
+            'payment_date' => date('Y-m-d H:i:s')
+        ];
+
+        // Load the view and pass the data
+        return view('user/receipt', $data);
+    }
 }

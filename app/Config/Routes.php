@@ -178,4 +178,4 @@ $routes->get('trylang', 'AdminController::viewOrders');
 
 
 $routes->get('theorders/(:any)', 'AdminController::viewToAcceptorders/$1');
-
+$routes->get('/receipt', 'OrderController::coffeereceipt');
