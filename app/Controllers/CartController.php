@@ -253,7 +253,7 @@ class CartController extends BaseController
           $selectedItems = $this->request->getVar('items');
 
           if (empty($selectedItems)) {
-              return redirect()->to('user/cart')->with('msg', 'No items selected for order');
+              return redirect()->to('/cart')->with('msg', 'No items selected for order');
           }
 
           $cartItems = $this->getCartItems($selectedItems);
@@ -299,7 +299,7 @@ class CartController extends BaseController
                   'CustomerID' => $item['CustomerID'],
                   'ProductID' => $item['ProductID'],
                   'total' => $item['total'],
-                  'quantity' => $item['quantity'],
+                    'quantity' => $item['quantity'],
                   'size' => $item['size'],
                   'orderStatus' => 'onProcess',
                   'paymentStatus' => 'notPaid',
@@ -361,9 +361,7 @@ private function updatequantity($cartID)
 
         public function addToQuantity($cart)
         {
-            $this->crt->where('id', $cart)->first();
-
-            
+            $this->crt->where('id', $cart)->first();            
                 
         }        
 

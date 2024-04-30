@@ -17,6 +17,31 @@
         .card:hover {
             box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
         }
+        /* Custom CSS for list items */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 10px; /* Adjust spacing between list items */
+        }
+
+        li ul {
+            list-style-type: none;
+            padding-left: 20px; /* Adjust the indentation of nested lists */
+        }
+
+        li ul li {
+            margin-bottom: 5px; /* Adjust spacing between nested list items */
+            font-size: 14px; /* Adjust font size */
+        }
+
+        li ul li:first-child {
+            font-weight: bold; /* Make the first item in nested list bold */
+        }
+
     </style>
     <body>
     <div class="container-fluid mt-4">
@@ -26,26 +51,6 @@
                 <?php include('sidebar.php'); ?>
                 </div>
             </div>
-            <div class="modal fade" id="vieworderdata" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <br>
-                            <div class="view_order_data">
-                            </div>
-                            <br>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#" data-bs-dismiss="modal">Close</a>
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#createPlaylist">Create New</a>
-                        </div>
-                    </div>
-                </div>
-            </div>        
             <div class="col-lg-9"> <br><br><br>
                 <div class="card">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -55,29 +60,30 @@
                     </div>
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
-                                <thead>
-                                    <tr>
-                                       
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order Code</th>
-
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($order as $orP): ?>
-                                        <tr>
-                                         <td class="text-center">
-                                            <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $orP['barcode']?></p>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <a href="<?= base_url('theorders/' .$orP['barcode'])?>" class="btn btn-info btn-sm ">View Order</a>
-                                        </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
+                        <ul>
+                            <form action="<?= base_url('AcceptthisOrder')?>" method="post">
+                            <li><?= $single['FirstName'] ?></li>
+                            <li><?= $single['ContactNo'] ?></li>
+                            <li><?= $single['address'] ?></li>
+                            <li><?= $single['barcode'] ?></li>
+                            <li>Order ni <?= $single['FirstName'] ?></li>
+                            <?php foreach ($barcode as $order): ?>
+                                <li>
+                                    <ul>
+                                        <li>Product Name: <?= $order['prod_name'] ?></li>
+                                        <li>Order Quantity: <?= $order['quantity'] ?></li>
+                                        <li>Product Size: <?= $order['size'] ?></li>
+                                        <li>Total: <?= $order['total'] ?></li>
+                                    </ul>
+                                </li>
+                                <input type="hidden" name="orderID[]" value="<?= $order['orderID']?>">
+                            <?php endforeach; ?>
+                            <li>Buong total: <?= $total['sum'] ?></li>
+                            <button type="submit">Accept</button>
+                            
+                            </form>
+                        </ul>
+                  </div>
                     </div>
                 </div>
             </div>

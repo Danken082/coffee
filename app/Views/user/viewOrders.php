@@ -36,6 +36,7 @@
 									<th>Price</th>
 									<th>Quantity</th>
 									<th>Total</th>
+									<th>Status</th>
 									<th>&nbsp;</th>
 			      				</tr>
 			    			</thead>
@@ -54,11 +55,16 @@
 							
 									<td class="quantity">
 										<div class="input-group mb-3">
-											<input type="number" name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
+											<input type="number" name="quantity" disabled class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
 										</div>
 									</td>
+									
 						        	<td class="total">₱ <?= $item['total']?></td>
-                                
+									<td class="quantity">
+										<div class="input-group mb-3">
+										<h4><?= $item['orderStatus']?></h4>
+										</div>
+									</td>
 						      	</tr>
 								<?php endforeach;?>
 						    </tbody>

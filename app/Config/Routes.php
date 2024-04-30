@@ -14,7 +14,6 @@ $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
-$routes->get( '/adminorderpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
 $routes->get('/adminmanage_user', 'AdminController::getmanageuser', ['filter'=>'authFilter']);
 $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter']);
@@ -33,6 +32,10 @@ $routes->get('admin/sidebar', 'AdminController::admin_side');
 $routes->get('/adminpos', 'AdminController::pos');
 $routes->get('addingTable', 'AdminController::viewAddTable');
 $routes->post('AdminTable', 'AdminController::addingTable');
+#forAcceptingOrder
+
+$routes->post('AcceptthisOrder', 'AdminController::getPendingOrders');
+
 #rawDataTotal
 $routes->get('total', 'RawController::dataUpdating');
 /* For Inventory */
@@ -174,8 +177,19 @@ $routes->match(['get', 'post'], '/unavailable/', 'ProductController::Unavailable
 
 //viewing of orders
 $routes->get('myOrders', 'OrderController::viewOrders');
-$routes->get('trylang', 'AdminController::viewOrders');
+$routes->get('adminorderpayment', 'AdminController::viewOrders');
+$routes->get('report', 'AdminController::report');
 
 
 $routes->get('theorders/(:any)', 'AdminController::viewToAcceptorders/$1');
 $routes->get('/receipt', 'OrderController::coffeereceipt');
+
+
+//para sa receipt
+
+
+//para sa report
+$routes->match(['get', 'post'], 'report', 'VisualizationController::pdfReport');
+
+
+$routes->get('Notif', 'AdminController::Notification');

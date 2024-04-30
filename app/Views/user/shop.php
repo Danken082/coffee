@@ -358,7 +358,6 @@
 				loader.style.display = "none";
 			}, 1500);
 		});
-	</script>
-	
+	</script>	
   </body>
 </html>

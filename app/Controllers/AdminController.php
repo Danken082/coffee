@@ -11,7 +11,7 @@ use App\Models\PaymentModel;
 use App\Models\TableModel;
 use App\Models\FeedbackModel;
 use App\Models\OrderModel;
-
+use App\Models\RawModel;
 class AdminController extends BaseController
 {
     private $user;
@@ -22,6 +22,8 @@ class AdminController extends BaseController
     private $tbl;
     private $fb;
     private $order;
+    private $raw;
+
     public function __construct(){
         $this->user = new AdminUserModel();
         $this->history = new HistoryModel();
@@ -30,6 +32,7 @@ class AdminController extends BaseController
         $this->tbl = new TableModel();
         $this->fb = new FeedbackModel();
         $this->order = new OrderModel();
+        $this->raw = new RawModel();
     }
 
     public function viewAddTable()
@@ -225,32 +228,39 @@ class AdminController extends BaseController
     }
     public function getPendingOrders()
     {
-        $getID = $this->request->getPost('getID');
+        $getID = $this->request->getPost('orderID');
         
 
         $myOrders = $this->viewPendingOrders($getID);
-                    $this->AcceptOrders($myOrders);
+                    $this->AcceptOrders($myOrders, $getID);
+
+        return redirect()->to('adminorderpayment')->with('msg', 'Order is now Accepted');
         
     }
 
     private function viewPendingOrders($getID)
     {
-        $myOrders = $this->order->where('barcode', $getID)->findAll();
+        $myOrders = $this->order->whereIn('orderID', $getID)->get()->getResultArray();
+
 
         return $myOrders;
     }
 
     private function AcceptOrders($myOrders)
     {
-        $data = [
-            'orderStatus' => 'AcceptOrder'
-        ];
 
-        $this->order->update($myOrders, $data);
+        $orderIDs = [];
+    foreach ($myOrders as $order) {
+        $orderIDs[] = $order['orderID'];
+    }
+
+    $data = ['orderStatus' => 'AcceptOrder'];
+        $this->order->update($orderIDs, $data);
     }
 
     public function viewOrders()
     {
+
      $data['order'] = $this->order->select('barcode, COUNT(*) as total_orders')->where('orderStatus','onProcess')
         ->groupBy('barcode')
         ->orderBy('barcode', 'ASC')
@@ -260,6 +270,8 @@ class AdminController extends BaseController
 
     public function viewToAcceptorders($barcode)
     {
+
+        //for Single data
         $data['single'] =  $this->order->select('order.orderID, order.CustomerID, order.ProductID, order.paymentStatus, 
         order.orderType, order.orderDate, order.total, order.quantity, order.size, order.barcode, order.orderStatus,
         product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, 
@@ -269,6 +281,8 @@ class AdminController extends BaseController
         ->join('user', 'user.UserID = order.CustomerID')
         ->where('order.barcode', $barcode)->first(); 
         
+
+        //for Multi Data
        $data['barcode'] =  $this->order->select('order.orderID, order.CustomerID, order.ProductID, order.paymentStatus, 
         order.orderType, order.orderDate, order.total, order.quantity, order.size, order.barcode, order.orderStatus,
         product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, 
@@ -278,6 +292,24 @@ class AdminController extends BaseController
         ->join('user', 'user.UserID = order.CustomerID')
         ->where('order.barcode', $barcode)->findAll();
 
-        return view('user/viewByBarcode', $data);
+        //for total
+        $data['total'] = $this->order->select('(SUM(total)) as sum')->where('barcode', $barcode)->first();
+
+        return view('admin/viewByBarcode', $data);
+    }
+
+
+    public function Notification()
+    {
+        return view('user/ForNotif/Notif');
+    }
+
+
+    public function report()
+    {
+        $data['raw'] = $this->raw->findAll();
+
+        return view('admin/report', $data);
+        
     }
 }

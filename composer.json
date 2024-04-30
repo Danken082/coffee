@@ -15,7 +15,9 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "facebook/graph-sdk": "^5.1",
+        "google/auth": "^1.38",
         "laminas/laminas-escaper": "^2.9",
+        "mpdf/mpdf": "^8.2",
         "psr/log": "^1.1",
         "stripe/stripe-php": "^14.1"
     },

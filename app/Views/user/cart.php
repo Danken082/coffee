@@ -27,12 +27,13 @@
                 </div>
 				<?php endif;?>
 		<div id="preloader"></div>
+		<form action="<?= base_url('CartController/placeOrder')?>" method="post">
 	<section class="ftco-section ftco-cart">
 		<div class="container">
 			<div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class="cart-list">
-
+	
 	    				<table class="table">
 	  		    			<thead class="thead-primary">
 			      				<tr class="text-center">
@@ -53,6 +54,7 @@
 									<td class="product-name">
 										<h3><?= $item['prod_name']?></h3>
 									</td>
+									
 									<?php if($item['size'] === 'Medium'):?>
 									<td class="price">₱ <?= $item['prod_mprice']?></td>
 									<?php elseif($item['size'] === 'Large'):?>
@@ -69,7 +71,7 @@
 									<input type="hidden" name="lprice" value="<?= $item['prod_lprice']?>">
 									<input type="hidden" name="cartID" value= "<?= $item['id']?>" class="item-checkbox">
 											<input type="number" min="1" name="newquantity" id="quantity" class="quantity form-control input-number">
-											<small><button type="submit">add</button></small>	
+											<small><input type="submit" value="add"></small>	
 										</form>
 										</div>
 									</td>
@@ -107,7 +109,7 @@
 					<button type="submit" class="btn btn-primary">Place to Checkout</button>
     			</div>
     		</div>  
-		</div>
+							</div>
 	</section>
 	</form>
 		<?php include('mainheader.php'); ?>

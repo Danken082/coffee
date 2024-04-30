@@ -4,14 +4,17 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\HistoryModel;
+use Mpdf\Mpdf;
 
 class VisualizationController extends BaseController
 {
 
     private $vis;
+    private $mpdf;
     public function __construct()
     {
         $this->vis = new HistoryModel();
+        $this->mpdf = new Mpdf();
     }
 
     public function allChart() {
@@ -116,5 +119,12 @@ class VisualizationController extends BaseController
     //     }
     // }
     
+    public function pdfReport()
+    {
+        $this->mpdf->WriteHTML('Hello World');
+        
+        return redirect()->to($this->mpdf->Output('filename.pdf', 'I'));
+
+    }
     
 }
