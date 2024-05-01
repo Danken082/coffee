@@ -60,6 +60,7 @@
         <li class="breadcrumb-item"><a href="<?= base_url('/admininventory')?>" style="background-color: transparent; color:white;">Inventory</a></li>
         <li class="breadcrumb-item active" aria-current="page" style="color:white;">Products</li>
     </ol>
+    
     <a href="/myproducts" class="btn btn-success btn-sm me-3 text-center" style="margin: 20px; float: right; background-color: lightblue;">Add Product</a>
     <br><br>
     <div class="prodcontainer">

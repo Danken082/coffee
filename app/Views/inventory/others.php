@@ -13,16 +13,39 @@
         <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
         <link href="/assets/css/table.css" rel="stylesheet" />
     </head>
-    <body>
-    <div class="container">
-            <div class="col-12">
-                <div class="card my-4">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                        <h4 class="text-white text-capitalize ps-3">Product List</h4>
-                    </div>
-                </div><br>
-            </div>
-        </div>
+    <body style="background-color: #021024">
+    <style>
+        
+        table {
+            border-collapse: collapse; /* Collapse border spacing */
+            width: 100%; /* Set table width to 100% */
+            color: black !important;
+        }
+        th {
+            background-color: #052659; /* Green background */
+            border: 1px solid #ddd; /* Add border */
+            padding: 8px; /* Add padding */
+            text-align: center; /* Center-align text */
+        }
+
+        /* CSS for table rows */
+        tr {
+            background-color: #7da0ca; 
+        }
+
+        /* CSS for table cell */
+        td {
+            border: 1px solid #052659; /* Add border */
+            padding: 8px; /* Add padding */
+            text-align: center; /* Center-align text */
+            color: black;
+        }
+    </style>
+    
+    <div style="text-align: center; border: 2px solid lightblue; padding: 10px;">
+    <h4 style="color: white; background-color: #021024;">Others List</h4>
+    </div>
+    <a href="<?= base_url('/adminprod')?>" class="btn btn-info" style="margin: 20px; background-color: transparent;">BACK</a>
         <div class="card-body">
             <div class="table-responsive">
                 <?php if(session()->getFlashdata('msg')):?>
@@ -30,7 +53,7 @@
                         <?= session()->getFlashdata('msg') ?>
                     </div>
                 <?php endif;?>
-                <table class="table align-items-center">
+                <table>
                     <thead>
                         <tr>
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Name</th>
@@ -54,19 +77,19 @@
                         <?php foreach($prod as $p): ?>
                             <tr>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_name'] ?></p>
+                                    <p class="text-xs  font-weight-bold"><?=$p['prod_name'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_desc'] ?></p>
+                                    <p class="text-xs font-weight-bold"><?=$p['prod_desc'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_quantity'] ?></p>
+                                    <p class="text-xs font-weight-bold"><?=$p['prod_quantity'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold">₱ <?=$p['prod_mprice'] ?></p>
+                                    <p class="text-xs font-weight-bold">₱ <?=$p['prod_mprice'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_code'] ?></p>
+                                    <p class="text-xs font-weight-bold"><?=$p['prod_code'] ?></p>
                                 </td>
                                 <td class="text-center">
                                     <img src="<?php base_url();?>/assets/images/products/<?= $p['prod_img'] ?>" alt="img">
@@ -76,7 +99,7 @@
                                         class="text-info font-weight-bold text-xs me-2"
                                         data-toggle="tooltip" data-original-title="Edit Coffee">
                                         Edit
-                                    </a>||
+                                    </a>
                                     <a href="<?= base_url('/deleteothers/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs"
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
@@ -85,17 +108,16 @@
                                     <form action="<?= base_url('/availableother/')?>" method="POST">
                                     <input type="hidden" name="update" value="<?= $p['prod_id']?>">
                                     <input type="hidden" name="prod_status" value="Available">
-                                    <button type="submit">Available</button>
+                                    <button type="submit" style="background-color: #507b58; color: white; padding: 5px 10px; font-size: 12px; border-radius: 20px;">Available</button>
                                 </form> <br><form action="<?= base_url('/unavailableother/')?>" method="POST">
                                     <input type="hidden" name="update" value="<?= $p['prod_id']?>">
                                     <input type="hidden" name="prod_status" value="Unavailable">
-                                    <button type="submit">Unavailable</button>
+                                    <button type="submit"style="background-color: #ab3131; color: white; padding: 5px 10px; font-size: 10px; border-radius: 20px;">Unavailable</button>
                                 </form></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table><br>
-                <a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a>
             </div>
         </div>
     </body>
