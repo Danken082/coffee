@@ -13,37 +13,42 @@
     </head>
     <body>
         <div class="col-md-12">
-            <!-- Add Product Form -->
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div
                         class="bg-gradient-success shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                        <h6 class="text-white text-capitalize ps-3">Add Meals</h6>
+                        <h6 class="text-white text-capitalize ps-3">Add Product</h6>
                     </div>
                 </div>
-
                 <div class="card-body px-4 pb-3">
-                <form action="<?= base_url('addmeals')?>" class="row g-3" method="POST">
-                        <div class="input-group input-group-outline my-3">
-                            <label for="coffee-name" class="form-label"></label>
-                            <input type="text" class="form-control" id="product-name" name="prod_name" placeholder="Product Name">
-                        </div>
+                    <form action="<?= base_url('addproduct')?>" class="row g-3" method="POST" enctype="multipart/form-data">
                         <div class="input-group input-group-outline my-3">
                             <label for="coffee-name" class="form-label"></label>
                             <input type="text" class="form-control" id="product-name" name="prod_name" placeholder="Product Name">
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="Quantity" class="form-label"></label>
-                            <input type="number" class="form-control" id="quantity" name="prod_quantity" placeholder="Quantity">
+                            <input type="number" class="form-control" id="quantity" name="prod_quantity" placeholder="Quantity" min="1">
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="medium" class="form-label"></label>
-                            <input type="text" class="form-control" id="medium" name="prod_mprice" placeholder="Price">
+                            <input type="number" class="form-control" id="medium" name="prod_mprice" placeholder="Medium Price" min="0" required>
                         </div>
-                        <h6>Select Meals</h6>
+                        <div class="input-group input-group-outline my-3">
+                            <label for="large" class="form-label"></label>
+                            <input type="number" class="form-control" id="large" name="prod_lprice" placeholder="Large Price" min="0" required>
+                        </div>
+                        <h6>Select Category</h6>
                         <div class="input-group input-group-outline my-3">
                             <label for="category" class="form-label"></label>
                             <select name="prod_categ" id="category">
+                                <option disabled selected>Category</option>
+                                <option value="Hot Coffee">Hot Coffee</option>
+                                <option value="Iced Coffee">Iced Coffee</option>
+                                <option value="Flavored Coffee">Flavored Iced Coffee</option>
+                                <option value="Non Coffee Frappe">Non Coffee Frappe</option>
+                                <option value="Coffee Frappe">Coffee Frappe</option>
+                                <option value="Others">Others</option>
                                 <option value="Meals">Meals</option>
                                 <option value="Pasta">Pasta</option>
                                 <option value="Appetizer">Appetizer</option>
@@ -52,16 +57,17 @@
                                 <option value="Sandwich">Sandwiches</option>
                             </select>
                         </div>
+
                         <div class="input-group input-group-outline my-3">
                             <label for="Code" class="form-label"></label>
-                            <input type="text" class="form-control" id="Code" name="prod_code" placeholder="Product Code">
+                            <input type="text" name="prod_desc" class="form-control" placeholder ="Product Description">
                         </div>
                         <h6>Select Image for Product</h6>
                         <div class="input-group input-group-outline my-3">
-                            <input type="file" id="images" name="prod_img">
+                            <input type="file" id="images" name="prod_img" accept=".jpg, .jpeg, .png">
                         </div>
                         <div class="input-group input-group-outline my-3">
-                            <button type="submit" class="btn btn-success">Add Meals</button>
+                            <button type="submit" class="btn btn-success">Add Product</button>
                         </div>
                         <div><a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a></div>
                     </form>

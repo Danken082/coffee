@@ -14,20 +14,22 @@ $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
-$routes->get( '/adminorderpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
+$routes->get( '/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
+$routes->get('/adminprofile', 'AdminController::adminprofile',['filter'=>'authFilter']);
 $routes->get('/adminmanage_user', 'AdminController::getmanageuser', ['filter'=>'authFilter']);
 $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter']);
 $routes->post('/adminadduser', 'AdminController::adduser', ['filter'=>'authFilter']);
 $routes->get('/admincustomer_user', 'AdminController::getcustomeruser', ['filter'=>'authFilter']);
-$routes->get('/adminequip', 'AdminController::equip', ['filter'=>'authFilter']);
+$routes->get('/adminitems', 'AdminController::item', ['filter'=>'authFilter']);
 $routes->get('/adminprod', 'AdminController::products', ['filter'=>'authFilter']);
 $routes->get('/adminedituser/(:any)', 'AdminController::edituser/$1');
-$routes->post('/updateuser/(:any)', 'AdminController::updateuser/$1');
+$routes->post('/updateuser/(:any)', 'AdminController::updateadmin/$1');
+$routes->get('/removeprofile/(:any)', 'AdminController::removeadminpf/$1',['filter'=>'authFilter']);
 $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
 $routes->post('/adminregister', 'UserController::register');
 $routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
-$routes->get('/logout', 'UserController::logout', ['filter'=>'authFilter']);
+$routes->get('/logout', 'AdminController::logout', ['filter'=>'authFilter']);
 $routes->get('viewOrders', 'AdminController::viewOrder');
 $routes->get('admin/sidebar', 'AdminController::admin_side');
 $routes->get('/adminpos', 'AdminController::pos');
@@ -35,11 +37,30 @@ $routes->get('addingTable', 'AdminController::viewAddTable');
 $routes->post('AdminTable', 'AdminController::addingTable');
 #rawDataTotal
 $routes->get('total', 'RawController::dataUpdating');
+
 /* For Inventory */
+/* Equipment */
+$routes->get('/inventoryequip', 'InventoryController::equip');
+$routes->get('/myitems', 'InventoryController::items');
+$routes->post('/additems', 'InventoryController::additems');
+$routes->get('/editequip/(:any)', 'InventoryController::editequip/$1');
+$routes->post('/updateequip/(:any)', 'InventoryController::updateequip/$1');
+$routes->get('/deleteequip/(:any)', 'InventoryController::deleteequip/$1');
+/* Raw Materials */
+$routes->get('/inventoryrawmats', 'InventoryController::rawmats');
+$routes->get('/editraw/(:any)', 'InventoryController::editraw/$1');
+$routes->post('/updateraw/(:any)', 'InventoryController::updateraw/$1');
+$routes->get('/deleteraw/(:any)', 'InventoryController::deleteraw/$1');
+/* Supplies */
+$routes->get('/inventorysupply', 'InventoryController::supply');
+$routes->get('/editsupply/(:any)', 'InventoryController::editsupply/$1');
+$routes->post('/updatesupply/(:any)', 'InventoryController::updatesupply/$1');
+$routes->get('/deletesupply/(:any)', 'InventoryController::deletesupply/$1');
+
 /* For Hot Coffee */
 $routes->get('/inventoryhotcoffee', 'InventoryController::gethotcoffee');
-$routes->get('/myproducts', 'InventoryController::drinks');
-$routes->post('/adddrinks', 'InventoryController::adddrink');
+$routes->get('/myproducts', 'InventoryController::product');
+$routes->post('/addproduct', 'InventoryController::addproduct');
 $routes->get('/edithot/(:any)', 'InventoryController::edithot/$1');
 $routes->post('/updatehot/(:any)', 'InventoryController::updatehot/$1');
 $routes->get('/deletehot/(:any)', 'InventoryController::deletehot/$1');
@@ -54,7 +75,7 @@ $routes->match(['get','post'], '/availableiced/', 'InventoryController::availabi
 $routes->match(['get', 'post'], '/unavailableiced/', 'InventoryController::Unavailableiced');
 /* For Flavored Coffee */
 $routes->get('/inventoryflavoredcoffee', 'InventoryController::getflavoredcoffee');
-$routes->get('/editflavored/(:any)', 'InxventoryController::editflavored/$1');
+$routes->get('/editflavored/(:any)', 'InventoryController::editflavored/$1');
 $routes->post('/updateflavored/(:any)', 'InventoryController::updateflavored/$1');
 $routes->get('/deleteflavored/(:any)', 'InventoryController::deleteflavored/$1');
 $routes->match(['get','post'], '/availableflavored/', 'InventoryController::availabilityflavored');
@@ -82,8 +103,6 @@ $routes->match(['get','post'], '/availableother/', 'InventoryController::availab
 $routes->match(['get', 'post'], '/unavailableother/', 'InventoryController::Unavailableothers');
 /* For Rice Meal */
 $routes->get('/inventorymeal', 'InventoryController::getmeal');
-$routes->get('/meals', 'InventoryController::meals');
-$routes->post('/addmeals', 'InventoryController::addmeals');
 $routes->get('/editmeal/(:any)', 'InventoryController::editmeal/$1');
 $routes->post('/updatemeal/(:any)', 'InventoryController::updatemeal/$1');
 $routes->get('/deletemeal/(:any)', 'InventoryController::deletemeal/$1');

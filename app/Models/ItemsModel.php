@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RawModel extends Model
+class ItemsModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'rawproducttable';
@@ -13,7 +13,7 @@ class RawModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['rawmaterials', 'quantity', 'stocks'];
+    protected $allowedFields    = ['name', 'stocks', 'barcode', 'item_categ'];
 
     // Dates
     protected $useTimestamps = false;
@@ -38,4 +38,19 @@ class RawModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function equipments($categ)
+    {
+        return $this->where('item_categ', $categ)->findAll();
+    }
+
+    public function rawmats($categ)
+    {
+        return $this->where('item_categ', $categ)->findAll();
+    }
+
+    public function supplies($categ)
+    {
+        return $this->where('item_categ', $categ)->findAll();
+    }
 }

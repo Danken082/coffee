@@ -99,8 +99,6 @@ class CartController extends BaseController
       
     }
 
-
-
     public function remove($id)
     {
       $this->crt->delete($id);

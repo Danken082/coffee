@@ -87,8 +87,8 @@ class AdminController extends BaseController
         return view ('/admin/inventory');
     }
 
-    public function equip(){
-        return view('/admin/equipments');
+    public function item(){
+        return view('/admin/items');
     }
 
     public function products(){
@@ -188,26 +188,52 @@ class AdminController extends BaseController
     public function edituser($id)
     {
         $data['euser'] = $this->user->find($id);
-        return view('/admin/edituser', $data);
+        return view('/admin/adminedit', $data);
     }
 
-    public function updateuser($id)
+    public function updateadmin($id)
     {
-        $user = new AdminUserModel();
-        $data = [
-            'LastName' => $this->request->getVar('LastName'),
-            'FirstName' => $this->request->getVar('FirstName'),
-            'gender' => $this->request->getVar('gender'),
-            'email' => $this->request->getVar('email'),
-            'ContactNo' => $this->request->getVar('ContactNo'),
-            'UserRole' => $this->request->getVar('UserRole'),
-            'Username' => $this->request->getVar('Username'),
-            'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
-            'address' => $this->request->getVar('address'),
-            'birthdate' => $this->request->getVar('birthdate'),
-        ];
-        $user->update($id, $data);
-        return redirect()->to(base_url('adminmanage_user'));
+        if ($this->request->getMethod() === 'post') {
+            $userId = session()->get('UserID');
+            $data = [
+                'LastName' => $this->request->getPost('LastName'),
+                'FirstName' => $this->request->getPost('FirstName'),
+                'gender' => $this->request->getPost('gender'),
+                'email' => $this->request->getPost('email'),
+                'ContactNo' => $this->request->getPost('ContactNo'),
+                'UserRole' => $this->request->getPost('UserRole'),
+                'Username' => $this->request->getPost('Username'),
+                'address' => $this->request->getPost('address'),
+                'birthdate' => $this->request->getPost('birthdate')
+            ];
+            $profileImg = $this->request->getFile('profile_img');
+                if ($profileImg->isValid() && !$profileImg->hasMoved()) {
+                    $newName = $profileImg->getName();
+                    $profileImg->move(ROOTPATH . 'public/assets/user/images/', $newName);
+                    $data['profile_img'] = $newName;
+                }
+            $this->user->updateadminpf($userId, $data);
+            session()->set($data);
+            return redirect()->to(base_url('/adminprofile'));
+        }
+    }
+
+    public function removeadminpf($userId)
+    {
+        $userModel = new UserModel();
+        $user = $userModel->find($userId);
+
+        if (!empty($user['profile_img'])) {
+            $imagePath = 'assets/user/images/' . $user['profile_img'];
+
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+        $userModel->update($userId, ['profile_img' => 'profile.png']);
+        session()->set('profile_img', 'profile.png');
+
+        return redirect()->to(base_url('/adminprofile'));
     }
     
     public function deleteuser($id)
@@ -280,4 +306,14 @@ class AdminController extends BaseController
 
         return view('user/viewByBarcode', $data);
     }
+
+    public function adminprofile(){
+        return view('/admin/adminprofile');
+    }
+
+    public function logout(){
+        session_destroy();
+        return redirect()->to('/login');
+    }
+
 }

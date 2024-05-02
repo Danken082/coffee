@@ -1,0 +1,41 @@
+body{
+    background-color: #191C24
+}
+
+.prodcontainer {
+    position: relative;
+    min-height: 70vh;
+}
+
+h2, h4{
+    color: white;
+    text-align: center;
+}
+
+img{
+    width:450px;
+    height:320px; 
+    border-radius: 20px;
+}
+
+.prodcontainer .cards {
+    padding: 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.prodcontainer .cards .card {
+    width: 450px;
+    height: 400px;
+    background: #191C24;
+    margin: 10px 50px;
+    border-radius: 10px;
+}
+.btn-info:hover {
+    background-color: grey;
+}
+.breadcrumb{
+    background-color: #191C24;
+}

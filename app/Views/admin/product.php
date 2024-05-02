@@ -6,65 +6,20 @@
     <title>Admin Products</title>
     <link rel="icon" type="image/png" href="/images/coffeelogo2.png">
     <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+    <link href="/assets/css/invent.css" rel="stylesheet" />
 </head>
-    <body style="background-color: #191C24;">
-        <style>
-            .prodcontainer {
-                position: relative;
-                min-height: 70vh;
-            }
-
-            h2, h4{
-                color: white;
-                text-align: center;
-            }
-
-            img{
-                width:450px;
-                height:320px; 
-                border-radius: 20px;
-            }
-
-            .prodcontainer .cards {
-                padding: 30px 30px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                flex-wrap: wrap;
-            }
-
-            .prodcontainer .cards .card {
-                width: 450px;
-                height: 400px;
-                background: #191C24;
-                margin: 10px 50px;
-                border-radius: 10px;
-            }
-            .btn-info:hover {
-                background-color: grey;
-            }
-            .breadcrumb{
-                background-color: #191C24;
-            }
-        </style>
+    <body>
         <div style="text-align: center; border: 2px solid lightblue; padding: 10px;">
-        <h4>Product Items</h4>
+            <h4>Product Items</h4>
         </div>
-            <div class="container">
-                <div class="col-12">
-                <div class="card my-4">
-            </div>
-        </div>
-    </div>
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="<?= base_url('/admininventory')?>" style="background-color: transparent; color:white;">Inventory</a></li>
-        <li class="breadcrumb-item active" aria-current="page" style="color:white;">Products</li>
-    </ol>
-    
-    <a href="/myproducts" class="btn btn-success btn-sm me-3 text-center" style="margin: 20px; float: right; background-color: lightblue;">Add Product</a>
-    <br><br>
-    <div class="prodcontainer">
-    <h2>Meals</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="<?= base_url('/admininventory')?>" style="background-color: transparent; color:white; font-size: 1.5em;">Back to Inventory</a></li>
+            <li class="breadcrumb-item active" aria-current="page" style="color:white; font-size: 1.5em;">Products</li>
+        </ol>
+        <a href="/myproducts" class="btn btn-success btn-sm me-3 text-center" style="margin: 20px; float: right; background-color: lightblue;">Add Product</a>
+        <br><br>
+        <div class="prodcontainer">
+        <h2>Meals</h2>
         <div class="cards">
             <div class="card">
                 <div class="box">
@@ -86,7 +41,7 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/nachos.png" alt="appetizer">
+                    <img src="/assets/images/products/nachos.jpg" alt="appetizer">
                     <div class="container"><br>
                         <a href="/inventoryappetizer" class="btn btn-success btn-sm me-3 text-center">Appetizer</a>
                     </div>

@@ -49,7 +49,7 @@
         <main id="view-panel" class="col-lg-9">
             <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
             </nav><br><br><br>
-            <div style="text-align: center; color: lightblue; font-size: 24px; font-weight: bold;">Equipment and Product</div>
+            <div style="text-align: center; color: lightblue; font-size: 24px; font-weight: bold;">Items and Product</div>
             <br><br><br>
             <div class="container">
                 <div class="row">
@@ -63,7 +63,7 @@
                     <div>
                         <img src="/assets/images/hmpg1.jpg" alt="Snow" style="height:400px; width:400px;">
                         <div class="btn-container"><br>
-                            <a href="/adminequip" class="btn btn-success btn-sm me-3 text-center">Equipments</a>
+                            <a href="/adminitems" class="btn btn-success btn-sm me-3 text-center">Items</a>
                         </div>
                     </div>
                     <div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 21, 2024 at 02:43 PM
+-- Generation Time: May 02, 2024 at 05:28 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -48,7 +48,9 @@ INSERT INTO `cart_tbl` (`id`, `CustomerID`, `ProductID`, `total`, `quantity`, `s
 (94, NULL, 36, '300.00', 2, 'Medium', 'oncart', '2024-04-03 02:36:19', '2024-04-03 02:36:19'),
 (96, NULL, 2, '960.00', 8, 'Medium', 'oncart', '2024-04-17 03:58:38', '2024-04-17 03:58:38'),
 (97, NULL, 55, '270.00', 6, 'Medium', 'oncart', '2024-04-17 09:07:11', '2024-04-17 09:07:11'),
-(99, NULL, 57, '1280.00', 16, 'Medium', 'oncart', '2024-04-17 09:11:04', '2024-04-17 09:11:04');
+(99, NULL, 57, '1280.00', 16, 'Medium', 'oncart', '2024-04-17 09:11:04', '2024-04-17 09:11:04'),
+(101, NULL, 2, '120.00', 1, 'Medium', 'oncart', '2024-04-22 11:43:49', '2024-04-22 11:43:49'),
+(102, NULL, 3, '120.00', 1, 'Medium', 'oncart', '2024-04-22 11:49:37', '2024-04-22 11:49:37');
 
 -- --------------------------------------------------------
 
@@ -121,7 +123,13 @@ CREATE TABLE `feedback_tbl` (
 
 INSERT INTO `feedback_tbl` (`feedbackID`, `ratings`, `comment`, `orderID`, `ProductID`, `CustomerID`, `created_at`, `updated_at`) VALUES
 (1, 0, 'masarap naman siya malinamnam', 2, 2, 1, '2024-04-21 11:25:30', '2024-04-21 11:25:30'),
-(2, 2, 'masarap naman siya malinamnam', 2, 2, 1, '2024-04-21 11:26:19', '2024-04-21 11:26:19');
+(2, 2, 'masarap naman siya malinamnam', 2, 2, 1, '2024-04-21 11:26:19', '2024-04-21 11:26:19'),
+(3, 5, 'yummy, sarp balik balikan', 0, 0, 0, '2024-04-22 11:54:55', '2024-04-22 11:54:55'),
+(10, 3, 'jbljlk', 0, 0, 0, '2024-04-22 14:13:47', '2024-04-22 14:13:47'),
+(11, 4, 'jhjhhj', 0, 0, 0, '2024-04-22 14:19:25', '2024-04-22 14:19:25'),
+(12, 3, 'kzjcjz', 0, 0, 0, '2024-04-22 14:20:20', '2024-04-22 14:20:20'),
+(13, 3, 'kzjzd', 0, 0, 0, '2024-04-22 14:21:03', '2024-04-22 14:21:03'),
+(14, 5, 'mnxzncx', 0, 0, 0, '2024-04-22 14:22:37', '2024-04-22 14:22:37');
 
 -- --------------------------------------------------------
 
@@ -191,89 +199,87 @@ CREATE TABLE `product_tbl` (
 --
 
 INSERT INTO `product_tbl` (`prod_id`, `prod_name`, `prod_quantity`, `prod_mprice`, `prod_lprice`, `prod_categ`, `prod_img`, `prod_desc`, `prod_code`, `product_status`) VALUES
-(1, 'Quesadillas', 50, '160.00', 0.00, 'Appetizer', 'quesadillas.jpg', 'This is a Mexican dish made of a flour tortilla folded like a pizza with mayonnaise and tomato on top.', '', 'Unavailable'),
-(2, 'Nachos', 4, '120.00', 0.00, 'Appetizer', 'nachos.png', 'Also a Mexican dish made with corn chips, vegetables, and other ingredients on top.', '', 'Available'),
-(3, 'Fries', 8, '120.00', 0.00, 'Appetizer', 'fries.jpg', 'One of the most sell appetizer is our fries because of its crispiness and smell with perfect combination of our sauce. ', '', 'Available'),
-(4, 'Fried Chicken w/ Gravy', 5, '148.00', 0.00, 'Meals', 'fchicken.jpg', 'Crispy and juicy fried chicken with our best gravy', '', 'Available'),
-(5, 'Honey Garlic Chicken', 6, '155.00', 0.00, 'Meals', 'honeychicken.jpg', 'Crispy fried chicken breaded with honey', '', 'Available'),
-(6, 'Orange Chicken', 5, '155.00', 0.00, 'Meals', 'orangechicken.jpg', 'A dish of fried chicken in a sweet orange-flavored, partnered with our garlic fried rice.', '', 'Available'),
-(7, 'Burger Steak', 9, '160.00', 0.00, 'Meals', 'burgersteak.jpg', 'Steak that are smothered in our delicious mushroom gra sauce.vy', '', 'Available'),
-(8, 'Sizzling Pepper Beef Steak', 7, '165.00', 0.00, 'Meals', 'sizzlingsteak.jpg', 'Beefy, juicylicious sizzling pepper beef steak partner with our mushroom gravy', '', 'Available'),
-(9, 'Beef Tapa', 1, '120.00', 0.00, 'Meals', 'beeftapa.jpg', 'Beefy tapa served with green onion and combination of rice, egg and our best gravy', '', 'Available'),
-(10, 'Crispy Lechon Sisig', 2, '165.00', 0.00, 'Meals', 'crispysisig.jpg', 'Crispy grilled sisig with the combination of rice and egg.', '', 'Available'),
-(11, 'Lechon Kawali', 1, '148.00', 0.00, 'Meals', 'lechonkawali.jpg', 'Crispy deep fried pork belly with our savory gravy sauce', '', 'Available'),
-(12, 'Bacon and Egg', 1, '155.00', 0.00, 'Meals', 'baconegg.jpg', 'Breakfast dish that consists of fried slices of bacon and fried egg.', '', 'Available'),
-(13, 'Spam and Egg', 1, '115.00', 0.00, 'Meals', 'spamegg.jpg', 'Breakfast dish that consists of meaty and fatty fried slices of spam and fried egg.', '', 'Available'),
-(14, 'Beef Bulgogi', 1, '168.00', 0.00, 'Meals', 'beefbulgogi.jpg', 'Made with the finest cuts of beef marinated in a flavorful blend of soy sauce, sesame oil, garlic, and ginger.', '', 'Available'),
-(15, 'Korean Beef Stew', 1, '188.00', 0.00, 'Meals', 'beefstew.jpg', 'A spicy soup made with beef, vegetables, and a variety of spices. The stew is typically served with a bowl of steamed rice.', '', 'Available'),
-(16, 'Chicken Parmegiana', 1, '168.00', 0.00, 'Meals', 'chickenparmegiana.jpg', 'Flavorful tomato sauce served and is topped with crispy chicken breasts covered in melty cheese.', '', 'Available'),
-(17, 'Carbonara', 1, '170.00', 0.00, 'Pasta', 'carbonara.jpg', 'Carbonara with its flavorful cream sauce with combination of sandwich.', '', 'Available'),
-(18, 'Classic Spaghetti', 1, '170.00', 0.00, 'Pasta', 'classicspag.jpg', 'Spaghetti with its tomato sauce and lot of cheese on top.', '', 'Available'),
-(19, 'Truffle Pasta', 1, '170.00', 0.00, 'Pasta', 'trufflepasta.jpg', 'Combines cooked pasta with a creamy sauce made with truffle oil, mushrooms, cream and herbs. ', '', 'Available'),
-(20, 'Chicken Alfredo', 1, '170.00', 0.00, 'Pasta', 'chickenalfredo.jpg', 'Pasta dish that consists of cooked chicken and fettuccine noodles tossed in a creamy white sauce made with butter, heavy cream and garlic.', '', 'Available'),
-(21, 'Tuna Pesto', 1, '170.00', 0.00, 'Pasta', 'tunapesto.jpg', 'Dish that combines canned tuna with pesto sauce.', '', 'Available'),
-(22, 'Parmegiana Meatball', 1, '190.00', 0.00, 'Pasta', 'parmegianameatball.png', 'Parmegiana pasta is made with the freshest ingredients, including meat balls, parmesan cheese, and a savory tomato sauce. ', '', 'Available'),
-(30, 'Classic Caesar', 1, '180.00', 0.00, 'Salad', 'ceasar.jpg', ' Crunchy lettuce leaves tossed in a creamy dressing of mayonnaise.', '', 'Available'),
-(31, 'Chef Salad', 1, '180.00', 0.00, 'Salad', 'chefsalad.jpg', ' Consists of hard-boiled eggs, sliced meats, cheese, tomatoes, cucumbers, and lettuce, may also include anchovies, olives, onions, etc..', '', 'Available'),
-(32, 'Chicken Salad', 1, '180.00', 0.00, 'Salad', 'chickensalad.jpg', 'Consists of chopped cooked chicken, and mixed with other ingredients, such as mayonnaise, celery, onion, herbs, and seasonings.', '', 'Available'),
-(33, 'Tuna Salad', 1, '180.00', 0.00, 'Salad', 'tunasalad.jpg', 'Salad with a blended of tuna and mayonnaise.', '', 'Available'),
-(34, 'Mushroom Soup', 12, '150.00', 0.00, 'Soup', 'mushroomsoup.jpg', 'Soup in a bread made with mushrooms and milk.', '', 'Unavailable'),
-(35, 'Crab and Corn', 1, '150.00', 0.00, 'Soup', 'crabandcornsoup.jpg', ' Creamy soup made with chicken broth, corn, crab meat inside of bread.', '', 'Available'),
-(36, 'Pumpkin Soup', 1, '150.00', 0.00, 'Soup', 'pumpkinsoup.jpg', 'Made from pureed pumpkin, usually blended with broth, cream, onion, garlic, and spices inside of bread.', '', 'Available'),
-(38, 'Pork BBQ Teriyaki', 1, '180.00', 0.00, 'Sandwich', 'bbqteriyaki.jpg', 'Juicy bbq pork sandwich slices pork marinated in a sweet and savory sauce made with soy sauce, sugar, garlic, ginger, and other ingredients.', '', 'Available'),
-(39, 'Smoke Beef and Cheese Brisket', 1, '250.00', 0.00, 'Sandwich', 'smokebeef.jpg', 'Delicious sandwich that combines tender smoked brisket with melted cheese and barbecue sauce.', '', 'Available'),
-(40, 'Meat Balls', 1, '200.00', 0.00, 'Sandwich', 'meatballsandwich.jpg', 'Sandwich that consists of meatballs and a tomato sauce.', '', 'Unavailable'),
-(41, 'Cheesy Egg', 1, '140.00', 0.00, 'Sandwich', 'cheesyegg.jpg', 'Sandwich with a lot of cheese and egg.', '', 'Available'),
-(42, 'Cheesy Pepperoni', 1, '180.00', 0.00, 'Sandwich', 'cheesypepperoni.jpg', 'Made with freshly sliced pepperoni, melted cheese.', '', 'Available'),
-(43, 'Vanilla', 10, '145.00', 160.00, 'Coffee Frappe', 'vanillafrap.jpg', 'A luscious coffee frappe with the classic sweetness of vanilla, delivering a smooth and indulgent experience.', '', 'Available'),
-(44, 'Mocha', 13, '145.00', 160.00, 'Coffee Frappe', 'mochafrap.jpg', 'Tempting blend of coffee and chocolate in a frosty treat, providing a rich and delightful combination.', '', 'Available'),
-(45, 'Caramel', 7, '150.00', 165.00, 'Coffee Frappe', 'caramelfrap.jpg', 'Indulge in the buttery sweetness of caramel with this creamy and flavorful coffee frappe.', '', 'Unavailable'),
-(46, 'Cookies and Cream', 15, '165.00', 180.00, 'Coffee Frappe', 'icedcookiesncream.jpg', 'Irresistible non-coffee frappe combining the crunch of cookies with the creaminess of a frosty treat.', '', 'Available'),
-(47, 'Hazel Nut', 14, '150.00', 165.00, 'Coffee Frappe', 'hazelfrap.jpg', 'Savor the nutty goodness of hazelnut in this velvety coffee frappe, a delightful and aromatic experience.', '', 'Available'),
-(48, 'Java Chip', 32, '155.00', 170.00, 'Coffee Frappe', 'javafrap.jpg', 'A coffee frappe adorned with chocolate chips, providing a satisfying blend of coffee and cocoa.', '', 'Available'),
-(49, 'Salted Caramel', 16, '155.00', 170.00, 'Coffee Frappe', 'saltedcaramelfrap.jpg', 'Indulge in the perfect balance of sweet and salty with this delightful salted caramel-infused coffee frappe.', '', 'Available'),
-(50, 'Vanilla Latte', 18, '140.00', 150.00, 'Flavored Coffee', 'icedvanillalatte.jpg', 'Iced delight featuring the sweet harmony of vanilla-infused coffee and cold milk over ice.', '', 'Unavailable'),
-(51, 'Mocha Latte', 12, '140.00', 155.00, 'Flavored Coffee', 'mochalatte.jpg', 'A cool blend of iced coffee and chocolate, creating a rich and indulgent beverage.', '', 'Available'),
-(52, 'Caramel Latte', 45, '145.00', 180.00, 'Flavored Coffee', 'icedcaramellatte.png', 'Iced coffee adorned with the sweet allure of caramel, providing a luscious and refreshing experience.', '', 'Available'),
-(53, 'Cookies and Cream', 13, '150.00', 170.00, 'Flavored Coffee', 'icedcookiesncream.jpg', 'Iced coffee with a twist, combining the classic flavors of cookies and cream for a delightful chill.', '', 'Available'),
-(54, 'Spanish Latte', 23, '140.00', 155.00, 'Flavored Coffee', 'icedspanishlatte.jpg', 'Cold and sweetened coffee with a touch of condensed milk, offering a unique and cooling Spanish-inspired taste.', '', 'Available'),
-(55, 'Brewed Coffee', 24, '45.00', 0.00, 'Hot Coffee', 'hotbrewedcoffee.jpg', 'Classic and rich coffee made through traditional brewing methods.', '', 'Unavailable'),
-(56, 'Espresso', 34, '40.00', 55.00, 'Hot Coffee', 'hotespresso.jpg', 'Intense and concentrated coffee shot, the base for various coffee drinks.', '', 'Unavailable'),
-(57, 'Capuccino', 24, '80.00', 90.00, 'Hot Coffee', 'hotcappuccino.jpg', 'A balanced blend of espresso, steamed milk, and frothy foam.', '', 'Available'),
-(58, 'Caphe Vietnam', 23, '80.00', 0.00, 'Hot Coffee', 'hotcaphevietnam.jpg', 'Vietnamese coffee, often strong and sweet, served with condensed milk.', '', 'Available'),
-(59, 'Americano', 21, '80.00', 100.00, 'Hot Coffee', 'hotamericano.png', 'Diluted espresso with hot water, offering a milder flavor.', '', 'Available'),
-(60, 'Caffe Latte', 32, '90.00', 100.00, 'Hot Coffee', 'hotcaffelatte.jpg', 'Smooth and creamy coffee with espresso and steamed milk.', '', 'Available'),
-(61, 'Vanilla Latte', 25, '90.00', 100.00, 'Hot Coffee', 'hotvanilla.png', 'Latte with a sweet hint of vanilla flavor.', '', 'Available'),
-(62, 'Mocha Latte', 12, '90.00', 100.00, 'Hot Coffee', 'hotmocha.jpg', 'Latte with chocolate syrup for a delightful chocolatey twist.', '', 'Available'),
-(63, 'Caramel Latte', 1, '95.00', 105.00, 'Hot Coffee', 'hotcaramel.jpg', 'Latte with a sweet caramel infusion.', '', 'Available'),
-(64, 'Spanish Latte', 18, '90.00', 100.00, 'Hot Coffee', 'hotspanish.jpg', 'Latte with a touch of condensed milk, providing a rich and sweet taste.', '', 'Available'),
-(65, 'Americano', 12, '90.00', 100.00, 'Iced Coffee', 'icedamericano.jpg', 'Chilled perfection of diluted espresso over ice, maintaining its smooth and robust character for a refreshing sip.', '', 'Available'),
-(66, 'Caphe Vietnam', 23, '120.00', 100.00, 'Iced Coffee', 'icedcaphevietnam.jpg', 'Vietnamese iced coffee, bold and sweet, often served over ice with condensed milk, offering a cool and rich experience.', '', 'Available'),
-(67, 'Caffe Latte', 12, '130.00', 140.00, 'Iced Coffee', 'icedcafe.jpg', 'Iced version of the classic latte, blending espresso and cold milk over ice for a cool, creamy indulgence.', '', 'Available'),
-(68, 'Vanilla', 12, '140.00', 155.00, 'Non Coffee Frappe', 'vanillafrap.jpg', 'A non-coffee frappe that captivates with the classic sweetness of vanilla, blended to perfection.', '', 'Available'),
-(69, 'Mocha', 12, '140.00', 155.00, 'Non Coffee Frappe', 'mochafrap.jpg', 'Tempting blend of chocolate and creamy goodness in a non-coffee frappe for a delightful treat.', '', 'Available'),
-(70, 'Caramel', 20, '140.00', 155.00, 'Non Coffee Frappe', 'caramelfrap.jpg', 'Indulgent non-coffee frappe featuring the rich and buttery flavor of caramel, a sweet escape.', '', 'Available'),
-(71, 'Cookies and Cream', 23, '150.00', 175.00, 'Non Coffee Frappe', 'icedcookiesncream.jpg', 'Irresistible non-coffee frappe combining the crunch of cookies with the creaminess of a frosty treat.', '', 'Available'),
-(72, 'Hazel Nut', 23, '150.00', 165.00, 'Non Coffee Frappe', 'hazelfrap.jpg', 'A nutty twist in a non-coffee frappe, hazelnut-infused and velvety smooth.', '', 'Available'),
-(73, 'Java Chip', 12, '150.00', 175.00, 'Non Coffee Frappe', 'javafrap.jpg', 'Non-coffee frappe with a delectable mix of chocolate chips, offering a rich and satisfying experience.', '', 'Available'),
-(74, 'Salted Caramel', 1, '150.00', 165.00, 'Non Coffee Frappe', 'saltedcaramelfrap.jpg', 'A sweet and savory non-coffee frappe, combining the allure of caramel with a touch of salt for a unique taste.', '', 'Unavailable'),
-(75, 'Taro Cream Cheese', 24, '150.00', 165.00, 'Non Coffee Frappe', 'tarocreamcheese.jpg', 'An exotic non-coffee frappe featuring taro and creamy cheese, creating a refreshing and delightful beverage.', '', 'Available'),
-(76, 'Double Dutch', 34, '150.00', 165.00, 'Non Coffee Frappe', 'doubledutch.jpg', 'A non-coffee frappe extravaganza with a blend of chocolate and vanilla, offering a doubly delightful frozen treat.', '', 'Available'),
-(87, 'Smoked Ham', 1, '200.00', 0.00, 'Sandwich', 'smokeham.jpg', 'Ham is hung in a smokehouse and allowed to absorb smoke from smoldering fires, which gives added flavor and color to meat.', '', 'Available'),
-(88, 'Truffle Smoked Ham', 6, '200.00', 0.00, 'Sandwich', 'trufflesmokeham.jpg', 'Round ball of cured meat is commonly a whole boneless cut of pork that’s been cured in a sweet glaze.', '', 'Available'),
-(89, 'Bacon and Egg', 88, '180.00', 0.00, 'Sandwich', 'baconeggsandwich.jpg', 'Sandwich with consist of sliced bacon and fried egg.', '', 'Available'),
-(90, 'Cheesy Bacon Mushroom', 56, '180.00', 0.00, 'Sandwich', 'cheesybacon.jpg', ' Made with freshly cooked bacon, sautéed mushrooms, and melted cheese.', '', 'Available'),
-(91, 'Pulled Pork', 87, '170.00', 0.00, 'Sandwich', 'pulledpork.jpg', 'Sandwich made with tender, juicy pulled pork with cabbage', '', 'Available'),
-(92, 'Tuna Sandwich', 8, '170.00', 0.00, 'Sandwich', 'tunasandwich.jpg', 'Sandwich made with tuna, partner with our mushroom sauce.', '', 'Available'),
-(93, 'Chicken Sandwich', 6, '170.00', 0.00, 'Sandwich', 'chickensandwich.jpg', 'Sandwich made with chicken, partner with our tomato sauce.', '', 'Available'),
-(94, 'Beef Burger', 7, '160.00', 0.00, 'Sandwich', 'beefburger.jpg', 'Seasoned beef, crisp veggies, and creamy sauces, all nestled in a soft, toasted bun.', '', 'Available'),
-(95, 'Hot Chocolate', 1, '80.00', 0.00, 'Others', 'hotchocolate.jpg', 'A comforting and rich beverage, hot chocolate offers a velvety blend of cocoa and milk, perfect for warming up', '', 'Available'),
-(96, 'Hot Pure Vanilla', 12, '80.00', 0.00, 'Others', 'hotpurevanilla.jpg', 'A soothing and aromatic hot drink, featuring the pure essence of vanilla for a delightful and fragrant experience.', '', 'Available'),
-(97, 'Housed Iced Tea', 8, '55.00', 0.00, 'Others', 'icedtea.jpg', 'A refreshing classic, house iced tea is a chilled and flavorful beverage, perfect for cooling down on a warm day.', '', 'Available'),
-(98, 'Iced Tea Pitcher', 5, '110.00', 0.00, 'Others', 'icedteapitcher.jpg', 'A cool and convenient way to enjoy the timeless goodness of iced tea, served in a pitcher for easy sharing and sipping.', '', 'Available'),
-(99, 'Iced Coffee Cream Cheese', 15, '165.00', 180.00, 'Flavored Coffee', 'icedcoffeecheese.jpg', 'An unconventional treat, iced coffee blended with creamy and tangy cream cheese for a refreshing and surprising twist.', '', 'Available'),
-(107, 'ice coffee black', 100, '90.00', 110.00, 'Hot Coffee', 'ssspo.png', 'hello coffee', 'fef1c08e', ''),
-(108, 'Spanish Latte', 12, '100.00', 120.00, 'Iced Coffee', 'Screenshot 2024-04-04 215018.png', 'hello coffee', 'e78e3f89', 'Available');
+(1, 'Quesadillas', 1, '160.00', 0.00, 'Appetizer', 'quesadillas.jpg', 'This is a Mexican dish made of a flour tortilla folded like a pizza with mayonnaise and tomato on top.', 'qd123456', 'Available'),
+(2, 'Nachos', 1, '120.00', 0.00, 'Appetizer', 'nachos.png', 'Also a Mexican dish made with corn chips, vegetables, and other ingredients on top.', 'nc789012', 'Available'),
+(3, 'Fries', 1, '120.00', 0.00, 'Appetizer', 'fries.jpg', 'One of the most sell appetizer is our fries because of its crispiness and smell with perfect combination of our sauce. ', 'fr345678', 'Available'),
+(4, 'Fried Chicken w/ Gravy', 1, '148.00', 0.00, 'Meals', 'fchicken.jpg', 'Crispy and juicy fried chicken with our best gravy', 'fc901234', 'Available'),
+(5, 'Honey Garlic Chicken', 1, '155.00', 0.00, 'Meals', 'honeychicken.jpg', 'Crispy fried chicken breaded with honey', 'hgc67890', 'Available'),
+(6, 'Orange Chicken', 1, '155.00', 0.00, 'Meals', 'orangechicken.jpg', 'A dish of fried chicken in a sweet orange-flavored, partnered with our garlic fried rice.', 'oc123456', 'Available'),
+(7, 'Burger Steak', 1, '160.00', 0.00, 'Meals', 'burgersteak.jpg', 'Steak that are smothered in our delicious mushroom gra sauce.vy', 'bs789012', 'Available'),
+(8, 'Sizzling Pepper Beef Steak', 1, '165.00', 0.00, 'Meals', 'sizzlingsteak.jpg', 'Beefy, juicylicious sizzling pepper beef steak partner with our mushroom gravy', 'sp345678', 'Available'),
+(9, 'Beef Tapa', 1, '120.00', 0.00, 'Meals', 'beeftapa.jpg', 'Beefy tapa served with green onion and combination of rice, egg and our best gravy', 'bf901234', 'Available'),
+(10, 'Crispy Lechon Sisig', 1, '165.00', 0.00, 'Meals', 'crispysisig.jpg', 'Crispy grilled sisig with the combination of rice and egg.', 'cl567890', 'Available'),
+(11, 'Lechon Kawali', 1, '148.00', 0.00, 'Meals', 'lechonkawali.jpg', 'Crispy deep fried pork belly with our savory gravy sauce', 'lk123456', 'Available'),
+(12, 'Bacon and Egg', 1, '155.00', 0.00, 'Meals', 'baconegg.jpg', 'Breakfast dish that consists of fried slices of bacon and fried egg.', 'be789012', 'Available'),
+(13, 'Spam and Egg', 1, '115.00', 0.00, 'Meals', 'spamegg.jpg', 'Breakfast dish that consists of meaty and fatty fried slices of spam and fried egg.', 'se345678', 'Available'),
+(14, 'Beef Bulgogi', 1, '168.00', 0.00, 'Meals', 'beefbulgogi.jpg', 'Made with the finest cuts of beef marinated in a flavorful blend of soy sauce, sesame oil, garlic, and ginger.', 'bb234567', 'Available'),
+(15, 'Korean Beef Stew', 1, '188.00', 0.00, 'Meals', 'beefstew.jpg', 'A spicy soup made with beef, vegetables, and a variety of spices. The stew is typically served with a bowl of steamed rice.', 'kb890123', 'Available'),
+(16, 'Chicken Parmegiana', 1, '168.00', 0.00, 'Meals', 'chickenparmegiana.jpg', 'Flavorful tomato sauce served and is topped with crispy chicken breasts covered in melty cheese.', 'cp456789', 'Available'),
+(17, 'Carbonara', 1, '170.00', 0.00, 'Pasta', 'carbonara.jpg', 'Carbonara with its flavorful cream sauce with combination of sandwich.', 'c9012345', 'Available'),
+(18, 'Classic Spaghetti', 1, '170.00', 0.00, 'Pasta', 'classicspag.jpg', 'Spaghetti with its tomato sauce and lot of cheese on top.', 'cs678901', 'Available'),
+(19, 'Truffle Pasta', 1, '170.00', 0.00, 'Pasta', 'trufflepasta.jpg', 'Combines cooked pasta with a creamy sauce made with truffle oil, mushrooms, cream and herbs. ', 'tp234567', 'Available'),
+(20, 'Chicken Alfredo', 1, '170.00', 0.00, 'Pasta', 'chickenalfredo.jpg', 'Pasta dish that consists of cooked chicken and fettuccine noodles tossed in a creamy white sauce made with butter, heavy cream and garlic.', 'ca890123', 'Available'),
+(21, 'Tuna Pesto', 1, '170.00', 0.00, 'Pasta', 'tunapesto.jpg', 'Dish that combines canned tuna with pesto sauce.', 'tp456789', 'Available'),
+(22, 'Parmegiana Meatball', 1, '190.00', 0.00, 'Pasta', 'parmegianameatball.png', 'Parmegiana pasta is made with the freshest ingredients, including meat balls, parmesan cheese, and a savory tomato sauce. ', 'pm012345', 'Available'),
+(30, 'Classic Caesar', 1, '180.00', 0.00, 'Salad', 'ceasar.jpg', ' Crunchy lettuce leaves tossed in a creamy dressing of mayonnaise.', 'cc678901', 'Available'),
+(31, 'Chef Salad', 1, '180.00', 0.00, 'Salad', 'chefsalad.jpg', ' Consists of hard-boiled eggs, sliced meats, cheese, tomatoes, cucumbers, and lettuce, may also include anchovies, olives, onions, etc..', 'cs234567', 'Available'),
+(32, 'Chicken Salad', 1, '180.00', 0.00, 'Salad', 'chickensalad.jpg', 'Consists of chopped cooked chicken, and mixed with other ingredients, such as mayonnaise, celery, onion, herbs, and seasonings.', 'cks56789', 'Available'),
+(33, 'Tuna Salad', 1, '180.00', 0.00, 'Salad', 'tunasalad.jpg', 'Salad with a blended of tuna and mayonnaise.', 'ts678901', 'Available'),
+(34, 'Mushroom Soup', 1, '150.00', 0.00, 'Soup', 'mushroomsoup.jpg', 'Soup in a bread made with mushrooms and milk.', 'ms234567', 'Available'),
+(35, 'Crab and Corn', 1, '150.00', 0.00, 'Soup', 'crabandcornsoup.jpg', ' Creamy soup made with chicken broth, corn, crab meat inside of bread.', 'cr890123', 'Available'),
+(36, 'Pumpkin Soup', 1, '150.00', 0.00, 'Soup', 'pumpkinsoup.jpg', 'Made from pureed pumpkin, usually blended with broth, cream, onion, garlic, and spices inside of bread.', 'ps456789', 'Available'),
+(38, 'Pork BBQ Teriyaki', 1, '180.00', 0.00, 'Sandwich', 'bbqteriyaki.jpg', 'Juicy bbq pork sandwich slices pork marinated in a sweet and savory sauce made with soy sauce, sugar, garlic, ginger, and other ingredients.', 'pb9012345', 'Available'),
+(39, 'Smoke Beef and Cheese Brisket', 1, '250.00', 0.00, 'Sandwich', 'smokebeef.jpg', 'Delicious sandwich that combines tender smoked brisket with melted cheese and barbecue sauce.', 'sb678901', 'Available'),
+(40, 'Meat Balls', 1, '200.00', 0.00, 'Sandwich', 'meatballsandwich.jpg', 'Sandwich that consists of meatballs and a tomato sauce.', 'mb3b5678', 'Available'),
+(41, 'Cheesy Egg', 1, '140.00', 0.00, 'Sandwich', 'cheesyegg.jpg', 'Sandwich with a lot of cheese and egg.', 'ce4e6789', 'Available'),
+(42, 'Cheesy Pepperoni', 1, '180.00', 0.00, 'Sandwich', 'cheesypepperoni.jpg', 'Made with freshly sliced pepperoni, melted cheese.', 'cp56h890', 'Available'),
+(43, 'Vanilla', 1, '145.00', 160.00, 'Coffee Frappe', 'vanillafrap.jpg', 'A luscious coffee frappe with the classic sweetness of vanilla, delivering a smooth and indulgent experience.', 'vn6o8901', 'Available'),
+(44, 'Mocha', 1, '145.00', 160.00, 'Coffee Frappe', 'mochafrap.jpg', 'Tempting blend of coffee and chocolate in a frosty treat, providing a rich and delightful combination.', 'mc789012', 'Available'),
+(45, 'Caramel', 1, '150.00', 165.00, 'Coffee Frappe', 'caramelfrap.jpg', 'Indulge in the buttery sweetness of caramel with this creamy and flavorful coffee frappe.', 'cl8og123', 'Available'),
+(46, 'Cookies and Cream', 1, '165.00', 180.00, 'Coffee Frappe', 'icedcookiesncream.jpg', 'Irresistible non-coffee frappe combining the crunch of cookies with the creaminess of a frosty treat.', 'cc901234', 'Available'),
+(47, 'Hazel Nut', 1, '150.00', 165.00, 'Coffee Frappe', 'hazelfrap.jpg', 'Savor the nutty goodness of hazelnut in this velvety coffee frappe, a delightful and aromatic experience.', 'hn012345', 'Available'),
+(48, 'Java Chip', 1, '155.00', 170.00, 'Coffee Frappe', 'javafrap.jpg', 'A coffee frappe adorned with chocolate chips, providing a satisfying blend of coffee and cocoa.', 'jc123456', 'Available'),
+(49, 'Salted Caramel', 1, '155.00', 170.00, 'Coffee Frappe', 'saltedcaramelfrap.jpg', 'Indulge in the perfect balance of sweet and salty with this delightful salted caramel-infused coffee frappe.', 'sc234567', 'Available'),
+(50, 'Vanilla Latte', 1, '140.00', 150.00, 'Flavored Coffee', 'icedvanillalatte.jpg', 'Iced delight featuring the sweet harmony of vanilla-infused coffee and cold milk over ice.', 'vl765432', 'Available'),
+(51, 'Mocha Latte', 1, '140.00', 155.00, 'Flavored Coffee', 'mochalatte.jpg', 'A cool blend of iced coffee and chocolate, creating a rich and indulgent beverage.', 'ml654321', 'Available'),
+(52, 'Caramel Latte', 1, '145.00', 180.00, 'Flavored Coffee', 'icedcaramellatte.png', 'Iced coffee adorned with the sweet allure of caramel, providing a luscious and refreshing experience.', 'cl543210', 'Available'),
+(53, 'Cookies and Cream', 1, '150.00', 170.00, 'Flavored Coffee', 'icedcookiesncream.jpg', 'Iced coffee with a twist, combining the classic flavors of cookies and cream for a delightful chill.', 'cc432109', 'Available'),
+(54, 'Spanish Latte', 1, '140.00', 155.00, 'Flavored Coffee', 'icedspanishlatte.jpg', 'Cold and sweetened coffee with a touch of condensed milk, offering a unique and cooling Spanish-inspired taste.', 'sl321098', 'Available'),
+(55, 'Brewed Coffee', 1, '45.00', 0.00, 'Hot Coffee', 'hotbrewedcoffee.jpg', 'Classic and rich coffee made through traditional brewing methods.', 'bc210987', 'Available'),
+(56, 'Espresso', 1, '40.00', 55.00, 'Hot Coffee', 'hotespresso.jpg', 'Intense and concentrated coffee shot, the base for various coffee drinks.', 'ep109876', 'Available'),
+(57, 'Capuccino', 1, '80.00', 90.00, 'Hot Coffee', 'hotcappuccino.jpg', 'A balanced blend of espresso, steamed milk, and frothy foam.', 'cp098765', 'Available'),
+(58, 'Caphe Vietnam', 1, '80.00', 0.00, 'Hot Coffee', 'hotcaphevietnam.jpg', 'Vietnamese coffee, often strong and sweet, served with condensed milk.', 'cv987654', 'Available'),
+(59, 'Americano', 1, '80.00', 100.00, 'Hot Coffee', 'hotamericano.png', 'Diluted espresso with hot water, offering a milder flavor.', 'ar72c3d4', 'Available'),
+(60, 'Caffe Latte', 1, '90.00', 100.00, 'Hot Coffee', 'hotcaffelatte.jpg', 'Smooth and creamy coffee with espresso and steamed milk.', 'cl83d4e5', 'Available'),
+(61, 'Vanilla Latte', 1, '90.00', 100.00, 'Hot Coffee', 'hotvanilla.png', 'Latte with a sweet hint of vanilla flavor.', 'vl94e5f6', 'Available'),
+(62, 'Mocha Latte', 1, '90.00', 100.00, 'Hot Coffee', 'hotmocha.jpg', 'Latte with chocolate syrup for a delightful chocolatey twist.', 'vl15f6g7', 'Available'),
+(63, 'Caramel Latte', 1, '95.00', 105.00, 'Hot Coffee', 'hotcaramel.jpg', 'Latte with a sweet caramel infusion.', 'cl56G7h8', 'Available'),
+(64, 'Spanish Latte', 1, '90.00', 100.00, 'Hot Coffee', 'hotspanish.jpg', 'Latte with a touch of condensed milk, providing a rich and sweet taste.', 'sl47h8i9', 'Available'),
+(65, 'Americano', 1, '90.00', 0.00, 'Iced Coffee', 'icedamericano.jpg', 'Chilled perfection of diluted espresso over ice, maintaining its smooth and robust character for a refreshing sip.', 'ar38I9j0', 'Available'),
+(66, 'Caphe Vietnam', 1, '120.00', 100.00, 'Iced Coffee', 'icedcaphevietnam.jpg', 'Vietnamese iced coffee, bold and sweet, often served over ice with condensed milk, offering a cool and rich experience.', 'cv29j0k1', 'Available'),
+(67, 'Caffe Latte', 1, '130.00', 140.00, 'Iced Coffee', 'icedcafe.jpg', 'Iced version of the classic latte, blending espresso and cold milk over ice for a cool, creamy indulgence.', 'cl10k1l2', 'Available'),
+(68, 'Vanilla', 1, '140.00', 155.00, 'Non Coffee Frappe', 'vanillafrap.jpg', 'A non-coffee frappe that captivates with the classic sweetness of vanilla, blended to perfection.', 'vn41l2m3', 'Available'),
+(69, 'Mocha', 1, '140.00', 155.00, 'Non Coffee Frappe', 'mochafrap.jpg', 'Tempting blend of chocolate and creamy goodness in a non-coffee frappe for a delightful treat.', 'mc72m3n4', 'Available'),
+(70, 'Caramel', 1, '140.00', 155.00, 'Non Coffee Frappe', 'caramelfrap.jpg', 'Indulgent non-coffee frappe featuring the rich and buttery flavor of caramel, a sweet escape.', 'cr63n4o5', 'Available'),
+(71, 'Cookies and Cream', 1, '150.00', 175.00, 'Non Coffee Frappe', 'icedcookiesncream.jpg', 'Irresistible non-coffee frappe combining the crunch of cookies with the creaminess of a frosty treat.', 'cc34o5p6', 'Available'),
+(72, 'Hazel Nut', 1, '150.00', 165.00, 'Non Coffee Frappe', 'hazelfrap.jpg', 'A nutty twist in a non-coffee frappe, hazelnut-infused and velvety smooth.', 'hn55p6q7', 'Available'),
+(73, 'Java Chip', 1, '150.00', 175.00, 'Non Coffee Frappe', 'javafrap.jpg', 'Non-coffee frappe with a delectable mix of chocolate chips, offering a rich and satisfying experience.', 'jc16q7r8', 'Available'),
+(74, 'Salted Caramel', 1, '150.00', 165.00, 'Non Coffee Frappe', 'saltedcaramelfrap.jpg', 'A sweet and savory non-coffee frappe, combining the allure of caramel with a touch of salt for a unique taste.', 'sc27r8s9', 'Available'),
+(75, 'Taro Cream Cheese', 1, '150.00', 165.00, 'Non Coffee Frappe', 'tarocreamcheese.jpg', 'An exotic non-coffee frappe featuring taro and creamy cheese, creating a refreshing and delightful beverage.', 'tcr8s9t0', 'Available'),
+(76, 'Double Dutch', 1, '150.00', 165.00, 'Non Coffee Frappe', 'doubledutch.jpg', 'A non-coffee frappe extravaganza with a blend of chocolate and vanilla, offering a doubly delightful frozen treat.', 'dd89t0u1', 'Available'),
+(87, 'Smoked Ham', 1, '200.00', 0.00, 'Sandwich', 'smokeham.jpg', 'Ham is hung in a smokehouse and allowed to absorb smoke from smoldering fires, which gives added flavor and color to meat.', 'smt0u1v2', 'Available'),
+(88, 'Truffle Smoked Ham', 1, '200.00', 0.00, 'Sandwich', 'trufflesmokeham.jpg', 'Round ball of cured meat is commonly a whole boneless cut of pork that’s been cured in a sweet glaze.', 'ts123456', 'Available'),
+(89, 'Bacon and Egg', 1, '180.00', 0.00, 'Sandwich', 'baconeggsandwich.jpg', 'Sandwich with consist of sliced bacon and fried egg.', 'be234567', 'Available'),
+(90, 'Cheesy Bacon Mushroom', 1, '180.00', 0.00, 'Sandwich', 'cheesybacon.jpg', ' Made with freshly cooked bacon, sautéed mushrooms, and melted cheese.', 'cb765432', 'Available'),
+(91, 'Pulled Pork', 1, '170.00', 0.00, 'Sandwich', 'pulledpork.jpg', 'Sandwich made with tender, juicy pulled pork with cabbage', 'pp654321', 'Available'),
+(92, 'Tuna Sandwich', 1, '170.00', 0.00, 'Sandwich', 'tunasandwich.jpg', 'Sandwich made with tuna, partner with our mushroom sauce.', 'ts543210', 'Available'),
+(93, 'Chicken Sandwich', 1, '170.00', 0.00, 'Sandwich', 'chickensandwich.jpg', 'Sandwich made with chicken, partner with our tomato sauce.', 'cs432109', 'Available'),
+(94, 'Beef Burger', 1, '160.00', 0.00, 'Sandwich', 'beefburger.jpg', 'Seasoned beef, crisp veggies, and creamy sauces, all nestled in a soft, toasted bun.', 'bb321098', 'Available'),
+(95, 'Hot Chocolate', 1, '80.00', 0.00, 'Others', 'hotchocolate.jpg', 'A comforting and rich beverage, hot chocolate offers a velvety blend of cocoa and milk, perfect for warming up', 'hc210987', 'Available'),
+(96, 'Hot Pure Vanilla', 1, '80.00', 0.00, 'Others', 'hotpurevanilla.jpg', 'A soothing and aromatic hot drink, featuring the pure essence of vanilla for a delightful and fragrant experience.', 'hp109876', 'Available'),
+(97, 'Housed Iced Tea', 1, '55.00', 0.00, 'Others', 'icedtea.jpg', 'A refreshing classic, house iced tea is a chilled and flavorful beverage, perfect for cooling down on a warm day.', 'hi098765', 'Available'),
+(98, 'Iced Tea Pitcher', 1, '110.00', 0.00, 'Others', 'icedteapitcher.jpg', 'A cool and convenient way to enjoy the timeless goodness of iced tea, served in a pitcher for easy sharing and sipping.', 'it098765', 'Available'),
+(99, 'Iced Coffee Cream Cheese', 1, '165.00', 180.00, 'Flavored Coffee', 'icedcoffeecheese.jpg', 'An unconventional treat, iced coffee blended with creamy and tangy cream cheese for a refreshing and surprising twist.', 'ic987654', 'Available');
 
 -- --------------------------------------------------------
 
@@ -283,10 +289,46 @@ INSERT INTO `product_tbl` (`prod_id`, `prod_name`, `prod_quantity`, `prod_mprice
 
 CREATE TABLE `rawproducttable` (
   `rawID` int NOT NULL,
-  `product` text NOT NULL,
-  `quantity` int NOT NULL,
-  `stocks` int NOT NULL
+  `name` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `stocks` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `barcode` text NOT NULL,
+  `item_categ` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `rawproducttable`
+--
+
+INSERT INTO `rawproducttable` (`rawID`, `name`, `stocks`, `barcode`, `item_categ`) VALUES
+(1, 'Espresso Machine', '1', 'c2c9f960', 'Equipment'),
+(2, 'Coffee Grinder', '1', '6f6254f5', 'Equipment'),
+(3, 'Commercial Coffee Brewer', '1', 'c5b460b0', 'Equipment'),
+(4, 'Milk Steamer/Frother', '1', 'e86cc6be', 'Equipment'),
+(5, 'Commercial Blender', '1', '4d4edffc', 'Equipment'),
+(6, 'Coffee Roaster', '1', '7e920ee1', 'Equipment'),
+(7, 'Water Filtration System', '1', 'a0f515a9', 'Equipment'),
+(8, 'Coffee Servers', '20', '58cac5ec', 'Equipment'),
+(9, 'Coffee Beans', '1000g', '83ddc61f', 'Raw Materials'),
+(10, 'Milk', '50 boxes', '295bb025', 'Raw Materials'),
+(11, 'Sweetened Milk', '50 boxes', 'db61a4bd', 'Raw Materials'),
+(12, 'Heavy  Cream', '50 cups', '26aa569b', 'Raw Materials'),
+(13, 'Whipped  Cream', '50 cups', '3c675c26', 'Raw Materials'),
+(14, 'Syrup', '1000ml', 'eac44b44', 'Raw Materials'),
+(15, 'Sauce', '1000ml', '32d3a4f9', 'Raw Materials'),
+(16, 'Frappes Powder', '1000g', 'e1c88f79', 'Raw Materials'),
+(17, 'White Sugar', '1000g', 'b3462475', 'Raw Materials'),
+(18, 'Brown Sugar', '1000g', '798cc88b', 'Raw Materials'),
+(19, 'Chicken', '10kg', '72f29dcb', 'Raw Materials'),
+(20, 'Pork', '5kg', '553a4758', 'Raw Materials'),
+(21, 'Beef', '10kg', 'aecf14b7', 'Raw Materials'),
+(22, 'Tortillas', '5 packs', '50b60415', 'Raw Materials'),
+(23, 'Cheese', '10 packs', '311962f1', 'Raw Materials'),
+(24, 'Shrimp', '5 kg', '9ec8f066', 'Raw Materials'),
+(25, 'Disposable Cups', '50', '11a78ac4', 'Supplies'),
+(26, 'Paper Hot Cups and Lids', '30', '6ce08ef4', 'Supplies'),
+(27, 'Straws', '50', 'b877bb6b', 'Supplies'),
+(28, 'Napkins', '30', '18ee0a59', 'Supplies'),
+(29, 'Stirrers', '5', '66c3a4e4', 'Supplies');
 
 -- --------------------------------------------------------
 
@@ -436,7 +478,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`UserID`, `LastName`, `FirstName`, `UserRole`, `birthdate`, `email`, `Username`, `Password`, `ContactNo`, `gender`, `address`, `profile_img`, `code`, `status`, `CreatedAt`, `UpdatedAt`) VALUES
-(22, 'Rontale', 'Dan Keneth', 'Customer', '2003-07-06', 'rontaledankeneth@gmail.com', 'rontale12', '$2y$10$ZzyvbfKv12K40hMePj.wY.h66BOiJOPWZaoXGQS65smd2sBdUl57O', 9085353978, 'Male', 'Tawiran Calapan City', 'profile.png', '3d5093e5', 'pending', '2024-04-21 16:10:49', '2024-04-21 16:10:49');
+(22, 'Rontale', 'Dan Keneth', 'Customer', '2003-07-06', 'rontaledankeneth@gmail.com', 'rontale12', '$2y$10$ZzyvbfKv12K40hMePj.wY.h66BOiJOPWZaoXGQS65smd2sBdUl57O', 9085353978, 'Male', 'Tawiran Calapan City', 'profile.png', '3d5093e5', 'pending', '2024-04-21 16:10:49', '2024-04-21 16:10:49'),
+(24, 'Reyes', 'Colleen', 'Admin', '2003-05-27', 'rcolleen@gmail.com', 'rcolleen', '$2y$10$usZyT1zB61Vnyg1Ho3UEa.isfO16aQ1m69IIIURi6prHG1ispSVaC', 9286341210, 'Female', 'Masipit, Calapan City', 'profile.png', 'f71bfaf7', 'pending', '2024-04-27 14:24:19', '2024-04-27 14:24:19'),
+(25, 'Gutierrez', 'Nicolle', 'Customer', '2003-07-17', 'nicolle@gmail.com', 'nicsxxx17', '$2y$10$leq.7kiCRllYStOVelY0UeQk8n1gt5x51oO7rChoaDGjpV8ZmynXK', 9944838485, 'Female', 'Dao Naujan, Oriental Mindoro', 'profile.png', '329e90f5', 'pending', '2024-04-27 14:34:43', '2024-04-27 14:34:43');
 
 --
 -- Indexes for dumped tables
@@ -538,7 +582,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart_tbl`
 --
 ALTER TABLE `cart_tbl`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `complaint`
@@ -562,7 +606,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `feedback_tbl`
 --
 ALTER TABLE `feedback_tbl`
-  MODIFY `feedbackID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `feedbackID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `order`
@@ -580,13 +624,13 @@ ALTER TABLE `orderhistory`
 -- AUTO_INCREMENT for table `product_tbl`
 --
 ALTER TABLE `product_tbl`
-  MODIFY `prod_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `prod_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT for table `rawproducttable`
 --
 ALTER TABLE `rawproducttable`
-  MODIFY `rawID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `rawID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tablereservation`
@@ -610,7 +654,7 @@ ALTER TABLE `tbl_orders`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `UserID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables

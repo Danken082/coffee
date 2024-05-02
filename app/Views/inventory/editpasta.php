@@ -13,7 +13,6 @@
     </head>
     <body>
         <div class="col-md-12">
-            <!-- Edit Product Form -->
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div
@@ -24,7 +23,7 @@
 
                 <div class="card-body px-4 pb-3">
 
-                    <form action="<?= base_url('/updatepasta/'. $epasta['prod_id'])?>" class="row g-3" method="POST">
+                    <form action="<?= base_url('/updatepasta/'. $epasta['prod_id'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
                         <div class="col-md-5">
                             <label for="Name" class="form-label">Product Name</label>
                             <div class="input-group input-group-outline my-3">
@@ -40,25 +39,25 @@
                         <div class="col-md-5">
                             <label for="Quantity" class="form-label">Quantity</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="number" class="form-control" id="quantity" name="prod_quantity" value="<?=$epasta['prod_quantity'] ?>">
+                                <input type="number" class="form-control" id="quantity" name="prod_quantity" min="1" value="<?=$epasta['prod_quantity'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <label for="Medium" class="form-label">Price</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="medium" name="prod_mprice" value="<?=$epasta['prod_mprice'] ?>">
+                                <input type="text" class="form-control" id="medium" name="prod_mprice" min="1" value="<?=$epasta['prod_mprice'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <label for="Barcode" class="form-label">BarCode</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="barcode" name="prod_code" value="<?=$epasta['prod_code'] ?>">
+                                <input type="text" disabled class="form-control" id="barcode" name="prod_code" value="<?=$epasta['prod_code'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <label for="Images" class="form-label">Images</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="file" id="images" name="prod_img" value="<?=$epasta['prod_img'] ?>">
+                                <input type="file" id="images" name="prod_img" value="<?=$epasta['prod_img'] ?>" accept=".jpg, .jpeg, .png">
                             </div>
                         </div>
                         <div class="col-12">
