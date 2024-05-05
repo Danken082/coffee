@@ -14,15 +14,11 @@
         <link href="/assets/css/table.css" rel="stylesheet" />
     </head>
     <body>
-    <div class="container">
-            <div class="col-12">
-                <div class="card my-4">
-                    <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                        <h4 class="text-white text-capitalize ps-3">Product List</h4>
-                    </div>
-                </div><br>
-            </div>
-        </div>
+    <br>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<?= base_url('/adminprod')?>" style="background-color: transparent; color:white; font-size: 1.5em;">Back to Product Items</a></li>
+        <li class="breadcrumb-item active" aria-current="page" style="background-color: transparent; color:white; font-size: 1.5em;">Pasta List</li>
+    </ol><br><br>
         <div class="card-body">
             <div class="table-responsive">
                 <?php if(session()->getFlashdata('msg')):?>
@@ -30,7 +26,7 @@
                         <?= session()->getFlashdata('msg') ?>
                     </div>
                 <?php endif;?>
-                <table class="table align-items-center">
+                <table >
                     <thead>
                         <tr>
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Name</th>
@@ -54,19 +50,19 @@
                         <?php foreach($prod as $p): ?>
                             <tr>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_name'] ?></p>
+                                    <p class="text-xs  font-weight-bold"><?=$p['prod_name'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_desc'] ?></p>
+                                    <p class="text-xs  font-weight-bold"><?=$p['prod_desc'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_quantity'] ?></p>
+                                    <p class="text-xs  font-weight-bold"><?=$p['prod_quantity'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold">₱ <?=$p['prod_mprice'] ?></p>
+                                    <p class="text-xs  font-weight-bold">₱ <?=$p['prod_mprice'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs text-primary mb-0 font-weight-bold"><?=$p['prod_code'] ?></p>
+                                    <p class="text-xs  font-weight-bold"><?=$p['prod_code'] ?></p>
                                 </td>
                                 <td class="text-center">
                                     <img src="<?php base_url();?>/assets/images/products/<?= $p['prod_img'] ?>" alt="img">
@@ -77,25 +73,45 @@
                                         data-toggle="tooltip" data-original-title="Edit Coffee">
                                         Edit
                                     </a>||
-                                    <a href="<?= base_url('/deletepasta/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs"
+                                    <a href="<?= base_url('/deletepasta/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs delete-link"
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
                             <td>
-                                    <form action="<?= base_url('/availablepasta/')?>" method="POST">
-                                    <input type="hidden" name="update" value="<?= $p['prod_id']?>">
-                                    <input type="hidden" name="prod_status" value="Available">
-                                    <button type="submit">Available</button>
-                                </form> <br><form action="<?= base_url('/unavailablepasta/')?>" method="POST">
-                                    <input type="hidden" name="update" value="<?= $p['prod_id']?>">
-                                    <input type="hidden" name="prod_status" value="Unavailable">
-                                    <button type="submit">Unavailable</button>
+                            <form action="<?= base_url('/availablemeal/')?>" method="POST">
+                                 <input type="hidden" name="update" value="<?= $p['prod_id']?>">
+                                 <input type="hidden" name="prod_status" value="Available">
+                                 <button type="submit" class="avlbtn">Available</button>
+                            </form> 
+                            <br>
+                            <form action="<?= base_url('/unavailablemeal/')?>" method="POST">
+                                <input type="hidden" name="update" value="<?= $p['prod_id']?>">
+                                <input type="hidden" name="prod_status" value="Unavailable">
+                                <button type="submit" class="unvlbtn">Unavailable</button>
+                            </form>
                                 </form></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table><br>
-                <a href="<?= base_url('/adminprod')?>" class="btn btn-info">BACK</a>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var deleteLinks = document.querySelectorAll('.delete-link');
+                
+                deleteLinks.forEach(function (link) {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        var confirmDelete = confirm('Are you sure you want to delete this product?');
+                        if (confirmDelete) {
+                            window.location.href = this.getAttribute('href');
+                        } else {
+                            return false;
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

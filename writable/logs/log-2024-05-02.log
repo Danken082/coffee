@@ -1,0 +1,106 @@
+CRITICAL - 2024-05-02 01:21:54 --> Invalid file: "/inventory/addproduct.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/inventory/addproduct.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/inventory/addproduct', [], true)
+ 3 APPPATH\Controllers\InventoryController.php(20): view('/inventory/addproduct')
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->product()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 01:30:55 --> Invalid file: "/inventory/equipments.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/inventory/equipments.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/inventory/equipments', [], true)
+ 3 APPPATH\Controllers\InventoryController.php(1138): view('/inventory/equipments', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->equip()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 01:32:24 --> Invalid file: "/inventory/equipments.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/inventory/equipments.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/inventory/equipments', [], true)
+ 3 APPPATH\Controllers\InventoryController.php(1138): view('/inventory/equipments', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->equip()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 02:51:47 --> unlink(assets/images/products/icedamericano.jpg): Resource temporarily unavailable
+in APPPATH\Controllers\InventoryController.php on line 221.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(assets/images/products/icedamericano.jpg): Resource temporarily unavailable', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 221)
+ 2 APPPATH\Controllers\InventoryController.php(221): unlink('assets/images/products/icedamericano.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->updateiced('65')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 03:14:29 --> Invalid file: "/admin/adminprofile.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/admin/adminprofile.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/adminprofile', [], true)
+ 3 APPPATH\Controllers\AdminController.php(311): view('/admin/adminprofile')
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->adminprofile()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 03:31:15 --> syntax error, unexpected variable "$routes"
+in APPPATH\Config\Routes.php on line 18.
+ 1 SYSTEMPATH\CodeIgniter.php(787): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(442): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 04:30:14 --> Invalid file: "/inventory/editraw.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/inventory/editraw.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/inventory/editraw', [], true)
+ 3 APPPATH\Controllers\InventoryController.php(1170): view('/inventory/editraw', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->editraw('9')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 04:55:42 --> Undefined array key "stocks"
+in APPPATH\Controllers\InventoryController.php on line 1110.
+ 1 APPPATH\Controllers\InventoryController.php(1110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "stocks"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 04:57:11 --> Undefined array key "stocks"
+in APPPATH\Controllers\InventoryController.php on line 1110.
+ 1 APPPATH\Controllers\InventoryController.php(1110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "stocks"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 04:57:20 --> Undefined array key "stocks"
+in APPPATH\Controllers\InventoryController.php on line 1110.
+ 1 APPPATH\Controllers\InventoryController.php(1110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "stocks"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 04:59:04 --> Undefined array key "stocks"
+in APPPATH\Controllers\InventoryController.php on line 1110.
+ 1 APPPATH\Controllers\InventoryController.php(1110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "stocks"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-02 04:59:07 --> Undefined array key "stocks"
+in APPPATH\Controllers\InventoryController.php on line 1110.
+ 1 APPPATH\Controllers\InventoryController.php(1110): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "stocks"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1110)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

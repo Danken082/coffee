@@ -5621,7 +5621,6 @@ fieldset:disabled .btn {
   --bs-breadcrumb-padding-x: 1rem;
   --bs-breadcrumb-padding-y: 0.5rem;
   --bs-breadcrumb-margin-bottom: 1rem;
-  --bs-breadcrumb-bg: #f0f2f5;
   --bs-breadcrumb-border-radius: 0.375rem;
   --bs-breadcrumb-divider-color: #6c757d;
   --bs-breadcrumb-item-padding-x: 0.5rem;
@@ -5644,8 +5643,7 @@ fieldset:disabled .btn {
   float: left;
   padding-right: var(--bs-breadcrumb-item-padding-x);
   color: var(--bs-breadcrumb-divider-color);
-  content: var(--bs-breadcrumb-divider, "/")
-    /* rtl: var(--bs-breadcrumb-divider, "/") */;
+  content: var(--bs-breadcrumb-divider, ">");
 }
 
 .breadcrumb-item.active {

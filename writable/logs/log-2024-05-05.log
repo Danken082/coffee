@@ -1,0 +1,70 @@
+CRITICAL - 2024-05-05 02:45:09 --> Invalid file: "/inventory/editsupplies.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('/inventory/editsupplies.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/inventory/editsupplies', [], true)
+ 3 APPPATH\Controllers\InventoryController.php(1207): view('/inventory/editsupplies', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->editsupply('27')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-05 02:54:39 --> Undefined array key "item_categ"
+in APPPATH\Controllers\InventoryController.php on line 1111.
+ 1 APPPATH\Controllers\InventoryController.php(1111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_categ"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1111)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-05 02:55:05 --> Undefined array key "item_categ"
+in APPPATH\Controllers\InventoryController.php on line 1111.
+ 1 APPPATH\Controllers\InventoryController.php(1111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_categ"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1111)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-05 02:58:22 --> Undefined array key "item_categ"
+in APPPATH\Controllers\InventoryController.php on line 1111.
+ 1 APPPATH\Controllers\InventoryController.php(1111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_categ"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1111)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-05 02:58:37 --> Undefined array key "item_categ"
+in APPPATH\Controllers\InventoryController.php on line 1111.
+ 1 APPPATH\Controllers\InventoryController.php(1111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_categ"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1111)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-05 02:58:44 --> Undefined array key "item_categ"
+in APPPATH\Controllers\InventoryController.php on line 1111.
+ 1 APPPATH\Controllers\InventoryController.php(1111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_categ"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1111)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-05 02:59:17 --> Undefined array key "item_categ"
+in APPPATH\Controllers\InventoryController.php on line 1111.
+ 1 APPPATH\Controllers\InventoryController.php(1111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "item_categ"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\InventoryController.php', 1111)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->additems()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-05 06:55:01 --> Undefined variable $id
+in APPPATH\Views\inventory\hotcoffee.php on line 109.
+ 1 APPPATH\Views\inventory\hotcoffee.php(109): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\laragon\\www\\coffee\\app\\Views\\inventory\\hotcoffee.php', 109)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\inventory\\hotcoffee.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/inventory/hotcoffee', [], true)
+ 5 APPPATH\Controllers\InventoryController.php(78): view('/inventory/hotcoffee', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\InventoryController->gethotcoffee()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\InventoryController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

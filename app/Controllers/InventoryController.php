@@ -4,35 +4,70 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProductModel;
+use App\Models\ItemsModel;
 
 class InventoryController extends BaseController
 {   
     private $prod;
+    private $item;
 
     public function __construct(){
         $this->prod = new ProductModel();
+        $this->item = new ItemsModel();
     }
 
-    public function drinks(){
-        return view('/inventory/adddrinks');
+    public function product(){
+        return view('/inventory/addproduct');
     }
 
-    public function adddrink(){
-        $prod = new ProductModel();
-        $addDrinks = substr(md5(rand()), 0, 8);
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_desc' => $this->request->getPost('prod_desc'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $addDrinks,
-            'prod_img' => $this->request->getPost('prod_img'),
-            'product_status' => 'Available'
-        ];
-        $prod->save($data);
-        return redirect()->to(base_url('/adminprod'));
+    public function addproduct()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (empty($_POST['prod_categ'])) {
+                echo "<script>alert('Please select a category first.')</script>";
+                echo "<script>window.history.back()</script>";
+                exit();
+            }
+
+            $prod = new ProductModel();
+            
+            $addProduct = substr(md5(rand()), 0, 8);
+        
+            $uploadDir = 'assets/images/products/';
+
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+        
+            if (isset($_FILES['prod_img']) && $_FILES['prod_img']['error'] === UPLOAD_ERR_OK) {
+                $fileName = $_FILES['prod_img']['name'];
+        
+                $uploadFile = $uploadDir . $fileName;
+                if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile))
+                {
+                    $data = [
+                        'prod_name' => $_POST['prod_name'],
+                        'prod_desc' => $_POST['prod_desc'],
+                        'prod_quantity' => $_POST['prod_quantity'],
+                        'prod_mprice' => $_POST['prod_mprice'],
+                        'prod_lprice' => $_POST['prod_lprice'],
+                        'prod_categ' => $_POST['prod_categ'],
+                        'prod_code' => $addProduct,
+                        'prod_img' => $fileName,
+                        'product_status' => 'Available'
+                    ];
+                    $prod->save($data);
+        
+                    echo "<script>alert('Product added successfully.')</script>";
+                    echo "<script>window.location.href='" . base_url('/myproducts') . "'</script>";
+                    exit();
+                } else {
+                    echo 'Error uploading file.';
+                }
+            } else {
+                echo 'File upload error.';
+            }
+        }
     }
 
     public function gethotcoffee()
@@ -53,24 +88,51 @@ class InventoryController extends BaseController
     public function updatehot($id)
     {
         $hot = new ProductModel();
-        $data = [
+        $productData = $hot->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $hot->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $hot->update($id, $postData);
         return redirect()->to(base_url('inventoryhotcoffee'));
     }
-    
+
     public function deletehot($id)
     {
         $hot = new ProductModel();
+        $product = $hot->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $hot->delete($id);
-        return redirect()->to(base_url('inventoryhotcoffee'));
+        return redirect()->to(base_url('inventoryhotcoffee'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilityhot()
@@ -79,7 +141,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventoryhotcoffee')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventoryhotcoffee')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailablehot()
@@ -89,7 +151,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventoryhotcoffee')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventoryhotcoffee')->with('msg', "The product you selected is now unavailable");     
     }
 
     private function myProduct($update)
@@ -143,25 +205,51 @@ class InventoryController extends BaseController
     public function updateiced($id)
     {
         $iced = new ProductModel();
-        $data = [
+        $productData = $iced->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        
-        $iced->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $iced->update($id, $postData);
         return redirect()->to(base_url('inventoryicedcoffee'));
     }
     
     public function deleteiced($id)
     {
         $iced = new ProductModel();
+        $product = $iced->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $iced->delete($id);
-        return redirect()->to(base_url('inventoryicedcoffee'));
+        return redirect()->to(base_url('inventoryicedcoffee'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilityiced()
@@ -170,7 +258,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventoryicedcoffee')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventoryicedcoffee')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailableiced()
@@ -180,7 +268,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventoryicedcoffee')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventoryicedcoffee')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getflavoredcoffee()
@@ -201,24 +289,51 @@ class InventoryController extends BaseController
     public function updateflavored($id)
     {
         $flav = new ProductModel();
-        $data = [
+        $productData = $flav->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $flav->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $flav->update($id, $postData);
         return redirect()->to(base_url('inventoryflavoredcoffee'));
     }
     
     public function deleteflavored($id)
     {
         $flav = new ProductModel();
+        $product = $flav->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $flav->delete($id);
-        return redirect()->to(base_url('inventoryflavoredcoffee'));
+        return redirect()->to(base_url('inventoryflavoredcoffee'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilityflavored()
@@ -227,7 +342,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventoryflavoredcoffee')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventoryflavoredcoffee')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailableflavored()
@@ -237,7 +352,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventoryflavoredcoffee')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventoryflavoredcoffee')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getnoncoffee()
@@ -258,24 +373,51 @@ class InventoryController extends BaseController
     public function updatenoncoffee($id)
     {
         $non = new ProductModel();
-        $data = [
+        $productData = $non->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $non->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $non->update($id, $postData);
         return redirect()->to(base_url('inventorynoncoffee'));
     }
     
     public function deletenoncoffee($id)
     {
         $non = new ProductModel();
+        $product = $non->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $non->delete($id);
-        return redirect()->to(base_url('inventorynoncoffee'));
+        return redirect()->to(base_url('inventorynoncoffee'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilitynoncoffee()
@@ -284,7 +426,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventorynoncoffee')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventorynoncoffee')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailablenoncoffee()
@@ -294,7 +436,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventorynoncoffee')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventorynoncoffee')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getcoffeefrappe()
@@ -315,24 +457,51 @@ class InventoryController extends BaseController
     public function updatecoffeefrappe($id)
     {
         $frap = new ProductModel();
-        $data = [
+        $productData = $frap->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
             'prod_lprice' => $this->request->getPost('prod_lprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $frap->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $frap->update($id, $postData);
         return redirect()->to(base_url('inventorycoffeefrappe'));
     }
     
     public function deletecoffeefrappe($id)
     {
         $frap = new ProductModel();
+        $product = $frap->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $frap->delete($id);
-        return redirect()->to(base_url('inventorycoffeefrappe'));
+        return redirect()->to(base_url('inventorycoffeefrappe'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilitycoffeefrappe()
@@ -341,7 +510,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventorycoffeefrappe')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventorycoffeefrappe')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailablecoffeefrappe()
@@ -351,7 +520,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventorycoffeefrappe')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventorycoffeefrappe')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getothers()
@@ -365,30 +534,58 @@ class InventoryController extends BaseController
     public function editothers($id)
     {
         $eother = new ProductModel();
-        $data['eother'] = $eother->find($id);
+        $data['eothers'] = $eother->find($id);
         return view('/inventory/editothers', $data);
     }
 
     public function updateothers($id)
     {
         $other = new ProductModel();
-        $data = [
+        $productData = $other->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
+            'prod_lprice' => $this->request->getPost('prod_lprice'),
         ];
-        $other->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $other->update($id, $postData);
         return redirect()->to(base_url('inventoryothers'));
     }
     
     public function deleteothers($id)
     {
         $other = new ProductModel();
+        $product = $other->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $other->delete($id);
-        return redirect()->to(base_url('inventoryothers'));
+        return redirect()->to(base_url('inventoryothers'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilityothers()
@@ -397,7 +594,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventoryothers')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventoryothers')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailableothers()
@@ -407,27 +604,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventoryothers')->with('msg', "The product you've selected is now unavailable");     
-    }
-
-    public function meals(){
-        return view('/inventory/addmeals');
-    }
-
-    public function addmeals()
-    {
-        $prod = new ProductModel();
-        $data = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_desc' => $this->request->getPost('prod_desc'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_categ' => $this->request->getPost('prod_categ'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
-        ];
-        $prod->save($data);
-        return redirect()->to(base_url('/adminprod'));
+    return redirect()->to('inventoryothers')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getmeal()
@@ -448,23 +625,50 @@ class InventoryController extends BaseController
     public function updatemeal($id)
     {
         $meal = new ProductModel();
-        $data = [
+        $productData = $meal->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $meal->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $meal->update($id, $postData);
         return redirect()->to(base_url('inventorymeal'));
     }
     
     public function deletemeal($id)
     {
         $meal = new ProductModel();
+        $product = $meal->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $meal->delete($id);
-        return redirect()->to(base_url('inventorymeal'));
+        return redirect()->to(base_url('inventorymeal'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilitymeal()
@@ -473,7 +677,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventorymeal')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventorymeal')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailablemeal()
@@ -483,7 +687,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventorymeal')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventorymeal')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getpasta()
@@ -504,23 +708,50 @@ class InventoryController extends BaseController
     public function updatepasta($id)
     {
         $pasta = new ProductModel();
-        $data = [
+        $productData = $pasta->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $pasta->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $pasta->update($id, $postData);
         return redirect()->to(base_url('inventorypasta'));
     }
     
     public function deletepasta($id)
     {
         $pasta = new ProductModel();
+        $product = $pasta->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $pasta->delete($id);
-        return redirect()->to(base_url('inventorypasta'));
+        return redirect()->to(base_url('inventorypasta'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilitypasta()
@@ -529,7 +760,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventorypasta')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventorypasta')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailablepasta()
@@ -539,7 +770,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventorypasta')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventorypasta')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getappetizer()
@@ -560,23 +791,50 @@ class InventoryController extends BaseController
     public function updateappetizer($id)
     {
         $app = new ProductModel();
-        $data = [
+        $productData = $app->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $app->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $app->update($id, $postData);
         return redirect()->to(base_url('inventoryappetizer'));
     }
     
     public function deleteappetizer($id)
     {
         $app = new ProductModel();
+        $product = $app->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $app->delete($id);
-        return redirect()->to(base_url('inventoryappetizer'));
+        return redirect()->to(base_url('inventoryapp'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilityappetizer()
@@ -585,7 +843,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventoryappetizer')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventoryappetizer')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailableappetizer()
@@ -595,7 +853,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventoryappetizer')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventoryappetizer')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getsalad()
@@ -616,23 +874,50 @@ class InventoryController extends BaseController
     public function updatesalad($id)
     {
         $salad = new ProductModel();
-        $data = [
+        $productData = $salad->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $salad->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $salad->update($id, $postData);
         return redirect()->to(base_url('inventorysalad'));
     }
     
     public function deletesalad($id)
     {
         $salad = new ProductModel();
+        $product = $salad->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $salad->delete($id);
-        return redirect()->to(base_url('inventorysalad'));
+        return redirect()->to(base_url('inventorysalad'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilitysalad()
@@ -641,7 +926,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventorysalad')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventorysalad')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailablesalad()
@@ -651,7 +936,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventorysalad')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventorysalad')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getsoup()
@@ -672,23 +957,50 @@ class InventoryController extends BaseController
     public function updatesoup($id)
     {
         $soup = new ProductModel();
-        $data = [
+        $productData = $soup->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $soup->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $soup->update($id, $postData);
         return redirect()->to(base_url('inventorysoup'));
     }
     
     public function deletesoup($id)
     {
         $soup = new ProductModel();
+        $product = $soup->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $soup->delete($id);
-        return redirect()->to(base_url('inventorysoup'));
+        return redirect()->to(base_url('inventorysoup'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilitysoup()
@@ -697,7 +1009,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventorysoup')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventorysoup')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailablesoup()
@@ -707,7 +1019,7 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventorysoup')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventorysoup')->with('msg', "The product you selected is now unavailable");     
     }
 
     public function getsandwich()
@@ -728,23 +1040,50 @@ class InventoryController extends BaseController
     public function updatesandwich($id)
     {
         $sand = new ProductModel();
-        $data = [
+        $productData = $sand->find($id);
+
+        $postData = [
             'prod_name' => $this->request->getPost('prod_name'),
             'prod_desc' => $this->request->getPost('prod_desc'),
             'prod_quantity' => $this->request->getPost('prod_quantity'),
             'prod_mprice' => $this->request->getPost('prod_mprice'),
-            'prod_code' => $this->request->getPost('prod_code'),
-            'prod_img' => $this->request->getPost('prod_img'),
         ];
-        $sand->update($id, $data);
+
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
+
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
+        }
+        $sand->update($id, $postData);
         return redirect()->to(base_url('inventorysandwich'));
     }
     
     public function deletesandwich($id)
     {
         $sand = new ProductModel();
+        $product = $sand->find($id);
+        
+        if (!empty($product['prod_img'])) {
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
+        
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
         $sand->delete($id);
-        return redirect()->to(base_url('inventorysandwich'));
+        return redirect()->to(base_url('inventorysandwich'))->with('msg', "The product you selected has been deleted");
     }
 
     public function availabilitysandwich()
@@ -753,7 +1092,7 @@ class InventoryController extends BaseController
         $updateAvailability = $this->myProduct($update);
                               $this->updateProd($updateAvailability, $update);
 
-        return redirect()->to('inventorysandwich')->with('msg', "The product you've selected is now available");     
+        return redirect()->to('inventorysandwich')->with('msg', "The product you selected is now available");     
     }
 
     public function Unavailablesandwich()
@@ -763,6 +1102,149 @@ class InventoryController extends BaseController
         $updateUnavailability = $this->UnavailableProduct($unavailable);
                                 $this->updateAvailable($updateUnavailability);
                                
-    return redirect()->to('inventorysandwich')->with('msg', "The product you've selected is now unavailable");     
+    return redirect()->to('inventorysandwich')->with('msg', "The product you selected is now unavailable");     
+    }
+    
+    public function additems()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (empty($_POST['item_categ'])) {
+                echo "<script>alert('Please select a category first for the item.')</script>";
+                echo "<script>window.history.back()</script>";
+                exit();
+            }
+
+            $item = new ItemsModel();
+        
+            $addItems = substr(md5(rand()), 0, 8);
+        
+            $data = [
+                'name' => $_POST['name'],
+                'stocks' => $_POST['stocks'],
+                'item_categ' => $_POST['item_categ'],
+                'barcode' => $addItems
+            ];
+            $item->save($data);
+        
+            echo "<script>alert('Item added successfully.')</script>";
+            echo "<script>window.location.href='" . base_url('/myitems') . "'</script>";
+            exit();
+        }
+    }
+
+
+    public function equip()
+    {
+        $categ = 'Equipment';
+        $item = new ItemsModel();
+        $data['item'] = $item->equipments($categ);
+        return view ('/inventory/equipments', $data);
+    }
+
+    public function editequip($id)
+    {
+        $equip = new ItemsModel();
+        $data['equip'] = $equip->find($id);
+        return view('/inventory/editequip', $data);
+    }
+
+    public function updateequip($id)
+    {
+        $item = new ItemsModel();
+        $data = $item->find($id);
+
+        $updatedData = [
+            'name' => $this->request->getPost('name'),
+            'stocks' => $this->request->getPost('stocks'),
+        ];
+
+        $item->update($id, $updatedData);
+
+        return redirect()->to(base_url('inventoryequip'));
+    }
+
+    public function deleteequip($id)
+    {
+        $item = new ItemsModel();
+        $item->delete($id);
+        return redirect()->to(base_url('inventoryequip'))->with('msg', "The equipment you selected has been deleted");
+    }
+
+    public function rawmats()
+    {
+        $categ = 'Raw Materials';
+        $item = new ItemsModel();
+        $data['item'] = $item->rawmats($categ);
+        return view ('/inventory/rawmaterials', $data);
+    }
+
+    public function editraw($id)
+    {
+        $eraw = new ItemsModel();
+        $data['raw'] = $eraw->find($id);
+        return view('/inventory/editrawmats', $data);
+    }
+
+    public function updateraw($id)
+    {
+        $item = new ItemsModel();
+        $data = $item->find($id);
+
+        $updatedData = [
+            'name' => $this->request->getPost('name'),
+            'stocks' => $this->request->getPost('stocks'),
+        ];
+
+        $item->update($id, $updatedData);
+
+        return redirect()->to(base_url('inventoryrawmats'));
+    }
+
+    public function deleteraw($id)
+    {
+        $item = new ItemsModel();
+        $item->delete($id);
+        return redirect()->to(base_url('inventoryrawmaterials'))->with('msg', "The materials you selected has been deleted");
+    }
+
+    public function supply()
+    {
+        $categ = 'Supplies';
+        $item = new ItemsModel();
+        $data['item'] = $item->rawmats($categ);
+        return view ('/inventory/supplies', $data);
+    }
+
+    public function editsupply($id)
+    {
+        $esupply = new ItemsModel();
+        $data['supply'] = $esupply->find($id);
+        return view('/inventory/editsupply', $data);
+    }
+    
+    public function updatesupply($id)
+    {
+        $item = new ItemsModel();
+        $data = $item->find($id);
+
+        $updatedData = [
+            'name' => $this->request->getPost('name'),
+            'stocks' => $this->request->getPost('stocks'),
+        ];
+
+        $item->update($id, $updatedData);
+
+        return redirect()->to(base_url('inventorysupply'));
+    }
+
+    public function deletesupply($id)
+    {
+        $item = new ItemsModel();
+        $item->delete($id);
+        return redirect()->to(base_url('inventorysupplies'))->with('msg', "The supply you selected has been deleted");
+    }
+
+    public function items(){
+        return view('/inventory/additems');
     }
 }

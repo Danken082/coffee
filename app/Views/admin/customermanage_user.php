@@ -21,10 +21,8 @@
     <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3">
-                <?php include('sidebar.php') ?>
-            </div>
-            <div class="col-lg-9">
+            <?php include('sidebar.php') ?>
+            <div class="col-lg-10">
                 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
                 </nav>
                 <div class="row">
@@ -40,7 +38,9 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center ">Name</th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Profile Picture</th>
+
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Name</th>
 
                                         <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Username</th>
                                     
@@ -58,6 +58,10 @@
                                     <tbody>
                                         <?php foreach($customer as $c): ?>
                                             <tr>
+                                                <td class="text-center">
+                                                    <p class="text-xs text-uppercase text-secondary mb-0"><img src="<?= base_url() . 'assets/user/images/' . $c['profile_img']?>"></p>
+                                                </td>
+
                                                 <td class="text-center">
                                                     <p class="text-xs text-uppercase text-secondary mb-0"><?=$c['FirstName'], '  ', $c['LastName'] ?></p>
                                                 </td>
@@ -96,9 +100,7 @@
             </div>
         </div>
     </main>
-                                                    
 
- 
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
@@ -114,28 +116,6 @@
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
     </script>
-    <script>
-        function confirmDelete(event, userId) {
-            event.preventDefault(); // Prevent the default link behavior
-
-            // Display the confirmation message
-            if (confirm("Are you sure you want to delete this user?")) {
-                // Create a hidden input field dynamically
-                var hiddenInput = document.createElement("input");
-                hiddenInput.type = "hidden";
-                hiddenInput.name = "user_id";
-                hiddenInput.value = userId;
-
-                // Append the hidden input to the form
-                var form = document.getElementById("deleteForm");
-                form.appendChild(hiddenInput);
-
-                // Submit the form
-                form.submit();
-            }
-        }
-    </script>
-
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="../assets/js/material-dashboard.min.js?v=3.1.0"></script>
 

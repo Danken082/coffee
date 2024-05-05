@@ -61,18 +61,18 @@
 									<td class="price">₱ <?= $item['prod_lprice']?></td>
 									<?php else:?>
 									<td class="price"><?php echo('chech your size')?></td>
-										<?php endif;?>
+									<?php endif;?>
 									<td class="quantity">
 										<div class="input-group mb-3">
-										<input type="number" disabled name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
 
-											<form action="<?= base_url('addQuantity/' .$item['id'])?>" method="post">
-											<input type="hidden" name="mprice" value="<?= $item['prod_mprice']?>">
-									<input type="hidden" name="lprice" value="<?= $item['prod_lprice']?>">
-									<input type="hidden" name="cartID" value= "<?= $item['id']?>" class="item-checkbox">
-											<input type="number" min="1" name="newquantity" id="quantity" class="quantity form-control input-number">
-											<small><input type="submit" value="add"></small>	
-										</form>
+											<input type="number" disabled name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
+												<form action="<?= base_url('addQuantity/' .$item['id'])?>" method="post">
+												<input type="hidden" name="mprice" value="<?= $item['prod_mprice']?>">
+													<input type="hidden" name="lprice" value="<?= $item['prod_lprice']?>">
+												<input type="hidden" name="cartID" value= "<?= $item['id']?>" class="item-checkbox">
+												<input type="number" min="1" name="newquantity" id="quantity" class="quantity form-control input-number">
+												<small><button type="submit">add</button></small>	
+											</form>
 										</div>
 									</td>
 						        	<td class="total">₱ <?= $item['total']?></td>
@@ -103,7 +103,7 @@
     					<hr>
     					<p class="d-flex total-price">
     						<span>Total</span>
-    						<span>₱ 17.60</span>
+    						<span>₱ <?= $cart['sum']?></span>
     					</p>
     				</div>
 					<button type="submit" class="btn btn-primary">Place to Checkout</button>
