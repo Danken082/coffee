@@ -38,7 +38,9 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center ">Name</th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Profile Picture</th>
+
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Name</th>
 
                                         <th class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 text-center">Username</th>
                                     
@@ -56,6 +58,10 @@
                                     <tbody>
                                         <?php foreach($customer as $c): ?>
                                             <tr>
+                                                <td class="text-center">
+                                                    <p class="text-xs text-uppercase text-secondary mb-0"><img src="<?= base_url() . 'assets/user/images/' . $c['profile_img']?>"></p>
+                                                </td>
+
                                                 <td class="text-center">
                                                     <p class="text-xs text-uppercase text-secondary mb-0"><?=$c['FirstName'], '  ', $c['LastName'] ?></p>
                                                 </td>

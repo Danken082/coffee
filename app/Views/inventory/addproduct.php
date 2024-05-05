@@ -24,11 +24,11 @@
                     <form action="<?= base_url('addproduct')?>" class="row g-3" method="POST" enctype="multipart/form-data">
                         <div class="input-group input-group-outline my-3">
                             <label for="coffee-name" class="form-label"></label>
-                            <input type="text" class="form-control" id="product-name" name="prod_name" placeholder="Product Name">
+                            <input type="text" class="form-control" id="product-name" name="prod_name" placeholder="Product Name" required>
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="Quantity" class="form-label"></label>
-                            <input type="number" class="form-control" id="quantity" name="prod_quantity" placeholder="Quantity" min="1">
+                            <input type="number" class="form-control" id="quantity" name="prod_quantity" placeholder="Quantity" min="1" required>
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="medium" class="form-label"></label>
@@ -60,7 +60,7 @@
 
                         <div class="input-group input-group-outline my-3">
                             <label for="Code" class="form-label"></label>
-                            <input type="text" name="prod_desc" class="form-control" placeholder ="Product Description">
+                            <input type="text" name="prod_desc" class="form-control" placeholder ="Product Description" required>
                         </div>
                         <h6>Select Image for Product</h6>
                         <div class="input-group input-group-outline my-3">

@@ -55,7 +55,7 @@
                                         data-toggle="tooltip" data-original-title="Edit Coffee">
                                         Edit
                                     </a>||
-                                    <a href="<?= base_url('/deleteequip/' .$i['rawID']) ?>" class="text-danger font-weight-bold text-xs"
+                                    <a href="<?= base_url('/deleteequip/' .$i['rawID']) ?>" class="text-danger font-weight-bold text-xs delete-link"
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
                             </tr>
@@ -64,5 +64,23 @@
                 </table><br>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var deleteLinks = document.querySelectorAll('.delete-link');
+                
+                deleteLinks.forEach(function (link) {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        var confirmDelete = confirm('Are you sure you want to delete this equipment?');
+                        if (confirmDelete) {
+                            window.location.href = this.getAttribute('href');
+                        } else {
+                            return false;
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

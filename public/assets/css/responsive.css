@@ -1,0 +1,18 @@
+/* Add this CSS to make the images center-aligned */
+@media (max-width: 768px){
+    .menu-entry .img {
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+/* Add this CSS to make the whole page responsive */
+@media (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    .menu-entry {
+        text-align: center;
+    }
+    .menu-entry .img {
+        height: 200px; /* Adjust height as needed */
+    }
+}

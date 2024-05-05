@@ -24,11 +24,11 @@
                     <form action="<?= base_url('additems')?>" class="row g-3" method="POST" enctype="multipart/form-data">
                         <div class="input-group input-group-outline my-3">
                             <label for="name" class="form-label"></label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
                         </div>
                         <div class="input-group input-group-outline my-3">
                             <label for="Stocks" class="form-label"></label>
-                            <input type="text" class="form-control" id="stocks" name="stocks" placeholder="Stocks" min="1">
+                            <input type="text" class="form-control" id="stocks" name="stocks" placeholder="Stocks" min="1" required>
                         </div>
                         <h6>Select Category</h6>
                         <div class="input-group input-group-outline my-3">

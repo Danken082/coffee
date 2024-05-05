@@ -23,6 +23,12 @@ class InventoryController extends BaseController
     public function addproduct()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (empty($_POST['prod_categ'])) {
+                echo "<script>alert('Please select a category first.')</script>";
+                echo "<script>window.history.back()</script>";
+                exit();
+            }
+
             $prod = new ProductModel();
             
             $addProduct = substr(md5(rand()), 0, 8);
@@ -52,7 +58,8 @@ class InventoryController extends BaseController
                     ];
                     $prod->save($data);
         
-                    header("Location: " . base_url('/adminprod'));
+                    echo "<script>alert('Product added successfully.')</script>";
+                    echo "<script>window.location.href='" . base_url('/myproducts') . "'</script>";
                     exit();
                 } else {
                     echo 'Error uploading file.';
@@ -1101,6 +1108,12 @@ class InventoryController extends BaseController
     public function additems()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (empty($_POST['item_categ'])) {
+                echo "<script>alert('Please select a category first for the item.')</script>";
+                echo "<script>window.history.back()</script>";
+                exit();
+            }
+
             $item = new ItemsModel();
         
             $addItems = substr(md5(rand()), 0, 8);
@@ -1113,10 +1126,12 @@ class InventoryController extends BaseController
             ];
             $item->save($data);
         
-            header("Location: " . base_url('/adminitems'));
+            echo "<script>alert('Item added successfully.')</script>";
+            echo "<script>window.location.href='" . base_url('/myitems') . "'</script>";
             exit();
         }
     }
+
 
     public function equip()
     {
@@ -1152,7 +1167,7 @@ class InventoryController extends BaseController
     {
         $item = new ItemsModel();
         $item->delete($id);
-        return redirect()->to(base_url('inventoryequip'))->with('msg', "The item you selected has been deleted");
+        return redirect()->to(base_url('inventoryequip'))->with('msg', "The equipment you selected has been deleted");
     }
 
     public function rawmats()
@@ -1189,7 +1204,7 @@ class InventoryController extends BaseController
     {
         $item = new ItemsModel();
         $item->delete($id);
-        return redirect()->to(base_url('inventoryrawmaterials'))->with('msg', "The item you selected has been deleted");
+        return redirect()->to(base_url('inventoryrawmaterials'))->with('msg', "The materials you selected has been deleted");
     }
 
     public function supply()
@@ -1204,7 +1219,7 @@ class InventoryController extends BaseController
     {
         $esupply = new ItemsModel();
         $data['supply'] = $esupply->find($id);
-        return view('/inventory/editsupplies', $data);
+        return view('/inventory/editsupply', $data);
     }
     
     public function updatesupply($id)
@@ -1226,7 +1241,7 @@ class InventoryController extends BaseController
     {
         $item = new ItemsModel();
         $item->delete($id);
-        return redirect()->to(base_url('inventorysupplies'))->with('msg', "The item you selected has been deleted");
+        return redirect()->to(base_url('inventorysupplies'))->with('msg', "The supply you selected has been deleted");
     }
 
     public function items(){

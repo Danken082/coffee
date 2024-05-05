@@ -78,19 +78,18 @@
                                         data-toggle="tooltip" data-original-title="Edit Coffee">
                                         Edit
                                     </a>||
-                                    <a href="<?= base_url('/deletehot/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs"
-                                        id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
+                                    <a href="<?= base_url('/deletehot/' . $p['prod_id']) ?>" class="text-danger font-weight-bold text-xs delete-link" data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
-                                            <td>
+                                <td>
                                     <form action="<?= base_url('/availablehot/')?>" method="POST">
                                     <input type="hidden" name="update" value="<?= $p['prod_id']?>">
                                     <input type="hidden" name="prod_status" value="Available">
-                                    <button type="submit"style="background-color: #507b58; color: white; padding: 5px 10px; font-size: 10px; border-radius: 20px;">Available</button>
+                                    <button type="submit" class="avlbtn">Available</button>
                                 </form> 
                                 <br><form action="<?= base_url('/unavailablehot/')?>" method="POST">
                                     <input type="hidden" name="update" value="<?= $p['prod_id']?>">
                                     <input type="hidden" name="prod_status" value="Unavailable">
-                                    <button type="submit" style="background-color: #ab3131; color: white; padding: 5px 10px; font-size: 10px; border-radius: 20px;">Unavailable</button>
+                                    <button type="submit" class="unvlbtn">Unavailable</button>
                                 </form>
                                </td>
                             </tr>
@@ -99,5 +98,23 @@
                 </table><br>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var deleteLinks = document.querySelectorAll('.delete-link');
+                
+                deleteLinks.forEach(function (link) {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        var confirmDelete = confirm('Are you sure you want to delete this product?');
+                        if (confirmDelete) {
+                            window.location.href = this.getAttribute('href');
+                        } else {
+                            return false;
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

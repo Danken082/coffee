@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 02, 2024 at 05:28 AM
+-- Generation Time: May 05, 2024 at 12:05 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -50,7 +50,8 @@ INSERT INTO `cart_tbl` (`id`, `CustomerID`, `ProductID`, `total`, `quantity`, `s
 (97, NULL, 55, '270.00', 6, 'Medium', 'oncart', '2024-04-17 09:07:11', '2024-04-17 09:07:11'),
 (99, NULL, 57, '1280.00', 16, 'Medium', 'oncart', '2024-04-17 09:11:04', '2024-04-17 09:11:04'),
 (101, NULL, 2, '120.00', 1, 'Medium', 'oncart', '2024-04-22 11:43:49', '2024-04-22 11:43:49'),
-(102, NULL, 3, '120.00', 1, 'Medium', 'oncart', '2024-04-22 11:49:37', '2024-04-22 11:49:37');
+(102, NULL, 3, '120.00', 1, 'Medium', 'oncart', '2024-04-22 11:49:37', '2024-04-22 11:49:37'),
+(103, 25, 2, '480.00', 4, 'Medium', 'oncart', '2024-05-05 08:34:34', '2024-05-05 08:34:34');
 
 -- --------------------------------------------------------
 
@@ -200,7 +201,7 @@ CREATE TABLE `product_tbl` (
 
 INSERT INTO `product_tbl` (`prod_id`, `prod_name`, `prod_quantity`, `prod_mprice`, `prod_lprice`, `prod_categ`, `prod_img`, `prod_desc`, `prod_code`, `product_status`) VALUES
 (1, 'Quesadillas', 1, '160.00', 0.00, 'Appetizer', 'quesadillas.jpg', 'This is a Mexican dish made of a flour tortilla folded like a pizza with mayonnaise and tomato on top.', 'qd123456', 'Available'),
-(2, 'Nachos', 1, '120.00', 0.00, 'Appetizer', 'nachos.png', 'Also a Mexican dish made with corn chips, vegetables, and other ingredients on top.', 'nc789012', 'Available'),
+(2, 'Nachos', 1, '120.00', 0.00, 'Appetizer', 'nachos.jpg', 'Also a Mexican dish made with corn chips, vegetables, and other ingredients on top.', 'nc789012', 'Available'),
 (3, 'Fries', 1, '120.00', 0.00, 'Appetizer', 'fries.jpg', 'One of the most sell appetizer is our fries because of its crispiness and smell with perfect combination of our sauce. ', 'fr345678', 'Available'),
 (4, 'Fried Chicken w/ Gravy', 1, '148.00', 0.00, 'Meals', 'fchicken.jpg', 'Crispy and juicy fried chicken with our best gravy', 'fc901234', 'Available'),
 (5, 'Honey Garlic Chicken', 1, '155.00', 0.00, 'Meals', 'honeychicken.jpg', 'Crispy fried chicken breaded with honey', 'hgc67890', 'Available'),
@@ -322,13 +323,70 @@ INSERT INTO `rawproducttable` (`rawID`, `name`, `stocks`, `barcode`, `item_categ
 (20, 'Pork', '5kg', '553a4758', 'Raw Materials'),
 (21, 'Beef', '10kg', 'aecf14b7', 'Raw Materials'),
 (22, 'Tortillas', '5 packs', '50b60415', 'Raw Materials'),
-(23, 'Cheese', '10 packs', '311962f1', 'Raw Materials'),
+(23, 'Eden Cheese', '10 packs', '311962f1', 'Raw Materials'),
 (24, 'Shrimp', '5 kg', '9ec8f066', 'Raw Materials'),
 (25, 'Disposable Cups', '50', '11a78ac4', 'Supplies'),
 (26, 'Paper Hot Cups and Lids', '30', '6ce08ef4', 'Supplies'),
-(27, 'Straws', '50', 'b877bb6b', 'Supplies'),
+(27, 'White Straws', '50', 'b877bb6b', 'Supplies'),
 (28, 'Napkins', '30', '18ee0a59', 'Supplies'),
-(29, 'Stirrers', '5', '66c3a4e4', 'Supplies');
+(29, 'Stirrers', '5', '66c3a4e4', 'Supplies'),
+(30, 'Black Straws', '50', 'ef811424', 'Supplies'),
+(31, 'Plastic Spoon and Fork', '5 packs', 'c35b440e', 'Supplies'),
+(32, 'Tooth Pick', '10 bottles', 'd673842e', 'Supplies'),
+(33, 'Grease Paper', '10 packs', '5d64f57a', 'Supplies'),
+(34, 'Take out Box for Salad', '50 pcs.', 'a6057858', 'Supplies'),
+(35, 'Take out Box for Sandwich', '50 pcs.', '4bf1a16c', 'Supplies'),
+(36, 'Take out Box for Rice', '50 pcs.', '1c2f4143', 'Supplies'),
+(37, 'Large Cups for Hot Coffee', '100 pcs.', '45e1edfe', 'Supplies'),
+(38, 'Large Cups for Iced Coffee', '100 pcs.', '410cf925', 'Supplies'),
+(39, 'Large Cups for Blended', '100 pcs.', '0f373c70', 'Supplies'),
+(40, 'Regular Cups for Hot Coffee', '100 pcs.', '1d91737f', 'Supplies'),
+(41, 'Regular Cups for Iced Coffee', '100 pcs.', '895534a6', 'Supplies'),
+(42, 'Regular Cups for Blended', '100 pcs.', 'da256cc2', 'Supplies'),
+(43, 'Chocolate Fudge', '50 pcs.', 'da22901d', 'Raw Materials'),
+(44, 'Sliced Cheese', '500g', 'b3a6ddf0', 'Raw Materials'),
+(45, 'Quick Melt', '5 packs', '78c119bf', 'Raw Materials'),
+(46, 'Egg', '10 trays', 'b6cdc4f2', 'Raw Materials'),
+(47, 'Lettuce', '10 pcs.', '823644d8', 'Raw Materials'),
+(48, 'Tuna', '3 kg', '6b26b29e', 'Raw Materials'),
+(49, 'Bacon', '10 packs', '8fe716e7', 'Raw Materials'),
+(50, 'Pulled Pork', '10 lb', 'ecdc8d46', 'Raw Materials'),
+(51, 'Bratwurst', '5 packs', 'da4bc01d', 'Raw Materials'),
+(52, 'Smoked Ham', '10 lb', '80adec8e', 'Raw Materials'),
+(53, 'Pork Ribs', '5 kg', 'c4221f5b', 'Raw Materials'),
+(54, 'Ground Beef', '10 kg', '9a90a0a5', 'Raw Materials'),
+(55, 'Liempo', '5 kg', 'ba1bb70a', 'Raw Materials'),
+(56, 'Tapa Beef', '5 kg', '5482f734', 'Raw Materials'),
+(57, 'Thousand Islands', '2L', '95c79bdd', 'Raw Materials'),
+(58, 'Ceasar Islands', '2L', 'fa3cfacd', 'Raw Materials'),
+(59, 'Mustard', '3 bottles', 'ae9457e9', 'Raw Materials'),
+(60, 'Mapple Syrup', '5 bottles', '6ce4edab', 'Raw Materials'),
+(61, 'Mushroom', '500g', '8e048dc9', 'Raw Materials'),
+(62, 'Onion', '5kg', 'a28217b1', 'Raw Materials'),
+(63, 'Garlic', '5kg', '2d5ae95f', 'Raw Materials'),
+(64, 'Parsley', '5 bunch', '60242ccb', 'Raw Materials'),
+(65, 'Spring Onion', '5kg', '108c0dcf', 'Raw Materials'),
+(66, 'Bell Pepper', '5kg', '2714da9b', 'Raw Materials'),
+(67, 'Oil ', '10 bottles', '9b0fc39a', 'Raw Materials'),
+(68, 'Soy Sauce', '5 bottles', '85d0809d', 'Raw Materials'),
+(69, 'Vinegar', '5 bottles', '9aef3cb2', 'Raw Materials'),
+(70, 'Knor Seasoning', '5 bottles', '8cfedf88', 'Raw Materials'),
+(71, 'Knor Cubes', '5 packs', '7a881602', 'Raw Materials'),
+(72, 'Ketchup', '5 bottles', '0413f47c', 'Raw Materials'),
+(73, 'Salt', '10 packs', '0bb08f3d', 'Raw Materials'),
+(74, 'Pepper', '10 bottles', 'c238daee', 'Raw Materials'),
+(75, 'Butter', '10 packs', '66b63eed', 'Raw Materials'),
+(76, 'Mayonnaise', '5 bottles', 'a765f6ed', 'Raw Materials'),
+(77, 'Star Margarine', '20 pcs.', '67a190a5', 'Raw Materials'),
+(78, 'Ice Cream', '5 containers', '229006da', 'Raw Materials'),
+(79, 'Tomato Sauce', '5 bottles', '8e6166b2', 'Raw Materials'),
+(80, 'Potato', '5kg', '92ca2a9f', 'Raw Materials'),
+(81, 'Pasta', '10 packs', '09f69c17', 'Raw Materials'),
+(82, 'Bread for Sub Sandwich', '5 packs', 'efb9c409', 'Raw Materials'),
+(83, 'Bread for Soup', '5 packs', '61eb0872', 'Raw Materials'),
+(84, '1.5 Coke', '10 bottles', '279fb018', 'Raw Materials'),
+(85, 'Refrigerator', '1', 'ccd214d0', 'Equipment'),
+(86, 'Beverage Refrigerator', '1', 'aaaad5a2', 'Equipment');
 
 -- --------------------------------------------------------
 
@@ -480,7 +538,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`UserID`, `LastName`, `FirstName`, `UserRole`, `birthdate`, `email`, `Username`, `Password`, `ContactNo`, `gender`, `address`, `profile_img`, `code`, `status`, `CreatedAt`, `UpdatedAt`) VALUES
 (22, 'Rontale', 'Dan Keneth', 'Customer', '2003-07-06', 'rontaledankeneth@gmail.com', 'rontale12', '$2y$10$ZzyvbfKv12K40hMePj.wY.h66BOiJOPWZaoXGQS65smd2sBdUl57O', 9085353978, 'Male', 'Tawiran Calapan City', 'profile.png', '3d5093e5', 'pending', '2024-04-21 16:10:49', '2024-04-21 16:10:49'),
 (24, 'Reyes', 'Colleen', 'Admin', '2003-05-27', 'rcolleen@gmail.com', 'rcolleen', '$2y$10$usZyT1zB61Vnyg1Ho3UEa.isfO16aQ1m69IIIURi6prHG1ispSVaC', 9286341210, 'Female', 'Masipit, Calapan City', 'profile.png', 'f71bfaf7', 'pending', '2024-04-27 14:24:19', '2024-04-27 14:24:19'),
-(25, 'Gutierrez', 'Nicolle', 'Customer', '2003-07-17', 'nicolle@gmail.com', 'nicsxxx17', '$2y$10$leq.7kiCRllYStOVelY0UeQk8n1gt5x51oO7rChoaDGjpV8ZmynXK', 9944838485, 'Female', 'Dao Naujan, Oriental Mindoro', 'profile.png', '329e90f5', 'pending', '2024-04-27 14:34:43', '2024-04-27 14:34:43');
+(25, 'Gutierrez', 'Nicolle', 'Customer', '2003-07-17', 'nicolle@gmail.com', 'nicsxxx17', '$2y$10$leq.7kiCRllYStOVelY0UeQk8n1gt5x51oO7rChoaDGjpV8ZmynXK', 9944838485, 'Female', 'Dao Naujan, Oriental Mindoro', 'dp.jpg', '329e90f5', 'pending', '2024-04-27 14:34:43', '2024-04-27 14:34:43');
 
 --
 -- Indexes for dumped tables
@@ -582,7 +640,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cart_tbl`
 --
 ALTER TABLE `cart_tbl`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `complaint`
@@ -624,13 +682,13 @@ ALTER TABLE `orderhistory`
 -- AUTO_INCREMENT for table `product_tbl`
 --
 ALTER TABLE `product_tbl`
-  MODIFY `prod_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `prod_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT for table `rawproducttable`
 --
 ALTER TABLE `rawproducttable`
-  MODIFY `rawID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `rawID` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tablereservation`
