@@ -6,8 +6,8 @@ use App\Controllers\BaseController;
 
 class StocksController extends BaseController
 {
-    public function index()
+    public function stocks()
     {
-        //
+    
     }
 }

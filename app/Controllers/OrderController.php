@@ -7,6 +7,8 @@ use App\Models\ProductModel;
 use App\Models\OrderModel;
 use App\Models\CartModel;
 use App\Models\FeedbackModel;
+
+
 class OrderController extends BaseController
 {
     private $prod;
@@ -160,38 +162,49 @@ class OrderController extends BaseController
     }
 
 
-    public function inputFeedback()
-    {
-        return view('user/feedback');
-    }
-
+    
     public function feedBack()
     {
+        $orderID = $this->request->getVar('orderID');
+        $getID = $this->order->where('orderID', $orderID)->find();
+    
         $rules = [
-         'comment' => 'required|min_length[5]|max_length[150]'
+            'comment' => 'required|min_length[5]|max_length[150]',
+            'ratings' => 'required'
         ];
         
-        if($this->validate($rules))
-        {
+        if ($this->validate($rules)) {
             $data = [
-                    'ratings' => $this->request->getVar('ratings'),
-                    'CustomerID' => $this->request->getVar('CustomerID'),
-                    'ProductID' => $this->request->getVar('ProductID'),
-                    'orderID' => $this->request->getVar('orderID'),
-                    'comment' => $this->request->getVar('comment') 
-                    ];
-
-                    $this->fb->insert($data);
-
-                    return redirect()->to('myorder')->with('msg', 'Thank Your For Your Feedback');
+                'ratings' => $this->request->getVar('ratings'),
+                'CustomerID' => $this->request->getVar('CustomerID'),
+                'ProductID' => $this->request->getVar('ProductID'),
+                'orderID' => $orderID,
+                'comment' => $this->request->getVar('comment') 
+            ];
+           var_dump($getID);         
+            // $upData = ['orderStatus' => 'OrderReceived'];
+            // $update = $this->order->update($upData, $getID);
+          
+            // $this->fb->insert($data);
+    
+            // return redirect()->to('myOrders')->with('msg', 'Thank you for your feedback.');
+        } else {
+            return redirect()->to('myOrders')->with('msg', 'Invalid input. Feedback not submitted.');
         }
+    }
+    
 
-        else
-        {
-            $data['validator'] = $this->validator;
+    public function getProdUser()
+    {
+        $orderID = $this->request->getVar('orderID');
+        $getID = $this->order->where('orderID', $orderID)->first();
 
-            return view('user/feedback', $data);
-        }
+        $data = [
+            'ProductID' => $this->request->getPost('ProductID'),
+            'orderID' => $this->request->getPost('orderID'),
+        ];
+
+       return view('user/feedback', $data);
     }
 
     public function coffeereceipt()
@@ -244,4 +257,6 @@ class OrderController extends BaseController
         return view('user/receipt', $data);
 
     }
+
+
 }

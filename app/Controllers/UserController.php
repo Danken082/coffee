@@ -3,10 +3,16 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+
+use Google\Auth\Credentials\SeviceAccountCredentials;
+use Google\Auth\HttpHandler\HttpHandlerFactory;
+
 use App\Models\UserModel;
 use App\Models\ProductModel;
 use App\Models\CartModel;
 use App\Libraries\CIAuth;
+
+
 class UserController extends BaseController
 {
     private $user;
@@ -305,7 +311,7 @@ class UserController extends BaseController
        'sand' => $menu->products('Sandwich'),
        'hot' => $menu->products('Hot Coffee'),
        'iced' => $menu->products('Iced Coffee'),
-       'flav' => $menu->products('Flavored Coffee'),
+       'flav' => $menu->products('Flavored Coffeee'),
         'non' =>  $menu->products('Non Coffee Frappe'),
         'coffee' =>$menu->products('Coffee Frappe'),
         'other' => $menu->products('Others'),
@@ -425,4 +431,49 @@ class UserController extends BaseController
 
         }
     }
+
+
+    public function userNotification()
+    {
+
+        $credentials = new SeviceAccountCredentials3("https:://www.googleapis.com/auth/firebase.messaging",
+        json_decode(file_get_contents(base_url("js/pvk.json")), true)
+    );
+
+    $token = $credentials->fetchAuthToken(HttpHandlerFactory::build());
+
+        $ch = curl_init("https://fcm.googleapis.com//v1/projects/notifbar-980f5/messages:send");
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Authorization: bearer' .$token['access_token']     
+        ]);
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 
+        '{
+              "message": {
+                "token": "cZPqgWYv3PGvRSqS2vj3-d:APA91bF6TBmFhyVPOyrNzyvMyy5_gmOLtjtN9LIOt5f9pkMQjksLXFhwbkLTzLdP-7alOZkaKJFv7ymWSaax1OScY19KcOr9w4jzdJfQEiw2I8k1aSR2vH--84R5gJm8Tk2ZvyLpeouB",
+                "notification": {
+                  "title": "Background Message Title",
+                  "body": "Background message body"
+                },
+                "webpush": {
+                  "fcm_   options": {
+                    "link": "https://Google.com"
+                  }
+                }
+              }
+            }');
+
+
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "post");
+
+            $response = curl_exec($ch);
+
+            curl_close($ch);
+
+            echo $response;
+    }
+
+ 
 }

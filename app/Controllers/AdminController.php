@@ -11,7 +11,7 @@ use App\Models\PaymentModel;
 use App\Models\TableModel;
 use App\Models\FeedbackModel;
 use App\Models\OrderModel;
-use App\Models\RawModel;
+use App\Models\ItemsModel;
 class AdminController extends BaseController
 {
     private $user;
@@ -32,7 +32,7 @@ class AdminController extends BaseController
         $this->tbl = new TableModel();
         $this->fb = new FeedbackModel();
         $this->order = new OrderModel();
-        $this->raw = new RawModel();
+        $this->raw = new ItemsModel();
     }
 
     public function viewAddTable()
@@ -60,7 +60,7 @@ class AdminController extends BaseController
         }
         else{
             $data['validation'] = $this->validator;
-
+   
             return view('admin/addingTable', $data);
         }
     }
@@ -90,8 +90,8 @@ class AdminController extends BaseController
         return view ('/admin/inventory');
     }
 
-    public function item(){
-        return view('/admin/items');
+    public function equip(){
+        return view('/admin/equipments');
     }
 
     public function products(){
@@ -191,52 +191,26 @@ class AdminController extends BaseController
     public function edituser($id)
     {
         $data['euser'] = $this->user->find($id);
-        return view('/admin/adminedit', $data);
+        return view('/admin/edituser', $data);
     }
 
-    public function updateadmin($id)
+    public function updateuser($id)
     {
-        if ($this->request->getMethod() === 'post') {
-            $userId = session()->get('UserID');
-            $data = [
-                'LastName' => $this->request->getPost('LastName'),
-                'FirstName' => $this->request->getPost('FirstName'),
-                'gender' => $this->request->getPost('gender'),
-                'email' => $this->request->getPost('email'),
-                'ContactNo' => $this->request->getPost('ContactNo'),
-                'UserRole' => $this->request->getPost('UserRole'),
-                'Username' => $this->request->getPost('Username'),
-                'address' => $this->request->getPost('address'),
-                'birthdate' => $this->request->getPost('birthdate')
-            ];
-            $profileImg = $this->request->getFile('profile_img');
-                if ($profileImg->isValid() && !$profileImg->hasMoved()) {
-                    $newName = $profileImg->getName();
-                    $profileImg->move(ROOTPATH . 'public/assets/user/images/', $newName);
-                    $data['profile_img'] = $newName;
-                }
-            $this->user->updateadminpf($userId, $data);
-            session()->set($data);
-            return redirect()->to(base_url('/adminprofile'));
-        }
-    }
-
-    public function removeadminpf($userId)
-    {
-        $userModel = new UserModel();
-        $user = $userModel->find($userId);
-
-        if (!empty($user['profile_img'])) {
-            $imagePath = 'assets/user/images/' . $user['profile_img'];
-
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-            }
-        }
-        $userModel->update($userId, ['profile_img' => 'profile.png']);
-        session()->set('profile_img', 'profile.png');
-
-        return redirect()->to(base_url('/adminprofile'));
+        $user = new AdminUserModel();
+        $data = [
+            'LastName' => $this->request->getVar('LastName'),
+            'FirstName' => $this->request->getVar('FirstName'),
+            'gender' => $this->request->getVar('gender'),
+            'email' => $this->request->getVar('email'),
+            'ContactNo' => $this->request->getVar('ContactNo'),
+            'UserRole' => $this->request->getVar('UserRole'),
+            'Username' => $this->request->getVar('Username'),
+            'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
+            'address' => $this->request->getVar('address'),
+            'birthdate' => $this->request->getVar('birthdate'),
+        ];
+        $user->update($id, $data);
+        return redirect()->to(base_url('adminmanage_user'));
     }
     
     public function deleteuser($id)
@@ -336,16 +310,6 @@ class AdminController extends BaseController
         $data['raw'] = $this->raw->findAll();
 
         return view('admin/report', $data);
-        
+    
     }
-
-    public function adminprofile(){
-        return view('/admin/adminprofile');
-    }
-
-    public function logout(){
-        session_destroy();
-        return redirect()->to('/login');
-    }
-
 }

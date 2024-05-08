@@ -86,8 +86,8 @@
     <div class="container">
         <h2>Order Feedback Form</h2>
         <form action="<?= base_url('confirmfeedback')?>" method="post">
-            <input type="hidden" name="CustomerID" placeholder="CustomerID">
-            <input type="hidden" name="ProductID" placeholder="ProductID">
+            <input type="hidden" name="CustomerID" placeholder="CustomerID" value ="<?= session()->get('UserID')?>">
+            <input type="hidden" name="ProductID" placeholder="ProductID" value="<?= $ProductID?>">
             <div class="rating">
                 <input type="radio" id="star1" name="ratings" value="1">
                 <label for="star1"></label>
@@ -100,7 +100,7 @@
                 <input type="radio" id="star5" name="ratings" value="5">
                 <label for="star5"></label>
             </div>
-            <input type="hidden" name="orderID" placeholder="OrderID">
+            <input type="hidden" name="orderID" placeholder="OrderID" value="<?= $orderID?>">
             <textarea name="comment" placeholder="Enter your feedback here..." rows="5"></textarea>
             <button type="submit">Submit Feedback</button>
         </form>

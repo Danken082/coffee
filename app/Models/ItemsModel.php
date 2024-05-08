@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 
 class ItemsModel extends Model
 {
+
     protected $DBGroup          = 'default';
     protected $table            = 'rawproducttable';
     protected $primaryKey       = 'rawID';
@@ -14,7 +15,7 @@ class ItemsModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['name', 'stocks', 'barcode', 'item_categ'];
-
+    
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

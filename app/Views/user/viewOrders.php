@@ -27,7 +27,7 @@
 			<div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class="cart-list">
-					
+					<div class="warning"><?= session()->get('msg')?></div>
 	    				<table class="table">
 			    			<thead class="thead-primary">
 			      				<tr class="text-center">
@@ -63,7 +63,21 @@
 									<td class="quantity">
 										<div class="input-group mb-3">
 										<h4><?= $item['orderStatus']?></h4>
+
 										</div>
+									</td>
+
+									<td>
+										
+									<?php if($item['orderStatus'] === 'AcceptOrder'):?>
+										<form action="<?= base_url('getProdUser')?>" method="post">
+										<input type="hidden" name="ProductID" value="<?= $item['prod_id']?>">
+										<input type="hidden" name="orderID" value="<?= $item['orderID']?>">
+										<button type="submit">Oreder Received</button>
+										</form>
+										<?php else:?>
+										<h2>Please Wait</h2>
+										<?php endif;?>
 									</td>
 						      	</tr>
 								<?php endforeach;?>
@@ -74,6 +88,62 @@
     			</div>
     		</div>
 	</section>
+	<section class="ftco-section ftco-cart">
+		<div class="container">
+			<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="cart-list">
+					<h3>Order History: </h3>
+	    				<table class="table">
+			    			<thead class="thead-primary">
+			      				<tr class="text-center">
+									<th>Image</th>
+									<th>Product</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Total</th>
+									<th>Status</th>
+									<th>&nbsp;</th>
+			      				</tr>
+			    			</thead>
+				    		<tbody>
+						
+							<?php foreach($order as $item):?>
+								
+						      	<tr class="text-center">
+									<td><?= $item['prod_id']?></td>
+								  	<td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>">
+									<td class="product-name">
+										<h3><?= $item['prod_name']?></h3>
+									</td>
+
+									
+									<td class="price">₱ <?= $item['prod_mprice']?></td>
+							
+									<td class="quantity">
+										<div class="input-group mb-3">
+											<input type="number" name="quantity" disabled class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
+										</div>
+									</td>
+									
+						        	<td class="total">₱ <?= $item['total']?></td>
+									<td class="quantity">
+										<div class="input-group mb-3">
+										<h4><?= $item['orderStatus']?></h4>
+
+										</div>
+									</td>
+
+						      	</tr>
+								<?php endforeach;?>
+						    </tbody>
+						</table>
+				
+					</div>
+    			</div>
+    		</div>
+	</section>
+
 		<?php include('mainheader.php'); ?>
 		<?php include('footer.php'); ?>
         <script>

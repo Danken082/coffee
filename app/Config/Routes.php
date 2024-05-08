@@ -15,7 +15,7 @@ $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart',
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
 
-$routes->get( '/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
+$routes->get('/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
 $routes->get('/adminprofile', 'AdminController::adminprofile',['filter'=>'authFilter']);
 $routes->get('/adminmanage_user', 'AdminController::getmanageuser', ['filter'=>'authFilter']);
@@ -173,6 +173,7 @@ $routes->post('user/checkouts/', 'OrderController::placeToOrder');
 $routes->get('OrderMeal/(:any)', 'OrderController::myOrdersmeal/$1');
 $routes->get('OrderDrink/(:any)', 'OrderController::myOrdersdrink/$1');
 #for feedback
+$routes->post('getProdUser', 'OrderController::getProdUser');
 $routes->get('feedback', 'OrderController::inputFeedback');
 $routes->post('confirmfeedback', 'OrderController::feedBack');
 #second part of user side 
@@ -214,3 +215,10 @@ $routes->match(['get', 'post'], 'report', 'VisualizationController::pdfReport');
 
 
 $routes->get('Notif', 'AdminController::Notification');
+
+$routes->match(['get', 'post'], 'sendNotif', 'UserController::userNotification');
+
+
+
+//POS
+$routes->get('productOfline', 'POSController::product');

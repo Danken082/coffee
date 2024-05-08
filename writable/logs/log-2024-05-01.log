@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 CRITICAL - 2024-05-01 09:00:34 --> Undefined variable $p
 in APPPATH\Views\inventory\appetizer.php on line 109.
  1 APPPATH\Views\inventory\appetizer.php(109): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $p', 'C:\\laragon\\www\\CROSSROAD_C0FFEE\\coffee\\app\\Views\\inventory\\appetizer.php', 109)
@@ -34,3 +35,32 @@ in APPPATH\Views\inventory\appetizer.php on line 109.
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CROSSROAD_C0FFEE\\coffee\\public\\index.php')
+=======
+CRITICAL - 2024-05-01 01:30:43 --> require(vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Controllers\UserController.php on line 15.
+ 1 APPPATH\Controllers\UserController.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require(vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 15)
+ 2 APPPATH\Controllers\UserController.php(15): require()
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(306): include_once('C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php')
+ 4 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php')
+ 5 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\UserController')
+ 6 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\UserController')
+ 7 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\UserController', true)
+ 8 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-01 01:31:02 --> Class "App\Controllers\ServiceAccountCredentials" not found
+in APPPATH\Controllers\UserController.php on line 439.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->userNotification()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-01 01:31:22 --> Class "Google\Auth\Credentials\SeviceAccountCredentials" not found
+in APPPATH\Controllers\UserController.php on line 439.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->userNotification()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+>>>>>>> Stashed changes

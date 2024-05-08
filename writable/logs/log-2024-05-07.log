@@ -1,0 +1,8 @@
+CRITICAL - 2024-05-07 01:36:15 --> Undefined property: App\Controllers\POSController::$crt
+in APPPATH\Controllers\POSController.php on line 24.
+ 1 APPPATH\Controllers\POSController.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\POSController::$crt', 'C:\\laragon\\www\\coffee\\app\\Controllers\\POSController.php', 24)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\POSController->product()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\POSController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

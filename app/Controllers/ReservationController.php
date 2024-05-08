@@ -41,11 +41,17 @@ class ReservationController extends BaseController
     public function viewProd($prod)
     {
         $data['prod'] =  $this->prod->where('prod_id', $prod)->findAll();
-
+        
         return view('user/order', $data);
         
     }
 
+
+    public function getResevartion()
+    {
+        // $this->rsv->
+
+    }
 } 
 
 
