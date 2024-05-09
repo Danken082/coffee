@@ -5,16 +5,37 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+$routes->get('/adminitems', 'AdminController::item', ['filter'=>'authFilter']);
+
 $routes->get('/dailysales', 'VisualizationController::dailySales');
 $routes->get('/monthlysales', 'VisualizationController::initMonthChart');
 $routes->get('/yearsales', 'VisualizationController::initYearChart');
 $routes->get('/login', 'AdminController::login',['filter'=>'guestFilter']);
+$routes->post('/adminregister', 'UserController::register');
+$routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
+$routes->get('/logout', 'AdminController::logout', ['filter'=>'authFilter']);
+//status
+$routes->match(['get','post'], '/available/', 'ProductController::availability');
+$routes->match(['get', 'post'], '/unavailable/', 'ProductController::Unavailable');
+
+//para sa report
+$routes->match(['get', 'post'], 'sendNotif', 'UserController::userNotification');
+
 $routes->get('/register', 'AdminController::register', ['filter'=>'guestFilter']);
+
+$routes->get('theorders/(:any)', 'AdminController::viewToAcceptorders/$1');
+$routes->get('/receipt', 'OrderController::coffeereceipt');
+// $routes->get('pos', 'ChatController::try');
+
+/*For UserSide*/ 
+if(session()->get('UserRole') === 'Admin')
+{
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
+//POS
+$routes->get('productOfline', 'POSController::product');
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
-
 $routes->get('/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
 $routes->get('/adminprofile', 'AdminController::adminprofile',['filter'=>'authFilter']);
@@ -22,21 +43,17 @@ $routes->get('/adminmanage_user', 'AdminController::getmanageuser', ['filter'=>'
 $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter']);
 $routes->post('/adminadduser', 'AdminController::adduser', ['filter'=>'authFilter']);
 $routes->get('/admincustomer_user', 'AdminController::getcustomeruser', ['filter'=>'authFilter']);
-$routes->get('/adminitems', 'AdminController::item', ['filter'=>'authFilter']);
 $routes->get('/adminprod', 'AdminController::products', ['filter'=>'authFilter']);
 $routes->get('/adminedituser/(:any)', 'AdminController::edituser/$1');
 $routes->post('/updateuser/(:any)', 'AdminController::updateadmin/$1');
 $routes->get('/removeprofile/(:any)', 'AdminController::removeadminpf/$1',['filter'=>'authFilter']);
 $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
-$routes->post('/adminregister', 'UserController::register');
-$routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
-$routes->get('/logout', 'AdminController::logout', ['filter'=>'authFilter']);
-$routes->get('viewOrders', 'AdminController::viewOrder');
 $routes->get('admin/sidebar', 'AdminController::admin_side');
+$routes->get('viewOrders', 'AdminController::viewOrder');
 $routes->get('/adminpos', 'AdminController::pos');
 $routes->get('addingTable', 'AdminController::viewAddTable');
 $routes->post('AdminTable', 'AdminController::addingTable');
-#forAcceptingOrder
+#forAcceptingOrde
 
 $routes->post('AcceptthisOrder', 'AdminController::getPendingOrders');
 
@@ -149,23 +166,34 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 $routes->match(['get','post'], '/availablesand/', 'InventoryController::availabilitysandwich');
 $routes->match(['get', 'post'], '/unavailablesand/', 'InventoryController::Unavailablesandwich');
 
+$routes->match(['get', 'post'], 'report', 'VisualizationController::pdfReport');
 
-/*For UserSide*/ 
-$routes->get('/', 'UserController::home');
+
+$routes->get('Notif', 'AdminController::Notification');
+
+
+
+
+
+}
+
+$routes->get('hello', 'AdminController::Deduction');
+$routes->get('stocks', 'StocksController::Stocks');
+$routes->get('/', 'UserController::home', ['filter' => 'guestFilter']);
 $routes->get('/mainhome', 'UserController::mainhome',['filter'=>'cusFilter']);
 $routes->get('/profile', 'UserController::profile',['filter'=>'cusFilter']);
 $routes->get('/editprofile/(:any)', 'UserController::edit_profile/$1',['filter'=>'cusFilter']);
 $routes->post('/updateprofile/(:any)', 'UserController::updateprofile/$1',['filter'=>'cusFilter']);
 $routes->get('/removeprofile/(:any)', 'UserController::removeProfilePicture/$1',['filter'=>'cusFilter']);
-$routes->get('/menu', 'UserController::home_menu');
+$routes->get('/menu', 'UserController::home_menu', ['filter' => 'guestFilter']);
 $routes->get('/mainmenu', 'UserController::home_mainmenu',['filter'=>'cusFilter']);
-$routes->get('/services', 'UserController::home_services');
+$routes->get('/services', 'UserController::home_services', ['filter' => 'guestFilter']);
 $routes->get('/mainservices', 'UserController::home_mainservices',['filter'=>'cusFilter']);
-$routes->get('/about', 'UserController::home_about');
+$routes->get('/about', 'UserController::home_about', ['filter' => 'guestFilter']);
 $routes->get('/mainabout', 'UserController::home_mainabout',['filter'=>'cusFilter']);
-$routes->get('/shop', 'UserController::home_shop');
+$routes->get('/shop', 'UserController::home_shop', ['filter' => 'guestFilter']);
 $routes->get('/mainshop', 'UserController::home_mainshop',['filter'=>'cusFilter']);
-$routes->get('/contact', 'UserController::home_contact');
+$routes->get('/contact', 'UserController::home_contact', ['filter' => 'guestFilter']);
 $routes->get('/maincontact', 'UserController::home_maincontact',['filter'=>'cusFilter']);
 $routes->get('/cart', 'CartController::home_cart');
 $routes->get('/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
@@ -191,10 +219,6 @@ $routes->post('addQuantity/(:any)', 'CartController::addquantity/$1');
 $routes->get('trycount', 'CartController::countOnCart');
 
 
-//status
-$routes->match(['get','post'], '/available/', 'ProductController::availability');
-$routes->match(['get', 'post'], '/unavailable/', 'ProductController::Unavailable');
-// $routes->get('pos', 'ChatController::try');
 
 
 //viewing of orders
@@ -203,22 +227,10 @@ $routes->get('adminorderpayment', 'AdminController::viewOrders');
 $routes->get('report', 'AdminController::report');
 
 
-$routes->get('theorders/(:any)', 'AdminController::viewToAcceptorders/$1');
-$routes->get('/receipt', 'OrderController::coffeereceipt');
 
 
 //para sa receipt
 
 
-//para sa report
-$routes->match(['get', 'post'], 'report', 'VisualizationController::pdfReport');
 
 
-$routes->get('Notif', 'AdminController::Notification');
-
-$routes->match(['get', 'post'], 'sendNotif', 'UserController::userNotification');
-
-
-
-//POS
-$routes->get('productOfline', 'POSController::product');

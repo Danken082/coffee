@@ -5,16 +5,19 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ProductModel;
 use App\Models\CartModel;
+use App\Models\ItemModel;
 
 class ProductController extends BaseController
 {
     private $product;
     private $cart;
+    private $item;
 
     public function __construct()
     {
         $this->product = new ProductModel();
         $this->cart = new CartModel();
+        $this->item = new ItemModel();
     }
 
 
@@ -193,10 +196,6 @@ class ProductController extends BaseController
 
         $this->product->update($updateUnavailability, $data);
     }
-    public function rawProd()
-    {
 
-    }
-    
 }
 

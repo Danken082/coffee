@@ -1247,4 +1247,8 @@ class InventoryController extends BaseController
     public function items(){
         return view('/inventory/additems');
     }
+
+    // public function 
+
+    
 }

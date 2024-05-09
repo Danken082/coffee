@@ -32,8 +32,6 @@
 
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Stocks</th>
 
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Barcode</th>
-
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Actions</th>
                         </tr>
                     </thead>
@@ -45,9 +43,6 @@
                                 </td>
                                 <td class="text-center">
                                     <p class="text-xs font-weight-bold"><?=$i['stocks'] ?></p>
-                                </td>
-                                <td class="text-center">
-                                    <p class="text-xs font-weight-bold"><?=$i['barcode'] ?></p>
                                 </td>
                                 <td class="align-middle text-center">
                                     <a href="<?= base_url('/editsupply/' .$i['rawID']) ?>" id='id'

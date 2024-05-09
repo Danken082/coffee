@@ -94,6 +94,44 @@
 </style>
 <body>
     <div class="container">
+        <?php foreach($meal as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+        <?php foreach($pasta as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
         <?php foreach($app as $item): ?>
             <div class="box">    
                 <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
@@ -110,7 +148,159 @@
                 </p>
                 <?php endif;?>
                 <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-                <p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/') . $item['prod_id'] ?>">Add to Cart</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+        <?php foreach($salad as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+        <?php foreach($soup as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+        <?php foreach($sand as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+        <?php foreach($hot as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+        <?php foreach($hot as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+        <?php foreach($iced as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+        <?php foreach($flav as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+        <?php foreach($non as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
             </div>
         <?php endforeach; ?>
         <?php foreach($coffee as $item): ?>
@@ -129,9 +319,39 @@
                 </p>
                 <?php endif;?>
                 <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
-                <p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('/viewProd/') . $item['prod_id'] ?>">Add to Cart</a></p>
+         
             </div>
         <?php endforeach; ?>
+        <?php foreach($other as $item): ?>
+            <div class="box">    
+                <img class="menu-img img mb-4" src="<?= "/assets/images/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+             
+                <h3><a><?= $item['prod_name'] ?></a></h3>
+                <?php if($item['prod_lprice'] == 0.00):?> 
+                    
+                <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
+                </p>
+                <?php else:?>
+                    <p class="price">
+                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                </p>
+                <?php endif;?>
+                <p><a class="btn btn-primary btn-outline-primary" href="#">Order Now</a></p>
+         
+            </div>
+        <?php endforeach; ?>
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
 </body>
