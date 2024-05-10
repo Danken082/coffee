@@ -25,11 +25,14 @@ $routes->get('/register', 'AdminController::register', ['filter'=>'guestFilter']
 
 $routes->get('theorders/(:any)', 'AdminController::viewToAcceptorders/$1');
 $routes->get('/receipt', 'OrderController::coffeereceipt');
+
+$routes->post('print-receipt', 'AdminController::printReceipt');
 // $routes->get('pos', 'ChatController::try');
 
 /*For UserSide*/ 
 if(session()->get('UserRole') === 'Admin')
 {
+$routes->get('adminorderpayment', 'AdminController::viewOrders');
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
 //POS
@@ -171,10 +174,6 @@ $routes->match(['get', 'post'], 'report', 'VisualizationController::pdfReport');
 
 $routes->get('Notif', 'AdminController::Notification');
 
-
-
-
-
 }
 
 $routes->get('hello', 'AdminController::Deduction');
@@ -223,7 +222,7 @@ $routes->get('trycount', 'CartController::countOnCart');
 
 //viewing of orders
 $routes->get('myOrders', 'OrderController::viewOrders');
-$routes->get('adminorderpayment', 'AdminController::viewOrders');
+
 $routes->get('report', 'AdminController::report');
 
 
