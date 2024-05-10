@@ -32,13 +32,19 @@
                         <div class="col-md-5">
                             <label for="Stocks" class="form-label">Stocks</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="stocks" name="stocks" min="1" value="<?=$raw['stocks'] ?>">
+                                <input type="text" class="form-control" id="stocks" name="stocks" min="1" value="<?=$raw['stocks'] ?>" readonly>
+                            </div>
+                        </div>
+                             <div class="col-md-5">
+                            <label for="Stocks" class="form-label">Add Stocks</label>
+                            <div class="input-group input-group-outline my-3">
+                                <input type="text" class="form-control" id="stocks" name="addstocks" min="1">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <label for="Barcode" class="form-label">BarCode</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" disabled class="form-control" id="barcode" name="barcode" value="<?=$raw['barcode'] ?>">
+                                <input type="text" readonly class="form-control" id="barcode" name="barcode" value="<?=$raw['barcode'] ?>">
                             </div>
                         </div>
                         <div class="col-12">

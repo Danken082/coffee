@@ -44,7 +44,7 @@
                         <li class="nav-item"><a href="<?= site_url("/mainabout"); ?>" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="<?= site_url("/mainshop"); ?>" class="nav-link">Shop</a></li>
                         <li class="nav-item"><a href="<?= site_url("/maincontact"); ?>" class="nav-link">Contact</a></li>
-                        <li class="nav-item cart"><a href="<?= site_url("/cart"); ?>" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="bag d-flex justify-content-center align-items-center"><small><?= $cartItemCount ?></small></span></a></li>
+                        <li class="nav-item cart"><a href="<?= site_url("/cart"); ?>" class="nav-link"><span class="icon icon-shopping_cart"></span><span class="<?php if($cartItemCount >=1):?>bag<?php endif;?> d-flex justify-content-center align-items-center"><small><?php if($cartItemCount >= 1):?><?= $cartItemCount ?><?php elseif($cartItemCount ==0):?><?php endif;?></small></span></a></li>
                         <li class="nav-item nav-profile dropdown">
                             <a class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="nav-profile-img">

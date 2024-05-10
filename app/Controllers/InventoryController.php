@@ -1188,11 +1188,11 @@ class InventoryController extends BaseController
     public function updateraw($id)
     {
         $item = new ItemsModel();
-        $data = $item->find($id);
-
+        $raw = $item->where('rawID', $id)->first();
+        $stockchange = $raw['stocks'] + $this->request->getVar('addstocks');
         $updatedData = [
             'name' => $this->request->getPost('name'),
-            'stocks' => $this->request->getPost('stocks'),
+            'stocks' =>  $stockchange,
         ];
 
         $item->update($id, $updatedData);
@@ -1250,5 +1250,5 @@ class InventoryController extends BaseController
 
     // public function 
 
-    
+
 }

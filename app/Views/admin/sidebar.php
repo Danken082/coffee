@@ -126,7 +126,12 @@
                     <i class="fa fa-solid fa-bell"></i>
                     <span class="bg-danger">
                   <i class="bi bi-bell"></i> <!-- Replace "bi-bell" with the desired Bootstrap icon class -->
-                  <?= $count['notif'] ?>
+                  
+                  <?php if($count['notif'] == 0):?>
+                    
+                    <?php elseif( $count['notif'] >=1):?>
+                      <?= $count['notif'] ?>
+                  <?php endif;?>
                   </span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
@@ -139,13 +144,16 @@
                         </div>
                       </div>
                       <div class="preview-item-content">
+                      <?php if($count['notif'] == 0):?>
+                        <p class="text-muted ellipsis mb-0"> No Notification to show </p>
+                        <?php elseif( $count['notif'] >=1):?>
                         <?php foreach($notif as $notification): ?>
-                          <a href="#">
+                          <a href="<?= base_url('rawNotif/' .$notification['rawID'] )?>">
                         <p class="preview-subject mb-1"><?= $notification['name']?></p>
                         <p class="text-muted ellipsis mb-0"> Your stocks is Low <?= $notification['stocks']?> </p>
                         </a>
                         <?php endforeach;?>
-
+                        <?php endif;?>
                       </div>
                     </a>
                   </div>

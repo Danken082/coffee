@@ -174,6 +174,8 @@ $routes->match(['get', 'post'], 'report', 'VisualizationController::pdfReport');
 
 $routes->get('Notif', 'AdminController::Notification');
 
+$routes->get('rawNotif/(:any)', 'AdminController::notificationRaw/$1');
+
 }
 
 $routes->get('hello', 'AdminController::Deduction');
@@ -221,7 +223,7 @@ $routes->get('trycount', 'CartController::countOnCart');
 
 
 //viewing of orders
-$routes->get('myOrders', 'OrderController::viewOrders');
+$routes->get('myOrders', 'OrderController::viewOrders',['filter'=>'cusFilter']);
 
 $routes->get('report', 'AdminController::report');
 

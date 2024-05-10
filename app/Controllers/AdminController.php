@@ -2276,11 +2276,11 @@ class AdminController extends BaseController
     public function logout()
     {
         session()->destroy();
-        if(session()->get('UserRole') === 'Customer')
+        if(session()->get('UserRole') == 'Customer')
         {
-        
+            return redirect()->to('/');  
         }
-        elseif(session()->get('UserRole') === 'Admin')
+        elseif(session()->get('UserRole') == 'Admin')
         {
             return redirect()->to('/login');
         }
@@ -2332,6 +2332,14 @@ class AdminController extends BaseController
 
         return view('admin/report', $data);
     
+    }
+
+    public function notificationRaw($id)
+    {
+        $data = ['notif' => $this->raw->where('rawID', $id)->first()];
+
+
+        return view('admin/rawmatsnotif', $data);
     }
 
 

@@ -138,7 +138,7 @@ class UserController extends BaseController
                 
         else{
                 $session->setFlashdata('msg', 'Incorect email or password.');
-                return redirect()->to('/');
+                return redirect()->to('/login');
             }
         }
     }

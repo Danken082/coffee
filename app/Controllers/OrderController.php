@@ -181,13 +181,13 @@ class OrderController extends BaseController
                 'orderID' => $orderID,
                 'comment' => $this->request->getVar('comment') 
             ];
-           var_dump($getID);         
-            // $upData = ['orderStatus' => 'OrderReceived'];
+        //    var_dump($getID);         
+            $upData = ['orderStatus' => 'OrderReceived'];
             // $update = $this->order->update($upData, $getID);
           
-            // $this->fb->insert($data);
+            $this->fb->insert($data);
     
-            // return redirect()->to('myOrders')->with('msg', 'Thank you for your feedback.');
+            return redirect()->to('myOrders')->with('msg', 'Thank you for your feedback.');
         } else {
             return redirect()->to('myOrders')->with('msg', 'Invalid input. Feedback not submitted.');
         }
