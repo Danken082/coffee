@@ -38,16 +38,10 @@
                              <div class="col-md-5">
                             <label for="Stocks" class="form-label">Add Stocks</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="stocks" name="addstocks" min="1">
+                                <input type="number" class="form-control" id="stocks" name="addstocks" value =0>
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <label for="Barcode" class="form-label">BarCode</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="text" readonly class="form-control" id="barcode" name="barcode" value="<?=$raw['barcode'] ?>">
-                            </div>
-                        </div>
-                        <div class="col-12">
+                      <div class="col-12">
                             <div class="input-group input-group-outline my-3">
                                 <button type="submit" class="btn btn-success">Update Raw Materials</button>
                             </div>

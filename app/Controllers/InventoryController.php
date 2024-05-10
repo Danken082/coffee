@@ -1193,6 +1193,7 @@ class InventoryController extends BaseController
         $updatedData = [
             'name' => $this->request->getPost('name'),
             'stocks' =>  $stockchange,
+
         ];
 
         $item->update($id, $updatedData);

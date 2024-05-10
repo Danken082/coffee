@@ -14,7 +14,7 @@ class ItemsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'stocks', 'barcode', 'item_categ'];
+    protected $allowedFields    = ['name', 'stocks','stock_type', 'barcode', 'item_categ'];
     
     // Dates
     protected $useTimestamps = false;
@@ -53,5 +53,14 @@ class ItemsModel extends Model
     public function supplies($categ)
     {
         return $this->where('item_categ', $categ)->findAll();
+    }
+
+    public function stocks()
+    {
+        $coffee = $this->where('rawID', '9')->first();
+
+       $total = $coffee['stocks'] - 3;
+        
+        
     }
 }

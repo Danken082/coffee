@@ -43,7 +43,7 @@
                                     <p class="text-xs font-weight-bold"><?=$i['name'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs font-weight-bold"><?=$i['stocks'] ?></p>
+                                    <p class="text-xs font-weight-bold"><?=$i['stocks']?> <?=$i['stock_type']?></p>
                                 </td>
                    
                                 <td class="align-middle text-center">
