@@ -2137,6 +2137,7 @@ class AdminController extends BaseController
     {
         return view('admin/items');
     }
+    
     public function logout()
     {
         session()->destroy();

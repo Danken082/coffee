@@ -56,7 +56,7 @@
                                 <a class="dropdown-item" href="<?= site_url("/profile/"); ?>"><i class="mdi mdi-cached me-2 text-success"></i>See Profile</a>
                                 <a class="dropdown-item" href="myOrders"><i class="mdi mdi-cached me-2 text-success"></i>Orders</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="<?= site_url("logout"); ?>">
+                                <a class="dropdown-item" href="<?= site_url("/logout"); ?>">
                                 <i class="mdi mdi-logout me-2 text-primary"></i> Logout </a>
                             </div>
                         </li>
