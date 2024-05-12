@@ -36,7 +36,6 @@ $routes->get('adminorderpayment', 'AdminController::viewOrders');
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
 //POS
-$routes->get('productOfline', 'POSController::product');
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
 $routes->get('/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);

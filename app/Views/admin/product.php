@@ -23,9 +23,9 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/orangechicken.jpg" alt="meals">
+                    <img src="/assets/images/products/nachos.jpg" alt="appetizer">
                     <div class="container"><br>
-                        <a href="/inventorymeal" class="btn btn-success btn-sm me-3 text-center">Rice Meals</a>
+                        <a href="/inventoryappetizer" class="btn btn-success btn-sm me-3 text-center">Appetizer</a>
                     </div>
                 </div><br>
             </div>
@@ -41,9 +41,9 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/nachos.jpg" alt="appetizer">
+                    <img src="/assets/images/products/orangechicken.jpg" alt="meals">
                     <div class="container"><br>
-                        <a href="/inventoryappetizer" class="btn btn-success btn-sm me-3 text-center">Appetizer</a>
+                        <a href="/inventorymeal" class="btn btn-success btn-sm me-3 text-center">Rice Meals</a>
                     </div>
                 </div><br>
             </div>
@@ -59,17 +59,17 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/crabandcornsoup.jpg" alt="soup">
+                    <img src="/assets/images/products/cheesybacon.jpg" alt="sandwich">
                     <div class="container"><br>
-                        <a href="/inventorysoup" class="btn btn-success btn-sm me-3 text-center">Soup</a>
+                        <a href="/inventorysandwich" class="btn btn-success btn-sm me-3 text-center">Sandwiches</a>
                     </div>
                 </div><br>
             </div>
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/cheesybacon.jpg" alt="sandwich">
+                    <img src="/assets/images/products/crabandcornsoup.jpg" alt="soup">
                     <div class="container"><br>
-                        <a href="/inventorysandwich" class="btn btn-success btn-sm me-3 text-center">Sandwiches</a>
+                        <a href="/inventorysoup" class="btn btn-success btn-sm me-3 text-center">Soup</a>
                     </div>
                 </div><br>
             </div>

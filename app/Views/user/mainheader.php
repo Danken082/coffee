@@ -81,5 +81,6 @@
         <script src="/assets/user/js/scrollax.min.js"></script>
         <script src="/assets/user/js/google-map.js"></script>
         <script src="/assets/user/js/main.js"></script>
+        <script src="/assets/js/pos.js"></script>
     </body>
 </html>

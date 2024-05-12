@@ -29,28 +29,23 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Name</th>
-
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Description</th>
-
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Quantity</th>
-
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Regular Price</th>
-
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Large Price</th>
-
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Barcode</th>
-
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Image</th>
-
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Name</th>
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Description</th>
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Quantity</th>
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Regular Price</th>
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Large Price</th>
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Barcode</th>
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Actions</th>
-
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Availability</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($prod as $p): ?>
                             <tr>
+                                <td class="text-center">
+                                    <img src="<?php base_url();?>/assets/images/products/<?= $p['prod_img'] ?>" alt="img">
+                                </td>
                                 <td class="text-center">
                                     <p class="text-xs  font-weight-bold"><?=$p['prod_name'] ?></p>
                                 </td>
@@ -68,9 +63,6 @@
                                 </td>
                                 <td class="text-center">
                                     <p class="text-xs font-weight-bold"><?=$p['prod_code'] ?></p>
-                                </td>
-                                <td class="text-center">
-                                    <img src="<?php base_url();?>/assets/images/products/<?= $p['prod_img'] ?>" alt="img">
                                 </td>
                                 <td class="align-middle text-center">
                                     <a href="<?= base_url('/editiced/' .$p['prod_id']) ?>" id='id'
