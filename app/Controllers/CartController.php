@@ -267,7 +267,7 @@ class CartController extends BaseController
           $this->insertOrder($cartItems);
           $this->removedItemsFromcart($selectedItems);
 
-          return redirect()->to('user/cart')->with('msg', 'Order Placed successfully');
+          return redirect()->to('cart')->with('msg', 'Order Placed successfully');
       }
 
       

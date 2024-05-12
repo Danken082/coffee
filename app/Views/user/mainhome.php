@@ -3,10 +3,9 @@
 	<head>
 		<title>Crossroads</title>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
 		<link rel="stylesheet" href="/assets/css/preloader.css">
-		<link rel="stylesheet" href="/assets/css/responsive.css">
 		</head>
 		<body>	
 			<div id="preloader"></div>
@@ -222,6 +221,42 @@
 					<div class="row justify-content-center">
 						<div class="col-md-10">
 							<div class="row">
+							<div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+								<div class="block-18 text-center">
+								<div class="text">
+									<div class="icon"><span class="flaticon-coffee-cup"></span></div>
+									<strong class="number" data-number="100">0</strong>
+									<span>Coffee Branches</span>
+								</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+								<div class="block-18 text-center">
+								<div class="text">
+									<div class="icon"><span class="flaticon-coffee-cup"></span></div>
+									<strong class="number" data-number="85">0</strong>
+									<span>Number of Awards</span>
+								</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+								<div class="block-18 text-center">
+								<div class="text">
+									<div class="icon"><span class="flaticon-coffee-cup"></span></div>
+									<strong class="number" data-number="10567">0</strong>
+									<span>Happy Customer</span>
+								</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+								<div class="block-18 text-center">
+								<div class="text">
+									<div class="icon"><span class="flaticon-coffee-cup"></span></div>
+									<strong class="number" data-number="900">0</strong>
+									<span>Staff</span>
+								</div>
+								</div>
+							</div>
 							</div>
 						</div>
 					</div>
@@ -398,17 +433,6 @@
         document.querySelector('.appointment-form').min = `${year}-${month}-${day}T${hour}:${minute}`;
     </script>
 
-	<script>
-		const currentDate = new Date();
-		const year = currentDate.getFullYear();
-		let month = currentDate.getMonth();
-		let day = currentDate.getDate();
-
-		month = month < 10? "0" + month : month;
-		day = day < 10 ? "0" + day : day;
-
-		document.querySelector("#reservation-date").min = `${year}-${month}-${day}`;
-
-	</script>
+	
   	</body>
 </html>

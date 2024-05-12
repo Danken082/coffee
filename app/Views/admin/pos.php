@@ -36,6 +36,7 @@
                     <div class="products">
                         <?php foreach($app as $item): ?>
                             <div class="box" data-category="app">
+                                <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
                                 <?php if($item['prod_lprice'] == 0.00):?> 
@@ -52,6 +53,7 @@
                         <?php endforeach; ?>
                         <?php foreach($pasta as $item): ?>
                             <div class="box" data-category="pasta">
+                            <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
                                 <?php if($item['prod_lprice'] == 0.00):?> 
@@ -67,6 +69,7 @@
                             </div>
                         <?php endforeach; ?>
                     <?php foreach($meal as $item): ?>
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                         <div class="box" data-category="meal">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
@@ -83,7 +86,9 @@
                         </div>
                     <?php endforeach; ?>
                     <?php foreach($salad as $item): ?>
+
                         <div class="box" data-category="salad">
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -100,6 +105,7 @@
                     <?php endforeach; ?>
                     <?php foreach($sand as $item): ?>
                         <div class="box" data-category="sand">
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -116,6 +122,7 @@
                     <?php endforeach; ?>
                     <?php foreach($soup as $item): ?>
                         <div class="box" data-category="soup">
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -132,6 +139,7 @@
                     <?php endforeach; ?>
                     <?php foreach($hot as $item): ?>
                         <div class="box" data-category="hot">
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -149,6 +157,7 @@
                     <?php endforeach; ?>
                     <?php foreach($iced as $item): ?>
                         <div class="box" data-category="iced">
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -166,6 +175,7 @@
                     <?php endforeach; ?>
                     <?php foreach($flav as $item): ?>
                         <div class="box" data-category="flav">
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -183,6 +193,7 @@
                     <?php endforeach; ?>
                     <?php foreach($non as $item): ?>
                         <div class="box" data-category="non">
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -199,6 +210,7 @@
                         </div>
                     <?php endforeach; ?>
                     <?php foreach($coffee as $item): ?>
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                         <div class="box" data-category="coffee">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
@@ -216,6 +228,7 @@
                         </div>
                     <?php endforeach; ?>
                     <?php foreach($other as $item): ?>
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                         <div class="box" data-category="other">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
@@ -273,104 +286,120 @@
         let quantityTotal = 0;
 
         orderButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const product = button.parentElement;
-                const productName = product.querySelector('h3').innerText;
-                let productPrice = parseFloat(button.dataset.price);
-                let productSize = '';
+    button.addEventListener('click', () => {
+        const product = button.parentElement;
+        const productName = product.querySelector('h3').innerText;
+        const productId = product.querySelector('.prodID').value;
+        let productPrice = parseFloat(button.dataset.price);
+        let productSize = '';
 
-                // Check if the product has regular and large sizes
-                if (product.querySelector('.size-select')) {
-                    // Get the selected size
-                    const selectedOption = product.querySelector('.size-select option:checked');
-                    productSize = selectedOption ? selectedOption.textContent : '';
-                    // Get the selected price based on the dropdown selection
-                    productPrice = parseFloat(selectedOption.value);
-                }
+        // Check if the product has regular and large sizes
+        if (product.querySelector('.size-select')) {
+            // Get the selected size
+            const selectedOption = product.querySelector('.size-select option:checked');
+            productSize = selectedOption ? selectedOption.textContent : '';
+            // Get the selected price based on the dropdown selection
+            productPrice = parseFloat(selectedOption.value);
+        }
 
-                let existingRow = null;
+        let existingRow = null;
 
-                // Check if the product is already in the order list with the same size
-                orderList.querySelectorAll('tr').forEach(row => {
-                    const rowProductName = row.cells[0].textContent;
-                    let rowProductSize = '';
+        // Check if the product is already in the order list with the same size
+        orderList.querySelectorAll('tr').forEach(row => {
+            const rowProductName = row.cells[0].textContent;
+            let rowProductSize = '';
 
-                    // Check if the row contains size information
-                    if (row.querySelector('.size-cell')) {
-                        rowProductSize = row.querySelector('.size-cell').textContent;
-                    }
+            // Check if the row contains size information
+            if (row.querySelector('.size-cell')) {
+                rowProductSize = row.querySelector('.size-cell').textContent;
+            }
 
-                    // Check if the product name and size match an existing row
-                    if (rowProductName === productName && rowProductSize === productSize) {
-                        existingRow = row;
-                        return;
-                    }
-                });
+            // Check if the product name and size match an existing row
+            if (rowProductName === productName && rowProductSize === productSize) {
+                existingRow = row;
+                return;
+            }
+        });
 
-                if (existingRow) {
-                    // Increase the quantity if the product is already in the order list with the same size
-                    const quantityElement = existingRow.querySelector('.quantity');
-                    const quantity = parseInt(quantityElement.textContent) + 1;
-                    quantityElement.textContent = quantity; // Update the quantity
-                    total += productPrice; // Increment total by the product price
-                    quantityTotal += 1; // Increment total quantity
-                    totalPrice.textContent = `₱ ${total.toFixed(2)}`; // Update the total price
-                    totalQuantity.textContent = quantityTotal; // Update total quantity
-                } else {
-                    // Check if the product is already in the order list with a different size
-                    let productExists = false;
-                    orderList.querySelectorAll('tr').forEach(row => {
-                        const rowProductName = row.cells[0].textContent;
-                        if (rowProductName === productName) {
-                            productExists = true;
-                            return;
-                        }
-                    });
+        if (existingRow) {
+            // Increase the quantity if the product is already in the order list with the same size
+            const quantityElement = existingRow.querySelector('.quantity');
+            const quantity = parseInt(quantityElement.textContent) + 1;
+            quantityElement.textContent = quantity; // Update the quantity
 
-                    // Add row to the table if the product is not in the order list or if a different size is selected
-                    if (!productExists || productSize) {
-                        total += productPrice; // Add the selected price to the total
-                        quantityTotal += 1; // Increment total quantity
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${productName}</td>
-                            <td class="size-cell">${productSize}</td>
-                            <td class="quantity-cell">
-                                <button class="decrease">-</button>
-                                <span class="quantity">1</span>
-                                <button class="increase">+</button>
-                            </td>
-                            <td class="price-cell">₱ ${productPrice.toFixed(2)}</td>
-                            <td><button class="remove">Remove</button></td>
-                        `;
-                        orderList.appendChild(row);
-                        totalPrice.textContent = `₱ ${total.toFixed(2)}`;
-                        totalQuantity.textContent = quantityTotal; // Update total quantity
-                    }
+            // Calculate total price for the existing row
+            const totalPriceCell = existingRow.querySelector('.total-price-cell');
+            const existingTotalPrice = parseFloat(totalPriceCell.textContent.replace('₱ ', ''));
+            const newTotalPrice = existingTotalPrice + productPrice; // Add the product price to the existing total price
+            totalPriceCell.textContent = `₱ ${newTotalPrice.toFixed(2)}`; // Update the total price cell
+
+            total += productPrice; // Increment total by the product price
+            quantityTotal += 1; // Increment total quantity
+            totalPrice.textContent = `₱ ${total.toFixed(2)}`; // Update the total price
+            totalQuantity.textContent = quantityTotal; // Update total quantity
+        } else {
+            // Check if the product is already in the order list with a different size
+            let productExists = false;
+            orderList.querySelectorAll('tr').forEach(row => {
+                const rowProductName = row.cells[0].textContent;
+                if (rowProductName === productName) {
+                    productExists = true;
+                    return;
                 }
             });
-        });
+
+            // Add row to the table if the product is not in the order list or if a different size is selected
+            if (!productExists || productSize) {
+                total += productPrice; // Add the selected price to the total
+                quantityTotal += 1; // Increment total quantity
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td >${productName}</td>
+                    <td hidden>${productId}</td>
+                    <td class="size-cell">${productSize}</td>
+                   
+                    <td class="quantity-cell">
+                        <button class="decrease">-</button>
+                        <span class="quantity">1</span>
+                        <button class="increase">+</button>
+                    </td>
+                    <td class="price-cell">₱ ${productPrice.toFixed(2)}</td>
+                    <td class="total-price-cell" id="total-price-cell">₱ ${productPrice.toFixed(2)}</td>
+                    <td><button class="remove">Remove</button></td>
+                `;
+                orderList.appendChild(row);
+                totalPrice.textContent = `₱ ${total.toFixed(2)}`;
+                totalQuantity.textContent = quantityTotal; // Update total quantity
+            }
+        }
+    });
+});
 
         // Event listeners for increasing and decreasing quantity
         orderList.addEventListener('click', (event) => {
             const target = event.target;
             if (target.classList.contains('increase')) {
+                const getPrice = document.getElementById('total-price-cell');
                 const quantityElement = target.parentNode.querySelector('.quantity');
                 const quantity = parseInt(quantityElement.textContent);
                 const price = parseFloat(target.parentNode.nextElementSibling.textContent.replace('₱ ', ''));
+               
                 quantityElement.textContent = quantity + 1;
                 total += price;
                 quantityTotal += 1; // Increment total quantity
+                getPrice.textContent = `₱ ${total.toFixed(2)}`;
                 totalPrice.textContent = `₱ ${total.toFixed(2)}`;
                 totalQuantity.textContent = quantityTotal; // Update total quantity
             } else if (target.classList.contains('decrease')) {
+                const getPrice = document.getElementById('total-price-cell');
                 const quantityElement = target.parentNode.querySelector('.quantity');
                 const quantity = parseInt(quantityElement.textContent);
-                if (quantity > 1) {
+                if (quantity > 1) { 
                     const price = parseFloat(target.parentNode.nextElementSibling.textContent.replace('₱ ', ''));
                     quantityElement.textContent = quantity - 1;
                     total -= price;
                     quantityTotal -= 1; // Decrement total quantity
+                    getPrice.textContent = `₱ ${total.toFixed(2)}`;
                     totalPrice.textContent = `₱ ${total.toFixed(2)}`;
                     totalQuantity.textContent = quantityTotal; // Update total quantity
                 }
@@ -401,15 +430,62 @@
         // Your existing code for quantity manipulation
 
         payButton.addEventListener('click', () => {
-            const payment = parseFloat(paymentInput.value);
-            const change = payment - total;
+    const payment = parseFloat(paymentInput.value);
+    const change = payment - total;
 
-            if (change >= 0) {
+    if (change >= 0) {
                 changeOutput.textContent = `Change: ₱ ${change.toFixed(2)}`;
-            } else {
+
+    const paymentData = [];
+    // Loop through each product in the order list
+    orderList.querySelectorAll('tr').forEach(row => {
+        
+        const productId = row.cells[1].textContent; // Get the product ID
+        const totalPrice = row.querySelector('.total-price-cell').textContent.replace('₱ ', ''); // Get the total price
+        const totalquantity = row.querySelector('.quantity').textContent; // Get the total amount
+        const amountPaid = payment;
+        const productChange = change.toFixed(2);
+
+        // Push payment data for each product into the array
+        paymentData.push({
+            productId: productId,
+            totalPrice: totalPrice,
+            totalquantity: totalquantity,
+            amountPaid: amountPaid,
+            change: productChange
+        });
+    });
+
+    // Send the array of payment data to the server-side controller using AJAX
+    fetch('/payment/save', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(paymentData),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to save payments.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Payments saved successfully:', data);
+        // Handle success response from server
+    })
+    .catch(error => {
+        console.error('Error saving payments:', error);
+        // Handle error
+    });
+}
+                
+ else {
                 alert('Insufficient payment.');
             }
-        });
+
+});
+
     </script>
     <script>
         const categoryTabs = document.querySelectorAll('.category-tab');

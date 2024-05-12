@@ -3,14 +3,14 @@
 
 namespace App\Libraries\ThermalPrinter;
 
-use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\Printer;
 
 class ThermalPrinter
 {
     protected $printerDevice;
 
-    public function __construct($printerDevice = 'COM3')
+    public function __construct($printerDevice = 'USB001')
     {
         $this->printerDevice = $printerDevice;
     }
@@ -19,7 +19,7 @@ class ThermalPrinter
     {
         try {
             // Initialize printer connection
-            $connector = new WindowsPrintConnector($this->printerDevice);
+            $connector = new FilePrintConnector($this->printerDevice);
             $printer = new Printer($connector);
 
             // Print content

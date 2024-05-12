@@ -16,8 +16,10 @@ use App\Models\TableModel;
 use App\Models\FeedbackModel;
 use App\Models\OrderModel;
 use App\Models\ItemsModel;
+use CodeIgniter\API\ResponseTrait;
 class AdminController extends BaseController
 {
+    use ResponseTrait;
     private $user;
     private $history;
     private $orderprod;
@@ -38,6 +40,42 @@ class AdminController extends BaseController
         $this->raw = new ItemsModel();
     }
     
+    public function savePOSOrders()
+    {
+       $requestData = $this->request->getJSON();
+
+       $savedData = [];
+
+       foreach ($requestData as $item) {
+           $productId = $item->productId;
+           $totalPrice = $item->totalPrice;
+           $totalquantity = $item->totalquantity;
+           $amountPaid = $item->amountPaid;
+           $change = $item->change;
+
+           $orderId = $this->history->insert([
+               'ProductID' => $productId,
+               'total_amount' => $totalPrice,
+               'quantity' => $totalquantity,
+               'amount_paid' => $amountPaid,
+               'change_amount' => $change
+               
+           ]);
+
+           $savedData[] = [
+            'productId' => $productId,
+            'total_ammount' => $totalPrice,
+            'totalQuantity' => $totalQuantity,
+            'amountPaid' => $amountPaid,
+            'change' => $change,
+         ];
+       }
+
+       return $this->response->setJSON([
+           'success' => true,
+           'data' => $savedData
+       ]);
+    }
 
     public function printReceipt()
     {
@@ -58,6 +96,7 @@ class AdminController extends BaseController
             $result = $printer->printReceipt($receipt_content);
             if ($result === true) {
                 echo "Receipt printed successfully.";
+            $printer->printReceipt($receipt_content);
             } else {
                 echo "Error: " . $result;
             }
@@ -370,6 +409,7 @@ class AdminController extends BaseController
             'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];   
+
         return view('/admin/pos', $data);
     }
 

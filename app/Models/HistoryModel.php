@@ -13,7 +13,7 @@ class HistoryModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['order_id', 'user_id', 'order_date', 'total_amount', 'amount_paid', 'change_amount'];
+    protected $allowedFields    = ['order_id', 'CustomerID', 'OrderID', 'ProductID', 'quantity', 'order_date', 'total_amount', 'amount_paid', 'change_amount'];
 
     // Dates
     protected $useTimestamps = false;

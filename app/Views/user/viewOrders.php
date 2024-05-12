@@ -75,6 +75,9 @@
 										<input type="hidden" name="orderID" value="<?= $item['orderID']?>">
 										<button type="submit">Oreder Received</button>
 										</form>
+										
+										<?php elseif($item['orderStatus'] === 'AcceptOrder'):?>
+											
 										<?php else:?>
 										<h2>Please Wait</h2>
 										<?php endif;?>

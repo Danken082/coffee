@@ -6,7 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/adminitems', 'AdminController::item', ['filter'=>'authFilter']);
-
 $routes->get('/dailysales', 'VisualizationController::dailySales');
 $routes->get('/monthlysales', 'VisualizationController::initMonthChart');
 $routes->get('/yearsales', 'VisualizationController::initYearChart');
@@ -177,7 +176,7 @@ $routes->get('rawNotif/(:any)', 'AdminController::notificationRaw/$1');
 
 }
 
-$routes->get('hello', 'AdminController::Deduction');
+// $routes->get('hello', 'AdminController::Deduction');
 $routes->get('stocks', 'StocksController::Stocks');
 $routes->get('/', 'UserController::home', ['filter' => 'guestFilter']);
 $routes->get('/mainhome', 'UserController::mainhome',['filter'=>'cusFilter']);
@@ -226,11 +225,11 @@ $routes->get('myOrders', 'OrderController::viewOrders',['filter'=>'cusFilter']);
 
 $routes->get('report', 'AdminController::report');
 
-
+$routes->post('/save-order', 'OrderController::saveOrder');
 
 
 //para sa receipt
 
 
-
+$routes->post('/payment/save', 'AdminController::savePOSOrders');
 

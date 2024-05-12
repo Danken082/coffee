@@ -26,6 +26,20 @@ class OrderController extends BaseController
         $this->fb    = new FeedbackModel();
     }
 
+    // In your CodeIgniter controller
+        public function saveOrder()
+        {
+            // Retrieve the order data from the request
+            $orderData = $this->request->getJSON();
+            $orders = $orderData->orders;
+            $total = $orderData->total;
+
+            $this->order->insert(['total' => $total]);
+
+            // Return a JSON response indicating success or failure
+            return $this->response->setJSON(['success' => true, 'message' => 'Order saved successfully']);
+        }
+
 
     public function getOrder($id)
     {
@@ -155,7 +169,7 @@ class OrderController extends BaseController
         order.paymentStatus, order.orderType, order.orderDate, order.total, order.quantity, order.size,
         order.barcode, order.orderStatus, product_tbl.prod_id, product_tbl.prod_img, product_tbl.prod_name, 
         product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
-        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')->where('order.CustomerID', $user)->findAll();
+        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')->where('order.CustomerID', $user)->where('order.orderStatus', 'AcceptOrder')->orwhere('order.orderStatus', 'onProcess')->findAll();
 
 
         return view('user/viewOrders', $data);  
@@ -166,7 +180,7 @@ class OrderController extends BaseController
     public function feedBack()
     {
         $orderID = $this->request->getVar('orderID');
-        $getID = $this->order->where('orderID', $orderID)->find();
+        $getID = $this->order->where('orderID', $orderID)->first();
     
         $rules = [
             'comment' => 'required|min_length[5]|max_length[150]',
@@ -183,7 +197,7 @@ class OrderController extends BaseController
             ];
         //    var_dump($getID);         
             $upData = ['orderStatus' => 'OrderReceived'];
-            // $update = $this->order->update($upData, $getID);
+            $update = $this->order->update($getID['orderID'], $upData);
           
             $this->fb->insert($data);
     
