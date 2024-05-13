@@ -7,6 +7,26 @@
     <link href="/assets/css/pos.css" rel="stylesheet" />
     <link href="https://fontawesome.com/"/>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+    <style>
+        .orders-container {
+            overflow-y:scroll;
+        }
+        td {
+    max-width: 200px; /* Adjust the max-width as needed */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+        }
+
+        .total-price-cell,
+        .quantity-cell,
+        .price-cell {
+            max-width: 100px; /* Adjust the max-width as needed */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+    </style>
 </head>
 <body>
     <main>
@@ -41,11 +61,11 @@
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
                                 <?php if($item['prod_lprice'] == 0.00):?> 
                                     <p class="price">
-                                        <span>₱ <?= $item['prod_mprice'] ?> </span>
+                                        <span >₱ <?= $item['prod_mprice'] ?> </span>
                                     </p>
                                 <?php else:?>
                                     <p class="price">
-                                        <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                                        <span class="size-select">Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
                                     </p>
                                 <?php endif;?>
                                 <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
@@ -68,23 +88,23 @@
                                 <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
                             </div>
                         <?php endforeach; ?>
-                    <?php foreach($meal as $item): ?>
-                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
-                        <div class="box" data-category="meal">
-                            <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
-                            <h3><a><?= $item['prod_name'] ?></a></h3>
-                            <?php if($item['prod_lprice'] == 0.00):?> 
-                                <p class="price">
-                                    <span> ₱ <?= $item['prod_mprice'] ?> </span>
-                                </p>
-                            <?php else:?>
-                                <p class="price">
-                                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
-                                </p>
-                            <?php endif;?>
-                            <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php foreach($meal as $item): ?>
+                            <div class="box" data-category="meal">
+                            <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                                <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+                                <h3><a><?= $item['prod_name'] ?></a></h3>
+                                <?php if($item['prod_lprice'] == 0.00):?> 
+                                    <p class="price">
+                                        <span> ₱ <?= $item['prod_mprice'] ?> </span>
+                                    </p>
+                                <?php else:?>
+                                    <p class="price">
+                                        <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                                    </p>
+                                <?php endif;?>
+                                <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
+                            </div>
+                        <?php endforeach; ?>
                     <?php foreach($salad as $item): ?>
 
                         <div class="box" data-category="salad">
@@ -161,7 +181,7 @@
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
-                                <p class="price">
+                                <p class="price size-select">
                                     <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
                                 </p>
                                 <?php else:?>
@@ -210,8 +230,8 @@
                         </div>
                     <?php endforeach; ?>
                     <?php foreach($coffee as $item): ?>
-                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                         <div class="box" data-category="coffee">
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -228,19 +248,20 @@
                         </div>
                     <?php endforeach; ?>
                     <?php foreach($other as $item): ?>
-                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                         <div class="box" data-category="other">
+                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
                                 <p class="price">
                                     <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
                                 </p>
-                            <?php else:?>
-                                <p class="price">
-                                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
-                                </p>
-                            <?php endif;?>
+                                <?php else:?>
+                                    <select class="size-select" data-regular-price="<?= $item['prod_mprice'] ?>" data-large-price="<?= $item['prod_lprice'] ?>">
+                                        <option value="<?= $item['prod_mprice'] ?>">Regular</option>
+                                        <option value="<?= $item['prod_lprice'] ?>">Large</option>
+                                    </select>
+                                <?php endif;?><br><br>
                             <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
                         </div>
                     <?php endforeach; ?>
@@ -286,7 +307,7 @@
         let quantityTotal = 0;
 
         orderButtons.forEach(button => {
-    button.addEventListener('click', () => {
+        button.addEventListener('click', () => {
         const product = button.parentElement;
         const productName = product.querySelector('h3').innerText;
         const productId = product.querySelector('.prodID').value;
@@ -364,7 +385,7 @@
                         <button class="increase">+</button>
                     </td>
                     <td class="price-cell">₱ ${productPrice.toFixed(2)}</td>
-                    <td class="total-price-cell" id="total-price-cell">₱ ${productPrice.toFixed(2)}</td>
+                    <td class="total-price-cell" id="total-price-cell" hidden>₱ ${productPrice.toFixed(2)}</td>
                     <td><button class="remove">Remove</button></td>
                 `;
                 orderList.appendChild(row);
@@ -473,6 +494,14 @@
     .then(data => {
         console.log('Payments saved successfully:', data);
         // Handle success response from server
+        orderList.innerHTML = ''; // This line clears all child elements inside the order list table body
+
+        // Reset total quantity and total price to zero
+        total = 0;
+        quantityTotal = 0;
+        totalPrice.textContent = '₱ 0.00';
+        totalQuantity.textContent = '0';
+
     })
     .catch(error => {
         console.error('Error saving payments:', error);

@@ -127,7 +127,7 @@ class UserController extends BaseController
                     ];
 
                  $session->set($ses_data);
-           if($user['UserRole'] == 'Admin')
+           if($user['UserRole'] == 'Admin' || $user['UserRole'] == 'Staff')
            {
             return redirect()->to('/adminhome');
            }

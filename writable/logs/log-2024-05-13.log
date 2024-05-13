@@ -1,0 +1,136 @@
+CRITICAL - 2024-05-13 00:41:22 --> Undefined variable $totalQuantity
+in APPPATH\Controllers\AdminController.php on line 68.
+ 1 APPPATH\Controllers\AdminController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuantity', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 00:48:22 --> Undefined variable $totalQuantity
+in APPPATH\Controllers\AdminController.php on line 68.
+ 1 APPPATH\Controllers\AdminController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuantity', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 00:48:49 --> Undefined variable $totalQuantity
+in APPPATH\Controllers\AdminController.php on line 68.
+ 1 APPPATH\Controllers\AdminController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuantity', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 00:53:24 --> Undefined variable $totalQuantity
+in APPPATH\Controllers\AdminController.php on line 68.
+ 1 APPPATH\Controllers\AdminController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuantity', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 00:55:35 --> Undefined variable $totalQuantity
+in APPPATH\Controllers\AdminController.php on line 68.
+ 1 APPPATH\Controllers\AdminController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuantity', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 00:56:27 --> Undefined variable $totalQuantity
+in APPPATH\Controllers\AdminController.php on line 68.
+ 1 APPPATH\Controllers\AdminController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuantity', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 00:58:37 --> Undefined variable $totalQuantity
+in APPPATH\Controllers\AdminController.php on line 68.
+ 1 APPPATH\Controllers\AdminController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuantity', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 00:59:49 --> Undefined variable $totalQuantity
+in APPPATH\Controllers\AdminController.php on line 68.
+ 1 APPPATH\Controllers\AdminController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuantity', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 01:32:08 --> Undefined variable $to
+in APPPATH\Controllers\AdminController.php on line 80.
+ 1 APPPATH\Controllers\AdminController.php(80): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $to', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 80)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 01:32:56 --> Undefined variable $to
+in APPPATH\Controllers\AdminController.php on line 80.
+ 1 APPPATH\Controllers\AdminController.php(80): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $to', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 80)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 01:33:20 --> Undefined variable $to
+in APPPATH\Controllers\AdminController.php on line 79.
+ 1 APPPATH\Controllers\AdminController.php(79): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $to', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 79)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 02:15:51 --> Undefined property: stdClass::$barOrderCode
+in APPPATH\Controllers\AdminController.php on line 56.
+ 1 APPPATH\Controllers\AdminController.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$barOrderCode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 02:16:05 --> Undefined property: stdClass::$barOrderCode
+in APPPATH\Controllers\AdminController.php on line 56.
+ 1 APPPATH\Controllers\AdminController.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$barOrderCode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 02:17:18 --> Undefined property: stdClass::$barOrderCode
+in APPPATH\Controllers\AdminController.php on line 56.
+ 1 APPPATH\Controllers\AdminController.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$barOrderCode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 02:18:04 --> Undefined property: stdClass::$barOrderCode
+in APPPATH\Controllers\AdminController.php on line 56.
+ 1 APPPATH\Controllers\AdminController.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$barOrderCode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 02:19:27 --> Undefined property: stdClass::$barOrderCode
+in APPPATH\Controllers\AdminController.php on line 56.
+ 1 APPPATH\Controllers\AdminController.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$barOrderCode', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 56)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-13 02:41:35 --> Undefined variable $order
+in APPPATH\Controllers\AdminController.php on line 161.
+ 1 APPPATH\Controllers\AdminController.php(161): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 161)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

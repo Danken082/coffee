@@ -273,7 +273,7 @@ class CartController extends BaseController
       
       private function generateAlphanumericBarcode($length = 10)
        {
-          $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+          $characters = 'QW123YOPP456ASKFJ789ZXCBN10LKJ';
           $barcodeData = '';
       
           for ($i = 0; $i < $length; $i++) {
@@ -297,13 +297,13 @@ class CartController extends BaseController
                   'CustomerID' => $item['CustomerID'],
                   'ProductID' => $item['ProductID'],
                   'total' => $item['total'],
-                    'quantity' => $item['quantity'],
+                  'quantity' => $item['quantity'],
                   'size' => $item['size'],
                   'orderStatus' => 'onProcess',
                   'paymentStatus' => 'notPaid',
                   'orderType' => 'onHouse',
                   'paymentStatus' => 'COD',
-                  'barcode' => $item['barcode'],
+                  'barcode' => 'CRossOnline-' .$item['barcode'],
                     ];
           }
       

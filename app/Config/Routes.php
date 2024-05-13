@@ -29,7 +29,7 @@ $routes->post('print-receipt', 'AdminController::printReceipt');
 // $routes->get('pos', 'ChatController::try');
 
 /*For UserSide*/ 
-if(session()->get('UserRole') === 'Admin')
+if(session()->get('UserRole') === 'Admin' || session()->get('UserRole') === 'Staff')
 {
 $routes->get('adminorderpayment', 'AdminController::viewOrders');
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
