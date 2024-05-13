@@ -2139,9 +2139,9 @@ class AdminController extends BaseController
         order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
         user.FirstName, user.Username, user.ContactNo, user.address, user.gender, 
         product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_lprice, product_tbl.prod_decs')
-        ->join('product_tbl', 
-        'order.ProductID = product_tbl.prod_id')
+        ->join('product_tbl', 'order.ProductID = product_tbl.prod_id')
         ->join( 'user', 'order.CustomerID = user.UserID')
+        ->where('orderStatus', 'onProcess')
         ->orderBy('order.orderID', 'ASC')
         ->findAll();
         return view('/admin/orderpayment', $data);
@@ -4227,7 +4227,7 @@ class AdminController extends BaseController
         {
             return redirect()->to('/');  
         }
-        
+         
         elseif(session()->get('UserRole') == 'Admin' || session()->get('UserRole') == 'Staff')
         {
             return redirect()->to('/login');
