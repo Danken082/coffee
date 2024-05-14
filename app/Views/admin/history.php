@@ -31,7 +31,6 @@
                             <h6 class="text-white text-capitalize ps-3">Order History</h6>
                         </div>
                     </div>
-
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
@@ -47,7 +46,7 @@
 
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Change Amount</th>
 
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Products</th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Action</th>
 
                                     </tr>
                                 </thead>
@@ -69,10 +68,8 @@
                                             <td class="text-center">
                                                 <p class="text-xs text-primary mb-0 font-weight-bold"><?=$h['change_amount'] ?></p>
                                             </td>
-                                            <td class="text-center">
-                                                <p class="text-xs text-primary mb-0 font-weight-bold">
-                                                    <!-- ilalagay dito yung product name na galing sa table na product_tbl nakajoin sila -->
-                                                </p>
+                                            <td class="align-middle text-center">
+                                                <a href="<?= base_url('/orderhistory')?>" class="btn btn-info btn-sm ">View Order History</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

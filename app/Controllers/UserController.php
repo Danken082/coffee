@@ -127,7 +127,7 @@ class UserController extends BaseController
                     ];
 
                  $session->set($ses_data);
-           if($user['UserRole'] == 'Admin' || $user['UserRole'] == 'Staff')
+           if($user['UserRole'] == 'Admin')
            {
             return redirect()->to('/adminhome');
            }
@@ -356,13 +356,19 @@ class UserController extends BaseController
     public function edit_profile($id)
     {
         $data['eprof'] = $this->user->find($id);
-        return view('/user/edit_profile', $data);
+        return view('/user/edit_userprofile', $data);
     }
 
     public function updateprofile($id)
     {
         if ($this->request->getMethod() === 'post') {
             $userId = session()->get('UserID');
+            $userModel = new UserModel();
+
+            // Get the current user data
+            $currentUser = $userModel->find($userId);
+            $currentProfileImg = $currentUser['profile_img'];
+
             $data = [
                 'LastName' => $this->request->getPost('LastName'),
                 'FirstName' => $this->request->getPost('FirstName'),
@@ -373,14 +379,22 @@ class UserController extends BaseController
                 'address' => $this->request->getPost('address'),
                 'birthdate' => $this->request->getPost('birthdate')
             ];
+
             $profileImg = $this->request->getFile('profile_img');
-                if ($profileImg->isValid() && !$profileImg->hasMoved()) {
-                    $newName = $profileImg->getName();
-                    $profileImg->move(ROOTPATH . 'public/assets/user/images/', $newName);
-                    $data['profile_img'] = $newName;
+            if ($profileImg->isValid() && !$profileImg->hasMoved()) {
+                $newName = $profileImg->getName();
+                $profileImg->move(ROOTPATH . 'public/assets/user/images/', $newName);
+                $data['profile_img'] = $newName;
+
+                // Delete the old profile image if it's not the default image
+                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg)) {
+                    unlink(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg);
                 }
-            $this->user->updateUserProfile($userId, $data);
+            }
+
+            $userModel->update($userId, $data);
             session()->set($data);
+
             return redirect()->to(base_url('/profile'));
         }
     }
@@ -388,11 +402,18 @@ class UserController extends BaseController
     public function removeProfilePicture($userId)
     {
         $userModel = new UserModel();
+        $currentUser = $userModel->find($userId);
+        $profileImg = $currentUser['profile_img'];
+    
+        if (!empty($profileImg) && file_exists('assets/user/images/' . $profileImg)) {
+            unlink('assets/user/images/' . $profileImg);
+        }
+    
         $userModel->update($userId, ['profile_img' => 'profile.png']);
         session()->set('profile_img', 'profile.png');
-
+    
         return redirect()->to(base_url('/profile'));
-    }
+    }    
 
     public function CartCount()
     {
@@ -405,7 +426,7 @@ class UserController extends BaseController
         $orderAgad = $this->request->getVar('item');
 
         if(empty($orderAgad)){
-            return redirect()-to('user/shop')->with('Please Select Product');
+            return redirect()->to('user/shop')->with('msg', 'Please Select Product');
         }
 
         $prodOrder = $this->myOrder($orderAgad);
@@ -417,7 +438,7 @@ class UserController extends BaseController
 
     private function myOrder($orderAgad)
     {
-        $prodOrder = $this->prod->whereIn('id', $orderAgad)->get()->getResultArray();
+        $prodOrder = $this->product->whereIn('id', $orderAgad)->get()->getResultArray();
 
         return $prodOrder;
     }

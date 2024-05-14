@@ -11,15 +11,15 @@
     <link rel="stylesheet" href="/assets/admin/owl.carousel.min.css">
     <link rel="stylesheet" href="/assets/admin/owl.theme.default.min.css">
     <link rel="stylesheet" href="/assets/admin/style.css">
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
     <link rel="shortcut icon" href="/assets/images/tea.png" />
     <link href="https://fontawesome.com/"/>
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div class="container-scroller">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a class="navbar-brand" style="color: white;"><small>Crossroads Coffee and Deli</small></a>
+          <a class="navbar-brand"><small>Crossroads Coffee and Deli</small></a>
         </div>
         <ul class="nav">
           <li class="nav-item profile">
@@ -125,10 +125,8 @@
                   <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
                     <i class="fa fa-solid fa-bell"></i>
                     <span class="bg-danger">
-                  <i class="bi bi-bell"></i> <!-- Replace "bi-bell" with the desired Bootstrap icon class -->
-                  
+                  <i class="bi bi-bell"></i>
                   <?php if($count['notif'] == 0):?>
-                    
                     <?php elseif( $count['notif'] >=1):?>
                       <?= $count['notif'] ?>
                   <?php endif;?>
@@ -167,7 +165,7 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item" href="<?= site_url("/adminprofile/"); ?>">
+                    <a class="dropdown-item preview-item" href="<?= site_url("/adminprofile"); ?>">
                         <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
                                 <i class="fa fa-solid fa-user"></i>
@@ -210,5 +208,6 @@
     <script src="/assets/admin/settings.js"></script>
     <script src="/assets/admin/todolist.js"></script>
     <script src="/assets/admin/dashboard.js"></script>
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   </body>
 </html>

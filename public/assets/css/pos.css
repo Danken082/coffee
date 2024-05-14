@@ -1,148 +1,180 @@
+/* pos.css */
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5dc; /* Light beige background */
+    color: #5d170b; /* Dark coffee color for text */
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
+    color: #5d170b;
 }
 
 .container {
     display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
     justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    margin-top: 40px;
-    margin-bottom: 40px;
+}
+
+.products-container, .orders-container {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1;
+    min-width: 300px;
 }
 
 .products-container {
-    position: relative;
-    flex: 1;
-    max-width: 70%;
-    background-color: #fff;
-    padding: 90px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    height: 600px;
-}
-
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Align boxes to the start of the container */
-}
-
-.box {
-    width: calc(25% - 20px); /* Adjusted width to accommodate margin */
-    margin-bottom: 20px;
-    margin-right: 20px; /* Added margin-right to create space between boxes */
-}
-
-.box img {
-    width: 200px;
-    height: 200px;
-    border-radius: 5px;
-}
-
-.box h3 {
-    margin: 10px 0;
-    font-size: 18px;
-}
-
-.price {
-    font-size: 16px;
-}
-
-.add-to-order {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-to-order:hover {
-    background-color: #0056b3;
+    max-width: 60%;
 }
 
 .orders-container {
-    flex: 1;
-    max-width: 25%;
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 700px;
-    text-align: justify;
-    margin: 0;
+    max-width: 35%;
 }
 
-.order-list {
-    margin-top: 20px;
-}
-
-.order-list li {
-    margin-bottom: 10px;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.total {
-    margin-top: 20px;
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: center;
+h2 {
+    color: #3e2723; /* Darker coffee color for headings */
 }
 
 .search-bar-container {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     margin-bottom: 20px;
 }
 
 .search-bar {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 200px;
-    margin-right: 10px;
+    border: 2px solid #795548; /* Brown border */
+    border-radius: 4px;
 }
 
 .search-icon {
-    color: #777;
-    cursor: pointer;
+    margin-left: -30px;
+    color: #795548; /* Brown color for search icon */
 }
 
 .category-tabs {
-    background-color: #f8f9fa;
-    padding: 10px;
-    border-radius: 5px;
     display: flex;
-    justify-content: space-between;
-    overflow-x: auto;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 .category-tab {
-    background-color: #b77c41;
-    color: #fff;
-    border: none;
-    padding: 10px 5px;
-    margin-right: 10px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border: 2px solid #795548;
+    border-radius: 4px;
+    background-color: #d7ccc8; /* Light coffee color for buttons */
+    color: black;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.category-tab:hover {
-    background-color: #a56a2f;
-    color: #fff; 
 }
 
 .category-tab.active {
-    background-color: #733b02;
+    background-color: #795548; /* Darker brown for active tab */
     color: #fff;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 boxes per row */
+    gap: 20px;
+}
+
+.box {
+    border: 2px solid #795548;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    position: relative; /* Added to position the price within the box */
+}
+
+.box img {
+    width: 100%; /* Ensure the images are the same size */
+    height: 200px; /* Set a fixed height for the images */
+    object-fit: cover; /* Ensure images cover the box without distortion */
+    border-radius: 8px;
+}
+
+.price {
+    position: absolute;
+    top: 10px; 
+    left: 10px; 
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #3e2723;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.box h3 {
+    margin: 10px 0;
+}
+
+.btn-primary {
+    background-color: #8B4513; /* Dark coffee color */
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #5e2d00; /* Lighter shade on hover */
+}
+
+.order-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.order-list th, .order-list td {
+    border: 2px solid #795548;
+    padding: 10px;
+    text-align: left;
+}
+
+.total {
+    margin: 20px 0;
+}
+
+.payment-container {
+    margin-bottom: 20px;
+}
+
+#payment-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 2px solid #795548;
+    border-radius: 4px;
+}
+
+#pay-button, #save-transaction-button {
+    background-color: #8B4513;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#pay-button:hover, #save-transaction-button:hover {
+    background-color: #5e2d00;
+}
+
+#change-output {
+    color: red; /* Red color for change output */
+    font-weight: bold;
+    margin-top: 10px;
 }

@@ -85,7 +85,7 @@
                           <hr>
                           <div class="row">
                             <div class="col-sm-12">
-                              <a class="btn btn-info" href="<?= site_url("/adminedituser/"); ?><?= session()->get('UserID')?>">Edit Profile</a>
+                              <a class="btn btn-info" href="<?= site_url("/admineditprofile/"); ?><?= session()->get('UserID')?>">Edit Profile</a>
                             </div>
                           </div>
                         </div>

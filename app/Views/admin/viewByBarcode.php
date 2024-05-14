@@ -46,11 +46,7 @@
     <body>
     <div class="container-fluid mt-4">
         <div class="row">
-            <div class="col-lg-3">
-                <div class="sidebar">
-                <?php include('sidebar.php'); ?>
-                </div>
-            </div>
+        <?php include('sidebar.php'); ?>
             <div class="col-lg-9"> <br><br><br>
                 <div class="card">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">

@@ -48,4 +48,10 @@ class AdminUserModel extends Model
     {
         return $this->where('UserRole', $role)->findAll();
     }
+
+    public function updateadmin($userId, $data) {
+        $builder = $this->db->table('user');
+        $builder->where('UserID', $userId);
+        $builder->update($data);
+    }  
 }

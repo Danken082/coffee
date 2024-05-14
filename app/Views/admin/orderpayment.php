@@ -64,11 +64,11 @@
                                     <?php foreach($order as $orP): ?>
                                         <tr>
                                          <td class="text-center">
-                                            <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $orP['barcode']?></p>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <a href="<?= base_url('theorders/' .$orP['barcode'])?>" class="btn btn-info btn-sm ">View Order</a>
-                                        </td>
+                                                <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $orP['barcode']?></p>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <a href="<?= base_url('theorders/' .$orP['barcode'])?>" class="btn btn-info btn-sm ">View Order</a>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

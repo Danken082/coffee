@@ -23,6 +23,7 @@ $routes->match(['get', 'post'], 'sendNotif', 'UserController::userNotification')
 $routes->get('/register', 'AdminController::register', ['filter'=>'guestFilter']);
 
 $routes->get('theorders/(:any)', 'AdminController::viewToAcceptorders/$1');
+$routes->get('/orderhistory', 'AdminController::viewhistory');
 $routes->get('/receipt', 'OrderController::coffeereceipt');
 
 $routes->post('print-receipt', 'AdminController::printReceipt');
@@ -45,8 +46,8 @@ $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter
 $routes->post('/adminadduser', 'AdminController::adduser', ['filter'=>'authFilter']);
 $routes->get('/admincustomer_user', 'AdminController::getcustomeruser', ['filter'=>'authFilter']);
 $routes->get('/adminprod', 'AdminController::products', ['filter'=>'authFilter']);
-$routes->get('/adminedituser/(:any)', 'AdminController::edituser/$1');
-$routes->post('/updateuser/(:any)', 'AdminController::updateadmin/$1');
+$routes->get('/admineditprofile/(:any)', 'AdminController::edit_profile/$1');
+$routes->post('/updateadminprofile/(:any)', 'AdminController::updateadmin/$1');
 $routes->get('/removeprofile/(:any)', 'AdminController::removeadminpf/$1',['filter'=>'authFilter']);
 $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
 $routes->get('admin/sidebar', 'AdminController::admin_side');
@@ -181,7 +182,7 @@ $routes->get('stocks', 'StocksController::Stocks');
 $routes->get('/', 'UserController::home', ['filter' => 'guestFilter']);
 $routes->get('/mainhome', 'UserController::mainhome',['filter'=>'cusFilter']);
 $routes->get('/profile', 'UserController::profile',['filter'=>'cusFilter']);
-$routes->get('/editprofile/(:any)', 'UserController::edit_profile/$1',['filter'=>'cusFilter']);
+$routes->get('/edituserprofile/(:any)', 'UserController::edit_profile/$1',['filter'=>'cusFilter']);
 $routes->post('/updateprofile/(:any)', 'UserController::updateprofile/$1',['filter'=>'cusFilter']);
 $routes->get('/removeprofile/(:any)', 'UserController::removeProfilePicture/$1',['filter'=>'cusFilter']);
 $routes->get('/menu', 'UserController::home_menu', ['filter' => 'guestFilter']);

@@ -66,11 +66,11 @@ class AdminController extends BaseController
            ]);
 
            $savedData[] = [
-            'productID' => $productID,
-            'total_ammount' => $totalPrice,
-            'totalQuantity' => $totalquantity,
-            'amountPaid' => $amountPaid,
-            'change' => $change,
+            'ProductID' => $productID,
+            'total_amount' => $totalPrice,
+            'quantity' => $totalquantity,
+            'amount_paid' => $amountPaid,
+            'change_amount' => $change,
          ];
          $coffee = $this->raw->where('rawID', '9')->first();
          $milk = $this->raw->where('rawID', '10')->first();
@@ -235,7 +235,7 @@ class AdminController extends BaseController
          $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
         
      }
@@ -254,7 +254,7 @@ class AdminController extends BaseController
          $this->raw->update($beef['rawID'], ['stocks' => $changebef]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
          $this->raw->update($pepper['rawID'], ['stocks' => $changepep]);
 
@@ -274,7 +274,7 @@ class AdminController extends BaseController
          $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);            
      }
      elseif ($productID == 10) {
@@ -292,7 +292,7 @@ class AdminController extends BaseController
          $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);   
      }
      elseif ($productID == 11) {
@@ -310,7 +310,7 @@ class AdminController extends BaseController
          $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);               
      }
      elseif ($productID == 12) {
@@ -2232,31 +2232,73 @@ class AdminController extends BaseController
         return redirect()->to(base_url('adminmanage_user'));
     }
 
-    public function edituser($id)
-    {
-        $data['euser'] = $this->user->find($id);
-        return view('/admin/edituser', $data);
+    public function adminprofile()
+    { 
+        return view('/admin/adminprofile');
     }
 
-    public function updateuser($id)
+    public function edit_profile($id)
     {
-        $user = new AdminUserModel();
-        $data = [
-            'LastName' => $this->request->getVar('LastName'),
-            'FirstName' => $this->request->getVar('FirstName'),
-            'gender' => $this->request->getVar('gender'),
-            'email' => $this->request->getVar('email'),
-            'ContactNo' => $this->request->getVar('ContactNo'),
-            'UserRole' => $this->request->getVar('UserRole'),
-            'Username' => $this->request->getVar('Username'),
-            'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
-            'address' => $this->request->getVar('address'),
-            'birthdate' => $this->request->getVar('birthdate'),
-        ];
-        $user->update($id, $data);
-        return redirect()->to(base_url('adminmanage_user'));
+        $data['eprof'] = $this->user->find($id);
+        return view('/admin/edit_adminprofile', $data);
     }
+
+    public function updateadmin($id)
+    {
+        if ($this->request->getMethod() === 'post') {
+            $userId = session()->get('UserID');
+            $userModel = new UserModel();
+
+            // Get the current user data
+            $currentUser = $userModel->find($userId);
+            $currentProfileImg = $currentUser['profile_img'];
+
+            $data = [
+                'LastName' => $this->request->getPost('LastName'),
+                'FirstName' => $this->request->getPost('FirstName'),
+                'gender' => $this->request->getPost('gender'),
+                'email' => $this->request->getPost('email'),
+                'ContactNo' => $this->request->getPost('ContactNo'),
+                'Username' => $this->request->getPost('Username'),
+                'address' => $this->request->getPost('address'),
+                'birthdate' => $this->request->getPost('birthdate')
+            ];
+
+            $profileImg = $this->request->getFile('profile_img');
+            if ($profileImg->isValid() && !$profileImg->hasMoved()) {
+                $newName = $profileImg->getName();
+                $profileImg->move(ROOTPATH . 'public/assets/user/images/', $newName);
+                $data['profile_img'] = $newName;
+
+                // Delete the old profile image if it's not the default image
+                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg)) {
+                    unlink(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg);
+                }
+            }
+
+            $userModel->update($userId, $data);
+            session()->set($data);
+
+            return redirect()->to(base_url('/adminprofile'));
+        }
+    }
+
+    public function removeadminpf($userId)
+    {
+        $userModel = new UserModel();
+        $currentUser = $userModel->find($userId);
+        $profileImg = $currentUser['profile_img'];
     
+        if (!empty($profileImg) && file_exists('assets/user/images/' . $profileImg)) {
+            unlink('assets/user/images/' . $profileImg);
+        }
+    
+        $userModel->update($userId, ['profile_img' => 'profile.png']);
+        session()->set('profile_img', 'profile.png');
+    
+        return redirect()->to(base_url('/adminprofile'));
+    }    
+      
     public function deleteuser($id)
     {  
         $this->user->delete($id);
@@ -2307,7 +2349,7 @@ class AdminController extends BaseController
         $myOrders = $this->viewPendingOrders($getID);
                     $this->AcceptOrders($myOrders, $getID);
 
-        return redirect()->to('adminorderpayment')->with('msg', 'Order is now Accepted');
+        return redirect()->to('adminpayment')->with('msg', 'Order is now Accepted');
         
     }
 
@@ -2490,7 +2532,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
                
             }
@@ -2509,7 +2551,7 @@ class AdminController extends BaseController
                 $this->raw->update($beef['rawID'], ['stocks' => $changebef]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
                 $this->raw->update($pepper['rawID'], ['stocks' => $changepep]);
     
@@ -2529,7 +2571,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);            
             }
             elseif ($productID == 10) {
@@ -2547,7 +2589,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);   
             }
             elseif ($productID == 11) {
@@ -2565,7 +2607,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);               
             }
             elseif ($productID == 12) {
@@ -4267,7 +4309,14 @@ class AdminController extends BaseController
         return view('admin/viewByBarcode', $data);
     }
 
-
+    public function viewhistory(){
+        $data= [
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        ];
+        
+        return view('admin/vieworderhistory' , $data);
+    }
     public function Notification()
     {
         return view('user/ForNotif/Notif');
