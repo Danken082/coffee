@@ -42,36 +42,33 @@ class AdminController extends BaseController
     
     public function savePOSOrders()
     {
-       $requestData = $this->request->getJSON();
+        $requestData = $this->request->getJSON();
 
-       $savedData = [];
-        $barOrderCode = $this->getBarcodeByOrder();
-
-       foreach ($requestData as $item) {
-           $productID = $item->productId;
-           $totalPrice = $item->totalPrice;
-           $totalquantity = $item->totalquantity;
-           $amountPaid = $item->amountPaid;
-           $change = $item->change;
-            $orderCode = $barOrderCode;
-    
-           $orderId = $this->history->insert([
-               'ProductID' => $productID,
-               'total_amount' => $totalPrice,
-               'quantity' => $totalquantity,
-               'amount_paid' => $amountPaid,
-               'change_amount' => $change,
-               'orderCode' => 'CrDSPOS-' .$orderCode   
-               
-           ]);
-
-           $savedData[] = [
-            'ProductID' => $productID,
-            'total_amount' => $totalPrice,
-            'quantity' => $totalquantity,
-            'amount_paid' => $amountPaid,
-            'change_amount' => $change,
-         ];
+        $savedData = [];
+ 
+        foreach ($requestData as $item) {
+            $productId = $item->productId;
+            $totalPrice = $item->totalPrice;
+            $totalquantity = $item->totalquantity;
+            $amountPaid = $item->amountPaid;
+            $change = $item->change;
+ 
+            $orderId = $this->history->insert([
+                'ProductID' => $productId,
+                'total_amount' => $totalPrice,
+                'quantity' => $totalquantity,
+                'amount_paid' => $amountPaid,
+                'change_amount' => $change, 
+            ]);
+ 
+            $savedData[] = [
+             'ProductID' => $productId,
+             'total_amount' => $totalPrice,
+             'quantity' => $totalquantity,
+             'amount_paid' => $amountPaid,
+             'change_amount' => $change,
+          ];
+        
          $coffee = $this->raw->where('rawID', '9')->first();
          $milk = $this->raw->where('rawID', '10')->first();
          $smilk = $this->raw->where('rawID', '11')->first();
@@ -130,9 +127,9 @@ class AdminController extends BaseController
          $bfssandwich = $this->raw->where('rawID', '82')->first();
          $bfsoup = $this->raw->where('rawID', '83')->first();
          $coke1 = $this->raw->where('rawID', '84')->first();
-     if ($productID == 1) {
+     if ($productId == 1) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -147,9 +144,9 @@ class AdminController extends BaseController
         
      }
      
-     elseif ($productID == 2) {
+     elseif ($productId == 2) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $ol = $totalquantity * .04;
          $changeol = $oil['stocks'] - $ol;
        
@@ -157,7 +154,7 @@ class AdminController extends BaseController
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
         
      }
-     elseif ($productID == 3) {
+     elseif ($productId == 3) {
          $ol = $totalquantity * .04;
          $changeol = $oil['stocks'] - $ol;
          $pot = $totalquantity * .05;
@@ -171,7 +168,7 @@ class AdminController extends BaseController
          $this->raw->update($mustart['rawID'], ['stocks' => $changemus]);
         
      }
-     elseif ($productID == 4) {
+     elseif ($productId == 4) {
          $chick = $totalquantity * .1;
          $changech = $chicken['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -183,7 +180,7 @@ class AdminController extends BaseController
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
      }
-     elseif ($productID == 5) {
+     elseif ($productId == 5) {
          $gar = $totalquantity * .06;
          $changegar = $garlic['stocks'] - $totalquantity;
          $chick = $totalquantity * .1;
@@ -202,7 +199,7 @@ class AdminController extends BaseController
          $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
         
      }
-     elseif ($productID == 6) {
+     elseif ($productId == 6) {
          $gar = $totalquantity * .06;
          $changegar = $garlic['stocks'] - $totalquantity;
          $chick = $totalquantity * .1;
@@ -220,7 +217,7 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 7) {
+     elseif ($productId == 7) {
          $por = $totalquantity * .09;
          $changepor = $pork['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -239,7 +236,7 @@ class AdminController extends BaseController
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
         
      }
-     elseif ($productID == 8) {
+     elseif ($productId == 8) {
          $bef= $totalquantity * .09;
          $changebef = $beef['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -259,7 +256,7 @@ class AdminController extends BaseController
          $this->raw->update($pepper['rawID'], ['stocks' => $changepep]);
 
      }
-     elseif ($productID == 9) {
+     elseif ($productId == 9) {
          $por = $totalquantity * .09;
          $changepor = $pork['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -277,7 +274,7 @@ class AdminController extends BaseController
          $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);            
      }
-     elseif ($productID == 10) {
+     elseif ($productId == 10) {
          $por = $totalquantity * .09;
          $changepor = $pork['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -295,7 +292,7 @@ class AdminController extends BaseController
          $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);   
      }
-     elseif ($productID == 11) {
+     elseif ($productId == 11) {
          $por = $totalquantity * .09;
          $changepor = $pork['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -313,7 +310,7 @@ class AdminController extends BaseController
          $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);               
      }
-     elseif ($productID == 12) {
+     elseif ($productId == 12) {
          $eg = $totalquantity * .08;
          $changeeg = $egg['stocks'] - $totalquantity;
          $ol = $totalquantity * .03;
@@ -329,7 +326,7 @@ class AdminController extends BaseController
          $this->raw->update($ketchup['rawID'], ['stocks' => $changeketc]);
         
      }
-     elseif ($productID == 13) {
+     elseif ($productId == 13) {
          $eg = $totalquantity * .08;
          $changeeg = $egg['stocks'] - $totalquantity;
          $ol = $totalquantity * .03;
@@ -342,9 +339,9 @@ class AdminController extends BaseController
          $this->raw->update($ketchup['rawID'], ['stocks' => $changeketc]);
         
      }
-     elseif ($productID == 14) {
+     elseif ($productId == 14) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -358,9 +355,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 15) {
+     elseif ($productId == 15) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -374,9 +371,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 16) {
+     elseif ($productId == 16) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -390,9 +387,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 17) {
+     elseif ($productId == 17) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -406,9 +403,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 18) {
+     elseif ($productId == 18) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -422,9 +419,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 19) {
+     elseif ($productId == 19) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -438,9 +435,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 20) {
+     elseif ($productId == 20) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -454,9 +451,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 21) {
+     elseif ($productId == 21) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -469,25 +466,9 @@ class AdminController extends BaseController
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
-     }elseif ($productID == 22) {
+     }elseif ($productId == 22) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productID == 23) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -501,9 +482,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 24) {
+     elseif ($productId == 23) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -517,9 +498,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 25) {
+     elseif ($productId == 24) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -533,9 +514,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 26) {
+     elseif ($productId == 25) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -549,9 +530,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 27) {
+     elseif ($productId == 26) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -565,9 +546,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 28) {
+     elseif ($productId == 27) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -581,9 +562,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 29) {
+     elseif ($productId == 28) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -597,9 +578,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 30) {
+     elseif ($productId == 29) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -613,9 +594,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 31) {
+     elseif ($productId == 30) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -629,9 +610,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 32) {
+     elseif ($productId == 31) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -645,9 +626,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 33) {
+     elseif ($productId == 32) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -661,9 +642,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 34) {
+     elseif ($productId == 33) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -677,9 +658,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 35) {
+     elseif ($productId == 34) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -693,9 +674,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 36) {
+     elseif ($productId == 35) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -709,9 +690,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 37) {
+     elseif ($productId == 36) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -725,9 +706,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 38) {
+     elseif ($productId == 37) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -741,9 +722,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 39) {
+     elseif ($productId == 38) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -757,9 +738,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 40) {
+     elseif ($productId == 39) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -773,9 +754,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 41) {
+     elseif ($productId == 40) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -789,9 +770,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 42) {
+     elseif ($productId == 41) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -805,9 +786,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 43) {
+     elseif ($productId == 42) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -821,9 +802,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 44) {
+     elseif ($productId == 43) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -837,9 +818,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 45) {
+     elseif ($productId == 44) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -853,9 +834,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 46) {
+     elseif ($productId == 45) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -869,9 +850,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 47) {
+     elseif ($productId == 46) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -885,9 +866,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 48) {
+     elseif ($productId == 47) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -901,9 +882,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 49) {
+     elseif ($productId == 48) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -917,106 +898,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-
-     elseif ($productID == 50) {
+     elseif ($productId == 49) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productID == 51) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productID == 52) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productID == 53) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productID == 54) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productID == 55) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productID == 57) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1031,9 +915,9 @@ class AdminController extends BaseController
         
      }
 
-     elseif ($productID == 58) {
+     elseif ($productId == 50) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1047,9 +931,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 59) {
+     elseif ($productId == 51) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1063,24 +947,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 60) {
+     elseif ($productId == 52) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }elseif ($productID == 61) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1094,9 +963,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 62) {
+     elseif ($productId == 53) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1110,25 +979,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-
-     elseif ($productID == 63) {
+     elseif ($productId == 54) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }elseif ($productID == 64) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1142,10 +995,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-
-     elseif ($productID == 65) {
+     elseif ($productId == 55) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1159,25 +1011,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 66) {
+     elseif ($productId == 57) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productID == 67) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1192,9 +1028,9 @@ class AdminController extends BaseController
         
      }
 
-     elseif ($productID == 68) {
+     elseif ($productId == 58) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1207,7 +1043,168 @@ class AdminController extends BaseController
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
-     }elseif ($productID == 69) {
+     }
+     elseif ($productId == 59) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+     elseif ($productId == 60) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }elseif ($productId == 61) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+     elseif ($productId == 62) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 63) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }elseif ($productId == 64) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 65) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+     elseif ($productId == 66) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+     elseif ($productId == 67) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 68) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }elseif ($productId == 69) {
          $tor = $totalquantity * .03;
          $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
@@ -1225,7 +1222,7 @@ class AdminController extends BaseController
      }
      
 
-     elseif ($productID == 70) {
+     elseif ($productId == 70) {
          $tor = $totalquantity * .03;
          $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
@@ -1241,9 +1238,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 71) {
+     elseif ($productId == 71) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1257,9 +1254,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 72) {
+     elseif ($productId == 72) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1273,9 +1270,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 73) {
+     elseif ($productId == 73) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1289,9 +1286,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 74) {
+     elseif ($productId == 74) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1305,9 +1302,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 75) {
+     elseif ($productId == 75) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1321,9 +1318,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 76) {
+     elseif ($productId == 76) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1337,9 +1334,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 77) {
+     elseif ($productId == 77) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1353,9 +1350,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 78) {
+     elseif ($productId == 78) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1369,26 +1366,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 79) {
+     elseif ($productId == 79) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 80) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1403,10 +1383,9 @@ class AdminController extends BaseController
         
      }
 
-
-     elseif ($productID == 81) {
+     elseif ($productId == 80) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1422,9 +1401,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 82) {
+     elseif ($productId == 81) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1440,9 +1419,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 83) {
+     elseif ($productId == 82) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1458,9 +1437,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 84) {
+     elseif ($productId == 83) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1476,9 +1455,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 85) {
+     elseif ($productId == 84) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1494,9 +1473,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 86) {
+     elseif ($productId == 85) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1512,9 +1491,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 87) {
+     elseif ($productId == 86) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1530,9 +1509,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 88) {
+     elseif ($productId == 87) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1548,9 +1527,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 89) {
+     elseif ($productId == 88) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1566,179 +1545,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 90) {
+     elseif ($productId == 89) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 91) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 92) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 93) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 94) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 95) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 96) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 97) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 98) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 99) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productID == 100) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1754,9 +1563,179 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 101) {
+     elseif ($productId == 90) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 91) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 92) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 93) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 94) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 95) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 96) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 97) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 98) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 99) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productId == 100) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1772,9 +1751,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 102) {
+     elseif ($productId == 101) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1790,9 +1769,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 103) {
+     elseif ($productId == 102) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1808,9 +1787,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 104) {
+     elseif ($productId == 103) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1826,9 +1805,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 105) {
+     elseif ($productId == 104) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1844,9 +1823,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 106) {
+     elseif ($productId == 105) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1862,9 +1841,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 100) {
+     elseif ($productId == 106) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1880,9 +1859,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 100) {
+     elseif ($productId == 100) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1898,9 +1877,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 107) {
+     elseif ($productId == 100) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1916,9 +1895,27 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productID == 108) {
+     elseif ($productId == 107) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $totalquantity;
+         $changetor = $tortillas['stocks'] - $tor;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+
+     elseif ($productId == 108) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
