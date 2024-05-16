@@ -162,8 +162,8 @@ saveTransactionButton.addEventListener('click', () => {
     const paymentData = [];
     orderList.querySelectorAll('tbody tr').forEach(row => {
         const productId = row.cells[1].textContent;
-        const totalPrice = row.cells[3].textContent.replace('₱ ', '');
-        const totalquantity = row.cells[2].textContent;
+        const totalPrice =  row.querySelector('.total-price-cell').textContent.replace('₱ ', '');
+        const totalquantity = row.querySelector('.quantity').textContent;
         const amountPaid = payment;
         const productChange = change.toFixed(2);
 

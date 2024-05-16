@@ -85,20 +85,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 mt-4 mb-10">
-                <div class="card z-index-2 ">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-                            <div class="chart">
-                                <canvas id="chart-bars5" style="height: 400px; width: 100%"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="mb-0">Stocks</h6>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 

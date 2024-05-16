@@ -23,7 +23,7 @@ class CartController extends BaseController
             // $this->load->library('/user/cart');
             // $this->load->model('ProductModel');
     }    
-   
+  
     public function home_cart()
     {
         $session = session();
@@ -46,7 +46,7 @@ class CartController extends BaseController
         ->join('product_tbl', 'product_tbl.prod_id = cart_tbl.ProductID')
         ->where('cart_tbl.CustomerID', $user)
         ->findAll();
-    
+        
         $data['mycart'] = $this->crt->select('(SUM(total)) as sum')->where('cart_tbl.CustomerID', $user)->findAll();    
         
         

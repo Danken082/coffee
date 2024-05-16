@@ -7,6 +7,11 @@
 		<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
 		<link rel="stylesheet" href="/assets/css/preloader.css">
   	</head>
+	<style>
+		.myproduct{
+			margin-left:100px;
+		}
+	</style>
 	<body>
     <div id="preloader"></div>
     <section class="home-slider owl-carousel">
@@ -91,62 +96,36 @@
     			</div>
     		</div>
 	</section>
-	<section class="ftco-section ftco-cart">
-		<div class="container">
-			<div class="row">
-    			<div class="col-md-12 ftco-animate">
-    				<div class="cart-list">
-					<h3>Order History: </h3>
-	    				<table class="table">
-			    			<thead class="thead-primary">
-			      				<tr class="text-center">
-									<th>Image</th>
-									<th>Product</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>Total</th>
-									<th>Status</th>
-									<th>&nbsp;</th>
-			      				</tr>
-			    			</thead>
-				    		<tbody>
-						
-							<?php foreach($order as $item):?>
-								
-						      	<tr class="text-center">
-									<td><?= $item['prod_id']?></td>
-								  	<td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>">
-									<td class="product-name">
-										<h3><?= $item['prod_name']?></h3>
-									</td>
 
+	<p>Order History</p>								
+	<div class="row myproduct">
 									
-									<td class="price">₱ <?= $item['prod_mprice']?></td>
-							
-									<td class="quantity">
-										<div class="input-group mb-3">
-											<input type="number" name="quantity" disabled class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($orderhist as $c): ?>
+													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$c['prod_img']?>">
+														<h3 style="font-weight:bold;"><a><?=$c['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$c['prod_desc']?></p></div>
+														<?php if($c['prod_lprice'] > 0.00):?>
+														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
+														<?php elseif($c['prod_lprice'] == 0.00):?>
+															<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?> </span></p>
+															<?php endif;?>
+														<form action="<?= base_url('/viewProd2/') .$c['prod_id'] ?>" method="post">
+															<?php if($c['product_status'] === 'Unavailable'):?>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('getProd/' .$c['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+															<?php endif;?>
+														</form>												
+													</div>
+												<?php endforeach; ?>	
+											</div>
 										</div>
-									</td>
-									
-						        	<td class="total">₱ <?= $item['total']?></td>
-									<td class="quantity">
-										<div class="input-group mb-3">
-										<h4><?= $item['orderStatus']?></h4>
-
-										</div>
-									</td>
-
-						      	</tr>
-								<?php endforeach;?>
-						    </tbody>
-						</table>
-				
-					</div>
-    			</div>
-    		</div>
-	</section>
-
+									</div>
+								</div>
 		<?php include('mainheader.php'); ?>
 		<?php include('footer.php'); ?>
         <script>

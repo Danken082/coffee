@@ -78,7 +78,7 @@
 						</div>
 						<div class="book p-4">
 							<h3>Book a Table</h3>
-							<form id="reservation-form" action="<?= base_url('reservation')?>" method ="post" class="appointment-form">
+							<form id="reservation-form" action="<?= base_url('/GoToProducts')?>" method ="post" class="appointment-form">
 								<div class="d-md-flex">
 									<div class="form-group">
 										<input type="text" disabled name="LastName" class="form-control" value="<?= session()->get('LastName')?>">
@@ -94,17 +94,29 @@
 									<div class="form-group">
 										<div class="input-wrap">
 											<label for="table reservation" style="color:white;">Date & Time</label>
-											<input type="datetime-local" id="reservation-date" name="apppointmentDate" class="form-control datetimepicker">
+											<input type="datetime-local" required id="reservation-date" name="EventDate" class="form-control datetimepicker">
 										</div>
 		    						</div>
+									
 									<div class="form-group ml-md-4">
 										<input type="text" name="ContactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
 									</div>
 									<div class="form-group ml-md-4">
-										<select name="TableType"class="booktable" >
-											<option selected disabled>Table Type</option>
-											<option value="Triple">Triple</option>
-											<option value="Tropa_size">Tropa Size</option>
+										<input type="text" name="EventTitle" class="form-control" placeholder="Event Title">
+									</div>
+							
+									<div class="form-group ml-md-4">
+										<select name="HCustomer" class="booktable form-control" align-text="center" style="font:black;">
+											<option selected disabled>Count Of Persons</option>
+											<option value="1">1 Customer</option>
+											<option value="2">2 Customer</option>
+											<option value="3">3 Customer</option>
+											<option value="4">4 Customer</option>
+											<option value="5">5 Customer</option>
+											<option value="6">6 Customer</option>
+											<option value="7">7 Customer</option>
+											<option value="8">8 Customer</option>
+
 										</select>
 									</div>
 								</div>
