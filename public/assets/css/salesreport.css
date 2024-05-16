@@ -1,0 +1,46 @@
+.calendar {
+    border: 1px solid #9e7a61; /* Coffee brown */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f5deb3; /* Wheat */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Set width as needed */
+    margin-left: auto; /* Push the calendar to the right */
+}
+
+.text {
+    color: #9e7a61; /* Coffee brown */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.coffee-theme .calendar-day {
+    background-color: #a67c52; /* Coffee */
+    color: #f5deb3; /* Wheat */
+}
+
+.coffee-theme .calendar-day:hover {
+    background-color: #9e7a61; /* Darker coffee */
+    color: #fff; /* White */
+}
+
+.coffee-theme button {
+    background-color: #9e7a61; /* Coffee brown */
+    color: #f5deb3; /* Wheat */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.coffee-theme button:hover {
+    background-color: #7a5f4a; /* Darker coffee brown */
+}
+
+@media (max-width: 768px) {
+    .calendar {
+        width: 100%; /* Set calendar to full width on smaller screens */
+        margin-left: 0; /* Remove margin for centering on smaller screens */
+    }
+}

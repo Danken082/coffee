@@ -46,11 +46,11 @@
     <body>
         <div class="container-fluid mt-4">
             <div class="row">
-            <?php include('sidebar.php'); ?>
+                <?php include('sidebar.php'); ?>
                 <div class="col-lg-9"> <br><br><br>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/adminhistory')?>" style="background-color: transparent; color:white; font-size: 1.5em;">> Back to Order History</a></li>
-                </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="<?= base_url('/adminhistory')?>" style="background-color: transparent; color:white; font-size: 1.5em;">> Back to Order History</a></li>
+                    </ol>
                     <div class="card">
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
@@ -59,7 +59,8 @@
                                         <tr>
                                             <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order ID</th>
                                             <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order Date</th>
-                                            <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Product Name</th>
+                                            <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Products</th>
+                                            <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Size</th>
                                             <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Price</th>
                                             <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Total Price</th>
                                             <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Amount Paid</th>
@@ -67,35 +68,40 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
-                                            <tr>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-secondary mb-0"></p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-secondary mb-0"></p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-primary mb-0 font-weight-bold"></p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-primary mb-0 font-weight-bold"></p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-primary mb-0 font-weight-bold"></p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-primary mb-0 font-weight-bold"></p>
-                                                </td>
-                                                <td class="text-center">
-                                                    <p class="text-xs text-primary mb-0 font-weight-bold"></p>
-                                                </td>
-                                            </tr>
+                                    <?php foreach($history as $h): ?>
+                                        <tr>
+                                            <td class="text-center">
+                                                <p class="text-xs text-secondary mb-0"><?=$h['order_id'] ?></p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs text-secondary mb-0"><?=$h['order_date'] ?></p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs text-primary mb-0 font-weight-bold"></p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs text-primary mb-0 font-weight-bold"></p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs text-primary mb-0 font-weight-bold"></p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs text-primary mb-0 font-weight-bold"><?=$h['total_amount'] ?></p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs text-primary mb-0 font-weight-bold"><?=$h['amount_paid'] ?></p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs text-primary mb-0 font-weight-bold"><?=$h['change_amount'] ?></p>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div><br><br>
+                    <h4>Customer Name: </h4>
                 </div>
             </div>
         </div>

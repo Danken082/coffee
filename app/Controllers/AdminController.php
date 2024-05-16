@@ -201,7 +201,7 @@ class AdminController extends BaseController
      }
      elseif ($productId == 6) {
          $gar = $totalquantity * .06;
-         $changegar = $garlic['stocks'] - $totalquantity;
+         $changegar = $garlic['stocks'] - $gar;
          $chick = $totalquantity * .1;
          $changech = $chicken['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -211,10 +211,10 @@ class AdminController extends BaseController
          $sal = $totalquantity * .009;
          $changesalt = $salt['stocks'] - $sal;
 
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+         $this->raw->update($garlic['rawID'], ['stocks' => $changegar]);
+         $this->raw->update($chicken['rawID'], ['stocks' => $changech]);
+         $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
         
      }
      elseif ($productId == 7) {
@@ -250,10 +250,8 @@ class AdminController extends BaseController
 
          $this->raw->update($beef['rawID'], ['stocks' => $changebef]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
          $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
-         $this->raw->update($pepper['rawID'], ['stocks' => $changepep]);
 
      }
      elseif ($productId == 9) {
@@ -2118,14 +2116,6 @@ class AdminController extends BaseController
         return view('/admin/product');
     }
 
-    public function order(){
-        $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
-        ];
-        return view('/admin/order', $data);
-    }
-
     public function orderpayment(){
 
         $data= [
@@ -2172,17 +2162,6 @@ class AdminController extends BaseController
      }  
  }
  
-   
-    public function gethistory()
-    {
-        $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
-        ];
-        $history = new HistoryModel();
-        $data['history'] = $history->findAll();
-        return view ('/admin/history', $data);
-    }
 
     public function getcustomeruser()
     {
@@ -2508,11 +2487,11 @@ class AdminController extends BaseController
                 $sal = $order['quantity'] * .009;
                 $changesalt = $salt['stocks'] - $sal;
 
-                $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-                $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-                $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-               
+                $this->raw->update($garlic['rawID'], ['stocks' => $changegar]);
+                $this->raw->update($chicken['rawID'], ['stocks' => $changech]);
+                $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+                              
             }
             elseif ($productID == 7) {
                 $por = $order['quantity'] * .09;
@@ -2547,11 +2526,9 @@ class AdminController extends BaseController
 
                 $this->raw->update($beef['rawID'], ['stocks' => $changebef]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
-                $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
                 $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
-                $this->raw->update($pepper['rawID'], ['stocks' => $changepep]);
-    
+              
             }
             elseif ($productID == 9) {
                 $por = $order['quantity'] * .09;
@@ -4238,10 +4215,6 @@ class AdminController extends BaseController
     $data = ['orderStatus' => 'AcceptOrder'];
         $this->order->update($orderIDs, $data);
 
-
-        
-
-
     }
 
     public function viewOrders()
@@ -4272,6 +4245,7 @@ class AdminController extends BaseController
             return redirect()->to('/login');
         }
     }
+    
     public function viewToAcceptorders($barcode)
     {
         $data= [
@@ -4306,12 +4280,25 @@ class AdminController extends BaseController
         return view('admin/viewByBarcode', $data);
     }
 
+    public function gethistory()
+    {
+        $data= [
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        ];
+        $history = new HistoryModel();
+        $data['history'] = $history->findAll();
+        return view ('/admin/history', $data);
+    }
+
     public function viewhistory(){
         $data= [
             'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         
+        $history = new HistoryModel();
+        $data['history'] = $history->findAll();
         return view('admin/vieworderhistory' , $data);
     }
     public function Notification()
@@ -4336,6 +4323,13 @@ class AdminController extends BaseController
         return view('admin/rawmatsnotif', $data);
     }
 
+    public function salesreport()
+    {
+        $data= [
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        ];
 
-
+        return view('admin/salesreport', $data);
+    }
 }

@@ -37,17 +37,11 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order ID</th>
-
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order Date</th>
-
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Total Amount</th>
-
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Amount Paid</th>
-
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Change Amount</th>
-
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Action</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>

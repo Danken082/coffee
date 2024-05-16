@@ -37,7 +37,6 @@ $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
 //POS
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
-$routes->get('/adminorder', 'AdminController::order', ['filter'=>'authFilter']);
 $routes->get('/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
 $routes->get('/adminprofile', 'AdminController::adminprofile',['filter'=>'authFilter']);
@@ -53,6 +52,7 @@ $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
 $routes->get('admin/sidebar', 'AdminController::admin_side');
 $routes->get('viewOrders', 'AdminController::viewOrder');
 $routes->get('/adminpos', 'AdminController::pos');
+$routes->get('/adminsales', 'AdminController::salesreport', ['filter'=>'authFilter']);
 $routes->get('addingTable', 'AdminController::viewAddTable');
 $routes->post('AdminTable', 'AdminController::addingTable');
 #forAcceptingOrde

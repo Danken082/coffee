@@ -109,7 +109,7 @@
 					<button type="submit" class="btn btn-primary">Place to Checkout</button>
     			</div>
     		</div>  
-							</div>
+		</div>
 	</section>
 	</form>
 		<?php include('mainheader.php'); ?>

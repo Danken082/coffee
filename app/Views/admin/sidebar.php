@@ -64,11 +64,11 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="<?= site_url("adminorder"); ?>">
+              <a class="nav-link" href="<?= site_url("adminhistory"); ?>">
               <span class="menu-icon">
-                <i class="fa fa-solid fa-receipt"></i>
+                <i class="fa fa-solid fa-list"></i>
               </span>
-              <span class="menu-title">Order</span>
+              <span class="menu-title">Order History</span>
             </a>
           </li>
           <li class="nav-item menu-items">
@@ -88,11 +88,11 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-              <a class="nav-link" href="<?= site_url("adminhistory"); ?>">
+            <a class="nav-link" href="<?= site_url("adminsales"); ?>">
               <span class="menu-icon">
-                <i class="fa fa-solid fa-list"></i>
+                <i class="fa fa-solid fa-calendar"></i>
               </span>
-              <span class="menu-title">History</span>
+              <span class="menu-title">Sales Report</span>
             </a>
           </li>
           <li class="nav-item nav-category">
