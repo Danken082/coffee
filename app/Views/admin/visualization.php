@@ -53,9 +53,9 @@
                     </div>
                     <div class="card-body">
                         <h6 class="mb-0">Day by Day Sales by </h6>
-                        <a href="<?= base_url('reports/' . $month .'/' . $year )?>">Export Report</a>
-                    
-                        <form id="filterForm">
+                        <a href="<?= base_url('reports')?>">Export Report</a>
+                        <input type="text" value="<?= $month?>">
+                        <form action = "<?= base_url('VisualizationController/thisAllChart')?>" method="post">
 
                                                   
                         <select name="month" id="month" class="form-control">
