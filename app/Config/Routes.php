@@ -35,6 +35,8 @@ if(session()->get('UserRole') === 'Admin' || session()->get('UserRole') === 'Sta
 $routes->get('adminorderpayment', 'AdminController::viewOrders');
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
+$routes->match(['get', 'post'],'VisualizationController/thisAllChart', 'VisualizationController::thisAllChart');
+$routes->match(['get', 'post'], 'reports/(:any)/(:any)', 'VisualizationController::salesReportPerDay/$1/$2');
 //POS
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
@@ -90,6 +92,8 @@ $routes->post('/updatehot/(:any)', 'InventoryController::updatehot/$1');
 $routes->get('/deletehot/(:any)', 'InventoryController::deletehot/$1');
 $routes->match(['get','post'], '/availablehot/', 'InventoryController::availabilityhot');
 $routes->match(['get', 'post'], '/unavailablehot/', 'InventoryController::Unavailablehot');
+
+
 /* For Iced Coffee */
 $routes->get('/inventoryicedcoffee', 'InventoryController::geticedcoffee');
 $routes->get('/editiced/(:any)', 'InventoryController::editiced/$1');
@@ -171,6 +175,7 @@ $routes->match(['get', 'post'], '/unavailablesand/', 'InventoryController::Unava
 $routes->match(['get', 'post'], 'report', 'VisualizationController::pdfReport');
 
 
+
 $routes->get('Notif', 'AdminController::Notification');
 
 $routes->get('rawNotif/(:any)', 'AdminController::notificationRaw/$1');
@@ -233,4 +238,3 @@ $routes->post('/save-order', 'OrderController::saveOrder');
 
 
 $routes->post('/payment/save', 'AdminController::savePOSOrders');
-

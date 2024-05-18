@@ -25,7 +25,7 @@ class OrderController extends BaseController
         $this->order = new OrderModel();
         $this->fb    = new FeedbackModel();
     }
-
+   
     // In your CodeIgniter controller
         public function saveOrder()
         {
@@ -148,7 +148,64 @@ class OrderController extends BaseController
 
         return view('user/orderdrink', $data);
     }
-    
+
+    public function getOrderSave($id)
+    {
+
+        $data['order'] = $this->order->select('order.orderID, order.CustomerID, order.ProductID, 
+        order.paymentStatus, order.orderType, order.orderDate, order.total, order.quantity, order.size,
+        order.barcode, order.orderStatus, product_tbl.prod_id, product_tbl.prod_img, product_tbl.prod_name, 
+        product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice, product_tbl.prod_desc')
+        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')->first();
+
+        return view('user/getOrder', $data);
+
+
+    }
+
+    public function saveOrders($price)
+    {
+        $existCart = $this->prod->where('prod_id', $price)->first();
+        $myExist = $this->request->getVar('ProductID');
+        $size = $this->request->getVar('size'); 
+        
+      if($size ==='Large'){
+        $data = $this->prod->where('prod_id', $price)->first();
+        $total = $data['prod_lprice'] * $this->request->getVar('quantity');
+      
+        $prod = [
+          'CustomerID' => $this->request->getVar('CustomerID'),
+          'ProductID' => $this->request->getVar('ProductID'),
+          'quantity' => $this->request->getVar('quantity'),
+          'Status' => $this->request->getVar('Status'),
+          'total' => $total,
+          'size' => $size,
+          'orderStatus' => 'onProcess',
+          'orderType' => 'onHouse'
+        ];
+        
+        $this->order->save($prod);
+        return redirect()->to('/mainshop');
+      }
+      elseif($size === 'Medium'){
+        $data = $this->prod->where('prod_id', $price)->first();
+        $total = $this->request->getVar('quantity') * $data['prod_mprice']; 
+        $prod = [
+          'CustomerID' => $this->request->getVar('CustomerID'),
+          'ProductID' => $this->request->getVar('ProductID'),
+          'quantity' => $this->request->getVar('quantity'),
+          'Status' => $this->request->getVar('Status'),
+          'total' => $total,
+          'size' => $size,
+          'orderStatus' => 'onProcess',
+          'orderType' => 'onHouse'
+          
+        ];
+        
+        $this->order->save($prod);
+        return redirect()->to('/mainshop');
+    }
+}
     public function viewOrders()
     {
         $session = session();
@@ -170,8 +227,31 @@ class OrderController extends BaseController
         order.barcode, order.orderStatus, product_tbl.prod_id, product_tbl.prod_img, product_tbl.prod_name, 
         product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
         ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')->where('order.CustomerID', $user)->where('order.orderStatus', 'AcceptOrder')->orwhere('order.orderStatus', 'onProcess')->findAll();
-
-
+        
+        
+        $data['orderhist'] = $this->order->select('order.ProductID,
+            MAX(order.orderID) as orderID,
+            order.CustomerID,
+            MAX(order.paymentStatus) as paymentStatus,
+            MAX(order.orderType) as orderType,
+            MAX(order.orderDate) as orderDate,
+            SUM(order.total) as total,
+            SUM(order.quantity) as quantity,
+            MAX(order.size) as size,
+            MAX(order.barcode) as barcode,
+            MAX(order.orderStatus) as orderStatus,
+            product_tbl.prod_id,
+            MAX(product_tbl.prod_img) as prod_img,
+            MAX(product_tbl.prod_name) as prod_name,
+            MAX(product_tbl.prod_mprice) as prod_mprice,
+            MAX(product_tbl.product_status) as product_status,
+            MAX(product_tbl.prod_lprice) as prod_lprice,
+            MAX(product_tbl.prod_desc) as prod_desc')
+            ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')
+            ->where('order.CustomerID', $user)
+            ->groupBy('order.ProductID, order.CustomerID, product_tbl.prod_id')
+            ->findAll();
+            
         return view('user/viewOrders', $data);  
     }
 

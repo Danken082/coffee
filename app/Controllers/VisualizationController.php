@@ -7,12 +7,18 @@ use App\Models\HistoryModel;
 use Mpdf\Mpdf;
 use App\Models\ItemsModel;
 
+use CodeIgniter\API\ResponseTrait;
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class VisualizationController extends BaseController
 {
 
     private $vis;
     private $mpdf;
     private $raw;
+    use ResponseTrait;
 
     public function __construct()
     {
@@ -21,85 +27,140 @@ class VisualizationController extends BaseController
         $this->raw = new ItemsModel();
 
     }
+    
+    public function thisAllChart() {
+  
+     $db = \Config\Database::connect();
+          $requestData = $this->request->getJSON();
+ 
+     $month = $this->request->getVar('month');
+     $year = $this->request->getVar('year');
+   
+     $builder = $db->table('tbl_orders');
 
+     if($month == null || $year == null )
+     {
+         $month = date('n');
+         $year = date('Y');
+     }
+     $data = [
+        'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(),
+        'month' => $month,
+        'year' => $year
+        ];
+ 
+     $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year); // Get the total number of days in the month
+
+     $query = $builder->select("SUM(total_amount) as count, SUM(total_amount) as s, DAY(order_date) as day")
+     ->where('MONTH(order_date)', $month)
+     ->where( 'YEAR(order_date)', $year)                
+                     ->groupBy('DAY(order_date)')
+                     ->orderBy('day', 'ASC')
+                     ->get();
+     $record = $query->getResult();
+     $products = [];
+     if (empty($record)) {
+         for ($day = 1; $day <= $daysInMonth; $day++) {
+             $products[] = array(
+                 'day'   => $day,
+                 'sell' => 0.0 // You can set any default value here
+             );
+         }
+     } else {
+         // If records are returned, populate $products array from the result
+         foreach ($record as $row) {
+             $products[] = array(
+                 'day'   => $row->day,
+                 'sell' => floatval($row->s)
+             );
+             
+         }
+         
+     }
+
+
+     $builder = $db->table('tbl_orders');
+     $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
+                     ->groupBy('MONTH(order_date)')
+                     ->get();
+     $salesByMonth = $query->getResult();
+
+     usort($salesByMonth, function($a, $b) {
+         return $a->month - $b->month;
+     });
+ 
+     $salesByYear = $this->vis
+         ->select('YEAR(order_date) as year, SUM(total_amount) as total_amount')
+         ->groupBy('YEAR(order_date)')
+         ->findAll();
+
+     $data['salesByMonth'] = $salesByMonth;
+     $data['salesByYear'] = $salesByYear;
+     $data['products'] = $products;
+
+     //notif
+ 
+     return view('admin/visualization', $data);
+
+ }
+    
     public function allChart() {
            $data = [
             'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(),
-            'coffee' => $this->raw->where('rawID', '9')->first(),
-            'milk' => $this->raw->where('rawID', '10')->first(),
-            'smilk' => $this->raw->where('rawID', '11')->first(),
-            'hcream' => $this->raw->where('rawID', '12')->first(),
-            'wcream' => $this->raw->where('rawID', '13')->first(),
-            'syrup' => $this->raw->where('rawID', '14')->first(),
-            'sauce' => $this->raw->where('rawID', '15')->first(),
-            'frPowder' => $this->raw->where('rawID', '16')->first(),
-            'wsugar' => $this->raw->where('rawID', '17')->first(),
-            'bsugar' => $this->raw->where('rawID', '18')->first(),
-            'chicken' => $this->raw->where('rawID', '19')->first(),
-            'pork' => $this->raw->where('rawID', '20')->first(),
-            'beef' => $this->raw->where('rawID', '21')->first(),
-            'tortillas' => $this->raw->where('rawID', '22')->first(),
-            'echeese' => $this->raw->where('rawID', '23')->first(),
-            'shrimp' => $this->raw->where('rawID', '24')->first(),
-            'cfudge' => $this->raw->where('rawID', '43')->first(),
-            'scheese' => $this->raw->where('rawID', '44')->first(),
-            'qmelt' => $this->raw->where('rawID', '45')->first(),
-            'egg' => $this->raw->where('rawID', '46')->first(),
-            'lettuce' => $this->raw->where('rawID', '47')->first(),
-            'tuna' => $this->raw->where('rawID', '48')->first(),
-            'bacon' => $this->raw->where('rawID', '49')->first(),
-            'ppork' => $this->raw->where('rawID', '50')->first(),
-            'bratwurst' => $this->raw->where('rawID', '51')->first(),
-            'smokedham' => $this->raw->where('rawID', '52')->first(),
-            'porkRibs' => $this->raw->where('rawID', '53')->first(),
-            'gbeef' => $this->raw->where('rawID', '54')->first(),
-            'liempo' => $this->raw->where('rawID', '55')->first(),
-            'tbeef' => $this->raw->where('rawID', '56')->first(),
-            'tIslands' => $this->raw->where('rawID', '57')->first(),
-            'cIslands' => $this->raw->where('rawID', '58')->first(),
-            'mustart' => $this->raw->where('rawID', '59')->first(),
-            'mupledsyrup' => $this->raw->where('rawID', '60')->first(),
-            'mushroom' => $this->raw->where('rawID', '61')->first(),
-            'onion' => $this->raw->where('rawID', '62')->first(),
-            'garlic' => $this->raw->where('rawID', '63')->first(),
-            'parsley' => $this->raw->where('rawID', '64')->first(),
-            'spiringonion' => $this->raw->where('rawID', '65')->first(),
-            'bellpepper' => $this->raw->where('rawID', '66')->first(),
-            'oil' => $this->raw->where('rawID', '67')->first(),
-            'soysouce' => $this->raw->where('rawID', '68')->first(),
-            'vinigar' => $this->raw->where('rawID', '69')->first(),
-            'knorseasoning' => $this->raw->where('rawID', '70')->first(),
-            'KnorCube' => $this->raw->where('rawID', '71')->first(),
-            'ketchup' => $this->raw->where('rawID', '72')->first(),
-            'salt' => $this->raw->where('rawID', '73')->first(),
-            'pepper' => $this->raw->where('rawID', '74')->first(),
-            'butter' => $this->raw->where('rawID', '75')->first(),
-            'mayonaise' => $this->raw->where('rawID', '76')->first(),
-            'starmargarine' => $this->raw->where('rawID', '77')->first(),
-            'icecream' => $this->raw->where('rawID', '78')->first(),
-            'tomatosouce' => $this->raw->where('rawID', '79')->first(),
-            'potato'    => $this->raw->where('rawID', '80')->first(),
-            'pasta' => $this->raw->where('rawID', '81')->first(),
-            'bfssandwich' => $this->raw->where('rawID', '82')->first(),
-            'bfsoup' => $this->raw->where('rawID', '83')->first(),
-            'coke1' => $this->raw->where('rawID', '84')->first(),
+       
             ];
      
         $db = \Config\Database::connect();
-
+             $requestData = $this->request->getJSON();
+    
+        $month = $this->request->getVar('month');
+        $year = $this->request->getVar('year');
+      
         $builder = $db->table('tbl_orders');
-        $query = $builder->select("SUM(total_amount) as count, SUM(total_amount) as s, DAYNAME(order_date) as day")
-                        ->groupBy('DAYNAME(order_date)')
+
+        if($month == null || $year == null )
+        {
+            $month = date('n');
+            $year = date('Y');
+        }
+        $data = [
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(),
+            'month' => $month,
+            'year' => $year
+            ];
+     
+        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year); // Get the total number of days in the month
+
+        $query = $builder->select("SUM(total_amount) as count, SUM(total_amount) as s, DAY(order_date) as day")
+        ->where('MONTH(order_date)', $month)
+        ->where( 'YEAR(order_date)', $year)                
+                        ->groupBy('DAY(order_date)')
+                        ->orderBy('day', 'ASC')
                         ->get();
         $record = $query->getResult();
         $products = [];
-        foreach($record as $row) {
-            $products[] = array(
-                'day'   => $row->day,
-                'sell' => floatval($row->s)
-            );
+        if (empty($record)) {
+            for ($day = 1; $day <= $daysInMonth; $day++) {
+                $products[] = array(
+                    'day'   => $day,
+                    'sell' => 0.0 // You can set any default value here
+                );
+            }
+        } else {
+            // If records are returned, populate $products array from the result
+            foreach ($record as $row) {
+                $products[] = array(
+                    'day'   => $row->day,
+                    'sell' => floatval($row->s)
+                );
+                
+            }
+            
         }
+
 
         $builder = $db->table('tbl_orders');
         $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
@@ -121,7 +182,6 @@ class VisualizationController extends BaseController
         $data['products'] = $products;
 
         //notif
-        
     
         return view('admin/dashboard', $data);
     }
@@ -197,5 +257,71 @@ class VisualizationController extends BaseController
         return redirect()->to($this->mpdf->Output('filename.pdf', 'I'));
 
     }
+
+
+    public function salesReportPerDay($month, $year)
+    {
+       
+        $data = [];
+
+        $months=  date('F', mktime(0, 0, 0, $month, 1));
+        $filename = 'daily Reporsts In Month Of '. $months .'.xlsx';
+
+        $spreadsheet = new Spreadsheet();
+
+        $query = $this->vis->select("SUM(total_amount) as count, SUM(total_amount) as s, DAY(order_date) as day")
+        ->where('MONTH(order_date)', $month)
+        ->where('YEAR(order_date)', $year)
+        ->groupBy('DAY(order_date)')
+        ->orderBy('day', 'ASC')
+        ->get();
+        $record = $query->getResult();
+        $products = [];
+        foreach ($record as $row) {
+            $products[] = array(
+                'day'   => $row->day,
+                'sell' => floatval($row->s)
+            );
+        }
+
+        $month=  date('F', mktime(0, 0, 0, $month, 1));
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setCellValue('A1', $month);
+        $sheet->setCellValue('B1', 'Sales');
+
+
+        $rows = 2;
+
+       
+
+        foreach($products as $val)
+        {
+           
+            $sheet->setCellValue('A'. $rows, $val['day']);
+            $sheet->setCellValue('B'. $rows, $val['sell']);
+            $rows++;
+        }
+        $writer = new Xlsx($spreadsheet);
+        $writer->save($filename);
     
+        header("Content-Type: application/vnd.ms-excel");
+        header('Content-Disposition: attachment; filename="'. basename($filename).'"');
+        header('Expires: 0');
+    
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length' . filesize($filename));
+    
+        flush();
+    
+        readfile($filename);
+    
+        exit;
+
+   }
+
+
+            
 }

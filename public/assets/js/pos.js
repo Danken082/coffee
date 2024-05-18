@@ -155,11 +155,17 @@
             alert('Please enter a valid payment amount.');
             return;
         }
-
         if (change < 0) {
             alert('Payment is insufficient.');
             return;
         }
+    const paymentData = [];
+    orderList.querySelectorAll('tbody tr').forEach(row => {
+        const productId = row.cells[1].textContent;
+        const totalPrice =  row.querySelector('.total-price-cell').textContent.replace('₱ ', '');
+        const totalquantity = row.querySelector('.quantity').textContent;
+        const amountPaid = payment;
+        const productChange = change.toFixed(2);
 
         const paymentData = [];
         orderList.querySelectorAll('tbody tr').forEach(row => {
@@ -233,7 +239,7 @@
     }
 
 
-/* SEARCH PRODUCT*/
+    /* SEARCH PRODUCT*/
     const searchInput = document.getElementById('search');
     const noProductMessage = document.querySelector('.no-product-message');
 
@@ -258,3 +264,4 @@
             noProductMessage.style.display = 'block';
         }
     });
+}

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ERROR - 2024-05-14 05:49:49 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', 'dankeneth221133...', 'coffeeledgerdb', 3306, '', 0)
@@ -235,3 +236,38 @@ in SYSTEMPATH\Database\BaseConnection.php on line 646.
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+=======
+CRITICAL - 2024-05-14 03:44:28 --> Undefined variable $menu
+in APPPATH\Controllers\ReservationController.php on line 61.
+ 1 APPPATH\Controllers\ReservationController.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menu', 'C:\\laragon\\www\\coffee\\app\\Controllers\\ReservationController.php', 61)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ReservationController->getResevartion()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReservationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-14 03:45:04 --> Undefined property: App\Controllers\ReservationController::$raw
+in APPPATH\Controllers\ReservationController.php on line 75.
+ 1 APPPATH\Controllers\ReservationController.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\ReservationController::$raw', 'C:\\laragon\\www\\coffee\\app\\Controllers\\ReservationController.php', 75)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ReservationController->getResevartion()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReservationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-14 03:46:00 --> Class "App\Controllers\ItemsMode" not found
+in APPPATH\Controllers\ReservationController.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\ReservationController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-14 03:46:09 --> Invalid file: "user/ProductReservation/reservationWorderingProduct.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('user/ProductReservation/reservationWorderingProduct.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/ProductReservation/reservationWorderingProduct', [], true)
+ 3 APPPATH\Controllers\ReservationController.php(82): view('user/ProductReservation/reservationWorderingProduct', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ReservationController->getResevartion()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ReservationController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+>>>>>>> Stashed changes
