@@ -158,7 +158,6 @@ class VisualizationController extends BaseController
                 );
                 
             }
-            
         }
 
 
@@ -258,14 +257,13 @@ class VisualizationController extends BaseController
 
     }
 
-
     public function salesReportPerDay($month, $year)
     {
        
         $data = [];
 
         $months=  date('F', mktime(0, 0, 0, $month, 1));
-        $filename = 'daily Reporsts In Month Of '. $months .'.xlsx';
+        $filename = 'Daily Reports In Month Of '. $months .'.xlsx';
 
         $spreadsheet = new Spreadsheet();
 
@@ -319,9 +317,5 @@ class VisualizationController extends BaseController
         readfile($filename);
     
         exit;
-
-   }
-
-
-            
+   }      
 }
