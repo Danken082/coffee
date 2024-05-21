@@ -2,9 +2,11 @@
 
 namespace App\Controllers;
 
-use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\Printer;
-use App\Libraries\ThermalPrinter\ThermalPrinter;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\PrintConnectors\FilePrintConnector;
+use Mike42\Escpos\CapabilityProfiles\SimpleCapabilityProfile;
+
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
@@ -42,17 +44,31 @@ class AdminController extends BaseController
     
     public function savePOSOrders()
     {
+
+        try {
+            $connector = new WindowsPrintConnector("POS58 Printer");
         $requestData = $this->request->getJSON();
 
         $savedData = [];
- 
+        $printer = new Printer($connector);
+
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->text("Store Name\n");
+        $printer->text("Address Line 1\n");
+        $printer->text("Address Line 2\n");
+        $printer->text("\n");
+        $printer->text("Receipt\n");
+        $printer->text("------------------------------\n");
+
         foreach ($requestData as $item) {
+            $printer->setJustification(Printer::JUSTIFY_LEFT);
             $productId = $item->productId;
             $totalPrice = $item->totalPrice;
             $totalquantity = $item->totalquantity;
             $amountPaid = $item->amountPaid;
             $change = $item->change;
- 
+
+            $printer->text("x{$totalquantity}   P" . number_format($totalPrice, 2) . "\n");
             $orderId = $this->history->insert([
                 'ProductID' => $productId,
                 'total_amount' => $totalPrice,
@@ -68,7 +84,11 @@ class AdminController extends BaseController
              'amount_paid' => $amountPaid,
              'change_amount' => $change,
           ];
-        
+
+
+            $printer->cut();
+            $printer->close();
+
          $coffee = $this->raw->where('rawID', '9')->first();
          $milk = $this->raw->where('rawID', '10')->first();
          $smilk = $this->raw->where('rawID', '11')->first();
@@ -1941,6 +1961,13 @@ class AdminController extends BaseController
            'success' => true,
            'data' => $savedData
        ]);
+
+
+       
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
+
     }
 
     private function getBarcodeByOrder($lengt = 10)
@@ -1961,12 +1988,12 @@ class AdminController extends BaseController
         
         // Example receipt content
         $receipt_content = "
-            Your Store Name
-            ----------------
-            Item:         $10.00
-            Item:         $15.00
-            Total:        $25.00
-            ----------------
+            Hello
+            --------------------------
+            Item: 2 Boy Bawang  $10.00
+            Item: 1 Pizza Hot   $15.00
+            Total:              $25.00
+            --------------------------
             Thank you for shopping!
         ";
 

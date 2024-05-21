@@ -44,3 +44,33 @@ WHERE `CustomerID` IS NULL
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-21 15:53:17 --> Class "Mike42\Escpos\CapabilityProfiles\SimpleCapabilityProfile" not found
+in APPPATH\Controllers\CartController.php on line 47.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->printReceipt()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-21 16:22:50 --> Class "Mike42\Escpos\CapabilityProfiles\SimpleCapabilityProfile" not found
+in APPPATH\Controllers\CartController.php on line 46.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->printReceipt()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-21 16:42:03 --> Class "App\Libraries\ThermalPrinter\FilePrintConnector" not found
+in APPPATH\Libraries\ThermalPrinter\ThermalPrinter.php on line 22.
+ 1 APPPATH\Controllers\AdminController.php(1974): App\Libraries\ThermalPrinter\ThermalPrinter->printReceipt('
+            Your Store Name
+            ----------------
+            Item:         $10.00
+            Item:         $15.00
+            Total:        $25.00
+            ----------------
+            Thank you for shopping!
+        ')
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->printReceipt()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
