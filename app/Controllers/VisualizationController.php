@@ -117,6 +117,8 @@ class VisualizationController extends BaseController
     
         $month = $this->request->getVar('month');
         $year = $this->request->getVar('year');
+        //MonthlyReports
+        $monthlySalesReports = $this->request->getVar('monthlySalesReports');
       
         $builder = $db->table('tbl_orders');
 
@@ -125,12 +127,6 @@ class VisualizationController extends BaseController
             $month = date('n');
             $year = date('Y');
         }
-        $data = [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(),
-            'month' => $month,
-            'year' => $year
-            ];
      
         $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year); // Get the total number of days in the month
 
@@ -146,7 +142,8 @@ class VisualizationController extends BaseController
             for ($day = 1; $day <= $daysInMonth; $day++) {
                 $products[] = array(
                     'day'   => $day,
-                    'sell' => 0.0 // You can set any default value here
+                    'sell' => 0.0, // You can set any default value here
+                    'count' => 0.0
                 );
             }
         } else {
@@ -154,18 +151,24 @@ class VisualizationController extends BaseController
             foreach ($record as $row) {
                 $products[] = array(
                     'day'   => $row->day,
-                    'sell' => floatval($row->s)
+                    'sell' => floatval($row->s),
+
                 );
                 
             }
-            
         }
 
 
-        $builder = $db->table('tbl_orders');
-        $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
-                        ->groupBy('MONTH(order_date)')
-                        ->get();
+        if($monthlySalesReports == null )
+        {
+            $monthlySalesReports = date('Y');
+        }
+     
+            $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
+                                ->where('YEAR(order_date)', $monthlySalesReports)
+                                ->groupBy('MONTH(order_date)')
+                                ->orderBy('month','ASC')
+                                ->get();
         $salesByMonth = $query->getResult();
 
         usort($salesByMonth, function($a, $b) {
@@ -177,10 +180,18 @@ class VisualizationController extends BaseController
             ->groupBy('YEAR(order_date)')
             ->findAll();
 
-        $data['salesByMonth'] = $salesByMonth;
-        $data['salesByYear'] = $salesByYear;
-        $data['products'] = $products;
 
+        $data = [
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(),
+            'salesByMonth' => $salesByMonth,
+            'salesByYear' => $salesByYear,
+            'products'  => $products,
+            'month' => $month,
+            'year' => $year,
+            'monthlySalesReports' => $monthlySalesReports
+            ];
+     
         //notif
     
         return view('admin/dashboard', $data);
@@ -258,14 +269,13 @@ class VisualizationController extends BaseController
 
     }
 
-
     public function salesReportPerDay($month, $year)
     {
        
         $data = [];
 
         $months=  date('F', mktime(0, 0, 0, $month, 1));
-        $filename = 'daily Reporsts In Month Of '. $months .'.xlsx';
+        $filename = 'Daily Reports In Month Of '. $months .'.xlsx';
 
         $spreadsheet = new Spreadsheet();
 
@@ -280,7 +290,8 @@ class VisualizationController extends BaseController
         foreach ($record as $row) {
             $products[] = array(
                 'day'   => $row->day,
-                'sell' => floatval($row->s)
+                'sell' => floatval($row->s),
+                'count' => floatval($row->count)
             );
         }
 
@@ -319,9 +330,5 @@ class VisualizationController extends BaseController
         readfile($filename);
     
         exit;
-
-   }
-
-
-            
+   }      
 }

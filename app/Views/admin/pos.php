@@ -10,7 +10,7 @@
 </head>
 <body>
     <main>
-        <a href="<?= base_url('/adminhome')?>" style="background-color: transparent; color:black; font-size: 1.5em;">Back</a>
+        <a href="<?= base_url('/adminhistory')?>" style="background-color: transparent; color:black; font-size: 1.5em;">Back</a>
         <div class="container">
             <div class="products-container">
                 <div class="search-bar-container">

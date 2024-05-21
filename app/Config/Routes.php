@@ -55,8 +55,6 @@ $routes->get('admin/sidebar', 'AdminController::admin_side');
 $routes->get('viewOrders', 'AdminController::viewOrder');
 $routes->get('/adminpos', 'AdminController::pos');
 $routes->get('/adminsales', 'AdminController::salesreport', ['filter'=>'authFilter']);
-
-
 $routes->get('addingTable', 'AdminController::viewAddTable');
 $routes->post('AdminTable', 'AdminController::addingTable');
 #forAcceptingOrde
@@ -240,3 +238,4 @@ $routes->post('/save-order', 'OrderController::saveOrder');
 
 
 $routes->post('/payment/save', 'AdminController::savePOSOrders');
+$routes->match(['get', 'post'], 'viewByFeedback/(:any)', 'OrderController::viewFeedbackForCoffee/$1');

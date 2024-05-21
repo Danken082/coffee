@@ -1,3 +1,88 @@
+CRITICAL - 2024-05-15 01:58:06 --> Attempt to read property "productId" on array
+in APPPATH\Controllers\AdminController.php on line 50.
+ 1 APPPATH\Controllers\AdminController.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "productId" on array', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 50)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 02:04:02 --> Attempt to read property "productId" on array
+in APPPATH\Controllers\AdminController.php on line 50.
+ 1 APPPATH\Controllers\AdminController.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "productId" on array', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 50)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 02:21:41 --> Attempt to read property "productId" on array
+in APPPATH\Controllers\AdminController.php on line 50.
+ 1 APPPATH\Controllers\AdminController.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "productId" on array', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 50)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 02:25:54 --> Attempt to read property "productId" on array
+in APPPATH\Controllers\AdminController.php on line 50.
+ 1 APPPATH\Controllers\AdminController.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "productId" on array', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 50)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 02:52:15 --> Attempt to read property "productId" on array
+in APPPATH\Controllers\AdminController.php on line 50.
+ 1 APPPATH\Controllers\AdminController.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "productId" on array', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 50)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 02:53:21 --> Attempt to read property "productId" on array
+in APPPATH\Controllers\AdminController.php on line 50.
+ 1 APPPATH\Controllers\AdminController.php(50): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "productId" on array', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 50)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 03:02:30 --> mysqli_sql_exception: Unknown column 'orderCode' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `tb...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `tb...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `tb...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tb...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\coffee\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\coffee\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\coffee\app\Controllers\AdminController.php(64): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#10 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-05-15 03:02:30 --> Unknown column 'orderCode' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `tbl_orders` (`ProductID`, `total_amount`, `quantity`, `amount_paid`, `change_amount`, `orderCode`) VALUES (:ProductID:, :total_amount:, :quantity:, :amount_paid:, :change_amount:, :orderCode:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\AdminController.php(64): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 03:03:16 --> Undefined variable $productID
+in APPPATH\Controllers\AdminController.php on line 130.
+ 1 APPPATH\Controllers\AdminController.php(130): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $productID', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 130)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->savePOSOrders()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 06:17:16 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
 ERROR - 2024-05-15 02:38:59 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'coffeeledgerdb', 3306, '', 0)
@@ -14,6 +99,7 @@ Stack trace:
 #11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
 #12 {main}
 
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:229
 Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:229
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
@@ -28,6 +114,8 @@ Stack trace:
 #9 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
 #10 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
 #11 {main}
+CRITICAL - 2024-05-15 06:17:16 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
 CRITICAL - 2024-05-15 02:38:59 --> Unable to connect to the database.
 Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: NO)
 in SYSTEMPATH\Database\BaseConnection.php on line 427.
@@ -44,6 +132,59 @@ WHERE `CustomerID` IS NULL
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 12:40:34 --> You cannot use "getCompiledSelect()" in "App\Models\HistoryModel". This is a method of the Query Builder Class.
+in SYSTEMPATH\Model.php on line 889.
+ 1 SYSTEMPATH\Model.php(889): CodeIgniter\Exceptions\ModelException::forMethodNotAvailable('App\\Models\\HistoryModel', 'getCompiledSelect()')
+ 2 SYSTEMPATH\Model.php(869): CodeIgniter\Model->checkBuilderMethod('getCompiledSelect')
+ 3 APPPATH\Controllers\AdminController.php(4302): CodeIgniter\Model->__call('getCompiledSelect', [])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 12:56:06 --> You cannot use "getCompiledSelect()" in "App\Models\HistoryModel". This is a method of the Query Builder Class.
+in SYSTEMPATH\Model.php on line 889.
+ 1 SYSTEMPATH\Model.php(889): CodeIgniter\Exceptions\ModelException::forMethodNotAvailable('App\\Models\\HistoryModel', 'getCompiledSelect()')
+ 2 SYSTEMPATH\Model.php(869): CodeIgniter\Model->checkBuilderMethod('getCompiledSelect')
+ 3 APPPATH\Controllers\AdminController.php(4303): CodeIgniter\Model->__call('getCompiledSelect', [])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 12:56:08 --> You cannot use "getCompiledSelect()" in "App\Models\HistoryModel". This is a method of the Query Builder Class.
+in SYSTEMPATH\Model.php on line 889.
+ 1 SYSTEMPATH\Model.php(889): CodeIgniter\Exceptions\ModelException::forMethodNotAvailable('App\\Models\\HistoryModel', 'getCompiledSelect()')
+ 2 SYSTEMPATH\Model.php(869): CodeIgniter\Model->checkBuilderMethod('getCompiledSelect')
+ 3 APPPATH\Controllers\AdminController.php(4303): CodeIgniter\Model->__call('getCompiledSelect', [])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 13:17:56 --> You cannot use "getCompiledSelect()" in "App\Models\HistoryModel". This is a method of the Query Builder Class.
+in SYSTEMPATH\Model.php on line 889.
+ 1 SYSTEMPATH\Model.php(889): CodeIgniter\Exceptions\ModelException::forMethodNotAvailable('App\\Models\\HistoryModel', 'getCompiledSelect()')
+ 2 SYSTEMPATH\Model.php(869): CodeIgniter\Model->checkBuilderMethod('getCompiledSelect')
+ 3 APPPATH\Controllers\AdminController.php(4303): CodeIgniter\Model->__call('getCompiledSelect', [])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 13:18:07 --> You cannot use "getCompiledSelect()" in "App\Models\HistoryModel". This is a method of the Query Builder Class.
+in SYSTEMPATH\Model.php on line 889.
+ 1 SYSTEMPATH\Model.php(889): CodeIgniter\Exceptions\ModelException::forMethodNotAvailable('App\\Models\\HistoryModel', 'getCompiledSelect()')
+ 2 SYSTEMPATH\Model.php(869): CodeIgniter\Model->checkBuilderMethod('getCompiledSelect')
+ 3 APPPATH\Controllers\AdminController.php(4303): CodeIgniter\Model->__call('getCompiledSelect', [])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 13:21:22 --> Undefined constant "App\Controllers\history"
+in APPPATH\Controllers\AdminController.php on line 4299.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
 ERROR - 2024-05-15 02:42:57 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'coffeeledgerdb', 3306, '', 0)
@@ -97,6 +238,404 @@ in APPPATH\Controllers\AdminController.php on line 161.
  3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:21:33 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`' at line 1 in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:21:33 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`orderID`, `user`.`UserID`, `product_tbl`.`prod_id`, `tbl_orders`.`CustomerID`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount` `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_desc`
+FROM `tbl_orders`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `tbl_orders`.`orderDate` IS NULL
+ORDER BY `tbl_orders`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 13:22:46 --> Undefined variable $history
+in APPPATH\Controllers\AdminController.php on line 4299.
+ 1 APPPATH\Controllers\AdminController.php(4299): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $history', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 4299)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 13:23:07 --> You cannot use "getCompiledSelect()" in "App\Models\HistoryModel". This is a method of the Query Builder Class.
+in SYSTEMPATH\Model.php on line 889.
+ 1 SYSTEMPATH\Model.php(889): CodeIgniter\Exceptions\ModelException::forMethodNotAvailable('App\\Models\\HistoryModel', 'getCompiledSelect()')
+ 2 SYSTEMPATH\Model.php(869): CodeIgniter\Model->checkBuilderMethod('getCompiledSelect')
+ 3 APPPATH\Controllers\AdminController.php(4303): CodeIgniter\Model->__call('getCompiledSelect', [])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:24:39 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`' at line 1 in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:24:39 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`orderID`, `user`.`UserID`, `product_tbl`.`prod_id`, `tbl_orders`.`CustomerID`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount` `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_desc`
+FROM `tbl_orders`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `tbl_orders`.`orderDate` IS NULL
+ORDER BY `tbl_orders`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:25:21 --> mysqli_sql_exception: Unknown column 'tbl_orders.orderDate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:25:21 --> Unknown column 'tbl_orders.orderDate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`orderID`, `user`.`UserID`, `product_tbl`.`prod_id`, `tbl_orders`.`CustomerID`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`orderDate`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_desc`
+FROM `tbl_orders`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `tbl_orders`.`orderDate` IS NULL
+ORDER BY `tbl_orders`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:25:47 --> mysqli_sql_exception: Unknown column 'order.orderType' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:25:47 --> Unknown column 'order.orderType' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`orderID`, `user`.`UserID`, `product_tbl`.`prod_id`, `tbl_orders`.`CustomerID`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`order_date`, `order`.`orderType`, `order`.`paymentStatus`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_desc`
+FROM `tbl_orders`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `tbl_orders`.`orderDate` IS NULL
+ORDER BY `tbl_orders`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:26:36 --> mysqli_sql_exception: Unknown column 'tbl_orders.orderDate' in 'where clause' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:26:36 --> Unknown column 'tbl_orders.orderDate' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`orderID`, `user`.`UserID`, `product_tbl`.`prod_id`, `tbl_orders`.`CustomerID`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`order_date`, `user`.`LastName`, `user`.`FirstName`, `user`.`Username`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_desc`
+FROM `tbl_orders`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `tbl_orders`.`orderDate` IS NULL
+ORDER BY `tbl_orders`.`orderID` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4308): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:45:07 --> mysqli_sql_exception: Unknown column 'tbl_orders.order_id' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:45:07 --> Unknown column 'tbl_orders.order_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`order_id`, `tbl_orders`.`orderID`, `tbl_orders`.`CustomerID`, `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`order_date`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `user`.`LastName`, `user`.`FirstName`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`
+FROM `order`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `order_date` IS NULL
+ORDER BY `tbl_orders_order_date` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:45:33 --> mysqli_sql_exception: Unknown column 'tbl_orders.order_id' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:45:33 --> Unknown column 'tbl_orders.order_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`order_id`, `tbl_orders`.`orderID`, `tbl_orders`.`CustomerID`, `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`order_date`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `user`.`LastName`, `user`.`FirstName`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `order_date` IS NULL
+ORDER BY `tbl_orders_order_date` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:46:24 --> mysqli_sql_exception: Unknown column 'tbl_orders.orderID' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:46:24 --> Unknown column 'tbl_orders.orderID' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`orderID`, `tbl_orders`.`CustomerID`, `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`order_date`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `user`.`LastName`, `user`.`FirstName`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `order_date` IS NULL
+ORDER BY `tbl_orders_order_date` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:46:45 --> mysqli_sql_exception: Unknown column 'tbl_orders.CustomerID' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:46:45 --> Unknown column 'tbl_orders.CustomerID' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`CustomerID`, `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`order_date`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `user`.`LastName`, `user`.`FirstName`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `order_date` IS NULL
+ORDER BY `tbl_orders_order_date` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:46:54 --> mysqli_sql_exception: Unknown column 'tbl_orders.order_id' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:46:54 --> Unknown column 'tbl_orders.order_id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`order_id`, `tbl_orders`.`orderID`, `tbl_orders`.`CustomerID`, `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`order_date`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `user`.`LastName`, `user`.`FirstName`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `order`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `order_date` IS NULL
+ORDER BY `tbl_orders_order_date` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-05-15 13:47:03 --> mysqli_sql_exception: Unknown column 'tbl_orders_order_date' in 'order clause' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 13:47:03 --> Unknown column 'tbl_orders_order_date' in 'order clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`order_id`, `tbl_orders`.`orderID`, `tbl_orders`.`CustomerID`, `tbl_orders`.`ProductID`, `tbl_orders`.`total_amount`, `tbl_orders`.`quantity`, `tbl_orders`.`order_date`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `user`.`LastName`, `user`.`FirstName`, `user`.`ContactNo`, `user`.`address`, `user`.`gender`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`
+FROM `tbl_orders`
+JOIN `product_tbl` ON `tbl_orders`.`ProductID` = `product_tbl`.`prod_id`
+JOIN `user` ON `tbl_orders`.`CustomerID` = `user`.`UserID`
+WHERE `order_date` IS NULL
+ORDER BY `tbl_orders_order_date` ASC', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4297): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->gethistory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 13:59:09 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\VisualizationController.php on line 20.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\VisualizationController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 14:01:54 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\VisualizationController.php on line 20.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\VisualizationController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 14:21:03 --> Undefined variable $count
+in APPPATH\Views\admin\sidebar.php on line 129.
+ 1 APPPATH\Views\admin\sidebar.php(129): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\sidebar.php', 129)
+ 2 APPPATH\Views\admin\salesreport.php(9): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\salesreport.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/salesreport', [], true)
+ 6 APPPATH\Controllers\AdminController.php(4328): view('admin/salesreport')
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->salesreport()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-15 14:26:34 --> Undefined variable $h
+in APPPATH\Views\admin\salesreport.php on line 32.
+ 1 APPPATH\Views\admin\salesreport.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $h', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\salesreport.php', 32)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\salesreport.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/salesreport', [], true)
+ 5 APPPATH\Controllers\AdminController.php(4333): view('admin/salesreport', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->salesreport()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
 CRITICAL - 2024-05-15 05:06:00 --> Undefined array key "prod_desc"
 in APPPATH\Views\user\viewOrders.php on line 101.
  1 APPPATH\Views\user\viewOrders.php(101): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "prod_desc"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\viewOrders.php', 101)
