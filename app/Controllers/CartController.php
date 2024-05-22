@@ -10,6 +10,14 @@ use BaconQrCode\Common\Mode;
 use App\Models\ProductModel;
 use App\Models\CartModel;
 use App\Models\OrderModel;
+
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\PrintConnectors\FilePrintConnector;
+use Mike42\Escpos\CapabilityProfiles\SimpleCapabilityProfile;
+
+
+
 class CartController extends BaseController
 {
     private $product;
@@ -22,7 +30,73 @@ class CartController extends BaseController
         $this->order = new OrderModel();
             // $this->load->library('/user/cart');
             // $this->load->model('ProductModel');
-    }    
+    }  
+    
+    public function printReceipt()
+    {
+        try {
+            // Set up the printer connector
+            $connector = new WindowsPrintConnector("POS58 Printer");
+
+            // Initialize the printer
+            $printer = new Printer($connector);
+
+            // Print the receipt content
+            '<br>';
+            $printer->setJustification(Printer::JUSTIFY_CENTER);
+            $printer->text("Store Name\n");
+            $printer->text("Address Line 1\n");
+            $printer->text("Address Line 2\n");
+            $printer->text("\n");
+            $printer->text("Receipt\n");
+            $printer->text("------------------------------\n");
+
+            // Print items (replace with your actual receipt data)
+            $items = [
+                ['item' => 'Item 1', 'qty' => 1, 'price' => 1.00],
+                ['item' => 'Item 2', 'qty' => 2, 'price' => 2.00],
+            ];
+
+            foreach ($items as $item) {
+                $printer->setJustification(Printer::JUSTIFY_LEFT);
+                $printer->text("{$item['item']}   x{$item['qty']}   $" . number_format($item['price'], 2) . "\n");
+            }
+
+            $printer->text("------------------------------\n");
+            $printer->text("Total: $" . number_format(5.00, 2) . "\n"); // Replace with actual total
+            $printer->text("------------------------------\n");
+            $printer->text("Thank you for shopping!\n");
+            $printer->text("------------------------------\n");
+            $printer->text("------------------------------\n");
+            
+
+            // Finish printing
+            $printer->cut();
+            $printer->close();
+
+            echo "Receipt printed successfully!";
+        } catch (\Exception $e) {
+            echo "Could not print receipt: " . $e->getMessage();
+        }
+    }
+
+    public function listPrinters()
+    {
+        try {
+            // Command to list printers on Windows
+            $output = shell_exec('wmic printer get name');
+
+            if ($output) {
+                echo nl2br($output);
+            } else {
+                echo "No printers found.";
+            }
+        } catch (\Exception $e) {
+            echo "Could not list printers: " . $e->getMessage();
+        }
+    }
+
+
   
     public function home_cart()
     {

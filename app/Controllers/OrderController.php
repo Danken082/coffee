@@ -322,6 +322,21 @@ class OrderController extends BaseController
     }
 
 
+    public function viewFeedbackForCoffee($prodID)
+    {
+        $data = ['feedback' => $this->fb->select('feedback_tbl.feedbackID, feedback_tbl.ratings, 
+        feedback_tbl.comment, feedback_tbl.orderID, feedback_tbl.ProductID, feedback_tbl.CustomerID,
+        user.UserID, user.Username, user.LastName, user.FirstName, product_tbl.prod_id, product_tbl.prod_name')
+        ->join('user', 'user.UserID = feedback_tbl.CustomerID')
+        ->join('product_tbl', 'product_tbl.prod_id = feedback_tbl.ProductID')
+        ->where('feedback_tbl.ProductID', $prodID)
+        ->findAll(),
+        
+        ];
+
+        return view('user/forFeedback/viewfeedback', $data);
+    }
+
     public function receipt()
     {
 

@@ -26,7 +26,7 @@ $routes->get('theorders/(:any)', 'AdminController::viewToAcceptorders/$1');
 $routes->get('/orderhistory', 'AdminController::viewhistory');
 $routes->get('/receipt', 'OrderController::coffeereceipt');
 
-$routes->post('print-receipt', 'AdminController::printReceipt');
+$routes->get('print-receipts', 'AdminController::printReceipt');
 // $routes->get('pos', 'ChatController::try');
 
 /*For UserSide*/ 
@@ -238,3 +238,8 @@ $routes->post('/save-order', 'OrderController::saveOrder');
 
 
 $routes->post('/payment/save', 'AdminController::savePOSOrders');
+$routes->match(['get', 'post'], 'viewByFeedback/(:any)', 'OrderController::viewFeedbackForCoffee/$1');
+
+
+$routes->get('print-receipt', 'CartController::printReceipt');
+$routes->get('list-printers', 'CartController::listPrinters');
