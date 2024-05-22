@@ -36,7 +36,12 @@ $routes->get('adminorderpayment', 'AdminController::viewOrders');
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'VisualizationController/thisAllChart', 'VisualizationController::thisAllChart');
+
+
+//reports
 $routes->match(['get', 'post'], 'reports/(:any)/(:any)', 'VisualizationController::salesReportPerDay/$1/$2');
+$routes->match(['get', 'post'], 'reportspermonths/(:any)', 'VisualizationController::salesReportPerMonthInyear/$1');
+$routes->match(['get', 'post'], 'reportsYear', 'VisualizationController::salesReportEveryYear');
 //POS
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
@@ -211,6 +216,8 @@ $routes->get('feedback', 'OrderController::inputFeedback');
 $routes->post('confirmfeedback', 'OrderController::feedBack');
 #second part of user side 
 $routes->get('userCheckOut', 'CartController::GotoCheckOut');
+
+
 
 /*add to cart*/
 $routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1');

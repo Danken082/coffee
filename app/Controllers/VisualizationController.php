@@ -331,4 +331,105 @@ class VisualizationController extends BaseController
     
         exit;
    }      
+
+
+
+   public function salesReportPerMonthInyear($monthlySalesReports)
+    {
+        $data = [];
+
+        $filename = 'Daily Reports In Month Of '. $monthlySalesReports .'.xlsx';
+
+        $spreadsheet = new Spreadsheet();
+
+            $query = $this->vis->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
+                                ->where('YEAR(order_date)', $monthlySalesReports)
+                                ->groupBy('MONTH(order_date)')
+                                ->orderBy('month','ASC')
+                                ->get();
+
+        $salesByMonth = $query->getResult();
+
+        usort($salesByMonth, function($a, $b) {
+            return $a->month - $b->month;
+        });
+
+
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->setCellValue('A1', $monthlySalesReports);
+        $sheet->setCellValue('B1', 'Sales');
+
+
+        $rows = 2;
+
+    
+
+        foreach($salesByMonth as $val)
+        {
+            $monthName = date('F', mktime(0, 0, 0, $val->month, 1));
+            $sheet->setCellValue('A' . $rows, $monthName);
+            $sheet->setCellValue('B' . $rows, $val->total_sales);
+            $rows++;
+        }
+        $writer = new Xlsx($spreadsheet);
+        $writer->save($filename);
+
+        header("Content-Type: application/vnd.ms-excel");
+        header('Content-Disposition: attachment; filename="'. basename($filename).'"');
+        header('Expires: 0');
+
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length' . filesize($filename));
+
+        flush();
+
+        readfile($filename);
+
+        exit;
+    }
+
+    public function salesReportEveryYear()
+    {
+        $data = [];
+    
+        $salesByYear = $this->vis
+            ->select('YEAR(order_date) as year, SUM(total_amount) as total_sales')
+            ->groupBy('YEAR(order_date)')
+            ->findAll();
+    
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+    
+        $sheet->setCellValue('A1', 'Year');
+        $sheet->setCellValue('B1', 'Sales');
+    
+        $rows = 2;
+    
+        foreach($salesByYear as $val)
+        {
+            $sheet->setCellValue('A' . $rows, $val['year']);
+            $sheet->setCellValue('B' . $rows, $val['total_sales']);
+            $rows++;
+        }
+    
+        $filename = 'Sales_Report_Every_Year.xlsx';
+        $writer = new Xlsx($spreadsheet);
+        $writer->save($filename);
+    
+        header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($filename));
+    
+        flush();
+        readfile($filename);
+    
+        exit;
+    }
+
+
 }

@@ -53,7 +53,7 @@ class AdminController extends BaseController
         $printer = new Printer($connector);
 
         $printer->setJustification(Printer::JUSTIFY_CENTER);
-        $printer->text("Store Name\n");
+        $printer->text("Crossrods Coffee and Deli\n");
         $printer->text("Address Line 1\n");
         $printer->text("Address Line 2\n");
         $printer->text("\n");
@@ -68,7 +68,7 @@ class AdminController extends BaseController
             $amountPaid = $item->amountPaid;
             $change = $item->change;
 
-            $printer->text("x{$totalquantity}   P" . number_format($totalPrice, 2) . "\n");
+            $printer->text("{$totalquantity}   P" . number_format($totalPrice, 2) . "\n");
             $orderId = $this->history->insert([
                 'ProductID' => $productId,
                 'total_amount' => $totalPrice,

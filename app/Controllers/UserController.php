@@ -15,6 +15,9 @@ use App\Libraries\CIAuth;
 
 class UserController extends BaseController
 {
+
+    private $maxLoginAttempts = 5;
+    private $lockoutTime = 300;
     private $user;
     private $product;
     private $crt;
@@ -96,49 +99,135 @@ class UserController extends BaseController
     }
 }
 
+    // public function login()
+    // {
+    //     $session = session();
+
+    //     $email = $this->request->getVar('email');
+    //     $password = $this->request->getVar('password');
+
+    //     $user = $this->user->where('email', $email)->first();
+
+    //     if($user)
+    //         {
+    //             $pass = $user['Password'];
+    //             $authenticatePassword = password_verify($password, $pass);
+    //             if($authenticatePassword){
+    //                 $ses_data = [
+    //                     'UserID' => $user['UserID'],
+    //                     'LastName' => $user['LastName'],
+    //                     'FirstName' => $user['FirstName'],
+    //                     'UserRole' => $user['UserRole'],
+    //                     'birthdate' => $user['birthdate'],
+    //                     'email' => $user['email'],
+    //                     'profile_img' => $user['profile_img'],
+    //                     'Username' => $user['Username'],
+    //                     'Password' => $user['Password'],
+    //                     'ContactNo' => $user['ContactNo'],
+    //                     'gender' => $user['gender'],
+    //                     'address' => $user['address'],
+    //                     'isLoggedIn' => TRUE
+    //                 ];
+
+    //              $session->set($ses_data);
+    //        if($user['UserRole'] == 'Admin')
+    //        {
+    //         return redirect()->to('/adminhome');
+    //        }
+    //        else{
+    //         return redirect()->to('/mainhome');
+    //        }
+    //     }
+                
+    //     else{
+    //             $session->setFlashdata('msg', 'Incorect email or password.');
+    
+    //             return redirect()->to('/login');
+    //         }
+    //     }
+    // }
+
+
     public function login()
     {
         $session = session();
+        
+        // Check if user is locked out
+        if ($session->get('lockout_time') && time() < $session->get('lockout_time')) {
+            $remainingLockoutTime = $session->get('lockout_time') - time();
+            $remainingLockoutMinutes = ceil($remainingLockoutTime / 60); 
+            $session->setFlashdata('msg', "Too many login attempts. Please try again in $remainingLockoutMinutes Minutes.");
+            return redirect()->to('/login');
+        }
+
+        // Clear lockout if time has passed
+        if ($session->get('lockout_time') && time() >= $session->get('lockout_time')) {
+            $session->remove('lockout_time');
+            $session->remove('login_attempts');
+        }
 
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
 
         $user = $this->user->where('email', $email)->first();
 
-        if($user)
-            {
-                $pass = $user['Password'];
-                $authenticatePassword = password_verify($password, $pass);
-                if($authenticatePassword){
-                    $ses_data = [
-                        'UserID' => $user['UserID'],
-                        'LastName' => $user['LastName'],
-                        'FirstName' => $user['FirstName'],
-                        'UserRole' => $user['UserRole'],
-                        'birthdate' => $user['birthdate'],
-                        'email' => $user['email'],
-                        'profile_img' => $user['profile_img'],
-                        'Username' => $user['Username'],
-                        'Password' => $user['Password'],
-                        'ContactNo' => $user['ContactNo'],
-                        'gender' => $user['gender'],
-                        'address' => $user['address'],
-                        'isLoggedIn' => TRUE
-                    ];
+        if ($user) {
+            $pass = $user['Password'];
+            $authenticatePassword = password_verify($password, $pass);
+            
+            if ($authenticatePassword) {
+                // Successful login
+                $ses_data = [
+                    'UserID' => $user['UserID'],
+                    'LastName' => $user['LastName'],
+                    'FirstName' => $user['FirstName'],
+                    'UserRole' => $user['UserRole'],
+                    'birthdate' => $user['birthdate'],
+                    'email' => $user['email'],
+                    'profile_img' => $user['profile_img'],
+                    'Username' => $user['Username'],
+                    'Password' => $user['Password'],
+                    'ContactNo' => $user['ContactNo'],
+                    'gender' => $user['gender'],
+                    'address' => $user['address'],
+                    'isLoggedIn' => TRUE
+                ];
 
-                 $session->set($ses_data);
-           if($user['UserRole'] == 'Admin')
-           {
-            return redirect()->to('/adminhome');
-           }
-           else{
-            return redirect()->to('/mainhome');
-           }
-        }
+                $session->set($ses_data);
+                $session->remove('login_attempts'); // Reset login attempts
                 
-        else{
-                $session->setFlashdata('msg', 'Incorect email or password.');
+                if ($user['UserRole'] == 'Admin') {
+                    return redirect()->to('/adminhome');
+                } else {
+                    return redirect()->to('/mainhome');
+                }
+            } else {
+                // Failed login
+                $this->incrementLoginAttempts($session);
+                $session->setFlashdata('msg', 'Incorrect email or password.');
                 return redirect()->to('/login');
+            }
+        } else {
+            // Failed login
+            $this->incrementLoginAttempts($session);
+            $session->setFlashdata('msg', 'Incorrect email or password.');
+            return redirect()->to('/login');
+        }
+    }
+
+    private function incrementLoginAttempts($session)
+    {
+        if (!$session->has('login_attempts')) {
+            $session->set('login_attempts', 1);
+        } else {
+            $loginAttempts = $session->get('login_attempts');
+            $loginAttempts++;
+            $session->set('login_attempts', $loginAttempts);
+
+            if ($loginAttempts >= $this->maxLoginAttempts) {
+                $session->set('lockout_time', time() + $this->lockoutTime);
+                $lockoutMinutes = ceil($this->lockoutTime / 60);
+                $session->setFlashdata('msg', "Too many login attempts. Please try again in $this->lockoutMinutes Minutes.");
             }
         }
     }

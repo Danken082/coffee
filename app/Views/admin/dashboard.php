@@ -82,6 +82,16 @@
                         </div>
                         <div class="card-body">
                             <h6 class="mb-0">Monthly Sales</h6>
+
+                            <a href="<?= base_url('reportspermonths/' . $monthlySalesReports)?>">Export Report</a>
+                            <form id="filterMonth">
+                            <select name="monthlySalesReports" id="monthlySalesReports" class="form-control" style="color: white;">
+                            <?php  $currentYear = date('Y'); for($m=2015; $m <= $currentYear; $m++):?>
+                                        <option value="<?= $m ?>" <?= ($m == $monthlySalesReports) ? 'selected' : '' ?>><?= $m?></option>
+                                        <?php endfor;?>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Filter</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -97,6 +107,7 @@
                             </div>
                         </div>
                         <div class="card-body">
+                            <a href="<?= base_url('reportsYear')?>">Export Report</a>
                             <h6 class="mb-0">Yearly Sales</h6>
                         </div>
                     </div>
