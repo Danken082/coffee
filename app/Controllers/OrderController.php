@@ -261,10 +261,10 @@ class OrderController extends BaseController
     {
         $orderID = $this->request->getVar('orderID');
         $getID = $this->order->where('orderID', $orderID)->first();
-    
+
         $rules = [
             'comment' => 'required|min_length[5]|max_length[150]',
-            'ratings' => 'required'
+            'ratings' => 'required|integer|greater_than_equal_to[1]|less_than_equal_to[5]'
         ];
         
         if ($this->validate($rules)) {
@@ -275,18 +275,17 @@ class OrderController extends BaseController
                 'orderID' => $orderID,
                 'comment' => $this->request->getVar('comment') 
             ];
-        //    var_dump($getID);         
+
             $upData = ['orderStatus' => 'OrderReceived'];
             $update = $this->order->update($getID['orderID'], $upData);
-          
+            
             $this->fb->insert($data);
-    
+
             return redirect()->to('myOrders')->with('msg', 'Thank you for your feedback.');
         } else {
             return redirect()->to('myOrders')->with('msg', 'Invalid input. Feedback not submitted.');
         }
     }
-    
 
     public function getProdUser()
     {

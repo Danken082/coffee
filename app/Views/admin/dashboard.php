@@ -57,11 +57,13 @@
                             <form id="filterForm">     
                             <select name="month" id="month" class="form-control" style="color: white;">
                                     <?php   $currentMonth = date('n'); for($m=1; $m <= 12; $m++):?>
+                                        <option value="<?= $m ?>" <?= ($m == $currentMonth) ? 'selected' : '' ?>><?= date('F', mktime(0, 0, 0, $m, 1))?></option>
                                         <option value="<?= $m ?>" <?= ($m == $month) ? 'selected' : '' ?>><?= date('F', mktime(0, 0, 0, $m, 1))?></option>
                                         <?php endfor;?>
                             </select>
                             <select name="year" id="year" class="form-control" style="color: white;">
                             <?php  $currentYear = date('Y'); for($m=2015; $m <= 2050; $m++):?>
+                                        <option value="<?= $m ?>" <?= ($m == $currentYear) ? 'selected' : '' ?>><?= $m?></option>
                                         <option value="<?= $m ?>" <?= ($m == $year) ? 'selected' : '' ?>><?= $m?></option>
                                         <?php endfor;?>
                             </select>

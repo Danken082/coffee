@@ -68,7 +68,6 @@ in APPPATH\Views\admin\visualization.php on line 57.
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
-<<<<<<< HEAD
 CRITICAL - 2024-05-18 12:50:44 --> Undefined variable $years
 in APPPATH\Controllers\VisualizationController.php on line 163.
  1 APPPATH\Controllers\VisualizationController.php(163): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $years', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 163)
@@ -101,7 +100,6 @@ in APPPATH\Controllers\VisualizationController.php on line 316.
  4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
-=======
 ERROR - 2024-05-18 23:52:30 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', 'dankeneth221133...', 'coffeeledgerdb', 3306, '', 0)
@@ -148,4 +146,3 @@ WHERE `email` = :email:
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
->>>>>>> 7df207be63b99b945e2584b1bc5e98d4f496bf00
