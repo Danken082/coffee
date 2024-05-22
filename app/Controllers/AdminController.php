@@ -2286,21 +2286,23 @@ class AdminController extends BaseController
         }
     }
 
+
     public function removeadminpf($userId)
     {
         $userModel = new UserModel();
         $currentUser = $userModel->find($userId);
         $profileImg = $currentUser['profile_img'];
-    
-        if (!empty($profileImg) && file_exists('assets/user/images/' . $profileImg)) {
+        $defaultProfileImg = 'profile.png';
+
+        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists('assets/user/images/' . $profileImg)) {
             unlink('assets/user/images/' . $profileImg);
         }
-    
-        $userModel->update($userId, ['profile_img' => 'profile.png']);
-        session()->set('profile_img', 'profile.png');
-    
+
+        $userModel->update($userId, ['profile_img' => $defaultProfileImg]);
+        session()->set('profile_img', $defaultProfileImg);
+
         return redirect()->to(base_url('/adminprofile'));
-    }    
+    }
       
     public function deleteuser($id)
     {  

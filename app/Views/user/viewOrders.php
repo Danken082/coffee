@@ -11,6 +11,26 @@
 		.myproduct{
 			margin-left:100px;
 		}
+		.order-history-table thead th {
+            background-color: #D4A059;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+        .order-history-table tbody td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .order-history-table img {
+            width: 100px;
+            height: auto;
+        }
+        .order-history-table h3 {
+            font-weight: bold;
+        }
+        .order-history-table .btn-outline-primary {
+            margin-top: 10px;
+        }
 	</style>
 	<body>
     <div id="preloader"></div>
@@ -78,7 +98,7 @@
 										<form action="<?= base_url('getProdUser')?>" method="post">
 										<input type="hidden" name="ProductID" value="<?= $item['prod_id']?>">
 										<input type="hidden" name="orderID" value="<?= $item['orderID']?>">
-										<button type="submit">Oreder Received</button>
+										<button type="submit">Order Received</button>
 										</form>
 										
 										<?php elseif($item['orderStatus'] === 'AcceptOrder'):?>
@@ -97,46 +117,67 @@
     		</div>
 	</section>
 
-	<p>Order History</p>								
-	<div class="row myproduct">
-									
-										<div class="col-md-4 text-center">
-											<div class="menu-wrap">
-												<?php foreach($orderhist as $c): ?>
-													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$c['prod_img']?>">
-														<h3 style="font-weight:bold;"><a><?=$c['prod_name']?></a></h3>
-														<div class="d-block" style="color:white;"><p><?=$c['prod_desc']?></p></div>
-														<?php if($c['prod_lprice'] > 0.00):?>
-														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
-														<?php elseif($c['prod_lprice'] == 0.00):?>
-															<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?> </span></p>
-															<?php endif;?>
-														<form action="<?= base_url('/viewProd2/') .$c['prod_id'] ?>" method="post">
-															<?php if($c['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
-															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('getProd/' .$c['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-															<?php endif;?>
-														</form>												
-													</div>
-												<?php endforeach; ?>	
-											</div>
-										</div>
-									</div>
-								</div>
+	<div class="container">
+        <h1>Order History</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped order-history-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($orderhist as $c): ?>
+                        <tr>
+                            <td>
+                                <img src="<?="/assets/images/products/" .$c['prod_img']?>" alt="<?=$c['prod_name']?>">
+                            </td>
+                            <td>
+                                <h3><a><?=$c['prod_name']?></a></h3>
+                                <p><?=$c['prod_desc']?></p>
+                            </td>
+                            <td>
+                                <?php if($c['prod_lprice'] > 0.00): ?>
+                                    Regular ₱ <?=$c['prod_mprice']?><br>Large ₱ <?=$c['prod_lprice']?>
+                                <?php else: ?>
+                                    ₱ <?=$c['prod_mprice']?>
+                                <?php endif; ?>
+                            </td>
+                            <td><?=$c['quantity']?></td>
+                            <td>₱ <?=$c['total']?></td>
+                            <td>
+                                <form action="<?= base_url('/viewProd2/') .$c['prod_id'] ?>" method="post">
+                                    <?php if($c['product_status'] === 'Unavailable'): ?>
+                                        <button class="btn btn-primary btn-outline-primary" type="submit" disabled>Sold Out</button>
+                                    <?php else: ?>
+                                        <p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('getProd/' .$c['prod_id'])?>">Order Now</a></p>
+                                        <button class="btn btn-primary btn-outline-primary" type="submit">Add to cart</button>
+                                    <?php endif; ?>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 		<?php include('mainheader.php'); ?>
 		<?php include('footer.php'); ?>
         <script>
-      var loader = document.getElementById("preloader");
+			var loader = document.getElementById("preloader");
 
-      window.addEventListener("load", function () {
-      	setTimeout(function () {
-      		loader.style.display = "none";
-      	}, 1500);
-      });
+			window.addEventListener("load", function () {
+				setTimeout(function () {
+					loader.style.display = "none";
+				}, 1500);
+			});
 		</script>
-    
 </body>
 </html>

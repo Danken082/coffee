@@ -10,7 +10,7 @@
 </head>
 <body>
     <main>
-        <a href="<?= base_url('/adminhistory')?>" style="background-color: transparent; color:black; font-size: 1.5em;">Back</a>
+        <a href="<?= base_url('/adminhistory')?>" class="back-button">Back</a>
         <div class="container">
             <div class="products-container">
                 <div class="search-bar-container">
@@ -282,6 +282,7 @@
                                 <th>Size</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody></tbody>

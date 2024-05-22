@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ERROR - 2024-05-21 15:08:58 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
 Stack trace:
 #0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'coffeeledgerdb', 3306, '', 0)
@@ -74,3 +75,41 @@ in APPPATH\Libraries\ThermalPrinter\ThermalPrinter.php on line 22.
  4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+=======
+CRITICAL - 2024-05-21 13:20:27 --> Undefined variable $productName
+in APPPATH\Views\user\feedback.php on line 13.
+ 1 APPPATH\Views\user\feedback.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $productName', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\feedback.php', 13)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\feedback.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/feedback', [], true)
+ 5 APPPATH\Controllers\OrderController.php(320): view('user/feedback', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getProdUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-21 13:20:50 --> Undefined variable $productName
+in APPPATH\Views\user\feedback.php on line 13.
+ 1 APPPATH\Views\user\feedback.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $productName', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\feedback.php', 13)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\feedback.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/feedback', [], true)
+ 5 APPPATH\Controllers\OrderController.php(320): view('user/feedback', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getProdUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-21 13:24:46 --> Undefined variable $productName
+in APPPATH\Views\user\feedback.php on line 13.
+ 1 APPPATH\Views\user\feedback.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $productName', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\feedback.php', 13)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\feedback.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/feedback', [], true)
+ 5 APPPATH\Controllers\OrderController.php(320): view('user/feedback', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getProdUser()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+>>>>>>> Stashed changes
