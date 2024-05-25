@@ -28,7 +28,7 @@
                             <ul class="list-unstyled">
                                 <li><a class="py-2 d-block"><h5>Cooked</h5></a></li>
                                 <li><a class="py-2 d-block"><h5>Deliver</h5></a></li>
-                                <li><a class="py-2 d-block"><h5>Quality Foods</h5></a></li>
+                                <li><a class="py-2 d-block"><h5>Reserved</h5></a></li>
                             </ul>
                         </div>
                     </div>

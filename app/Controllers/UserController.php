@@ -303,12 +303,10 @@ class UserController extends BaseController
                'sand' => $menu->products('Sandwich'),
                'hot' => $menu->products('Hot Coffee'),
                'iced' => $menu->products('Iced Coffee'),
-               'flav' => $menu->products('Flavored Coffeee'),
+               'flav' => $menu->products('Flavored Coffee'),
                 'non' =>  $menu->products('Non Coffee Frappe'),
                 'coffee' =>$menu->products('Coffee Frappe'),
                 'other' => $menu->products('Others'),
-
-
             ];
 
         return view('/user/mainmenu', $data);

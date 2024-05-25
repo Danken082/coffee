@@ -83,42 +83,35 @@
 											<input type="number" name="quantity" disabled class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
 										</div>
 									</td>
-									
 						        	<td class="total">₱ <?= $item['total']?></td>
 									<td class="quantity">
 										<div class="input-group mb-3">
 										<h4><?= $item['orderStatus']?></h4>
-
 										</div>
 									</td>
-
 									<td>
-										
-									<?php if($item['orderStatus'] === 'AcceptOrder'):?>
-										<form action="<?= base_url('getProdUser')?>" method="post">
-										<input type="hidden" name="ProductID" value="<?= $item['prod_id']?>">
-										<input type="hidden" name="orderID" value="<?= $item['orderID']?>">
-										<button type="submit">Order Received</button>
-										</form>
-										
+										<?php if($item['orderStatus'] === 'AcceptOrder'):?>
+											<form action="<?= base_url('getProdUser')?>" method="post">
+												<input type="hidden" name="ProductID" value="<?= $item['prod_id']?>">
+												<input type="hidden" name="orderID" value="<?= $item['orderID']?>">
+												<button type="submit">Order Received</button>
+											</form>
 										<?php elseif($item['orderStatus'] === 'AcceptOrder'):?>
-											
 										<?php else:?>
-										<h2>Please Wait</h2>
+											<h2>Please Wait</h2>
 										<?php endif;?>
 									</td>
 						      	</tr>
 								<?php endforeach;?>
 						    </tbody>
 						</table>
-				
 					</div>
     			</div>
     		</div>
 	</section>
 
 	<div class="container">
-        <h1>Order History</h1>
+        <h3>Order History</h3>
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-striped order-history-table">
@@ -140,7 +133,6 @@
                             </td>
                             <td>
                                 <h3><a><?=$c['prod_name']?></a></h3>
-                                <p><?=$c['prod_desc']?></p>
                             </td>
                             <td>
                                 <?php if($c['prod_lprice'] > 0.00): ?>

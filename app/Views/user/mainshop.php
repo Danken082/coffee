@@ -61,18 +61,13 @@
 														<p class="price"><span>₱ <?= $a['prod_mprice'] ?></span></p>
 														<form action="<?= base_url('/viewProd1/') .$a['prod_id'] ?>" method="post">
 															<?php if($a['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
-																	<br>
-																<br>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$a['prod_id'])?>">View Feedbacks</a></p>
-																	
-
-																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$a['prod_id'])?>">Order Now</a></p>
-																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button> <br>
-																	<br>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$a['prod_id'])?>">View Feedbacks</a></p>
-																<?php endif;?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$a['prod_id'])?>">View Feedbacks</a></p>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$a['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button> <br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$a['prod_id'])?>">View Feedbacks</a></p>
+															<?php endif;?>
 														</form>
 													</div>
 												<?php endforeach; ?>
@@ -92,13 +87,13 @@
 														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
 														<form action="<?= base_url('/viewProd1/') .$p['prod_id'] ?>" method="post">
 															<?php if($p['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$p['prod_id'])?>">View Feedbacks</a></p>
-																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$p['prod_id'])?>">Order Now</a></p>
-																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$p['prod_id'])?>">View Feedbacks</a></p>
-																<?php endif;?>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$p['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$p['prod_id'])?>">View Feedbacks</a></p>
+															<?php endif;?>
 														</form>
 													</div>
 												<?php endforeach; ?>
@@ -118,13 +113,13 @@
 														<p class="price"><span>₱ <?= $m['prod_mprice'] ?></span></p>
 														<form action="<?= base_url('/viewProd1/') .$m['prod_id'] ?>" method="post">
 															<?php if($m['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$m['prod_id'])?>">View Feedbacks</a></p>
-																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$m['prod_id'])?>">Order Now</a></p>
-																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-																		<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$m['prod_id'])?>">View Feedbacks</a></p>
-																<?php endif;?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$m['prod_id'])?>">View Feedbacks</a></p>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$m['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$m['prod_id'])?>">View Feedbacks</a></p>
+															<?php endif;?>
 														</form>
 													</div>
 												<?php endforeach; ?>
@@ -144,13 +139,13 @@
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<form action="<?= base_url('/viewProd1/') .$s['prod_id'] ?>" method="post">
 															<?php if($s['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
-																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
-																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-																		<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
-																<?php endif;?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
+															<?php endif;?>
 														</form>													
 													</div>
 												<?php endforeach; ?>
@@ -171,13 +166,13 @@
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<form action="<?= base_url('/viewProd1/') .$s['prod_id'] ?>" method="post">
 															<?php if($s['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
-																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
-																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
-																<?php endif;?>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
+															<?php endif;?>
 														</form>
 													</div>
 												<?php endforeach; ?>
@@ -197,13 +192,13 @@
 														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
 														<form action="<?= base_url('/viewProd1/') .$s['prod_id'] ?>" method="post">
 															<?php if($s['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
-																<?php else:?>
-																	<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
-																	<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-																	<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
-																<?php endif;?>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
+															<?php endif;?>
 														</form>													
 													</div>
 												<?php endforeach; ?>
@@ -223,11 +218,11 @@
 														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
 														<form action="<?= base_url('/viewProd2/') .$h['prod_id'] ?>" method="post">
 															<?php if($h['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
-															<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$h['prod_id'])?>">View Feedbacks</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$h['prod_id'])?>">View Feedbacks</a></p>
 															<?php else:?>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$h['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$h['prod_id'])?>">View Feedbacks</a></p>
 															<?php endif;?>
 														</form>
@@ -249,11 +244,11 @@
 														<p class="price"><span>Regular ₱ <?=$i['prod_mprice'] ?><br>Large ₱ <?=$i['prod_lprice'] ?> </span></p>
 														<form action="<?= base_url('/viewProd2/') .$i['prod_id'] ?>" method="post">
 															<?php if($i['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
-															<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$i['prod_id'])?>">View Feedbacks</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$i['prod_id'])?>">View Feedbacks</a></p>
 															<?php else:?>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$i['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$i['prod_id'])?>">View Feedbacks</a></p>
 															<?php endif;?>
 														</form>													
@@ -275,13 +270,13 @@
 														<p class="price"><span>Regular ₱ <?=$f['prod_mprice'] ?><br>Large ₱ <?=$f['prod_lprice'] ?> </span></p>
 														<form action="<?= base_url('/viewProd2/') .$f['prod_id'] ?>" method="post">
 															<?php if($f['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
+															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
 															<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$f['prod_id'])?>">View Feedbacks</a></p>
-															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$f['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$f['prod_id'])?>">View Feedbacks</a></p>
-															<?php endif;?>
+														<?php else:?>
+															<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$f['prod_id'])?>">Order Now</a></p>
+															<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+															<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$f['prod_id'])?>">View Feedbacks</a></p>
+														<?php endif;?>
 														</form>													
 													</div>
 												<?php endforeach; ?>
@@ -301,11 +296,11 @@
 														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
 														<form action="<?= base_url('/viewProd2/') .$n['prod_id'] ?>" method="post">
 															<?php if($n['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
-															<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$n['prod_id'])?>">View Feedbacks</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$n['prod_id'])?>">View Feedbacks</a></p>
 															<?php else:?>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$n['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit">Add to cart</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit">Add to cart</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$n['prod_id'])?>">View Feedbacks</a></p>
 															<?php endif;?>
 														</form>													
@@ -327,11 +322,11 @@
 														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
 														<form action="<?= base_url('/viewProd2/') .$c['prod_id'] ?>" method="post">
 															<?php if($c['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
-															<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$c['prod_id'])?>">View Feedbacks</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$c['prod_id'])?>">View Feedbacks</a></p>
 															<?php else:?>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$c['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$c['prod_id'])?>">View Feedbacks</a></p>
 															<?php endif;?>
 														</form>												
@@ -353,11 +348,11 @@
 														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
 														<form action="<?= base_url('/viewProd2/') .$o['prod_id'] ?>" method="post">
 															<?php if($o['product_status'] === 'Unavailable'):?>
-															<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button>
-															<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$o['prod_id'])?>">View Feedbacks</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$o['prod_id'])?>">View Feedbacks</a></p>
 															<?php else:?>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$o['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$o['prod_id'])?>">View Feedbacks</a></p>
 															<?php endif;?>
 														</form>													

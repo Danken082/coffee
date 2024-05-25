@@ -1,0 +1,134 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #120f0f;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #996a1f;
+    border-color: #6d5022;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #d2823b;
+    border-color: #8e4f18;
+}
+
+.feedback-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.feedback-item {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f4f1ec;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feedback-item p {
+    margin: 10px 0;
+}
+
+.stars {
+    display: inline-block;
+    font-size: 0;
+    margin-bottom: 10px;
+}
+
+.stars::before {
+    content: '★★★★★';
+    font-size: 24px;
+    background: linear-gradient(90deg, gold calc(var(--rating) / 5 * 100%), lightgray calc(var(--rating) / 5 * 100%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.username-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.date {
+    color: gray;
+    font-size: 14px;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 10px;
+    }
+    .feedback-item {
+        max-width: 300px;
+        padding: 15px;
+    }
+    .stars::before {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 992px) {
+    .feedback-item {
+        max-width: 260px;
+        padding: 15px;
+    }
+    .stars::before {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .feedback-item {
+        max-width: 220px;
+        padding: 10px;
+    }
+    .stars::before {
+        font-size: 18px;
+    }
+    .username-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .feedback-item {
+        max-width: 100%;
+        padding: 10px;
+    }
+    .stars::before {
+        font-size: 16px;
+    }
+}

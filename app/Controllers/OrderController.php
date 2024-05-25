@@ -323,18 +323,33 @@ class OrderController extends BaseController
 
     public function viewFeedbackForCoffee($prodID)
     {
-        $data = ['feedback' => $this->fb->select('feedback_tbl.feedbackID, feedback_tbl.ratings, 
-        feedback_tbl.comment, feedback_tbl.orderID, feedback_tbl.ProductID, feedback_tbl.CustomerID,
-        user.UserID, user.Username, user.LastName, user.FirstName, product_tbl.prod_id, product_tbl.prod_name')
-        ->join('user', 'user.UserID = feedback_tbl.CustomerID')
-        ->join('product_tbl', 'product_tbl.prod_id = feedback_tbl.ProductID')
-        ->where('feedback_tbl.ProductID', $prodID)
-        ->findAll(),
+        $feedback = $this->fb->select('feedback_tbl.feedbackID, feedback_tbl.ratings, 
+            feedback_tbl.comment, feedback_tbl.orderID, feedback_tbl.ProductID, feedback_tbl.CustomerID, feedback_tbl.created_at,
+            user.UserID, user.Username, user.LastName, user.FirstName, product_tbl.prod_id, product_tbl.prod_name')
+            ->join('user', 'user.UserID = feedback_tbl.CustomerID')
+            ->join('product_tbl', 'product_tbl.prod_id = feedback_tbl.ProductID')
+            ->where('feedback_tbl.ProductID', $prodID)
+            ->findAll();
         
+        usort($feedback, function($a, $b) {
+            return strtotime($b['created_at']) - strtotime($a['created_at']);
+        });
+    
+        $latestFeedback = [];
+    
+        foreach ($feedback as $customerComment) {
+            $username = $customerComment['Username'];
+            if (!isset($latestFeedback[$username])) {
+                $latestFeedback[$username] = $customerComment;
+            }
+        }
+        $latestFeedback = array_values($latestFeedback);
+    
+        $data = [
+            'feedback' => $latestFeedback
         ];
-
         return view('user/forFeedback/viewfeedback', $data);
-    }
+    }    
 
     public function receipt()
     {

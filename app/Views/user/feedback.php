@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Rate Product</h2>
+        <h2>Rate our Product</h2>
         <div class="product-name">
             <h3><?= session()->get('prod_name') ?></h3>
         </div>
