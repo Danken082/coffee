@@ -81,6 +81,21 @@ class ReservationController extends BaseController
 
         return view('user/ProdReservation/reservationWorderingProduct', $getReservation);
     }
+
+    public function reservationWithProducts()
+    {
+        $requestJSON = $this->request->getJSON();
+
+
+        $saveData = [];
+
+        foreach($requestJSON as $userReservation)
+        {
+            $productID = $userReservation->productId;
+            
+
+        }
+    }
 } 
 
 

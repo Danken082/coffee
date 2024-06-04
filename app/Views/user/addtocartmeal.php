@@ -9,12 +9,13 @@
 </head>
     <body>
         <div class="container">
-            <form action="<?= base_url('/addtocart/' . $cart['prod_id']) ?>">
+            <form action="<?= base_url('/addtocart/' . $cart['prod_id']) ?>" method="post">
             <label for="ProductName" style="font-size:30px"><?= $cart['prod_name'] ?></label>
                 <input type="hidden" name="ProductID" value="<?= $cart['prod_id'] ?>" readonly>
                 <input type="hidden" name="CustomerID" value="<?= session()->get('UserID') ?>" readonly>
                 <input type="hidden" name="size" value="Medium" readonly>
                 <label for="ProductPrice" name="prod_mprice" value="<?= $cart['prod_mprice'] ?>">Price: ₱ <?= $cart['prod_mprice'] ?></label>
+                
                 <img src="<?= base_url(); ?>/assets/images/products/<?= $cart['prod_img']; ?>" alt="">
                 <input type="number" name="quantity" placeholder="Enter Quantity" required>
                 <input type="hidden" name="Status" value="oncart">

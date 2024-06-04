@@ -79,7 +79,7 @@
                     </div>
                     <div class="input-group input-group-outline mb-3">
                         <label class="form-label">Password </label>
-                        <input type="password" name="Password" class="form-control" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"   title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"required>
+                        <input type="password" name="Password" class="form-control" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                         <button type="button" id="togglePassword" class="btn btn-outline-secondary"><i class="fa fa-eye"></i></button>
                         <?php if(isset($validation)):?>
                             <small class="text-danger"><?= $validation->getError('Password') ?></small>

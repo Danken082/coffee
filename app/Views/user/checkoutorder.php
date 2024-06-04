@@ -85,41 +85,27 @@
 									<input type="text" class="form-control" placeholder="Town">
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="postcodezip">Postcode / ZIP *</label>
-									<input type="text" class="form-control" placeholder="Zipcode">
-								</div>
-							</div>
-	            		</div>
+		            		</div>
 					</form>
 	          
 				    <div class="row mt-5 pt-3 d-flex">
 	          			<div class="col-md-6 d-flex">
 						  	<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
 								<h2 class="billing-heading mb-4">Order Summary</h2>
-								<h6 style="color: white;">1x Fried Chicken w/ Gravy (Medium) ₱ 179.00</h6><!-- nakasession to kung ano yung inaddto cart or inorder mo lalabas dapat dito -->
+								<h6 style="color: white;"><?= $quantity?>x Fried Chicken w/ Gravy (Medium) ₱ <?= $price?></h6><!-- nakasession to kung ano yung inaddto cart or inorder mo lalabas dapat dito -->
 								<hr>
 								<p class="d-flex">
-		    						<span>Subtotal</span>
-		    						<span>₱ </span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>Delivery Fee</span>
-		    						<span>₱ </span>
-		    					</p>
-		    					<p class="d-flex">
-		    						<span>Discount</span>
-		    						<span>₱ </span>
-		    					</p>
-								<hr>
-		    					<p class="d-flex total-price">
 		    						<span>Total</span>
-		    						<span>₱ </span>
+		    						<span>₱ <?= $total?></span>
 		    					</p>
+		    					
+		    					<p class="d-flex">
+		    						
 							</div>
 	          			</div>
+						
 						<div class="col-md-6">
+							<form action="<?= base_url('GoToPayment')?>" method="post">
 							<div class="cart-detail ftco-bg-dark p-3 p-md-4">
 								<h3 class="billing-heading mb-4">Payment Method</h3>
 								<div class="form-group">
@@ -143,7 +129,14 @@
 										</div>
 									</div>
 								</div>
-								<p><a class="btn btn-primary py-3 px-4">Place an order</a></p>
+								<input type="hidden" name="ProductID" value="<?= $ProductID?>">
+								<input type="hidden" name="CustomerID" value="<?= session()->get('UserID')?>">
+								<input type="hidden" name="quantity" value="<?= $quantity?>">
+								<input type="hidden" name="size" value="<?= $size?>">
+								<input type="hidden" name="total" value="<?= $total?>">
+								
+								<button type="submit" class="btn btn-primary py-3 px-4">Place to Order</button>
+								</form>
 							</div>
 	          			</div>
 	          		</div>

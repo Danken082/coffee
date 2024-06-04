@@ -94,19 +94,26 @@
     						<span>₱ <?= $cart['sum']?></span>
 							<?php endforeach;?>
     					</p>
-
+							
     					<p class="d-flex">
     						<span>Delivery</span>
     						<span>₱ </span>
     					</p>
+						<Select name="paymentMethod" class="paymentMethodSelector">
+								<option selected disabled>Select Type Of Payment</option>
+								<option value="COD">COD(CASH ON DELIVERY)</option>
+								<option value="Use_Online_Payment">E-Payment</option>
+						</Select>
 
     					<hr>
-    					<p class="d-flex total-price">
-    						<span>Total</span>
-    						<span>₱ <?= $cart['sum']?></span>
-    					</p>
+						<p class="d-flex total-price">
+					<span>Total</span>
+					<span id="cart-total">₱ <?= $cart['sum'] ?></span>
+						</p>
+
+						<input type="hidden" name="total" id="total-amount">
     				</div>
-					<button type="submit" class="btn btn-primary">Place to Checkout</button>
+					<button type="submit" id="placeorder" class="btn btn-primary">Place to Checkout</button>
     			</div>
     		</div>  
 		</div>
@@ -115,29 +122,59 @@
 		<?php include('mainheader.php'); ?>
 		<?php include('footer.php'); ?>
 		<script>
-			function selectAllItems() {
-				var selectAllCheckbox = document.getElementById("selectAll");
-				var itemCheckboxes = document.querySelectorAll(".item-checkbox");
-				itemCheckboxes.forEach(function (checkbox) {
-					checkbox.checked = selectAllCheckbox.checked;
-				});
-			}
-		</script> 
-		<script>
-			var loader = document.getElementById("preloader");
-			window.addEventListener("load", function () {
-				setTimeout(function () {
-					loader.style.display = "none";
-				}, 1500);
-			});
-		</script>
-		<script>
-			var inputs = document.getElementById("quantity");
+    function selectAllItems() {
+        var selectAllCheckbox = document.getElementById("selectAll");
+        var itemCheckboxes = document.querySelectorAll(".item-checkbox");
+        itemCheckboxes.forEach(function (checkbox) {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+        calculateTotal();
+    }
 
-        inputs.addEventListener("input", function(event) {
+    document.querySelectorAll('.item-checkbox').forEach(function (checkbox) {
+        checkbox.addEventListener('change', calculateTotal);
+    });
+
+    function calculateTotal() {
+        var total = 0;
+        document.querySelectorAll('.item-checkbox:checked').forEach(function (checkbox) {
+            var row = checkbox.closest('tr');
+            var itemTotal = parseFloat(row.querySelector('.total').innerText.replace('₱', '').trim());
+            total += itemTotal;
+        });
+        document.getElementById('cart-total').innerText = '₱ ' + total.toFixed(2);
+        document.getElementById('total-amount').value = total.toFixed(2);
+        checkPaymentMethod();
+    }
+
+    function checkPaymentMethod() {
+        var paymentMethod = document.querySelector('.paymentMethodSelector').value;
+        var placeOrderButton = document.getElementById('placeorder');
+        if (!paymentMethod || paymentMethod === 'Select Type Of Payment') {
+            placeOrderButton.disabled = true;
+        } else {
+            placeOrderButton.disabled = false;
+        }
+    }
+
+    window.addEventListener("load", function () {
+        setTimeout(function () {
+            document.getElementById("preloader").style.display = "none";
+        }, 1500);
+        // Call checkPaymentMethod on page load
+        checkPaymentMethod();
+    });
+
+    document.querySelectorAll('input[name="newquantity"]').forEach(function (input) {
+        input.addEventListener("input", function(event) {
             this.value = this.value.replace(/[^0-9]/g, '');
         });
-    </script>
+    });
+
+    document.querySelector('.paymentMethodSelector').addEventListener('change', checkPaymentMethod);
+</script>
+
+
 
 </body>
 </html>

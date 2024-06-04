@@ -31,6 +31,9 @@ class AdminController extends BaseController
     private $fb;
     private $order;
     private $raw;
+    private $connector;
+    private $printer;
+
     public function __construct(){
         $this->user = new AdminUserModel();
         $this->history = new HistoryModel();
@@ -40,35 +43,52 @@ class AdminController extends BaseController
         $this->fb = new FeedbackModel();
         $this->order = new OrderModel();
         $this->raw = new ItemsModel();
+        $this->connector = new WindowsPrintConnector("POS58 Printer");
+        $this->printer  = new Printer($this->connector);
+
+        date_default_timezone_set('Asia/Manila');
     }
     
     public function savePOSOrders()
     {
 
         try {
-            $connector = new WindowsPrintConnector("POS58 Printer");
+
+
+          
         $requestData = $this->request->getJSON();
 
         $savedData = [];
-        $printer = new Printer($connector);
 
-        $printer->setJustification(Printer::JUSTIFY_CENTER);
-        $printer->text("Crossrods Coffee and Deli\n");
-        $printer->text("Address Line 1\n");
-        $printer->text("Address Line 2\n");
-        $printer->text("\n");
-        $printer->text("Receipt\n");
-        $printer->text("------------------------------\n");
 
+        $this->printer->setJustification(Printer::JUSTIFY_CENTER);
+        $this->printer->text("Crossrods Coffee and Deli\n");
+        $this->printer->text("Tawiran Calapan City\n");
+        $this->printer->text("Oriental Mindoro\n");
+        $this->printer->text("Receipt\n");
+        $this->printer->text("\n");
+        $this->printer->text("------------------------------\n");
+        $this->printer->text("------------------------------\n");
+        $this->printer->text(date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ."\n");
+        $this->printer->text("------------------------------\n");
+   
+        $this->printer->text("Name    Quantity     Prize\n");
+        $total = 0;
         foreach ($requestData as $item) {
-            $printer->setJustification(Printer::JUSTIFY_LEFT);
+            $this->printer->setJustification(Printer::JUSTIFY_LEFT);
+            $productName = $item->productName;
             $productId = $item->productId;
             $totalPrice = $item->totalPrice;
             $totalquantity = $item->totalquantity;
             $amountPaid = $item->amountPaid;
             $change = $item->change;
+            $DineTake = $item->DineTake;
 
-            $printer->text("{$totalquantity}   P" . number_format($totalPrice, 2) . "\n");
+            
+            $this->printer->text(sprintf("%-12s x%-10d P%5.2f\n", $productName, $totalquantity, $totalPrice));
+
+            $total += $totalPrice;
+
             $orderId = $this->history->insert([
                 'ProductID' => $productId,
                 'total_amount' => $totalPrice,
@@ -86,8 +106,6 @@ class AdminController extends BaseController
           ];
 
 
-            $printer->cut();
-            $printer->close();
 
          $coffee = $this->raw->where('rawID', '9')->first();
          $milk = $this->raw->where('rawID', '10')->first();
@@ -1956,6 +1974,21 @@ class AdminController extends BaseController
      
          
        }
+       $this->printer->text("------------------------------\n");
+       $this->printer->text( $DineTake . "\n");
+       $this->printer->text("------------------------------\n");
+        $this->printer->text("Total: P" . number_format($total, 2) . "\n");   
+       $this->printer->text("------------------------------\n");
+       $this->printer->text("\nAmount Paid: P" . number_format($amountPaid, 2) . "\n");
+       $this->printer->text("Change: P" . number_format($change, 2) . "\n");
+       $this->printer->text("------------------------------\n");
+       $this->printer->text("Thank you for choosing\n");
+       $this->printer->text("Crossroards Coffee and Deli\n");
+       $this->printer->text("Come Again\n");
+       $this->printer->text("------------------------------\n");
+  
+       $this->printer->cut();
+       $this->printer->close();
 
        return $this->response->setJSON([
            'success' => true,
@@ -1984,7 +2017,7 @@ class AdminController extends BaseController
 
     public function printReceipt()
     {
-        $printer = new ThermalPrinter();
+        $this->printer = new ThermalPrinter();
         
         // Example receipt content
         $receipt_content = "
@@ -1998,10 +2031,10 @@ class AdminController extends BaseController
         ";
 
         try {
-            $result = $printer->printReceipt($receipt_content);
+            $result = $this->printer->printReceipt($receipt_content);
             if ($result === true) {
                 echo "Receipt printed successfully.";
-            $printer->printReceipt($receipt_content);
+            $this->printer->printReceipt($receipt_content);
             } else {
                 echo "Error: " . $result;
             }
@@ -2053,8 +2086,8 @@ class AdminController extends BaseController
 
     public function home(){
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
        return view('/admin/home', $data);
     }
@@ -2129,8 +2162,8 @@ class AdminController extends BaseController
     public function inventory()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         return view ('/admin/inventory', $data);
     }
@@ -2146,8 +2179,8 @@ class AdminController extends BaseController
     public function orderpayment(){
 
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         $data['order'] = $this->payment->select('order.orderID,order.barcode, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
         order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
@@ -2156,6 +2189,7 @@ class AdminController extends BaseController
         ->join('product_tbl', 'order.ProductID = product_tbl.prod_id')
         ->join( 'user', 'order.CustomerID = user.UserID')
         ->where('orderStatus', 'onProcess')
+        ->groupBy('order.orderID','order.barcode')
         ->orderBy('order.orderID', 'ASC')
         ->findAll();
         return view('/admin/orderpayment', $data);
@@ -2193,8 +2227,8 @@ class AdminController extends BaseController
     public function getcustomeruser()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         $role = 'Customer';
         $user = new AdminUserModel();
@@ -2205,8 +2239,8 @@ class AdminController extends BaseController
     public function getmanageuser()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         $role = 'Admin';
         $user = new AdminUserModel();
@@ -2286,23 +2320,21 @@ class AdminController extends BaseController
         }
     }
 
-
     public function removeadminpf($userId)
     {
         $userModel = new UserModel();
         $currentUser = $userModel->find($userId);
         $profileImg = $currentUser['profile_img'];
-        $defaultProfileImg = 'profile.png';
-
-        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists('assets/user/images/' . $profileImg)) {
+    
+        if (!empty($profileImg) && file_exists('assets/user/images/' . $profileImg)) {
             unlink('assets/user/images/' . $profileImg);
         }
-
-        $userModel->update($userId, ['profile_img' => $defaultProfileImg]);
-        session()->set('profile_img', $defaultProfileImg);
-
+    
+        $userModel->update($userId, ['profile_img' => 'profile.png']);
+        session()->set('profile_img', 'profile.png');
+    
         return redirect()->to(base_url('/adminprofile'));
-    }
+    }    
       
     public function deleteuser($id)
     {  
@@ -2336,8 +2368,8 @@ class AdminController extends BaseController
             'non' =>  $menu->products('Non Coffee Frappe'),
             'coffee' =>$menu->products('Coffee Frappe'),
             'other' => $menu->products('Others'),
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];   
 
         return view('/admin/pos', $data);
@@ -2349,13 +2381,73 @@ class AdminController extends BaseController
     public function getPendingOrders()
     {
         $getID = $this->request->getPost('orderID');
-        $getRaw = $this->request->getPost('');        
 
         $myOrders = $this->viewPendingOrders($getID);
                     $this->AcceptOrders($myOrders, $getID);
+                    $this->AcceptAndPrintReceipt();
 
         return redirect()->to('adminpayment')->with('msg', 'Order is now Accepted');
         
+    }
+
+    private function AcceptAndPrintReceipt()
+    {
+
+        $name = $this->request->getPost('FirstName');
+        $conNum = $this->request->getPost('ContatNo');
+        $address = $this->request->getPost('address');
+        $getData = [
+            'prod_name' => $this->request->getPost('prod_name'),
+            'quantity' => $this->request->getPost('quantity'),
+            'size'     => $this->request->getPost('size'),
+            'total'    => $this->request->getPost('total')
+        ];
+
+
+        $this->printer->setJustification(Printer::JUSTIFY_CENTER);
+        $this->printer->text("Crossrods Coffee and Deli\n");
+        $this->printer->text("Tawiran Calapan City\n");
+        $this->printer->text("Oriental Mindoro\n");
+        $this->printer->text("Receipt\n");
+        $this->printer->text("\n");
+        $this->printer->text("------------------------------\n");
+        $this->printer->text("Customer Name:" . $name . "\n");
+        $this->printer->text("Address: " . $address . "\n");
+        $this->printer->text("Contact Number: " . $conNum . "\n");
+        $this->printer->text("------------------------------\n");
+        $this->printer->text(date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ."\n");
+        $this->printer->text("------------------------------\n");
+   
+        $this->printer->text("Name    Quantity     Prize\n");
+        $prodNames = $getData['prod_name'];
+        $quantities = $getData['quantity'];
+        $sizes = $getData['size'];
+        $totals = $getData['total'];
+        
+        // Iterate over the arrays
+        for ($i = 0; $i < count($prodNames); $i++) {
+            $prodName = $prodNames[$i];
+            $quantity = $quantities[$i];
+            $size     = $sizes[$i];
+            $total    = $totals[$i];
+        
+            $this->printer->text(sprintf("%-12s x%-10d P%5.2f\n", $prodName, $quantity, $total));
+        }
+
+        $total = $this->request->getPost('sum');
+        $this->printer->text("------------------------------\n");
+        $this->printer->text("Total: P" . number_format($total, 2) . "\n");   
+     
+       $this->printer->text("------------------------------\n");
+       $this->printer->text("Thank you for choosing\n");
+       $this->printer->text("Crossroards Coffee and Deli\n");
+       $this->printer->text("Come Again\n");
+       $this->printer->text("------------------------------\n");
+  
+
+        $this->printer->cut();
+        $this->printer->close();
+
     }
 
     private function viewPendingOrders($getID)
@@ -4278,8 +4370,8 @@ class AdminController extends BaseController
     public function viewToAcceptorders($barcode)
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
 
         //for Single data
@@ -4312,8 +4404,8 @@ class AdminController extends BaseController
     public function gethistory()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         $history = new HistoryModel();
         $data['history'] = $history->findAll();
@@ -4322,8 +4414,8 @@ class AdminController extends BaseController
 
     public function viewhistory(){
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         
         $history = new HistoryModel();
@@ -4355,10 +4447,77 @@ class AdminController extends BaseController
     public function salesreport()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
 
         return view('admin/salesreport', $data);
     }
+
+
+        public function PaymentMethod()
+        {
+            $session = session();
+            $totalAmount = $session->get('totalAmount');
+        
+            if (!$totalAmount) {
+                // Handle the case where totalAmount is not set
+                $session->setFlashdata('error', 'Total amount not found. Please try again.');
+                return redirect()->to('/cart');
+            }
+        
+            $subPayment = $totalAmount * 100;
+        
+            $curl = curl_init();
+        
+            curl_setopt_array($curl, [
+                CURLOPT_URL => "https://api.paymongo.com/v1/links",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => json_encode([
+                    'data' => [
+                        'attributes' => [
+                            'amount' => $subPayment,
+                            'description' => 'Trial',
+                            'remarks' => 'Payment'
+                        ]
+                    ]
+                ]),
+                CURLOPT_HTTPHEADER => [
+                    "accept: application/json",
+                    "authorization: Basic c2tfdGVzdF90djNzdjRUSHhtR1ZaZWRIWjhwYlVBZjQ6",
+                    "content-type: application/json"
+                ],
+            ]);
+        
+            $response = curl_exec($curl);
+            $decode = json_decode($response, TRUE);
+            $err = curl_error($curl);
+            $reference_number = $decode['data']['attributes']['reference_number'];
+
+
+        
+            curl_close($curl);
+        
+            if ($err) {
+                echo "cURL Error #:" . $err;
+            } else {
+                foreach($decode as $key => $value)
+                {
+    
+                    $name = $decode[$key]["attributes"]["checkout_url"];
+                    $age = $decode[$key]["type"];
+                    return redirect()->to($name);
+
+
+                  }
+    
+            }
+        }
+        
+    
 }

@@ -1,0 +1,370 @@
+CRITICAL - 2024-05-29 21:46:35 --> Object of class CurlHandle could not be converted to string
+in APPPATH\Controllers\AdminController.php on line 4505.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->PaymentMethod()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 21:47:10 --> Cannot use object of type CurlHandle as array
+in APPPATH\Controllers\AdminController.php on line 4505.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->PaymentMethod()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 21:47:20 --> Cannot use object of type CurlHandle as array
+in APPPATH\Controllers\AdminController.php on line 4505.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->PaymentMethod()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 14:02:14 --> Undefined variable $data
+in APPPATH\Controllers\CartController.php on line 130.
+ 1 APPPATH\Controllers\CartController.php(130): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\coffee\\app\\Controllers\\CartController.php', 130)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 14:02:41 --> view(): Argument #2 ($data) must be of type array, null given, called in C:\laragon\www\coffee\app\Controllers\CartController.php on line 130
+in SYSTEMPATH\Common.php on line 1176.
+ 1 APPPATH\Controllers\CartController.php(130): view('/user/cart', null)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 22:21:08 --> Undefined variable $totalAmmount
+in APPPATH\Controllers\AdminController.php on line 4463.
+ 1 APPPATH\Controllers\AdminController.php(4463): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalAmmount', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 4463)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->PaymentMethod()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 22:22:24 --> Undefined variable $totalAmount
+in APPPATH\Controllers\AdminController.php on line 4463.
+ 1 APPPATH\Controllers\AdminController.php(4463): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalAmount', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 4463)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->PaymentMethod()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 14:24:07 --> insertBatch() has no data.
+in SYSTEMPATH\Database\BaseBuilder.php on line 1771.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 2 SYSTEMPATH\Model.php(353): CodeIgniter\Database\BaseBuilder->insertBatch([], null, 100)
+ 3 SYSTEMPATH\BaseModel.php(880): CodeIgniter\Model->doInsertBatch([], null, 100, false)
+ 4 APPPATH\Controllers\CartController.php(384): CodeIgniter\BaseModel->insertBatch([])
+ 5 APPPATH\Controllers\CartController.php(341): App\Controllers\CartController->insertOrder([])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 22:24:59 --> Undefined variable $totalAmount
+in APPPATH\Controllers\AdminController.php on line 4463.
+ 1 APPPATH\Controllers\AdminController.php(4463): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalAmount', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 4463)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->PaymentMethod()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 14:50:08 --> insertBatch() has no data.
+in SYSTEMPATH\Database\BaseBuilder.php on line 1771.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 2 SYSTEMPATH\Model.php(353): CodeIgniter\Database\BaseBuilder->insertBatch([], null, 100)
+ 3 SYSTEMPATH\BaseModel.php(880): CodeIgniter\Model->doInsertBatch([], null, 100, false)
+ 4 APPPATH\Controllers\CartController.php(449): CodeIgniter\BaseModel->insertBatch([])
+ 5 APPPATH\Controllers\CartController.php(341): App\Controllers\CartController->insertOrder([])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 14:51:11 --> Undefined variable $totalAmount
+in APPPATH\Controllers\CartController.php on line 354.
+ 1 APPPATH\Controllers\CartController.php(354): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalAmount', 'C:\\laragon\\www\\coffee\\app\\Controllers\\CartController.php', 354)
+ 2 APPPATH\Controllers\CartController.php(348): App\Controllers\CartController->PaymentManagement()
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 14:51:37 --> insertBatch() has no data.
+in SYSTEMPATH\Database\BaseBuilder.php on line 1771.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 2 SYSTEMPATH\Model.php(353): CodeIgniter\Database\BaseBuilder->insertBatch([], null, 100)
+ 3 SYSTEMPATH\BaseModel.php(880): CodeIgniter\Model->doInsertBatch([], null, 100, false)
+ 4 APPPATH\Controllers\CartController.php(451): CodeIgniter\BaseModel->insertBatch([])
+ 5 APPPATH\Controllers\CartController.php(341): App\Controllers\CartController->insertOrder([])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 15:03:32 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 1724.
+ 1 SYSTEMPATH\BaseModel.php(1724): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\BaseModel.php(916): CodeIgniter\BaseModel->transformDataToArray(null, 'update')
+ 3 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], null)
+ 4 APPPATH\Controllers\CartController.php(423): CodeIgniter\Model->update([...])
+ 5 APPPATH\Controllers\CartController.php(395): App\Controllers\CartController->updateorderWithReferenceNumber('ffWXLXG')
+ 6 APPPATH\Controllers\CartController.php(348): App\Controllers\CartController->PaymentManagement()
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 15:04:46 --> insertBatch() has no data.
+in SYSTEMPATH\Database\BaseBuilder.php on line 1771.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 2 SYSTEMPATH\Model.php(353): CodeIgniter\Database\BaseBuilder->insertBatch([], null, 100)
+ 3 SYSTEMPATH\BaseModel.php(880): CodeIgniter\Model->doInsertBatch([], null, 100, false)
+ 4 APPPATH\Controllers\CartController.php(462): CodeIgniter\BaseModel->insertBatch([])
+ 5 APPPATH\Controllers\CartController.php(341): App\Controllers\CartController->insertOrder([])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 15:07:47 --> Too few arguments to function App\Controllers\CartController::insertOrder(), 1 passed in C:\laragon\www\coffee\app\Controllers\CartController.php on line 341 and exactly 2 expected
+in APPPATH\Controllers\CartController.php on line 443.
+ 1 APPPATH\Controllers\CartController.php(341): App\Controllers\CartController->insertOrder([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 15:10:30 --> foreach() argument must be of type array|object, string given
+in APPPATH\Controllers\CartController.php on line 446.
+ 1 APPPATH\Controllers\CartController.php(446): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, string given', 'C:\\laragon\\www\\coffee\\app\\Controllers\\CartController.php', 446)
+ 2 APPPATH\Controllers\CartController.php(394): App\Controllers\CartController->insertOrder([...], 'jghv5PV')
+ 3 APPPATH\Controllers\CartController.php(347): App\Controllers\CartController->PaymentManagement([...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 15:10:49 --> insertBatch() has no data.
+in SYSTEMPATH\Database\BaseBuilder.php on line 1771.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 2 SYSTEMPATH\Model.php(353): CodeIgniter\Database\BaseBuilder->insertBatch([], null, 100)
+ 3 SYSTEMPATH\BaseModel.php(880): CodeIgniter\Model->doInsertBatch([], null, 100, false)
+ 4 APPPATH\Controllers\CartController.php(461): CodeIgniter\BaseModel->insertBatch([])
+ 5 APPPATH\Controllers\CartController.php(394): App\Controllers\CartController->insertOrder([], 'Nf1abth')
+ 6 APPPATH\Controllers\CartController.php(347): App\Controllers\CartController->PaymentManagement([])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 15:12:42 --> insertBatch() has no data.
+in SYSTEMPATH\Database\BaseBuilder.php on line 1771.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2191): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+ 2 SYSTEMPATH\Model.php(353): CodeIgniter\Database\BaseBuilder->insertBatch([], null, 100)
+ 3 SYSTEMPATH\BaseModel.php(880): CodeIgniter\Model->doInsertBatch([], null, 100, false)
+ 4 APPPATH\Controllers\CartController.php(462): CodeIgniter\BaseModel->insertBatch([])
+ 5 APPPATH\Controllers\CartController.php(394): App\Controllers\CartController->insertOrder([], 'GkeRWuD')
+ 6 APPPATH\Controllers\CartController.php(347): App\Controllers\CartController->PaymentManagement([])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 15:43:04 --> Too few arguments to function App\Controllers\CartController::insertOrder(), 2 passed in C:\laragon\www\coffee\app\Controllers\CartController.php on line 347 and exactly 3 expected
+in APPPATH\Controllers\CartController.php on line 468.
+ 1 APPPATH\Controllers\CartController.php(347): App\Controllers\CartController->insertOrder([...], null)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->placeOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 17:15:13 --> Array to string conversion
+in APPPATH\Controllers\VisualizationController.php on line 584.
+ 1 APPPATH\Controllers\VisualizationController.php(584): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 584)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->weekly()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 17:24:40 --> Allowed memory size of 536870912 bytes exhausted (tried to allocate 257966080 bytes)
+in APPPATH\Views\admin\dashboard.php on line 60.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-05-29 17:28:56 --> Undefined array key "day"
+in APPPATH\Views\admin\dashboard.php on line 71.
+ 1 APPPATH\Views\admin\dashboard.php(71): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "day"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 71)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(197): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 17:42:38 --> Undefined array key "s"
+in APPPATH\Views\admin\dashboard.php on line 72.
+ 1 APPPATH\Views\admin\dashboard.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "s"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(198): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 17:42:43 --> Undefined array key "sales"
+in APPPATH\Views\admin\dashboard.php on line 72.
+ 1 APPPATH\Views\admin\dashboard.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "sales"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(198): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 17:46:39 --> Undefined array key "days"
+in APPPATH\Controllers\VisualizationController.php on line 162.
+ 1 APPPATH\Controllers\VisualizationController.php(162): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "days"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 162)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 17:52:39 --> Undefined array key "days"
+in APPPATH\Controllers\VisualizationController.php on line 162.
+ 1 APPPATH\Controllers\VisualizationController.php(162): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "days"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 162)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 17:52:41 --> Undefined array key "days"
+in APPPATH\Controllers\VisualizationController.php on line 162.
+ 1 APPPATH\Controllers\VisualizationController.php(162): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "days"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 162)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:07:37 --> Undefined variable $ByMonth
+in APPPATH\Views\admin\dashboard.php on line 75.
+ 1 APPPATH\Views\admin\dashboard.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 75)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:08:10 --> Undefined variable $ByMonth
+in APPPATH\Views\admin\dashboard.php on line 76.
+ 1 APPPATH\Views\admin\dashboard.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 76)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:08:24 --> Cannot use object of type stdClass as array
+in APPPATH\Views\admin\dashboard.php on line 77.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 4 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:10:36 --> Undefined array key "total_sales"
+in APPPATH\Views\admin\dashboard.php on line 76.
+ 1 APPPATH\Views\admin\dashboard.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "total_sales"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 76)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:11:00 --> Array to string conversion
+in APPPATH\Views\admin\dashboard.php on line 76.
+ 1 APPPATH\Views\admin\dashboard.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 76)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:11:35 --> Cannot use object of type stdClass as array
+in APPPATH\Views\admin\dashboard.php on line 77.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 4 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:12:55 --> Object of class stdClass could not be converted to string
+in APPPATH\Views\admin\dashboard.php on line 77.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 4 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:13:05 --> Cannot use object of type stdClass as array
+in APPPATH\Views\admin\dashboard.php on line 77.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 4 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:14:05 --> Undefined variable $builder
+in APPPATH\Controllers\VisualizationController.php on line 522.
+ 1 APPPATH\Controllers\VisualizationController.php(522): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $builder', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 522)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->weekly()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:14:26 --> Undefined variable $month
+in APPPATH\Controllers\VisualizationController.php on line 523.
+ 1 APPPATH\Controllers\VisualizationController.php(523): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $month', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 523)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->weekly()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-29 18:14:43 --> Undefined variable $data
+in APPPATH\Controllers\VisualizationController.php on line 534.
+ 1 APPPATH\Controllers\VisualizationController.php(534): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 534)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->weekly()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

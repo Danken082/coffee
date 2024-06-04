@@ -19,6 +19,10 @@
             flex: 1;
             padding-left: 250px;
         }
+        .month
+        {   
+            width: 20rem;
+        }
     </style>
     <body>
         <?php include('sidebar.php'); ?>
@@ -46,28 +50,46 @@
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                                 <div class="chart">
-                                    <a href="">Export</a>
+
                                     <div id="dailySalesChart" style="height: 400px; width: 100%"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <h6 class="mb-0">Day by Day Sales by </h6>
-                            <a href="<?= base_url('reports/' . $month .'/' . $year )?>">Export Report</a>
+                                <?php foreach($byMonth as $theMonth):?>
+                                <input type="text" disabled name="MonthlySales[]" class="month" value="Total Sales In Month of <?= date('F', mktime(0, 0, 0, $month, 1))?> : ₱ <?= $theMonth->total_sales?>">
+                            <?php endforeach;?>
+                            <form action="<?= base_url('trialForexpense')?>" method="post">
+
+                            <input type="hidden" name="month"value="<?=  date('F', mktime(0, 0, 0, $month, 1))?>">
+                            <input type="hidden" name="year"value="<?= $year?>">
+                            <?php foreach($products as $prod):?>
+                                <input type="hidden" name="days[]" value="<?= $prod['day']?>">
+                                <input type="hidden" name="total_sales[]" value="<?= $prod['sell']?>">
+
+                            <?php endforeach;?>
+
+                            <?php foreach($byMonth as $theMonth):?>
+                                <input type="hidden" name="MonthlySales[]" value="<?= $theMonth->total_sales?>">
+                            <?php endforeach;?>
+                            <input type="submit" value="View to Export">
+                            </form>
                             <form id="filterForm">     
                             <select name="month" id="month" class="form-control" style="color: white;">
                                     <?php   $currentMonth = date('n'); for($m=1; $m <= 12; $m++):?>
-                                        <option value="<?= $m ?>" <?= ($m == $currentMonth) ? 'selected' : '' ?>><?= date('F', mktime(0, 0, 0, $m, 1))?></option>
                                         <option value="<?= $m ?>" <?= ($m == $month) ? 'selected' : '' ?>><?= date('F', mktime(0, 0, 0, $m, 1))?></option>
                                         <?php endfor;?>
                             </select>
                             <select name="year" id="year" class="form-control" style="color: white;">
-                            <?php  $currentYear = date('Y'); for($m=2015; $m <= 2050; $m++):?>
-                                        <option value="<?= $m ?>" <?= ($m == $currentYear) ? 'selected' : '' ?>><?= $m?></option>
+                            <?php  $currentYear = date('Y'); for($m=2015; $m <= $currentYear; $m++):?>
                                         <option value="<?= $m ?>" <?= ($m == $year) ? 'selected' : '' ?>><?= $m?></option>
                                         <?php endfor;?>
                             </select>
                             <button type="submit" class="btn btn-primary">Filter</button>
+
+                            
+                         
                             </form>
                         
                         </div>

@@ -27,6 +27,7 @@ $routes->get('/orderhistory', 'AdminController::viewhistory');
 $routes->get('/receipt', 'OrderController::coffeereceipt');
 
 $routes->get('print-receipts', 'AdminController::printReceipt');
+
 // $routes->get('pos', 'ChatController::try');
 
 /*For UserSide*/ 
@@ -39,7 +40,7 @@ $routes->match(['get', 'post'],'VisualizationController/thisAllChart', 'Visualiz
 
 
 //reports
-$routes->match(['get', 'post'], 'reports/(:any)/(:any)', 'VisualizationController::salesReportPerDay/$1/$2');
+$routes->match(['get', 'post'], 'reports', 'VisualizationController::salesReportPerDay');
 $routes->match(['get', 'post'], 'reportspermonths/(:any)', 'VisualizationController::salesReportPerMonthInyear/$1');
 $routes->match(['get', 'post'], 'reportsYear', 'VisualizationController::salesReportEveryYear');
 //POS
@@ -218,6 +219,9 @@ $routes->post('confirmfeedback', 'OrderController::feedBack');
 $routes->get('userCheckOut', 'CartController::GotoCheckOut');
 
 
+$routes->post('GoToProducts', 'ReservationController::getResevartion');
+
+
 
 /*add to cart*/
 $routes->match(['get', 'post'],'/addtocart/(:any)', 'CartController::addtocart/$1');
@@ -250,3 +254,11 @@ $routes->match(['get', 'post'], 'viewByFeedback/(:any)', 'OrderController::viewF
 
 $routes->get('print-receipt', 'CartController::printReceipt');
 $routes->get('list-printers', 'CartController::listPrinters');
+
+
+$routes->match(['get', 'post'], 'trialpayment', 'AdminController::PaymentMethod');
+$routes->post('trialForexpense', 'VisualizationController::InsertExpenses');
+
+$routes->match(['get', 'post'], 'ByWeek', 'VisualizationController::weekly');
+$routes->post('viewReport', 'VisualizationController::viewReport');
+$routes->match(['get', 'post'], 'GoToPayment', 'OrderController::paymentOrder');

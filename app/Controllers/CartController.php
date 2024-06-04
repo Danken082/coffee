@@ -135,41 +135,65 @@ class CartController extends BaseController
         $myExist = $this->request->getVar('ProductID');
         $size = $this->request->getVar('size'); 
         
-      if($size ==='Large'){
-        $data = $this->product->where('prod_id', $price)->first();
-        $total = $data['prod_lprice'] * $this->request->getVar('quantity');
-      
-        $prod = [
-          'CustomerID' => $this->request->getVar('CustomerID'),
-          'ProductID' => $this->request->getVar('ProductID'),
-          'quantity' => $this->request->getVar('quantity'),
-          'Status' => $this->request->getVar('Status'),
-          'total' => $total,
-          'size' => $size
-        ];
-        
-        $this->crt->save($prod);
-        return redirect()->to('/mainshop');
-      }
-      elseif($size === 'Medium'){
-        $data = $this->product->where('prod_id', $price)->first();
-        $total = $this->request->getVar('quantity') * $data['prod_mprice']; 
-        $prod = [
-          'CustomerID' => $this->request->getVar('CustomerID'),
-          'ProductID' => $this->request->getVar('ProductID'),
-          'quantity' => $this->request->getVar('quantity'),
-          'Status' => $this->request->getVar('Status'),
-          'total' => $total,
-          'size' => $size
-        ];
-        
-        $this->crt->save($prod);
-        return redirect()->to('/mainshop');
-      }  
-      else 
-      {
-        return redirect()->to('/mainshop')->with('msg', 'Please Check Your Product');
-      }
+                    $existCart = $this->crt->where('ProductID', $myExist)
+                    ->where('CustomerID', $this->request->getVar('CustomerID'))
+                    ->where('size', $size)
+                    ->first();
+
+            if ($existCart) {
+            // Product already exists in the cart, update the quantity
+            $newQuantity = $existCart['quantity'] + $this->request->getVar('quantity');
+              // var_dump($newQuantity);
+            $this->crt->update($price, ['quantity' => $newQuantity]);
+            } else {
+            // Product doesn't exist in the cart, add a new product
+            if ($size === 'Large') {
+            $data = $this->product->where('prod_id', $price)->first();
+            $total = $data['prod_lprice'] * $this->request->getVar('quantity');
+            $prod = [
+              'CustomerID' => $this->request->getVar('CustomerID'),
+              'ProductID' => $this->request->getVar('ProductID'),
+              'quantity' => $this->request->getVar('quantity'),
+              'Status' => $this->request->getVar('Status'),
+              'total' => $total,
+              'size' => $size
+            ];
+            
+            $this->crt->save($prod);
+            return redirect()->to('/mainshop');
+
+            } elseif ($size === 'Medium') {
+            $data = $this->product->where('prod_id', $price)->first();
+            $total = $this->request->getVar('quantity') * $data['prod_mprice'];
+            $prod = [
+              'CustomerID' => $this->request->getVar('CustomerID'),
+              'ProductID' => $this->request->getVar('ProductID'),
+              'quantity' => $this->request->getVar('quantity'),
+              'Status' => $this->request->getVar('Status'),
+              'total' => $total,
+              'size' => $size
+            ];
+            
+            $this->crt->save($prod);
+            return redirect()->to('/mainshop');
+            } else {
+            return redirect()->to('/mainshop')->with('msg', 'Please Check Your Product');
+            }
+
+            $prod = [
+            'CustomerID' => $this->request->getVar('CustomerID'),
+            'ProductID' => $this->request->getVar('ProductID'),
+            'quantity' => $this->request->getVar('quantity'),
+            'Status' => $this->request->getVar('Status'),
+            'total' => $total,
+            'size' => $size
+            ];
+
+            $this->crt->insert($prod);
+            }
+
+            // return redirect()->to('/mainshop');
+
       
     }
 
@@ -323,28 +347,131 @@ class CartController extends BaseController
       public function placeOrder()
       {
           $selectedItems = $this->request->getVar('items');
+          $totalAmount = $this->request->getPost('total');
+          $paymentMethod = $this->request->getPost('paymentMethod');
 
+          
           if (empty($selectedItems)) {
               return redirect()->to('/cart')->with('msg', 'No items selected for order');
           }
+          if($paymentMethod == "COD")
+          {
+            $reference_number = null;
+            $cartItems = $this->getCartItems($selectedItems);
+            
+            // Generate a single barcode for the entire order
+            $orderBarcode = $this->generateAlphanumericBarcode();
 
-          $cartItems = $this->getCartItems($selectedItems);
+            
+  
+            // Insert the same barcode for each item in the order
+            foreach ($cartItems as &$item) {
+                $item['barcode'] = $orderBarcode;
+            }
+            $this->insertOrder($cartItems, $paymentMethod, $reference_number);
+            $this->removedItemsFromcart($selectedItems);
+            return redirect()->to('cart')->with('msg', 'Please Pay Your Order If the product is Already Received');
+          }
+          
+          elseif($paymentMethod == "Use_Online_Payment")
+          {
+            $cartItems = $this->getCartItems($selectedItems);
+            
+            // Generate a single barcode for the entire order
+            $orderBarcode = $this->generateAlphanumericBarcode();
 
-          // Generate a single barcode for the entire order
-          $orderBarcode = $this->generateAlphanumericBarcode();
+            
+  
+            // Insert the same barcode for each item in the order
+            foreach ($cartItems as &$item) {
+                $item['barcode'] = $orderBarcode;
+            }
 
-          // Insert the same barcode for each item in the order
-          foreach ($cartItems as &$item) {
-              $item['barcode'] = $orderBarcode;
+            $this->removedItemsFromcart($selectedItems);
+            $session = session();
+           $session->set('totalAmount', $totalAmount);
+      
+         return $this->PaymentManagement($cartItems, $paymentMethod);
+         
           }
 
-          $this->insertOrder($cartItems);
-          $this->removedItemsFromcart($selectedItems);
 
-          return redirect()->to('cart')->with('msg', 'Order Placed successfully');
+          
+          
       }
 
+      private function PaymentManagement($cartItems, $paymentMethod)
+      {
+        $session = session();
+       $totalAmount = $session->get('totalAmount');
+        if (!$totalAmount) {
+          // Handle the case where totalAmount is not set
+          $session->setFlashdata('error', 'Total amount not found. Please try again.');
+          return redirect()->to('/cart');
+      }
+  
+      $subPayment = $totalAmount * 100;
+  
+      $curl = curl_init();
+  
+      curl_setopt_array($curl, [
+          CURLOPT_URL => "https://api.paymongo.com/v1/links",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => json_encode([
+              'data' => [
+                  'attributes' => [
+                      'amount' => $subPayment,
+                      'description' => 'Trial',
+                      'remarks' => 'Payment'
+                  ]
+              ]
+          ]),
+          CURLOPT_HTTPHEADER => [
+              "accept: application/json",
+              "authorization: Basic c2tfdGVzdF90djNzdjRUSHhtR1ZaZWRIWjhwYlVBZjQ6",
+              "content-type: application/json"
+          ],
+      ]);
+  
+      $response = curl_exec($curl);
+      $decode = json_decode($response, TRUE);
+      $err = curl_error($curl);
+      $reference_number = $decode['data']['attributes']['reference_number'];
+
+      $this->insertOrder($cartItems, $paymentMethod ,$reference_number);
+  
+      curl_close($curl);
+  
+      if ($err) {
+          echo "cURL Error #:" . $err;
+      } else {
+          foreach($decode as $key => $value)
+          {
+
+              $name = $decode[$key]["attributes"]["checkout_url"];
+              $age = $decode[$key]["type"];
+              return redirect()->to($name);
+            }
+
+      }
+      }
       
+      // public function updateorderWithReferenceNumber($reference_number)
+      // {
+      //     $session = session();
+
+      //     $orderBarcode = $session->get('orderBarcode');
+
+      //     $this->orderNow
+                    
+      //                 ->update(['barcode' => 'CRossOnline-' .$orderBarcode],['reference_number' => $reference_number]);
+      // }
+
       private function generateAlphanumericBarcode($length = 10)
        {
           $characters = 'QW123YOPP456ASKFJ789ZXCBN10LKJ';
@@ -362,11 +489,23 @@ class CartController extends BaseController
 
         return $cartItems;
       }
-      private function insertOrder($cartItems)
+      private function insertOrder($cartItems, $paymentMethod, $reference_number)
       {
           $oData = [];
       
           foreach ($cartItems as $item) {
+            $existingOrder = $this->order->where('CustomerID', $item['CustomerID'])
+                                      ->where('ProductID', $item['ProductID'])
+                                      ->first();
+
+              if ($existingOrder) {
+                // Product already exists, update the quantity
+                $newQuantity = $existingOrder['quantity'] + $item['quantity'];
+                $this->order->update(['quantity' => $newQuantity], ['id' => $existingOrder['id']]);
+            }
+            else {
+            if($paymentMethod == "COD")
+            {
               $oData[] = [
                   'CustomerID' => $item['CustomerID'],
                   'ProductID' => $item['ProductID'],
@@ -378,7 +517,29 @@ class CartController extends BaseController
                   'orderType' => 'onHouse',
                   'paymentStatus' => 'COD',
                   'barcode' => 'CRossOnline-' .$item['barcode'],
+                  'reference_number' => 'This is an COD',
                     ];
+            }
+
+
+            elseif($paymentMethod == "Use_Online_Payment")
+            {
+              $oData[] = [
+                'CustomerID' => $item['CustomerID'],
+                'ProductID' => $item['ProductID'],
+                'total' => $item['total'],
+                'quantity' => $item['quantity'],
+                'size' => $item['size'],
+                'orderStatus' => 'onProcess',
+                'paymentStatus' => 'pending',
+                'orderType' => 'onHouse',
+                'paymentStatus' => $paymentMethod,
+                'barcode' => 'CRossOnline-' .$item['barcode'],
+                'reference_number' => $reference_number,
+                  ];
+            }
+          }
+
           }
       
           $this->order->insertBatch($oData);

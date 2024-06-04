@@ -95,3 +95,40 @@ in APPPATH\Views\user\forFeedback\viewfeedback.php on line 47.
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-25 14:09:07 --> Undefined variable $cartItemCount
+in APPPATH\Views\user\mainheader.php on line 47.
+ 1 APPPATH\Views\user\mainheader.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cartItemCount', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\mainheader.php', 47)
+ 2 APPPATH\Views\user\checkoutorder.php(192): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\mainheader.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\checkoutorder.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('user/checkoutorder', [], true)
+ 6 APPPATH\Controllers\OrderController.php(122): view('user/checkoutorder', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->placeToOrder()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-25 14:11:05 --> Undefined variable $cartItemCount
+in APPPATH\Controllers\OrderController.php on line 120.
+ 1 APPPATH\Controllers\OrderController.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cartItemCount', 'C:\\laragon\\www\\coffee\\app\\Controllers\\OrderController.php', 120)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->placeToOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-25 20:44:23 --> Undefined variable $cartItemCount
+in APPPATH\Controllers\OrderController.php on line 120.
+ 1 APPPATH\Controllers\OrderController.php(120): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cartItemCount', 'C:\\laragon\\www\\coffee\\app\\Controllers\\OrderController.php', 120)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->placeToOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-05-25 20:44:38 --> Undefined variable $user
+in APPPATH\Controllers\OrderController.php on line 115.
+ 1 APPPATH\Controllers\OrderController.php(115): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $user', 'C:\\laragon\\www\\coffee\\app\\Controllers\\OrderController.php', 115)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->placeToOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

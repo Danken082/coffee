@@ -275,6 +275,10 @@
             <div class="orders-container">
                 <div class="box">
                     <h2>Customer Orders</h2>
+                    <select name="SelectDineTake" class="SelectDineTake">
+                            <option value="Dine In">Dine In</option>
+                            <option value="Take Out">Take Out</option>
+                        </select>
                     <table class="order-list" id="order-list">
                         <thead>
                             <tr>
@@ -282,6 +286,7 @@
                                 <th>Size</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
+                                <th>Total Price</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -292,6 +297,7 @@
                         <h3>Total Price: <span id="total-price">₱ 0.00</span></h3>
                     </div>
                     <div class="payment-container">
+                        
                         <input type="number" id="payment-input" placeholder="Enter payment amount"><br><br>
                         <button id="pay-button">Pay</button><br><br>
                         <div id="change-output"></div>
