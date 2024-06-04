@@ -1,0 +1,14 @@
+CRITICAL - 2024-05-24 02:26:46 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\VisualizationController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\VisualizationController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CAPSTONE\\coffee\\public\\index.php')
+CRITICAL - 2024-05-24 02:26:53 --> Class "Mpdf\Mpdf" not found
+in APPPATH\Controllers\VisualizationController.php on line 26.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\VisualizationController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\CAPSTONE\\coffee\\public\\index.php')
