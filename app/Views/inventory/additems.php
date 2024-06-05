@@ -62,7 +62,7 @@
 </div>
 
         </div>
-                </div>
+        </div>
             </div>
             <div class="card-body px-4 pb-3">
                 <form action="<?= base_url('additems')?>" class="row g-3" method="POST" enctype="multipart/form-data">
@@ -91,6 +91,5 @@
                 </form>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

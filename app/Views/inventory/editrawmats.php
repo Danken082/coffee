@@ -1,55 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
-        <link rel="stylesheet" type="text/css"href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-        <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
-        <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-        <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
-        <title>Edit Items</title>
-    </head>
-    <body>
-        <div class="col-md-12">
-            <div class="card my-4">
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div
-                        class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                        <h6 class="text-white text-capitalize ps-3">Edit Raw Materials</h6>
-                    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+    <title>Edit Items</title>
+    <style>
+        body {
+            background-color: #021024;
+            font-family: 'Roboto', sans-serif;
+        }
+        .card {
+            background-color: transparent;
+            border: none;
+        }
+        .card-header {
+            background-color: transparent;
+        }
+        .card-body {
+            color: #e0e0e0;
+        }
+        .form-control {
+            background-color: #33475b;
+            border: none;
+            color: #ffffff;
+        }
+        .form-control:focus {
+            background-color: #3f5971;
+            color: #ffffff;
+        }
+        .btn-success {
+            background-color: #4caf50;
+            border-color: #4caf50;
+        }
+        .btn-info {
+            background-color: #029acf;
+            border-color: #029acf;
+        }
+        select.form-control { 
+            background-color: #33475b;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <br><br>
+    <div class="col-md-12">
+        <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 d-flex justify-content-between">
+                <div class="border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Edit Raw Materials</h6>
                 </div>
-
-                <div class="card-body px-4 pb-3">
-                    <form action="<?= base_url('/updateraw/'. $raw['rawID'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
-                        <div class="col-md-5">
-                            <label for="Name" class="form-label">Name</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="name" name="name" value="<?=$raw['name'] ?>">
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <label for="Stocks" class="form-label">Stocks</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="stocks" name="stocks" min="1" value="<?=$raw['stocks'] ?>" readonly>
-                            </div>
-                        </div>
-                             <div class="col-md-5">
-                            <label for="Stocks" class="form-label">Add Stocks</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="number" class="form-control" id="stocks" name="addstocks" value =0>
-                            </div>
-                        </div>
-                      <div class="col-12">
-                            <div class="input-group input-group-outline my-3">
-                                <button type="submit" class="btn btn-success">Update Raw Materials</button>
-                            </div>
-                            <a href="<?= base_url('/inventoryrawmats')?>" class="btn btn-info">BACK</a>
-                        </div>
-                    </form>
+                <div>
+                    <a href="<?= base_url('/inventoryrawmats')?>" class="btn btn-info">BACK</a>
                 </div>
             </div>
+            <div class="card-body px-4 pb-3">
+                <form action="<?= base_url('/updateraw/'. $raw['rawID'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
+                    <div class="input-group input-group-outline my-3">
+                        <label for="name" class="form-label"></label>
+                        <input type="text" class="form-control" id="name" name="name" value="<?=$raw['name'] ?>" placeholder="Name">
+                    </div>
+                    <div class="input-group input-group-outline my-3">
+                        <label for="stocks" class="form-label"></label>
+                        <input type="text" class="form-control" id="stocks" name="stocks" min="1" value="<?=$raw['stocks'] ?>" placeholder="Stocks">
+                    </div>
+                    <div class="input-group input-group-outline my-3">
+                        <label for="barcode" class="form-label"></label>
+                        <input type="text" disabled class="form-control" id="barcode" name="barcode" value="<?=$raw['barcode'] ?>" placeholder="Barcode">
+                    </div>
+                    <div class="input-group input-group-outline my-3 text-center" style="display: flex; justify-content: center;">
+                        <button type="submit" class="btn btn-success" style="background-color: #1167b1; color: white;">Update Raw Materials</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

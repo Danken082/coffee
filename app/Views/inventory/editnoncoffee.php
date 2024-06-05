@@ -9,41 +9,77 @@
         <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
         <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
-        <title>Edit Inventory</title>
-    </head>
-    <body>
-        <div class="col-md-12">
-            <!-- Edit Product Form -->
-            <div class="card my-4">
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                    <div
-                        class="bg-gradient-info shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                        <h6 class="text-white text-capitalize ps-3">Edit Drink</h6>
-                    </div>
+        <title>Edit Inventory</title><style>
+        body {
+            background-color: #021024;
+            font-family: 'Roboto', sans-serif;
+        }
+        .card {
+            background-color: transparent;
+            border: none;
+        }
+        .card-header {
+            background-color: transparent;
+        }
+        .card-body {
+            color: #e0e0e0;
+        }
+        .form-control {
+            background-color: #33475b;
+            border: none;
+            color: #ffffff;
+        }
+        .form-control:focus {
+            background-color: #3f5971;
+            color: #ffffff;
+        }
+        .btn-success {
+            background-color: #4caf50;
+            border-color: #4caf50;
+        }
+        .btn-info {
+            background-color: #029acf;
+            border-color: #029acf;
+        }
+        select.form-control { 
+            background-color: #33475b;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <br><br>
+    <div class="col-md-12">
+        <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 d-flex justify-content-between">
+                <div class="border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Edit Drinks</h6>
                 </div>
-
-                <div class="card-body px-4 pb-3">
-
-                    <form action="<?= base_url('/updatenon/'. $enon['prod_id'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
-                        <div class="col-md-5">
-                            <label for="Name" class="form-label">Product Name</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="name" name="prod_name" value="<?=$enon['prod_name'] ?>">
-                            </div>
+                <div>
+                    <a href="<?= base_url('/inventorynoncoffee')?>" class="btn btn-info">BACK</a>
+                </div>
+            </div>
+            <div class="card-body px-4 pb-3">
+                <form action="<?= base_url('/updatenon/'. $enon['prod_id'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
+                    <div class="col-md-5">
+                        <label for="Name" class="form-label">Product Name</label>
+                        <div class="input-group input-group-outline my-3">
+                            <input type="text" class="form-control" id="name" name="prod_name" value="<?=$enon['prod_name'] ?>">
                         </div>
-                        <div class="col-md-5">
-                            <label for="Description" class="form-label">Product Description</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="text" class="form-control" id="description" name="prod_desc" value="<?=$enon['prod_desc'] ?>">
-                            </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="Description" class="form-label">Product Description</label>
+                        <div class="input-group input-group-outline my-3">
+                            <input type="text" class="form-control" id="description" name="prod_desc" value="<?=$enon['prod_desc'] ?>">
                         </div>
-                        <div class="col-md-5">
-                            <label for="Quantity" class="form-label">Quantity</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="number" class="form-control" id="quantity" name="prod_quantity" value="<?=$enon['prod_quantity'] ?>">
-                            </div>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="Quantity" class="form-label">Quantity</label>
+                        <div class="input-group input-group-outline my-3">
+                            <input type="number" class="form-control" id="quantity" name="prod_quantity" min="1" value="<?=$enon['prod_quantity'] ?>">
                         </div>
-                        <div class="col-md-5">
+                    </div>
+                    <div class="col-md-5">
                             <label for="Medium" class="form-label">Medium Price</label>
                             <div class="input-group input-group-outline my-3">
                                 <input type="number" class="form-control" id="medium" name="prod_mprice" min="1" value="<?=$enon['prod_mprice'] ?>">
@@ -52,7 +88,7 @@
                         <div class="col-md-5">
                             <label for="Large" class="form-label">Large Price</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="number" class="form-control" id="large" name="prod_lprice" min="1" value="<?=$enon['prod_lprice'] ?>">
+                                <input type="number" class="form-control" id="large" name="prod_lprice" min="0" value="<?=$enon['prod_lprice'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -61,21 +97,19 @@
                                 <input type="text" disabled class="form-control" id="barcode" name="prod_code" value="<?=$enon['prod_code'] ?>">
                             </div>
                         </div>
-                        <div class="col-md-5">
-                            <label for="Images" class="form-label">Images</label>
-                            <div class="input-group input-group-outline my-3">
-                                <input type="file" id="images" name="prod_img" value="<?=$enon['prod_img'] ?>" accept=".jpg, .jpeg, .png">
-                            </div>
+                 
+                    <div class="col-md-5">
+                        <label for="Images" class="form-label">Images</label>
+                        <div class="input-group input-group-outline my-3">
+                            <input type="file" id="images" name="prod_img" value="<?=$enon['prod_img'] ?>" accept=".jpg, .jpeg, .png">
                         </div>
-                        <div class="col-12">
-                            <div class="input-group input-group-outline my-3">
-                                <button type="submit" class="btn btn-success">Update Drink</button>
-                            </div>
-                            <a href="<?= base_url('/inventorynoncoffee')?>" class="btn btn-info">BACK</a>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-success" style="background-color: #1167b1;; color: white;">Update Non Coffee Frappe</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
