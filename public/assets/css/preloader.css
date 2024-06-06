@@ -12,14 +12,26 @@
     z-index: 100;
 }
 
+@media screen and (max-width: 992px) {
+    #preloader {
+        background-size: 100%;
+    }
+}
+
 @media screen and (max-width: 768px) {
     #preloader {
-        background-size: 60%;
+        background-size: 100%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    #preloader {
+        background-size: 100%;
     }
 }
 
 @media screen and (max-width: 480px) {
     #preloader {
-        background-size: 80%;
+        background-size: 100%;
     }
 }

@@ -4444,17 +4444,6 @@ class AdminController extends BaseController
         return view('admin/rawmatsnotif', $data);
     }
 
-    public function salesreport()
-    {
-        $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
-        ];
-
-        return view('admin/salesreport', $data);
-    }
-
-
         public function PaymentMethod()
         {
             $session = session();

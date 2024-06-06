@@ -34,15 +34,12 @@
     <section class="ftco-section">
 		<div class="container">
 			<div class="row">
-               
 				<div class="col-xl-8 ftco-animate">
 					<form action="#" class="billing-form ftco-bg-dark p-3 p-md-5">
 						<h3 class="mb-4 billing-heading">Deliver Address</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
 								<div class="form-group">
-                                
-						
 									<label for="firstname">First Name</label>
 									<input type="text" disabled name="FirstName" class="form-control" value="<?= session()->get('FirstName') ?>">
 								</div>
@@ -70,42 +67,23 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="streetaddress">Street Address</label>
-									<input type="text" class="form-control" placeholder="House number and street name">
+									<input type="text" class="form-control" placeholder="House number and street name" required>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)">
+									<input type="text" class="form-control" placeholder="Appartment, suite, unit etc: (optional)" required>
 								</div>
 							</div>
 							<div class="w-100"></div>
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="towncity">Town / City</label>
-									<input type="text" class="form-control" placeholder="Town">
+									<input type="text" class="form-control" placeholder="Town" required>
 								</div>
 							</div>
-		            		</div>
-					</form>
-	          
-				    <div class="row mt-5 pt-3 d-flex">
-	          			<div class="col-md-6 d-flex">
-						  	<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
-								<h2 class="billing-heading mb-4">Order Summary</h2>
-								<h6 style="color: white;"><?= $quantity?>x Fried Chicken w/ Gravy (Medium) ₱ <?= $price?></h6><!-- nakasession to kung ano yung inaddto cart or inorder mo lalabas dapat dito -->
-								<hr>
-								<p class="d-flex">
-		    						<span>Total</span>
-		    						<span>₱ <?= $total?></span>
-		    					</p>
-		    					
-		    					<p class="d-flex">
-		    						
-							</div>
-	          			</div>
-						
-						<div class="col-md-6">
-							<form action="<?= base_url('GoToPayment')?>" method="post">
+		            	</div>
+						<form action="<?= base_url('GoToPayment')?>" method="post">
 							<div class="cart-detail ftco-bg-dark p-3 p-md-4">
 								<h3 class="billing-heading mb-4">Payment Method</h3>
 								<div class="form-group">
@@ -122,13 +100,6 @@
 										</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<div class="col-md-12">
-										<div class="checkbox">
-										   <label><input type="checkbox" value="" class="mr-2">  I hereby give Crossroads Cafe and Deli the permission to share my customer data with the restaurant and as applicable, their respective affiliates and subsidiaries, for service improvement and/or other related marketing purposes.</label>
-										</div>
-									</div>
-								</div>
 								<input type="hidden" name="ProductID" value="<?= $ProductID?>">
 								<input type="hidden" name="CustomerID" value="<?= session()->get('UserID')?>">
 								<input type="hidden" name="quantity" value="<?= $quantity?>">
@@ -136,12 +107,27 @@
 								<input type="hidden" name="total" value="<?= $total?>">
 								
 								<button type="submit" class="btn btn-primary py-3 px-4">Place to Order</button>
-								</form>
+							</div>
+						</form>
+					</form>
+	          
+				    <div class="row mt-5 pt-3 d-flex">
+	          			<div class="col-md-6 d-flex">
+						  	<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
+								<h2 class="billing-heading mb-4">Order Summary</h2>
+								<h6 style="color: white;"><?= $quantity?>x Fried Chicken w/ Gravy (Medium) ₱ <?= $price?></h6><!-- nakasession kung anong product name at size nung inorder -->
+								<hr>
+								<p class="d-flex">
+		    						<span>Total</span>
+		    						<span>₱ <?= $total?></span>
+		    					</p>
+		    					<p class="d-flex">
 							</div>
 	          			</div>
+
+						<div class="col-md-6"></div>
 	          		</div>
           		</div>
-
 				<div class="col-xl-4 sidebar ftco-animate">
 					<div class="sidebar-box ftco-animate">
 						<div class="categ">

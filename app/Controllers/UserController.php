@@ -429,11 +429,6 @@ class UserController extends BaseController
 
         return view('/user/maincontact', $data);
     }
-    
-    public function home_checkout()
-    {
-        return view('/user/checkout');
-    }
 
     public function profile()
     { 

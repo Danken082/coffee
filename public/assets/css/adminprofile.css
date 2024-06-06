@@ -2,7 +2,7 @@ body{
     margin-top:20px;
     color: #1a202c;
     text-align: left;
-    background-color: #120f0f; 
+    background-color: #e2e8f0;    
 }
 
 .main-body {
@@ -18,15 +18,10 @@ body{
     margin: 50px auto;
 }
 
-.breadcrumb, .breadcrumb-item a{
-    color: black;
-    background-color: #efe7dc;
-}
-
 .card {
     padding: 20px;
     border: none;
-    background-color: #efe7dc;
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -54,7 +49,7 @@ body{
 }
 
 img.rounded-circle {
-    border: 5px solid #837666;
+    border: 5px solid #DCDCDC;
     border-radius: 50%;
     width: 125px;
     height: 125px;
@@ -65,7 +60,7 @@ hr {
 }
 
 .form-control {
-    border-color: #837666;
+    border-color: #8B4513;
 }
 
 .form-control:focus {
