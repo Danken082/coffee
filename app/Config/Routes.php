@@ -61,7 +61,6 @@ $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
 $routes->get('admin/sidebar', 'AdminController::admin_side');
 $routes->get('viewOrders', 'AdminController::viewOrder');
 $routes->get('/adminpos', 'AdminController::pos');
-$routes->get('/adminsales', 'AdminController::salesreport', ['filter'=>'authFilter']);
 $routes->get('addingTable', 'AdminController::viewAddTable');
 $routes->post('AdminTable', 'AdminController::addingTable');
 #forAcceptingOrde
@@ -208,7 +207,6 @@ $routes->get('/mainshop', 'UserController::home_mainshop',['filter'=>'cusFilter'
 $routes->get('/contact', 'UserController::home_contact', ['filter' => 'guestFilter']);
 $routes->get('/maincontact', 'UserController::home_maincontact',['filter'=>'cusFilter']);
 $routes->get('/cart', 'CartController::home_cart');
-$routes->get('/checkout', 'UserController::home_checkout',['filter'=>'cusFilter']);
 $routes->post('user/checkouts/', 'OrderController::placeToOrder');
 $routes->get('OrderMeal/(:any)', 'OrderController::myOrdersmeal/$1');
 $routes->get('OrderDrink/(:any)', 'OrderController::myOrdersdrink/$1');

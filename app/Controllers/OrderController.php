@@ -111,14 +111,12 @@ class OrderController extends BaseController
 
     public function placeToOrder()
     {
-      $user = session()->get('UserID');  
+        $user = session()->get('UserID');  
         $cartItems = $this->crt->where('CustomerID', $user)->findAll();
-
         $cartItemCount = count($cartItems);
-       $price  = $this->request->getPost('price');
-       $quantity = $this->request->getPost('quantity');
-
-       $total = $price * $quantity;
+        $price  = $this->request->getPost('price');
+        $quantity = $this->request->getPost('quantity');
+        $total = $price * $quantity;
 
             $data = [
                      'ProductID' => $this->request->getPost('ProductID'),   
@@ -130,10 +128,8 @@ class OrderController extends BaseController
                      'cartItems' => $cartItems,
                      'total' => $total
                      ]; 
-                     
 
                     return view('user/checkoutorder', $data);
-
     }
 
     public function myOrdersmeal($prdOrder)

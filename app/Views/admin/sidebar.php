@@ -87,14 +87,6 @@
               <span class="menu-title">POS</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="<?= site_url("adminsales"); ?>">
-              <span class="menu-icon">
-                <i class="fa fa-solid fa-calendar"></i>
-              </span>
-              <span class="menu-title">Sales Report</span>
-            </a>
-          </li>
           <li class="nav-item nav-category">
             <span class="nav-link">Account Page</span>
           </li>
