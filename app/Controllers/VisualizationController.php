@@ -104,110 +104,111 @@ class VisualizationController extends BaseController
      return view('admin/visualization', $data);
 
  }
-    
-    public function allChart() {
-           $data = [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(),
-       
-            ];
-     
-        $db = \Config\Database::connect();
-             $requestData = $this->request->getJSON();
-    
-        $month = $this->request->getVar('month');
-        $year = $this->request->getVar('year');
-        //MonthlyReports
-        $monthlySalesReports = $this->request->getVar('monthlySalesReports');
-      
-        $builder = $db->table('tbl_orders');
+ public function markNotificationRead($notificationId) {
+    $this->raw->update($notificationId, ['read_status' => true]);
+    return redirect()->back();
+}
 
-        if($month == null || $year == null )
-        {
-            $month = date('n');
-            $year = date('Y');
-        }
-     
-        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year); // Get the total number of days in the month
+ public function allChart() {
+ 
 
-        $query = $builder->select("SUM(total_amount) as count, SUM(total_amount) as s, DAY(order_date) as day")
-        ->where('MONTH(order_date)', $month)
-        ->where( 'YEAR(order_date)', $year)                
-                        ->groupBy('DAY(order_date)')
-                        ->orderBy('day', 'ASC')
-                        ->get();
-        $record = $query->getResult();
-        $products = [];
-        if (empty($record)) {
-            for ($day = 1; $day <= $daysInMonth; $day++) {
-                $products[] = array(
-                    'day'   => $day,
-                    'sell' => 0.0, // You can set any default value here
-                    'count' => 0.0
-                );
-            }
-        } else {
-            $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
-                                ->where('MONTH(order_date)', $month)
-                                ->where('YEAR(order_date)', $year)
-                                ->groupBy('MONTH(order_date)')
-                                ->orderBy('month','ASC')
-                                ->get();
-        $ByMonth = $query->getResult();
+    $db = \Config\Database::connect();
+    $requestData = $this->request->getJSON();
 
-        usort($ByMonth, function($a, $b) {
-            return $a->month - $b->month;
-        });
-            // If records are returned, populate $products array from the result
-            foreach ($record as $row) {
-                $products[] = array(
-                    'day'   => $row->day,
-                    'sell' => floatval($row->s),
+    $month = $this->request->getVar('month');
+    $year = $this->request->getVar('year');
 
-                );
-                
-            }
-        }
-
-
-        if($monthlySalesReports == null )
-        {
-            $monthlySalesReports = date('Y');
-        }
-     
-            $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
-                                ->where('YEAR(order_date)', $monthlySalesReports)
-                                ->groupBy('MONTH(order_date)')
-                                ->orderBy('month','ASC')
-                                ->get();
-        $salesByMonth = $query->getResult();
-
-        usort($salesByMonth, function($a, $b) {
-            return $a->month - $b->month;
-        });
-    
-        $salesByYear = $this->vis
-            ->select('YEAR(order_date) as year, SUM(total_amount) as total_amount')
-            ->groupBy('YEAR(order_date)')
-            ->findAll();
-
-
-        $data = [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(),
-            'salesByMonth' => $salesByMonth,
-            'salesByYear' => $salesByYear,
-            'products'  => $products,
-            'byMonth'   => $ByMonth,
-            'month' => $month,
-            'year' => $year,
-            'monthlySalesReports' => $monthlySalesReports
-            ];
-     
-        //notif
-    
-        return view('admin/dashboard', $data);
+    if ($month == null || $year == null) {
+        $month = date('n');
+        $year = date('Y');
     }
+
+    $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+
+    $builder = $db->table('tbl_orders');
+    $query = $builder->select("SUM(total_amount) as count, SUM(total_amount) as s, DAY(order_date) as day")
+        ->where('MONTH(order_date)', $month)
+        ->where('YEAR(order_date)', $year)
+        ->groupBy('DAY(order_date)')
+        ->orderBy('day', 'ASC')
+        ->get();
+    $record = $query->getResult();
+    $products = [];
+    
+    if (empty($record)) {
+        for ($day = 1; $day <= $daysInMonth; $day++) {
+            $products[] = array(
+                'day'   => $day,
+                'sell' => 0.0,
+                'count' => 0.0
+            );
+        }
+    } else {
+        foreach ($record as $row) {
+            $products[] = array(
+                'day'   => $row->day,
+                'sell' => floatval($row->s),
+            );
+        }
+    }
+
+    $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
+        ->where('MONTH(order_date)', $month)
+        ->where('YEAR(order_date)', $year)
+        ->groupBy('MONTH(order_date)')
+        ->orderBy('month', 'ASC')
+        ->get();
+    $ByMonth = $query->getResult();
+
+    usort($ByMonth, function($a, $b) {
+        return $a->month - $b->month;
+    });
+
+    $monthlySalesReports = $this->request->getVar('monthlySalesReports');
+    if ($monthlySalesReports == null) {
+        $monthlySalesReports = date('Y');
+    }
+
+    // Monthly sales reports for the given year
+    $query = $builder->select("SUM(total_amount) as total_sales, MONTH(order_date) as month")
+        ->where('YEAR(order_date)', $monthlySalesReports)
+        ->groupBy('MONTH(order_date)')
+        ->orderBy('month', 'ASC')
+        ->get();
+    $salesByMonth = $query->getResult();
+
+    usort($salesByMonth, function($a, $b) {
+        return $a->month - $b->month;
+    });
+
+    $totalSalesInYear = $this->vis
+        ->select('YEAR(order_date) as year, SUM(total_amount) as total_amount')
+        ->where('YEAR(order_date)', $monthlySalesReports)
+        ->groupBy('YEAR(order_date)')
+        ->findAll();
+
+    // Yearly total sales
+    $salesByYear = $this->vis
+        ->select('YEAR(order_date) as year, SUM(total_amount) as total_amount')
+        ->groupBy('YEAR(order_date)')
+        ->findAll();
+
+    $data = [
+        'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        'salesByMonth' => $salesByMonth,
+        'salesByYear' => $salesByYear,
+        'totalsalesinyear' => $totalSalesInYear,
+        'products' => $products,
+        'byMonth' => $ByMonth,
+        'month' => $month,
+        'year' => $year,
+        'monthlySalesReports' => $monthlySalesReports
+    ];
+
+    return view('admin/dashboard', $data);
+}
+
     
 
     public function initChart(){
@@ -461,7 +462,7 @@ public function viewReportDaily($month, $year)
     $products = [];
     foreach ($record as $row) {
         $products[] = array(
-            'day'   => $row->day,
+            'day'   => $row->day,   
             'sell' => floatval($row->s),
             'count' => floatval($row->count)
         );
@@ -660,6 +661,126 @@ public function viewReportDaily($month, $year)
                 
             var_dump($ByMonth);
         }
+
+        public function costAndExpense()
+        {
+            $month = $this->request->getPost('MonthName');
+            $year = $this->request->getPost('year');
+            $yearTotal = $this->request->getPost('year');
+            $totalsalesByMonth = $this->request->getPost('MonthlyTotalsales');
+            $MonthName = $this->request->getPost('MonthName');
+            $total = $this->request->getPost('totalInYears');
+
+            
+            $data = [
+                'month'            => $month,
+                'year'             => $year,
+                'totasalesbyMonth' => $totalsalesByMonth,
+                'monthname'        => $MonthName,
+                'total'            => $total
+            ];
+            
+
+            return view('admin/CostExpenseMonthly', $data);
+        }
+
+        public function viewReportMonthly()
+        {
+            $expenses   = $this->request->getPost('expense');
+            $cost       = $this->request->getPost('cost');
+            $monthsales = $this->request->getPost('total');
+            $monthly    = $this->request->getPost('monthsales');
+            $month      = $this->request->getPost('monthname');
+            $year       = $this->request->getPost('year');
+            $total = $monthsales - $expenses - $cost;
+
+            $data = [
+                'expenses'  => $expenses,
+                'cost'      => $cost,
+                'monthsales'=> $monthsales,
+                'monthly'   => $monthly,
+                'month'     => $month,
+                'year'      => $year,
+                'total'     => $total
+            ];
+
+
+            return view('admin/viewMonthlyReport', $data);
+
+        }
+
+        public function salesReportPerMonth()
+        {
+            // Retrieve all necessary POST data
+            $expenses = $this->request->getPost('expenses');
+            $cost = $this->request->getPost('cost');
+            $monthsales = $this->request->getPost('monthsales');
+            $year = $this->request->getPost('year');
+            $month = $this->request->getPost('month');
+            $monthlysales = $this->request->getPost('monthly');
+            $total = $this->request->getPost('total');
+            $yearName   = $this->request->getPost('yearName');
+            // Create a new Spreadsheet object
+            $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+
+            // Set the title for the report
+            $sheet->setCellValue('A1', 'Daily Sales for the Year of '. $year);
+            $sheet->mergeCells('A1:E1');
+            $sheet->getStyle('A1')->getFont()->setBold(true);
+
+            // Set headers for the table
+            $sheet->setCellValue('A3', 'Month');
+            $sheet->setCellValue('B3', 'Sales');
+            $sheet->getStyle('A3:B3')->getFont()->setBold(true);
+            $sheet->getStyle('A3:B3')->getFont()->getColor()->setRGB('FFFFFF');
+            $sheet->getStyle('A3:B3')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+            $sheet->getStyle('A3:B3')->getFill()->getStartColor()->setRGB('4F81BD');
+
+            // Populate the table with daily sales data
+            $row = 4;
+            foreach ($month as $index => $month) {
+                $sheet->setCellValue('A' . $row, $month);
+                $sheet->setCellValue('B' . $row, number_format($monthlysales[$index], 2));
+                $row++;
+            }
+
+            // Add expenses, cost, monthly sales, and total profit/loss to the report
+            $row += 2; // Adding some space
+            $sheet->setCellValue('A' . $row, 'Expenses');
+            $sheet->setCellValue('B' . $row, number_format($expenses, 2));
+            $row++;
+            $sheet->setCellValue('A' . $row, 'Cost');
+            $sheet->setCellValue('B' . $row, number_format($cost, 2));
+            $row++;
+            $sheet->setCellValue('A' . $row, 'Year Sales');
+            $sheet->setCellValue('B' . $row, number_format($monthsales, 2));
+            $row++;
+            $sheet->setCellValue('A' . $row, 'Total Profit');
+            $sheet->setCellValue('B' . $row, number_format($total, 2));
+            // Prepare the filename for the Excel file
+            $filename = 'Daily_Reports_In_Year_Of_' . $yearName . '.xlsx';
+
+            // Write the spreadsheet to a file
+            $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+            $writer->save($filename);
+
+            // Send the file to the browser for download
+            header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($filename));
+            flush();
+            readfile($filename);
+
+            // Delete the file after download
+            unlink($filename);
+
+            exit;
+        }
+
         
     
 }

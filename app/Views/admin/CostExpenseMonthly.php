@@ -67,33 +67,27 @@
 </head>
 <body>
     <div class="container">
-        <h2>Sales Report Form</h2>
-        <form action="<?= base_url('viewReport')?>" method="post">
-            <?php foreach($Day as $days):?>
-            <input type="hidden" name="days[]" value="<?= $days?>">    
+        <h2>Sales Report On <?= $year?></h2>
+        <form action="<?= base_url('viewReportMonthly') ?>" method="post">
+            <?php foreach($monthname as $month):?>
+            <input type="hidden" name="monthname[]" value="<?= date('F', mktime(0, 0, 0, $month, 1))?>">
             <?php endforeach;?>
-            <input type="hidden" name="month" value="<?= $month?>">
+            <?php foreach($totasalesbyMonth as $monthsales):?>
+                <input type="hidden" name="monthsales[]" value="<?= $monthsales?>">
+            <?php endforeach;?>
+            <?php foreach($total as $sales):?>
+                <input type="hidden" name="total" value="<?= $sales?>">
+            <?php endforeach;?>
             <input type="hidden" name="year" value="<?= $year?>">
-            <?php foreach($totalSalesByDay as $totalSales):?>
-            <input type="hidden" name="daysales[]" value="<?= $totalSales?>">    
-            <?php endforeach;?>
-            <?php if($totalMonthly == Null):?>
-                <p>No data For Month of <?= $month?>, <?= $year?></p>
-            <?php else:?>
-            <?php foreach($totalMonthly as $monthly):?>
-                <input type="hidden" name="monthly" value="<?= $monthly?>">
-            <?php endforeach;?>
-             <div class="form-group">
+            <div class="form-group">
                 <label for="expense">Expenses</label>
-                <input type="text" name="expense" id="expense" placeholder="Expenses This Month">
+                <input type="text" name="expense" id="expense" placeholder="Cost  This Year">
             </div>
             <div class="form-group">
                 <label for="cost">Cost</label>
                 <input type="text" name="cost" id="cost" placeholder="Expenses This Year">
             </div>
             <button type="submit" class="submit-btn">Submit</button>
-            <?php endif;?>
-           
         </form>
     </div>
 

@@ -10,6 +10,7 @@ $routes->get('/dailysales', 'VisualizationController::dailySales');
 $routes->get('/monthlysales', 'VisualizationController::initMonthChart');
 $routes->get('/yearsales', 'VisualizationController::initYearChart');
 $routes->get('/login', 'AdminController::login',['filter'=>'guestFilter']);
+$routes->match(['get', 'post'], '/GoogleloginAuth', 'AdminController::googleAuthLogin');
 $routes->post('/adminregister', 'UserController::register');
 $routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
 $routes->get('/logout', 'AdminController::logout', ['filter'=>'authFilter']);
@@ -262,3 +263,7 @@ $routes->post('trialForexpense', 'VisualizationController::InsertExpenses');
 $routes->match(['get', 'post'], 'ByWeek', 'VisualizationController::weekly');
 $routes->post('viewReport', 'VisualizationController::viewReport');
 $routes->match(['get', 'post'], 'GoToPayment', 'OrderController::paymentOrder');
+
+$routes->match(['get', 'post'], 'ViewMonthlyReport', 'VisualizationController::costAndExpense');
+$routes->match(['get', 'post'], 'viewReportMonthly', 'VisualizationController::viewReportMonthly');
+$routes->match(['get', 'post'], 'salesReportPerMonth', 'VisualizationController::salesReportPerMonth');

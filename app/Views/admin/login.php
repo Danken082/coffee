@@ -38,6 +38,9 @@
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-login">Login</button>
+                    <?php
+                    echo $googleAuth;
+                    ?>
                 </div>
                 <p class="register-link">Don't have an account yet? <a href="<?= site_url("register"); ?>">Register Now</a></p>
             </form>

@@ -21,11 +21,22 @@ class UserController extends BaseController
     private $user;
     private $product;
     private $crt;
-
+    private $googleClient;
     public function __construct(){
+        require_once APPPATH. "libraries/vendor/autoload.php";
+
+        $this->googleClient = new  \Google_Client();
+        $this->googleClient->setClientId("36300776648-7g8magmu84f874vh8s9t453jmr169uel.apps.googleusercontent.com");
+        $this->googleClient->setClientSecret("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");
+        $this->googleClient->setRedirectUri("http://localhost:8080/GoogleloginAuth");
+        $this->googleClient->addScope("email");
+        $this->googleClient->addScope("profile"); 
+        
         $this->user = new UserModel();
         $this->product = new ProductModel();
         $this->crt = new CartModel();
+
+    
         helper(['form']);
     }
     public function register()

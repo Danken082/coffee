@@ -24,6 +24,7 @@ class AdminController extends BaseController
     use ResponseTrait;
     private $user;
     private $history;
+    private $usr;
     private $orderprod;
     private $load;
     private $payment;
@@ -35,6 +36,16 @@ class AdminController extends BaseController
     private $printer;
 
     public function __construct(){
+        require_once APPPATH. "libraries/vendor/autoload.php";
+
+        $this->googleClient = new  \Google_Client();
+        $this->googleClient->setClientId("36300776648-7g8magmu84f874vh8s9t453jmr169uel.apps.googleusercontent.com");
+        $this->googleClient->setClientSecret("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");
+        $this->googleClient->setRedirectUri("http://localhost:8080/GoogleloginAuth");
+        $this->googleClient->addScope("email");
+        $this->googleClient->addScope("profile");
+
+        $this->usr = new UserModel();
         $this->user = new AdminUserModel();
         $this->history = new HistoryModel();
         $this->orderprod = new ProductModel();
@@ -2081,9 +2092,57 @@ class AdminController extends BaseController
     }
 
     public function login(){
-        return view('/admin/login');
+        $data['googleAuth'] =   '<a href="'. $this->googleClient->createAuthUrl() .'">Login With Google</a>';
+        return view('/admin/login', $data);
     }
 
+    public function googleAuthLogin()
+    {
+        $token = $this->googleClient->fetchAccessTokenWithAuthCode($this->request->getVar('code'));
+
+        if(!isset($token['error']))
+        {
+
+            $this->googleClient->setAccessToken($token['access_token']);
+            session()->set("AccessToken", $token['access_token']);
+
+            $googleService = new \Google_Service_Oauth2($this->googleClient);
+            $data = $googleService->userinfo->get();
+            $currentDateTime = date("Y-m-d H:i:s");
+            // echo "<pre>"; print_r($data);die;
+            if($this->usr->isAlreadyRegistered($data['id']))
+            {
+                $userdata = [
+                    'FirstName' => $data['givenName'],
+                    'email' =>  $data['email'],
+                    'UpdatedAt' => $currentDateTime
+
+                ];
+
+                $this->usr->updateUserData($data['id'], $userdata);
+            }
+            else{
+                $userdata = [
+                    'code' => $data['id'],
+                    'FirstName' => $data['givenName'],
+                    'LastName' => $data['familyName'],
+                    'email' =>  $data['email'],
+                    'CreatedAt' => $currentDateTime
+
+                ];
+
+                $this->usr->insertUserData($userdata);
+            }
+            session()->set("LoddgeUserData", $userdata);
+
+        }
+        else{
+            session()->set('error', 'Something went Wrong');
+            return redirect()->to('/');
+        }
+        return redirect()->to('mainhome');
+
+    }
     public function home(){
         $data= [
             'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),

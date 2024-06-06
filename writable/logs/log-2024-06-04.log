@@ -1,0 +1,593 @@
+CRITICAL - 2024-06-04 09:11:45 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:13:24 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:13:45 --> Undefined variable $byMonth
+in APPPATH\Views\admin\dashboard.php on line 60.
+ 1 APPPATH\Views\admin\dashboard.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $byMonth', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 60)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:13:59 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:14:26 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:14:36 --> Undefined variable $ByMonths
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonths', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:14:50 --> Undefined variable $ByMonths
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonths', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:15:04 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:16:13 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:17:15 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:17:29 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:17:37 --> syntax error, unexpected token ","
+in APPPATH\Controllers\VisualizationController.php on line 158.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\VisualizationController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\VisualizationController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\VisualizationController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:17:42 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:17:46 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 201.
+ 1 APPPATH\Controllers\VisualizationController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:18:31 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 204.
+ 1 APPPATH\Controllers\VisualizationController.php(204): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 204)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:18:37 --> foreach() argument must be of type array|object, int given
+in APPPATH\Views\admin\dashboard.php on line 60.
+ 1 APPPATH\Views\admin\dashboard.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, int given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 60)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(212): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:18:43 --> foreach() argument must be of type array|object, int given
+in APPPATH\Views\admin\dashboard.php on line 60.
+ 1 APPPATH\Views\admin\dashboard.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, int given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 60)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(212): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:19:15 --> Attempt to read property "total_sales" on int
+in APPPATH\Views\admin\dashboard.php on line 61.
+ 1 APPPATH\Views\admin\dashboard.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "total_sales" on int', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(212): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:19:32 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 204.
+ 1 APPPATH\Controllers\VisualizationController.php(204): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 204)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 09:38:14 --> Undefined variable $ByMonth
+in APPPATH\Controllers\VisualizationController.php on line 204.
+ 1 APPPATH\Controllers\VisualizationController.php(204): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $ByMonth', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 204)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-06-04 10:27:28 --> mysqli_sql_exception: Unknown column 'read_status' in 'where clause' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(194): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-04 10:27:28 --> Unknown column 'read_status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `rawproducttable`
+WHERE `stocks` <= :stocks:
+AND `stocks` >= :stocks.3:
+AND `item_categ` = :item_categ:
+AND `read_status` = :read_status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\VisualizationController.php(194): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-06-04 13:00:20 --> mysqli_sql_exception: Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.tbl_orders.order_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(188): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-04 13:00:20 --> Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'coffeeledgerdb.tbl_orders.order_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(order_date) as year, SUM(total_amount) as total_amount
+FROM `tbl_orders`
+WHERE YEAR(order_date) = :YEAR(order_date):
+GROUP BY YEAR(order_date)
+ORDER BY `tbl_orders`.`order_id` ASC
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\VisualizationController.php(188): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-06-04 13:01:18 --> mysqli_sql_exception: In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'coffeeledgerdb.tbl_orders.order_date'; this is incompatible with sql_mode=only_full_group_by in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT YEAR(ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\coffee\app\Controllers\VisualizationController.php(188): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-04 13:01:18 --> In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'coffeeledgerdb.tbl_orders.order_date'; this is incompatible with sql_mode=only_full_group_by
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(order_date) as year, SUM(total_amount) as total_amount
+FROM `tbl_orders`
+WHERE YEAR(order_date) = :YEAR(order_date):
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\VisualizationController.php(188): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 13:24:20 --> Array to string conversion
+in APPPATH\Views\admin\dashboard.php on line 107.
+ 1 APPPATH\Views\admin\dashboard.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 107)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 13:30:31 --> Attempt to read property "total_sales" on array
+in APPPATH\Views\admin\dashboard.php on line 107.
+ 1 APPPATH\Views\admin\dashboard.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "total_sales" on array', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 107)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 13:35:30 --> Undefined variable $total_sales
+in APPPATH\Views\admin\dashboard.php on line 107.
+ 1 APPPATH\Views\admin\dashboard.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $total_sales', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 107)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 13:35:56 --> Attempt to read property "total_amount" on array
+in APPPATH\Views\admin\dashboard.php on line 107.
+ 1 APPPATH\Views\admin\dashboard.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "total_amount" on array', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 107)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 13:36:58 --> Attempt to read property "total_amount" on array
+in APPPATH\Views\admin\dashboard.php on line 107.
+ 1 APPPATH\Views\admin\dashboard.php(107): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "total_amount" on array', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 107)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 14:50:38 --> Array to string conversion
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 72.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(680): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 14:51:24 --> Undefined variable $MonthName
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 72.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $MonthName', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(680): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 14:54:51 --> Undefined variable $MonthlyTotalsales
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 75.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $MonthlyTotalsales', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 75)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(680): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 15:12:45 --> Array to string conversion
+in APPPATH\Views\admin\dashboard.php on line 121.
+ 1 APPPATH\Views\admin\dashboard.php(121): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php', 121)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(209): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->allChart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 15:26:21 --> Undefined variable $year
+in APPPATH\Controllers\VisualizationController.php on line 676.
+ 1 APPPATH\Controllers\VisualizationController.php(676): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $year', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 676)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 15:26:48 --> Undefined variable $year
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 70.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(70): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $year', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 70)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(683): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 15:27:54 --> Undefined variable $year
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 70.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(70): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $year', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 70)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(683): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 15:28:35 --> Undefined variable $yearTotal
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 81.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $yearTotal', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 81)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(684): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 16:48:56 --> Unsupported operand types: int - array
+in APPPATH\Controllers\VisualizationController.php on line 694.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->viewReportMonthly()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 16:50:08 --> Unsupported operand types: int - array
+in APPPATH\Controllers\VisualizationController.php on line 693.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->viewReportMonthly()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 17:42:05 --> Array to string conversion
+in APPPATH\Views\admin\viewMonthlyReport.php on line 61.
+ 1 APPPATH\Views\admin\viewMonthlyReport.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\viewMonthlyReport.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\viewMonthlyReport.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/viewMonthlyReport', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(706): view('admin/viewMonthlyReport', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->viewReportMonthly()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 17:46:48 --> Array to string conversion
+in APPPATH\Views\admin\viewMonthlyReport.php on line 85.
+ 1 APPPATH\Views\admin\viewMonthlyReport.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\viewMonthlyReport.php', 85)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\viewMonthlyReport.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/viewMonthlyReport', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(709): view('admin/viewMonthlyReport', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->viewReportMonthly()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 17:47:07 --> Array to string conversion
+in APPPATH\Views\admin\viewMonthlyReport.php on line 85.
+ 1 APPPATH\Views\admin\viewMonthlyReport.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\viewMonthlyReport.php', 85)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\viewMonthlyReport.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/viewMonthlyReport', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(709): view('admin/viewMonthlyReport', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->viewReportMonthly()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 17:55:17 --> Array to string conversion
+in APPPATH\Controllers\VisualizationController.php on line 383.
+ 1 APPPATH\Controllers\VisualizationController.php(383): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 383)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->salesReportPerDay()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 17:59:39 --> Undefined variable $days
+in APPPATH\Controllers\VisualizationController.php on line 743.
+ 1 APPPATH\Controllers\VisualizationController.php(743): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $days', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 743)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->salesReportPerMonth()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:00:23 --> Undefined variable $monthly
+in APPPATH\Controllers\VisualizationController.php on line 745.
+ 1 APPPATH\Controllers\VisualizationController.php(745): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $monthly', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 745)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->salesReportPerMonth()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:00:51 --> Undefined variable $monthly
+in APPPATH\Controllers\VisualizationController.php on line 758.
+ 1 APPPATH\Controllers\VisualizationController.php(758): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $monthly', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 758)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->salesReportPerMonth()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:01:24 --> Undefined variable $monthly
+in APPPATH\Controllers\VisualizationController.php on line 760.
+ 1 APPPATH\Controllers\VisualizationController.php(760): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $monthly', 'C:\\laragon\\www\\coffee\\app\\Controllers\\VisualizationController.php', 760)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->salesReportPerMonth()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:19:35 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\GetMyExpensesAndCost.php on line 81.
+ 1 APPPATH\Views\admin\GetMyExpensesAndCost.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php', 81)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/GetMyExpensesAndCost', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(641): view('admin/GetMyExpensesAndCost', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->InsertExpenses()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:21:20 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\GetMyExpensesAndCost.php on line 81.
+ 1 APPPATH\Views\admin\GetMyExpensesAndCost.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php', 81)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/GetMyExpensesAndCost', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(641): view('admin/GetMyExpensesAndCost', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->InsertExpenses()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:22:43 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\GetMyExpensesAndCost.php on line 91.
+ 1 APPPATH\Views\admin\GetMyExpensesAndCost.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php', 91)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/GetMyExpensesAndCost', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(641): view('admin/GetMyExpensesAndCost', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->InsertExpenses()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:23:31 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\GetMyExpensesAndCost.php on line 91.
+ 1 APPPATH\Views\admin\GetMyExpensesAndCost.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php', 91)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/GetMyExpensesAndCost', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(650): view('admin/GetMyExpensesAndCost', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->InsertExpenses()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:23:33 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\GetMyExpensesAndCost.php on line 91.
+ 1 APPPATH\Views\admin\GetMyExpensesAndCost.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php', 91)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/GetMyExpensesAndCost', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(650): view('admin/GetMyExpensesAndCost', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->InsertExpenses()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:23:53 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\GetMyExpensesAndCost.php on line 81.
+ 1 APPPATH\Views\admin\GetMyExpensesAndCost.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php', 81)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\GetMyExpensesAndCost.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/GetMyExpensesAndCost', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(641): view('admin/GetMyExpensesAndCost', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->InsertExpenses()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-04 18:24:50 --> syntax error, unexpected end of file
+in APPPATH\Views\admin\GetMyExpensesAndCost.php on line 112.
+ 1 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/GetMyExpensesAndCost', [], true)
+ 3 APPPATH\Controllers\VisualizationController.php(641): view('admin/GetMyExpensesAndCost', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->InsertExpenses()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

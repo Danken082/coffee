@@ -118,44 +118,48 @@
           <nav class="navbar p-0 fixed-top d-flex flex-row">
             <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
               <ul class="navbar-nav w-100">
-                <li class="nav-item w-100"></li>
-              </ul>
-              <ul class="navbar-nav navbar-nav-right">
-                <li class="nav-item dropdown border-left">
-                  <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                    <i class="fa fa-solid fa-bell"></i>
-                    <span class="bg-danger">
+                            <li class="nav-item w-100"></li>
+                          </ul>
+                          <ul class="navbar-nav navbar-nav-right">
+                          <li class="nav-item dropdown border-left">
+              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                <i class="fa fa-solid fa-bell"></i>
+                <span class="bg-danger">
                   <i class="bi bi-bell"></i>
-                  <?php if($count['notif'] == 0):?>
-                    <?php elseif( $count['notif'] >=1):?>
-                      <?= $count['notif'] ?>
-                  <?php endif;?>
-                  </span>
+                  <?php if($count['notif'] > 0): ?>
+                    <?= $count['notif'] ?>
+                  <?php endif; ?>
+                </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                <h6 class="p-3 mb-0">Notifications</h6>
+                <div class="dropdown-divider"></div>
+                <?php if($count['notif'] == 0): ?>
+                  <a class="dropdown-item preview-item">
+                    <div class="preview-item-content">
+                      <p class="text-muted ellipsis mb-0">No Notification to show</p>
+                    </div>
                   </a>
-                  <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                    <h6 class="p-3 mb-0">Notifications</h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                <?php else: ?>
+                  <?php foreach($notif as $notification): ?>
+                    <a class="dropdown-item preview-item" href="<?= base_url('rawNotif/' . $notification['rawID'] )?>">
                       <div class="preview-thumbnail">
                         <div class="preview-icon bg-dark rounded-circle">
                           <i class="fa fa-solid fa-exclamation"></i>
                         </div>
                       </div>
                       <div class="preview-item-content">
-                      <?php if($count['notif'] == 0):?>
-                        <p class="text-muted ellipsis mb-0"> No Notification to show </p>
-                        <?php elseif( $count['notif'] >=1):?>
-                        <?php foreach($notif as $notification): ?>
-                          <a href="<?= base_url('rawNotif/' .$notification['rawID'] )?>">
-                        <p class="preview-subject mb-1"><?= $notification['name']?></p>
-                        <p class="text-muted ellipsis mb-0"> Your stocks is Low <?= $notification['stocks']?> </p>
-                        </a>
-                        <?php endforeach;?>
-                        <?php endif;?>
+                        <p class="preview-subject mb-1"><?= $notification['name'] ?></p>
+                        <p class="text-muted ellipsis mb-0">Your stocks is Low <?= $notification['stocks'] ?></p>
                       </div>
                     </a>
-                  </div>
-                </li>
+                    <a href="<?= base_url('admin/markNotificationRead/' . $notification['rawID'] ) ?>" class="mark-read-btn">Mark as read</a>
+                    <div class="dropdown-divider"></div>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+              </div>
+            </li>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                     <div class="navbar-profile">
@@ -209,5 +213,35 @@
     <script src="/assets/admin/todolist.js"></script>
     <script src="/assets/admin/dashboard.js"></script>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const markReadBtns = document.querySelectorAll('.mark-read-btn');
+    
+    markReadBtns.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const url = this.href;
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRF-TOKEN': '<?= csrf_hash() ?>' // Adjust according to your CSRF token handling
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    this.closest('.dropdown-item').remove();
+                    // Update notification count if needed
+                } else {
+                    console.error('Failed to mark notification as read');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+});
+</script>
+
   </body>
 </html>

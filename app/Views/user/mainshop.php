@@ -6,6 +6,7 @@
 	<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
 	<link rel="stylesheet" href="/assets/css/preloader.css">
   </head>
+
   <body>
   	<div id="preloader"></div>
     <section class="home-slider owl-carousel">
@@ -21,7 +22,7 @@
 		</div>
     </section>
 
-	<section class="ftco-menu">
+	<section class="ftco-menu products">
 		<div class="container">
 			<div class="row justify-content-center mb-5">
 				<div class="col-md-7 heading-section text-center ftco-animate">
@@ -51,7 +52,7 @@
 							<div class="tab-content ftco-animate" id="v-pills-tabContent">
 								<div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
 									<div class="row">
-										<div class="col-md-4 text-center">
+										<div class="col-md-4 text-center product-item">
 											<div class="menu-wrap">
 												<?php foreach($app as $a): ?>
 													<div class="text">

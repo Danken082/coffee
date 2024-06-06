@@ -21,7 +21,11 @@
         }
         .month
         {   
-            width: 20rem;
+            width: 21rem;
+        }
+        .yearly
+        {   
+            width: 23rem;
         }
     </style>
     <body>
@@ -87,9 +91,6 @@
                                         <?php endfor;?>
                             </select>
                             <button type="submit" class="btn btn-primary">Filter</button>
-
-                            
-                         
                             </form>
                         
                         </div>
@@ -106,8 +107,20 @@
                         </div>
                         <div class="card-body">
                             <h6 class="mb-0">Monthly Sales</h6>
-
-                            <a href="<?= base_url('reportspermonths/' . $monthlySalesReports)?>">Export Report</a>
+                            <?php foreach($totalsalesinyear as $totalsales):?>
+                                <input type="text" class="yearly"disabled  value="Total Sales In The Year <?= $monthlySalesReports?>: ₱ <?= $totalsales['total_amount']?>">
+                            <?php endforeach;?>
+                            <form action="<?= base_url("/ViewMonthlyReport")?>" method="post">
+                                <?php foreach($salesByMonth as $monthly):?>
+                                    <input type="hidden" name="MonthlyTotalsales[]" value="<?= $monthly->total_sales?>">
+                                    <input type="hidden" name="MonthName[]" value="<?= $monthly->month?>">
+                                <?php endforeach;?>
+                                <?php foreach($totalsalesinyear as $totalsales):?>
+                                <input type="hidden" class="yearly" name="totalInYears[]" value="<?= $totalsales['total_amount']?>">
+                            <?php endforeach;?>
+                            <input type="hidden" name="year" value="<?= $monthlySalesReports ?>">
+                                <input type="submit" value="View Report">
+                            </form> 
                             <form id="filterMonth">
                             <select name="monthlySalesReports" id="monthlySalesReports" class="form-control" style="color: white;">
                             <?php  $currentYear = date('Y'); for($m=2015; $m <= $currentYear; $m++):?>
@@ -204,7 +217,7 @@
         <script>
             const salesData = <?php echo json_encode($salesByMonth); ?>;
             const labels = salesData.map(item => item.month);
-            const sales = salesData.map(item => item.total_sales);
+            const sales = salesData.map(item => item.total_sales); 
 
             const colors = [
                 'rgba(255, 99, 132, 0.8)',
