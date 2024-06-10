@@ -1,0 +1,49 @@
+/* CSS for Notifications Dropdown */  
+
+.dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            border-radius: 5px;
+            margin-top: 100px;
+            padding: 10px;
+            height: 200px;
+            min-width: 200px;
+            
+            overflow-y: auto;
+        }
+
+.preview-item {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.preview-item-content {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.preview-icon {
+    color: #fff;
+    padding: 8px;
+}
+
+.preview-subject {
+    font-weight: bold;
+}
+
+.preview-subject,
+.text-muted {
+    margin-bottom: 5px;
+}
+
+.mark-read-btn {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.mark-read-btn:hover {
+    text-decoration: underline;
+}

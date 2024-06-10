@@ -4616,6 +4616,11 @@ class AdminController extends BaseController
                 ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
                 ->where('DATE(order_date) >=', $toDate)->where('DATE(order_date) <=', $fromDate)
                 ->orderBy('DATE(order_date)','ASC')->findAll();
+
+                $totalSum = $this->history->selectSum('tbl_orders.total_amount')
+                ->where('DATE(order_date) >=', $toDate)
+                ->where('DATE(order_date) <=', $fromDate)
+                ->first()['total_amount'];
         
             // Initialize HTML string
             $html = "<html>
@@ -4643,12 +4648,30 @@ class AdminController extends BaseController
                         max-height: 300px; /* Adjust as needed */
                         overflow-y: auto;
                     }
+                    .container {
+                        width: 100%;
+                        margin: 0 auto;
+                        padding: 20px;
+                        text-align: center;
+                    }
+                    .header {
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                    .header p {
+                        margin: 0;
+                        font-size: 16px;
+                    }
+                    h2 {
+                        margin-bottom: 0;
+                    }
                 </style>
             </head>
             <body>
-            <div class='Contain' style='text-align: center;'>
-            <p>Crossroads Coffee And Deli</p>
-            <p>Sales in ".(new \DateTime($toDate))->format('F j, Y'). ' - '. (new \DateTime($fromDate))->format('F j, Y')."</p>
+            <div class='header'>
+            <h2>Crossroads Coffee And Deli</h2>
+            <p>Sales Report</p>
+            <p>From ". (new \DateTime($toDate))->format('F j, Y') . " to " . (new \DateTime($fromDate))->format('F j, Y') .  "</p>
         </div>
                 <table>
                     <thead>
@@ -4656,6 +4679,7 @@ class AdminController extends BaseController
                             <th>Product Name</th>
                             <th>Product Quantity</th>
                             <th>Product Size</th>
+                            <th>Sales</th>
                             <th>Order Date</th>
                         </tr>
                     </thead>
@@ -4667,21 +4691,24 @@ class AdminController extends BaseController
             $html .= "<td>" . htmlspecialchars($report['prod_name']) . "</td>"; // Use htmlspecialchars to escape special characters
             $html .= "<td>" . htmlspecialchars($report['prod_quantity']) . "</td>";
             $html .= "<td>" . htmlspecialchars($report['size']) . "</td>";
+            $html .= "<td>" . htmlspecialchars($report['total_amount']) . "</td>";
             $html .= "<td>" . (new \DateTime($report['order_date']))->format('F j, Y - H:i:s') . "</td>";
             $html .= "</tr>";
         }
+      
         }
         else {
             $html .="<p>No Data Found</p>";
         }
         
-        $html .= "</tbody></table></body></html>";
+        $html .= "</tbody></table>";
+        $html .= "Total Sales: $totalSum </body></html>";
                
             // Load HTML content into Dompdf
             $dompdf->loadHtml($html);
         
             // Set paper size and orientation
-            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->setPaper('A4', 'landscape');
         
             // Render PDF
             $dompdf->render();
