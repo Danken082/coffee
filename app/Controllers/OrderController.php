@@ -116,6 +116,7 @@ class OrderController extends BaseController
         $cartItemCount = count($cartItems);
         $price  = $this->request->getPost('price');
         $quantity = $this->request->getPost('quantity');
+        $prodName = $this->request->getPost('prodName');
         $total = $price * $quantity;
 
             $data = [
@@ -126,7 +127,8 @@ class OrderController extends BaseController
                      'price'     => $this->request->getPost('price'),
                      'cartItemCount' => $cartItemCount,
                      'cartItems' => $cartItems,
-                     'total' => $total
+                     'total' => $total,
+                     'prodName' => $prodName
                      ]; 
 
                     return view('user/checkoutorder', $data);
@@ -390,71 +392,73 @@ class OrderController extends BaseController
 
     }
    
-    public function paymentOrder()
-    {
-        
-        $totalAmount = $this->request->getPost('total');
-        $subPayment = $totalAmount * 100;
-    
-        $curl = curl_init();
-    
-        curl_setopt_array($curl, [
-            CURLOPT_URL => "https://api.paymongo.com/v1/links",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => json_encode([
-                'data' => [
-                    'attributes' => [
-                        'amount' => $subPayment,
-                        'description' => 'Trial',
-                        'remarks' => 'Payment'
-                    ]
-                ]
-            ]),
-            CURLOPT_HTTPHEADER => [
-                "accept: application/json",
-                "authorization: Basic c2tfdGVzdF90djNzdjRUSHhtR1ZaZWRIWjhwYlVBZjQ6",
-                "content-type: application/json"
-            ],
-        ]);
-    
-        $response = curl_exec($curl);
-        $decode = json_decode($response, TRUE);
-        $err = curl_error($curl);
-        $reference_number = $decode['data']['attributes']['reference_number'];
-        $data = [
-            'ProductID' => $this->request->getPost('ProductID'),
-            'paymentStatus' => 'checking',
-            'orderStatus'     => 'onProcess',
-            'CustomerID' => $this->request->getPost('CustomerID'),
-            'quantity'    => $this->request->getPost('quantity'),
-            'total'         => $this->request->getPost('total'),
-            'size'        => $this->request->getPost('size'),
-            'reference_number' => $reference_number   
-        ];
-        $this->order->insert($data);
-    
-        curl_close($curl);
-    
-        if ($err) {
-            echo "cURL Error #:" . $err;
-        } else {
-            foreach($decode as $key => $value)
-            {
+   public function paymentOrder()
+{
+    $totalAmount = $this->request->getPost('total');
+    $subPayment = $totalAmount * 100;
 
+    $curl = curl_init();
+
+    curl_setopt_array($curl, [
+        CURLOPT_URL => "https://api.paymongo.com/v1/links",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => json_encode([
+            'data' => [
+                'attributes' => [
+                    'amount' => $subPayment,
+                    'description' => 'Payment For Orders',
+                    'remarks' => 'Payment'
+                ]
+            ]
+        ]),
+        CURLOPT_HTTPHEADER => [
+            "accept: application/json",
+            "authorization: Basic c2tfdGVzdF90djNzdjRUSHhtR1ZaZWRIWjhwYlVBZjQ6",
+            "content-type: application/json"
+        ],
+    ]);
+
+    $response = curl_exec($curl);
+    $decode = json_decode($response, TRUE);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($err) {
+        echo "cURL Error #:" . $err . " Please Check Your Internet Connection";
+    } 
+    else {
+        if (isset($decode['data']['attributes']['reference_number'])) {
+            $reference_number = $decode['data']['attributes']['reference_number'];
+
+            $data = [
+                'ProductID' => $this->request->getPost('ProductID'),
+                'paymentStatus' => 'checking',
+                'orderStatus' => 'onProcess',
+                'CustomerID' => $this->request->getPost('CustomerID'),
+                'quantity' => $this->request->getPost('quantity'),
+                'total' => $this->request->getPost('total'),
+                'size' => $this->request->getPost('size'),
+                'reference_number' => $reference_number
+            ];
+            $this->order->insert($data);
+
+            foreach ($decode as $key => $value) {
                 $name = $decode[$key]["attributes"]["checkout_url"];
                 $age = $decode[$key]["type"];
                 return redirect()->to($name);
-
-
-              }
-
+            }
+        } else {
+            // Handle the case where the reference number is null
+            echo "Error: Reference number is not available. Please try again.";
         }
-    
     }
+}
+
 
 }

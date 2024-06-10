@@ -11,6 +11,7 @@
     <div class="container">
         <form action="<?= base_url('user/checkouts/') ?>" method="post">
             <label for="ProductName" style="font-size:30px"><?= $order['prod_name'] ?></label>
+                <input type="text" name="prodName" value="<?= $order['prod_name'] ?>">
                 <input type="hidden" name="ProductID" value="<?= $order['prod_id'] ?>" readonly>
                 <input type="hidden" name="CustomerID" value="<?= session()->get('UserID') ?>" readonly>
                 <input type="hidden" name="size" value="Medium" readonly>

@@ -238,7 +238,7 @@ class UserController extends BaseController
             if ($loginAttempts >= $this->maxLoginAttempts) {
                 $session->set('lockout_time', time() + $this->lockoutTime);
                 $lockoutMinutes = ceil($this->lockoutTime / 60);
-                $session->setFlashdata('msg', "Too many login attempts. Please try again in $this->lockoutMinutes Minutes.");
+                $session->setFlashdata('msg', "Too many login attempts. Please try again in $lockoutMinutes Minutes.");
             }
         }
     }

@@ -1,0 +1,176 @@
+CRITICAL - 2024-06-10 00:00:10 --> Undefined variable $count
+in APPPATH\Views\admin\sidebar.php on line 131.
+ 1 APPPATH\Views\admin\sidebar.php(131): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\sidebar.php', 131)
+ 2 APPPATH\Views\admin\SearchReport.php(9): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\SearchReport.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/SearchReport', [], true)
+ 6 APPPATH\Controllers\AdminController.php(4572): view('admin/SearchReport')
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->Searchreport()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 00:52:49 --> Undefined variable $order
+in APPPATH\Views\admin\SearchReport.php on line 76.
+ 1 APPPATH\Views\admin\SearchReport.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\SearchReport.php', 76)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\SearchReport.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/SearchReport', [], true)
+ 5 APPPATH\Controllers\AdminController.php(4577): view('admin/SearchReport', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->Searchreport()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 00:53:43 --> Undefined variable $order
+in APPPATH\Views\admin\SearchReport.php on line 64.
+ 1 APPPATH\Views\admin\SearchReport.php(64): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\SearchReport.php', 64)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\SearchReport.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/SearchReport', [], true)
+ 5 APPPATH\Controllers\AdminController.php(4577): view('admin/SearchReport', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->Searchreport()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 01:45:50 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\OrderController.php on line 431.
+ 1 APPPATH\Controllers\OrderController.php(431): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\coffee\\app\\Controllers\\OrderController.php', 431)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->paymentOrder()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 01:48:01 --> Invalid file: "cli/error_404.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('cli/error_404.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('cli/error_404', [], true)
+ 3 APPPATH\Controllers\OrderController.php(434): view('cli/error_404')
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->paymentOrder()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 01:48:22 --> Undefined variable $code
+in APPPATH\Views\errors\cli\error_404.php on line 5.
+ 1 APPPATH\Views\errors\cli\error_404.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $code', 'C:\\laragon\\www\\coffee\\app\\Views\\errors\\cli\\error_404.php', 5)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\errors\\cli\\error_404.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('errors/cli/error_404', [], true)
+ 5 APPPATH\Controllers\OrderController.php(434): view('errors/cli/error_404')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->paymentOrder()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-06-10 10:07:09 --> mysqli_sql_exception: Unknown column 'tbl_orders.amountpaid' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4598): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->FiterReport()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-10 10:07:09 --> Unknown column 'tbl_orders.amountpaid' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`orderid`, `tbl_orders`.`CustomerID`, `tbl_orders`.`ProductID`, `tbl_orders`.`OrderID`, `tbl_orders`.`quantity`, `tbl_orders`.`size`, `tbl_orders`.`orderCode`, `tbl_orders`.`order_date`, `tbl_orders`.`total_amount`, `tbl_orders`.`amountpaid`, `tbl_orders`.`change_amount`, `product_tbl`.`prod_id`, `product_tbl`.`prod_name`, `product_tbl`.`prod_quantity`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_categ`
+FROM `tbl_orders`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tbl_orders`.`ProductID`
+WHERE `order_date` >= :order_date:
+AND `order_date` <= :order_date.1:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4598): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->FiterReport()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 10:23:22 --> Undefined array key "order_dat"
+in APPPATH\Views\admin\filteredDate.php on line 54.
+ 1 APPPATH\Views\admin\filteredDate.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "order_dat"', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\filteredDate.php', 54)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\filteredDate.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/filteredDate', [], true)
+ 5 APPPATH\Controllers\AdminController.php(4602): view('admin/filteredDate', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->FiterReport()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-06-10 11:37:45 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IS NULL
+AND DATE(order_date) < IS NULL' at line 4 in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tbl_ord...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_ord...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_ord...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_ord...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4598): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->FiterReport()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-10 11:37:45 --> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'IS NULL
+AND DATE(order_date) < IS NULL' at line 4
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_orders`.`orderid`, `tbl_orders`.`CustomerID`, `tbl_orders`.`ProductID`, `tbl_orders`.`OrderID`, `tbl_orders`.`quantity`, `tbl_orders`.`size`, `tbl_orders`.`orderCode`, `tbl_orders`.`order_date`, `tbl_orders`.`total_amount`, `tbl_orders`.`amount_paid`, `tbl_orders`.`change_amount`, `product_tbl`.`prod_id`, `product_tbl`.`prod_name`, `product_tbl`.`prod_quantity`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_categ`
+FROM `tbl_orders`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tbl_orders`.`ProductID`
+WHERE DATE(order_date) > IS NULL
+AND DATE(order_date) < IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4598): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->FiterReport()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 03:50:28 --> Class "Dompdf" not found
+in APPPATH\Controllers\AdminController.php on line 60.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\AdminController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 11:51:51 --> Call to undefined function App\Controllers\select()
+in APPPATH\Controllers\AdminController.php on line 4611.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->exportReport('2023-12-01', '2023-12-31')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 12:03:24 --> Class "App\Controllers\DateTime" not found
+in APPPATH\Controllers\AdminController.php on line 4636.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->exportReport('2023-12-01', '2023-12-31')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 12:04:37 --> Class "App\Controllers\DateTime" not found
+in APPPATH\Controllers\AdminController.php on line 4636.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->exportReport('2023-12-01', '2023-12-31')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-10 12:38:54 --> Class "App\Controllers\DateTime" not found
+in APPPATH\Controllers\AdminController.php on line 4628.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->exportReport('2024-5-01', '2024-5-30')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

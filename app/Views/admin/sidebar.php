@@ -15,6 +15,7 @@
     <link rel="shortcut icon" href="/assets/images/tea.png" />
     <link href="https://fontawesome.com/"/>
   </head>
+  
   <body>
     <div class="container-scroller">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -55,6 +56,16 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<?= site_url("Searchreport"); ?>">
+              <span class="menu-icon">
+                <i class="fa fa-solid fa-folder"></i>
+              </span>
+              <span class="menu-title">Report</span>
+            </a>
+          </li>
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= site_url("admininventory"); ?>">
               <span class="menu-icon">

@@ -1,0 +1,17 @@
+CRITICAL - 2024-06-09 14:04:06 --> Undefined property: App\Controllers\UserController::$lockoutMinutes
+in APPPATH\Controllers\UserController.php on line 241.
+ 1 APPPATH\Controllers\UserController.php(241): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\UserController::$lockoutMinutes', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 241)
+ 2 APPPATH\Controllers\UserController.php(217): App\Controllers\UserController->incrementLoginAttempts(Object(CodeIgniter\Session\Session))
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->login()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-09 15:21:51 --> CodeIgniter\HTTP\RedirectResponse::to(): Argument #1 ($uri) must be of type string, null given, called in C:\laragon\www\coffee\app\Controllers\VisualizationController.php on line 281
+in SYSTEMPATH\HTTP\RedirectResponse.php on line 32.
+ 1 APPPATH\Controllers\VisualizationController.php(281): CodeIgniter\HTTP\RedirectResponse->to(null)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->pdfReport()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

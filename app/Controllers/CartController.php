@@ -441,15 +441,18 @@ class CartController extends BaseController
       $response = curl_exec($curl);
       $decode = json_decode($response, TRUE);
       $err = curl_error($curl);
-      $reference_number = $decode['data']['attributes']['reference_number'];
-
-      $this->insertOrder($cartItems, $paymentMethod ,$reference_number);
   
       curl_close($curl);
   
       if ($err) {
           echo "cURL Error #:" . $err;
       } else {
+        if (isset($decode['data']['attributes']['reference_number'])) { 
+          $reference_number = $decode['data']['attributes']['reference_number'];
+          
+        $this->insertOrder($cartItems, $paymentMethod ,$reference_number);
+
+
           foreach($decode as $key => $value)
           {
 
@@ -459,6 +462,8 @@ class CartController extends BaseController
             }
 
       }
+    }
+
       }
       
       // public function updateorderWithReferenceNumber($reference_number)
@@ -498,12 +503,6 @@ class CartController extends BaseController
                                       ->where('ProductID', $item['ProductID'])
                                       ->first();
 
-              if ($existingOrder) {
-                // Product already exists, update the quantity
-                $newQuantity = $existingOrder['quantity'] + $item['quantity'];
-                $this->order->update(['quantity' => $newQuantity], ['id' => $existingOrder['id']]);
-            }
-            else {
             if($paymentMethod == "COD")
             {
               $oData[] = [
@@ -538,7 +537,6 @@ class CartController extends BaseController
                 'reference_number' => $reference_number,
                   ];
             }
-          }
 
           }
       

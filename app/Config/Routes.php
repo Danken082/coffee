@@ -178,13 +178,19 @@ $routes->get('/deletesandwich/(:any)', 'InventoryController::deletesandwich/$1')
 $routes->match(['get','post'], '/availablesand/', 'InventoryController::availabilitysandwich');
 $routes->match(['get', 'post'], '/unavailablesand/', 'InventoryController::Unavailablesandwich');
 
-$routes->match(['get', 'post'], 'report', 'VisualizationController::pdfReport');
+// $routes->match(['get', 'post'], 'report', 'VisualizationController::pdfReport');
 
 
 
 $routes->get('Notif', 'AdminController::Notification');
 
 $routes->get('rawNotif/(:any)', 'AdminController::notificationRaw/$1');
+
+
+//Report
+$routes->get('Searchreport', 'AdminController::Searchreport');
+$routes->get('filteredreport', 'AdminController::FiterReport');
+$routes->get('exportReport/(:any)/(:any)', 'AdminController::exportReport/$1/$2');
 
 }
 

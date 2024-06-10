@@ -18,6 +18,7 @@ use App\Models\TableModel;
 use App\Models\FeedbackModel;
 use App\Models\OrderModel;
 use App\Models\ItemsModel;
+
 use CodeIgniter\API\ResponseTrait;
 class AdminController extends BaseController
 {
@@ -34,7 +35,7 @@ class AdminController extends BaseController
     private $raw;
     private $connector;
     private $printer;
-
+    private $report;
     public function __construct(){
         require_once APPPATH. "libraries/vendor/autoload.php";
 
@@ -4545,15 +4546,17 @@ class AdminController extends BaseController
             $response = curl_exec($curl);
             $decode = json_decode($response, TRUE);
             $err = curl_error($curl);
-            $reference_number = $decode['data']['attributes']['reference_number'];
 
 
         
             curl_close($curl);
         
             if ($err) {
-                echo "cURL Error #:" . $err;
+                echo "cURL Error #:" . $err . "Please Check Your Internet Connection";
             } else {
+                 if (isset($decode['data']['attributes']['reference_number'])) { 
+            $reference_number = $decode['data']['attributes']['reference_number'];
+
                 foreach($decode as $key => $value)
                 {
     
@@ -4566,6 +4569,123 @@ class AdminController extends BaseController
     
             }
         }
+        }
+
+        public function Searchreport()
+        {
+            $data= [
+                'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+                'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            ];
+
+            return view('admin/SearchReport', $data);
+        }
         
-    
+        public function FiterReport()
+        {
+            $toDate = $this->request->getVar('toDate');
+            $fromDate = $this->request->getVar('fromDate');
+
+            
+            $data= [
+                'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+                'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')
+                ->where('item_categ', 'Raw Materials')->first(), 
+                'report' => $this->history->select('tbl_orders.orderid, tbl_orders.CustomerID, tbl_orders.ProductID, tbl_orders.OrderID, 
+                tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date, tbl_orders.total_amount, 
+                tbl_orders.amount_paid,tbl_orders.change_amount, product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity,
+                product_tbl.prod_mprice, product_tbl.prod_lprice, product_tbl.prod_categ,')
+                ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
+                ->where('DATE(order_date) >=', $toDate)->where('DATE(order_date) <=', $fromDate)->findAll(),
+                'toDate' => $toDate,
+                'fromDate' => $fromDate
+                
+                ];
+
+                // var_dump($data);
+            return view('admin/filteredDate', $data);
+        }
+
+        public function exportReport($toDate, $fromDate)
+        {
+            $dompdf = new \Dompdf\Dompdf();
+            $data["report"] =  $this->history->select('tbl_orders.orderid, tbl_orders.CustomerID, tbl_orders.ProductID, tbl_orders.OrderID, 
+                tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date, tbl_orders.total_amount, 
+                tbl_orders.amount_paid,tbl_orders.change_amount, product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity,
+                product_tbl.prod_mprice, product_tbl.prod_lprice, product_tbl.prod_categ,')
+                ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
+                ->where('DATE(order_date) >=', $toDate)->where('DATE(order_date) <=', $fromDate)
+                ->orderBy('DATE(order_date)','ASC')->findAll();
+        
+            // Initialize HTML string
+            $html = "<html>
+            <head>
+
+                <style>
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        table-layout: fixed;
+                    }
+                    th, td {
+                        padding: 8px;
+                        text-align: left;
+                        border-bottom: 1px solid #ddd;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                    th {
+                        background-color: #f2f2f2;
+                        font-weight: bold;
+                    }
+                    .scrollable {
+                        max-height: 300px; /* Adjust as needed */
+                        overflow-y: auto;
+                    }
+                </style>
+            </head>
+            <body>
+            
+            <!--dne lang naman ilalagay yun
+
+            Hello World
+
+            -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Product Quantity</th>
+                            <th>Product Size</th>
+                            <th>Order Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class='scrollable'>"; // Add the 'scrollable' class to the tbody for scrolling
+        
+        // Loop through the report data and add rows to the table
+        foreach ($data["report"] as $report) {
+            $html .= "<tr>";
+            $html .= "<td>" . htmlspecialchars($report['prod_name']) . "</td>"; // Use htmlspecialchars to escape special characters
+            $html .= "<td>" . htmlspecialchars($report['prod_quantity']) . "</td>";
+            $html .= "<td>" . htmlspecialchars($report['size']) . "</td>";
+            $html .= "<td>" . (new \DateTime($report['order_date']))->format('F j, Y - H:i:s') . "</td>";
+            $html .= "</tr>";
+        }
+        
+        $html .= "</tbody></table></body></html>";
+               
+            // Load HTML content into Dompdf
+            $dompdf->loadHtml($html);
+        
+            // Set paper size and orientation
+            $dompdf->setPaper('A4', 'portrait');
+        
+            // Render PDF
+            $dompdf->render();
+        
+            // Output PDF to browser
+            $dompdf->stream('Sales in '.(new \DateTime($toDate))->format('F j, Y'). ' - ' .(new \DateTime($fromDate))->format('F j, Y'));
+        }
+                  
 }
