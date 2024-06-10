@@ -4646,12 +4646,10 @@ class AdminController extends BaseController
                 </style>
             </head>
             <body>
-            
-            <!--dne lang naman ilalagay yun
-
-            Hello World
-
-            -->
+            <div class='Contain' style='text-align: center;'>
+            <p>Crossroads Coffee And Deli</p>
+            <p>Sales in ".(new \DateTime($toDate))->format('F j, Y'). ' - '. (new \DateTime($fromDate))->format('F j, Y')."</p>
+        </div>
                 <table>
                     <thead>
                         <tr>
@@ -4662,7 +4660,7 @@ class AdminController extends BaseController
                         </tr>
                     </thead>
                     <tbody class='scrollable'>"; // Add the 'scrollable' class to the tbody for scrolling
-        
+        if(!empty($data['report'])){
         // Loop through the report data and add rows to the table
         foreach ($data["report"] as $report) {
             $html .= "<tr>";
@@ -4671,6 +4669,10 @@ class AdminController extends BaseController
             $html .= "<td>" . htmlspecialchars($report['size']) . "</td>";
             $html .= "<td>" . (new \DateTime($report['order_date']))->format('F j, Y - H:i:s') . "</td>";
             $html .= "</tr>";
+        }
+        }
+        else {
+            $html .="<p>No Data Found</p>";
         }
         
         $html .= "</tbody></table></body></html>";
