@@ -1,0 +1,55 @@
+CRITICAL - 2024-06-16 14:24:02 --> Undefined variable $item
+in APPPATH\Views\user\cart.php on line 38.
+ 1 APPPATH\Views\user\cart.php(38): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $item', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php', 38)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 5 APPPATH\Controllers\CartController.php(127): view('/user/cart', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-16 14:24:04 --> Undefined variable $item
+in APPPATH\Views\user\cart.php on line 38.
+ 1 APPPATH\Views\user\cart.php(38): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $item', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php', 38)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 5 APPPATH\Controllers\CartController.php(127): view('/user/cart', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-16 14:25:19 --> Undefined array key "id"
+in APPPATH\Views\user\cart.php on line 39.
+ 1 APPPATH\Views\user\cart.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php', 39)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 5 APPPATH\Controllers\CartController.php(127): view('/user/cart', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-16 14:28:27 --> Undefined array key "prod_mprice"
+in APPPATH\Controllers\CartController.php on line 573.
+ 1 APPPATH\Controllers\CartController.php(573): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "prod_mprice"', 'C:\\laragon\\www\\coffee\\app\\Controllers\\CartController.php', 573)
+ 2 APPPATH\Controllers\CartController.php(554): App\Controllers\CartController->newQuantity([...], '150')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->addQuantity('150')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-16 15:34:21 --> syntax error, unexpected identifier "spark", expecting "," or ";"
+in APPPATH\Views\user\mainhome.php on line 200.
+ 1 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/mainhome', [], true)
+ 3 APPPATH\Controllers\UserController.php(275): view('/user/mainhome', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->mainhome()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

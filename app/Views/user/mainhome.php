@@ -78,7 +78,7 @@
 						</div>
 						<div class="book p-4">
 							<h3>Book a Table</h3>
-							<form id="reservation-form" action="<?= base_url('/GoToProducts')?>" method ="post" class="appointment-form">
+							<form id="reservation-form" action="<?= base_url('GoToProducts')?>" method ="post" class="appointment-form">
 								<div class="d-md-flex">
 									<div class="form-group">
 										<input type="text" disabled name="LastName" class="form-control" value="<?= session()->get('LastName')?>">
@@ -94,17 +94,12 @@
 									<div class="form-group">
 										<div class="input-wrap">
 											<label for="table reservation" style="color:white;">Date & Time</label>
-											<input type="datetime-local" required id="reservation-date" name="EventDate" class="form-control datetimepicker">
+											<input type="datetime-local" id="reservation-date" name="apppointmentDate" class="form-control datetimepicker">
 										</div>
 		    						</div>
-									
 									<div class="form-group ml-md-4">
 										<input type="text" name="ContactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
 									</div>
-									<div class="form-group ml-md-4">
-										<input type="text" name="EventTitle" class="form-control" placeholder="Event Title">
-									</div>
-							
 									<div class="form-group ml-md-4">
 										<select name="HCustomer" class="booktable form-control" align-text="center" style="font:black;">
 											<option selected disabled>Count Of Persons</option>
@@ -197,7 +192,7 @@
 							<div class="heading-section text-md-right ftco-animate">
 								<span class="subheading">Discover</span>
 								<h2 class="mb-4">Our Menu</h2>
-								<p><a href="<?= site_url("/mainmenu"); ?>" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+								<p><a href="<?= ("site_urphp spark serevvemainmenu"); ?>" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
 							</div>
     					</div>
 						<div class="col-md-6">
