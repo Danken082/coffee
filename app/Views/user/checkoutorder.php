@@ -6,17 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
 	<link rel="stylesheet" href="/assets/css/preloader.css">
+	<link rel="stylesheet" href="/assets/css/checkout.css">
   </head>
   <body>
-	<style>
-		.categ{
-			color: white;
-		}
-		.tagcloud{
-			color: white;
-		}
-	</style>
-
 	<div id="preloader"></div>
     <section class="home-slider owl-carousel">
       	<div class="slider-item" style="background-image: url(/assets/images/hmpg4.jpg);" data-stellar-background-ratio="0.5">
@@ -85,12 +77,10 @@
 								<input type="hidden" name="quantity" value="<?= $quantity?>">
 								<input type="hidden" name="size" value="<?= $size?>">
 								<input type="hidden" name="total" value="<?= $total?>">
-								
 								<button type="submit" class="btn btn-primary py-3 px-4">Place to Order</button>
 							</div>
-		
+						</div>
 					</form>
-	          
 				    <div class="row mt-5 pt-3 d-flex">
 	          			<div class="col-md-6 d-flex">
 						  	<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
@@ -99,12 +89,11 @@
 								<hr>
 								<p class="d-flex">
 		    						<span>Total</span>
-		    						<span>₱ <?= $total?></span>
+		    						<span>₱ <?= $total?>.00</span>
 		    					</p>
 		    					<p class="d-flex">
 							</div>
 	          			</div>
-
 						<div class="col-md-6"></div>
 	          		</div>
           		</div>
@@ -130,8 +119,8 @@
 					</div>
 
 					<div class="sidebar-box ftco-animate">
-						<h3>Tag Cloud</h3>
 						<div class="tagcloud">
+						<h3>Tag Cloud</h3>
 							<a class="tag-cloud-link">Dish</a>
 							<a class="tag-cloud-link">Menu</a>
 							<a class="tag-cloud-link">Food</a>
@@ -151,14 +140,6 @@
 	<?php include('mainheader.php'); ?>
 	<?php include('footer.php'); ?>
 
-	<script>
-		var loader = document.getElementById("preloader");
-
-		window.addEventListener("load", function () {
-			setTimeout(function () {
-				loader.style.display = "none";
-			}, 1500);
-		});
-	</script>
+	<script src="/assets/js/preloader.js"></script>
   </body>
 </html>

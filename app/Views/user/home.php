@@ -71,7 +71,7 @@
 									<div class="icon"><span class="icon-clock-o"></span></div>
 									<div class="text">
 										<h3>Open Monday - Sunday</h3>
-										<p>10:00 AM - 10:00 PM</p>
+										<h3>10:00 AM - 10:00 PM</h3>
 									</div>
 								</div>
 							</div>
@@ -125,18 +125,19 @@
 
 			<section class="ftco-about d-md-flex">
 				<div class="one-half img" style="background-image: url(/assets/images/bgimg2.jpg);"></div>
-					<div class="one-half ftco-animate">
-						<div class="overlap">
-							<div class="heading-section ftco-animate ">
-								<span class="subheading">Discover</span>
-								<h2 class="mb-4">Our Story</h2>
-							</div>
+				<div class="one-half ftco-animate">
+					<div class="overlap">
+						<div class="heading-section ftco-animate ">
+							<span class="subheading">Discover</span>
+							<h2 class="mb-4">Our Story</h2>
+						</div>
 						<div>
 							<p style="color:white">The Crossroad Coffee and Deli draws its inspiration from the concept of intersecting paths, which is reflected in its name. 
-							This establishment came into being during the height of the pandemic, a challenging time for many. Despite the difficult circumstances, it quickly gained popularity, 
-							largely due to the exceptional quality and taste of the items on its menu. The café offers a diverse range of delicious options that cater to various tastes, making it a 
-							favorite spot for many.
-							 The story of its creation and subsequent success highlights the resilience and creativity that can flourish even in the most trying times.</p>
+								This establishment came into being during the height of the pandemic, a challenging time for many. Despite the difficult circumstances, it quickly gained popularity, 
+								largely due to the exceptional quality and taste of the items on its menu. The café offers a diverse range of delicious options that cater to various tastes, making it a 
+								favorite spot for many.
+								The story of its creation and subsequent success highlights the resilience and creativity that can flourish even in the most trying times.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -349,14 +350,6 @@
 			<?php include('header.php'); ?>
 			<?php include('footer.php'); ?>
 
-			<script>
-				var loader = document.getElementById("preloader");
-
-				window.addEventListener("load", function () {
-					setTimeout(function () {
-						loader.style.display = "none";
-					}, 1500);
-				});
-			</script>
+			<script src="/assets/js/preloader.js"></script>
   	</body>
 </html>

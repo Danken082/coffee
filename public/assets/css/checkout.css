@@ -1,0 +1,16 @@
+.categ{
+    color: white;
+}
+.tagcloud{
+    color: white;
+}
+
+@media (min-width: 100px) and (max-width: 884px) {
+    .sidebar .sidebar-box .categ {
+        display: none;
+    }
+
+    .sidebar .sidebar-box .tagcloud {
+        display: none;
+    }
+}

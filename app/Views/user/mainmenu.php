@@ -213,5 +213,6 @@
 		});
 	</script>
 
+	<script src="/assets/js/preloader.js"></script>
   	</body>
 </html>

@@ -4,6 +4,7 @@ body {
     padding: 0;
     background: url(/assets/images/bg4.jpg);
 }
+
 .container {
     max-width: 600px;
     margin: 50px auto;
@@ -13,32 +14,39 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+
 h2 {
     margin-top: 0;
     color: #663300;
 }
+
 .product-name h3 {
     color: #663300;
     margin-bottom: 15px;
 }
+
 .feedback-display {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 15px;
 }
+
 .feedback-display .emoji {
     font-size: 50px;
 }
+
 .feedback-display .feedback-text {
     font-size: 20px;
     color: #663300;
     margin-top: 10px;
 }
+
 form {
     display: flex;
     flex-direction: column;
 }
+
 input[type="text"],
 textarea {
     margin-bottom: 15px;
@@ -46,29 +54,36 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 textarea {
     resize: vertical;
 }
+
 .rating {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
 }
+
 .rating input {
     display: none;
 }
+
 .rating label {
     font-size: 30px;
     color: #ccc;
     cursor: pointer;
 }
+
 .rating label:before {
     content: '\2605';
 }
+
 .rating input:checked ~ label {
     color: #663300;
 }
+
 .rating input#star1:checked ~ label:nth-of-type(-n+1),
 .rating input#star2:checked ~ label:nth-of-type(-n+2),
 .rating input#star3:checked ~ label:nth-of-type(-n+3),
@@ -76,6 +91,7 @@ textarea {
 .rating input#star5:checked ~ label:nth-of-type(-n+5) {
     color: #663300;
 }
+
 button[type="submit"] {
     padding: 10px 20px;
     background-color: #663300;
@@ -85,16 +101,76 @@ button[type="submit"] {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 button[type="submit"]:hover {
     background-color: #996633;
 }
-.back-button {
-    display: block;
-    text-align: center;
+
+.back-button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
     margin-top: 15px;
-    color: white;
-    text-decoration: none;
 }
+
+.back-button {
+    text-align: center;
+    color: #D4AF37; 
+    text-decoration: none;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #996633; 
+    padding: 10px 20px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: transparent; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .back-button:hover {
-    text-decoration: underline;
+    background-color: #663300;
+    color: white; 
+    text-decoration: none; 
+}
+
+.back-button:active {
+    transform: scale(0.98); 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); 
+}
+
+
+@media (min-width: 100px) and (max-width: 374px) {
+    .container {
+        max-width: 250px;
+        margin-top: 150px;
+        margin-bottom: 50px;
+    }
+    h2{
+        font-size: 25px;
+    }
+
+    .feedback-display .feedback-text{
+        font-size: 15px;
+    }
+
+    .back-button{
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 430px) {
+    .container {
+        max-width: 350px;
+        margin-top: 170px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (min-width: 768px) and ( max-width: 1270px) {
+    .container {
+        max-width: 500px;
+        margin-top: 170px;
+        margin-bottom: 50px;
+    }
 }
