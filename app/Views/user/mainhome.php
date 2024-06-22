@@ -100,20 +100,18 @@
 									<div class="form-group ml-md-4">
 										<input type="text" name="ContactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
 									</div>
-									<div class="form-group ml-md-4">
-										<select name="HCustomer" class="booktable form-control" align-text="center" style="font:black;">
+									<div class="form-group ml-md-4 selector">
+										<select name="HCustomer" class="booktable form-control custom-select" align-text="center" style="font:black;">
 											<option selected disabled>Count Of Persons</option>
-											<option value="1">1 Customer</option>
-											<option value="2">2 Customer</option>
-											<option value="3">3 Customer</option>
-											<option value="4">4 Customer</option>
-											<option value="5">5 Customer</option>
-											<option value="6">6 Customer</option>
-											<option value="7">7 Customer</option>
-											<option value="8">8 Customer</option>
-
+											<option value="1-3">1-3 Persons</option>
+											<option value="1-8">1-8 Persons</option>
+											<option value="1-13">1-13 Persons</option>
+											<option value="1-18">1-18 Persons</option>
+											<option value="1-23">1-23 Persons</option>
+											<option value="1-30">1-30 Persons</option>
+											
 										</select>
-									</div>
+								</div>
 								</div>
 								<div class="d-md-flex">
 									<div class="form-group">

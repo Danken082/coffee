@@ -7,6 +7,7 @@
 		<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
 		<link rel="stylesheet" href="/assets/css/preloader.css">
 		</head>
+
 		<body>	
 			<div id="preloader"></div>
 			<section class="home-slider owl-carousel">
@@ -78,16 +79,16 @@
 						</div>
 						<div class="book p-4">
 							<h3>Book a Table</h3>
-							<form action="<?= base_url('reservation')?>" method ="post" class="appointment-form">
+							<form action="<?= base_url('/login')?>" class="appointment-form">
 								<div class="d-md-flex">
 									<div class="form-group">
-										<input type="text" name="LastName" class="form-control" placeholder="Lastname" required>
+										<input type="text" name="LastName" class="form-control" placeholder="Lastname">
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="text" name="FirstName" class="form-control" placeholder="Firstname" required>
+										<input type="text" name="FirstName" class="form-control" placeholder="Firstname">
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="text" name="Email"class="form-control" placeholder="Email" required>
+										<input type="text" name="Email"class="form-control" placeholder="Email">
 									</div>
 								</div>
 								<div class="d-md-flex">
@@ -98,13 +99,18 @@
 										</div>
 		    						</div>
 									<div class="form-group ml-md-4">
-										<input type="text" name="ContactNo" class="form-control" placeholder="Phone Number" required>
+										<input type="text" name="ContactNo" class="form-control" placeholder="Phone Number">
 									</div>
-									<div class="form-group ml-md-4">
-										<select name="TableType"class="booktable" >
-											<option selected disabled>Table Type</option>
-											<option value="Triple">Triple</option>
-											<option value="Tropa_size">Tropa Size</option>
+									<div class="form-group ml-md-4 selector">
+										<select name="HCustomer" class="booktable form-control custom-select" align-text="center" style="font:black;">
+											<option selected disabled>Count Of Persons</option>
+											<option value="1-3">1-3 Persons</option>
+											<option value="1-8">1-8 Persons</option>
+											<option value="1-13">1-13 Persons</option>
+											<option value="1-18">1-18 Persons</option>
+											<option value="1-23">1-23 Persons</option>
+											<option value="1-30">1-30 Persons</option>
+											
 										</select>
 									</div>
 								</div>
@@ -114,7 +120,7 @@
 										<textarea name="message" max-length="60" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
 									</div>
 									<div class="form-group ml-md-4">
-										<input type="submit" value="Reserve" class="btn btn-white py-3 px-4">
+										<input type="submit" value="Login to Reserve" class="btn btn-white py-3 px-4">
 									</div>
 								</div>
 	    					</form>
@@ -191,7 +197,7 @@
 							<div class="heading-section text-md-right ftco-animate">
 								<span class="subheading">Discover</span>
 								<h2 class="mb-4">Our Menu</h2>
-								<p><a href="<?= site_url("/mainmenu"); ?>" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+								<p><a href="<?= site_url("user/menu"); ?>" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
 							</div>
     					</div>
 						<div class="col-md-6">

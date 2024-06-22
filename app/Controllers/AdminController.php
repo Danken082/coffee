@@ -117,7 +117,7 @@ class AdminController extends BaseController
              'change_amount' => $change,
           ];
 
-
+ 
 
          $coffee = $this->raw->where('rawID', '9')->first();
          $milk = $this->raw->where('rawID', '10')->first();
@@ -1984,7 +1984,7 @@ class AdminController extends BaseController
          log_message('error', 'No row found for rawID = 9');
      }
      
-         
+
        }
        $this->printer->text("------------------------------\n");
        $this->printer->text( $DineTake . "\n");

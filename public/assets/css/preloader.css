@@ -35,3 +35,43 @@
         background-size: 100%;
     }
 }
+
+/* Custom styling for the select dropdown */
+.custom-select {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.custom-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    outline: none;
+}
+
+.custom-select option {
+    font-size: 16px;
+    color: #333;
+}
+
+.form-group {
+    margin: 20px 0;
+}
+
+/* Adjust alignment for centered text in the dropdown */
+.custom-select {
+    text-align-last: center; /* For modern browsers */
+}
+
+.selector select {
+    text-align: center;
+    text-align-last: center;
+}
