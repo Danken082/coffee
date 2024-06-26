@@ -2099,51 +2099,105 @@ class AdminController extends BaseController
 
     public function googleAuthLogin()
     {
-        $token = $this->googleClient->fetchAccessTokenWithAuthCode($this->request->getVar('code'));
-
-        if(!isset($token['error']))
-        {
-
+        // Start the session
+        $session = session();
+    
+        try {
+            $code = $this->request->getVar('code');
+            if (!$code) {
+                $session->set('error', 'Authorization code not found');
+                return redirect()->to('/');
+            }
+    
+            $token = $this->googleClient->fetchAccessTokenWithAuthCode($code);
+            if (isset($token['error'])) {
+                throw new Exception('Error fetching access token: ' . $token['error']);
+            }
+    
             $this->googleClient->setAccessToken($token['access_token']);
-            session()->set("AccessToken", $token['access_token']);
-
+            $session->set("AccessToken", $token['access_token']);
+    
             $googleService = new \Google_Service_Oauth2($this->googleClient);
             $data = $googleService->userinfo->get();
             $currentDateTime = date("Y-m-d H:i:s");
-            // echo "<pre>"; print_r($data);die;
-            if($this->usr->isAlreadyRegistered($data['id']))
-            {
+    
+            $user = $this->usr->where('email', $data['email'])->first();
+            $userdata = [];
+            if ($user) {
+                // User already exists, update their data
                 $userdata = [
                     'FirstName' => $data['givenName'],
-                    'email' =>  $data['email'],
+                    'email' => $data['email'],
                     'UpdatedAt' => $currentDateTime
-
                 ];
-
                 $this->usr->updateUserData($data['id'], $userdata);
-            }
-            else{
+    
+                // Prepare session data
+                $ses_data = [
+                    'UserID' => $user['UserID'],
+                    'LastName' => $user['LastName'],
+                    'FirstName' => $user['FirstName'],
+                    'UserRole' => $user['UserRole'],
+                    'birthdate' => $user['birthdate'],
+                    'email' => $user['email'],
+                    'profile_img' => $user['profile_img'],
+                    'Username' => $user['Username'],
+                    'Password' => $user['Password'],
+                    'ContactNo' => $user['ContactNo'],
+                    'gender' => $user['gender'],
+                    'address' => $user['address'],
+                    'isLoggedIn' => TRUE
+                ];
+            } else {
+                // New user, insert their data
                 $userdata = [
                     'code' => $data['id'],
                     'FirstName' => $data['givenName'],
-                    'LastName' => $data['familyName'],
-                    'email' =>  $data['email'],
+                    'LastName' => $data['familyName'] ?? " ",
+                    'profile_img' => 'profile.png',
+                    'birthdate' => '1999-12-04',
+                    'email' => $data['email'],
                     'CreatedAt' => $currentDateTime
-
                 ];
-
                 $this->usr->insertUserData($userdata);
+                
+                // Fetch the newly inserted user data
+                $user = $this->usr->where('email', $data['email'])->first();
+                if ($user) {
+                    $ses_data = [
+                        'UserID' => $user['UserID'],
+                        'LastName' => $user['LastName'],
+                        'FirstName' => $user['FirstName'],
+                        'UserRole' => $user['UserRole'],
+                        'birthdate' => $user['birthdate'],
+                        'email' => $user['email'],
+                        'profile_img' => $user['profile_img'],
+                        'Username' => $user['Username'],
+                        'Password' => $user['Password'],
+                        'ContactNo' => $user['ContactNo'],
+                        'gender' => $user['gender'],
+                        'address' => $user['address'],
+                        'isLoggedIn' => TRUE
+                    ];
+                } else {
+                    throw new Exception('Error fetching newly inserted user data');
+                }
             }
-            session()->set("LoddgeUserData", $userdata);
-
-        }
-        else{
-            session()->set('error', 'Something went Wrong');
+    
+            // Set session data
+            $session->set($ses_data);
+            $session->set("LoddgeUserData", $userdata);
+    
+            return redirect()->to('mainhome');
+    
+        } catch (Exception $e) {
+            // Log the error for debugging
+            log_message('error', $e->getMessage());
+            $session->set('error', 'Something went wrong: ' . $e->getMessage());
             return redirect()->to('/');
         }
-        return redirect()->to('mainhome');
-
     }
+    
     public function home(){
         $data= [
             'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),

@@ -50,10 +50,15 @@ class UserModel extends Model
     {
         return $this->getWhere(['code' => $authid])->getRowArray() > 0 ? true : false;
     }
-    public function updateUserData($userdata, $authid)
+    public function updateUserData($authid, $userdata)
     {
+<<<<<<< Updated upstream
         $this->where('code', $authid)->set($userdata)->update();
     }    
+=======
+       return $this->update( $userdata, ['code' => $authid],);
+    }
+>>>>>>> Stashed changes
     public function insertUserData($userdata)
     {
        $this->insert($userdata);

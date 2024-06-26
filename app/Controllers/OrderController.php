@@ -221,7 +221,6 @@ class OrderController extends BaseController
     {
         $session = session();
         $user = $session->get('UserID');
-
         $cartItems = $this->crt->where('CustomerID', $user)->findAll();
 
         $cartItemCount = count($cartItems);
@@ -232,7 +231,7 @@ class OrderController extends BaseController
         ];
 
 
-        $user = session()->get('UserID');
+
         $data['order'] = $this->order->select('order.orderID, order.CustomerID, order.ProductID, 
         order.paymentStatus, order.orderType, order.orderDate, order.total, order.quantity, order.size,
         order.barcode, order.orderStatus, product_tbl.prod_id, product_tbl.prod_img, product_tbl.prod_name, 
@@ -433,7 +432,7 @@ class OrderController extends BaseController
         echo "cURL Error #:" . $err . " Please Check Your Internet Connection";
     } 
     else {
-        if (isset($decode['data']['attributes']['reference_number'])) {
+        if (isset($decode['data']['attributes']['reference_number'])) { 
             $reference_number = $decode['data']['attributes']['reference_number'];
 
             $data = [

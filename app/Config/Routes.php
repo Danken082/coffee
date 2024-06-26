@@ -10,7 +10,7 @@ $routes->get('/dailysales', 'VisualizationController::dailySales');
 $routes->get('/monthlysales', 'VisualizationController::initMonthChart');
 $routes->get('/yearsales', 'VisualizationController::initYearChart');
 $routes->get('/login', 'AdminController::login',['filter'=>'guestFilter']);
-$routes->match(['get', 'post'], '/GoogleloginAuth', 'AdminController::googleAuthLogin');
+$routes->get('/GoogleloginAuth', 'AdminController::googleAuthLogin',['filter'=>'guestFilter']);
 $routes->post('/adminregister', 'UserController::register');
 $routes->post('/loginAuth', 'UserController::login', ['filter'=>'guestFilter']);
 $routes->get('/logout', 'AdminController::logout', ['filter'=>'authFilter']);
