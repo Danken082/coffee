@@ -38,9 +38,10 @@
                         <table class="table">
                             <thead class="thead-primary">
                                 <tr class="text-center">
-                                    <th><input type="checkbox" id="selectAll" onclick="selectAllItems()"></th>
+                                    <th></th>
                                     <th>Image</th>
                                     <th>Product</th>
+                                    <th>Size</th>
                                     <th>Price</th>
                                     <th>Total Quantity</th>
                                     <th>Total Price</th>
@@ -48,38 +49,42 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php foreach($myCart as $item):?>
+                            <?php foreach($myCart as $index => $item):?>
                                 <tr class="text-center">
-                                    <td><input type="checkbox" name="items[]" value="<?= $item['id']?>" class="item-checkbox"></td>
+                                    <td><input type="checkbox" name="items[]" value="<?= $index ?>" class="item-checkbox"></td>
                                     <td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>"></td>
                                     <td class="product-name">
                                         <h3><?= $item['prod_name']?></h3>
                                     </td>
-                                    <?php if($item['size'] === 'Medium'):?>
-                                        <td class="price">₱ <?= $item['prod_mprice']?></td>
-                                    <?php elseif($item['size'] === 'Large'):?>
-                                        <td class="price">₱ <?= $item['prod_lprice']?></td>
-                                    <?php else:?>
-                                        <td class="price">Check your size</td>
-                                    <?php endif;?>
+                                    <td>
+                                        <?php if($item['prod_lprice'] > 0): ?>
+                                            <select name="size" class="size-selector" data-index="<?= $index ?>" data-medium-price="<?= $item['prod_mprice'] ?>" data-large-price="<?= $item['prod_lprice'] ?>" onchange="updateSizePrice(this)">
+                                                <option value="Medium" <?= $item['size'] === 'Medium' ? 'selected' : '' ?>>Medium</option>
+                                                <option value="Large" <?= $item['size'] === 'Large' ? 'selected' : '' ?>>Large</option>
+                                            </select>
+                                        <?php else: ?>
+                                        <?php endif; ?>
+                                    </td>
+                                    <?php $price = $item['size'] === 'Medium' ? $item['prod_mprice'] : ($item['size'] === 'Large' ? $item['prod_lprice'] : 0); ?>
+                                    <td class="price" id="price-<?= $index ?>">₱ <?= number_format($price, 2) ?></td>
                                     <td class="quantity">
                                         <div class="input-group mb-3">
-                                            <input type="number" disabled name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100">
-                                            <form action="<?= base_url('addQuantity/' .$item['id'])?>" method="post" class="update-quantity-form">
-                                                <input type="hidden" name="mprice" value="<?= $item['prod_mprice']?>">
-                                                <input type="hidden" name="lprice" value="<?= $item['prod_lprice']?>">
-                                                <input type="hidden" name="cartID" value="<?= $item['id']?>">
-                                                <input type="number" min="1" name="newquantity" id="quantity-<?= $item['id']?>" class="quantity form-control input-number">
-                                                <small><button type="submit">Add</button></small>
-                                            </form>
+                                            <button type="button" class="decrement" data-index="<?= $index ?>" onclick="decreaseQuantity(this)">-</button>
+                                            <input type="number" disabled name="quantity" class="quantity form-control input-number" value="<?= $item['quantity']?>" min="1" max="100" id="quantity-<?= $index ?>">
+                                            <button type="button" class="increment" data-index="<?= $index ?>" onclick="increaseQuantity(this)">+</button>
                                         </div>
                                     </td>
-                                    <td class="total">₱ <?= $item['total']?></td>
-                                    <td class="product-remove"><a href="<?= base_url('/removetocart/') .$item['id']?>" onclick="return confirm('Are you sure you want to remove this from your cart?')"><span class="icon-close"></span></a></td>
+                                    <td class="total">₱ <span id="total-price-<?= $index ?>"><?= number_format($price * $item['quantity'], 2) ?></span></td>
+                                    <td class="product-remove">
+                                        <a href="<?= base_url('/removetocart/') .$item['id']?>" onclick="return confirm('Are you sure you want to remove this from your cart?')">
+                                            <span class="icon-close"></span>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php endforeach;?>
                             </tbody>
                         </table>
+                        <?php include('cartmobile.php'); ?>
                         <div class="row justify-content-end">
                             <div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
                                 <div class="cart-total mb-3">
@@ -117,59 +122,14 @@
 <?php include('mainheader.php'); ?>
 <?php include('footer.php'); ?>
 
-<script>
-function selectAllItems() {
-    var selectAllCheckbox = document.getElementById("selectAll");
-    var itemCheckboxes = document.querySelectorAll(".item-checkbox");
-    itemCheckboxes.forEach(function (checkbox) {
-        checkbox.checked = selectAllCheckbox.checked;
-    });
-    calculateTotal();
-}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/assets/js/preloader.js"></script>
+<script src="/assets/js/payment.js"></script>
+<script src="/assets/js/totalquantity.js"></script>
+<script src="/assets/js/checkbox.js"></script>
+<script src="/assets/js/updateprice.js"></script>
 
-document.querySelectorAll('.item-checkbox').forEach(function (checkbox) {
-    checkbox.addEventListener('change', calculateTotal);
-});
-
-function calculateTotal() {
-    var total = 0;
-    document.querySelectorAll('.item-checkbox:checked').forEach(function (checkbox) {
-        var row = checkbox.closest('tr');
-        var itemTotal = parseFloat(row.querySelector('.total').innerText.replace('₱', '').trim());
-        total += itemTotal;
-    });
-    document.getElementById('cart-total').innerText = '₱ ' + total.toFixed(2);
-    document.getElementById('total-amount').value = total.toFixed(2);
-    var grandTotal = total + 50; // Assuming delivery charge is ₱50
-    document.getElementById('grand-total').innerText = '₱ ' + grandTotal.toFixed(2);
-    checkPaymentMethod();
-}
-
-function checkPaymentMethod() {
-    var paymentMethod = document.querySelector('.paymentMethodSelector').value;
-    var placeOrderButton = document.getElementById('placeorder');
-    if (!paymentMethod || paymentMethod === 'Select Type Of Payment') {
-        placeOrderButton.disabled = true;
-    } else {
-        placeOrderButton.disabled = false;
-    }
-}
-
-window.addEventListener("load", function () {
-    setTimeout(function () {
-        document.getElementById("preloader").style.display = "none";
-    }, 1500);
-    // Call checkPaymentMethod on page load
-    checkPaymentMethod();
-});
-
-document.querySelectorAll('input[name="newquantity"]').forEach(function (input) {
-    input.addEventListener("input", function(event) {
-        this.value = this.value.replace(/[^0-9]/g, '');
-    });
-});
-
-document.querySelector('.paymentMethodSelector').addEventListener('change', checkPaymentMethod);
-</script>
 </body>
 </html>

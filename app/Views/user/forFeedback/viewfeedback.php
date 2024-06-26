@@ -38,7 +38,7 @@
         <a href="<?= base_url('mainshop') ?>" class="back-button">Back</a>
         <div class="feedback-grid">
             <?php if (empty($feedback)): ?>
-                <p style="color:black; font-size: 20px;">No one has given feedback on this product.</p>
+                <p style="color:white; font-size: 20px;">No one has given feedback on this product.</p>
             <?php else: ?>
                 <?php foreach($feedback as $customerComment): ?>
                     <div class="feedback-item">
@@ -49,7 +49,7 @@
                                 <script>
                                     document.write(maskUsername('<?= htmlspecialchars($customerComment['Username']) ?>'));
                                 </script>
-                                <span class="verified">✔</span>
+                                <span class="verified">✅</span>
                             </p>
                             <p class="date"><?= htmlspecialchars(date('M d, Y', strtotime($customerComment['created_at']))) ?></p>
                         </div>

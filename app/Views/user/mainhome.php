@@ -10,7 +10,7 @@
 		<body>	
 			<div id="preloader"></div>
 			<section class="home-slider owl-carousel">
-				<div class="slider-item" style="background-image: url(/assets/images/bgimg1.jpg);">
+				<div class="slider-item d-flex" style="background-image: url(/assets/images/bgimg1.jpg);">
 					<div class="overlay"></div>
 					<div class="container">
 						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -23,7 +23,7 @@
 					</div>
 				</div>
 
-				<div class="slider-item" style="background-image: url(/assets/images/bgimg4.jpg);">
+				<div class="slider-item d-flex" style="background-image: url(/assets/images/bgimg4.jpg);">
 					<div class="overlay"></div>
 					<div class="container">
 						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -36,7 +36,7 @@
 					</div>
 				</div>
 
-				<div class="slider-item" style="background-image: url(/assets/images/bgimg5.jpg);">
+				<div class="slider-item d-flex" style="background-image: url(/assets/images/bgimg5.jpg);">
 					<div class="overlay"></div>
 					<div class="container">
 						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -71,7 +71,7 @@
 									<div class="icon"><span class="icon-clock-o"></span></div>
 									<div class="text">
 										<h3>Open Monday - Sunday</h3>
-										<p>10:00 AM - 10:00 PM</p>
+										<h3>10:00 AM - 10:00 PM</h3>
 									</div>
 								</div>
 							</div>
@@ -130,14 +130,18 @@
 
 			<section class="ftco-about d-md-flex">
 				<div class="one-half img" style="background-image: url(/assets/images/bgimg2.jpg);"></div>
-					<div class="one-half ftco-animate">
-						<div class="overlap">
-							<div class="heading-section ftco-animate ">
-								<span class="subheading">Discover</span>
-								<h2 class="mb-4">Our Story</h2>
-							</div>
+				<div class="one-half ftco-animate">
+					<div class="overlap">
+						<div class="heading-section ftco-animate ">
+							<span class="subheading">Discover</span>
+							<h2 class="mb-4">Our Story</h2>
+						</div>
 						<div>
-							<p style="color:white">On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+							<p style="color:white">The Crossroad Coffee and Deli draws its inspiration from the concept of intersecting paths, which is reflected in its name. 
+								This establishment came into being during the height of the pandemic, a challenging time for many. Despite the difficult circumstances, it quickly gained popularity, 
+								largely due to the exceptional quality and taste of the items on its menu. The café offers a diverse range of delicious options that cater to various tastes, making it a 
+								favorite spot for many. The story of its creation and subsequent success highlights the resilience and creativity that can flourish even in the most trying times.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -190,7 +194,7 @@
 							<div class="heading-section text-md-right ftco-animate">
 								<span class="subheading">Discover</span>
 								<h2 class="mb-4">Our Menu</h2>
-								<p><a href="<?= ("site_urphp spark serevvemainmenu"); ?>" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+								<p><a href="<?= ("/mainmenu"); ?>" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
 							</div>
     					</div>
 						<div class="col-md-6">
@@ -362,34 +366,23 @@
 					});
 				});
 			</script>
-
-			<script>
-				var loader = document.getElementById("preloader");
-
-				window.addEventListener("load", function () {
-					setTimeout(function () {
-						loader.style.display = "none";
-					}, 1500);
-				});
-			</script>
 			<script>
 				var today = new Date().toISOString().split('T')[0];
-        var now = new Date().toISOString().split('T')[1].slice(0, 5);
+				var now = new Date().toISOString().split('T')[1].slice(0, 5);
 
-        document.querySelector('.appointment-form').min = today + "T" + now;
+				document.querySelector('.appointment-form').min = today + "T" + now;
+					</script>
+					
+					<script>
+				var now = new Date();
+				var year = now.getFullYear();
+				var month = String(now.getMonth() + 1).padStart(2, '0'); 
+				var day = String(now.getDate()).padStart(2, '0'); 
+				var hour = String(now.getHours()).padStart(2, '0'); 
+				var minute = String(now.getMinutes()).padStart(2, '0'); 
+		
+				document.querySelector('.appointment-form').min = `${year}-${month}-${day}T${hour}:${minute}`;
 			</script>
-			
-			<script>
-        var now = new Date();
-        var year = now.getFullYear();
-        var month = String(now.getMonth() + 1).padStart(2, '0'); 
-        var day = String(now.getDate()).padStart(2, '0'); 
-        var hour = String(now.getHours()).padStart(2, '0'); 
-        var minute = String(now.getMinutes()).padStart(2, '0'); 
- 
-        document.querySelector('.appointment-form').min = `${year}-${month}-${day}T${hour}:${minute}`;
-    </script>
-
-	
+			<script src="/assets/js/preloader.js"></script>
   	</body>
 </html>

@@ -216,7 +216,7 @@
 														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$h['prod_img']?>">
 														<h3 style="font-weight:bold;"><a><?=$h['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$h['prod_desc']?></p></div>
-														<p class="price"><span>₱ <?=$h['prod_mprice'] ?></span></p>
+														<p class="price"><span>Regular ₱ <?=$h['prod_mprice'] ?><br>Large ₱ <?=$h['prod_lprice'] ?> </span></p>
 														<form action="<?= base_url('/viewProd2/') .$h['prod_id'] ?>" method="post">
 															<?php if($h['product_status'] === 'Unavailable'):?>
 																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
@@ -347,13 +347,13 @@
 														<h3 style="font-weight:bold;"><a><?=$o['prod_name']?></a></h3>
 														<div class="d-block" style="color:white;"><p><?=$o['prod_desc']?></p></div>
 														<p class="price"><span>₱ <?=$o['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd2/') .$o['prod_id'] ?>" method="post">
+														<form action="<?= base_url('/viewProd1/') .$o['prod_id'] ?>" method="post">
 															<?php if($o['product_status'] === 'Unavailable'):?>
 																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$o['prod_id'])?>">View Feedbacks</a></p>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$o['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$o['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary" type="submit" >Add to cart</button><br><br>
 																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$o['prod_id'])?>">View Feedbacks</a></p>
 															<?php endif;?>
 														</form>													
@@ -374,15 +374,6 @@
 	<?php include('mainheader.php'); ?>
 	<?php include('footer.php'); ?>
 
-	<script>
-		var loader = document.getElementById("preloader");
-
-		window.addEventListener("load", function () {
-			setTimeout(function () {
-				loader.style.display = "none";
-			}, 1500);
-		});
-	</script>
-	
+	<script src="/assets/js/preloader.js"></script>
   </body>
 </html>

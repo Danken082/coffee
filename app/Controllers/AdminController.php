@@ -55,8 +55,8 @@ class AdminController extends BaseController
         $this->fb = new FeedbackModel();
         $this->order = new OrderModel();
         $this->raw = new ItemsModel();
-        $this->connector = new WindowsPrintConnector("POS58 Printer");
-        $this->printer  = new Printer($this->connector);
+        //$this->connector = new WindowsPrintConnector("POS58 Printer");
+        //$this->printer  = new Printer($this->connector);
 
         date_default_timezone_set('Asia/Manila');
     }

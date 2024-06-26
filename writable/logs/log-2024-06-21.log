@@ -1,0 +1,81 @@
+CRITICAL - 2024-06-21 03:01:23 --> Class "Mike42\Escpos\PrintConnectors\WindowsPrintConnector" not found
+in APPPATH\Controllers\AdminController.php on line 58.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\AdminController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-21 03:02:15 --> Class "Mike42\Escpos\Printer" not found
+in APPPATH\Controllers\AdminController.php on line 59.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\AdminController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-06-21 03:02:42 --> Error connecting to the database: mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', 'dankeneth221133...', 'coffeeledgerdb', 3306, '', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\coffee\app\Controllers\UserController.php(183): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->login()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\coffee\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\coffee\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\coffee\app\Controllers\UserController.php(183): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\UserController->login()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#11 {main}
+CRITICAL - 2024-06-21 03:02:42 --> Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\UserController.php(183): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->login()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-21 03:42:02 --> Unsupported operand types: string + string
+in APPPATH\Controllers\CartController.php on line 572.
+ 1 APPPATH\Controllers\CartController.php(554): App\Controllers\CartController->newQuantity([...], '111')
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->addquantity('111')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-06-21 03:52:29 --> include(cartmobile.php): Failed to open stream: No such file or directory
+in APPPATH\Views\user\cart.php on line 85.
+ 1 APPPATH\Views\user\cart.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'include(cartmobile.php): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php', 85)
+ 2 APPPATH\Views\user\cart.php(85): include()
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\user\\cart.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/user/cart', [], true)
+ 6 APPPATH\Controllers\CartController.php(127): view('/user/cart', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\CartController->home_cart()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CartController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

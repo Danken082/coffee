@@ -1,0 +1,227 @@
+/* Desktop styles */
+@media (min-width: 1200px) {
+    .order-list-mobile, #order-history-mobile {
+        display: none;
+    }
+}
+
+.order-history-container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto; 
+}
+
+@media (min-width: 1200px) {
+    .order-history-container 
+    {
+        max-width: 1140px; 
+    } 
+}
+
+.myproduct{
+    margin-left:100px;
+}
+
+.order-list .table .image-prod .menu-img{
+    width: 150px;
+    height: auto;
+}
+
+.order-history-table thead th {
+    background-color: #D4A059;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.order-history-table tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.order-history-table img {
+    width: 150px;
+    height: auto;
+}
+
+.order-history-table h3 {
+    font-weight: bold;
+}
+
+.order-history-table .btn-outline-primary {
+    margin-top: 10px;
+}
+
+.price, .quantity, .total{
+    color: white;
+}
+
+
+/* FOR MY ORDERS */
+@media (min-width: 100px) and (max-width: 374px) {
+    .order-list, .order-history-container{
+        display: none;
+    }
+
+    .cart-item-mobile {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        border: 1px solid #ddd;
+        margin-bottom: 50px;
+    }
+
+    .cart-item-mobile img {
+        width: 150px;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .cart-item-mobile .details-mobile {
+        margin-top: 10px;
+        flex: 1;
+    }
+
+    .cart-item-mobile .details-mobile .product-name {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .cart-item-mobile .details-mobile .price {
+        text-align: center;
+        color: red;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .cart-item-mobile .details-mobile .quantity {
+        font-size: 15px;
+        text-align: center;
+        margin-top: 5px;
+    } 
+
+    .cart-item-mobile .details-mobile .status {
+        margin-top: 5px;
+        font-size: 13px;
+        color: white;
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+    .order-list, .order-history-container{
+        display: none;
+    }
+
+    .cart-item-mobile {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        border: 1px solid #ddd;
+        margin-bottom: 50px;
+    }
+
+    .cart-item-mobile img {
+        margin-top: 10px;
+        width: 200px;
+        height: auto;
+    }
+
+    .cart-item-mobile .details-mobile {
+        margin-top: 10px;
+        flex: 1;
+    }
+
+    .cart-item-mobile .details-mobile .product-name {
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .cart-item-mobile .details-mobile .price {
+        text-align: center;
+        color: red;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .cart-item-mobile .details-mobile .quantity {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 5px;
+    } 
+
+    .cart-item-mobile .details-mobile .status {
+        margin-top: 5px;
+        font-size: 15px;
+        color: white;
+        margin-bottom: 15px;
+    }
+}
+
+@media (min-width: 768px) and ( max-width: 1270px) {
+    .order-list, .order-history-container{
+        display: none;
+    }
+
+    .cart-item-mobile {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        border: 2px solid #ddd;
+        margin-bottom: 50px;
+    }
+
+    .cart-item-mobile img {
+        width: 350px;
+        height: auto;
+        margin-top: 10px;
+    }
+
+    .cart-item-mobile .details-mobile {
+        margin-top: 10px;
+        flex: 1;
+    }
+
+    .cart-item-mobile .details-mobile .product-name {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .cart-item-mobile .details-mobile .price {
+        text-align: center;
+        color: red;
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .cart-item-mobile .details-mobile .quantity {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 5px;
+    } 
+
+    .cart-item-mobile .details-mobile .status {
+        margin-top: 5px;
+        font-size: 20px;
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    .order-btn .btn-primary{
+        font-size: 20px;
+    }
+}

@@ -46,18 +46,14 @@ class UserModel extends Model
             $builder->where('UserID', $userId);
             $builder->update($data);
     }    
-    
-
-        public function isAlreadyRegistered($authid)
+    public function isAlreadyRegistered($authid)
     {
         return $this->getWhere(['code' => $authid])->getRowArray() > 0 ? true : false;
     }
     public function updateUserData($userdata, $authid)
     {
         $this->where('code', $authid)->set($userdata)->update();
-    }
-    
-    
+    }    
     public function insertUserData($userdata)
     {
        $this->insert($userdata);

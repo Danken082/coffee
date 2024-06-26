@@ -12,7 +12,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -21,23 +21,29 @@ body {
     display: inline-block;
     margin-bottom: 20px;
     padding: 10px 20px;
-    background-color: #996a1f;
+    background-color: transparent; 
     border-color: #6d5022;
-    color: #ffffff;
+    color: white; 
+    border: 2px solid #996633; 
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .back-button:hover {
-    background-color: #d2823b;
-    border-color: #8e4f18;
+    background-color: #663300;
+    text-decoration: none; 
+}
+
+.back-button:active {
+    transform: scale(0.98); 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); 
 }
 
 .feedback-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 40px;
     justify-content: center;
 }
 
@@ -87,48 +93,14 @@ body {
     font-size: 14px;
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 100px) and (max-width: 374px)  {
     .container {
-        padding: 10px;
+        max-width: 250px;
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
-    .feedback-item {
-        max-width: 300px;
-        padding: 15px;
-    }
-    .stars::before {
-        font-size: 22px;
-    }
-}
-
-@media (max-width: 992px) {
-    .feedback-item {
-        max-width: 260px;
-        padding: 15px;
-    }
-    .stars::before {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    .feedback-item {
-        max-width: 220px;
-        padding: 10px;
-    }
-    .stars::before {
-        font-size: 18px;
-    }
-    .username-container {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 576px) {
-    .feedback-item {
-        max-width: 100%;
-        padding: 10px;
-    }
-    .stars::before {
-        font-size: 16px;
+    
+    .back-button{
+        margin-bottom: 70px;
     }
 }

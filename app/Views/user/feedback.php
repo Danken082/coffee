@@ -37,7 +37,9 @@
             <button type="submit">Submit Feedback</button>
         </form>
     </div>
-    <a href="<?= base_url('myOrders') ?>" class="back-button">Back</a>
+    <div class="back-button-container">
+        <a href="<?= base_url('myOrders') ?>" class="back-button">Back</a>
+    </div>
 
     <script src="/assets/js/feedback.js"></script>
 </body>
