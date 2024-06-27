@@ -146,4 +146,3 @@ database.default.port = 3306
 # Paymongo
 
 AUTH_PAY = sk_test_tv3sv4THxmGVZedHZ8pbUAf4
-

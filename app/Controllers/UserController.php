@@ -23,7 +23,7 @@ class UserController extends BaseController
     private $crt;
     private $googleClient;
     public function __construct(){
-        require_once APPPATH. "libraries/vendor/autoload.php";
+        require_once APPPATH. "Libraries/vendor/autoload.php";
 
         $this->googleClient = new  \Google_Client();
         $this->googleClient->setClientId("36300776648-7g8magmu84f874vh8s9t453jmr169uel.apps.googleusercontent.com");
