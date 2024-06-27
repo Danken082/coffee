@@ -45,6 +45,7 @@
         <div class="form-group row mb-3">
             <label for="FromDate" class="col-sm-3 col-form-label">From Date:</label>
             <div class="col-sm-9">
+                
                 <input type="date" name="fromDate" class="form-control">
             </div>
         </div>
@@ -57,7 +58,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 </div>
 
 <script src="/assets/js/core/popper.min.js"></script>

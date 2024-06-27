@@ -18,8 +18,9 @@ use App\Models\TableModel;
 use App\Models\FeedbackModel;
 use App\Models\OrderModel;
 use App\Models\ItemsModel;
-
 use CodeIgniter\API\ResponseTrait;
+
+
 class AdminController extends BaseController
 {
     use ResponseTrait;
@@ -37,7 +38,7 @@ class AdminController extends BaseController
     private $printer;
     private $report;
     public function __construct(){
-        require_once APPPATH. "libraries/vendor/autoload.php";
+        require_once APPPATH. "Libraries/vendor/autoload.php";
 
         $this->googleClient = new  \Google_Client();
         $this->googleClient->setClientId("36300776648-7g8magmu84f874vh8s9t453jmr169uel.apps.googleusercontent.com");
