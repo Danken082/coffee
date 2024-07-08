@@ -9,8 +9,8 @@ class Email extends BaseConfig
 
     
     
-    public string $fromEmail  = '';
-    public string $fromName   = '';
+    public string $fromEmail  = 'rontaldankeneth@gmail.com';
+    public string $fromName   = 'crossroads';
     public string $recipients = '';
 
     /**

@@ -2156,6 +2156,7 @@ class AdminController extends BaseController
                     'FirstName' => $data['givenName'],
                     'LastName' => $data['familyName'] ?? " ",
                     'profile_img' => 'profile.png',
+                    'UserRole' => 'Customer',
                     'birthdate' => '1999-12-04',
                     'email' => $data['email'],
                     'CreatedAt' => $currentDateTime

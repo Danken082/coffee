@@ -9,12 +9,14 @@ function updateCartTotals() {
         const priceElement = document.getElementById(`price-${index}`);
         const quantityElement = document.getElementById(`quantity-${index}`);
         const totalElement = document.getElementById(`total-price-${index}`);
+        const totalHide = document.getElementById(`hidden-total-price-${index}`);
         const sizeElement = document.querySelector(`select[data-index="${index}"]`);
         const price = parseFloat(priceElement.textContent.replace('₱', '').trim());
         const quantity = parseInt(quantityElement.value);
 
         const total = price * quantity;
-        totalElement.textContent = total.toFixed(2); // Remove '₱' sign here
+        totalElement.textContent = total.toFixed(2); // Update total text
+        totalHide.value = total.toFixed(2); // Update hidden input value
 
         if (checkbox.checked) {
             subtotal += total;
@@ -43,6 +45,7 @@ function updateSizePrice(selectElement) {
     const priceElement = document.getElementById(`price-${index}`);
     const quantityElement = document.getElementById(`quantity-${index}`);
     const totalElement = document.getElementById(`total-price-${index}`);
+    const totalHide = document.getElementById(`hidden-total-price-${index}`);
     const checkbox = document.querySelector(`.item-checkbox[value="${index}"]`);
     
     // Update the price based on the selected size
@@ -60,7 +63,8 @@ function updateSizePrice(selectElement) {
     // Update the total price for this item
     const quantity = parseInt(quantityElement.value);
     const total = newPrice * quantity;
-    totalElement.textContent = total.toFixed(2); // Remove '₱' sign here
+    totalElement.textContent = total.toFixed(2); // Update total text
+    totalHide.value = total.toFixed(2); // Update hidden input value
 
     // Update the cart data in local storage immediately after size change
     const cartData = JSON.parse(localStorage.getItem('cartData')) || {};

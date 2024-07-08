@@ -85,11 +85,11 @@
 	          			<div class="col-md-6 d-flex">
 						  	<div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
 								<h2 class="billing-heading mb-4">Order Summary</h2>
-								<h6 style="color: white;"><?= $quantity?>x <?= $prodName?> (<?= $size ?>) ₱ <?= $price?></h6><!-- nakasession kung anong product name at size nung inorder -->
+								<h6 style="color: white;"><?= $quantity?>  <?= $prodName ?> (<?= $size ?>) ₱ <?= $price?></h6><!-- nakasession kung anong product name at size nung inorder -->
 								<hr>
 								<p class="d-flex">
 		    						<span>Total</span>
-		    						<span>₱ <?= $total?>.00</span>
+		    						<span>₱ <?=$total?>.00</span>
 		    					</p>
 		    					<p class="d-flex">
 							</div>

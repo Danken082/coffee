@@ -39,9 +39,10 @@ class UserController extends BaseController
     
         helper(['form']);
     }
+
     public function register()
     {   
-        // $verificationToken = substr(md5(rand()), 0, 8);
+        $verificationToken = substr(md5(rand()), 0, 8);
 
        
         $rules = [
@@ -57,7 +58,6 @@ class UserController extends BaseController
         ];
 
         if($this->validate($rules)){
-               $verificationToken = substr(md5(rand()), 0, 8);
         
                 $data = [
                 'LastName'    => $this->request->getVar('LastName'),
@@ -78,37 +78,44 @@ class UserController extends BaseController
 
             
             $this->user->insert($data);
+            $this->sendVerificationEmail($this->request->getVar('Email'), $verificationToken);
 
-            $email = \Config\Services::email();
-
-            $email->setFrom('rontaledankeneth@gmail.com', 'codeigniter');
-            $email->setTo($this->request->getVar('email'));
-            // $email->setCC('another@another-example.com');
-            // $email->setBCC('them@their-example.com');
-
-            $email->setSubject('Email Test');
-            $email->setMessage($verificationToken);
-                if($email->send())
-            {
-                echo('success');
-                // return view('email/activateCode');
-            }
-            else{
-                echo('Failed');
-                // return view('email/activateCode');
-            }
-    
-            // $this->user->save($data);
-//             return redirect()->to('/login');
-//         }
-        
-// >>>>>>> 350b979baeeab26408dd1dba9e885aaf56f9f440
     }
     else{
         $data['validation']= $this->validator;
         return view('admin/register', $data);
     }
-}
+   }
+    public function verifyEmailReminder()
+    {
+        return view('admin/verify_email_reminder');
+    }
+    
+    private function sendVerificationEmail($email, $token)
+    {
+        $emailService = \Config\Services::email();
+        $emailService->setTo($email);
+        $emailService->setFrom('rontaledankeneth@gmail.com', 'crossroads');
+        $emailService->setSubject('Email Verification');
+        $emailService->setMessage("Please click the link below to verify your email address:\n\n" . base_url() . "/verify/$token");
+
+        $emailService->send();
+    }
+
+    public function verify($token)
+    {
+        $userModel = new UsersModel();
+        $user = $userModel->where('verification_token', $token)->first();
+
+        if ($user) {
+            $userModel->update($user['userID'], ['is_verified' => true, 'verification_token' => null]);
+
+            return redirect()->to('/signin')->with('message', 'Email verified successfully. You can now login.');
+        }
+
+        return redirect()->to('/login')->with('error', 'Invalid verification token.');
+    }
+
 
     // public function login()
     // {
