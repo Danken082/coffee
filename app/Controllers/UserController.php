@@ -452,46 +452,46 @@ class UserController extends BaseController
         return view('/user/edit_userprofile', $data);
     }
 
-    public function updateprofile($id)
-    {
-        if ($this->request->getMethod() === 'post') {
-            $userId = session()->get('UserID');
-            $userModel = new UserModel();
+public function updateprofile($id)
+{
+    if ($this->request->getMethod() === 'post') {
+        $userId = session()->get('UserID');
+        $userModel = new UserModel();
 
-            // Get the current user data
-            $currentUser = $userModel->find($userId);
-            $currentProfileImg = $currentUser['profile_img'];
+        // Get the current user data
+        $currentUser = $userModel->find($userId);
+        $currentProfileImg = $currentUser['profile_img'];
 
-            $data = [
-                'LastName' => $this->request->getPost('LastName'),
-                'FirstName' => $this->request->getPost('FirstName'),
-                'gender' => $this->request->getPost('gender'),
-                'email' => $this->request->getPost('email'),
-                'ContactNo' => $this->request->getPost('ContactNo'),
-                'Username' => $this->request->getPost('Username'),
-                'address' => $this->request->getPost('address'),
-                'birthdate' => $this->request->getPost('birthdate')
-            ];
+        $data = [
+            'LastName' => $this->request->getPost('LastName'),
+            'FirstName' => $this->request->getPost('FirstName'),
+            'gender' => $this->request->getPost('gender'),
+            'email' => $this->request->getPost('email'),
+            'ContactNo' => $this->request->getPost('ContactNo'),
+            'Username' => $this->request->getPost('Username'),
+            'address' => $this->request->getPost('address'),
+            'birthdate' => $this->request->getPost('birthdate')
+        ];
 
-            $profileImg = $this->request->getFile('profile_img');
-            if ($profileImg->isValid() && !$profileImg->hasMoved()) {
-                $newName = $profileImg->getName();
-                $profileImg->move(ROOTPATH . 'public/assets/user/images/', $newName);
-                $data['profile_img'] = $newName;
+        $profileImg = $this->request->getFile('profile_img');
+        if ($profileImg->isValid() && !$profileImg->hasMoved()) {
+            $newName = $profileImg->getName();
+            $profileImg->move(ROOTPATH . '../Hello/', $newName);
+            $data['profile_img'] = $newName;
 
-                // Delete the old profile image if it's not the default image
-                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg)) {
-                    unlink(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg);
-                }
+            // Delete the old profile image if it's not the default image
+            $currentProfileImgPath = ROOTPATH . '../Hello/' . $currentProfileImg;
+            if ($currentProfileImg !== 'profile.png' && file_exists($currentProfileImgPath) && is_file($currentProfileImgPath)) {
+                unlink($currentProfileImgPath);
             }
-
-            $userModel->update($userId, $data);
-            session()->set($data);
-
-            return redirect()->to(base_url('/profile'));
         }
-    }
 
+        $userModel->update($userId, $data);
+        session()->set($data);
+
+        return redirect()->to(base_url('/profile'));
+    }
+}
     public function removeProfilePicture($userId)
     {
         $userModel = new UserModel();
@@ -499,8 +499,8 @@ class UserController extends BaseController
         $profileImg = $currentUser['profile_img'];
         $defaultProfileImg = 'profile.png';
 
-        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists('assets/user/images/' . $profileImg)) {
-            unlink('assets/user/images/' . $profileImg);
+        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists('../Hello/' . $profileImg)) {
+            unlink('../Hello/' . $profileImg);
         }
 
         $userModel->update($userId, ['profile_img' => $defaultProfileImg]);
