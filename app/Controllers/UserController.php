@@ -476,11 +476,11 @@ public function updateprofile($id)
         $profileImg = $this->request->getFile('profile_img');
         if ($profileImg->isValid() && !$profileImg->hasMoved()) {
             $newName = $profileImg->getName();
-            $profileImg->move(ROOTPATH . '../Hello/', $newName);
+            $profileImg->move(ROOTPATH . '../assets/user/image/', $newName);
             $data['profile_img'] = $newName;
 
             // Delete the old profile image if it's not the default image
-            $currentProfileImgPath = ROOTPATH . '../Hello/' . $currentProfileImg;
+            $currentProfileImgPath = ROOTPATH . '../assets/user/image/' . $currentProfileImg;
             if ($currentProfileImg !== 'profile.png' && file_exists($currentProfileImgPath) && is_file($currentProfileImgPath)) {
                 unlink($currentProfileImgPath);
             }
@@ -499,8 +499,8 @@ public function updateprofile($id)
         $profileImg = $currentUser['profile_img'];
         $defaultProfileImg = 'profile.png';
 
-        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists('../Hello/' . $profileImg)) {
-            unlink('../Hello/' . $profileImg);
+        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists('../assets/user/image/' . $profileImg)) {
+            unlink('../assets/user/image/' . $profileImg);
         }
 
         $userModel->update($userId, ['profile_img' => $defaultProfileImg]);
