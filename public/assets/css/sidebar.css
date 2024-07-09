@@ -1,23 +1,27 @@
-/* CSS for Notifications Dropdown */  
-
+/* CSS for Notifications Dropdown */
 .dropdown-menu {
-            position: absolute;
-            right: 0;
-            top: 100%;
-            border-radius: 5px;
-            margin-top: 100px;
-            padding: 10px;
-            height: 200px;
-            min-width: 200px;
-            
-            overflow-y: auto;
-        }
+    position: absolute;
+    right: 0;
+    top: 100%;
+    border-radius: 5px;
+    margin-top: 10px; /* Adjust margin for better positioning */
+    padding: 10px;
+    height: 200px;
+    min-width: 250px; /* Increase min-width for better readability */
+    overflow-y: auto;
+    z-index: 1000; /* Ensure dropdown is above other elements */
+}
 
 .preview-item {
     padding: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #f1f1f1; /* Add bottom border for separation */
+}
+
+.preview-item:last-child {
+    border-bottom: none; /* Remove border from the last item */
 }
 
 .preview-item-content {
@@ -26,24 +30,34 @@
 }
 
 .preview-icon {
+    background-color: #007bff; /* Set background color for icon */
     color: #fff;
     padding: 8px;
+    border-radius: 50%; /* Make icon circular */
 }
 
-.preview-subject {
+.preview-subject, .text-muted {
     font-weight: bold;
-}
-
-.preview-subject,
-.text-muted {
     margin-bottom: 5px;
 }
 
 .mark-read-btn {
     color: #007bff;
     cursor: pointer;
+    font-size: 14px; /* Adjust font size for better readability */
+    /* Removed hover effect */
 }
 
-.mark-read-btn:hover {
-    text-decoration: underline;
+/* Additional styles for better visibility */
+.dropdown-menu::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background-color: #d4d4d4;
+    border-radius: 10px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background-color: #a8a8a8;
 }

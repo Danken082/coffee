@@ -17,7 +17,7 @@
     <br>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?= base_url('/adminprod')?>" style="background-color: transparent; color:white; font-size: 1.5em;">Back to Product Items</a></li>
-        <li class="breadcrumb-item active" aria-current="page" style="background-color: transparent; color:white; font-size: 1.5em;">Breakfast Meal List</li>
+        <li class="breadcrumb-item active" aria-current="page" style="background-color: transparent; color:white; font-size: 1.5em;">Frappe Drinks List</li>
     </ol><br><br>
         <div class="card-body">
             <div class="table-responsive">
@@ -33,7 +33,8 @@
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Name</th>
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Description</th>
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Quantity</th>
-                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Price</th>
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Regular Price</th>
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Large Price</th>
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Product Barcode</th>
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Actions</th>
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Availability</th>
@@ -45,7 +46,7 @@
                                 <td class="text-center">
                                     <img src="<?php base_url();?>/assets/images/products/<?= $p['prod_img'] ?>" alt="img">
                                 </td>
-                                <td  class="text-center">
+                                <td class="text-center">
                                     <p class="text-xs  font-weight-bold"><?=$p['prod_name'] ?></p>
                                 </td>
                                 <td class="text-center">
@@ -58,30 +59,33 @@
                                     <p class="text-xs  font-weight-bold">₱ <?=$p['prod_mprice'] ?></p>
                                 </td>
                                 <td class="text-center">
+                                    <p class="text-xs  font-weight-bold">₱ <?=$p['prod_lprice'] ?></p>
+                                </td>
+                                <td class="text-center">
                                     <p class="text-xs  font-weight-bold"><?=$p['prod_code'] ?></p>
                                 </td>
                                 <td class="align-middle text-center">
-                                    <a href="<?= base_url('/editmeal/' .$p['prod_id']) ?>" id='id'
+                                    <a href="<?= base_url('/editfrap/' .$p['prod_id']) ?>" id='id'
                                         class="text-info font-weight-bold text-xs me-2"
                                         data-toggle="tooltip" data-original-title="Edit Coffee">
                                         Edit
                                     </a>||
-                                    <a href="<?= base_url('/deletemeal/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs delete-link"
+                                    <a href="<?= base_url('/deletefrap/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs delete-link"
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
-                                <td>
-                                    <form action="<?= base_url('/availablemeal/')?>" method="POST">
-                                        <input type="hidden" name="update" value="<?= $p['prod_id']?>">
-                                        <input type="hidden" name="prod_status" value="Available">
-                                        <button type="submit" class="avlbtn">Available</button>
-                                    </form> 
-                                    <br>
-                                    <form action="<?= base_url('/unavailablemeal/')?>" method="POST">
-                                        <input type="hidden" name="update" value="<?= $p['prod_id']?>">
-                                        <input type="hidden" name="prod_status" value="Unavailable">
-                                        <button type="submit" class="unvlbtn">Unavailable</button>
-                                    </form>
-                                </td>
+                            
+                            <td>
+                                <form action="<?= base_url('/availablefrap/')?>" method="POST">
+                                    <input type="hidden" name="update" value="<?= $p['prod_id']?>">
+                                    <input type="hidden" name="prod_status" value="Available">
+                                    <button type="submit" class="avlbtn">Available</button>
+                                </form>
+                                <br>
+                                <form action="<?= base_url('/unavailablefrap/')?>" method="POST">
+                                    <input type="hidden" name="update" value="<?= $p['prod_id']?>">
+                                    <input type="hidden" name="prod_status" value="Unavailable">
+                                    <button type="submit" class="unvlbtn">Unavailable</button>
+                                </form></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

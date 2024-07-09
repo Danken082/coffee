@@ -2288,7 +2288,7 @@ class AdminController extends BaseController
     }
 
     public function products(){
-        return view('/admin/product');
+        return view('/admin/inventoryproducts');
     }
 
     public function orderpayment(){
@@ -2471,17 +2471,18 @@ class AdminController extends BaseController
         $data = [
             // 'cartItemCount' => $cartItemCount,
             // 'cartItems' => $cartItems,
-            'meal' => $menu->products('Meals'),
-            'pasta' =>  $menu->products('Pasta'),
             'app' => $menu->products('Appetizer'),
+            'meal' => $menu->products('Meals'),
+            'chicken' => $menu->products('Chicken'),
+            'chickenfillet' => $menu->products('Chicken Fillet'),
+            'pasta' =>  $menu->products('Pasta'),
             'salad' => $menu->products('Salad'),
-            'soup' => $menu->products('Soup'),
             'sand' => $menu->products('Sandwich'),
             'hot' => $menu->products('Hot Coffee'),
             'iced' => $menu->products('Iced Coffee'),
             'flav' => $menu->products('Flavored Coffee'),
-            'non' =>  $menu->products('Non Coffee Frappe'),
-            'coffee' =>$menu->products('Coffee Frappe'),
+            'frap' =>  $menu->products('Frappe'),
+            'lemon' =>$menu->products('Lemonade'),
             'other' => $menu->products('Others'),
             'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 

@@ -277,17 +277,18 @@ class UserController extends BaseController
 
     public function home_menu(){
         $menu = new ProductModel();
-        $prod['meal'] = $menu->products('Meals');
-        $prod['pasta'] = $menu->products('Pasta');
         $prod['app'] = $menu->products('Appetizer');
-        $prod['salad'] = $menu->products('Salad');
-        $prod['soup'] = $menu->products('Soup');
+        $prod['meal'] = $menu->products('Meals');
         $prod['sand'] = $menu->products('Sandwich');
+        $prod['chicken'] = $menu->products('Chicken');
+        $prod['pasta'] = $menu->products('Pasta');
+        $prod['salad'] = $menu->products('Salad');
+        $prod['chickenfillet'] = $menu->products('Chicken Fillet');
         $prod['hot'] = $menu->products('Hot Coffee');
         $prod['iced'] = $menu->products('Iced Coffee');
         $prod['flav'] = $menu->products('Flavored Coffee');
-        $prod['non'] = $menu->products('Non Coffee Frappe');
-        $prod['coffee'] = $menu->products('Coffee Frappe');
+        $prod['frap'] = $menu->products('Frappe');
+        $prod['lemon'] = $menu->products('Lemonade');
         $prod['other'] = $menu->products('Others');
         return view('/user/menu', $prod);
     }
@@ -306,20 +307,20 @@ class UserController extends BaseController
             $data = [
                 'cartItemCount' => $cartItemCount,
                 'cartItems' => $cartItems,
-               'meal' => $menu->products('Meals'),
-               'pasta' =>  $menu->products('Pasta'),
-               'app' => $menu->products('Appetizer'),
-               'salad' => $menu->products('Salad'),
-               'soup' => $menu->products('Soup'),
-               'sand' => $menu->products('Sandwich'),
-               'hot' => $menu->products('Hot Coffee'),
-               'iced' => $menu->products('Iced Coffee'),
-               'flav' => $menu->products('Flavored Coffee'),
-                'non' =>  $menu->products('Non Coffee Frappe'),
-                'coffee' =>$menu->products('Coffee Frappe'),
+                'app' => $menu->products('Appetizer'),
+                'meal' => $menu->products('Meals'),
+                'sand' => $menu->products('Sandwich'),
+                'chicken' => $menu->products('Chicken'),
+                'pasta' =>  $menu->products('Pasta'),
+                'salad' => $menu->products('Salad'),
+                'chickenfillet' => $menu->products('Chicken Fillet'),
+                'hot' => $menu->products('Hot Coffee'),
+                'iced' => $menu->products('Iced Coffee'),
+                'flav' => $menu->products('Flavored Coffee'),
+                'frap' =>  $menu->products('Frappe'),
+                'lemon' =>$menu->products('Lemonade'),
                 'other' => $menu->products('Others'),
             ];
-
         return view('/user/mainmenu', $data);
     }
 
@@ -373,17 +374,18 @@ class UserController extends BaseController
 
     public function home_shop(){
         $shop = new ProductModel();
-        $prod['meal'] = $shop->products('Meals');
-        $prod['pasta'] = $shop->products('Pasta');
         $prod['app'] = $shop->products('Appetizer');
-        $prod['salad'] = $shop->products('Salad');
-        $prod['soup'] = $shop->products('Soup');
+        $prod['meal'] = $shop->products('Meals');
         $prod['sand'] = $shop->products('Sandwich');
+        $prod['chicken'] = $shop->products('Chicken');
+        $prod['pasta'] = $shop->products('Pasta');
+        $prod['salad'] = $shop->products('Salad');
+        $prod['chickenfillet'] = $shop->products('Chicken Fillet');
         $prod['hot'] = $shop->products('Hot Coffee');
         $prod['iced'] = $shop->products('Iced Coffee');
         $prod['flav'] = $shop->products('Flavored Coffee');
-        $prod['non'] = $shop->products('Non Coffee Frappe');
-        $prod['coffee'] = $shop->products('Coffee Frappe');
+        $prod['frap'] = $shop->products('Frappe');
+        $prod['lemon'] = $shop->products('Lemonade');
         $prod['other'] = $shop->products('Others');
         return view('/user/shop', $prod);
     }
@@ -401,17 +403,18 @@ class UserController extends BaseController
     $data = [
         'cartItemCount' => $cartItemCount,
         'cartItems' => $cartItems,
-        'meal' => $menu->products('Meals'),
-        'pasta' =>  $menu->products('Pasta'),
         'app' => $menu->products('Appetizer'),
-        'salad' => $menu->products('Salad'),
-        'soup' => $menu->products('Soup'),
+        'meal' => $menu->products('Meals'),
         'sand' => $menu->products('Sandwich'),
+        'chicken' => $menu->products('Chicken'),
+        'pasta' =>  $menu->products('Pasta'),
+        'salad' => $menu->products('Salad'),
+        'chickenfillet' => $menu->products('Chicken Fillet'),
         'hot' => $menu->products('Hot Coffee'),
         'iced' => $menu->products('Iced Coffee'),
         'flav' => $menu->products('Flavored Coffee'),
-        'non' =>  $menu->products('Non Coffee Frappe'),
-        'coffee' =>$menu->products('Coffee Frappe'),
+        'frap' =>  $menu->products('Frappe'),
+        'lemon' =>$menu->products('Lemonade'),
         'other' => $menu->products('Others'),
 
 

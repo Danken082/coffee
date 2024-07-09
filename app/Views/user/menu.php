@@ -28,13 +28,52 @@
     	<div class="container">
 			<div class="row">
 				<div class="col-md-6 mb-5 pb-3">
-					<h3 class="mb-5 heading-pricing ftco-animate">Rice Meals</h3>
+					<h3 class="mb-5 heading-pricing ftco-animate">Breakfast Meals</h3>
 					<div class="pricing-entry d-flex ftco-animate">
 						<div class="desc pl-3">
 							<?php foreach($meal as $m): ?>
 								<div class="d-flex text align-items-center">
 									<h3><span><?=$m['prod_name'] ?></span></h3>
 									<span class="price"><?=$m['prod_mprice'] ?></span>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h3 class="mb-5 heading-pricing ftco-animate">Sub Sandwiches</h3>
+					<div class="pricing-entry d-flex ftco-animate">
+						<div class="desc pl-3">
+							<?php foreach($sand as $s): ?>
+								<div class="d-flex text align-items-center">
+									<h3><span><?=$s['prod_name'] ?></span></h3>
+									<span class="price"><?=$s['prod_mprice'] ?></span>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 mb-5 pb-3">
+					<h3 class="mb-5 heading-pricing ftco-animate">Chicken Tenders</h3>
+					<div class="pricing-entry d-flex ftco-animate">
+						<div class="desc pl-3">
+							<?php foreach($chicken as $c): ?>
+								<div class="d-flex text align-items-center">
+									<h3><span><?=$c['prod_name'] ?></span></h3>
+									<span class="price"><?=$c['prod_mprice'] ?></span>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 mb-5 pb-3">
+					<h3 class="mb-5 heading-pricing ftco-animate">Crunchy Chicken Fillet</h3>
+					<div class="pricing-entry d-flex ftco-animate">
+						<div class="desc pl-3">
+							<?php foreach($chickenfillet as $cf): ?>
+								<div class="d-flex text align-items-center">
+									<h3><span><?=$cf['prod_name'] ?></span></h3>
+									<span class="price"><?=$cf['prod_mprice'] ?></span>
 								</div>
 							<?php endforeach; ?>
 						</div>
@@ -52,20 +91,9 @@
 							<?php endforeach; ?>
 						</div>
 					</div>
-					<h3 class="mb-5 heading-pricing ftco-animate">Appetizer</h3>
-					<div class="pricing-entry d-flex ftco-animate">
-						<div class="desc pl-3">
-							<?php foreach($app as $a): ?>
-								<div class="d-flex text align-items-center">
-									<h3><span><?=$a['prod_name'] ?></span></h3>
-									<span class="price"><?=$a['prod_mprice'] ?></span>
-								</div>
-							<?php endforeach; ?>
-						</div>
-					</div>
 				</div>
 				<div class="col-md-6 mb-5 pb-3">
-					<h3 class="mb-5 heading-pricing ftco-animate">Salad</h3>
+					<h3 class="mb-5 heading-pricing ftco-animate">Salads</h3>
 					<div class="pricing-entry d-flex ftco-animate">
 						<div class="desc pl-3">
 							<?php foreach($salad as $s): ?>
@@ -78,26 +106,13 @@
 					</div>
 				</div>
 				<div class="col-md-6 mb-5 pb-3">
-					<h3 class="mb-5 heading-pricing ftco-animate">Soup</h3>
+				<h3 class="mb-5 heading-pricing ftco-animate">Appetizers</h3>
 					<div class="pricing-entry d-flex ftco-animate">
 						<div class="desc pl-3">
-							<?php foreach($soup as $s): ?>
+							<?php foreach($app as $a): ?>
 								<div class="d-flex text align-items-center">
-									<h3><span><?=$s['prod_name'] ?></span></h3>
-									<span class="price"><?=$s['prod_mprice'] ?></span>
-								</div>
-							<?php endforeach; ?>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<h3 class="mb-5 heading-pricing ftco-animate">French Sub Sandwiches</h3>
-					<div class="pricing-entry d-flex ftco-animate">
-						<div class="desc pl-3">
-							<?php foreach($sand as $s): ?>
-								<div class="d-flex text align-items-center">
-									<h3><span><?=$s['prod_name'] ?></span></h3>
-									<span class="price"><?=$s['prod_mprice'] ?></span>
+									<h3><span><?=$a['prod_name'] ?></span></h3>
+									<span class="price"><?=$a['prod_mprice'] ?></span>
 								</div>
 							<?php endforeach; ?>
 						</div>
@@ -153,30 +168,28 @@
 					</div>
 				</div>
 				<div class="col-md-6 mb-5 pb-3">
-					<h3 class="mb-5 heading-pricing ftco-animate">Non Coffee Frappe</h3>
+					<h3 class="mb-5 heading-pricing ftco-animate">Frappe Drinks</h3>
 					<div class="pricing-entry d-flex ftco-animate">
 						<div class="desc pl-3">
 						<h6>Regular Large</h6>
-							<?php foreach($non as $n): ?>
+							<?php foreach($frap as $fr): ?>
 								<div class="d-flex text align-items-center">
-									<h3><span><?=$n['prod_name'] ?></span></h3>
-									<span class="price"><?=$n['prod_mprice'] ?></span>
-									<span class="price"><?=$n['prod_lprice'] ?></span>
+									<h3><span><?=$fr['prod_name'] ?></span></h3>
+									<span class="price"><?=$fr['prod_mprice'] ?></span>
+									<span class="price"><?=$fr['prod_lprice'] ?></span>
 								</div>
 							<?php endforeach; ?>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 mb-5 pb-3">
-					<h3 class="mb-5 heading-pricing ftco-animate">Coffee Frappe</h3>
+					<h3 class="mb-5 heading-pricing ftco-animate">Lemonade</h3>
 					<div class="pricing-entry d-flex ftco-animate">
 						<div class="desc pl-3">
-						<h6>Regular Large</h6>
-							<?php foreach($coffee as $c): ?>
+							<?php foreach($lemon as $l): ?>
 								<div class="d-flex text align-items-center">
-									<h3><span><?=$c['prod_name'] ?></span></h3>
-									<span class="price"><?=$c['prod_mprice'] ?></span>
-									<span class="price"><?=$c['prod_lprice'] ?></span>
+									<h3><span><?=$l['prod_name'] ?></span></h3>
+									<span class="price"><?=$l['prod_mprice'] ?></span>
 								</div>
 							<?php endforeach; ?>
 						</div>

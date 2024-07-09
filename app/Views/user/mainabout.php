@@ -111,7 +111,7 @@
 						<div class="heading-section text-md-right ftco-animate">
 							<span class="subheading">Discover</span>
 							<h2 class="mb-4">Our Menu</h2>
-							<p><a href="<?= site_url("user/menu"); ?>" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+							<p><a href="<?= site_url("/mainmenu"); ?>" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
 						</div>
 					</div>
 					<div class="col-md-6">

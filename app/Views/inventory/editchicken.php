@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <link rel="stylesheet" type="text/css"href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
     <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+    <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet">
     <title>Edit Inventory</title>
     <style>
         body {
@@ -35,8 +35,8 @@
             color: #ffffff;
         }
         .btn-success {
-            background-color: #4caf50;
-            border-color: #4caf50;
+            background-color: #1167b1 ;
+            border-color:  #1167b1;
         }
         .btn-info {
             background-color: #029acf;
@@ -54,57 +54,52 @@
         <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 d-flex justify-content-between">
                 <div class="border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white text-capitalize ps-3">Edit Breakfast Meal</h6>
+                    <h6 class="text-white text-capitalize ps-3">Edit Chicken Tenders</h6>
                 </div>
                 <div>
-                    <a href="<?= base_url('/inventorymeal')?>" class="btn btn-info">BACK</a>
+                    <a href="<?= base_url('/inventorychicken')?>" class="btn btn-info">BACK</a>
                 </div>
             </div>
             <div class="card-body px-4 pb-3">
-                <form action="<?= base_url('/updatemeal/'. $emeal['prod_id'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('/updatechicken/'. $echick['prod_id'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
                     <div class="col-md-5">
-                        <label for="Name" class="form-label text-white">Product Name</label>
+                        <label for="Name" class="form-label">Product Name</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="text" class="form-control" id="name" name="prod_name" value="<?=$emeal['prod_name'] ?>">
+                            <input type="text" class="form-control" id="name" name="prod_name" value="<?=$echick['prod_name'] ?>">
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <label for="Description" class="form-label text-white">Product Description</label>
+                        <label for="Description" class="form-label">Product Description</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="text" class="form-control" id="description" name="prod_desc" value="<?=$emeal['prod_desc'] ?>">
+                            <input type="text" class="form-control" id="description" name="prod_desc" value="<?=$echick['prod_desc'] ?>">
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <label for="Quantity" class="form-label text-white">Quantity</label>
+                        <label for="Quantity" class="form-label">Quantity</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="number" class="form-control" id="quantity" name="prod_quantity" min="1" value="<?=$emeal['prod_quantity'] ?>">
+                            <input type="number" class="form-control" id="quantity" name="prod_quantity" min="1" value="<?=$echick['prod_quantity'] ?>">
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <label for="Medium" class="form-label text-white">Price</label>
+                        <label for="Medium" class="form-label">Price</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="text" class="form-control" id="medium" name="prod_mprice" min="1" value="<?=$emeal['prod_mprice'] ?>">
+                            <input type="text" class="form-control" id="medium" name="prod_mprice" min="1" value="<?=$echick['prod_mprice'] ?>">
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <label for="Barcode" class="form-label text-white">Barcode</label>
+                        <label for="Barcode" class="form-label">BarCode</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="text" disabled class="form-control" id="barcode" name="prod_code" value="<?=$emeal['prod_code'] ?>">
+                            <input type="text" disabled class="form-control" id="barcode" name="prod_code" value="<?=$echick['prod_code'] ?>">
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <label for="Images" class="form-label text-white">Images</label>
+                        <label for="Images" class="form-label">Images</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="file" id="images" name="prod_img" value="<?=$emeal['prod_img'] ?>" accept=".jpg, .jpeg, .png">
+                            <input type="file" id="images" name="prod_img" value="<?=$echick['prod_img'] ?>" accept=".jpg, .jpeg, .png">
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="input-group input-group-outline my-3 text-center" style="display: flex; justify-content: center;">
-                            <button type="submit" class="btn btn-success" style="background-color: #1167b1; color: white;">Update Meal</button>
-                        </div>
-                        <div class="text-center">
-                            
-                        </div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-success" style="background-color: #1167b1;; color: white;">Update Chicken Tenders</button>
                     </div>
                 </form>
             </div>

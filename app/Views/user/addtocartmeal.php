@@ -14,8 +14,7 @@
                 <input type="hidden" name="ProductID" value="<?= $cart['prod_id'] ?>" readonly>
                 <input type="hidden" name="CustomerID" value="<?= session()->get('UserID') ?>" readonly>
                 <input type="hidden" name="size" value="Medium" readonly>
-                <label for="ProductPrice" name="prod_mprice" value="<?= $cart['prod_mprice'] ?>">Price: ₱ <?= $cart['prod_mprice'] ?></label>
-                
+                <label for="ProductPrice" name="prod_mprice" value="<?= $cart['prod_mprice'] ?>">₱ <?= $cart['prod_mprice'] ?></label>
                 <img src="<?= base_url(); ?>/assets/images/products/<?= $cart['prod_img']; ?>" alt="">
                 <input type="number" name="quantity" placeholder="Enter Quantity" required>
                 <input type="hidden" name="Status" value="oncart">
