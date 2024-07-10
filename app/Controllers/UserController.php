@@ -81,6 +81,7 @@ class UserController extends BaseController
             $this->sendVerificationEmail($this->request->getVar('Email'), $verificationToken);
 
     }
+    
     else{
         $data['validation']= $this->validator;
         return view('admin/register', $data);
@@ -90,7 +91,7 @@ class UserController extends BaseController
     {
         return view('admin/verify_email_reminder');
     }
-    
+
     private function sendVerificationEmail($email, $token)
     {
         $emailService = \Config\Services::email();

@@ -2,11 +2,9 @@
 
 namespace App\Controllers;
 
-use Mike42\Escpos\Printer;
-use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\PrintConnectors\FilePrintConnector;
-use Mike42\Escpos\CapabilityProfiles\SimpleCapabilityProfile;
-
+use Mike42\Escpos\Printer;
+use App\Libraries\ThermalPrinter\ThermalPrinter;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
@@ -19,14 +17,11 @@ use App\Models\FeedbackModel;
 use App\Models\OrderModel;
 use App\Models\ItemsModel;
 use CodeIgniter\API\ResponseTrait;
-
-
 class AdminController extends BaseController
 {
     use ResponseTrait;
     private $user;
     private $history;
-    private $usr;
     private $orderprod;
     private $load;
     private $payment;
@@ -34,10 +29,8 @@ class AdminController extends BaseController
     private $fb;
     private $order;
     private $raw;
-    private $connector;
-    private $printer;
-    private $report;
     public function __construct(){
+
         require_once APPPATH. "Libraries/vendor/autoload.php";
 
         $this->googleClient = new  \Google_Client();
@@ -47,7 +40,7 @@ class AdminController extends BaseController
         $this->googleClient->addScope("email");
         $this->googleClient->addScope("profile");
 
-        $this->usr = new UserModel();
+
         $this->user = new AdminUserModel();
         $this->history = new HistoryModel();
         $this->orderprod = new ProductModel();
@@ -56,70 +49,40 @@ class AdminController extends BaseController
         $this->fb = new FeedbackModel();
         $this->order = new OrderModel();
         $this->raw = new ItemsModel();
-        //$this->connector = new WindowsPrintConnector("POS58 Printer");
-        //$this->printer  = new Printer($this->connector);
-
-        date_default_timezone_set('Asia/Manila');
     }
     
     public function savePOSOrders()
     {
+       $requestData = $this->request->getJSON();
 
-        try {
+       $savedData = [];
+        $barOrderCode = $this->getBarcodeByOrder();
 
+       foreach ($requestData as $item) {
+           $productID = $item->productId;
+           $totalPrice = $item->totalPrice;
+           $totalquantity = $item->totalquantity;
+           $amountPaid = $item->amountPaid;
+           $change = $item->change;
+            $orderCode = $barOrderCode;
+    
+           $orderId = $this->history->insert([
+               'ProductID' => $productID,
+               'total_amount' => $totalPrice,
+               'quantity' => $totalquantity,
+               'amount_paid' => $amountPaid,
+               'change_amount' => $change,
+               'orderCode' => 'CrDSPOS-' .$orderCode   
+               
+           ]);
 
-          
-        $requestData = $this->request->getJSON();
-
-        $savedData = [];
-
-
-        $this->printer->setJustification(Printer::JUSTIFY_CENTER);
-        $this->printer->text("Crossrods Coffee and Deli\n");
-        $this->printer->text("Tawiran Calapan City\n");
-        $this->printer->text("Oriental Mindoro\n");
-        $this->printer->text("Receipt\n");
-        $this->printer->text("\n");
-        $this->printer->text("------------------------------\n");
-        $this->printer->text("------------------------------\n");
-        $this->printer->text(date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ."\n");
-        $this->printer->text("------------------------------\n");
-   
-        $this->printer->text("Name    Quantity     Prize\n");
-        $total = 0;
-        foreach ($requestData as $item) {
-            $this->printer->setJustification(Printer::JUSTIFY_LEFT);
-            $productName = $item->productName;
-            $productId = $item->productId;
-            $totalPrice = $item->totalPrice;
-            $totalquantity = $item->totalquantity;
-            $amountPaid = $item->amountPaid;
-            $change = $item->change;
-            $DineTake = $item->DineTake;
-
-            
-            $this->printer->text(sprintf("%-12s x%-10d P%5.2f\n", $productName, $totalquantity, $totalPrice));
-
-            $total += $totalPrice;
-
-            $orderId = $this->history->insert([
-                'ProductID' => $productId,
-                'total_amount' => $totalPrice,
-                'quantity' => $totalquantity,
-                'amount_paid' => $amountPaid,
-                'change_amount' => $change, 
-            ]);
- 
-            $savedData[] = [
-             'ProductID' => $productId,
-             'total_amount' => $totalPrice,
-             'quantity' => $totalquantity,
-             'amount_paid' => $amountPaid,
-             'change_amount' => $change,
-          ];
-
- 
-
+           $savedData[] = [
+            'productID' => $productID,
+            'total_ammount' => $totalPrice,
+            'totalQuantity' => $totalquantity,
+            'amountPaid' => $amountPaid,
+            'change' => $change,
+         ];
          $coffee = $this->raw->where('rawID', '9')->first();
          $milk = $this->raw->where('rawID', '10')->first();
          $smilk = $this->raw->where('rawID', '11')->first();
@@ -178,9 +141,9 @@ class AdminController extends BaseController
          $bfssandwich = $this->raw->where('rawID', '82')->first();
          $bfsoup = $this->raw->where('rawID', '83')->first();
          $coke1 = $this->raw->where('rawID', '84')->first();
-     if ($productId == 1) {
+     if ($productID == 1) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -195,9 +158,9 @@ class AdminController extends BaseController
         
      }
      
-     elseif ($productId == 2) {
+     elseif ($productID == 2) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
          $changeol = $oil['stocks'] - $ol;
        
@@ -205,7 +168,7 @@ class AdminController extends BaseController
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
         
      }
-     elseif ($productId == 3) {
+     elseif ($productID == 3) {
          $ol = $totalquantity * .04;
          $changeol = $oil['stocks'] - $ol;
          $pot = $totalquantity * .05;
@@ -219,7 +182,7 @@ class AdminController extends BaseController
          $this->raw->update($mustart['rawID'], ['stocks' => $changemus]);
         
      }
-     elseif ($productId == 4) {
+     elseif ($productID == 4) {
          $chick = $totalquantity * .1;
          $changech = $chicken['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -231,7 +194,7 @@ class AdminController extends BaseController
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
      }
-     elseif ($productId == 5) {
+     elseif ($productID == 5) {
          $gar = $totalquantity * .06;
          $changegar = $garlic['stocks'] - $totalquantity;
          $chick = $totalquantity * .1;
@@ -250,9 +213,9 @@ class AdminController extends BaseController
          $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
         
      }
-     elseif ($productId == 6) {
+     elseif ($productID == 6) {
          $gar = $totalquantity * .06;
-         $changegar = $garlic['stocks'] - $gar;
+         $changegar = $garlic['stocks'] - $totalquantity;
          $chick = $totalquantity * .1;
          $changech = $chicken['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -262,13 +225,13 @@ class AdminController extends BaseController
          $sal = $totalquantity * .009;
          $changesalt = $salt['stocks'] - $sal;
 
-         $this->raw->update($garlic['rawID'], ['stocks' => $changegar]);
-         $this->raw->update($chicken['rawID'], ['stocks' => $changech]);
-         $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 7) {
+     elseif ($productID == 7) {
          $por = $totalquantity * .09;
          $changepor = $pork['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -283,11 +246,11 @@ class AdminController extends BaseController
          $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
         
      }
-     elseif ($productId == 8) {
+     elseif ($productID == 8) {
          $bef= $totalquantity * .09;
          $changebef = $beef['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -301,11 +264,13 @@ class AdminController extends BaseController
 
          $this->raw->update($beef['rawID'], ['stocks' => $changebef]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
+         $this->raw->update($pepper['rawID'], ['stocks' => $changepep]);
 
      }
-     elseif ($productId == 9) {
+     elseif ($productID == 9) {
          $por = $totalquantity * .09;
          $changepor = $pork['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -320,10 +285,10 @@ class AdminController extends BaseController
          $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);            
      }
-     elseif ($productId == 10) {
+     elseif ($productID == 10) {
          $por = $totalquantity * .09;
          $changepor = $pork['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -338,10 +303,10 @@ class AdminController extends BaseController
          $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);   
      }
-     elseif ($productId == 11) {
+     elseif ($productID == 11) {
          $por = $totalquantity * .09;
          $changepor = $pork['stocks'] - $totalquantity;
          $ol = $totalquantity * .04;
@@ -356,10 +321,10 @@ class AdminController extends BaseController
          $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
          $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+         $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
          $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);               
      }
-     elseif ($productId == 12) {
+     elseif ($productID == 12) {
          $eg = $totalquantity * .08;
          $changeeg = $egg['stocks'] - $totalquantity;
          $ol = $totalquantity * .03;
@@ -375,7 +340,7 @@ class AdminController extends BaseController
          $this->raw->update($ketchup['rawID'], ['stocks' => $changeketc]);
         
      }
-     elseif ($productId == 13) {
+     elseif ($productID == 13) {
          $eg = $totalquantity * .08;
          $changeeg = $egg['stocks'] - $totalquantity;
          $ol = $totalquantity * .03;
@@ -388,9 +353,9 @@ class AdminController extends BaseController
          $this->raw->update($ketchup['rawID'], ['stocks' => $changeketc]);
         
      }
-     elseif ($productId == 14) {
+     elseif ($productID == 14) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -404,9 +369,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 15) {
+     elseif ($productID == 15) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -420,9 +385,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 16) {
+     elseif ($productID == 16) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -436,9 +401,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 17) {
+     elseif ($productID == 17) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -452,9 +417,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 18) {
+     elseif ($productID == 18) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -468,9 +433,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 19) {
+     elseif ($productID == 19) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -484,9 +449,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 20) {
+     elseif ($productID == 20) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -500,9 +465,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 21) {
+     elseif ($productID == 21) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -515,25 +480,9 @@ class AdminController extends BaseController
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
-     }elseif ($productId == 22) {
+     }elseif ($productID == 22) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productId == 23) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -547,9 +496,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 24) {
+     elseif ($productID == 23) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -563,9 +512,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 25) {
+     elseif ($productID == 24) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -579,9 +528,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 26) {
+     elseif ($productID == 25) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -595,9 +544,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 27) {
+     elseif ($productID == 26) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -611,9 +560,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 28) {
+     elseif ($productID == 27) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -627,9 +576,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 29) {
+     elseif ($productID == 28) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -643,9 +592,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 30) {
+     elseif ($productID == 29) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -659,9 +608,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 31) {
+     elseif ($productID == 30) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -675,9 +624,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 32) {
+     elseif ($productID == 31) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -691,9 +640,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 33) {
+     elseif ($productID == 32) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -707,9 +656,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 34) {
+     elseif ($productID == 33) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -723,9 +672,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 35) {
+     elseif ($productID == 34) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -739,9 +688,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 36) {
+     elseif ($productID == 35) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -755,9 +704,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 37) {
+     elseif ($productID == 36) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -771,9 +720,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 38) {
+     elseif ($productID == 37) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -787,9 +736,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 39) {
+     elseif ($productID == 38) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -803,9 +752,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 40) {
+     elseif ($productID == 39) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -819,9 +768,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 41) {
+     elseif ($productID == 40) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -835,9 +784,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 42) {
+     elseif ($productID == 41) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -851,9 +800,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 43) {
+     elseif ($productID == 42) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -867,9 +816,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 44) {
+     elseif ($productID == 43) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -883,9 +832,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 45) {
+     elseif ($productID == 44) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -899,9 +848,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 46) {
+     elseif ($productID == 45) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -915,9 +864,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 47) {
+     elseif ($productID == 46) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -931,9 +880,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 48) {
+     elseif ($productID == 47) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -947,9 +896,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 49) {
+     elseif ($productID == 48) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -963,106 +912,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-
-     elseif ($productId == 50) {
+     elseif ($productID == 49) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productId == 51) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productId == 52) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productId == 53) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productId == 54) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productId == 55) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productId == 57) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1077,9 +929,9 @@ class AdminController extends BaseController
         
      }
 
-     elseif ($productId == 58) {
+     elseif ($productID == 50) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1093,9 +945,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 59) {
+     elseif ($productID == 51) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1109,24 +961,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 60) {
+     elseif ($productID == 52) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }elseif ($productId == 61) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1140,9 +977,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 62) {
+     elseif ($productID == 53) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1156,25 +993,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-
-     elseif ($productId == 63) {
+     elseif ($productID == 54) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }elseif ($productId == 64) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1188,10 +1009,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-
-     elseif ($productId == 65) {
+     elseif ($productID == 55) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1205,25 +1025,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 66) {
+     elseif ($productID == 57) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-     elseif ($productId == 67) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1238,9 +1042,9 @@ class AdminController extends BaseController
         
      }
 
-     elseif ($productId == 68) {
+     elseif ($productID == 58) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1253,7 +1057,168 @@ class AdminController extends BaseController
          $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
-     }elseif ($productId == 69) {
+     }
+     elseif ($productID == 59) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+     elseif ($productID == 60) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }elseif ($productID == 61) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+     elseif ($productID == 62) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 63) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }elseif ($productID == 64) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 65) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+     elseif ($productID == 66) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+     elseif ($productID == 67) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 68) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }elseif ($productID == 69) {
          $tor = $totalquantity * .03;
          $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
@@ -1271,7 +1236,7 @@ class AdminController extends BaseController
      }
      
 
-     elseif ($productId == 70) {
+     elseif ($productID == 70) {
          $tor = $totalquantity * .03;
          $changetor = $tortillas['stocks'] - $tor;
          $on = $totalquantity * .03;
@@ -1287,9 +1252,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 71) {
+     elseif ($productID == 71) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1303,9 +1268,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 72) {
+     elseif ($productID == 72) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1319,9 +1284,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 73) {
+     elseif ($productID == 73) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1335,9 +1300,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 74) {
+     elseif ($productID == 74) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1351,9 +1316,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 75) {
+     elseif ($productID == 75) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1367,9 +1332,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 76) {
+     elseif ($productID == 76) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1383,9 +1348,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 77) {
+     elseif ($productID == 77) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1399,9 +1364,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 78) {
+     elseif ($productID == 78) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1415,26 +1380,9 @@ class AdminController extends BaseController
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productId == 79) {
+     elseif ($productID == 79) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 80) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1449,10 +1397,9 @@ class AdminController extends BaseController
         
      }
 
-
-     elseif ($productId == 81) {
+     elseif ($productID == 80) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1468,9 +1415,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 82) {
+     elseif ($productID == 81) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1486,9 +1433,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 83) {
+     elseif ($productID == 82) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1504,9 +1451,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 84) {
+     elseif ($productID == 83) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1522,9 +1469,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 85) {
+     elseif ($productID == 84) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1540,9 +1487,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 86) {
+     elseif ($productID == 85) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1558,9 +1505,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 87) {
+     elseif ($productID == 86) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1576,9 +1523,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 88) {
+     elseif ($productID == 87) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1594,9 +1541,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 89) {
+     elseif ($productID == 88) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1612,179 +1559,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 90) {
+     elseif ($productID == 89) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 91) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 92) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 93) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 94) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 95) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 96) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 97) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 98) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 99) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
-         $on = $totalquantity * .03;
-         $changeon = $onion['stocks'] - $on;
-         $mush = $totalquantity * .26;
-         $changemush = $mushroom['stocks'] - $mush;
-         $tomato = $totalquantity * .06;
-         $changetomat = $tomatosouce['stocks'] - $tomato;
-
-         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
-         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
-         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
-        
-     }
-
-     elseif ($productId == 100) {
-         $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1800,9 +1577,179 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 101) {
+     elseif ($productID == 90) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 91) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 92) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 93) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 94) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 95) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 96) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 97) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 98) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 99) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+     elseif ($productID == 100) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1818,9 +1765,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 102) {
+     elseif ($productID == 101) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1836,9 +1783,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 103) {
+     elseif ($productID == 102) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1854,9 +1801,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 104) {
+     elseif ($productID == 103) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1872,9 +1819,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 105) {
+     elseif ($productID == 104) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1890,9 +1837,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 106) {
+     elseif ($productID == 105) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1908,9 +1855,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 100) {
+     elseif ($productID == 106) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1926,9 +1873,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 100) {
+     elseif ($productID == 100) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1944,9 +1891,9 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 107) {
+     elseif ($productID == 100) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1962,9 +1909,27 @@ class AdminController extends BaseController
      }
 
 
-     elseif ($productId == 108) {
+     elseif ($productID == 107) {
          $tor = $totalquantity * .03;
-         $changetor = $tortillas['stocks'] - $tor;
+         $changetor = $tortillas['stocks'] - $totalquantity;
+         $on = $totalquantity * .03;
+         $changeon = $onion['stocks'] - $on;
+         $mush = $totalquantity * .26;
+         $changemush = $mushroom['stocks'] - $mush;
+         $tomato = $totalquantity * .06;
+         $changetomat = $tomatosouce['stocks'] - $tomato;
+
+         $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+         $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+         $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+         $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+        
+     }
+
+
+     elseif ($productID == 108) {
+         $tor = $totalquantity * .03;
+         $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
          $changeon = $onion['stocks'] - $on;
          $mush = $totalquantity * .26;
@@ -1985,35 +1950,13 @@ class AdminController extends BaseController
          log_message('error', 'No row found for rawID = 9');
      }
      
-
+         
        }
-       $this->printer->text("------------------------------\n");
-       $this->printer->text( $DineTake . "\n");
-       $this->printer->text("------------------------------\n");
-        $this->printer->text("Total: P" . number_format($total, 2) . "\n");   
-       $this->printer->text("------------------------------\n");
-       $this->printer->text("\nAmount Paid: P" . number_format($amountPaid, 2) . "\n");
-       $this->printer->text("Change: P" . number_format($change, 2) . "\n");
-       $this->printer->text("------------------------------\n");
-       $this->printer->text("Thank you for choosing\n");
-       $this->printer->text("Crossroards Coffee and Deli\n");
-       $this->printer->text("Come Again\n");
-       $this->printer->text("------------------------------\n");
-  
-       $this->printer->cut();
-       $this->printer->close();
 
        return $this->response->setJSON([
            'success' => true,
            'data' => $savedData
        ]);
-
-
-       
-    } catch (\Throwable $th) {
-        //throw $th;
-    }
-
     }
 
     private function getBarcodeByOrder($lengt = 10)
@@ -2030,24 +1973,24 @@ class AdminController extends BaseController
 
     public function printReceipt()
     {
-        $this->printer = new ThermalPrinter();
+        $printer = new ThermalPrinter();
         
         // Example receipt content
         $receipt_content = "
-            Hello
-            --------------------------
-            Item: 2 Boy Bawang  $10.00
-            Item: 1 Pizza Hot   $15.00
-            Total:              $25.00
-            --------------------------
+            Your Store Name
+            ----------------
+            Item:         $10.00
+            Item:         $15.00
+            Total:        $25.00
+            ----------------
             Thank you for shopping!
         ";
 
         try {
-            $result = $this->printer->printReceipt($receipt_content);
+            $result = $printer->printReceipt($receipt_content);
             if ($result === true) {
                 echo "Receipt printed successfully.";
-            $this->printer->printReceipt($receipt_content);
+            $printer->printReceipt($receipt_content);
             } else {
                 echo "Error: " . $result;
             }
@@ -2093,120 +2036,14 @@ class AdminController extends BaseController
         return view('/admin/register');
     }
 
-    public function login(){
-        $data['googleAuth'] =   '<a href="'. $this->googleClient->createAuthUrl() .'">Login With Google</a>';
-        return view('/admin/login', $data);
-    }
-
-    public function googleAuthLogin()
-    {
-        // Start the session
-        $session = session();
-    
-        try {
-            $code = $this->request->getVar('code');
-            if (!$code) {
-                $session->set('error', 'Authorization code not found');
-                return redirect()->to('/');
-            }
-    
-            $token = $this->googleClient->fetchAccessTokenWithAuthCode($code);
-            if (isset($token['error'])) {
-                throw new Exception('Error fetching access token: ' . $token['error']);
-            }
-    
-            $this->googleClient->setAccessToken($token['access_token']);
-            $session->set("AccessToken", $token['access_token']);
-    
-            $googleService = new \Google_Service_Oauth2($this->googleClient);
-            $data = $googleService->userinfo->get();
-            $currentDateTime = date("Y-m-d H:i:s");
-    
-            $user = $this->usr->where('email', $data['email'])->first();
-            $userdata = [];
-            if ($user) {
-                // User already exists, update their data
-                $userdata = [
-                    'FirstName' => $data['givenName'],
-                    'email' => $data['email'],
-                    'UpdatedAt' => $currentDateTime
-                ];
-                $this->usr->updateUserData($data['id'], $userdata);
-    
-                // Prepare session data
-                $ses_data = [
-                    'UserID' => $user['UserID'],
-                    'LastName' => $user['LastName'],
-                    'FirstName' => $user['FirstName'],
-                    'UserRole' => $user['UserRole'],
-                    'birthdate' => $user['birthdate'],
-                    'email' => $user['email'],
-                    'profile_img' => $user['profile_img'],
-                    'Username' => $user['Username'],
-                    'Password' => $user['Password'],
-                    'ContactNo' => $user['ContactNo'],
-                    'gender' => $user['gender'],
-                    'address' => $user['address'],
-                    'isLoggedIn' => TRUE
-                ];
-            } else {
-                // New user, insert their data
-                $userdata = [
-                    'code' => $data['id'],
-                    'FirstName' => $data['givenName'],
-                    'LastName' => $data['familyName'] ?? " ",
-                    'profile_img' => 'profile.png',
-                    'UserRole' => 'Customer',
-                    'birthdate' => '1999-12-04',
-                    'email' => $data['email'],
-                    'CreatedAt' => $currentDateTime
-                ];
-                $this->usr->insertUserData($userdata);
-                
-                // Fetch the newly inserted user data
-                $user = $this->usr->where('email', $data['email'])->first();
-                if ($user) {
-                    $ses_data = [
-                        'UserID' => $user['UserID'],
-                        'LastName' => $user['LastName'],
-                        'FirstName' => $user['FirstName'],
-                        'UserRole' => $user['UserRole'],
-                        'birthdate' => $user['birthdate'],
-                        'email' => $user['email'],
-                        'profile_img' => $user['profile_img'],
-                        'Username' => $user['Username'],
-                        'Password' => $user['Password'],
-                        'ContactNo' => $user['ContactNo'],
-                        'gender' => $user['gender'],
-                        'address' => $user['address'],
-                        'isLoggedIn' => TRUE
-                    ];
-                } else {
-                    throw new Exception('Error fetching newly inserted user data');
-                }
-            }
-    
-            // Set session data
-            $session->set($ses_data);
-            $session->set("LoddgeUserData", $userdata);
-    
-            return redirect()->to('mainhome');
-    
-        } catch (Exception $e) {
-            // Log the error for debugging
-            log_message('error', $e->getMessage());
-            $session->set('error', 'Something went wrong: ' . $e->getMessage());
-            return redirect()->to('/');
-        }
-    }
     
     public function home(){
         $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
        return view('/admin/home', $data);
-    }
+    } 
 
     public function dashboard(){
         $data = [
@@ -2278,8 +2115,8 @@ class AdminController extends BaseController
     public function inventory()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         return view ('/admin/inventory', $data);
     }
@@ -2292,11 +2129,18 @@ class AdminController extends BaseController
         return view('/admin/inventoryproducts');
     }
 
+    public function order(){
+        $data= [
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        ];
+        return view('/admin/order', $data);    }
+
     public function orderpayment(){
 
         $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         $data['order'] = $this->payment->select('order.orderID,order.barcode, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
         order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
@@ -2305,7 +2149,6 @@ class AdminController extends BaseController
         ->join('product_tbl', 'order.ProductID = product_tbl.prod_id')
         ->join( 'user', 'order.CustomerID = user.UserID')
         ->where('orderStatus', 'onProcess')
-        ->groupBy('order.orderID','order.barcode')
         ->orderBy('order.orderID', 'ASC')
         ->findAll();
         return view('/admin/orderpayment', $data);
@@ -2339,12 +2182,23 @@ class AdminController extends BaseController
      }  
  }
  
+   
+    public function gethistory()
+    {
+        $data= [
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        ];
+        $history = new HistoryModel();
+        $data['history'] = $history->findAll();
+        return view ('/admin/history', $data);
+    }
 
     public function getcustomeruser()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         $role = 'Customer';
         $user = new AdminUserModel();
@@ -2355,8 +2209,8 @@ class AdminController extends BaseController
     public function getmanageuser()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         $role = 'Admin';
         $user = new AdminUserModel();
@@ -2385,73 +2239,31 @@ class AdminController extends BaseController
         return redirect()->to(base_url('adminmanage_user'));
     }
 
-    public function adminprofile()
-    { 
-        return view('/admin/adminprofile');
+    public function edituser($id)
+    {
+        $data['euser'] = $this->user->find($id);
+        return view('/admin/edituser', $data);
     }
 
-    public function edit_profile($id)
+    public function updateuser($id)
     {
-        $data['eprof'] = $this->user->find($id);
-        return view('/admin/edit_adminprofile', $data);
+        $user = new AdminUserModel();
+        $data = [
+            'LastName' => $this->request->getVar('LastName'),
+            'FirstName' => $this->request->getVar('FirstName'),
+            'gender' => $this->request->getVar('gender'),
+            'email' => $this->request->getVar('email'),
+            'ContactNo' => $this->request->getVar('ContactNo'),
+            'UserRole' => $this->request->getVar('UserRole'),
+            'Username' => $this->request->getVar('Username'),
+            'Password' => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
+            'address' => $this->request->getVar('address'),
+            'birthdate' => $this->request->getVar('birthdate'),
+        ];
+        $user->update($id, $data);
+        return redirect()->to(base_url('adminmanage_user'));
     }
-
-    public function updateadmin($id)
-    {
-        if ($this->request->getMethod() === 'post') {
-            $userId = session()->get('UserID');
-            $userModel = new UserModel();
-
-            // Get the current user data
-            $currentUser = $userModel->find($userId);
-            $currentProfileImg = $currentUser['profile_img'];
-
-            $data = [
-                'LastName' => $this->request->getPost('LastName'),
-                'FirstName' => $this->request->getPost('FirstName'),
-                'gender' => $this->request->getPost('gender'),
-                'email' => $this->request->getPost('email'),
-                'ContactNo' => $this->request->getPost('ContactNo'),
-                'Username' => $this->request->getPost('Username'),
-                'address' => $this->request->getPost('address'),
-                'birthdate' => $this->request->getPost('birthdate')
-            ];
-
-            $profileImg = $this->request->getFile('profile_img');
-            if ($profileImg->isValid() && !$profileImg->hasMoved()) {
-                $newName = $profileImg->getName();
-                $profileImg->move(ROOTPATH . 'public/assets/user/images/', $newName);
-                $data['profile_img'] = $newName;
-
-                // Delete the old profile image if it's not the default image
-                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg)) {
-                    unlink(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg);
-                }
-            }
-
-            $userModel->update($userId, $data);
-            session()->set($data);
-
-            return redirect()->to(base_url('/adminprofile'));
-        }
-    }
-
-    public function removeadminpf($userId)
-    {
-        $userModel = new UserModel();
-        $currentUser = $userModel->find($userId);
-        $profileImg = $currentUser['profile_img'];
     
-        if (!empty($profileImg) && file_exists('assets/user/images/' . $profileImg)) {
-            unlink('assets/user/images/' . $profileImg);
-        }
-    
-        $userModel->update($userId, ['profile_img' => 'profile.png']);
-        session()->set('profile_img', 'profile.png');
-    
-        return redirect()->to(base_url('/adminprofile'));
-    }    
-      
     public function deleteuser($id)
     {  
         $this->user->delete($id);
@@ -2485,8 +2297,8 @@ class AdminController extends BaseController
             'frap' =>  $menu->products('Frappe'),
             'lemon' =>$menu->products('Lemonade'),
             'other' => $menu->products('Others'),
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];   
 
         return view('/admin/pos', $data);
@@ -2498,73 +2310,13 @@ class AdminController extends BaseController
     public function getPendingOrders()
     {
         $getID = $this->request->getPost('orderID');
+        $getRaw = $this->request->getPost('');        
 
         $myOrders = $this->viewPendingOrders($getID);
                     $this->AcceptOrders($myOrders, $getID);
-                    $this->AcceptAndPrintReceipt();
 
-        return redirect()->to('adminpayment')->with('msg', 'Order is now Accepted');
+        return redirect()->to('adminorderpayment')->with('msg', 'Order is now Accepted');
         
-    }
-
-    private function AcceptAndPrintReceipt()
-    {
-
-        $name = $this->request->getPost('FirstName');
-        $conNum = $this->request->getPost('ContatNo');
-        $address = $this->request->getPost('address');
-        $getData = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'quantity' => $this->request->getPost('quantity'),
-            'size'     => $this->request->getPost('size'),
-            'total'    => $this->request->getPost('total')
-        ];
-
-
-        $this->printer->setJustification(Printer::JUSTIFY_CENTER);
-        $this->printer->text("Crossrods Coffee and Deli\n");
-        $this->printer->text("Tawiran Calapan City\n");
-        $this->printer->text("Oriental Mindoro\n");
-        $this->printer->text("Receipt\n");
-        $this->printer->text("\n");
-        $this->printer->text("------------------------------\n");
-        $this->printer->text("Customer Name:" . $name . "\n");
-        $this->printer->text("Address: " . $address . "\n");
-        $this->printer->text("Contact Number: " . $conNum . "\n");
-        $this->printer->text("------------------------------\n");
-        $this->printer->text(date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ."\n");
-        $this->printer->text("------------------------------\n");
-   
-        $this->printer->text("Name    Quantity     Prize\n");
-        $prodNames = $getData['prod_name'];
-        $quantities = $getData['quantity'];
-        $sizes = $getData['size'];
-        $totals = $getData['total'];
-        
-        // Iterate over the arrays
-        for ($i = 0; $i < count($prodNames); $i++) {
-            $prodName = $prodNames[$i];
-            $quantity = $quantities[$i];
-            $size     = $sizes[$i];
-            $total    = $totals[$i];
-        
-            $this->printer->text(sprintf("%-12s x%-10d P%5.2f\n", $prodName, $quantity, $total));
-        }
-
-        $total = $this->request->getPost('sum');
-        $this->printer->text("------------------------------\n");
-        $this->printer->text("Total: P" . number_format($total, 2) . "\n");   
-     
-       $this->printer->text("------------------------------\n");
-       $this->printer->text("Thank you for choosing\n");
-       $this->printer->text("Crossroards Coffee and Deli\n");
-       $this->printer->text("Come Again\n");
-       $this->printer->text("------------------------------\n");
-  
-
-        $this->printer->cut();
-        $this->printer->close();
-
     }
 
     private function viewPendingOrders($getID)
@@ -2725,11 +2477,11 @@ class AdminController extends BaseController
                 $sal = $order['quantity'] * .009;
                 $changesalt = $salt['stocks'] - $sal;
 
-                $this->raw->update($garlic['rawID'], ['stocks' => $changegar]);
-                $this->raw->update($chicken['rawID'], ['stocks' => $changech]);
-                $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
-                              
+                $this->raw->update($tortillas['rawID'], ['stocks' => $changetor]);
+                $this->raw->update($onion['rawID'], ['stocks' => $changeon]);
+                $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+                $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
+               
             }
             elseif ($productID == 7) {
                 $por = $order['quantity'] * .09;
@@ -2746,7 +2498,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
                
             }
@@ -2764,9 +2516,11 @@ class AdminController extends BaseController
 
                 $this->raw->update($beef['rawID'], ['stocks' => $changebef]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+                $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
-              
+                $this->raw->update($pepper['rawID'], ['stocks' => $changepep]);
+    
             }
             elseif ($productID == 9) {
                 $por = $order['quantity'] * .09;
@@ -2783,7 +2537,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);            
             }
             elseif ($productID == 10) {
@@ -2801,7 +2555,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);   
             }
             elseif ($productID == 11) {
@@ -2819,7 +2573,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changesalt]);
+                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);               
             }
             elseif ($productID == 12) {
@@ -4453,6 +4207,10 @@ class AdminController extends BaseController
     $data = ['orderStatus' => 'AcceptOrder'];
         $this->order->update($orderIDs, $data);
 
+
+        
+
+
     }
 
     public function viewOrders()
@@ -4483,12 +4241,11 @@ class AdminController extends BaseController
             return redirect()->to('/login');
         }
     }
-    
     public function viewToAcceptorders($barcode)
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
 
         //for Single data
@@ -4518,27 +4275,7 @@ class AdminController extends BaseController
         return view('admin/viewByBarcode', $data);
     }
 
-    public function gethistory()
-    {
-        $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
-        ];
-        $history = new HistoryModel();
-        $data['history'] = $history->findAll();
-        return view ('/admin/history', $data);
-    }
 
-    public function viewhistory(){
-        $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
-        ];
-        
-        $history = new HistoryModel();
-        $data['history'] = $history->findAll();
-        return view('admin/vieworderhistory' , $data);
-    }
     public function Notification()
     {
         return view('user/ForNotif/Notif');
@@ -4560,218 +4297,325 @@ class AdminController extends BaseController
 
         return view('admin/rawmatsnotif', $data);
     }
-
-        public function PaymentMethod()
-        {
-            $session = session();
-            $totalAmount = $session->get('totalAmount');
-        
-            if (!$totalAmount) {
-                // Handle the case where totalAmount is not set
-                $session->setFlashdata('error', 'Total amount not found. Please try again.');
-                return redirect()->to('/cart');
-            }
-        
-            $subPayment = $totalAmount * 100;
-        
-            $curl = curl_init();
-        
-            curl_setopt_array($curl, [
-                CURLOPT_URL => "https://api.paymongo.com/v1/links",
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_ENCODING => "",
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 30,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_POSTFIELDS => json_encode([
-                    'data' => [
-                        'attributes' => [
-                            'amount' => $subPayment,
-                            'description' => 'Trial',
-                            'remarks' => 'Payment'
-                        ]
+    public function PaymentMethod()
+    {
+        $session = session();
+        $totalAmount = $session->get('totalAmount');
+    
+        if (!$totalAmount) {
+            // Handle the case where totalAmount is not set
+            $session->setFlashdata('error', 'Total amount not found. Please try again.');
+            return redirect()->to('/cart');
+        }
+    
+        $subPayment = $totalAmount * 100;
+    
+        $curl = curl_init();
+    
+        curl_setopt_array($curl, [
+            CURLOPT_URL => "https://api.paymongo.com/v1/links",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => json_encode([
+                'data' => [
+                    'attributes' => [
+                        'amount' => $subPayment,
+                        'description' => 'Trial',
+                        'remarks' => 'Payment'
                     ]
-                ]),
-                CURLOPT_HTTPHEADER => [
-                    "accept: application/json",
-                    "authorization: Basic c2tfdGVzdF90djNzdjRUSHhtR1ZaZWRIWjhwYlVBZjQ6",
-                    "content-type: application/json"
-                ],
-            ]);
-        
-            $response = curl_exec($curl);
-            $decode = json_decode($response, TRUE);
-            $err = curl_error($curl);
-
-
-        
-            curl_close($curl);
-        
-            if ($err) {
-                echo "cURL Error #:" . $err . "Please Check Your Internet Connection";
-            } else {
-                 if (isset($decode['data']['attributes']['reference_number'])) { 
-            $reference_number = $decode['data']['attributes']['reference_number'];
-
-                foreach($decode as $key => $value)
-                {
+                ]
+            ]),
+            CURLOPT_HTTPHEADER => [
+                "accept: application/json",
+                "authorization: Basic c2tfdGVzdF90djNzdjRUSHhtR1ZaZWRIWjhwYlVBZjQ6",
+                "content-type: application/json"
+            ],
+        ]);
     
-                    $name = $decode[$key]["attributes"]["checkout_url"];
-                    $age = $decode[$key]["type"];
-                    return redirect()->to($name);
+        $response = curl_exec($curl);
+        $decode = json_decode($response, TRUE);
+        $err = curl_error($curl);
 
 
-                  }
     
-            }
-        }
-        }
+        curl_close($curl);
+    
+        if ($err) {
+            echo "cURL Error #:" . $err . "Please Check Your Internet Connection";
+        } else {
+             if (isset($decode['data']['attributes']['reference_number'])) { 
+        $reference_number = $decode['data']['attributes']['reference_number'];
 
-        public function Searchreport()
-        {
-            $data= [
-                'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-                'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            foreach($decode as $key => $value)
+            {
+
+                $name = $decode[$key]["attributes"]["checkout_url"];
+                $age = $decode[$key]["type"];
+                return redirect()->to($name);
+
+
+              }
+
+        }
+    }
+    }
+
+    public function Searchreport()
+    {
+        $data= [
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        ];
+
+        return view('admin/SearchReport', $data);
+    }
+    
+    public function FiterReport()
+    {
+        $toDate = $this->request->getVar('toDate');
+        $fromDate = $this->request->getVar('fromDate');
+
+        
+        $data= [
+            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')
+            ->where('item_categ', 'Raw Materials')->first(), 
+            'report' => $this->history->select('tbl_orders.orderid, tbl_orders.CustomerID, tbl_orders.ProductID, tbl_orders.OrderID, 
+            tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date, tbl_orders.total_amount, 
+            tbl_orders.amount_paid,tbl_orders.change_amount, product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity,
+            product_tbl.prod_mprice, product_tbl.prod_lprice, product_tbl.prod_categ,')
+            ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
+            ->where('DATE(order_date) >=', $toDate)->where('DATE(order_date) <=', $fromDate)->findAll(),
+            'toDate' => $toDate,
+            'fromDate' => $fromDate
+            
             ];
 
-            return view('admin/SearchReport', $data);
-        }
-        
-        public function FiterReport()
-        {
-            $toDate = $this->request->getVar('toDate');
-            $fromDate = $this->request->getVar('fromDate');
+            // var_dump($data);
+        return view('admin/filteredDate', $data);
+    }
 
-            
-            $data= [
-                'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-                'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')
-                ->where('item_categ', 'Raw Materials')->first(), 
-                'report' => $this->history->select('tbl_orders.orderid, tbl_orders.CustomerID, tbl_orders.ProductID, tbl_orders.OrderID, 
-                tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date, tbl_orders.total_amount, 
-                tbl_orders.amount_paid,tbl_orders.change_amount, product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity,
-                product_tbl.prod_mprice, product_tbl.prod_lprice, product_tbl.prod_categ,')
-                ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
-                ->where('DATE(order_date) >=', $toDate)->where('DATE(order_date) <=', $fromDate)->findAll(),
-                'toDate' => $toDate,
-                'fromDate' => $fromDate
-                
+    public function exportReport($toDate, $fromDate)
+    {
+        $dompdf = new \Dompdf\Dompdf();
+        $data["report"] =  $this->history->select('tbl_orders.orderid, tbl_orders.CustomerID, tbl_orders.ProductID, tbl_orders.OrderID, 
+            tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date, tbl_orders.total_amount, 
+            tbl_orders.amount_paid,tbl_orders.change_amount, product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity,
+            product_tbl.prod_mprice, product_tbl.prod_lprice, product_tbl.prod_categ,')
+            ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
+            ->where('DATE(order_date) >=', $toDate)->where('DATE(order_date) <=', $fromDate)
+            ->orderBy('DATE(order_date)','ASC')->findAll();
+
+            $totalSum = $this->history->selectSum('tbl_orders.total_amount')
+            ->where('DATE(order_date) >=', $toDate)
+            ->where('DATE(order_date) <=', $fromDate)
+            ->first()['total_amount'];
+    
+        // Initialize HTML string
+        $html = "<html>
+        <head>
+
+            <style>
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    table-layout: fixed;
+                }
+                th, td {
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                th {
+                    background-color: #f2f2f2;
+                    font-weight: bold;
+                }
+                .scrollable {
+                    max-height: 300px; /* Adjust as needed */
+                    overflow-y: auto;
+                }
+                .container {
+                    width: 100%;
+                    margin: 0 auto;
+                    padding: 20px;
+                    text-align: center;
+                }
+                .header {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                .header p {
+                    margin: 0;
+                    font-size: 16px;
+                }
+                h2 {
+                    margin-bottom: 0;
+                }
+            </style>
+        </head>
+        <body>
+        <div class='header'>
+        <h2>Crossroads Coffee And Deli</h2>
+        <p>Sales Report</p>
+        <p>From ". (new \DateTime($toDate))->format('F j, Y') . " to " . (new \DateTime($fromDate))->format('F j, Y') .  "</p>
+    </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Product Quantity</th>
+                        <th>Product Size</th>
+                        <th>Sales</th>
+                        <th>Order Date</th>
+                    </tr>
+                </thead>
+                <tbody class='scrollable'>"; // Add the 'scrollable' class to the tbody for scrolling
+    if(!empty($data['report'])){
+    // Loop through the report data and add rows to the table
+    foreach ($data["report"] as $report) {
+        $html .= "<tr>";
+        $html .= "<td>" . htmlspecialchars($report['prod_name']) . "</td>"; // Use htmlspecialchars to escape special characters
+        $html .= "<td>" . htmlspecialchars($report['prod_quantity']) . "</td>";
+        $html .= "<td>" . htmlspecialchars($report['size']) . "</td>";
+        $html .= "<td>" . htmlspecialchars($report['total_amount']) . "</td>";
+        $html .= "<td>" . (new \DateTime($report['order_date']))->format('F j, Y - H:i:s') . "</td>";
+        $html .= "</tr>";
+    }
+  
+    }
+    else {
+        $html .="<p>No Data Found</p>";
+    }
+    
+    $html .= "</tbody></table>";
+    $html .= "Total Sales: $totalSum </body></html>";
+           
+        // Load HTML content into Dompdf
+        $dompdf->loadHtml($html);
+    
+        // Set paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+    
+        // Render PDF
+        $dompdf->render();
+    
+        // Output PDF to browser
+        $dompdf->stream('Sales in '.(new \DateTime($toDate))->format('F j, Y'). ' - ' .(new \DateTime($fromDate))->format('F j, Y'));
+    }
+
+    public function login(){
+        $data['googleAuth'] =   '<a href="'. $this->googleClient->createAuthUrl() .'">Login With Google</a>';
+        return view('/admin/login', $data);
+    }
+
+    public function googleAuthLogin()
+    {
+        // Start the session
+        $session = session();
+    
+        try {
+            $code = $this->request->getVar('code');
+            if (!$code) {
+                $session->set('error', 'Authorization code not found');
+                return redirect()->to('/');
+            }
+    
+            $token = $this->googleClient->fetchAccessTokenWithAuthCode($code);
+            if (isset($token['error'])) {
+                throw new Exception('Error fetching access token: ' . $token['error']);
+            }
+    
+            $this->googleClient->setAccessToken($token['access_token']);
+            $session->set("AccessToken", $token['access_token']);
+    
+            $googleService = new \Google_Service_Oauth2($this->googleClient);
+            $data = $googleService->userinfo->get();
+            $currentDateTime = date("Y-m-d H:i:s");
+    
+            $user = $this->usr->where('email', $data['email'])->first();
+            $userdata = [];
+            if ($user) {
+                // User already exists, update their data
+                $userdata = [
+                    'FirstName' => $data['givenName'],
+                    'email' => $data['email'],
+                    'UpdatedAt' => $currentDateTime
                 ];
+                $this->usr->updateUserData($data['id'], $userdata);
+    
+                // Prepare session data
+                $ses_data = [
+                    'UserID' => $user['UserID'],
+                    'LastName' => $user['LastName'],
+                    'FirstName' => $user['FirstName'],
+                    'UserRole' => $user['UserRole'],
+                    'birthdate' => $user['birthdate'],
+                    'email' => $user['email'],
+                    'profile_img' => $user['profile_img'],
+                    'Username' => $user['Username'],
+                    'Password' => $user['Password'],
+                    'ContactNo' => $user['ContactNo'],
+                    'gender' => $user['gender'],
+                    'address' => $user['address'],
+                    'isLoggedIn' => TRUE
+                ];
+            } else {
+                // New user, insert their data
+                $userdata = [
+                    'code' => $data['id'],
+                    'FirstName' => $data['givenName'],
+                    'LastName' => $data['familyName'] ?? " ",
+                    'profile_img' => 'profile.png',
+                    'UserRole' => 'Customer',
+                    'birthdate' => '1999-12-04',
+                    'email' => $data['email'],
+                    'CreatedAt' => $currentDateTime
+                ];
+                $this->usr->insertUserData($userdata);
+                
+                // Fetch the newly inserted user data
+                $user = $this->usr->where('email', $data['email'])->first();
+                if ($user) {
+                    $ses_data = [
+                        'UserID' => $user['UserID'],
+                        'LastName' => $user['LastName'],
+                        'FirstName' => $user['FirstName'],
+                        'UserRole' => $user['UserRole'],
+                        'birthdate' => $user['birthdate'],
+                        'email' => $user['email'],
+                        'profile_img' => $user['profile_img'],
+                        'Username' => $user['Username'],
+                        'Password' => $user['Password'],
+                        'ContactNo' => $user['ContactNo'],
+                        'gender' => $user['gender'],
+                        'address' => $user['address'],
+                        'isLoggedIn' => TRUE
+                    ];
+                } else {
+                    throw new Exception('Error fetching newly inserted user data');
+                }
+            }
+    
+            // Set session data
+            $session->set($ses_data);
+            $session->set("LoddgeUserData", $userdata);
+    
+            return redirect()->to('mainhome');
+    
+        } catch (Exception $e) {
+            // Log the error for debugging
+            log_message('error', $e->getMessage());
+            $session->set('error', 'Something went wrong: ' . $e->getMessage());
+            return redirect()->to('/');
+        }
+    }
 
-                // var_dump($data);
-            return view('admin/filteredDate', $data);
-        }
 
-        public function exportReport($toDate, $fromDate)
-        {
-            $dompdf = new \Dompdf\Dompdf();
-            $data["report"] =  $this->history->select('tbl_orders.orderid, tbl_orders.CustomerID, tbl_orders.ProductID, tbl_orders.OrderID, 
-                tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date, tbl_orders.total_amount, 
-                tbl_orders.amount_paid,tbl_orders.change_amount, product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity,
-                product_tbl.prod_mprice, product_tbl.prod_lprice, product_tbl.prod_categ,')
-                ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
-                ->where('DATE(order_date) >=', $toDate)->where('DATE(order_date) <=', $fromDate)
-                ->orderBy('DATE(order_date)','ASC')->findAll();
-
-                $totalSum = $this->history->selectSum('tbl_orders.total_amount')
-                ->where('DATE(order_date) >=', $toDate)
-                ->where('DATE(order_date) <=', $fromDate)
-                ->first()['total_amount'];
-        
-            // Initialize HTML string
-            $html = "<html>
-            <head>
-
-                <style>
-                    table {
-                        width: 100%;
-                        border-collapse: collapse;
-                        table-layout: fixed;
-                    }
-                    th, td {
-                        padding: 8px;
-                        text-align: left;
-                        border-bottom: 1px solid #ddd;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                    }
-                    th {
-                        background-color: #f2f2f2;
-                        font-weight: bold;
-                    }
-                    .scrollable {
-                        max-height: 300px; /* Adjust as needed */
-                        overflow-y: auto;
-                    }
-                    .container {
-                        width: 100%;
-                        margin: 0 auto;
-                        padding: 20px;
-                        text-align: center;
-                    }
-                    .header {
-                        text-align: center;
-                        margin-bottom: 20px;
-                    }
-                    .header p {
-                        margin: 0;
-                        font-size: 16px;
-                    }
-                    h2 {
-                        margin-bottom: 0;
-                    }
-                </style>
-            </head>
-            <body>
-            <div class='header'>
-            <h2>Crossroads Coffee And Deli</h2>
-            <p>Sales Report</p>
-            <p>From ". (new \DateTime($toDate))->format('F j, Y') . " to " . (new \DateTime($fromDate))->format('F j, Y') .  "</p>
-        </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Product Quantity</th>
-                            <th>Product Size</th>
-                            <th>Sales</th>
-                            <th>Order Date</th>
-                        </tr>
-                    </thead>
-                    <tbody class='scrollable'>"; // Add the 'scrollable' class to the tbody for scrolling
-        if(!empty($data['report'])){
-        // Loop through the report data and add rows to the table
-        foreach ($data["report"] as $report) {
-            $html .= "<tr>";
-            $html .= "<td>" . htmlspecialchars($report['prod_name']) . "</td>"; // Use htmlspecialchars to escape special characters
-            $html .= "<td>" . htmlspecialchars($report['prod_quantity']) . "</td>";
-            $html .= "<td>" . htmlspecialchars($report['size']) . "</td>";
-            $html .= "<td>" . htmlspecialchars($report['total_amount']) . "</td>";
-            $html .= "<td>" . (new \DateTime($report['order_date']))->format('F j, Y - H:i:s') . "</td>";
-            $html .= "</tr>";
-        }
-      
-        }
-        else {
-            $html .="<p>No Data Found</p>";
-        }
-        
-        $html .= "</tbody></table>";
-        $html .= "Total Sales: $totalSum </body></html>";
-               
-            // Load HTML content into Dompdf
-            $dompdf->loadHtml($html);
-        
-            // Set paper size and orientation
-            $dompdf->setPaper('A4', 'landscape');
-        
-            // Render PDF
-            $dompdf->render();
-        
-            // Output PDF to browser
-            $dompdf->stream('Sales in '.(new \DateTime($toDate))->format('F j, Y'). ' - ' .(new \DateTime($fromDate))->format('F j, Y'));
-        }
-                  
 }
