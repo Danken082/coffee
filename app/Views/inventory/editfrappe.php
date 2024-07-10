@@ -53,59 +53,59 @@
         <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 d-flex justify-content-between">
                 <div class="border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white text-capitalize ps-3">Edit Drinks</h6>
+                    <h6 class="text-white text-capitalize ps-3">Edit Frappe</h6>
                 </div>
                 <div>
-                    <a href="<?= base_url('/inventorynoncoffee')?>" class="btn btn-info">BACK</a>
+                    <a href="<?= base_url('/inventoryfrappe')?>" class="btn btn-info">BACK</a>
                 </div>
             </div>
             <div class="card-body px-4 pb-3">
-                <form action="<?= base_url('/updatenon/'. $enon['prod_id'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
+                <form action="<?= base_url('/updatefrap/'. $efrap['prod_id'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
                     <div class="col-md-5">
                         <label for="Name" class="form-label">Product Name</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="text" class="form-control" id="name" name="prod_name" value="<?=$enon['prod_name'] ?>">
+                            <input type="text" class="form-control" id="name" name="prod_name" value="<?=$efrap['prod_name'] ?>">
                         </div>
                     </div>
                     <div class="col-md-5">
                         <label for="Description" class="form-label">Product Description</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="text" class="form-control" id="description" name="prod_desc" value="<?=$enon['prod_desc'] ?>">
+                            <input type="text" class="form-control" id="description" name="prod_desc" value="<?=$efrap['prod_desc'] ?>">
                         </div>
                     </div>
                     <div class="col-md-5">
                         <label for="Quantity" class="form-label">Quantity</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="number" class="form-control" id="quantity" name="prod_quantity" min="1" value="<?=$enon['prod_quantity'] ?>">
+                            <input type="number" class="form-control" id="quantity" name="prod_quantity" min="1" value="<?=$efrap['prod_quantity'] ?>">
                         </div>
                     </div>
                     <div class="col-md-5">
                             <label for="Medium" class="form-label">Medium Price</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="number" class="form-control" id="medium" name="prod_mprice" min="1" value="<?=$enon['prod_mprice'] ?>">
+                                <input type="number" class="form-control" id="medium" name="prod_mprice" min="1" value="<?=$efrap['prod_mprice'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <label for="Large" class="form-label">Large Price</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="number" class="form-control" id="large" name="prod_lprice" min="0" value="<?=$enon['prod_lprice'] ?>">
+                                <input type="number" class="form-control" id="large" name="prod_lprice" min="0" value="<?=$efrap['prod_lprice'] ?>">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <label for="Barcode" class="form-label">BarCode</label>
                             <div class="input-group input-group-outline my-3">
-                                <input type="text" disabled class="form-control" id="barcode" name="prod_code" value="<?=$enon['prod_code'] ?>">
+                                <input type="text" disabled class="form-control" id="barcode" name="prod_code" value="<?=$efrap['prod_code'] ?>">
                             </div>
                         </div>
                  
                     <div class="col-md-5">
                         <label for="Images" class="form-label">Images</label>
                         <div class="input-group input-group-outline my-3">
-                            <input type="file" id="images" name="prod_img" value="<?=$enon['prod_img'] ?>" accept=".jpg, .jpeg, .png">
+                            <input type="file" id="images" name="prod_img" value="<?=$efrap['prod_img'] ?>" accept=".jpg, .jpeg, .png">
                         </div>
                     </div>
                     <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-success" style="background-color: #1167b1;; color: white;">Update Non Coffee Frappe</button>
+                        <button type="submit" class="btn btn-success" style="background-color: #1167b1;; color: white;">Update Frappe Drink</button>
                     </div>
                 </form>
             </div>

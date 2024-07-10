@@ -101,7 +101,7 @@
 										<input type="text" name="ContactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
 									</div>
 									<div class="form-group ml-md-4 selector">
-										<select name="HCustomer" class="booktable form-control custom-select" align-text="center" style="font:black;">
+										<select name="HCustomer" class="booktable form-control custom-select" align-text="center" style="color:black;">
 											<option selected disabled>Count Of Persons</option>
 											<option value="1-3">1-3 Persons</option>
 											<option value="1-8">1-8 Persons</option>

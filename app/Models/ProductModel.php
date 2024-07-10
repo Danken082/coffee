@@ -55,12 +55,12 @@ class ProductModel extends Model
         return $this->where('prod_categ', $categ)->findAll();
     }
 
-    public function noncoffee($categ)
+    public function frappe($categ)
     {
         return $this->where('prod_categ', $categ)->findAll();
     }
 
-    public function coffeefrappe($categ)
+    public function lemonade($categ)
     {
         return $this->where('prod_categ', $categ)->findAll();
     }
@@ -90,7 +90,12 @@ class ProductModel extends Model
         return $this->where('prod_categ', $categ)->findAll();
     }
 
-    public function soup($categ)
+    public function chicken($categ)
+    {
+        return $this->where('prod_categ', $categ)->findAll();
+    }
+
+    public function chickenfillet($categ)
     {
         return $this->where('prod_categ', $categ)->findAll();
     }

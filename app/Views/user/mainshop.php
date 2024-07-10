@@ -35,17 +35,18 @@
 						<div class="col-md-12 nav-link-wrap mb-5">
 							<div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 								<a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Appetizer</a>
-								<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Pasta</a>
-								<a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Rice Meals</a>
-								<a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Salad</a>
-								<a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Sandwiches</a>
-								<a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Soup</a>
-								<a class="nav-link" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Hot Coffee</a>
-								<a class="nav-link" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false">Iced Coffee</a>
-								<a class="nav-link" id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9" role="tab" aria-controls="v-pills-9" aria-selected="false">Flavored Iced Coffee</a>
-								<a class="nav-link" id="v-pills-10-tab" data-toggle="pill" href="#v-pills-10" role="tab" aria-controls="v-pills-10" aria-selected="false">Non Coffee Frappe</a>
-								<a class="nav-link" id="v-pills-11-tab" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-11" aria-selected="false">Coffee Frappe</a>
-								<a class="nav-link" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Others</a>
+								<a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Breakfast Meals</a>
+								<a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false">Chicken Tenders</a>
+								<a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Crunchy Chicken Fillet</a>
+								<a class="nav-link" id="v-pills-5-tab" data-toggle="pill" href="#v-pills-5" role="tab" aria-controls="v-pills-5" aria-selected="false">Pasta</a>
+								<a class="nav-link" id="v-pills-6-tab" data-toggle="pill" href="#v-pills-6" role="tab" aria-controls="v-pills-6" aria-selected="false">Salad</a>
+								<a class="nav-link" id="v-pills-7-tab" data-toggle="pill" href="#v-pills-7" role="tab" aria-controls="v-pills-7" aria-selected="false">Sub Sandwiches</a>
+								<a class="nav-link" id="v-pills-8-tab" data-toggle="pill" href="#v-pills-8" role="tab" aria-controls="v-pills-8" aria-selected="false">Hot Coffee</a>
+								<a class="nav-link" id="v-pills-9-tab" data-toggle="pill" href="#v-pills-9" role="tab" aria-controls="v-pills-9" aria-selected="false">Iced Coffee</a>
+								<a class="nav-link" id="v-pills-10-tab" data-toggle="pill" href="#v-pills-10" role="tab" aria-controls="v-pills-10" aria-selected="false">Flavored Iced Coffee</a>
+								<a class="nav-link" id="v-pills-11-tab" data-toggle="pill" href="#v-pills-11" role="tab" aria-controls="v-pills-11" aria-selected="false">Frappe</a>
+								<a class="nav-link" id="v-pills-12-tab" data-toggle="pill" href="#v-pills-12" role="tab" aria-controls="v-pills-12" aria-selected="false">Lemonade</a>
+								<a class="nav-link" id="v-pills-13-tab" data-toggle="pill" href="#v-pills-13" role="tab" aria-controls="v-pills-13" aria-selected="false">Others</a>
 							</div>
 						</div>
 						<div class="col-md-12 d-flex align-items-center">
@@ -80,32 +81,6 @@
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<?php foreach($pasta as $p): ?>
-													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$p['prod_img']?>">
-														<h3 style="font-weight:bold;"><a><?=$p['prod_name']?></a></h3>
-														<div class="d-block" style="color:white;"><p><?=$p['prod_desc']?></p></div>
-														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd1/') .$p['prod_id'] ?>" method="post">
-															<?php if($p['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$p['prod_id'])?>">View Feedbacks</a></p>
-															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$p['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$p['prod_id'])?>">View Feedbacks</a></p>
-															<?php endif;?>
-														</form>
-													</div>
-												<?php endforeach; ?>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
-									<div class="row">
-										<div class="col-md-4 text-center">
-											<div class="menu-wrap">
 												<?php foreach($meal as $m): ?>
 													<div class="text">
 														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$m['prod_img']?>">
@@ -128,7 +103,85 @@
 										</div>
 									</div>
 								</div>
+								<div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($chicken as $c): ?>
+													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$c['prod_img']?>">
+														<h3 style="font-weight:bold;"><a><?=$c['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$c['prod_desc']?></p></div>
+														<p class="price"><span>₱ <?=$c['prod_mprice'] ?></span></p>
+														<form action="<?= base_url('/viewProd1/') .$c['prod_id'] ?>" method="post">
+															<?php if($c['product_status'] === 'Unavailable'):?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$c['prod_id'])?>">View Feedbacks</a></p>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$c['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$c['prod_id'])?>">View Feedbacks</a></p>
+															<?php endif;?>
+														</form>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
 								<div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($chickenfillet as $cf): ?>
+													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$cf['prod_img']?>">
+														<h3 style="font-weight:bold;"><a><?=$cf['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$cf['prod_desc']?></p></div>
+														<p class="price"><span>₱ <?=$cf['prod_mprice'] ?></span></p>
+														<form action="<?= base_url('/viewProd1/') .$cf['prod_id'] ?>" method="post">
+															<?php if($cf['product_status'] === 'Unavailable'):?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$cf['prod_id'])?>">View Feedbacks</a></p>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$cf['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$cf['prod_id'])?>">View Feedbacks</a></p>
+															<?php endif;?>
+														</form>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+									<div class="row">
+										<div class="col-md-4 text-center">
+											<div class="menu-wrap">
+												<?php foreach($pasta as $p): ?>
+													<div class="text">
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$p['prod_img']?>">
+														<h3 style="font-weight:bold;"><a><?=$p['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$p['prod_desc']?></p></div>
+														<p class="price"><span>₱ <?=$p['prod_mprice'] ?></span></p>
+														<form action="<?= base_url('/viewProd1/') .$p['prod_id'] ?>" method="post">
+															<?php if($p['product_status'] === 'Unavailable'):?>
+																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$p['prod_id'])?>">View Feedbacks</a></p>
+															<?php else:?>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$p['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$p['prod_id'])?>">View Feedbacks</a></p>
+															<?php endif;?>
+														</form>
+													</div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
@@ -155,7 +208,7 @@
 									</div>
 								</div>
 
-								<div class="tab-pane fade" id="v-pills-5" role="tabpanel" aria-labelledby="v-pills-5-tab">
+								<div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
@@ -181,33 +234,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="v-pills-6" role="tabpanel" aria-labelledby="v-pills-6-tab">
-									<div class="row">
-										<div class="col-md-4 text-center">
-											<div class="menu-wrap">
-												<?php foreach($soup as $s): ?>
-													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$s['prod_img']?>">
-														<h3 style="font-weight:bold;"><a><?=$s['prod_name']?></a></h3>
-														<div class="d-block" style="color:white;"><p><?=$s['prod_desc']?></p></div>
-														<p class="price"><span>₱ <?=$s['prod_mprice'] ?></span></p>
-														<form action="<?= base_url('/viewProd1/') .$s['prod_id'] ?>" method="post">
-															<?php if($s['product_status'] === 'Unavailable'):?>
-																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
-															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary"href="<?= base_url('OrderMeal/' .$s['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$s['prod_id'])?>">View Feedbacks</a></p>
-															<?php endif;?>
-														</form>													
-													</div>
-												<?php endforeach; ?>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab">
+								<div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-8-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
@@ -233,7 +260,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="v-pills-8" role="tabpanel" aria-labelledby="v-pills-8-tab">
+								<div class="tab-pane fade" id="v-pills-9" role="tabpanel" aria-labelledby="v-pills-9-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
@@ -259,7 +286,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="v-pills-9" role="tabpanel" aria-labelledby="v-pills-9-tab">
+								<div class="tab-pane fade" id="v-pills-10" role="tabpanel" aria-labelledby="v-pills-10-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
@@ -285,24 +312,24 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="v-pills-10" role="tabpanel" aria-labelledby="v-pills-10-tab">
+								<div class="tab-pane fade" id="v-pills-11" role="tabpanel" aria-labelledby="v-pills-11-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<?php foreach($non as $n): ?>
+												<?php foreach($frap as $fr): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$n['prod_img']?>">
-														<h3 style="font-weight:bold;"><a><?=$n['prod_name']?></a></h3>
-														<div class="d-block" style="color:white;"><p><?=$n['prod_desc']?></p></div>
-														<p class="price"><span>Regular ₱ <?=$n['prod_mprice'] ?><br>Large ₱ <?=$n['prod_lprice'] ?> </span></p>
-														<form action="<?= base_url('/viewProd2/') .$n['prod_id'] ?>" method="post">
-															<?php if($n['product_status'] === 'Unavailable'):?>
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$fr['prod_img']?>">
+														<h3 style="font-weight:bold;"><a><?=$fr['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$fr['prod_desc']?></p></div>
+														<p class="price"><span>Regular ₱ <?=$fr['prod_mprice'] ?><br>Large ₱ <?=$fr['prod_lprice'] ?> </span></p>
+														<form action="<?= base_url('/viewProd2/') .$fr['prod_id'] ?>" method="post">
+															<?php if($fr['product_status'] === 'Unavailable'):?>
 																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$n['prod_id'])?>">View Feedbacks</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$fr['prod_id'])?>">View Feedbacks</a></p>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$n['prod_id'])?>">Order Now</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$fr['prod_id'])?>">Order Now</a></p>
 																<button class="btn btn-primary btn-outline-primary"type="submit">Add to cart</button><br><br>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$n['prod_id'])?>">View Feedbacks</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$fr['prod_id'])?>">View Feedbacks</a></p>
 															<?php endif;?>
 														</form>													
 													</div>
@@ -311,33 +338,33 @@
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="v-pills-11" role="tabpanel" aria-labelledby="v-pills-11-tab">
+								<div class="tab-pane fade" id="v-pills-12" role="tabpanel" aria-labelledby="v-pills-12-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">
-												<?php foreach($coffee as $c): ?>
+												<?php foreach($lemon as $l): ?>
 													<div class="text">
-														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$c['prod_img']?>">
-														<h3 style="font-weight:bold;"><a><?=$c['prod_name']?></a></h3>
-														<div class="d-block" style="color:white;"><p><?=$c['prod_desc']?></p></div>
-														<p class="price"><span>Regular ₱ <?=$c['prod_mprice'] ?><br>Large ₱ <?=$c['prod_lprice'] ?> </span></p>
-														<form action="<?= base_url('/viewProd2/') .$c['prod_id'] ?>" method="post">
-															<?php if($c['product_status'] === 'Unavailable'):?>
+														<img class="menu-img img mb-4" src="<?="/assets/images/products/" .$l['prod_img']?>">
+														<h3 style="font-weight:bold;"><a><?=$l['prod_name']?></a></h3>
+														<div class="d-block" style="color:white;"><p><?=$l['prod_desc']?></p></div>
+														<p class="price"><span>₱ <?=$l['prod_mprice'] ?></span></p>
+														<form action="<?= base_url('/viewProd1/') .$l['prod_id'] ?>" method="post">
+															<?php if($l['product_status'] === 'Unavailable'):?>
 																<button class="btn btn-primary btn-outline-primary"type="submit" disabled>Sold Out</button><br><br>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$c['prod_id'])?>">View Feedbacks</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$l['prod_id'])?>">View Feedbacks</a></p>
 															<?php else:?>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderDrink/' .$c['prod_id'])?>">Order Now</a></p>
-																<button class="btn btn-primary btn-outline-primary"type="submit" >Add to cart</button><br><br>
-																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$c['prod_id'])?>">View Feedbacks</a></p>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$l['prod_id'])?>">Order Now</a></p>
+																<button class="btn btn-primary btn-outline-primary" type="submit" >Add to cart</button><br><br>
+																<p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('viewByFeedback/' .$l['prod_id'])?>">View Feedbacks</a></p>
 															<?php endif;?>
-														</form>												
+														</form>													
 													</div>
 												<?php endforeach; ?>	
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane fade" id="v-pills-12" role="tabpanel" aria-labelledby="v-pills-12-tab">
+								<div class="tab-pane fade" id="v-pills-13" role="tabpanel" aria-labelledby="v-pills-13-tab">
 									<div class="row">
 										<div class="col-md-4 text-center">
 											<div class="menu-wrap">

@@ -13,11 +13,11 @@
         <link id="pagestyle" href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
         <link href="/assets/css/table.css" rel="stylesheet" />
     </head>
-    <body>
+    <body>    
     <br>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?= base_url('/adminprod')?>" style="background-color: transparent; color:white; font-size: 1.5em;">Back to Product Items</a></li>
-        <li class="breadcrumb-item active" aria-current="page" style="background-color: transparent; color:white; font-size: 1.5em;">Soup List</li>
+        <li class="breadcrumb-item active" aria-current="page" style="background-color: transparent; color:white; font-size: 1.5em;">Lemonade List</li>
     </ol><br><br>
         <div class="card-body">
             <div class="table-responsive">
@@ -49,44 +49,43 @@
                                     <p class="text-xs  font-weight-bold"><?=$p['prod_name'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs font-weight-bold"><?=$p['prod_desc'] ?></p>
+                                    <p class="text-xs  font-weight-bold"><?=$p['prod_desc'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs  font-weight-bold"><?=$p['prod_quantity'] ?></p>
+                                    <p class="text-xs font-weight-bold"><?=$p['prod_quantity'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs  font-weight-bold">₱ <?=$p['prod_mprice'] ?></p>
+                                    <p class="text-xs font-weight-bold">₱ <?=$p['prod_mprice'] ?></p>
                                 </td>
                                 <td class="text-center">
-                                    <p class="text-xs font-weight-bold"><?=$p['prod_code'] ?></p>
+                                    <p class="text-xs  font-weight-bold"><?=$p['prod_code'] ?></p>
                                 </td>
                                 <td class="align-middle text-center">
-                                    <a href="<?= base_url('/editsoup/' .$p['prod_id']) ?>" id='id'
+                                    <a href="<?= base_url('/editlemonade/' .$p['prod_id']) ?>" id='id'
                                         class="text-info font-weight-bold text-xs me-2"
                                         data-toggle="tooltip" data-original-title="Edit Coffee">
                                         Edit
                                     </a>||
-                                    <a href="<?= base_url('/deletesoup/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs delete-link"
+                                    <a href="<?= base_url('/deletelemonade/' .$p['prod_id']) ?>" class="text-danger font-weight-bold text-xs delete-link"
                                         id='id' data-toggle="tooltip" data-original-title="Delete Coffee">Delete</a>
                                 </td>
-                
-                            <td>
-                                    <form action="<?= base_url('/availablesoup/')?>" method="POST">
-                                    <input type="hidden" name="update" value="<?= $p['prod_id']?>">
-                                    <input type="hidden" name="prod_status" value="Available">
-                                    <button type="submit" class="avlbtn">Available</button>
-                                </form>
-                                <br>
-                                <form action="<?= base_url('/unavailablesoup/')?>" method="POST">
-                                    <input type="hidden" name="update" value="<?= $p['prod_id']?>">
-                                    <input type="hidden" name="prod_status" value="Unavailable">
-                                    <button type="submit" class="unvlbtn">Unavailable</button>
-                                </form></td>
+                                <td>
+                                    <form action="<?= base_url('/availablelemonade/')?>" method="POST">
+                                        <input type="hidden" name="update" value="<?= $p['prod_id']?>">
+                                        <input type="hidden" name="prod_status" value="Available">
+                                        <button type="submit" class="avlbtn">Available</button>
+                                    </form> 
+                                    <br>
+                                    <form action="<?= base_url('/unavailablelemonade/')?>" method="POST">
+                                        <input type="hidden" name="update" value="<?= $p['prod_id']?>">
+                                        <input type="hidden" name="prod_status" value="Unavailable">
+                                        <button type="submit" class="unvlbtn">Unavailable</button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table><br>
-
             </div>
         </div>
 

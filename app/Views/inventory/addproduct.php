@@ -46,6 +46,9 @@
             background-color: #33475b;
             color: #ffffff;
         }
+        option{
+            color:black
+        }
     </style>
 </head>
 <body>
@@ -83,18 +86,19 @@
                         <label for="category" class="form-label"></label>
                         <select name="prod_categ" id="category" class="form-control" required>
                             <option disabled selected>Category</option>
+                            <option value="Appetizer">Appetizer</option>
+                            <option value="Meals">Breakfast Meals</option>
+                            <option value="Pasta">Pasta</option>
+                            <option value="Chicken">Chicken Tenders</option>
+                            <option value="Chicken Fillet">Crunchy Chicken Fillet</option>
+                            <option value="Salad">Salad</option>
+                            <option value="Sandwich">Sub Sandwiches</option>
                             <option value="Hot Coffee">Hot Coffee</option>
                             <option value="Iced Coffee">Iced Coffee</option>
                             <option value="Flavored Coffee">Flavored Iced Coffee</option>
-                            <option value="Non Coffee Frappe">Non Coffee Frappe</option>
-                            <option value="Coffee Frappe">Coffee Frappe</option>
+                            <option value="Frappe">Frappe Drinks</option>
+                            <option value="Lemonade">Lemonade</option>
                             <option value="Others">Others</option>
-                            <option value="Meals">Meals</option>
-                            <option value="Pasta">Pasta</option>
-                            <option value="Appetizer">Appetizer</option>
-                            <option value="Salad">Salad</option>
-                            <option value="Soup">Soup</option>
-                            <option value="Sandwich">Sandwiches</option>
                         </select>
                     </div>
                     <div class="input-group input-group-outline my-3">
