@@ -2134,8 +2134,7 @@ class AdminController extends BaseController
             'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
-        return view('/admin/order', $data);
-    }
+        return view('/admin/order', $data);    }
 
     public function orderpayment(){
 
