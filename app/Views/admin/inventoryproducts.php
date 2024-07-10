@@ -31,7 +31,7 @@
             </div>
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/orangechicken.jpg" alt="meals">
+                    <img src="/assets/images/products/spamegg.jpg" alt="meals">
                     <div class="container"><br>
                         <a href="/inventorymeal" class="btn btn-success btn-sm me-3 text-center">Breakfast Meals</a>
                     </div>
@@ -59,7 +59,7 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/parmegianameatball.png" alt="pasta">
+                    <img src="/assets/images/products/chickenalfredo.jpg" alt="pasta">
                     <div class="container"><br>
                         <a href="/inventorypasta" class="btn btn-success btn-sm me-3 text-center">Pasta</a>
                     </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/chefsalad.jpg" alt="salad">
+                    <img src="/assets/images/products/ceasar.jpg" alt="salad">
                     <div class="container"><br>
                         <a href="/inventorysalad" class="btn btn-success btn-sm me-3 text-center">Salad</a>
                     </div>
@@ -77,7 +77,7 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/cheesybacon.jpg" alt="sandwich">
+                    <img src="/assets/images/products/tunasandwich.jpg" alt="sandwich">
                     <div class="container"><br>
                         <a href="/inventorysandwich" class="btn btn-success btn-sm me-3 text-center">Sub Sandwiches</a>
                     </div>
