@@ -1,0 +1,71 @@
+CRITICAL - 2024-07-10 00:54:31 --> Undefined variable $googleAuth
+in APPPATH\Views\admin\login.php on line 42.
+ 1 APPPATH\Views\admin\login.php(42): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $googleAuth', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\login.php', 42)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\login.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/login', [], true)
+ 5 APPPATH\Controllers\AdminController.php(2029): view('/admin/login')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->login()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-10 00:56:43 --> Cannot redeclare App\Controllers\AdminController::login()
+in APPPATH\Controllers\AdminController.php on line 4516.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-07-10 01:17:52 --> Undefined variable $app
+in APPPATH\Views\admin\product.php on line 26.
+ 1 APPPATH\Views\admin\product.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $app', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\product.php', 26)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\product.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/product', [], true)
+ 5 APPPATH\Controllers\AdminController.php(2129): view('/admin/product')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->products()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-10 01:19:01 --> Undefined variable $app
+in APPPATH\Views\admin\product.php on line 26.
+ 1 APPPATH\Views\admin\product.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $app', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\product.php', 26)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\product.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/product', [], true)
+ 5 APPPATH\Controllers\AdminController.php(2130): view('/admin/product')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->products()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-10 01:21:59 --> Undefined property: App\Controllers\AdminController::$orderpro
+in APPPATH\Controllers\AdminController.php on line 2130.
+ 1 APPPATH\Controllers\AdminController.php(2130): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\AdminController::$orderpro', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 2130)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->products()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-10 01:22:10 --> Undefined variable $app
+in APPPATH\Views\admin\product.php on line 26.
+ 1 APPPATH\Views\admin\product.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $app', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\product.php', 26)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\product.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/product', [], true)
+ 5 APPPATH\Controllers\AdminController.php(2131): view('/admin/product')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->products()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-10 01:23:31 --> Undefined variable $app
+in APPPATH\Views\admin\product.php on line 26.
+ 1 APPPATH\Views\admin\product.php(26): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $app', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\product.php', 26)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\product.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('/admin/product', [], true)
+ 5 APPPATH\Controllers\AdminController.php(2130): view('/admin/product')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->products()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
