@@ -39,9 +39,10 @@ class UserController extends BaseController
     
         helper(['form']);
     }
+
     public function register()
     {   
-        // $verificationToken = substr(md5(rand()), 0, 8);
+        $verificationToken = substr(md5(rand()), 0, 8);
 
        
         $rules = [
@@ -57,7 +58,6 @@ class UserController extends BaseController
         ];
 
         if($this->validate($rules)){
-               $verificationToken = substr(md5(rand()), 0, 8);
         
                 $data = [
                 'LastName'    => $this->request->getVar('LastName'),
@@ -78,37 +78,44 @@ class UserController extends BaseController
 
             
             $this->user->insert($data);
+            $this->sendVerificationEmail($this->request->getVar('Email'), $verificationToken);
 
-            $email = \Config\Services::email();
-
-            $email->setFrom('rontaledankeneth@gmail.com', 'codeigniter');
-            $email->setTo($this->request->getVar('email'));
-            // $email->setCC('another@another-example.com');
-            // $email->setBCC('them@their-example.com');
-
-            $email->setSubject('Email Test');
-            $email->setMessage($verificationToken);
-                if($email->send())
-            {
-                echo('success');
-                // return view('email/activateCode');
-            }
-            else{
-                echo('Failed');
-                // return view('email/activateCode');
-            }
-    
-            // $this->user->save($data);
-//             return redirect()->to('/login');
-//         }
-        
-// >>>>>>> 350b979baeeab26408dd1dba9e885aaf56f9f440
     }
     else{
         $data['validation']= $this->validator;
         return view('admin/register', $data);
     }
-}
+   }
+    public function verifyEmailReminder()
+    {
+        return view('admin/verify_email_reminder');
+    }
+    
+    private function sendVerificationEmail($email, $token)
+    {
+        $emailService = \Config\Services::email();
+        $emailService->setTo($email);
+        $emailService->setFrom('rontaledankeneth@gmail.com', 'crossroads');
+        $emailService->setSubject('Email Verification');
+        $emailService->setMessage("Please click the link below to verify your email address:\n\n" . base_url() . "/verify/$token");
+
+        $emailService->send();
+    }
+
+    public function verify($token)
+    {
+        $userModel = new UsersModel();
+        $user = $userModel->where('verification_token', $token)->first();
+
+        if ($user) {
+            $userModel->update($user['userID'], ['is_verified' => true, 'verification_token' => null]);
+
+            return redirect()->to('/signin')->with('message', 'Email verified successfully. You can now login.');
+        }
+
+        return redirect()->to('/login')->with('error', 'Invalid verification token.');
+    }
+
 
     // public function login()
     // {
@@ -455,46 +462,46 @@ class UserController extends BaseController
         return view('/user/edit_userprofile', $data);
     }
 
-    public function updateprofile($id)
-    {
-        if ($this->request->getMethod() === 'post') {
-            $userId = session()->get('UserID');
-            $userModel = new UserModel();
+public function updateprofile($id)
+{
+    if ($this->request->getMethod() === 'post') {
+        $userId = session()->get('UserID');
+        $userModel = new UserModel();
 
-            // Get the current user data
-            $currentUser = $userModel->find($userId);
-            $currentProfileImg = $currentUser['profile_img'];
+        // Get the current user data
+        $currentUser = $userModel->find($userId);
+        $currentProfileImg = $currentUser['profile_img'];
 
-            $data = [
-                'LastName' => $this->request->getPost('LastName'),
-                'FirstName' => $this->request->getPost('FirstName'),
-                'gender' => $this->request->getPost('gender'),
-                'email' => $this->request->getPost('email'),
-                'ContactNo' => $this->request->getPost('ContactNo'),
-                'Username' => $this->request->getPost('Username'),
-                'address' => $this->request->getPost('address'),
-                'birthdate' => $this->request->getPost('birthdate')
-            ];
+        $data = [
+            'LastName' => $this->request->getPost('LastName'),
+            'FirstName' => $this->request->getPost('FirstName'),
+            'gender' => $this->request->getPost('gender'),
+            'email' => $this->request->getPost('email'),
+            'ContactNo' => $this->request->getPost('ContactNo'),
+            'Username' => $this->request->getPost('Username'),
+            'address' => $this->request->getPost('address'),
+            'birthdate' => $this->request->getPost('birthdate')
+        ];
 
-            $profileImg = $this->request->getFile('profile_img');
-            if ($profileImg->isValid() && !$profileImg->hasMoved()) {
-                $newName = $profileImg->getName();
-                $profileImg->move(ROOTPATH . 'public/assets/user/images/', $newName);
-                $data['profile_img'] = $newName;
+        $profileImg = $this->request->getFile('profile_img');
+        if ($profileImg->isValid() && !$profileImg->hasMoved()) {
+            $newName = $profileImg->getName();
+            $profileImg->move(ROOTPATH . '../assets/user/images/', $newName);
+            $data['profile_img'] = $newName;
 
-                // Delete the old profile image if it's not the default image
-                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg)) {
-                    unlink(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg);
-                }
+            // Delete the old profile image if it's not the default image
+            $currentProfileImgPath = ROOTPATH . '../assets/user/images/' . $currentProfileImg;
+            if ($currentProfileImg !== 'profile.png' && file_exists($currentProfileImgPath) && is_file($currentProfileImgPath)) {
+                unlink($currentProfileImgPath);
             }
-
-            $userModel->update($userId, $data);
-            session()->set($data);
-
-            return redirect()->to(base_url('/profile'));
         }
-    }
 
+        $userModel->update($userId, $data);
+        session()->set($data);
+
+        return redirect()->to(base_url('/profile'));
+    }
+}
     public function removeProfilePicture($userId)
     {
         $userModel = new UserModel();
@@ -502,8 +509,8 @@ class UserController extends BaseController
         $profileImg = $currentUser['profile_img'];
         $defaultProfileImg = 'profile.png';
 
-        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists('assets/user/images/' . $profileImg)) {
-            unlink('assets/user/images/' . $profileImg);
+        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists('../assets/user/images/' . $profileImg)) {
+            unlink('../assets/user/images/' . $profileImg);
         }
 
         $userModel->update($userId, ['profile_img' => $defaultProfileImg]);

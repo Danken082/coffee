@@ -19,6 +19,141 @@ in APPPATH\Views\admin\product.php on line 26.
  5 APPPATH\Controllers\AdminController.php(2291): view('/admin/product')
  6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->products()
  7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+CRITICAL - 2024-07-08 00:31:17 --> unlink(C:\laragon\www\coffee\../Hello/): Is a directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\../Hello/): Is a directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\../Hello/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 00:32:12 --> unlink(C:\laragon\www\coffee\../Hello/): Is a directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\../Hello/): Is a directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\../Hello/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 00:32:20 --> unlink(C:\laragon\www\coffee\../Hello/): Is a directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\../Hello/): Is a directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\../Hello/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 00:32:29 --> unlink(C:\laragon\www\coffee\public/assets/user/images/): Is a directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\public/assets/user/images/): Is a directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\public/assets/user/images/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 00:32:48 --> unlink(C:\laragon\www\coffee\public/assets/user/images/): Is a directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\public/assets/user/images/): Is a directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\public/assets/user/images/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 00:33:11 --> unlink(C:\laragon\www\coffee\public/assets/user/images/): Is a directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\public/assets/user/images/): Is a directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\public/assets/user/images/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 00:33:19 --> unlink(C:\laragon\www\coffee\public/assets/user/images/): Is a directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\public/assets/user/images/): Is a directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\public/assets/user/images/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 00:36:44 --> unlink(C:\laragon\www\coffee\public/assets/user/images/): Is a directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\public/assets/user/images/): Is a directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\public/assets/user/images/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 00:37:24 --> unlink(C:\laragon\www\coffee\assets/user/images/): No such file or directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\assets/user/images/): No such file or directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\assets/user/images/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 00:37:28 --> unlink(C:\laragon\www\coffee\public/assets/user/images/): Is a directory
+in APPPATH\Controllers\UserController.php on line 484.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\coffee\\public/assets/user/images/): Is a directory', 'C:\\laragon\\www\\coffee\\app\\Controllers\\UserController.php', 484)
+ 2 APPPATH\Controllers\UserController.php(484): unlink('C:\\laragon\\www\\coffee\\public/assets/user/images/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->updateprofile('28')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 02:07:28 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 72.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(684): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 02:07:38 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 72.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(684): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 02:08:03 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 72.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(684): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-08 02:08:15 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\admin\CostExpenseMonthly.php on line 72.
+ 1 APPPATH\Views\admin\CostExpenseMonthly.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php', 72)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\CostExpenseMonthly.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/CostExpenseMonthly', [], true)
+ 5 APPPATH\Controllers\VisualizationController.php(684): view('admin/CostExpenseMonthly', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\VisualizationController->costAndExpense()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VisualizationController))
  8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

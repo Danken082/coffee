@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="/assets/images/coffeelogo2.png">
     <meta charset="utf-8">
     <title><?= lang('Errors.pageNotFound') ?></title>
 
@@ -76,7 +77,7 @@
             <?php if (ENVIRONMENT !== 'production') : ?>
                 <?= nl2br(esc($message)) ?>
             <?php else : ?>
-                <?= lang('Errors.sorryCannotFind') ?>
+                <small>Sorry cant Find your Looking for back to <a href="/">Home</a></small>
             <?php endif ?>
         </p>
     </div>

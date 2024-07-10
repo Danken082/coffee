@@ -10,8 +10,9 @@
     <body>
     <div class="container">
         <form action="<?= base_url('user/checkouts/') ?>" method="post">
-            <label for="ProductName" style="font-size:30px"><?= $order['prod_name'] ?></label>
+            <label for="ProductName" style="font-size:30px"></label>
                 <input type="hidden" name="ProductID" value="<?= $order['prod_id'] ?>" readonly>
+                <input type="hidden" name="prodName" value="<?= $order['prod_name'] ?>" readonly>
                 <input type="hidden" name="CustomerID" value="<?= session()->get('UserID') ?>" readonly>
                 <input type="hidden" name="size" value="Medium" readonly>
                 <label for="ProductPrice" name="prod_mprice" value="<?= $order['prod_mprice'] ?>" style="font-size:25px">₱ <?= $order['prod_mprice'] ?></label>

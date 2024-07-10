@@ -33,7 +33,7 @@
                 </div>
                 <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="password"required>
+                    <input type="password" name="password" class="form-control" id="password">
                     <button type="button" id="togglePassword" class="btn btn-outline-secondary"><i class="fa fa-eye"></i></button>
                 </div>
                 <div class="form-group">

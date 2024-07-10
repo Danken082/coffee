@@ -65,7 +65,14 @@
               <span class="menu-title">Report</span>
             </a>
           </li>
-
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="<?= site_url("#"); ?>">
+              <span class="menu-icon">
+                <i class="fa fa-solid fa-address-book"></i>
+              </span>
+              <span class="menu-title">Event Reservation</span>
+            </a>
+          </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= site_url("admininventory"); ?>">
               <span class="menu-icon">
@@ -90,6 +97,7 @@
               <span class="menu-title">Order Payment</span>
             </a>
           </li>
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= site_url("adminpos"); ?>">
               <span class="menu-icon">
@@ -117,6 +125,7 @@
               <span class="menu-title">Manage User</span>
             </a>
           </li>
+
         <div class="container-fluid page-body-wrapper">
           <nav class="navbar p-0 fixed-top d-flex flex-row">
             <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">

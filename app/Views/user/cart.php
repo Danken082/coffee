@@ -52,6 +52,7 @@
                             <?php foreach($myCart as $index => $item):?>
                                 <tr class="text-center">
                                     <td><input type="checkbox" name="items[]" value="<?= $index ?>" class="item-checkbox"></td>
+                                    <td><input type="hidden" name="itemid[]" value="<?= $item['id'] ?>"></td>
                                     <td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>"></td>
                                     <td class="product-name">
                                         <h3><?= $item['prod_name']?></h3>
@@ -74,7 +75,12 @@
                                             <button type="button" class="increment" data-index="<?= $index ?>" onclick="increaseQuantity(this)">+</button>
                                         </div>
                                     </td>
-                                    <td class="total">₱ <span id="total-price-<?= $index ?>"><?= number_format($price * $item['quantity'], 2) ?></span></td>
+                                    <td class="total">₱ <span id="total-price-<?= $index ?>">   </span></td>
+                            
+            <input type="hidden" name="totalPrice[]"  value="" id="hidden-total-price-<?= $index ?>">
+
+                                   
+
                                     <td class="product-remove">
                                         <a href="<?= base_url('/removetocart/') .$item['id']?>" onclick="return confirm('Are you sure you want to remove this from your cart?')">
                                             <span class="icon-close"></span>
@@ -130,6 +136,8 @@
 <script src="/assets/js/totalquantity.js"></script>
 <script src="/assets/js/checkbox.js"></script>
 <script src="/assets/js/updateprice.js"></script>
+
+
 
 </body>
 </html>

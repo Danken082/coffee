@@ -346,10 +346,12 @@ class CartController extends BaseController
 
       public function placeOrder()
       {
-          $selectedItems = $this->request->getVar('items');
+          $selectedItems = $this->request->getVar('itemid');
           $totalAmount = $this->request->getPost('total');
           $paymentMethod = $this->request->getPost('paymentMethod');
-
+          $TotalProdPrice = $this->request->getPost('totalPrice');
+          $totalQuantity = $this->request->getPost('quantity');
+          $size = $this->request->getPost('size');
           
           if (empty($selectedItems)) {
               return redirect()->to('/cart')->with('msg', 'No items selected for order');
@@ -368,7 +370,7 @@ class CartController extends BaseController
             foreach ($cartItems as &$item) {
                 $item['barcode'] = $orderBarcode;
             }
-            $this->insertOrder($cartItems, $paymentMethod, $reference_number);
+            $this->insertOrder($cartItems, $paymentMethod, $reference_number, $TotalProdPrice, $totalQuantity, $size);
             $this->removedItemsFromcart($selectedItems);
             return redirect()->to('cart')->with('msg', 'Please Pay Your Order If the product is Already Received');
           }
@@ -391,7 +393,7 @@ class CartController extends BaseController
             $session = session();
            $session->set('totalAmount', $totalAmount);
       
-         return $this->PaymentManagement($cartItems, $paymentMethod);
+          return $this->PaymentManagement($cartItems, $paymentMethod, $TotalProdPrice, $totalQuantity, $size);
          
           }
 
@@ -400,7 +402,7 @@ class CartController extends BaseController
           
       }
 
-      private function PaymentManagement($cartItems, $paymentMethod)
+      private function PaymentManagement($cartItems, $paymentMethod, $TotalProdPrice, $totalQuantity, $size)
       {
         $session = session();
        $totalAmount = $session->get('totalAmount');
@@ -450,7 +452,7 @@ class CartController extends BaseController
         if (isset($decode['data']['attributes']['reference_number'])) { 
           $reference_number = $decode['data']['attributes']['reference_number'];
           
-        $this->insertOrder($cartItems, $paymentMethod ,$reference_number);
+        $this->insertOrder($cartItems, $paymentMethod ,$reference_number,  $TotalProdPrice, $totalQuantity, $size);
 
 
           foreach($decode as $key => $value)
@@ -459,7 +461,7 @@ class CartController extends BaseController
               $name = $decode[$key]["attributes"]["checkout_url"];
               $age = $decode[$key]["type"];
               return redirect()->to($name);
-            }
+         }
 
       }
     }
@@ -494,7 +496,7 @@ class CartController extends BaseController
 
         return $cartItems;
       }
-      private function insertOrder($cartItems, $paymentMethod, $reference_number)
+      private function insertOrder($cartItems, $paymentMethod, $reference_number, $TotalProdPrice, $totalQuantity, $size)
       {
           $oData = [];
       
@@ -508,9 +510,9 @@ class CartController extends BaseController
               $oData[] = [
                   'CustomerID' => $item['CustomerID'],
                   'ProductID' => $item['ProductID'],
-                  'total' => $item['total'],
-                  'quantity' => $item['quantity'],
-                  'size' => $item['size'],
+                  'total' => $TotalProdPrice,
+                  'quantity' => $totalQuantity,
+                  'size' => $size,
                   'orderStatus' => 'onProcess',
                   'paymentStatus' => 'notPaid',
                   'orderType' => 'onHouse',
@@ -526,9 +528,9 @@ class CartController extends BaseController
               $oData[] = [
                 'CustomerID' => $item['CustomerID'],
                 'ProductID' => $item['ProductID'],
-                'total' => $item['total'],
-                'quantity' => $item['quantity'],
-                'size' => $item['size'],
+                'total' => $TotalProdPrice,
+                'quantity' => $TotalProdPrice,
+                'size' => $size,
                 'orderStatus' => 'onProcess',
                 'paymentStatus' => 'pending',
                 'orderType' => 'onHouse',
