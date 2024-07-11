@@ -23,7 +23,7 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/nachos.jpg" alt="appetizer">
+                    <img src="/assets/images/products/nachos2.jpg" alt="appetizer">
                     <div class="container"><br>
                         <a href="/inventoryappetizer" class="btn btn-success btn-sm me-3 text-center">Appetizer</a>
                     </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/spamegg.jpg" alt="meals">
+                    <img src="/assets/images/products/spamegg2.jpg" alt="meals">
                     <div class="container"><br>
                         <a href="/inventorymeal" class="btn btn-success btn-sm me-3 text-center">Breakfast Meals</a>
                     </div>
@@ -59,7 +59,7 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/chickenalfredo.jpg" alt="pasta">
+                    <img src="/assets/images/products/chickenalfredo2.jpg" alt="pasta">
                     <div class="container"><br>
                         <a href="/inventorypasta" class="btn btn-success btn-sm me-3 text-center">Pasta</a>
                     </div>
@@ -67,7 +67,7 @@
             </div>
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/ceasar.jpg" alt="salad">
+                    <img src="/assets/images/products/chickensalad2.jpg" alt="salad">
                     <div class="container"><br>
                         <a href="/inventorysalad" class="btn btn-success btn-sm me-3 text-center">Salad</a>
                     </div>
@@ -96,7 +96,7 @@
             </div>
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/icedamericano.jpg" alt="iced coffee">
+                    <img src="/assets/images/products/icedamericano2.jpg" alt="iced coffee">
                     <div class="container"><br>
                         <a href="/inventoryicedcoffee" class="btn btn-success btn-sm me-3 text-center">Iced Coffee</a>
                     </div>
@@ -124,7 +124,7 @@
         <div class="cards">
             <div class="card">
                 <div class="box">
-                    <img src="/assets/images/products/blueberry.jpg" alt="lemonade" >
+                    <img src="/assets/images/products/lemonade.jpeg" alt="lemonade" >
                     <div class="container"><br>
                         <a href="/inventorylemonade" class="btn btn-success btn-sm me-3 text-center">Lemonade</a>
                     </div>
