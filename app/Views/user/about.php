@@ -132,7 +132,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="menu-entry">
-									<a class="img" style="background-image: url(/assets/images/products/crabandcornsoup.jpg);"></a>
+									<a class="img" style="background-image: url(/assets/images/products/nachos.jpg);"></a>
 								</div>
 							</div>
 							<div class="col-md-6">
