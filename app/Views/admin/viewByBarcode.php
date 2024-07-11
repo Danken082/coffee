@@ -65,11 +65,12 @@
                             <li><?= $single['address'] ?></li>
                             <input type="hidden" name="address" value="<?= $single['address']?>">
                             <li><?= $single['barcode'] ?></li>
-                            <input type="hidden" name="barcode" value="<?= $single['barcode']?>">
+
                             <li>Order ni <?= $single['FirstName'] ?></li>
                             <?php foreach ($barcode as $order): ?>
                                 <li>
                                     <ul>
+
                                         <li>Product Name: <?= $order['prod_name'] ?></li>
                                         <li>Order Quantity: <?= $order['quantity'] ?></li>
                                         <li>Product Size: <?= $order['size'] ?></li>
@@ -77,10 +78,13 @@
                                     </ul>
                                 </li>
                                 <input type="hidden" name="orderID[]" value="<?= $order['orderID']?>">
+                                <input type="hidden" name="prodID[]" value ="<?= $order['ProductID']?>">
+                                <input type="hidden" name="CustID[]" value ="<?= $order['CustomerID']?>">
                                 <input type="hidden" name="prod_name[]" value="<?= $order['prod_name']?>">
                                 <input type="hidden" name="quantity[]" value="<?= $order['quantity']?>">
                                 <input type="hidden" name="size[]" value="<?= $order['size']?>">
                                 <input type="hidden" name="total[]" value="<?= $order['total']?>">
+                                <input type="hidden" name="barcode[]" value="<?= $single['barcode']?>">
                             <?php endforeach; ?>
                             <li>Buong total: <?= $total['sum'] ?></li>
                             <input type="hidden" name = "sum" value="<?= $total['sum']?>">

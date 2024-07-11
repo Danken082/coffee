@@ -2309,16 +2309,30 @@ class AdminController extends BaseController
     }
     public function getPendingOrders()
     {
+        $data = [];
         $getID = $this->request->getPost('orderID');
-        $getRaw = $this->request->getPost('');        
-
+               
+        $prodID = $this->request->getPost('prodID');
+        $custID = $this->request->getPost('CustID');
+        $quant = $this->request->getPost('quantity');
+        $size = $this->request->getPost('size');
+        $total = $this->request->getPost('total');
+        $code = $this->request->getPost('barcode');
+        $data[] = ['ProductID' => $prodID,
+                 'CustomerID' => $custID,
+                 'quantity' => $quant,
+                 'size' => $size,
+                 'total_amount'=> $total,
+                 'orderCode' => $code,
+                 'OrderID'  => $getID
+    ];
         $myOrders = $this->viewPendingOrders($getID);
                     $this->AcceptOrders($myOrders, $getID);
+                    $this->toHistory($myOrders);
 
-        return redirect()->to('adminorderpayment')->with('msg', 'Order is now Accepted');
-        
+        return redirect()->to('adminpayment')->with('msg', 'Order is now Accepted');
+        // var_dump($data);
     }
-
     private function viewPendingOrders($getID)
     {
         $myOrders = $this->order->whereIn('orderID', $getID)->get()->getResultArray();
@@ -2326,7 +2340,25 @@ class AdminController extends BaseController
 
         return $myOrders;
     }
+    private function toHistory($myOrders)
+    {
+        $orderID = [];
 
+        foreach($myOrders as $order)
+        {
+            $orderID[] = ['ProductID' => $order['ProductID'],
+            'CustomerID' => $order['CustomerID'],
+            'quantity' => $order['quantity'],
+            'size' => $order['size'],
+            'total_amount'=> $order['total'],
+            'orderCode' => $order['barcode'],
+            'OrderID'  => $order['orderID'],
+            'order_date' => $order['orderDate']
+
+];      
+        }
+        $this->history->insertBatch($orderID);        
+    }
     private function AcceptOrders($myOrders)
     {
 
@@ -4481,7 +4513,7 @@ class AdminController extends BaseController
     // Loop through the report data and add rows to the table
     foreach ($data["report"] as $report) {
         $html .= "<tr>";
-        $html .= "<td>" . htmlspecialchars($report['prod_name']) . "</td>"; // Use htmlspecialchars to escape special characters
+        $html .= "<td>" . htmlspecialchars($report['prod_name']) . "</td>";
         $html .= "<td>" . htmlspecialchars($report['prod_quantity']) . "</td>";
         $html .= "<td>" . htmlspecialchars($report['size']) . "</td>";
         $html .= "<td>" . htmlspecialchars($report['total_amount']) . "</td>";
@@ -4615,6 +4647,11 @@ class AdminController extends BaseController
             $session->set('error', 'Something went wrong: ' . $e->getMessage());
             return redirect()->to('/');
         }
+    }
+
+    public function eventReservation()
+    {
+        $data = ['res'];
     }
 
 
