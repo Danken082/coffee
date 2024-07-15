@@ -1,0 +1,327 @@
+CRITICAL - 2024-07-12 14:21:39 --> Class "App\Controllers\ReservationModel" not found
+in APPPATH\Controllers\AdminController.php on line 55.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\AdminController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-07-12 14:22:20 --> mysqli_sql_exception: Unknown column 'tablereservation.appointmentdate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tablere...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tablere...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tablere...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablere...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-07-12 14:22:21 --> Unknown column 'tablereservation.appointmentdate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablereservation`.`TableID`, `tablereservation`.`CustomerID`, `tablereservation`.`HCustomer`, `tablereservation`.`ProductID`, `tablereservation`.`quantity`, `tablereservation`.`size`, `tablereservation`.`appointmentdate`, `tablereservation`.`TableCode`, `tablereservation`.`appoinmentDate`, `tablereservation`.`totalPayment`, `tablereservation`.`paymentStatus`, `tablereservation`.`Message`, `tablereservation`.`reservationDate`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`ContactNo`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_img`
+FROM `tablereservation`
+JOIN `user` ON `user`.`UserID` = `tablereservation`.`CustomerID`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tablereservation`.`ProductID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-07-12 14:22:46 --> mysqli_sql_exception: Unknown column 'tablereservation.appointmentDate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tablere...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tablere...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tablere...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablere...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-07-12 14:22:46 --> Unknown column 'tablereservation.appointmentDate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablereservation`.`TableID`, `tablereservation`.`CustomerID`, `tablereservation`.`HCustomer`, `tablereservation`.`ProductID`, `tablereservation`.`quantity`, `tablereservation`.`size`, `tablereservation`.`appointmentDate`, `tablereservation`.`TableCode`, `tablereservation`.`appoinmentDate`, `tablereservation`.`totalPayment`, `tablereservation`.`paymentStatus`, `tablereservation`.`Message`, `tablereservation`.`reservationDate`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`ContactNo`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_img`
+FROM `tablereservation`
+JOIN `user` ON `user`.`UserID` = `tablereservation`.`CustomerID`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tablereservation`.`ProductID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-07-12 14:23:06 --> mysqli_sql_exception: Unknown column 'tablereservation.appoinmentDate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tablere...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tablere...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tablere...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablere...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-07-12 14:23:06 --> Unknown column 'tablereservation.appoinmentDate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablereservation`.`TableID`, `tablereservation`.`CustomerID`, `tablereservation`.`HCustomer`, `tablereservation`.`ProductID`, `tablereservation`.`quantity`, `tablereservation`.`size`, `tablereservation`.`apppointmentDate`, `tablereservation`.`TableCode`, `tablereservation`.`appoinmentDate`, `tablereservation`.`totalPayment`, `tablereservation`.`paymentStatus`, `tablereservation`.`Message`, `tablereservation`.`reservationDate`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`ContactNo`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_img`
+FROM `tablereservation`
+JOIN `user` ON `user`.`UserID` = `tablereservation`.`CustomerID`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tablereservation`.`ProductID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-07-12 14:23:17 --> mysqli_sql_exception: Unknown column 'tablereservation.appointmentDate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tablere...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tablere...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tablere...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablere...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-07-12 14:23:17 --> Unknown column 'tablereservation.appointmentDate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablereservation`.`TableID`, `tablereservation`.`CustomerID`, `tablereservation`.`HCustomer`, `tablereservation`.`ProductID`, `tablereservation`.`quantity`, `tablereservation`.`size`, `tablereservation`.`appointmentDate`, `tablereservation`.`TableCode`, `tablereservation`.`appoinmentDate`, `tablereservation`.`totalPayment`, `tablereservation`.`paymentStatus`, `tablereservation`.`Message`, `tablereservation`.`reservationDate`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`ContactNo`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_img`
+FROM `tablereservation`
+JOIN `user` ON `user`.`UserID` = `tablereservation`.`CustomerID`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tablereservation`.`ProductID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-07-12 14:23:24 --> mysqli_sql_exception: Unknown column 'tablereservation.appointmentDate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tablere...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tablere...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tablere...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablere...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-07-12 14:23:24 --> Unknown column 'tablereservation.appointmentDate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablereservation`.`TableID`, `tablereservation`.`CustomerID`, `tablereservation`.`HCustomer`, `tablereservation`.`ProductID`, `tablereservation`.`quantity`, `tablereservation`.`size`, `tablereservation`.`appointmentDate`, `tablereservation`.`TableCode`, `tablereservation`.`appoinmentDate`, `tablereservation`.`totalPayment`, `tablereservation`.`paymentStatus`, `tablereservation`.`Message`, `tablereservation`.`reservationDate`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`ContactNo`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_img`
+FROM `tablereservation`
+JOIN `user` ON `user`.`UserID` = `tablereservation`.`CustomerID`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tablereservation`.`ProductID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-07-12 14:23:48 --> mysqli_sql_exception: Unknown column 'tablereservation.appoinmentDate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tablere...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tablere...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tablere...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablere...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-07-12 14:23:48 --> Unknown column 'tablereservation.appoinmentDate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablereservation`.`TableID`, `tablereservation`.`CustomerID`, `tablereservation`.`HCustomer`, `tablereservation`.`ProductID`, `tablereservation`.`quantity`, `tablereservation`.`size`, `tablereservation`.`appointmentDate`, `tablereservation`.`TableCode`, `tablereservation`.`appoinmentDate`, `tablereservation`.`totalPayment`, `tablereservation`.`paymentStatus`, `tablereservation`.`Message`, `tablereservation`.`reservationDate`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`ContactNo`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_img`
+FROM `tablereservation`
+JOIN `user` ON `user`.`UserID` = `tablereservation`.`CustomerID`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tablereservation`.`ProductID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-07-12 14:23:57 --> mysqli_sql_exception: Unknown column 'tablereservation.appoinmentDate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tablere...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tablere...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tablere...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablere...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-07-12 14:23:57 --> Unknown column 'tablereservation.appoinmentDate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablereservation`.`TableID`, `tablereservation`.`CustomerID`, `tablereservation`.`HCustomer`, `tablereservation`.`ProductID`, `tablereservation`.`quantity`, `tablereservation`.`size`, `tablereservation`.`appointmentDate`, `tablereservation`.`TableCode`, `tablereservation`.`appoinmentDate`, `tablereservation`.`totalPayment`, `tablereservation`.`paymentStatus`, `tablereservation`.`Message`, `tablereservation`.`reservationDate`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`ContactNo`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_img`
+FROM `tablereservation`
+JOIN `user` ON `user`.`UserID` = `tablereservation`.`CustomerID`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tablereservation`.`ProductID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-07-12 14:24:25 --> mysqli_sql_exception: Unknown column 'tablereservation.appoinmentDate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tablere...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tablere...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tablere...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablere...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-07-12 14:24:25 --> Unknown column 'tablereservation.appoinmentDate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablereservation`.`TableID`, `tablereservation`.`CustomerID`, `tablereservation`.`HCustomer`, `tablereservation`.`ProductID`, `tablereservation`.`quantity`, `tablereservation`.`size`, `tablereservation`.`TableCode`, `tablereservation`.`appoinmentDate`, `tablereservation`.`totalPayment`, `tablereservation`.`paymentStatus`, `tablereservation`.`Message`, `tablereservation`.`reservationDate`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`ContactNo`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_img`
+FROM `tablereservation`
+JOIN `user` ON `user`.`UserID` = `tablereservation`.`CustomerID`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tablereservation`.`ProductID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+ERROR - 2024-07-12 14:24:34 --> mysqli_sql_exception: Unknown column 'tablereservation.appoinmentDate' in 'field list' in C:\laragon\www\coffee\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\coffee\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tablere...', 0)
+#1 C:\laragon\www\coffee\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tablere...')
+#2 C:\laragon\www\coffee\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tablere...')
+#3 C:\laragon\www\coffee\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablere...', Array, false)
+#4 C:\laragon\www\coffee\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\coffee\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\coffee\app\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\coffee\system\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+#8 C:\laragon\www\coffee\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\laragon\www\coffee\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\coffee\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\coffee\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-07-12 14:24:34 --> Unknown column 'tablereservation.appoinmentDate' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `tablereservation`.`TableID`, `tablereservation`.`CustomerID`, `tablereservation`.`HCustomer`, `tablereservation`.`ProductID`, `tablereservation`.`quantity`, `tablereservation`.`size`, `tablereservation`.`TableCode`, `tablereservation`.`appoinmentDate`, `tablereservation`.`totalPayment`, `tablereservation`.`paymentStatus`, `tablereservation`.`Message`, `tablereservation`.`reservationDate`, `user`.`UserID`, `user`.`LastName`, `user`.`FirstName`, `user`.`email`, `user`.`ContactNo`, `product_tbl`.`prod_name`, `product_tbl`.`prod_mprice`, `product_tbl`.`prod_lprice`, `product_tbl`.`prod_img`
+FROM `tablereservation`
+JOIN `user` ON `user`.`UserID` = `tablereservation`.`CustomerID`
+JOIN `product_tbl` ON `product_tbl`.`prod_id` = `tablereservation`.`ProductID`', [], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\AdminController.php(4662): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-12 14:24:58 --> Invalid file: "admin/viewreservation.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/viewreservation.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/viewreservation', [], true)
+ 3 APPPATH\Controllers\AdminController.php(4664): view('admin/viewreservation', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-12 14:26:54 --> Undefined variable $count
+in APPPATH\Views\admin\sidebar.php on line 142.
+ 1 APPPATH\Views\admin\sidebar.php(142): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $count', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\sidebar.php', 142)
+ 2 APPPATH\Views\admin\ViewEventReservation.php(24): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\sidebar.php')
+ 3 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\ViewEventReservation.php')
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/viewEventReservation', [], true)
+ 6 APPPATH\Controllers\AdminController.php(4664): view('admin/viewEventReservation', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-12 14:28:47 --> Undefined variable $order
+in APPPATH\Views\admin\ViewEventReservation.php on line 64.
+ 1 APPPATH\Views\admin\ViewEventReservation.php(64): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\ViewEventReservation.php', 64)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\ViewEventReservation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/viewEventReservation', [], true)
+ 5 APPPATH\Controllers\AdminController.php(4667): view('admin/viewEventReservation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-12 14:30:35 --> Undefined variable $order
+in APPPATH\Views\admin\ViewEventReservation.php on line 64.
+ 1 APPPATH\Views\admin\ViewEventReservation.php(64): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\ViewEventReservation.php', 64)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\ViewEventReservation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/viewEventReservation', [], true)
+ 5 APPPATH\Controllers\AdminController.php(4667): view('admin/viewEventReservation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-07-12 14:31:56 --> Undefined variable $order
+in APPPATH\Views\admin\ViewEventReservation.php on line 64.
+ 1 APPPATH\Views\admin\ViewEventReservation.php(64): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $order', 'C:\\laragon\\www\\coffee\\app\\Views\\admin\\ViewEventReservation.php', 64)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\coffee\\app\\Views\\admin\\ViewEventReservation.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('admin/viewEventReservation', [], true)
+ 5 APPPATH\Controllers\AdminController.php(4667): view('admin/viewEventReservation', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->eventReservation()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')

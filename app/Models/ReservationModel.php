@@ -13,7 +13,7 @@ class ReservationModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['CustomerID', 'ProductID','TypeEvent','barCode',  'totalPayment', 'TableType', 'Message', 'pamentStatus', 'apppointmentDate'];
+    protected $allowedFields    = ['CustomerID', 'ProductID','TypeEvent','barCode',  'totalPayment', 'TableType', 'Message', 'pamentStatus', 'appointmentDate'];
 
     // Dates
     protected $useTimestamps = false;

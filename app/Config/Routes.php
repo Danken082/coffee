@@ -198,6 +198,11 @@ $routes->get('Searchreport', 'AdminController::Searchreport');
 $routes->get('filteredreport', 'AdminController::FiterReport');
 $routes->get('exportReport/(:any)/(:any)', 'AdminController::exportReport/$1/$2');
 
+
+//Reservation
+
+$routes->get('viewuserReservation', 'AdminController::eventReservation');
+
 }
 
 // $routes->get('hello', 'AdminController::Deduction');

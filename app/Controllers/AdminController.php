@@ -15,8 +15,10 @@ use App\Models\PaymentModel;
 use App\Models\TableModel;
 use App\Models\FeedbackModel;
 use App\Models\OrderModel;
+use App\Models\ReservationModel;
 use App\Models\ItemsModel;
 use CodeIgniter\API\ResponseTrait;
+
 class AdminController extends BaseController
 {
     use ResponseTrait;
@@ -29,6 +31,7 @@ class AdminController extends BaseController
     private $fb;
     private $order;
     private $raw;
+    private $reservation;
     public function __construct(){
 
         require_once APPPATH. "Libraries/vendor/autoload.php";
@@ -49,6 +52,7 @@ class AdminController extends BaseController
         $this->fb = new FeedbackModel();
         $this->order = new OrderModel();
         $this->raw = new ItemsModel();
+        $this->reservation = new ReservationModel();
     }
     
     public function savePOSOrders()
@@ -2040,7 +2044,7 @@ class AdminController extends BaseController
     public function home(){
         $data= [
             'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
        return view('/admin/home', $data);
     } 
@@ -4651,7 +4655,20 @@ class AdminController extends BaseController
 
     public function eventReservation()
     {
-        $data = ['res'];
+        $data = ['res' => $this->reservation->select('tablereservation.TableID, tablereservation.CustomerID, tablereservation.HCustomer,
+        tablereservation.ProductID, tablereservation.quantity, tablereservation.size, tablereservation.TableCode,
+        tablereservation.appointmentDate, tablereservation.totalPayment, tablereservation.paymentStatus, tablereservation.Message, tablereservation.reservationDate,
+        user.UserID, user.LastName, user.FirstName, user.email, user.ContactNo, product_tbl.prod_name, product_tbl.prod_mprice,
+        product_tbl.prod_lprice, product_tbl.prod_img')
+        ->join('user', 'user.UserID = tablereservation.CustomerID')
+        ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID')
+        ->where('tablereservation.paymentStatus', 'Pending')
+        ->findAll(),
+        'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+    ];
+
+        return view('admin/viewEventReservation', $data);
     }
 
 
