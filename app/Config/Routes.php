@@ -203,6 +203,16 @@ $routes->get('exportReport/(:any)/(:any)', 'AdminController::exportReport/$1/$2'
 
 $routes->get('viewuserReservation', 'AdminController::eventReservation');
 
+
+
+$routes->match(['get', 'post'], 'ByWeek', 'VisualizationController::weekly');
+$routes->post('viewReport', 'VisualizationController::viewReport');
+$routes->match(['get', 'post'], 'GoToPayment', 'OrderController::paymentOrder');
+
+$routes->match(['get', 'post'], 'ViewMonthlyReport', 'VisualizationController::costAndExpense');
+$routes->match(['get', 'post'], 'viewReportMonthly', 'VisualizationController::viewReportMonthly');
+$routes->match(['get', 'post'], 'salesReportPerMonth', 'VisualizationController::salesReportPerMonth');
+
 }
 
 // $routes->get('hello', 'AdminController::Deduction');
@@ -235,7 +245,7 @@ $routes->post('confirmfeedback', 'OrderController::feedBack');
 $routes->get('userCheckOut', 'CartController::GotoCheckOut');
 
 
-$routes->post('GoToProducts', 'ReservationController::getResevartion');
+$routes->match(['get', 'post'], 'GoToProducts', 'ReservationController::getResevartion');
 
 
 
@@ -275,10 +285,9 @@ $routes->get('list-printers', 'CartController::listPrinters');
 $routes->match(['get', 'post'], 'trialpayment', 'AdminController::PaymentMethod');
 $routes->post('trialForexpense', 'VisualizationController::InsertExpenses');
 
-$routes->match(['get', 'post'], 'ByWeek', 'VisualizationController::weekly');
-$routes->post('viewReport', 'VisualizationController::viewReport');
-$routes->match(['get', 'post'], 'GoToPayment', 'OrderController::paymentOrder');
 
-$routes->match(['get', 'post'], 'ViewMonthlyReport', 'VisualizationController::costAndExpense');
-$routes->match(['get', 'post'], 'viewReportMonthly', 'VisualizationController::viewReportMonthly');
-$routes->match(['get', 'post'], 'salesReportPerMonth', 'VisualizationController::salesReportPerMonth');
+
+//For Reservation
+$routes->match(['get', 'post'], 'previewReservation', 'ReservationController::previewReservation');
+
+

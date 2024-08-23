@@ -7,7 +7,6 @@
 		<link rel="shortcut icon" type="/image/png" href="/assets/images/coffeelogo.jpg">
 		<link rel="stylesheet" href="/assets/css/preloader.css">
 		</head>
-
 		<body>	
 			<div id="preloader"></div>
 			<section class="home-slider owl-carousel">

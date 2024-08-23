@@ -32,6 +32,7 @@ class AdminController extends BaseController
     private $order;
     private $raw;
     private $reservation;
+    private $usr;
     public function __construct(){
 
         require_once APPPATH. "Libraries/vendor/autoload.php";
@@ -45,6 +46,7 @@ class AdminController extends BaseController
 
 
         $this->user = new AdminUserModel();
+        $this->usr = new UserModel();
         $this->history = new HistoryModel();
         $this->orderprod = new ProductModel();
         $this->payment = new PaymentModel();

@@ -77,3 +77,17 @@
     text-align: center;
     text-align-last: center;
 }
+
+
+.buttonReservation{
+    width: 45vh;
+    height: 50px;
+    font: 25px  bold;
+    color:rgb(173, 165, 165);
+    background-color: #0E0E10;
+    border-radius:5px 5px;
+}
+.buttonReservation:hover
+{
+    background-color: rgb(55, 54, 54);
+}

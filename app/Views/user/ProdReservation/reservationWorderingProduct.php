@@ -30,6 +30,7 @@
 </head>
 <body>
     <main>
+        <br>
         <a href="<?= base_url('/mainhome')?>" style="background-color: transparent; color:black; font-size: 1.5em;">Back to Home</a>
         <div class="container">
             <div class="products-container">
@@ -37,6 +38,14 @@
                     <input type="text" id="search" class="search-bar" placeholder="Search products...">
                     <i class="fa fas fa-search search-icon"></i>
                 </div>
+            						<input type="hidden" name="LastName" class = "form-control"value = "<?= $lastname ?>">
+            						<input type="hidden" name="FirstName" class = "form-control"value = "<?= $firstname ?>">
+            						<input type="hidden" name="contact" class = "form-control"value = "<?= $contact ?>">
+            						<input type="hidden" name="email" class = "form-control"value = "<?= $email ?>">
+            						<input type="hidden" name="hc" class = "form-control"value = "<?= $hc ?>">
+            						<input type="hidden" name="date" class = "form-control"value = "<?= $date ?>">
+                  <textarea name="message" hidden id="" cols="30" rows="10" class="form-control" placeholder="Message" ><?= esc($message) ?></textarea>
+            
                 <h2>Products</h2>
                 <div class="category-tabs">
                         <button class="category-tab active" data-category="all">All</button>
@@ -335,7 +344,7 @@
             </div>
             <div class="orders-container">
                 <div class="box">
-                    <h2>Customer Orders</h2>
+                    <h2>Reservation Orders</h2>
                     <table class="order-list">
                         <thead>
                             <tr>

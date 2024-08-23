@@ -66,7 +66,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="<?= site_url("#"); ?>">
+            <a class="nav-link" href="<?= site_url("viewuserReservation"); ?>">
               <span class="menu-icon">
                 <i class="fa fa-solid fa-address-book"></i>
               </span>

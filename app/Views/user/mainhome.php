@@ -78,51 +78,53 @@
 						</div>
 						<div class="book p-4">
 							<h3>Book a Table</h3>
-							<form id="reservation-form" action="<?= base_url('GoToProducts')?>" method ="post" class="appointment-form">
-								<div class="d-md-flex">
-									<div class="form-group">
-										<input type="text" disabled name="LastName" class="form-control" value="<?= session()->get('LastName')?>">
-									</div>
-									<div class="form-group ml-md-4">
-										<input type="text" disabled name="FirstName" class="form-control" value="<?= session()->get('FirstName') ?>">
-									</div>
-									<div class="form-group ml-md-4">
-										<input type="text" disabled name="Email"class="form-control" value="<?= session()->get('email') ?>">
-									</div>
-								</div>
-								<div class="d-md-flex">
-									<div class="form-group">
-										<div class="input-wrap">
-											<label for="table reservation" style="color:white;">Date & Time</label>
-											<input type="datetime-local" id="reservation-date" name="apppointmentDate" class="form-control datetimepicker">
-										</div>
-		    						</div>
-									<div class="form-group ml-md-4">
-										<input type="text" name="ContactNo"  value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
-									</div>
-									<div class="form-group ml-md-4 selector">
-										<select name="HCustomer" class="booktable form-control custom-select" align-text="center" style="color:black;">
-											<option selected disabled>Count Of Persons</option>
-											<option value="1-3">1-3 Persons</option>
-											<option value="1-8">1-8 Persons</option>
-											<option value="1-13">1-13 Persons</option>
-											<option value="1-18">1-18 Persons</option>
-											<option value="1-23">1-23 Persons</option>
-											<option value="1-30">1-30 Persons</option>
-											
-										</select>
-								</div>
-								</div>
-								<div class="d-md-flex">
-									<div class="form-group">
-										<textarea name="message" max-length="60" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
-									</div>
-									<div class="form-group ml-md-4">
-										<input type="submit" value="Reserve" class="btn btn-white py-3 px-4">
-									</div>
-								</div>
-								<input type="hidden" name="CustomerID" value ="<?= session()->get('UserID')?>">
-	    					</form>
+							<form id="reservation-form" action="<?= base_url('previewReservation')?>" method="post" class="appointment-form">
+    <div class="d-md-flex">
+        <div class="form-group">
+            <input type="text" disabled class="form-control" value="<?= session()->get('LastName')?>">
+            <input type="hidden" name="LastName" value="<?= session()->get('LastName')?>">
+        </div>
+        <div class="form-group ml-md-4">
+            <input type="text" disabled class="form-control" value="<?= session()->get('FirstName') ?>">
+            <input type="hidden" name="FirstName" value="<?= session()->get('FirstName') ?>">
+        </div>
+        <div class="form-group ml-md-4">
+            <input type="text" disabled class="form-control" value="<?= session()->get('email') ?>">
+            <input type="hidden" name="Email" value="<?= session()->get('email') ?>">
+        </div>
+    </div>
+    <div class="d-md-flex">
+        <div class="form-group">
+            <div class="input-wrap">
+                <label for="table reservation" style="color:white;">Date & Time</label>
+                <input type="datetime-local" id="reservation-date" required name="apppointmentDate" class="form-control datetimepicker">
+            </div>
+        </div>
+        <div class="form-group ml-md-4">
+            <input type="text" name="ContactNo" value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
+        </div>
+        <div class="form-group ml-md-4 selector">
+            <select name="HCustomer" class="booktable form-control custom-select" align-text="center" style="color:black;">
+                <option selected disabled>Count Of Persons</option>
+                <option value="1-3">1-3 Persons</option>
+                <option value="1-8">1-8 Persons</option>
+                <option value="1-13">1-13 Persons</option>
+                <option value="1-18">1-18 Persons</option>
+                <option value="1-23">1-23 Persons</option>
+                <option value="1-30">1-30 Persons</option>
+            </select>
+        </div>
+    </div>
+    <div class="d-md-flex">
+        <div class="form-group">
+            <textarea name="message" max-length="60" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+        </div>
+        <div class="form-group ml-md-4">
+            <input type="submit" value="Reserve" class="btn btn-white py-3 px-4">
+        </div>
+    </div>
+    <input type="hidden" name="CustomerID" value ="<?= session()->get('UserID')?>">
+</form>
 	    				</div>
     				</div>
     			</div>
