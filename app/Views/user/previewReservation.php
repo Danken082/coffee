@@ -24,7 +24,7 @@
 		<div class="heading-section ftco-animate ">
 			<span class="subheading" style="text-align:center; font-size:100px;">Preview</span>
 		</div><br><br>
-    <form action="<?= base_url('/GoToProducts')?>" method="get">
+    <form action="<?= base_url('/GoToProducts')?>" method="post">
     	<div class="container">
 			<div class="row">
 

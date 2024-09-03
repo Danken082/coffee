@@ -56,7 +56,6 @@ class AdminController extends BaseController
         $this->raw = new ItemsModel();
         $this->reservation = new ReservationModel();
     }
-    
     public function savePOSOrders()
     {
        $requestData = $this->request->getJSON();

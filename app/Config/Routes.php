@@ -289,5 +289,9 @@ $routes->post('trialForexpense', 'VisualizationController::InsertExpenses');
 
 //For Reservation
 $routes->match(['get', 'post'], 'previewReservation', 'ReservationController::previewReservation');
+$routes->post('/saveReservation', 'AdminController::saveReservation');
+$routes->post('getResevartionData', 'ReservationController::getResevartionData');
+$routes->match(['get', 'post'], 'getData', 'ReservationController::paymentView');
+// $routes
 
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Point of Sale</title>
+    <title>Reservation</title>
     <link href="/assets/css/pos.css" rel="stylesheet" />
     <link href="https://fontawesome.com/"/>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -509,81 +509,73 @@
         });
     </script>
     <script>
-        const payButton = document.getElementById('pay-button');
-        const paymentInput = document.getElementById('payment-input');
-        const changeOutput = document.getElementById('change-output');
+    const payButton = document.getElementById('pay-button');
+const paymentInput = document.getElementById('payment-input');
+const changeOutput = document.getElementById('change-output');
 
-        orderButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Your existing code for adding items to the order list
-            });
-        });
-
-        // Event listeners for increasing and decreasing quantity
-        // Your existing code for quantity manipulation
-
-        payButton.addEventListener('click', () => {
+payButton.addEventListener('click', () => {
     const payment = parseFloat(paymentInput.value);
     const change = payment - total;
+    // Get values from hidden inputs
+    const lastName = document.querySelector('input[name="LastName"]').value;
+        const firstName = document.querySelector('input[name="FirstName"]').value;
+        const contact = document.querySelector('input[name="contact"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+        const hc = document.querySelector('input[name="hc"]').value;
+        const date = document.querySelector('input[name="date"]').value;
+        const message = document.querySelector('textarea[name="message"]').value;
 
-    if (change >= 0) {
-                changeOutput.textContent = `Change: ₱ ${change.toFixed(2)}`;
-
-    const paymentData = [];
-    // Loop through each product in the order list
-    orderList.querySelectorAll('tr').forEach(row => {
         
+    const paymentData = [];
+    
+    // Loop through each product in the order list
+    orderList.querySelectorAll('tr').forEach(row => 
+    {     const productname = row.cells[0].textContent; // Get the product Name
         const productId = row.cells[1].textContent; // Get the product ID
         const totalPrice = row.querySelector('.total-price-cell').textContent.replace('₱ ', ''); // Get the total price
-        const totalquantity = row.querySelector('.quantity').textContent; // Get the total amount
-        const amountPaid = payment;
-        const productChange = change.toFixed(2);
+        const totalQuantity = row.querySelector('.quantity').textContent; // Get the total quantity
+                
+        
+      
+
+        const productData = {
+            productname: productname,
+            productId: productId,    
+            totalPrice: totalPrice,
+            totalQuantity: totalQuantity,
+           
+        };
 
         // Push payment data for each product into the array
-        paymentData.push({
-            productId: productId,
-            totalPrice: totalPrice,
-            totalquantity: totalquantity,
-            amountPaid: amountPaid,
-            change: productChange
-        });
+        paymentData.push(productData);
+
+        // Log the data being pushed
+        console.log(productData);
     });
 
-    // Send the array of payment data to the server-side controller using AJAX
-    fetch('/payment/save', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(paymentData),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to save payments.');
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Payments saved successfully:', data);
-        // Handle success response from server
-        orderList.innerHTML = ''; // This line clears all child elements inside the order list table body
+// Store values in localStorage or pass directly to the new form
+localStorage.setItem('lastName', lastName);
+localStorage.setItem('firstName', firstName);
+localStorage.setItem('contact', contact);
+localStorage.setItem('email', email);
+localStorage.setItem('hc', hc);
+localStorage.setItem('date', date);
+localStorage.setItem('message', message);
 
-        // Reset total quantity and total price to zero
-        total = 0;
-        quantityTotal = 0;
-        totalPrice.textContent = '₱ 0.00';
-        totalQuantity.textContent = '0';
+    // // Store payment data in localStorage
+    // localStorage.setItem('formData', JSON.stringify({
+    //         lastName: lastName,
+    //         firstName: firstName,
+    //         contact: contact,
+    //         email: email,
+    //         hc: hc,
+    //         date: date,
+    //         message: message
+    //     }));
+    localStorage.setItem('paymentData', JSON.stringify(paymentData));
 
-    })
-    .catch(error => {
-        console.error('Error saving payments:', error);
-        // Handle error
-    });
-}
-                
- else {
-                alert('Insufficient payment.');
-            }
+    // Redirect to the new form page
+    window.location.href ='/getData';
 
 });
 
