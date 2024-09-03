@@ -103,7 +103,7 @@
 <body>
     <div class="container">
         <h1>Payment Data</h1>
-        <form id="paymentForm" action="/submitPayment" method="POST">
+        <form id="paymentForm" action="/saveData" method="POST">
             
             <div id="productFields" class="form-group"></div>
 

@@ -292,6 +292,7 @@ $routes->match(['get', 'post'], 'previewReservation', 'ReservationController::pr
 $routes->post('/saveReservation', 'AdminController::saveReservation');
 $routes->post('getResevartionData', 'ReservationController::getResevartionData');
 $routes->match(['get', 'post'], 'getData', 'ReservationController::paymentView');
+$routes->match(['get', 'post'], 'saveData', 'ReservationController::saveData');
 // $routes
 
 

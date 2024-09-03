@@ -370,9 +370,9 @@ class CartController extends BaseController
             foreach ($cartItems as &$item) {
                 $item['barcode'] = $orderBarcode;
             }
-            $this->insertOrder($cartItems, $paymentMethod, $reference_number, $TotalProdPrice, $totalQuantity, $size);
+            $this->insertOrder($cartItems, $paymentMethod, $reference_number, $totalAmount, $TotalProdPrice, $totalQuantity, $size);
             $this->removedItemsFromcart($selectedItems);
-            return redirect()->to('cart')->with('msg', 'Please Pay Your Order If the product is Already Received');
+            // return redirect()->to('cart')->with('msg', 'Please Pay Your Order If the product is Already Received');
           }
           
           elseif($paymentMethod == "Use_Online_Payment")
@@ -393,7 +393,7 @@ class CartController extends BaseController
             $session = session();
            $session->set('totalAmount', $totalAmount);
       
-          return $this->PaymentManagement($cartItems, $paymentMethod, $TotalProdPrice, $totalQuantity, $size);
+          return $this->PaymentManagement($cartItems, $paymentMethod, $TotalProdPrice, $totalQuantity, $totalAmount, $size);
          
           }
 
@@ -402,7 +402,7 @@ class CartController extends BaseController
           
       }
 
-      private function PaymentManagement($cartItems, $paymentMethod, $TotalProdPrice, $totalQuantity, $size)
+      private function PaymentManagement($cartItems, $paymentMethod, $TotalProdPrice, $totalQuantity, $totalAmount, $size)
       {
         $session = session();
        $totalAmount = $session->get('totalAmount');
@@ -452,7 +452,7 @@ class CartController extends BaseController
         if (isset($decode['data']['attributes']['reference_number'])) { 
           $reference_number = $decode['data']['attributes']['reference_number'];
           
-        $this->insertOrder($cartItems, $paymentMethod ,$reference_number,  $TotalProdPrice, $totalQuantity, $size);
+        $this->insertOrder($cartItems, $paymentMethod ,$reference_number,  $TotalProdPrice, $totalAmount, $totalQuantity, $size);
 
 
           foreach($decode as $key => $value)
@@ -468,17 +468,7 @@ class CartController extends BaseController
 
       }
       
-      // public function updateorderWithReferenceNumber($reference_number)
-      // {
-      //     $session = session();
-
-      //     $orderBarcode = $session->get('orderBarcode');
-
-      //     $this->orderNow
-                    
-      //                 ->update(['barcode' => 'CRossOnline-' .$orderBarcode],['reference_number' => $reference_number]);
-      // }
-
+     
       private function generateAlphanumericBarcode($length = 10)
        {
           $characters = 'QW123YOPP456ASKFJ789ZXCBN10LKJ';
@@ -496,7 +486,7 @@ class CartController extends BaseController
 
         return $cartItems;
       }
-      private function insertOrder($cartItems, $paymentMethod, $reference_number, $TotalProdPrice, $totalQuantity, $size)
+      private function insertOrder($cartItems, $paymentMethod, $reference_number, $TotalProdPrice, $totalAmount, $totalQuantity, $size)
       {
           $oData = [];
       
@@ -507,19 +497,30 @@ class CartController extends BaseController
 
             if($paymentMethod == "COD")
             {
+
+              if($size == null)
+              {
+                $size = 'medium';
+              }
+              else {
+                $size = $size;
+              }
               $oData[] = [
-                  'CustomerID' => $item['CustomerID'],
-                  'ProductID' => $item['ProductID'],
-                  'total' => $TotalProdPrice,
-                  'quantity' => $totalQuantity,
-                  'size' => $size,
-                  'orderStatus' => 'onProcess',
-                  'paymentStatus' => 'notPaid',
-                  'orderType' => 'onHouse',
-                  'paymentStatus' => 'COD',
-                  'barcode' => 'CRossOnline-' .$item['barcode'],
-                  'reference_number' => 'This is an COD',
-                    ];
+                'CustomerID' => $item['CustomerID'],
+                'ProductID' => $item['ProductID'],
+                'total' => $totalAmount,
+                'quantity' => $totalQuantity,
+                'size' => $size,
+                'orderStatus' => 'onProcess',
+                'paymentStatus' => 'notPaid', //or pending
+                'orderType' => 'onHouse',
+                'paymentStatus' => $paymentMethod, //potential conflict
+                'barcode' => 'CRossOnline-' .$item['barcode'],
+                'reference_number' => 'This is an COD'
+            ];
+
+            // var_dump($TotalProdPrice);
+            
             }
 
 
@@ -529,7 +530,7 @@ class CartController extends BaseController
                 'CustomerID' => $item['CustomerID'],
                 'ProductID' => $item['ProductID'],
                 'total' => $TotalProdPrice,
-                'quantity' => $TotalProdPrice,
+                'quantity' => $totalQuantity,
                 'size' => $size,
                 'orderStatus' => 'onProcess',
                 'paymentStatus' => 'pending',
@@ -542,7 +543,8 @@ class CartController extends BaseController
 
           }
       
-          $this->order->insertBatch($oData);
+          // $this->order->insertBatch($oData);
+          var_dump($oData);
       }
       
       private function removedItemsFromcart($selectedItems)
