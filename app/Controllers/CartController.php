@@ -248,7 +248,6 @@ class CartController extends BaseController
         }
       
           $data['cart'] =  $this->product->where('prod_id', $productID)->first();
-                          
           return view('user/addtocartmeal', $data);
       }
 
@@ -262,7 +261,6 @@ class CartController extends BaseController
         }
       
           $data['cart'] =  $this->product->where('prod_id', $productID)->first();
-                          
           return view('user/addtocartdrink', $data);
       }
 

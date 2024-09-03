@@ -108,5 +108,5 @@ class ProductModel extends Model
     public function products($categ)
     {
         return $this->where('prod_categ', $categ)->findAll();
-    }    
+    }
 }
