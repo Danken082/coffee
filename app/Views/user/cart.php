@@ -77,7 +77,7 @@
                                     </td>
                                     <td class="total">₱ <span id="total-price-<?= $index ?>">   </span></td>
                             
-            <input type="hidden" name="totalPrice"  value="" id="hidden-total-price-<?= $index ?>">
+            <input type="hidden" name="totalPrice[]"  value="" id="hidden-total-price-<?= $index ?>">
 
                                    
 

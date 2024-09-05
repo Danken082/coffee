@@ -209,6 +209,7 @@
                 productFields.appendChild(productIdInput);
                 productFields.appendChild(totalPriceInput);
                 productFields.appendChild(totalQuantityInput);
+        
 
                 // Optionally, create visible fields for the user to see the data
                 const productDetailsDiv = document.createElement('div');
@@ -223,7 +224,16 @@
                 `;
                 productFields.appendChild(productDetailsDiv);
             });
+            const products = [
+                    {
+                        productId: productId,
+                        totalPrice: totalPrice,
+                        totalQuantity: totalQuantity,
 
+                    }
+                ]
+
+                localStorage.setItem('paymentData', JSON.stringify(products));
             // Optionally, remove the data from localStorage after using it
             // localStorage.removeItem('paymentData');
             // localStorage.removeItem('lastName');

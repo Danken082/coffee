@@ -20,6 +20,8 @@ class ReservationController extends BaseController
 
     public function __construct()
     {
+
+        date_default_timezone_set('Asia/Manila');
         $this->raw = new ItemsModel();
         $this->rsv = new ReservationModel();
         $this->prod = new ProductModel();
@@ -182,8 +184,8 @@ class ReservationController extends BaseController
         $user = $session->get('UserID');
 
         $CustomerID = $this->request->getVar($user);
-        $lastname = $this->request->getVar('LastName');
-        $firstname = $this->request->getVar('FirstName');
+        $lastname = $this->request->getVar('lastName');
+        $firstname = $this->request->getVar('lirstName');
         $contact   = $this->request->getVar('contact');
         $email = $this->request->getVar('email');
 
@@ -191,16 +193,45 @@ class ReservationController extends BaseController
         $date = $this->request->getVar('date');
         $message = $this->request->getVar('message');
         $productID = $this->request->getVar('productId');
+
+        $products = $this->request->getPost('products');
+        $formatDate = date('Y-m-d H:i:s', strtotime($date));
+
+
+
+        if($products)
+        {
+            foreach($products as $item)
+            {
+                $productId = $item['productId'];
+                $totalQuantity = $item['totalQuantity'];
+
+                $data  = [
+                    'ProductID' => $productID,
+                    'CustomerID' => $user,
+                    'HCustomer' => $hc,
+                    'appointmentDate' => $formatDate,
+                    'Message' => $message,
+                    'ProductID' =>$productId,
+                    'quantity' => $totalQuantity
+                ];
+
+                $this->rsv->insert($data);
+
+            }
+        }
         
+
+
         $data  = [
                   'ProductID' => $productID,
-                  'CustomerID' => $CustomerID,
+                  'CustomerID' => $user,
                   'HCustomer' => $hc,
-                  'appointmentDate' => $date,
+                  'appointmentDate' => $formatDate,
                   'Message' => $message];
-            $this->rsv->insert($data);
-
-            return redirect()->to('/');
+        //     $this->rsv->insert($prosu);
+        //     var_dump($products);
+            // return redirect()->to('/');
             
     }
 

@@ -296,3 +296,6 @@ $routes->match(['get', 'post'], 'saveData', 'ReservationController::saveData');
 // $routes
 
 
+$routes->get('sampleNotif', 'ChatController::sampleNotif');
+
+

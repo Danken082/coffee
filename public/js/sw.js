@@ -4,7 +4,7 @@
 
             const notif = event.data.json().notification;
 
-            event.waitUntil(self.registration.showNotification(notif.title,{
+            event.waitUntil(self.registration.showNotification(notif.title , {
                 body: notif.body,
                 icon: notif.image,
                 data: {
@@ -20,3 +20,5 @@
             
             event.waitUntil(clients.openWindow(event.notification.data.url));
         });
+
+        

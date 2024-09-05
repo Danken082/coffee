@@ -25,4 +25,9 @@ class ChatController extends BaseController
         $prod['app'] = $menu->products('Appetizer');
         return view('user/pos', $prod);
     }
+    public function sampleNotif()
+    {
+        return view("noticationtrial");
+    }
+
 }

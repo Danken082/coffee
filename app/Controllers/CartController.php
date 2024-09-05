@@ -370,7 +370,7 @@ class CartController extends BaseController
             }
             $this->insertOrder($cartItems, $paymentMethod, $reference_number, $totalAmount, $TotalProdPrice, $totalQuantity, $size);
             $this->removedItemsFromcart($selectedItems);
-            // return redirect()->to('cart')->with('msg', 'Please Pay Your Order If the product is Already Received');
+            return redirect()->to('cart')->with('msg', 'Please Pay Your Order If the product is Already Received');
           }
           
           elseif($paymentMethod == "Use_Online_Payment")
@@ -506,7 +506,7 @@ class CartController extends BaseController
               $oData[] = [
                 'CustomerID' => $item['CustomerID'],
                 'ProductID' => $item['ProductID'],
-                'total' => $totalAmount,
+                'total' => $TotalProdPrice,
                 'quantity' => $totalQuantity,
                 'size' => $size,
                 'orderStatus' => 'onProcess',
@@ -541,8 +541,8 @@ class CartController extends BaseController
 
           }
       
-          // $this->order->insertBatch($oData);
-          var_dump($oData);
+          $this->order->insertBatch($oData);
+          // var_dump($oData);
       }
       
       private function removedItemsFromcart($selectedItems)
