@@ -19,6 +19,7 @@ use App\Models\FeedbackModel;
 use App\Models\OrderModel;
 use App\Models\ReservationModel;
 use App\Models\ItemsModel;
+use App\Models\FlavorModel;
 use CodeIgniter\API\ResponseTrait;
 
 
@@ -36,6 +37,7 @@ class AdminController extends BaseController
     private $raw;
     private $reservation;
     private $usr;
+    private $flvr;
     public function __construct(){
 
         require_once APPPATH. "Libraries/vendor/autoload.php";
@@ -58,9 +60,17 @@ class AdminController extends BaseController
         $this->order = new OrderModel();
         $this->raw = new ItemsModel();
         $this->reservation = new ReservationModel();
-        
+        $this->flvr = new FlavorModel();
+
         $this->connector = new WindowsPrintConnector("POS58 Printer");
         $this->printer  = new Printer($this->connector);
+    }
+
+    public function flvr()
+    {
+       $data = $this->flvr->select("Flavor_Name")->findAll();
+
+        var_dump($data);
     }
     public function savePOSOrders()
     {
@@ -2354,6 +2364,8 @@ class AdminController extends BaseController
             'other' => $menu->products('Others'),
             'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+
+            'flavor' => $this->flvr->findAll(),
         ];   
 
         return view('/admin/pos', $data);

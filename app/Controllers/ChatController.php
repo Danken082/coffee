@@ -30,4 +30,30 @@ class ChatController extends BaseController
         return view("noticationtrial");
     }
 
+
+    public function Nofication()
+    {
+        //         https://fcm.googleapis.com/v1/projects/<YOUR-PROJECT-ID>/messages:send
+        // Content-Type: application/json
+        // Authorization: Bearer <YOUR-ACCESS-TOKEN>
+
+        // {
+        // "message": {
+        //     "token": "eEz-Q2sG8nQ:APA91bHJQRT0JJ...",
+        //     "notification": {
+        //     "title": "Background Message Title",
+        //     "body": "Background message body"
+        //     },
+        //     "webpush": {
+        //     "fcm_options": {
+        //         "link": "https://dummypage.com"
+        //     }
+        //     }
+        // }
+        // }
+
+
+        $ch  = curl_init("https://fcm.googleapis.com/v1/projects/crossroads-notification/messages:send");
+    }
+
 }

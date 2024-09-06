@@ -91,6 +91,7 @@
                             <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
+
                                 <?php if($item['prod_lprice'] == 0.00):?> 
                                     <p class="price">
                                         <span> ₱ <?= $item['prod_mprice'] ?> </span>
@@ -100,6 +101,14 @@
                                         <span>Regular ₱ <?= $item['prod_mprice'] ?></span>
                                     </p>
                                 <?php endif;?>
+
+                                <select name="" id="">
+                                    <option value="" disabled selected>Flavor</option>
+                                <?php foreach($flavor as $flvr):?>
+                                    
+                                    <option value="<?= $flvr['Flavor_Name'];?>"><?= $flvr['Flavor_Name'];?></option>
+                                <?php endforeach;?>
+                                </select>
                                 <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
                             </div>
                         <?php endforeach; ?>

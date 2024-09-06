@@ -33,10 +33,11 @@
   navigator.serviceWorker.register("/js/sw.js").then(registration => {
 
   
-  getToken(messaging, {
-    serviceWorkerRegistration: registration, vapidKey: 'BD2BsgeCWQs-x8kzlKIiyMYTA0WPjBlTzFcBk1oEt0SEKHW8-XhGfC7FL0aTj3DbJrmCCYclHY6oOg6e1Um9FPU' }).then((currentToken) => {
+    getToken(messaging, {
+    serviceWorkerRegistration: registration, 
+    vapidKey: 'BD2BsgeCWQs-x8kzlKIiyMYTA0WPjBlTzFcBk1oEt0SEKHW8-XhGfC7FL0aTj3DbJrmCCYclHY6oOg6e1Um9FPU' }).then((currentToken) => {
   if (currentToken) {
-    console.log("Token is:" + currentToken);
+    console.log("Token is:"+currentToken);
     // Send the token to your server and update the UI if necessary
     // ...
   } else {
