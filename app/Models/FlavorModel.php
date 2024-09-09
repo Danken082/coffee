@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class FlavorModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'Flavor_tbl';
+    protected $table            = 'flavor_tbl';
     protected $primaryKey       = 'flavor_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';

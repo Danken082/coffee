@@ -68,9 +68,14 @@ class AdminController extends BaseController
 
     public function flvr()
     {
-       $data = $this->flvr->select("Flavor_Name")->findAll();
+        $printerConfig = new Printer();
+        $printerIP = $printerConfig->printerIP;
+        
+        // Example of using the printer IP address
+        echo "Printer IP Address: " . $printerIP;
 
-        var_dump($data);
+        // You can use this IP address to send print commands or configure your printer
+    
     }
     public function savePOSOrders()
     {
@@ -81,24 +86,23 @@ class AdminController extends BaseController
             $requestData = $this->request->getJSON();
     
             $savedData = [];
-            $connector = new WindowsPrintConnector("POS58 Printer");
-            $printer = new Printer($connector);
     
-            $printer->setJustification(Printer::JUSTIFY_CENTER);
-            $printer->text("Crossrods Coffee and Deli\n");
-            $printer->text("Tawiran Calapan City\n");
-            $printer->text("Oriental Mindoro\n");
-            $printer->text("Receipt\n");
-            $printer->text("\n");
-            $printer->text("------------------------------\n");
-            $printer->text("------------------------------\n");
-            $printer->text(date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ."\n");
-            $printer->text("------------------------------\n");
+    
+            $this->printer->setJustification(Printer::JUSTIFY_CENTER);
+            $this->printer->text("Crossrods Coffee and Deli\n");
+            $this->printer->text("Tawiran Calapan City\n");
+            $this->printer->text("Oriental Mindoro\n");
+            $this->printer->text("Receipt\n");
+            $this->printer->text("\n");
+            $this->printer->text("------------------------------\n");
+            $this->printer->text("------------------------------\n");
+            $this->printer->text(date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ."\n");
+            $this->printer->text("------------------------------\n");
        
-            $printer->text("Name    Quantity     Prize\n");
+            $this->printer->text("Name    Quantity     Prize\n");
             $total = 0;
             foreach ($requestData as $item) {
-                $printer->setJustification(Printer::JUSTIFY_LEFT);
+                $this->printer->setJustification(Printer::JUSTIFY_LEFT);
                 $productName = $item->productName;
                 $productId = $item->productId;
                 $totalPrice = $item->totalPrice;
@@ -108,7 +112,7 @@ class AdminController extends BaseController
                 $DineTake = $item->DineTake;
     
                 
-                $printer->text(sprintf("%-12s x%-10d P%5.2f\n", $productName, $totalquantity, $totalPrice));
+                $this->printer->text(sprintf("%-12s x%-10d P%5.2f\n", $productName, $totalquantity, $totalPrice));
     
                 $total += $totalPrice;
     
@@ -1997,21 +2001,21 @@ class AdminController extends BaseController
          
     
            }
-           $printer->text("------------------------------\n");
-           $printer->text( $DineTake . "\n");
-           $printer->text("------------------------------\n");
-            $printer->text("Total: P" . number_format($total, 2) . "\n");   
-           $printer->text("------------------------------\n");
-           $printer->text("\nAmount Paid: P" . number_format($amountPaid, 2) . "\n");
-           $printer->text("Change: P" . number_format($change, 2) . "\n");
-           $printer->text("------------------------------\n");
-           $printer->text("Thank you for choosing\n");
-           $printer->text("Crossroards Coffee and Deli\n");
-           $printer->text("Come Again\n");
-           $printer->text("------------------------------\n");
+           $this->printer->text("------------------------------\n");
+           $this->printer->text( $DineTake . "\n");
+           $this->printer->text("------------------------------\n");
+            $this->printer->text("Total: P" . number_format($total, 2) . "\n");   
+           $this->printer->text("------------------------------\n");
+           $this->printer->text("\nAmount Paid: P" . number_format($amountPaid, 2) . "\n");
+           $this->printer->text("Change: P" . number_format($change, 2) . "\n");
+           $this->printer->text("------------------------------\n");
+           $this->printer->text("Thank you for choosing\n");
+           $this->printer->text("Crossroards Coffee and Deli\n");
+           $this->printer->text("Come Again\n");
+           $this->printer->text("------------------------------\n");
       
-           $printer->cut();
-           $printer->close();
+           $this->printer->cut();
+           $this->printer->close();
     
            return $this->response->setJSON([
                'success' => true,

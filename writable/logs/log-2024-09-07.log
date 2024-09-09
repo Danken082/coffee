@@ -1,0 +1,120 @@
+CRITICAL - 2024-09-07 16:38:24 --> Class "App\Controllers\COM" not found
+in APPPATH\Controllers\AdminController.php on line 75.
+ 1 APPPATH\Controllers\AdminController.php(92): App\Controllers\getInstalledPrinters()
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 16:38:46 --> Class "COM" not found
+in APPPATH\Controllers\AdminController.php on line 75.
+ 1 APPPATH\Controllers\AdminController.php(92): App\Controllers\getInstalledPrinters()
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 16:39:04 --> Class "COM" not found
+in APPPATH\Controllers\AdminController.php on line 76.
+ 1 APPPATH\Controllers\AdminController.php(93): App\Controllers\getInstalledPrinters()
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 16:40:48 --> Array to string conversion
+in APPPATH\Controllers\AdminController.php on line 84.
+ 1 APPPATH\Controllers\AdminController.php(84): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\coffee\\app\\Controllers\\AdminController.php', 84)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 16:42:09 --> Class "COM" not found
+in APPPATH\Controllers\AdminController.php on line 82.
+ 1 APPPATH\Controllers\AdminController.php(72): App\Controllers\AdminController->getInstalledPrinters()
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:32:18 --> Too few arguments to function Mike42\Escpos\Printer::__construct(), 0 passed in C:\laragon\www\coffee\app\Controllers\AdminController.php on line 71 and at least 1 expected
+in VENDORPATH\mike42\escpos-php\src\Mike42\Escpos\Printer.php on line 360.
+ 1 APPPATH\Controllers\AdminController.php(71): Mike42\Escpos\Printer->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:32:33 --> Class "Printer" not found
+in APPPATH\Controllers\AdminController.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:32:36 --> Too few arguments to function Mike42\Escpos\Printer::__construct(), 0 passed in C:\laragon\www\coffee\app\Controllers\AdminController.php on line 71 and at least 1 expected
+in VENDORPATH\mike42\escpos-php\src\Mike42\Escpos\Printer.php on line 360.
+ 1 APPPATH\Controllers\AdminController.php(71): Mike42\Escpos\Printer->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:32:57 --> Class "App\Controllers\WindowsPrintConnector" not found
+in APPPATH\Controllers\AdminController.php on line 65.
+ 1 SYSTEMPATH\CodeIgniter.php(891): App\Controllers\AdminController->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(485): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:33:07 --> Class "App\Controllers\Printer" not found
+in APPPATH\Controllers\AdminController.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:33:20 --> Class "Printer" not found
+in APPPATH\Controllers\AdminController.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:33:26 --> Class "Printer" not found
+in APPPATH\Controllers\AdminController.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:33:43 --> Class "App\Printer" not found
+in APPPATH\Controllers\AdminController.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:33:51 --> Class "App\CodeIgniter\Printer" not found
+in APPPATH\Controllers\AdminController.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:34:00 --> Class "App\Controllers\Printer" not found
+in APPPATH\Controllers\AdminController.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
+CRITICAL - 2024-09-07 17:34:35 --> Too few arguments to function Mike42\Escpos\Printer::__construct(), 0 passed in C:\laragon\www\coffee\app\Controllers\AdminController.php on line 71 and at least 1 expected
+in VENDORPATH\mike42\escpos-php\src\Mike42\Escpos\Printer.php on line 360.
+ 1 APPPATH\Controllers\AdminController.php(71): Mike42\Escpos\Printer->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\AdminController->flvr()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\coffee\\public\\index.php')
