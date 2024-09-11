@@ -190,7 +190,9 @@ saveTransactionButton.addEventListener('click', () => {
         body: JSON.stringify(paymentData),
     })
     .then(response => {
+        console.log(response);
         if (!response.ok) {
+            
             throw new Error('Failed to save payments.');
         }
         return response.json();

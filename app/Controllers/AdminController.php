@@ -21,6 +21,7 @@ use App\Models\ReservationModel;
 use App\Models\ItemsModel;
 use App\Models\FlavorModel;
 use CodeIgniter\API\ResponseTrait;
+use App\Config\Printers;
 
 
 class AdminController extends BaseController
@@ -38,6 +39,7 @@ class AdminController extends BaseController
     private $reservation;
     private $usr;
     private $flvr;
+    protected $printerPaths;
     public function __construct(){
 
         require_once APPPATH. "Libraries/vendor/autoload.php";
@@ -62,22 +64,13 @@ class AdminController extends BaseController
         $this->reservation = new ReservationModel();
         $this->flvr = new FlavorModel();
 
-        $this->connector = new WindowsPrintConnector("POS58 Printer");
-        $this->printer  = new Printer($this->connector);
-    }
-    public function viewOrderHist($HistoryCode)
-    {
-     $data = [ 'barcode' => $this->history->select('tbl_orders.order_id, tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,
-     tbl_orders.total_amount, tbl_orders.change_amount, product_tbl.prod_id, 
-        product_tbl.prod_img, product_tbl.prod_name')
-        ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->where('tbl_orders.ordercode', $HistoryCode)->find(),
-        'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        $printerConfig = new Printers();
+        $printerPath = $printersConfig->printerPath;
 
-    ];
-
-     return view('admin/secondphase/viewHistory', $data); 
+        $this->connector = new WindowsPrintConnector($printerPath);
+        $this->printer = new Printer($this->connector);
     }
+
     public function flvr()
     {
         $printerConfig = new Printer();
@@ -98,7 +91,7 @@ class AdminController extends BaseController
             $requestData = $this->request->getJSON();
     
             $savedData = [];
-            $barOrderCode = $this->getBarcodeByOrder();    
+    
     
             $this->printer->setJustification(Printer::JUSTIFY_CENTER);
             $this->printer->text("Crossrods Coffee and Deli\n");
@@ -113,53 +106,28 @@ class AdminController extends BaseController
        
             $this->printer->text("Name    Quantity     Prize\n");
             $total = 0;
-
-
             foreach ($requestData as $item) {
-
                 $this->printer->setJustification(Printer::JUSTIFY_LEFT);
                 $productName = $item->productName;
                 $productId = $item->productId;
                 $totalPrice = $item->totalPrice;
-                $prodSize = $item->productsize;
                 $totalquantity = $item->totalquantity;
                 $amountPaid = $item->amountPaid;
                 $change = $item->change;
                 $DineTake = $item->DineTake;
-                $orderCode = $barOrderCode;
     
                 
                 $this->printer->text(sprintf("%-12s x%-10d P%5.2f\n", $productName, $totalquantity, $totalPrice));
     
                 $total += $totalPrice;
-
-                if($prodSize == Null)
-                {
-                    $orderId = $this->history->insert([
-                        'ProductID' => $productId,
-                        'total_amount' => $totalPrice,
-                        'quantity' => $totalquantity,
-                        'amount_paid' => $amountPaid,
-                        'change_amount' => $change,
-                        'size'  => 'Regular', 
-                        'orderCode' => 'CrDSPOS-' .$orderCode   
-                    ]);                 
-                }
-                else
-                {
-                    $orderId = $this->history->insert([
-                        'ProductID' => $productId,
-                        'total_amount' => $totalPrice,
-                        'quantity' => $totalquantity,
-                        'amount_paid' => $amountPaid,
-                        'change_amount' => $change,
-                        'size'  => $prodSize,  
-                        'orderCode' => 'CrDSPOS-' .$orderCode   
-                    ]);
-                }
-                
     
-   
+                $orderId = $this->history->insert([
+                    'ProductID' => $productId,
+                    'total_amount' => $totalPrice,
+                    'quantity' => $totalquantity,
+                    'amount_paid' => $amountPaid,
+                    'change_amount' => $change, 
+                ]);
      
                 $savedData[] = [
                  'ProductID' => $productId,
@@ -2039,7 +2007,7 @@ class AdminController extends BaseController
     
            }
            $this->printer->text("------------------------------\n");
-           $this->printer->text( $DineTake . "\n"); 
+           $this->printer->text( $DineTake . "\n");
            $this->printer->text("------------------------------\n");
             $this->printer->text("Total: P" . number_format($total, 2) . "\n");   
            $this->printer->text("------------------------------\n");

@@ -36,8 +36,9 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order ID</th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order Name</th>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order Date</th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order Code</th>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Total Amount</th>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Amount Paid</th>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Change Amount</th>
@@ -48,10 +49,13 @@
                                     <?php foreach($history as $h): ?>
                                         <tr>
                                             <td class="text-center">
-                                                <p class="text-xs text-secondary mb-0"><?=$h['order_id'] ?></p>
+                                                <p class="text-xs text-secondary mb-0"><?=$h['prod_name'] ?></p>
                                             </td>
                                             <td class="text-center">
                                                 <p class="text-xs text-secondary mb-0"><?=$h['order_date'] ?></p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs text-secondary mb-0"><?=$h['orderCode'] ?></p>
                                             </td>
                                             <td class="text-center">
                                                 <p class="text-xs text-primary mb-0 font-weight-bold"><?=$h['total_amount'] ?></p>

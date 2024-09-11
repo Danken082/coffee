@@ -36,6 +36,9 @@ if(session()->get('UserRole') === 'Admin' || session()->get('UserRole') === 'Sta
 {
 //viewOrders
 $routes->get('/viewOrderHistory/(:any)', 'AdminController::viewOrderHist/$1');
+$routes->get('/editOrder/(:any)', 'AdminController::editOrder/$1');
+
+
 
 $routes->get('adminorderpayment', 'AdminController::viewOrders');
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);

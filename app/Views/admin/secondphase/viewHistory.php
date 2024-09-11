@@ -65,7 +65,7 @@
                                         <li>Product Name: <?= $order['prod_name'] ?></li>
                                         <li>Order Quantity: <?= $order['quantity'] ?></li>
                                         <li>Product Size: <?= $order['size'] ?></li>
-                                        <li><a href="<?= $order['order_id']?>">Edit Order</a></li>
+                                        <li><a href="/editOrder/<?= $order['order_id']?>">Edit Order</a></li>
                                     </ul>
                                 </li>
                                <?php endforeach; ?>
