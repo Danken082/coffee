@@ -63,7 +63,7 @@
                                                 <p class="text-xs text-primary mb-0 font-weight-bold"><?=$h['change_amount'] ?></p>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="<?= base_url('/orderhistory')?>" class="btn btn-info btn-sm ">View Order History</a>
+                                                <a href="<?= base_url('/viewOrderHistory/' . $h['orderCode'])?>" class="btn btn-info btn-sm ">View Order History</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

@@ -34,6 +34,9 @@ $routes->get('print-receipts', 'AdminController::printReceipt');
 /*For UserSide*/ 
 if(session()->get('UserRole') === 'Admin' || session()->get('UserRole') === 'Staff')
 {
+//viewOrders
+$routes->get('/viewOrderHistory/(:any)', 'AdminController::viewOrderHist/$1');
+
 $routes->get('adminorderpayment', 'AdminController::viewOrders');
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
@@ -299,5 +302,4 @@ $routes->match(['get', 'post'], 'saveData', 'ReservationController::saveData');
 $routes->get('sampleNotif', 'ChatController::sampleNotif');
 
 $routes->get('flavor', 'AdminController::flvr');
-
 

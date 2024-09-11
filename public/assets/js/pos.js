@@ -163,6 +163,7 @@ saveTransactionButton.addEventListener('click', () => {
     orderList.querySelectorAll('tr').forEach(row => {
         const productName = row.cells[0].textContent;
         const productId = row.cells[1].textContent;
+        const productsize = row.cells[2].textContent;
         const totalPrice =  row.querySelector('.total-price-cell').textContent.replace('₱ ', '');
         const totalquantity = row.querySelector('.quantity').textContent;
         const amountPaid = payment;
@@ -171,6 +172,7 @@ saveTransactionButton.addEventListener('click', () => {
         paymentData.push({
             productName: productName,
             productId: productId,
+            productsize: productsize,
             totalPrice: totalPrice,
             total: total,
             DineTake: DineTake.value, // Assuming DineTake is a select element

@@ -65,7 +65,19 @@ class AdminController extends BaseController
         $this->connector = new WindowsPrintConnector("POS58 Printer");
         $this->printer  = new Printer($this->connector);
     }
+    public function viewOrderHist($HistoryCode)
+    {
+     $data = [ 'barcode' => $this->history->select('tbl_orders.CustomerID, tbl_orders.OrderID, tbl_Orders.ProductID, tbl_Orders.quantity, tbl_Orders.size, tbl_Orders.orderCode, tbl_Orders.order_date,
+     tbl_Orders.total_amount, tbl_Orders.change_amount, product_tbl.prod_id, 
+        product_tbl.prod_img, product_tbl.prod_name')
+        ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->where('tbl_Orders.ordercode', $HistoryCode)->find(),
+        'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
 
+    ];
+
+     return view('admin/secondphase/viewHistory', $data); 
+    }
     public function flvr()
     {
         $printerConfig = new Printer();
@@ -101,11 +113,15 @@ class AdminController extends BaseController
        
             $this->printer->text("Name    Quantity     Prize\n");
             $total = 0;
+
+
             foreach ($requestData as $item) {
+
                 $this->printer->setJustification(Printer::JUSTIFY_LEFT);
                 $productName = $item->productName;
                 $productId = $item->productId;
                 $totalPrice = $item->totalPrice;
+                $prodSize = $item->productsize;
                 $totalquantity = $item->totalquantity;
                 $amountPaid = $item->amountPaid;
                 $change = $item->change;
@@ -116,15 +132,34 @@ class AdminController extends BaseController
                 $this->printer->text(sprintf("%-12s x%-10d P%5.2f\n", $productName, $totalquantity, $totalPrice));
     
                 $total += $totalPrice;
+
+                if($prodSize == Null)
+                {
+                    $orderId = $this->history->insert([
+                        'ProductID' => $productId,
+                        'total_amount' => $totalPrice,
+                        'quantity' => $totalquantity,
+                        'amount_paid' => $amountPaid,
+                        'change_amount' => $change,
+                        'size'  => 'Regular', 
+                        'orderCode' => 'CrDSPOS-' .$orderCode   
+                    ]);                 
+                }
+                else
+                {
+                    $orderId = $this->history->insert([
+                        'ProductID' => $productId,
+                        'total_amount' => $totalPrice,
+                        'quantity' => $totalquantity,
+                        'amount_paid' => $amountPaid,
+                        'change_amount' => $change,
+                        'size'  => $prodSize,  
+                        'orderCode' => 'CrDSPOS-' .$orderCode   
+                    ]);
+                }
+                
     
-                $orderId = $this->history->insert([
-                    'ProductID' => $productId,
-                    'total_amount' => $totalPrice,
-                    'quantity' => $totalquantity,
-                    'amount_paid' => $amountPaid,
-                    'change_amount' => $change, 
-                    'orderCode' => 'CrDSPOS-' .$orderCode   
-                ]);
+   
      
                 $savedData[] = [
                  'ProductID' => $productId,
@@ -2004,7 +2039,7 @@ class AdminController extends BaseController
     
            }
            $this->printer->text("------------------------------\n");
-           $this->printer->text( $DineTake . "\n");
+           $this->printer->text( $DineTake . "\n"); 
            $this->printer->text("------------------------------\n");
             $this->printer->text("Total: P" . number_format($total, 2) . "\n");   
            $this->printer->text("------------------------------\n");
