@@ -86,7 +86,7 @@ class AdminController extends BaseController
             $requestData = $this->request->getJSON();
     
             $savedData = [];
-    
+            $barOrderCode = $this->getBarcodeByOrder();    
     
             $this->printer->setJustification(Printer::JUSTIFY_CENTER);
             $this->printer->text("Crossrods Coffee and Deli\n");
@@ -110,6 +110,7 @@ class AdminController extends BaseController
                 $amountPaid = $item->amountPaid;
                 $change = $item->change;
                 $DineTake = $item->DineTake;
+                $orderCode = $barOrderCode;
     
                 
                 $this->printer->text(sprintf("%-12s x%-10d P%5.2f\n", $productName, $totalquantity, $totalPrice));
@@ -122,6 +123,7 @@ class AdminController extends BaseController
                     'quantity' => $totalquantity,
                     'amount_paid' => $amountPaid,
                     'change_amount' => $change, 
+                    'orderCode' => 'CrDSPOS-' .$orderCode   
                 ]);
      
                 $savedData[] = [
