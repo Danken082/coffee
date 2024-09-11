@@ -67,7 +67,7 @@ class AdminController extends BaseController
     }
     public function viewOrderHist($HistoryCode)
     {
-     $data = [ 'barcode' => $this->history->select('tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,
+     $data = [ 'barcode' => $this->history->select('tbl_orders.order_id, tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,
      tbl_orders.total_amount, tbl_orders.change_amount, product_tbl.prod_id, 
         product_tbl.prod_img, product_tbl.prod_name')
         ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->where('tbl_orders.ordercode', $HistoryCode)->find(),
