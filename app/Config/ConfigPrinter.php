@@ -4,7 +4,7 @@ namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
-class Printers extends BaseConfig
+class ConfigPrinter extends BaseConfig
 {
     public $printerPath;
 
