@@ -15,7 +15,10 @@
                 <input type="hidden" name="prodName" value="<?= $order['prod_name'] ?>" readonly>
                 <input type="hidden" name="CustomerID" value="<?= session()->get('UserID') ?>" readonly>
                 <input type="hidden" name="size" value="Medium" readonly>
+                <label for="ProductPrice" name="prod_name" value="<?= $order['prod_name'] ?>" style="font-size:25px"><?= $order['prod_name'] ?></label>
                 <label for="ProductPrice" name="prod_mprice" value="<?= $order['prod_mprice'] ?>" style="font-size:25px">₱ <?= $order['prod_mprice'] ?></label>
+                
+
                 <input type="hidden" name="price" value="<?= $order['prod_mprice'] ?>" readonly>
                 <img src="<?= base_url(); ?>/assets/images/products/<?= $order['prod_img']; ?>" alt="">
                 <input type="number" name="quantity" placeholder="Enter Quantity" required>
