@@ -21,7 +21,7 @@ use App\Models\ReservationModel;
 use App\Models\ItemsModel;
 use App\Models\FlavorModel;
 use CodeIgniter\API\ResponseTrait;
-use Config\ConfigPrinter;
+
 
 class AdminController extends BaseController
 {
@@ -38,7 +38,6 @@ class AdminController extends BaseController
     private $reservation;
     private $usr;
     private $flvr;
-    protected $printerPath;
     public function __construct(){
 
         require_once APPPATH. "Libraries/vendor/autoload.php";
@@ -63,10 +62,7 @@ class AdminController extends BaseController
         $this->reservation = new ReservationModel();
         $this->flvr = new FlavorModel();
 
-        $printerConfig = new ConfigPrinter();
-        $printerPath = $printerConfig->printerPath;
-
-        $this->connector = new WindowsPrintConnector($printerPath);
+        $this->connector = new WindowsPrintConnector("POS58 Printer");
         $this->printer  = new Printer($this->connector);
     }
     public function viewOrderHist($HistoryCode)
@@ -83,18 +79,17 @@ class AdminController extends BaseController
      return view('admin/secondphase/viewHistory', $data); 
     }
 
-    public function editOrder($orderId)
+    public function editOrder($orderID)
     {
-        $data = [ 'barcode' => $this->history->select('tbl_orders.order_id, tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,
+        $data = [ 'history' => $this->history->select('tbl_orders.order_id, tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,
         tbl_orders.total_amount, tbl_orders.change_amount, product_tbl.prod_id, 
-        product_tbl.prod_img, product_tbl.prod_name')
-        ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->where('tbl_orders.ordercode', $orderId)->find(),
-        'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+           product_tbl.prod_img, product_tbl.prod_name')
+           ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->where('tbl_orders.ordercode', $HistoryCode)->find(),
+           'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+               'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
    
        ];
-       var_dump($data['barcode']);
-    //    return view('admin/secondphase/editorder', $orderId); 
+       return view('admin/secondphase/editorder', $orderId); 
        
     }
 
@@ -2082,13 +2077,7 @@ class AdminController extends BaseController
     
            
         } catch (\Throwable $th) {
-            log_message('error', $th->getMessage() . ": ". $th->getLine());
-            
-            log_message('error', json_encode( $th->getTrace()));
-            
-           return $this->response->setJSON([
-               'success' => false,
-           ]);
+            //throw $th;
         }
         }
 
@@ -2319,11 +2308,14 @@ class AdminController extends BaseController
     public function gethistory()
     {
         $data= [
+            'history' => $this->history->select('tbl_orders.order_id, tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,
+            tbl_orders.amount_paid,
+        tbl_orders.total_amount, tbl_orders.change_amount, product_tbl.prod_id, 
+           product_tbl.prod_img, product_tbl.prod_name')
+           ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->find(),
             'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
-        $history = new HistoryModel();
-        $data['history'] = $history->findAll();
         return view ('/admin/history', $data);
     }
 
@@ -4649,7 +4641,7 @@ class AdminController extends BaseController
     foreach ($data["report"] as $report) {
         $html .= "<tr>";
         $html .= "<td>" . htmlspecialchars($report['prod_name']) . "</td>";
-        $html .= "<td>" . htmlspecialchars($report['prod_quantity']) . "</td>";
+        $html .= "<td>" . htmlspecialchars($report['quantity']) . "</td>";
         $html .= "<td>" . htmlspecialchars($report['size']) . "</td>";
         $html .= "<td>" . htmlspecialchars($report['total_amount']) . "</td>";
         $html .= "<td>" . (new \DateTime($report['order_date']))->format('F j, Y - H:i:s') . "</td>";
