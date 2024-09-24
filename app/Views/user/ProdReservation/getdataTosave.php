@@ -98,22 +98,30 @@
                 font-size: 14px;
             }
         }
+        #gcashQr {
+        display: block; 
+        width: 500px;
+        height: auto; 
+        margin: 0 auto;
+    }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Payment Data</h1>
-        <form id="paymentForm" action="/saveData" method="POST">
+        <form id="paymentForm" action="/saveData" method="POST"  enctype="multipart/form-data">
             
             <div id="productFields" class="form-group"></div>
+            <div id="totalPrice" class="form-group"></div>
 
             <div class="form-group">
                 <label for="payment">Upload Your Proof of Payment Here:</label>
-                <input type="file" name="payment" id="payment" accept=".jpg, .jpeg, .png, .gif">
-            </div>
+                <input required type="file" name="payment" id="payment" accept=".jpg, .jpeg, .png, .gif">
+    </div>
 
             <div class="form-group">
-                <img src="" alt="#gcash qr" id="gcashQr">
+                <p>Scan Gcash QrCode:</p>
+                <img src="<?= base_url()?>/assets/images/gcash.jpg" alt="#gcash qr" id="gcashQr">
             </div>
 
             <button type="submit">Submit Payment</button>
@@ -121,130 +129,110 @@
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Retrieve payment data and other form data from localStorage
-        const paymentData = JSON.parse(localStorage.getItem('paymentData'));
-        const lastName = localStorage.getItem('lastName');
-        const firstName = localStorage.getItem('firstName');
-        const contact = localStorage.getItem('contact');
-        const email = localStorage.getItem('email');
-        const hc = localStorage.getItem('hc');
-        const date = localStorage.getItem('date');
-        const message = localStorage.getItem('message');
+   document.addEventListener('DOMContentLoaded', () => {
+    const paymentData = JSON.parse(localStorage.getItem('paymentData'));
+    const lastName = localStorage.getItem('lastName');
+    const firstName = localStorage.getItem('firstName');
+    const contact = localStorage.getItem('contact');
+    const email = localStorage.getItem('email');
+    const hc = localStorage.getItem('hc');
+    const date = localStorage.getItem('date');
+    const message = localStorage.getItem('message');
 
-        if (paymentData) {
-            const productFields = document.getElementById('productFields');
+    if (paymentData) {
+        const productFields = document.getElementById('productFields');
 
-            // Create hidden input fields for personal data
-            const lastNameInput = document.createElement('input');
-            lastNameInput.type = 'hidden';
-            lastNameInput.name = 'LastName';
-            lastNameInput.value = lastName;
+        // Create hidden input fields for personal data
+        const inputs = [
+            { name: 'LastName', value: lastName },
+            { name: 'FirstName', value: firstName },
+            { name: 'contact', value: contact },
+            { name: 'email', value: email },
+            { name: 'hc', value: hc },
+            { name: 'date', value: date },
+        ];
 
-            const firstNameInput = document.createElement('input');
-            firstNameInput.type = 'hidden';
-            firstNameInput.name = 'FirstName';
-            firstNameInput.value = firstName;
+        inputs.forEach(inputData => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = inputData.name;
+            input.value = inputData.value;
+            productFields.appendChild(input);
+        });
 
-            const contactInput = document.createElement('input');
-            contactInput.type = 'hidden';
-            contactInput.name = 'contact';
-            contactInput.value = contact;
+        const messageInput = document.createElement('textarea');
+        messageInput.name = 'message';
+        messageInput.hidden = true;
+        messageInput.value = message;
+        productFields.appendChild(messageInput);
 
-            const emailInput = document.createElement('input');
-            emailInput.type = 'hidden';
-            emailInput.name = 'email';
-            emailInput.value = email;
+        let totalSum = 0; // Variable to hold the total sum of all products
 
-            const hcInput = document.createElement('input');
-            hcInput.type = 'hidden';
-            hcInput.name = 'hc';
-            hcInput.value = hc;
+        // Loop through each item in the payment data array
+        paymentData.forEach((item, index) => {
+            const productSize = item.productSize && item.productSize.trim() !== '' ? item.productSize : 'Regular';
+            const productIdInput = document.createElement('input');
+            productIdInput.type = 'hidden';
+            productIdInput.name = `products[${index}][productId]`;
+            productIdInput.value = item.productId;
 
-            const dateInput = document.createElement('input');
-            dateInput.type = 'hidden';
-            dateInput.name = 'date';
-            dateInput.value = date;
+            const productnameInput = document.createElement('input');
+            productnameInput.type = 'hidden';
+            productnameInput.name = `products[${index}][productname]`;
+            productnameInput.value = item.productname;
 
-            const messageInput = document.createElement('textarea');
-            messageInput.name = 'message';
-            messageInput.hidden = true;
-            messageInput.value = message;
+            const totalPriceInput = document.createElement('input');
+            totalPriceInput.type = 'hidden';
+            totalPriceInput.name = `products[${index}][totalPrice]`;
+            totalPriceInput.value = item.totalPrice;
 
-            // Append the personal data inputs to the form
-            productFields.appendChild(lastNameInput);
-            productFields.appendChild(firstNameInput);
-            productFields.appendChild(contactInput);
-            productFields.appendChild(emailInput);
-            productFields.appendChild(hcInput);
-            productFields.appendChild(dateInput);
-            productFields.appendChild(messageInput);
+            const productSizeInput = document.createElement('input');
+            productSizeInput.type = 'hidden';
+            productSizeInput.name = `products[${index}][productSize]`;
+            productSizeInput.value = productSize;
 
-            // Loop through each item in the payment data array
-            paymentData.forEach((item, index) => {
-                // Create hidden input fields for each property
-                const productIdInput = document.createElement('input');
-                productIdInput.type = 'hidden';
-                productIdInput.name = `products[${index}][productId]`;
-                productIdInput.value = item.productId;
+            const totalQuantityInput = document.createElement('input');
+            totalQuantityInput.type = 'hidden';
+            totalQuantityInput.name = `products[${index}][totalQuantity]`;
+            totalQuantityInput.value = item.totalQuantity;
+
+            // Append the hidden inputs to the form
+            productFields.appendChild(productnameInput);
+            productFields.appendChild(productIdInput);
+            productFields.appendChild(totalPriceInput);
+            productFields.appendChild(totalQuantityInput);
+            productFields.appendChild(productSizeInput);
+
+            // Update the total sum
+            totalSum += parseFloat(item.totalPrice);
+
+            
+
+
+            const productDetailsDiv = document.createElement('div');
+            productDetailsDiv.classList.add('product-details');
+            productDetailsDiv.innerHTML = `
+                <p>Name: ${firstName}</p>
+                <p>Contact: ${contact}</p>
+                <p>Message: ${message}</p>
                 
-                const productnameInput = document.createElement('input');
-                productnameInput.type = 'hidden';
-                productnameInput.name = `products[${index}][productname]`;
-                productnameInput.value = item.productname;
-                
+                <p>Product Name: ${item.productname}</p>
+                <p>Product Size: ${productSize}</p>
+                <p>Total Price: ₱${item.totalPrice}</p>
+                <p>Total Quantity: ${item.totalQuantity}</p>
+            `;
 
-                const totalPriceInput = document.createElement('input');
-                totalPriceInput.type = 'hidden';
-                totalPriceInput.name = `products[${index}][totalPrice]`;
-                totalPriceInput.value = item.totalPrice;
+            productFields.appendChild(productDetailsDiv);
+        });
 
-                const totalQuantityInput = document.createElement('input');
-                totalQuantityInput.type = 'hidden';
-                totalQuantityInput.name = `products[${index}][totalQuantity]`;
-                totalQuantityInput.value = item.totalQuantity;
 
-                // Append the hidden inputs to the form
-                productFields.appendChild(productnameInput);
-                productFields.appendChild(productIdInput);
-                productFields.appendChild(totalPriceInput);
-                productFields.appendChild(totalQuantityInput);
-        
 
-                // Optionally, create visible fields for the user to see the data
-                const productDetailsDiv = document.createElement('div');
-                productDetailsDiv.classList.add('product-details');
-                productDetailsDiv.innerHTML = `
-                    <p>Name: ${firstName}</p>
-                    <p>Contact: ${contact}</p>
-                    <p>Message: ${message}</p>                
-                    <p>Product Name: ${item.productname}</p>
-                    <p>Total Price: ₱${item.totalPrice}</p>
-                    <p>Total Quantity: ${item.totalQuantity}</p>
-                `;
-                productFields.appendChild(productDetailsDiv);
-            });
-            const products = [
-                    {
-                        productId: productId,
-                        totalPrice: totalPrice,
-                        totalQuantity: totalQuantity,
-
-                    }
-                ]
-
-                localStorage.setItem('paymentData', JSON.stringify(products));
-            // Optionally, remove the data from localStorage after using it
-            // localStorage.removeItem('paymentData');
-            // localStorage.removeItem('lastName');
-            // localStorage.removeItem('firstName');
-            // localStorage.removeItem('contact');
-            // localStorage.removeItem('email');
-            // localStorage.removeItem('hc');
-            // localStorage.removeItem('date');
-            // localStorage.removeItem('message');
-        }
-    });
+        const totalPriceDiv = document.createElement('div');
+        totalPriceDiv.classList.add('total-price');
+        totalPriceDiv.innerHTML = `<p>Total Price of All Products: ₱${totalSum.toFixed(2)}</p>`;
+        productFields.appendChild(totalPriceDiv);
+    }
+});
     </script>
 </body>
 </html>

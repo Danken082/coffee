@@ -54,6 +54,8 @@ $routes->match(['get', 'post'], 'reportsYear', 'VisualizationController::salesRe
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
 $routes->get('/adminhistory', 'AdminController::gethistory', ['filter'=>'authFilter']);
+$routes->get('/filterDate', 'VisualizationController::getFilterhistory', ['filter'=>'authFilter']);
+
 $routes->get('/adminprofile', 'AdminController::adminprofile',['filter'=>'authFilter']);
 $routes->get('/adminmanage_user', 'AdminController::getmanageuser', ['filter'=>'authFilter']);
 $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter']);

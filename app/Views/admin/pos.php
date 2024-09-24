@@ -305,6 +305,10 @@
                         <option value="Dine In">Dine In</option>
                         <option value="Take Out">Take Out</option>
                     </select>
+                    <select name="SelectPayment" class="SelectPayment">
+                        <option value="Cash">Cash</option>
+                        <option value="Gcash">Gcash</option>
+                    </select>
                     <table class="order-list" id="order-list">
                         <thead>
                             <tr>

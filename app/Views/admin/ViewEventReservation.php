@@ -54,20 +54,28 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                       
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Reservation Code</th>
 
+                                       
+                                    <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Reservation Date</th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Reservation Code</th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Reservation Date</th>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach($res as $res): ?>
                                         <tr>
+                                        <td class="text-center">
+                                                <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $res['reservationDate']?></p>
+                                            </td>
                                          <td class="text-center">
-                                                <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $orP['TableCode']?></p>
+                                                <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $res['TableCode']?></p>
+                                            </td>
+                                            <td class="text-center">
+                                                <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $res['appointmentDate']?></p>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="<?= base_url('reservation/' .$orP['TableCode'])?>" class="btn btn-info btn-sm ">View Reservation</a>
+                                                <a href="<?= base_url('reservation/' .$res['TableCode'])?>" class="btn btn-info btn-sm ">View Reservation</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

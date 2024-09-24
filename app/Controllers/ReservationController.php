@@ -155,15 +155,19 @@ class ReservationController extends BaseController
         $productReservation = $this->request->getJSON();
         
         $getData = [];
+
+        
         foreach($productReservation as $i)
         {
             $productID = $i->productId;
             $totalPrice = $i->totalPrice;
             $quantity = $i->totalquantity;
+            $productSize = $i->productSize;
 
             $getData[] = ['productID' => $productID,
                           'totalPrice' => $totalPrice,
-                          'quantity' => $quantity];
+                          'quantity' => $quantity,
+                          'productSize' => $productSize];
         }
 
         return $this->response->setJSON([
@@ -180,8 +184,11 @@ class ReservationController extends BaseController
 
     public function saveData()
     {
+
         $session = session();
         $user = $session->get('UserID');
+        $barOrderCode = $this->getBarcodeByOrder();    
+        if ($this->request->getMethod() === 'post') {
 
         $CustomerID = $this->request->getVar($user);
         $lastname = $this->request->getVar('lastName');
@@ -205,6 +212,8 @@ class ReservationController extends BaseController
             {
                 $productId = $item['productId'];
                 $totalQuantity = $item['totalQuantity'];
+                $totalPrice = $item['totalPrice'];
+                $prodSize = $item['productSize'];
 
                 $data  = [
                     'ProductID' => $productID,
@@ -213,28 +222,56 @@ class ReservationController extends BaseController
                     'appointmentDate' => $formatDate,
                     'Message' => $message,
                     'ProductID' =>$productId,
-                    'quantity' => $totalQuantity
+                    'totalPrice' => $totalPrice,
+                    'quantity' => $totalQuantity,
+                    'size' => $prodSize
                 ];
+                
 
-                $this->rsv->insert($data);
+
 
             }
         }
         
+        $EPaymentFile = $this->request->getFile('payment');
 
+        if ($EPaymentFile) {
+            if ($EPaymentFile->isValid() && !$EPaymentFile->hasMoved()) {
+                // Generate a new name for the uploaded file (optional)
+                $newName = $EPaymentFile->getRandomName(); // Use a random name to avoid conflicts
+                // Move the file to the designated folder
+                if ($EPaymentFile->move(ROOTPATH . 'public/assets/user/Epayment/', $newName)) {
+                    $data['Gpayment'] = $newName; // Save the file name for later use
+                } else {
+                    // Log or output the error if moving fails
+                    echo 'Failed to move uploaded file: ' . $EPaymentFile->getErrorString();
+                    return; // Stop execution if moving fails
+                }
+            } else {
+                // Handle file upload error
+                echo 'File is not valid: ' . $EPaymentFile->getErrorString(); // Output specific error
+                return; // Stop execution if file upload fails
+            }
+        } else {
+            echo "No file was uploaded.";
+            return; // Stop execution if no file is uploaded
+        }
+   $this->rsv->insert($data);        
+        
 
-        $data  = [
-                  'ProductID' => $productID,
-                  'CustomerID' => $user,
-                  'HCustomer' => $hc,
-                  'appointmentDate' => $formatDate,
-                  'Message' => $message];
-        //     $this->rsv->insert($prosu);
-        //     var_dump($products);
-            // return redirect()->to('/');
-            
     }
+    }
+    private function getBarcodeByOrder($lengt = 10)
+    {
+        $characters = 'QWERTYUIO123PASFHGKLHG4567ZXCVVM8910';
+        $barOder = '';
+        for($i=0; $i < $lengt; $i++)
+        {
+            $barOder .= $characters[rand(0, strlen($characters) - 1)];
+        }
 
+        return $barOder;
+    }
 } 
 
 

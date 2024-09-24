@@ -1,4 +1,5 @@
 /* ADD ORDER */
+/* ADD ORDER */
 const orderButtons = document.querySelectorAll('.add-to-order');
 const orderList = document.querySelector('.order-list tbody');
 const totalPrice = document.getElementById('total-price');
@@ -6,13 +7,34 @@ const totalQuantity = document.getElementById('total-quantity');
 const enterPayment = document.getElementById('payment-input');
 const changeOutputs = document.getElementById('change-output');
 const DineTake = document.querySelector('.SelectDineTake');
+const paymentData = document.querySelector('.SelectPayment');
 let total = 0;
 let quantityTotal = 0;
+let additionalCharge = 0;
 
 function resetPaymentFields() {
     enterPayment.value = '';
     changeOutputs.textContent = '';
 }
+
+function updateTotalDisplay() {
+    let finalTotal = total + additionalCharge; // Add additional charge for Take Out
+    totalPrice.textContent = `₱ ${finalTotal.toFixed(2)}`; 
+}
+
+function applyDineTakeCharge() {
+    if (DineTake.value === 'Take Out') {
+        additionalCharge = 10; // Add 10 pesos if "Take Out"
+    } else {
+        additionalCharge = 0; // No charge for dine in
+    }
+    updateTotalDisplay();
+}
+
+// Listen for changes in the dine/take-out selection
+DineTake.addEventListener('change', () => {
+    applyDineTakeCharge(); // Recalculate total when the dine/take-out option changes
+});
 
 orderButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -56,7 +78,6 @@ orderButtons.forEach(button => {
 
             total += productPrice;
             quantityTotal += 1;
-            totalPrice.textContent = `₱ ${total.toFixed(2)}`; 
             totalQuantity.textContent = quantityTotal; 
         } else {
             total += productPrice; 
@@ -76,9 +97,10 @@ orderButtons.forEach(button => {
                 <td><button class="remove">Remove</button></td>
             `;
             orderList.appendChild(row);
-            totalPrice.textContent = `₱ ${total.toFixed(2)}`;
             totalQuantity.textContent = quantityTotal; 
         }
+
+        applyDineTakeCharge(); // Apply dine/take-out charge after each order update
     });
 });
 
@@ -97,8 +119,8 @@ orderList.addEventListener('click', (event) => {
 
         total += price;
         quantityTotal += 1; 
-        totalPrice.textContent = `₱ ${total.toFixed(2)}`;
         totalQuantity.textContent = quantityTotal; 
+        applyDineTakeCharge();
     } else if (target.classList.contains('decrease')) {
         const row = target.closest('tr');
         const quantityElement = row.querySelector('.quantity');
@@ -112,8 +134,8 @@ orderList.addEventListener('click', (event) => {
 
             total -= price;
             quantityTotal -= 1; 
-            totalPrice.textContent = `₱ ${total.toFixed(2)}`;
             totalQuantity.textContent = quantityTotal; 
+            applyDineTakeCharge();
         }
     } else if (target.classList.contains('remove')) {
         const row = target.closest('tr');
@@ -122,11 +144,12 @@ orderList.addEventListener('click', (event) => {
         total -= price * quantity;
         quantityTotal -= quantity;
         row.remove();
-        totalPrice.textContent = `₱ ${total.toFixed(2)}`;
         totalQuantity.textContent = quantityTotal;
-        resetPaymentFields(); // Reset payment fields when an item is removed
+        resetPaymentFields(); 
+        applyDineTakeCharge(); // Apply dine/take-out charge after removing an item
     }
 });
+
 
 /* PAYMENT */
 const payButton = document.getElementById('pay-button');
@@ -153,6 +176,7 @@ saveTransactionButton.addEventListener('click', () => {
         alert('Please enter a valid payment amount.');
         return;
     }
+    
 
     if (change < 0) {
         alert('Payment is insufficient.');

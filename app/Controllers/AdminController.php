@@ -41,6 +41,7 @@ class AdminController extends BaseController
     public function __construct(){
 
         require_once APPPATH. "Libraries/vendor/autoload.php";
+        date_default_timezone_set('Asia/Manila');
 
         $this->googleClient = new  \Google_Client();
         $this->googleClient->setClientId("36300776648-7g8magmu84f874vh8s9t453jmr169uel.apps.googleusercontent.com");
@@ -72,6 +73,7 @@ class AdminController extends BaseController
         product_tbl.prod_img, product_tbl.prod_name')
         ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->where('tbl_orders.ordercode', $HistoryCode)->find(),
         'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+        'SumTotal' => $this->history->Select('SUM(total_amount) as SumTotalPrice')->where('ordercode', $HistoryCode)->first(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
 
     ];
@@ -2077,10 +2079,15 @@ class AdminController extends BaseController
     
            
         } catch (\Throwable $th) {
-            //throw $th;
+            echo "Couldn't print to this printer: " . $e->getMessage() . "\n";
         }
+        finally {
+            // Ensure the printer is closed in case of an exception
+            if (isset($printer)) {
+                $printer->close();
+            }
         }
-
+    }
     private function getBarcodeByOrder($lengt = 10)
     {
         $characters = 'QWERTYUIO123PASFHGKLHG4567ZXCVVM8910';
@@ -2305,19 +2312,43 @@ class AdminController extends BaseController
  }
  
    
-    public function gethistory()
-    {
-        $data= [
-            'history' => $this->history->select('tbl_orders.order_id, tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,
-            tbl_orders.amount_paid,
-        tbl_orders.total_amount, tbl_orders.change_amount, product_tbl.prod_id, 
-           product_tbl.prod_img, product_tbl.prod_name')
-           ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->find(),
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
-        ];
-        return view ('/admin/history', $data);
-    }
+ public function gethistory()
+ {
+     $filterDate = $this->request->getVar('selectedDate');
+ 
+     // Default the filter date if none is provided
+     if($filterDate === NULL) {
+        $filterDate = date('Y-m-d');  // Static date or you can use date('Y-m-d');
+     }
+ 
+     $data = [
+         'history' => $this->history->select('
+             SUM(tbl_orders.quantity) as quantity, 
+             MAX(tbl_orders.orderCode) as orderCode, 
+             MAX(tbl_orders.order_date) as order_date,
+             MAX(tbl_orders.amount_paid) as amount_paid,
+             SUM(tbl_orders.total_amount) as total_amount, 
+             MAX(tbl_orders.change_amount) as change_amount
+         ')
+         ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
+         ->where("DATE(tbl_orders.order_date)", $filterDate)  // Apply date filter
+         ->groupBy('tbl_orders.orderCode')
+         ->find(),
+         
+         'notif' => $this->raw->where('stocks <=', '2')
+             ->where('stocks >=', '0')
+             ->where('item_categ', 'Raw Materials')
+             ->findAll(),
+         
+         'count' => $this->raw->select('COUNT(*) as notif')
+             ->where('stocks <=', '2')
+             ->where('stocks >=', '0')
+             ->where('item_categ', 'Raw Materials')
+             ->first(),
+     ];
+     return view('/admin/history', $data);
+ }
+ 
 
     public function getcustomeruser()
     {
@@ -4777,22 +4808,40 @@ class AdminController extends BaseController
     }
 
     public function eventReservation()
-    {
-        $data = ['res' => $this->reservation->select('tablereservation.TableID, tablereservation.CustomerID, tablereservation.HCustomer,
-        tablereservation.ProductID, tablereservation.quantity, tablereservation.size, tablereservation.TableCode,
-        tablereservation.appointmentDate, tablereservation.totalPayment, tablereservation.paymentStatus, tablereservation.Message, tablereservation.reservationDate,
-        user.UserID, user.LastName, user.FirstName, user.email, user.ContactNo, product_tbl.prod_name, product_tbl.prod_mprice,
-        product_tbl.prod_lprice, product_tbl.prod_img')
-        ->join('user', 'user.UserID = tablereservation.CustomerID')
-        ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID')
-        ->where('tablereservation.paymentStatus', 'Pending')
-        ->findAll(),
-        'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+{
+    // Fetch data from the database
+    $data = [
+        'res' => $this->reservation
+            ->select('SUM(tablereservation.quantity) as quantity, 
+                      MAX(tablereservation.TableCode) as TableCode,
+                      MAX(tablereservation.appointmentDate) as appointmentDate, 
+                      MAX(tablereservation.reservationDate) as reservationDate')
+            ->join('user', 'user.UserID = tablereservation.CustomerID', 'left')
+            ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID', 'left')
+            ->groupBy('tablereservation.TableCode')
+            ->findAll(),
+        
+        'notif' => $this->raw
+            ->where('stocks <=', '2')
+            ->where('stocks >=', '0')
+            ->where('item_categ', 'Raw Materials')
+            ->findAll(),
+        
+        'count' => $this->raw
+            ->select('Count(*) as notif')
+            ->where('stocks <=', '10')
+            ->where('stocks >=', '0')
+            ->where('item_categ', 'Raw Materials')
+            ->first(),
     ];
 
-        return view('admin/viewEventReservation', $data);
-    }
+    // Debugging: Log the results of the reservation data
+    log_message('debug', 'Reservation Data: ' . print_r($data['res'], true));
+
+    // Return the view with the data
+    return view('admin/viewEventReservation', $data);
+}
+
 
 
 }

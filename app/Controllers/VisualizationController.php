@@ -11,6 +11,7 @@ use CodeIgniter\API\ResponseTrait;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use \DateTime;
 
 class VisualizationController extends BaseController
 {
@@ -781,6 +782,60 @@ public function viewReportDaily($month, $year)
             exit;
         }
 
+        public function getFilterhistory()
+        {
+            $filterDate = $this->request->getVar('selectedDate');  // Get selected date from request
+            
+            if ($filterDate === NULL) {
+                $filterDate = date('Y-m-d');  // Use current date if no date selected
+            }
+        
+            $data = [
+                'history' => $this->vis->select('
+                    SUM(tbl_orders.quantity) as quantity, 
+                    MAX(tbl_orders.orderCode) as orderCode, 
+                    MAX(tbl_orders.order_date) as order_date,
+                    MAX(tbl_orders.amount_paid) as amount_paid,
+                    SUM(tbl_orders.total_amount) as total_amount, 
+                    MAX(tbl_orders.change_amount) as change_amount
+                ')
+                ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
+                ->where("DATE(tbl_orders.order_date)", $filterDate)  // Filter by selected date
+                ->groupBy('tbl_orders.orderCode')
+                ->find(),
+                 
+                'notif' => $this->raw->where('stocks <=', '2')
+                    ->where('stocks >=', '0')
+                    ->where('item_categ', 'Raw Materials')
+                    ->findAll(),
+                 
+                'count' => $this->raw->select('COUNT(*) as notif')
+                    ->where('stocks <=', '2')
+                    ->where('stocks >=', '0')
+                    ->where('item_categ', 'Raw Materials')
+                    ->first(),
+            ];
+            
+
+            $responseHtml = '';
+            foreach ($data['history'] as $hist) {
+                $date = new DateTime($hist['order_date']);
+              $formatDate =  $date->format('F j, Y g:i A');
+                $responseHtml .= '
+                    <tr>
+                        <td class="text-center"><p class="text-xs text-secondary mb-0">' .  $formatDate   . '</p></td>
+                        <td class="text-center"><p class="text-xs text-secondary mb-0">' . $hist['orderCode'] . '</p></td>
+                        <td class="text-center"><p class="text-xs text-primary mb-0 font-weight-bold">' . $hist['total_amount'] . '</p></td>
+                        <td class="text-center"><p class="text-xs text-primary mb-0 font-weight-bold">' . $hist['amount_paid'] . '</p></td>
+                        <td class="text-center"><p class="text-xs text-primary mb-0 font-weight-bold">' . $hist['change_amount'] . '</p></td>
+                        <td class="align-middle text-center">
+                            <a href="' . base_url('/viewOrderHistory/' . $hist['orderCode']) . '" class="btn btn-info btn-sm">View Order History</a>
+                        </td>      
+                    </tr>';
+            }
+        
+            return $this->response->setBody($responseHtml);  // Return the HTML as the AJAX response
+        }
         
     
 }
