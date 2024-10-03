@@ -36,13 +36,13 @@
                     <input type="password" name="password" class="form-control" id="password">
                     <button type="button" id="togglePassword" class="btn btn-outline-secondary"><i class="fa fa-eye"></i></button>
                 </div>
-                <div class="form-group">
+            <div class="form-group">
                     <button type="submit" class="btn btn-login">Login</button>
-                    <?php
-                    echo $googleAuth;
+                <?php 
+                    // echo $googleAuth;
                     ?>
-                </div>
-                <p class="register-link">Don't have an account yet? <a href="<?= site_url("register"); ?>">Register Now</a></p>
+                </div> 
+                                <p class="register-link">Don't have an account yet? <a href="<?= site_url("register"); ?>">Register Now</a></p>
             </form>
         </div>
     </div>
