@@ -77,7 +77,7 @@
         <script src="/assets/js/plugins/chartjs.min.js"></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
-        <script>
+`        <script>
         $(document).ready(function() {
     const today = new Date();
     const year = today.getFullYear();

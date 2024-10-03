@@ -132,7 +132,7 @@ class OrderController extends BaseController
                      ]; 
 
                     return view('user/checkoutorder', $data);
-    }
+    } 
 
     public function myOrdersmeal($prdOrder)
     {

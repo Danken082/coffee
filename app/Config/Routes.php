@@ -305,6 +305,9 @@ $routes->match(['get', 'post'], 'saveData', 'ReservationController::saveData');
 
 
 $routes->get('sampleNotif', 'ChatController::sampleNotif');
+$routes->get('viewReservation/(:any)', 'ReservationController::getReservationData/$1');
+$routes->match(['get', 'post'], 'AcceptReservation', 'ReservationController::AcceptReservation');
+
 
 $routes->get('flavor', 'AdminController::flvr');
 

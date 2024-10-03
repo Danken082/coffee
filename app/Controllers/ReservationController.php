@@ -183,84 +183,82 @@ class ReservationController extends BaseController
 
 
     public function saveData()
-    {
+{
+    $session = session();
+    $user = $session->get('UserID');
+    $barOrderCode = $this->getBarcodeByOrder();    
+    
+    if ($this->request->getMethod() === 'post') {
 
-        $session = session();
-        $user = $session->get('UserID');
-        $barOrderCode = $this->getBarcodeByOrder();    
-        if ($this->request->getMethod() === 'post') {
-
-        $CustomerID = $this->request->getVar($user);
+        // Retrieve general customer information
         $lastname = $this->request->getVar('lastName');
-        $firstname = $this->request->getVar('lirstName');
+        $firstname = $this->request->getVar('firstName'); // Fixed typo
         $contact   = $this->request->getVar('contact');
         $email = $this->request->getVar('email');
-
         $hc = $this->request->getVar('hc');
         $date = $this->request->getVar('date');
         $message = $this->request->getVar('message');
-        $productID = $this->request->getVar('productId');
 
+        // Retrieve products data
         $products = $this->request->getPost('products');
         $formatDate = date('Y-m-d H:i:s', strtotime($date));
 
+        // Handle file upload once
+        $EPaymentFile = $this->request->getFile('payment');
+        $gpayment = null;
 
+        if ($EPaymentFile && $EPaymentFile->isValid() && !$EPaymentFile->hasMoved()) {
+            $newName = uniqid() . '.' . $EPaymentFile->getClientExtension();
+            if ($EPaymentFile->move(ROOTPATH . 'public/assets/user/Epayment/', $newName)) {
+                $gpayment = $newName;
+            } else {
+                // Handle file move failure
+                echo 'Failed to move uploaded file: ' . $EPaymentFile->getErrorString();
+                return;
+            }
+        } else {
+            // Handle invalid or missing file
+            echo "No valid file was uploaded.";
+            return;
+        }
 
-        if($products)
-        {
-            foreach($products as $item)
-            {
+        // Check if products are available
+        if ($products) {
+            foreach ($products as $item) {
                 $productId = $item['productId'];
                 $totalQuantity = $item['totalQuantity'];
                 $totalPrice = $item['totalPrice'];
                 $prodSize = $item['productSize'];
 
-                $data  = [
-                    'ProductID' => $productID,
-                    'CustomerID' => $user,
-                    'HCustomer' => $hc,
+                // Prepare data for each product
+                $data = [
+                    'ProductID'       => $productId,        // Corrected to use loop variable
+                    'CustomerID'      => $user,              // Assuming $user is CustomerID
+                    'HCustomer'       => $hc,
                     'appointmentDate' => $formatDate,
-                    'Message' => $message,
-                    'ProductID' =>$productId,
-                    'totalPrice' => $totalPrice,
-                    'quantity' => $totalQuantity,
-                    'size' => $prodSize
+                    'Message'         => $message,
+                    'totalPrice'      => $totalPrice,
+                    'quantity'        => $totalQuantity,
+                    'size'            => $prodSize,
+                    'TableCode'       => $barOrderCode,
+                    'paymentStatus'   => 'ForObservation',
+                    'Gpayment'        => $gpayment          // Assign the uploaded file name
                 ];
-                
 
-
-
-            }
-        }
-        
-        $EPaymentFile = $this->request->getFile('payment');
-
-        if ($EPaymentFile) {
-            if ($EPaymentFile->isValid() && !$EPaymentFile->hasMoved()) {
-                // Generate a new name for the uploaded file (optional)
-                $newName = $EPaymentFile->getRandomName(); // Use a random name to avoid conflicts
-                // Move the file to the designated folder
-                if ($EPaymentFile->move(ROOTPATH . 'public/assets/user/Epayment/', $newName)) {
-                    $data['Gpayment'] = $newName; // Save the file name for later use
-                } else {
-                    // Log or output the error if moving fails
-                    echo 'Failed to move uploaded file: ' . $EPaymentFile->getErrorString();
-                    return; // Stop execution if moving fails
-                }
-            } else {
-                // Handle file upload error
-                echo 'File is not valid: ' . $EPaymentFile->getErrorString(); // Output specific error
-                return; // Stop execution if file upload fails
+                // Insert each product into the database
+                $this->rsv->insert($data);
             }
         } else {
-            echo "No file was uploaded.";
-            return; // Stop execution if no file is uploaded
+            // Handle case when no products are submitted
+            echo "No products were selected.";
+            return;
         }
-   $this->rsv->insert($data);        
-        
 
+        // Redirect after successful insertion
+        return redirect()->to('/');
     }
-    }
+}
+
     private function getBarcodeByOrder($lengt = 10)
     {
         $characters = 'QWERTYUIO123PASFHGKLHG4567ZXCVVM8910';
@@ -271,6 +269,59 @@ class ReservationController extends BaseController
         }
 
         return $barOder;
+    }
+
+    public function getReservationData($tableCode)
+    {
+        $data= [
+            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ',
+            'Raw Materials')->first(),
+            'rsvData' => $this->rsv->select('tablereservation.quantity, tablereservation.size, tablereservation.TableCode, tablereservation.appointmentDate,
+             tablereservation.totalPrice, tablereservation.Gpayment, tablereservation.paymentStatus,tablereservation.HCustomer, tablereservation.Message,
+             tablereservation.reservationDate, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, product_tbl.prod_lprice, user.LastName, user.FirstName')
+             ->join('product_tbl','product_tbl.prod_id = tablereservation.ProductID')
+             ->join('user', 'user.UserID = tablereservation.CustomerID')
+             ->where('tablereservation.TableCode', $tableCode)->first(),
+             'prodData' => $this->rsv->select('tablereservation.quantity, tablereservation.size, tablereservation.TableCode, tablereservation.appointmentDate,
+             tablereservation.totalPrice, tablereservation.Gpayment, tablereservation.TableID, tablereservation.paymentStatus,tablereservation.HCustomer, tablereservation.Message,
+             tablereservation.reservationDate, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, product_tbl.prod_lprice, user.LastName, user.FirstName')
+             ->join('product_tbl','product_tbl.prod_id = tablereservation.ProductID')
+             ->join('user', 'user.UserID = tablereservation.CustomerID')
+             ->where('tablereservation.TableCode', $tableCode)->findAll(),
+             'sumTotalOrder' => $this->rsv->select('SUM(totalPrice) as totalPrice')->where('tablereservation.TableCode', $tableCode)->first()
+                ];
+
+        return view('admin/secondphase/viewReservation', $data);
+
+
+    }
+
+
+    public function AcceptReservation()
+    {
+      $reservationId = $this->request->getVar('reservationID');
+      $AcceptAndDeclined = $this->request->getVar('action');
+      $updateAccept =  $this->updateToAccept($reservationId);
+                       $this->updateMyPending($updateAccept, $reservationId, $AcceptAndDeclined);     
+    return redirect()->to('/viewuserReservation');   
+    }
+    
+    private function updateToAccept($reservationId)
+    {
+        $updateAccept = $this->rsv->find($reservationId);
+
+        return $updateAccept;
+    }
+
+    private function updateMyPending($updateAccept, $reservationId, $AcceptAndDeclined)
+    {
+        $data = [
+                'paymentStatus' => $AcceptAndDeclined,
+        ];
+
+        $this->rsv->update($reservationId, $data);
+        
     }
 } 
 

@@ -95,17 +95,6 @@ class AdminController extends BaseController
        
     }
 
-    public function flvr()
-    {
-        $printerConfig = new Printer();
-        $printerIP = $printerConfig->printerIP;
-        
-        // Example of using the printer IP address
-        echo "Printer IP Address: " . $printerIP;
-
-        // You can use this IP address to send print commands or configure your printer
-    
-    }
     public function savePOSOrders()
     {
         try {
@@ -2081,12 +2070,6 @@ class AdminController extends BaseController
         } catch (\Throwable $th) {
             echo "Couldn't print to this printer: " . $e->getMessage() . "\n";
         }
-        finally {
-            // Ensure the printer is closed in case of an exception
-            if (isset($printer)) {
-                $printer->close();
-            }
-        }
     }
     private function getBarcodeByOrder($lengt = 10)
     {
@@ -2271,14 +2254,12 @@ class AdminController extends BaseController
             'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
-        $data['order'] = $this->payment->select('order.orderID,order.barcode, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
-        order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
-        user.FirstName, user.Username, user.ContactNo, user.address, user.gender, 
-        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_lprice, product_tbl.prod_decs')
+        $data['order'] = $this->payment->select('MAX(order.barcode) as barcode,SUM(order.total) as total, MAX(order.orderStatus) as aorderStatus, 
+        SUM(order.quantity) as quantity, MAX(order.size) as size, MAX(order.orderDate) as orderDate, MAX(order.orderType) as orderType, MAX(order.paymentStatus) as paymentStatus')
         ->join('product_tbl', 'order.ProductID = product_tbl.prod_id')
         ->join( 'user', 'order.CustomerID = user.UserID')
         ->where('orderStatus', 'onProcess')
-        ->orderBy('order.orderID', 'ASC')
+        ->groupBy('order.barcode')
         ->findAll();
         return view('/admin/orderpayment', $data);
         
@@ -4815,7 +4796,8 @@ class AdminController extends BaseController
             ->select('SUM(tablereservation.quantity) as quantity, 
                       MAX(tablereservation.TableCode) as TableCode,
                       MAX(tablereservation.appointmentDate) as appointmentDate, 
-                      MAX(tablereservation.reservationDate) as reservationDate')
+                      MAX(tablereservation.reservationDate) as reservationDate,
+                      MAX(tablereservation.paymentStatus) as paymentStatus')
             ->join('user', 'user.UserID = tablereservation.CustomerID', 'left')
             ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID', 'left')
             ->groupBy('tablereservation.TableCode')

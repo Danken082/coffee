@@ -363,7 +363,7 @@
                         <h3>Total Price: <span id="total-price">₱ 0.00</span></h3>
                     </div>
                     <div class="payment-container">
-                        <input type="number" id="payment-input" placeholder="Enter payment amount"><br><br>
+                        <input type="hidden" id="payment-input" placeholder="Enter payment amount"><br><br>
                         <button id="pay-button" disabled>Pay</button><br><br>
                         <div id="change-output"></div>
                     </div>
