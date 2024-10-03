@@ -66,13 +66,13 @@
                                     <?php foreach($res as $res): ?>
                                         <tr>
                                         <td class="text-center">
-                                                <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $res['reservationDate']?></p>
-                                            </td>
-                                         <td class="text-center">
+                                            <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= date('F j, Y h:i A', strtotime($res['reservationDate'])); ?></p>
+                                        </td>
+                                                <td class="text-center">
                                                 <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $res['TableCode']?></p>
                                             </td>
                                             <td class="text-center">
-                                                <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $res['appointmentDate']?></p>
+                                                <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?=date('F j, Y h:i A', strtotime($res['appointmentDate'])); ?></p>
                                             </td>
                                             <td class="align-middle text-center">
                                                 <a href="<?= base_url('reservation/' .$res['TableCode'])?>" class="btn btn-info btn-sm ">View Reservation</a>

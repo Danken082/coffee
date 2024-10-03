@@ -38,6 +38,10 @@ class AdminController extends BaseController
     private $reservation;
     private $usr;
     private $flvr;
+
+    private $printer;
+    private $connector;
+    protected $googleClient;
     public function __construct(){
 
         require_once APPPATH. "Libraries/vendor/autoload.php";
@@ -65,6 +69,9 @@ class AdminController extends BaseController
 
         $this->connector = new WindowsPrintConnector("POS58 Printer");
         $this->printer  = new Printer($this->connector);
+        
+        //$this->connector = new WindowsPrintConnector("POS58 Printer");
+        //$this->printer  = new Printer($this->connector);
     }
     public function viewOrderHist($HistoryCode)
     {
@@ -86,26 +93,26 @@ class AdminController extends BaseController
         $data = [ 'history' => $this->history->select('tbl_orders.order_id, tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,
         tbl_orders.total_amount, tbl_orders.change_amount, product_tbl.prod_id, 
            product_tbl.prod_img, product_tbl.prod_name')
-           ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->where('tbl_orders.ordercode', $HistoryCode)->find(),
+           ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')->where('tbl_orders.ordercode', $orderID)->find(),
            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
                'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
    
        ];
-       return view('admin/secondphase/editorder', $orderId); 
+       return view('admin/secondphase/editorder', $data); 
        
     }
 
-    public function flvr()
-    {
-        $printerConfig = new Printer();
-        $printerIP = $printerConfig->printerIP;
+    // public function flvr()
+    // {
+    //     $printerConfig = new Printer();
+    //     $printerIP = $printerConfig->printerIP;
         
-        // Example of using the printer IP address
-        echo "Printer IP Address: " . $printerIP;
+    //     // Example of using the printer IP address
+    //     echo "Printer IP Address: " . $printerIP;
 
-        // You can use this IP address to send print commands or configure your printer
+    //     // You can use this IP address to send print commands or configure your printer
     
-    }
+    // }
     public function savePOSOrders()
     {
         try {
@@ -2688,7 +2695,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
                
             }
@@ -2706,10 +2713,10 @@ class AdminController extends BaseController
 
                 $this->raw->update($beef['rawID'], ['stocks' => $changebef]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
-                $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
-                $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
-                $this->raw->update($pepper['rawID'], ['stocks' => $changepep]);
+                // $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
+                // $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+                // $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);
+                // $this->raw->update($pepper['rawID'], ['stocks' => $changepep]);
     
             }
             elseif ($productID == 9) {
@@ -2727,7 +2734,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+                // $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);            
             }
             elseif ($productID == 10) {
@@ -2745,7 +2752,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+                // $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);   
             }
             elseif ($productID == 11) {
@@ -2763,7 +2770,7 @@ class AdminController extends BaseController
                 $this->raw->update($pork['rawID'], ['stocks' => $changepor]);
                 $this->raw->update($oil['rawID'], ['stocks' => $changeol]);
                 $this->raw->update($mushroom['rawID'], ['stocks' => $changemush]);
-                $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
+                // $this->raw->update($salt['rawID'], ['stocks' => $changetosalt]);
                 $this->raw->update($KnorCube['rawID'], ['stocks' => $changecknor]);               
             }
             elseif ($productID == 12) {
