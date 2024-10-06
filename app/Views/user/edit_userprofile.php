@@ -122,39 +122,44 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
       <script type="text/javascript">
         document.getElementById("profile_img").onchange = function() {
-            document.getElementById("profile").src = URL.createObjectURL(profile_img.files[0]);
-            document.getElementById("cancel").style.display = "block";
-            document.getElementById("confirm").style.display = "block";
-            document.getElementById("remove").style.display = "block";
-            document.getElementById("upload").style.display = "none";
-        };
+          document.getElementById("profile").src = URL.createObjectURL(profile_img.files[0]);
+
+          document.getElementById("cancel").style.display = "block";
+          document.getElementById("confirm").style.display = "block";
+          document.getElementById("remove").style.display = "block";
+
+          document.getElementById("upload").style.display = "none";
+        }
 
         var userImage = document.getElementById('profile').src;
+        document.getElementById("cancel").onclick = function(){;
+          document.getElementById("profile").src = userImage;
 
-        document.getElementById("cancel").onclick = function() {
-            document.getElementById("profile").src = userImage;
-            document.getElementById("cancel").style.display = "none";
-            document.getElementById("confirm").style.display = "none";
-            document.getElementById("upload").style.display = "block";
-        };
+          document.getElementById("cancel").style.display = "none";
+          document.getElementById("confirm").style.display = "none";
 
-        document.getElementById("remove").onclick = function() {
-            if (confirm("Are you sure you want to remove the profile picture?")) {
-                $.ajax({
-                    url: '<?= base_url("/removeprofile/". $eprof["UserID"]) ?>',
-                    method: 'GET',
-                    success: function() {
-                        document.getElementById("profile").src = "/assets/user/images/profile.png";
-                        document.getElementById("cancel").style.display = "none";
-                        document.getElementById("confirm").style.display = "none";
-                        document.getElementById("upload").style.display = "block";
-                    },
-                    error: function(error) {
-                        console.log('Error:', error);
-                    }
-                });
-            }
-        };
-    </script>
+          document.getElementById("upload").style.display = "block";
+        }
+
+          document.getElementById("remove").onclick = function() {
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                  if (xhr.status === 500) {
+                      document.getElementById("profile").src = "/assets/user/images/profile.png";
+
+                      document.getElementById("cancel").style.display = "none";
+                      document.getElementById("confirm").style.display = "none";
+
+                      document.getElementById("upload").style.display = "block";
+                  } else {
+                      console.error('Error:', xhr.responseText);
+                  }
+              }
+          };
+          xhr.open('GET', '<?= base_url('/removeprofile/'. $eprof['UserID'])?>');
+          xhr.send();
+      };
+      </script>
 </body>
 </html>
