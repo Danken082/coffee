@@ -348,8 +348,10 @@
 						<h2 class="mb-4">Where we Are</h2>
 					</div>
 				</div>
-				<div id="map" style="height: 500px;"></div>
 			</section>
+			<div class="map-container">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d139433.8243634499!2d121.08683075418458!3d13.355296548788727!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bcef05abac29a7%3A0x7a2c16254ddd0d29!2sCrossroads%20Coffee%20and%20Deli!5e0!3m2!1sen!2sph!4v1728191822542!5m2!1sen!2sph" width="100%" height="500px" style="border:0; pointer-events: auto;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
 
 			<?php include('mainheader.php'); ?>
 			<?php include('footer.php'); ?>
