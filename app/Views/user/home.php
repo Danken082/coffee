@@ -70,7 +70,7 @@
 								<div class="col-md-4 d-flex ftco-animate">
 									<div class="icon"><span class="icon-clock-o"></span></div>
 									<div class="text">
-										<h3>Open Monday - Sunday</h3>
+										<h3>Open Monday - Saturday</h3>
 										<h3>10:00 AM - 10:00 PM</h3>
 									</div>
 								</div>
@@ -357,17 +357,17 @@
 
 			<script src="/assets/js/preloader.js"></script>
 			<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/66927c6dbecc2fed69245654/1i2m3c4df';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+			<script type="text/javascript">
+				var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+				(function(){
+				var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+				s1.async=true;
+				s1.src='https://embed.tawk.to/66927c6dbecc2fed69245654/1i2m3c4df';
+				s1.charset='UTF-8';
+				s1.setAttribute('crossorigin','*');
+				s0.parentNode.insertBefore(s1,s0);
+				})();
+			</script>
+			<!--End of Tawk.to Script-->
   	</body>
 </html>
