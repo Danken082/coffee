@@ -70,7 +70,7 @@
 								<div class="col-md-4 d-flex ftco-animate">
 									<div class="icon"><span class="icon-clock-o"></span></div>
 									<div class="text">
-										<h3>Open Monday - Sunday</h3>
+										<h3>Open Monday - Saturday</h3>
 										<h3>10:00 AM - 10:00 PM</h3>
 									</div>
 								</div>
@@ -79,52 +79,52 @@
 						<div class="book p-4">
 							<h3>Book a Table</h3>
 							<form id="reservation-form" action="<?= base_url('previewReservation')?>" method="post" class="appointment-form">
-    <div class="d-md-flex">
-        <div class="form-group">
-            <input type="text" disabled class="form-control" value="<?= session()->get('LastName')?>">
-            <input type="hidden" name="LastName" value="<?= session()->get('LastName')?>">
-        </div>
-        <div class="form-group ml-md-4">
-            <input type="text" disabled class="form-control" value="<?= session()->get('FirstName') ?>">
-            <input type="hidden" name="FirstName" value="<?= session()->get('FirstName') ?>">
-        </div>
-        <div class="form-group ml-md-4">
-            <input type="text" disabled class="form-control" value="<?= session()->get('email') ?>">
-            <input type="hidden" name="Email" value="<?= session()->get('email') ?>">
-        </div>
-    </div>
-    <div class="d-md-flex">
-        <div class="form-group">
-            <div class="input-wrap">
-                <label for="table reservation" style="color:white;">Date & Time</label>
-                <input type="datetime-local" id="reservation-date" required name="apppointmentDate" class="form-control datetimepicker">
-            </div>
-        </div>
-        <div class="form-group ml-md-4">
-            <input type="text" name="ContactNo" value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
-        </div>
-        <div class="form-group ml-md-4 selector">
-            <select name="HCustomer" class="booktable form-control custom-select" align-text="center" style="color:black;">
-                <option selected disabled>Count Of Persons</option>
-                <option value="1-3">1-3 Persons</option>
-                <option value="1-8">1-8 Persons</option>
-                <option value="1-13">1-13 Persons</option>
-                <option value="1-18">1-18 Persons</option>
-                <option value="1-23">1-23 Persons</option>
-                <option value="1-30">1-30 Persons</option>
-            </select>
-        </div>
-    </div>
-    <div class="d-md-flex">
-        <div class="form-group">
-            <textarea name="message" max-length="60" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
-        </div>
-        <div class="form-group ml-md-4">
-            <input type="submit" value="Reserve" class="btn btn-white py-3 px-4">
-        </div>
-    </div>
-    <input type="hidden" name="CustomerID" value ="<?= session()->get('UserID')?>">
-</form>
+								<div class="d-md-flex">
+									<div class="form-group">
+										<input type="text" disabled class="form-control" value="<?= session()->get('LastName')?>">
+										<input type="hidden" name="LastName" value="<?= session()->get('LastName')?>">
+									</div>
+									<div class="form-group ml-md-4">
+										<input type="text" disabled class="form-control" value="<?= session()->get('FirstName') ?>">
+										<input type="hidden" name="FirstName" value="<?= session()->get('FirstName') ?>">
+									</div>
+									<div class="form-group ml-md-4">
+										<input type="text" disabled class="form-control" value="<?= session()->get('email') ?>">
+										<input type="hidden" name="Email" value="<?= session()->get('email') ?>">
+									</div>
+								</div>
+								<div class="d-md-flex">
+									<div class="form-group">
+										<div class="input-wrap">
+											<label for="table reservation" style="color:white;">Date & Time</label>
+											<input type="datetime-local" id="reservation-date" required name="apppointmentDate" class="form-control datetimepicker">
+										</div>
+									</div>
+									<div class="form-group ml-md-4">
+										<input type="text" name="ContactNo" value="<?= session()->get('ContactNo')?>" class="form-control" placeholder="Phone Number">
+									</div>
+									<div class="form-group ml-md-4 selector">
+										<select name="HCustomer" class="booktable form-control custom-select" align-text="center" style="color:black;">
+											<option selected disabled>Count Of Persons</option>
+											<option value="1-3">1-3 Persons</option>
+											<option value="1-8">1-8 Persons</option>
+											<option value="1-13">1-13 Persons</option>
+											<option value="1-18">1-18 Persons</option>
+											<option value="1-23">1-23 Persons</option>
+											<option value="1-30">1-30 Persons</option>
+										</select>
+									</div>
+								</div>
+								<div class="d-md-flex">
+									<div class="form-group">
+										<textarea name="message" max-length="60" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+									</div>
+									<div class="form-group ml-md-4">
+										<input type="submit" value="Reserve" class="btn btn-white py-3 px-4">
+									</div>
+								</div>
+								<input type="hidden" name="CustomerID" value ="<?= session()->get('UserID')?>">
+							</form>
 	    				</div>
     				</div>
     			</div>
@@ -348,8 +348,10 @@
 						<h2 class="mb-4">Where we Are</h2>
 					</div>
 				</div>
-				<div id="map" style="height: 500px;"></div>
 			</section>
+			<div class="map-container">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d139433.8243634499!2d121.08683075418458!3d13.355296548788727!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bcef05abac29a7%3A0x7a2c16254ddd0d29!2sCrossroads%20Coffee%20and%20Deli!5e0!3m2!1sen!2sph!4v1728191822542!5m2!1sen!2sph" width="100%" height="600px" style="border:0; pointer-events: auto;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
 
 			<?php include('mainheader.php'); ?>
 			<?php include('footer.php'); ?>
@@ -360,10 +362,18 @@
 					form.addEventListener('submit', function(event) {
 						var appointmentDate = new Date(form.querySelector('input[name="apppointmentDate"]').value);
 						var currentDate = new Date();
+						var appointmentDay = appointmentDate.getDay();
+						var appointmentHour = appointmentDate.getHours();
 
-						if (appointmentDate <= currentDate || appointmentDate.getHours() < 10 || appointmentDate.getHours() >= 22) {
+						// Check if it's Sunday (0) or outside business hours (10 AM to 10 PM)
+						if (
+							appointmentDate <= currentDate || 
+							appointmentDay === 0 || // Sunday
+							appointmentHour < 10 || 
+							appointmentHour >= 22
+						) {
 							event.preventDefault();
-							alert('Please select a valid date and time for reservation. Reservations must be made for a future time between 10 AM and 10 PM only.');
+							alert('Please select a valid date and time for reservation. Reservations must be made for a future time between 10 AM to 10 PM, Monday to Saturday only.');
 						}
 					});
 				});
@@ -387,17 +397,17 @@
 			</script>
 			<script src="/assets/js/preloader.js"></script>
 			<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/66927c6dbecc2fed69245654/1i2m3c4df';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+			<script type="text/javascript">
+				var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+				(function(){
+				var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+				s1.async=true;
+				s1.src='https://embed.tawk.to/66927c6dbecc2fed69245654/1i2m3c4df';
+				s1.charset='UTF-8';
+				s1.setAttribute('crossorigin','*');
+				s0.parentNode.insertBefore(s1,s0);
+				})();
+			</script>
+			<!--End of Tawk.to Script-->
   	</body>
 </html>

@@ -70,7 +70,7 @@
 								<div class="col-md-4 d-flex ftco-animate">
 									<div class="icon"><span class="icon-clock-o"></span></div>
 									<div class="text">
-										<h3>Open Monday - Sunday</h3>
+										<h3>Open Monday - Saturday</h3>
 										<h3>10:00 AM - 10:00 PM</h3>
 									</div>
 								</div>
@@ -349,25 +349,27 @@
 						<h2 class="mb-4">Where we Are</h2>
 					</div>
 				</div>
-				<div id="map" style="height: 500px;"></div>
 			</section>
+			<div class="map-container">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d139433.8243634499!2d121.08683075418458!3d13.355296548788727!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bcef05abac29a7%3A0x7a2c16254ddd0d29!2sCrossroads%20Coffee%20and%20Deli!5e0!3m2!1sen!2sph!4v1728191822542!5m2!1sen!2sph" width="100%" height="600px" style="border:0; pointer-events: auto;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
 
 			<?php include('header.php'); ?>
 			<?php include('footer.php'); ?>
 
 			<script src="/assets/js/preloader.js"></script>
 			<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/66927c6dbecc2fed69245654/1i2m3c4df';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+			<script type="text/javascript">
+				var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+				(function(){
+				var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+				s1.async=true;
+				s1.src='https://embed.tawk.to/66927c6dbecc2fed69245654/1i2m3c4df';
+				s1.charset='UTF-8';
+				s1.setAttribute('crossorigin','*');
+				s0.parentNode.insertBefore(s1,s0);
+				})();
+			</script>
+			<!--End of Tawk.to Script-->
   	</body>
 </html>
