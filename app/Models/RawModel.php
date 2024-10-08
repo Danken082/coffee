@@ -8,7 +8,7 @@ class RawModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'rawproducttable';
-    protected $returnType       = 'array';
+     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['name', 'stocks', 'barcode', 'item_categ'];

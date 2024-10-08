@@ -310,4 +310,6 @@ $routes->match(['get', 'post'], 'AcceptReservation', 'ReservationController::Acc
 
 
 $routes->get('flavor', 'AdminController::flvr');
+$routes->get('myReservation', 'ReservationController::viewMyReservation');
+$routes->get('reports', 'AdminController::listReports');
 

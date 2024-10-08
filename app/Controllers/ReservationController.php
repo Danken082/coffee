@@ -323,6 +323,43 @@ class ReservationController extends BaseController
         $this->rsv->update($reservationId, $data);
         
     }
+
+    public function viewMyReservation()
+    {
+        $session = session();
+        $user = $session->get('UserID');
+    
+        // Retrieve cart item count
+        $cartItems = $this->crt->where('CustomerID', $user)->findAll();
+        $cartItemCount = count($cartItems);
+    
+        // Retrieve reservations with necessary details
+        $reservations = $this->rsv->select('tablereservation.*, 
+                                            product_tbl.prod_name, 
+                                            product_tbl.prod_lprice, 
+                                            product_tbl.prod_mprice, 
+                                            product_tbl.prod_img')
+                                ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID', 'left')
+                                ->where('tablereservation.CustomerID', $user)
+                                ->findAll();
+    
+
+                                
+        $data = [
+            'cartItemCount' => $cartItemCount,
+            'cartItems' => $cartItems,
+            'myReservation' => $this->rsv->select('tablereservation.quantity, tablereservation.size, tablereservation.TableCode, tablereservation.appointmentDate,
+                                                  tablereservation.totalPrice, tablereservation.Gpayment, tablereservation.paymentStatus, tablereservation.Message, tablereservation.reservationDate,
+                                                  product_tbl.prod_name, product_tbl.prod_lprice, product_tbl.prod_mprice, product_tbl.prod_img')
+                                           ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID', 'left')
+                                           ->where('tablereservation.CustomerID', $user)
+                                           ->findAll(),
+            'getCode' => $reservations,
+        ];
+    
+        return view('user/myReservation', $data);
+    }
+    
 } 
 
 

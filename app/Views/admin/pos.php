@@ -318,7 +318,7 @@
                                 <th>Price</th>
                                 <th>Total Price</th>
                                 <th>Action</th>
-                            </tr>
+                            </tr> 
                         </thead>
                         <tbody></tbody>
                     </table>

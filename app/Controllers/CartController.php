@@ -141,7 +141,6 @@ class CartController extends BaseController
                     ->first();
 
             if ($existCart) {
-            // Product already exists in the cart, update the quantity
             $newQuantity = $existCart['quantity'] + $this->request->getVar('quantity');
               // var_dump($newQuantity);
             $this->crt->update($price, ['quantity' => $newQuantity]);
@@ -192,8 +191,7 @@ class CartController extends BaseController
             $this->crt->insert($prod);
             }
 
-            // return redirect()->to('/mainshop');
-
+          
       
     }
 
@@ -339,8 +337,6 @@ class CartController extends BaseController
       }
 
 
-
-      // app/Controllers/CartController.php
 
       public function placeOrder()
       {
@@ -551,19 +547,19 @@ class CartController extends BaseController
       }
 
       public function addquantity($cartID)
-{
-    $updateQuantityadd = $this->updatequantity($cartID);
-    $this->newQuantity($updateQuantityadd, $cartID); 
-    return redirect()->to('cart')->with('msg', 'Product is now available');     
+        {
+            $updateQuantityadd = $this->updatequantity($cartID);
+            $this->newQuantity($updateQuantityadd, $cartID); 
+            return redirect()->to('cart')->with('msg', 'Product is now available');     
 
-}
+        }
 
-private function updatequantity($cartID)
-{
-    $updateQuantityadd = $this->crt->find($cartID);
+        private function updatequantity($cartID)
+        {
+            $updateQuantityadd = $this->crt->find($cartID);
 
-    return $updateQuantityadd;
-}
+            return $updateQuantityadd;
+        }
 
           private function newQuantity($updateQuantityadd, $cartID)
           {
