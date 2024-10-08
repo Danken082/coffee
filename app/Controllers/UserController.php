@@ -79,12 +79,13 @@ class UserController extends BaseController
             
             $this->user->insert($data);
             $this->sendVerificationEmail($this->request->getVar('Email'), $verificationToken);
+            return redirect()->to('/login');
 
     }
     
     else{
         $data['validation']= $this->validator;
-        return redirect()->to('/login');
+        return redirect()->to('/register');
     }
    }
     public function verifyEmailReminder()
