@@ -283,6 +283,8 @@ $routes->post('/save-order', 'OrderController::saveOrder');
 
 
 $routes->post('/payment/save', 'AdminController::savePOSOrders');
+$routes->get('trialh', 'AdminController::trialh');
+
 $routes->match(['get', 'post'], 'viewByFeedback/(:any)', 'OrderController::viewFeedbackForCoffee/$1');
 
 
