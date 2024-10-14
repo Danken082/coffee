@@ -63,8 +63,8 @@ $routes->post('/adminadduser', 'AdminController::adduser', ['filter'=>'authFilte
 $routes->get('/admincustomer_user', 'AdminController::getcustomeruser', ['filter'=>'authFilter']);
 $routes->get('/adminprod', 'AdminController::products', ['filter'=>'authFilter']);
 $routes->get('/admineditprofile/(:any)', 'AdminController::edit_profile/$1');
-$routes->post('/updateadminprofile/(:any)', 'AdminController::updateadmin/$1');
-$routes->get('/removeprofile/(:any)', 'AdminController::removeadminpf/$1',['filter'=>'authFilter']);
+$routes->post('/updateadminprofile/(:any)', 'AdminController::updateadminprofile/$1');
+$routes->get('/removeprofile/(:any)', 'AdminController::removeadminprofile/$1',['filter'=>'authFilter']);
 $routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
 $routes->get('admin/sidebar', 'AdminController::admin_side');
 $routes->get('viewOrders', 'AdminController::viewOrder');

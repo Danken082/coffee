@@ -24,7 +24,7 @@
                       <div class="d-flex flex-column">
                         <div class="align-items-center text-center">
                         <h4><p class="mb-1 text-black"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p></h4><br>
-                          <img src="<?= base_url()?>/assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle" width="150"><br><br>
+                          <img src="<?= base_url()?>/coffee/userassetsimages/adminuser/adminimages/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle" width="150"><br><br>
                         </div>
                         <div class="card-body">
                           <div class="row">
@@ -85,7 +85,7 @@
                           <hr>
                           <div class="row">
                             <div class="col-sm-12">
-                              <a class="btn btn-info" href="<?= site_url("/admineditprofile/"); ?><?= session()->get('UserID')?>">Edit Profile</a>
+                              <a class="btn btn-info" href="<?= site_url("/admineditprofile/"); ?><?= session()->get('UserID')?>">Edit Admin Profile</a>
                             </div>
                           </div>
                         </div>

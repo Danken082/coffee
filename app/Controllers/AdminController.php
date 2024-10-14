@@ -71,6 +71,77 @@ class AdminController extends BaseController
         return view('/admin/adminprofile');
     }
 
+    public function edit_profile($id)
+    {
+        $data['eprof'] = $this->user->find($id);
+        return view('/admin/edit_adminprofile', $data);
+    }
+
+    public function updateadminprofile($id)
+    {
+        if ($this->request->getMethod() === 'post') {
+            $userId = session()->get('UserID');
+            $userModel = new UserModel();
+
+            // Get the current user data
+            $currentUser = $userModel->find($userId);
+            $currentProfileImg = $currentUser['profile_img'];
+
+            $data = [
+                'LastName' => $this->request->getPost('LastName'),
+                'FirstName' => $this->request->getPost('FirstName'),
+                'gender' => $this->request->getPost('gender'),
+                'email' => $this->request->getPost('email'),
+                'ContactNo' => $this->request->getPost('ContactNo'),
+                'Username' => $this->request->getPost('Username'),
+                'address' => $this->request->getPost('address'),
+                'birthdate' => $this->request->getPost('birthdate')
+            ];
+
+            $profileImg = $this->request->getFile('profile_img');
+            if ($profileImg->isValid() && !$profileImg->hasMoved()) {
+                $newName = $profileImg->getName();
+                $profileImg->move(ROOTPATH . '/userassetsimages/adminuser/adminimages/', $newName);
+                $data['profile_img'] = $newName;
+
+                // Delete the old profile image if it's not the default image
+                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . '/userassetsimages/adminuser/adminimages/' . $currentProfileImg)) {
+                    unlink(ROOTPATH . '/userassetsimages/adminuser/adminimages/' . $currentProfileImg);
+                }
+            }
+
+            $userModel->update($userId, $data);
+            session()->set($data);
+
+            return redirect()->to(base_url('/adminprofile'));
+        }
+    }
+
+    public function removeadminprofile($userId)
+    {
+        $userModel = new UserModel();
+        $currentUser = $userModel->find($userId);
+        $profileImg = $currentUser['profile_img'];
+        $defaultProfileImg = 'profile.png';
+
+        $profileImgPath = $_SERVER['DOCUMENT_ROOT'] . '/coffee/userassetsimages/adminuser/adminimages/' . $profileImg;
+
+        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists($profileImgPath)) {
+            try {
+                if (!unlink($profileImgPath)) {
+                    throw new \Exception('Error: Unable to delete the file.');
+                }
+            } catch (\Exception $e) {
+                log_message('error', $e->getMessage());
+                return redirect()->back()->with('error', 'Unable to remove profile picture.');
+            }
+        }
+
+        $userModel->update($userId, ['profile_img' => $defaultProfileImg]);
+        session()->set('profile_img', $defaultProfileImg);
+        return redirect()->to(base_url('/adminprofile'));
+    }
+
     public function viewOrderHist($HistoryCode)
     {
      $data = [ 'barcode' => $this->history->select('tbl_orders.order_id, tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,

@@ -488,12 +488,12 @@ class UserController extends BaseController
             $profileImg = $this->request->getFile('profile_img');
             if ($profileImg->isValid() && !$profileImg->hasMoved()) {
                 $newName = $profileImg->getName();
-                $profileImg->move(ROOTPATH . '/assets/users/images/', $newName);
+                $profileImg->move(ROOTPATH . '/userassetsimages/user/images/', $newName);
                 $data['profile_img'] = $newName;
 
                 // Delete the old profile image if it's not the default image
-                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . '/assets/users/images/' . $currentProfileImg)) {
-                    unlink(ROOTPATH . '/assets/users/images/' . $currentProfileImg);
+                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . '/userassetsimages/user/images/' . $currentProfileImg)) {
+                    unlink(ROOTPATH . '/userassetsimages/user/images/' . $currentProfileImg);
                 }
             }
 
@@ -511,7 +511,7 @@ class UserController extends BaseController
         $profileImg = $currentUser['profile_img'];
         $defaultProfileImg = 'profile.png';
 
-        $profileImgPath = $_SERVER['DOCUMENT_ROOT'] . '/coffee/assets/user/images/' . $profileImg;
+        $profileImgPath = $_SERVER['DOCUMENT_ROOT'] . '/coffee/userassetsimages/user/images/' . $profileImg;
 
         if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists($profileImgPath)) {
             try {
