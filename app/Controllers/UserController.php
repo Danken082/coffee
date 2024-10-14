@@ -488,12 +488,12 @@ class UserController extends BaseController
             $profileImg = $this->request->getFile('profile_img');
             if ($profileImg->isValid() && !$profileImg->hasMoved()) {
                 $newName = $profileImg->getName();
-                $profileImg->move(ROOTPATH . 'public/assets/user/images/', $newName);
+                $profileImg->move(ROOTPATH . '/assets/users/images/', $newName);
                 $data['profile_img'] = $newName;
 
                 // Delete the old profile image if it's not the default image
-                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg)) {
-                    unlink(ROOTPATH . 'public/assets/user/images/' . $currentProfileImg);
+                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . '/assets/users/images/' . $currentProfileImg)) {
+                    unlink(ROOTPATH . '/assets/users/images/' . $currentProfileImg);
                 }
             }
 
@@ -511,15 +511,23 @@ class UserController extends BaseController
         $profileImg = $currentUser['profile_img'];
         $defaultProfileImg = 'profile.png';
 
-        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists('../assets/user/images/' . $profileImg)) {
-            unlink('../assets/user/images/' . $profileImg);
+        $profileImgPath = $_SERVER['DOCUMENT_ROOT'] . '/coffee/assets/user/images/' . $profileImg;
+
+        if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists($profileImgPath)) {
+            try {
+                if (!unlink($profileImgPath)) {
+                    throw new \Exception('Error: Unable to delete the file.');
+                }
+            } catch (\Exception $e) {
+                log_message('error', $e->getMessage());
+                return redirect()->back()->with('error', 'Unable to remove profile picture.');
+            }
         }
 
         $userModel->update($userId, ['profile_img' => $defaultProfileImg]);
         session()->set('profile_img', $defaultProfileImg);
-
         return redirect()->to(base_url('/profile'));
-    } 
+    }
 
     public function CartCount()
     {

@@ -65,6 +65,12 @@ class AdminController extends BaseController
         $this->printer  = new Printer($this->connector);
 
     }
+
+    public function adminprofile()
+    { 
+        return view('/admin/adminprofile');
+    }
+
     public function viewOrderHist($HistoryCode)
     {
      $data = [ 'barcode' => $this->history->select('tbl_orders.order_id, tbl_orders.CustomerID, tbl_orders.OrderID, tbl_orders.ProductID, tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date,
