@@ -422,7 +422,7 @@ class OrderController extends BaseController
 
         $this->order->insert($data);
 
-        return redirect()->to('Home');
+        return redirect()->to('/');
     }
 
 
