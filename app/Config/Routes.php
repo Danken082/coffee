@@ -215,13 +215,19 @@ $routes->get('viewuserReservation', 'AdminController::eventReservation');
 
 $routes->match(['get', 'post'], 'ByWeek', 'VisualizationController::weekly');
 $routes->post('viewReport', 'VisualizationController::viewReport');
-$routes->match(['get', 'post'], 'GoToPayment', 'OrderController::paymentOrder');
+
+
 
 $routes->match(['get', 'post'], 'ViewMonthlyReport', 'VisualizationController::costAndExpense');
 $routes->match(['get', 'post'], 'viewReportMonthly', 'VisualizationController::viewReportMonthly');
 $routes->match(['get', 'post'], 'salesReportPerMonth', 'VisualizationController::salesReportPerMonth');
 
 }
+
+$routes->match(['get', 'post'], 'GoToPayment', 'OrderController::paymentOrder');
+
+
+$routes->get('hello', 'OrderController::hello');
 
 // $routes->get('hello', 'AdminController::Deduction');
 $routes->get('stocks', 'StocksController::Stocks');

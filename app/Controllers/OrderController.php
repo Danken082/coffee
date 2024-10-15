@@ -390,74 +390,115 @@ class OrderController extends BaseController
         return view('user/receipt', $data);
 
     }
+
+    private function generateAlphanumericBarcode($length = 10)
+    {
+       $characters = 'QW123YOPP456ASKFJ789ZXCBN10LKJ';
+       $barcodeData = '';
    
-   public function paymentOrder()
-{
-    $totalAmount = $this->request->getPost('total');
-    $subPayment = $totalAmount * 100;
+       for ($i = 0; $i < $length; $i++) {
+           $barcodeData .= $characters[rand(0, strlen($characters) - 1)];
+       }
+   
+       return $barcodeData;
+   }
 
-    $curl = curl_init();
+    public function paymentOrder()
+    {
+        $orderCode = $this->generateAlphanumericBarcode();
 
-    curl_setopt_array($curl, [
-        CURLOPT_URL => "https://api.paymongo.com/v1/links",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => "",
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => json_encode([
-            'data' => [
-                'attributes' => [
-                    'amount' => $subPayment,
-                    'description' => 'Payment For Orders',
-                    'remarks' => 'Payment'
-                ]
-            ]
-        ]),
-        CURLOPT_HTTPHEADER => [
-            "accept: application/json",
-            "authorization: Basic c2tfdGVzdF90djNzdjRUSHhtR1ZaZWRIWjhwYlVBZjQ6",
-            "content-type: application/json"
-        ],
-    ]);
+        $data = [
+            'CustomerID' => $this->request->getVar('CustomerID'),
+            'ProductID' => $this->request->getVar('ProductID'),
+            'quantity' => $this->request->getVar('quantity'),
+            'size' => $this->request->getVar('size'),
+            'total' => $this->request->getVar('total'),
+            'barcode' => 'CrossroadsOnline-' .$orderCode,
+            'orderType' => 'DineIn',
+            'orderStatus' => 'onProcess',
+            'reference_number' => 'this is an Cash Payment',
 
-    $response = curl_exec($curl);
-    $decode = json_decode($response, TRUE);
-    $err = curl_error($curl);
+        ];
 
-    curl_close($curl);
+        $this->order->insert($data);
 
-    if ($err) {
-        echo "cURL Error #:" . $err . " Please Check Your Internet Connection";
-    } 
-    else {
-        if (isset($decode['data']['attributes']['reference_number'])) { 
-            $reference_number = $decode['data']['attributes']['reference_number'];
-
-            $data = [
-                'ProductID' => $this->request->getPost('ProductID'),
-                'paymentStatus' => 'checking',
-                'orderStatus' => 'onProcess',
-                'CustomerID' => $this->request->getPost('CustomerID'),
-                'quantity' => $this->request->getPost('quantity'),
-                'total' => $this->request->getPost('total'),
-                'size' => $this->request->getPost('size'),
-                'reference_number' => $reference_number
-            ];
-            $this->order->insert($data);
-
-            foreach ($decode as $key => $value) {
-                $name = $decode[$key]["attributes"]["checkout_url"];
-                $age = $decode[$key]["type"];
-                return redirect()->to($name);
-            }
-        } else {
-            // Handle the case where the reference number is null
-            echo "Error: Reference number is not available. Please try again.";
-        }
+        return redirect()->to('Home');
     }
+
+
+
+
+   
+//    public function paymentOrder()
+// {
+//     // $totalPrice 
+//     // $totalAmount = $this->request->getPost('total');
+//     // $subPayment = $totalAmount * 100;
+
+//     // $curl = curl_init();
+
+//     // curl_setopt_array($curl, [
+//     //     CURLOPT_URL => "https://api.paymongo.com/v1/links",
+//     //     CURLOPT_RETURNTRANSFER => true,
+//     //     CURLOPT_ENCODING => "",
+//     //     CURLOPT_MAXREDIRS => 10,
+//     //     CURLOPT_TIMEOUT => 30,
+//     //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//     //     CURLOPT_CUSTOMREQUEST => "POST",
+//     //     CURLOPT_POSTFIELDS => json_encode([
+//     //         'data' => [
+//     //             'attributes' => [
+//     //                 'amount' => $subPayment,
+//     //                 'description' => 'Payment For Orders',
+//     //                 'remarks' => 'Payment'
+//     //             ]
+//     //         ]
+//     //     ]),
+//     //     CURLOPT_HTTPHEADER => [
+//     //         "accept: application/json",
+//     //         "authorization: Basic c2tfdGVzdF90djNzdjRUSHhtR1ZaZWRIWjhwYlVBZjQ6",
+//     //         "content-type: application/json"
+//     //     ],
+//     // ]);
+
+//     // $response = curl_exec($curl);
+//     // $decode = json_decode($response, TRUE);
+//     // $err = curl_error($curl);
+
+//     // curl_close($curl);
+
+//     // if ($err) {
+//     //     echo "cURL Error #:" . $err . " Please Check Your Internet Connection";
+//     // } 
+//     // else {
+//     //     if (isset($decode['data']['attributes']['reference_number'])) { 
+//     //         $reference_number = $decode['data']['attributes']['reference_number'];
+
+//             $data = [
+//                 'ProductID' => $this->request->getPost('ProductID'),
+//                 'paymentStatus' => 'checking',
+//                 'orderStatus' => 'onProcess',
+//                 'CustomerID' => $this->request->getPost('CustomerID'),
+//                 'quantity' => $this->request->getPost('quantity'),
+//                 'total' => $this->request->getPost('total'),
+//                 'size' => $this->request->getPost('size'),
+//                 'reference_number' => '$reference_number'
+//             ];
+//             $this->order->insert($data);
+
+//             foreach ($decode as $key => $value) {
+//                 $name = $decode[$key]["attributes"]["checkout_url"];
+//                 $age = $decode[$key]["type"];
+//                 return redirect()->to($name);
+//             }
+//         }
+        
+//         // else {
+//         //     // Handle the case where the reference number is null
+//         //     echo "Error: Reference number is not available. Please try again.";
+//         // }
+//     }
 }
 
 
-}
+// }

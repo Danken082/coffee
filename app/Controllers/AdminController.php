@@ -61,7 +61,7 @@ class AdminController extends BaseController
         $this->raw = new ItemsModel();
         $this->reservation = new ReservationModel();
         $this->flvr = new FlavorModel();
-        $this->connector = new WindowsPrintConnector("POS58_Printer");
+        // $this->connector = new WindowsPrintConnector("POS58_Printer2");
         $this->printer  = new Printer($this->connector);
 
     }
@@ -94,18 +94,18 @@ class AdminController extends BaseController
        
     }
 
-    public function savePOSOrders()
-    {
-      try {
+//     public function savePOSOrders()
+//     {
+//       try {
 
-    // Example print command
-    $this->printer->text("Hello, Network Printer!\n");
-    $this->printer->cut();
-    $this->printer->close();
-} catch (Exception $e) {
-    echo "Couldn't print to this printer: " . $e->getMessage() . "\n";
-}
-    }
+//     // Example print command
+//     $this->printer->text("Hello, Network Printer!\n");
+//     $this->printer->cut();
+//     $this->printer->close();
+// } catch (Exception $e) {
+//     echo "Couldn't print to this printer: " . $e->getMessage() . "\n";
+// }
+//     }
 
     public function trialh()
     {

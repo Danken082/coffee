@@ -199,7 +199,7 @@ saveTransactionButton.addEventListener('click', () => {
             productsize: productsize,
             totalPrice: totalPrice,
             total: total,
-            DineTake: DineTake.value, // Assuming DineTake is a select element
+            // DineTake: DineTake.value, 
             totalquantity: totalquantity,
             amountPaid: amountPaid,
             change: productChange,

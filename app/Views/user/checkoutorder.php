@@ -27,7 +27,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 ftco-animate">
-					<form action="<?= base_url('GoToPayment')?>" class="billing-form ftco-bg-dark p-3 p-md-5">
+					<form action="<?= base_url('GoToPayment')?>" class="billing-form ftco-bg-dark p-3 p-md-5" method="get">
 						<h3 class="mb-4 billing-heading">Deliver Address</h3>
 						<div class="row align-items-end">
 							<div class="col-md-6">
