@@ -27,7 +27,7 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="40">
+                  <img src="<?= base_url()?>/coffee/userassetsimages/adminuser/adminimages/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="40">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
@@ -177,7 +177,7 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                     <div class="navbar-profile">
-                      <img src="<?= base_url()?>assets/user/images/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="40">
+                      <img src="<?= base_url()?>/coffee/userassetsimages/adminuser/adminimages/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="40">
                       <p class="mb-0 d-none d-sm-block navbar-profile-name"><?= session()->get('FirstName')?> <?= session()->get('LastName')?></p>
                     </div>
                   </a>

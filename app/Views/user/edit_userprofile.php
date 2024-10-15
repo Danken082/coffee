@@ -27,7 +27,7 @@
                 <form action="<?= base_url('/updateprofile/'. $eprof['UserID'])?>" class="row g-3" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
                       <div class="upload">
-                        <img src="/assets/user/images/<?php echo $eprof['profile_img']?>" alt="pfp" id="profile" class="rounded-circle" width="150">
+                        <img src="/coffee/userassetsimages/user/images/<?php echo $eprof['profile_img']?>" alt="pfp" id="profile" class="rounded-circle" width="150">
                         <div class="rightRound" id="upload">
                           <input type="file" name="profile_img" id="profile_img" accept=".jpg, .jpeg, .png">
                           <i class="fa fa-solid fa-camera"></i>
