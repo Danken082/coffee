@@ -85,7 +85,7 @@ class UserController extends BaseController
     
     else{
         $data['validation']= $this->validator;
-        return redirect()->to('/register');
+        return view('/admin/register', $data);
     }
    }
     public function verifyEmailReminder()

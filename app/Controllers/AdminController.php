@@ -45,7 +45,7 @@ class AdminController extends BaseController
         $this->googleClient = new  \Google_Client();
         $this->googleClient->setClientId("36300776648-7g8magmu84f874vh8s9t453jmr169uel.apps.googleusercontent.com");
         $this->googleClient->setClientSecret("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");
-        $this->googleClient->setRedirectUri("http://localhost:8080/GoogleloginAuth");
+        $this->googleClient->setRedirectUri(base_url() ."GoogleloginAuth");
         $this->googleClient->addScope("email");
         $this->googleClient->addScope("profile");
 
@@ -61,7 +61,7 @@ class AdminController extends BaseController
         $this->raw = new ItemsModel();
         $this->reservation = new ReservationModel();
         $this->flvr = new FlavorModel();
-        // $this->connector = new WindowsPrintConnector("POS58_Printer2");
+        $this->connector = new WindowsPrintConnector("POS58_Printer2");
         $this->printer  = new Printer($this->connector);
 
     }
