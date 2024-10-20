@@ -43,8 +43,8 @@ class AdminController extends BaseController
         require_once APPPATH. "Libraries/vendor/autoload.php";
 
         $this->googleClient = new  \Google_Client();
-        $this->googleClient->setClientId("36300776648-7g8magmu84f874vh8s9t453jmr169uel.apps.googleusercontent.com");
-        $this->googleClient->setClientSecret("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");
+        $this->googleClient->setClientId("36300776648-96g4nuibr910qjrsieui38j0kddbhlsl.apps.googleusercontent.com");
+        $this->googleClient->setClientSecret("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");    
         $this->googleClient->setRedirectUri(base_url() ."GoogleloginAuth");
         $this->googleClient->addScope("email");
         $this->googleClient->addScope("profile");
