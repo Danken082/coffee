@@ -5,10 +5,6 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/adminitems', 'AdminController::item', ['filter'=>'authFilter']);
-$routes->get('/dailysales', 'VisualizationController::dailySales');
-$routes->get('/monthlysales', 'VisualizationController::initMonthChart');
-$routes->get('/yearsales', 'VisualizationController::initYearChart');
 $routes->get('/login', 'AdminController::login',['filter'=>'guestFilter']);
 $routes->get('/GoogleloginAuth', 'AdminController::googleAuthLogin',['filter'=>'guestFilter']);
 $routes->post('/adminregister', 'UserController::register');
@@ -32,7 +28,7 @@ $routes->get('print-receipts', 'AdminController::printReceipt');
 // $routes->get('pos', 'ChatController::try');
 
 /*For UserSide*/ 
-if(session()->get('UserRole') === 'Admin' || session()->get('UserRole') === 'Staff')
+if(session()->get('UserRole') === 'Admin' || session()->get('UserRole') === 'Staff' )
 {
 //viewOrders
 $routes->get('/viewOrderHistory/(:any)', 'AdminController::viewOrderHist/$1');
@@ -321,3 +317,4 @@ $routes->get('flavor', 'AdminController::flvr');
 $routes->get('myReservation', 'ReservationController::viewMyReservation');
 $routes->get('reports', 'AdminController::listReports');
 
+$routes->match(['get', 'post'], 'verify/(:any)', 'UserController::verify/$1');

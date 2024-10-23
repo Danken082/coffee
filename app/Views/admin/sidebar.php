@@ -48,6 +48,7 @@
               <span class="menu-title">Home</span>
             </a>
           </li>
+          <?php if(session()->get('UserRole') == 'Admin'):?>
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= site_url("admindash"); ?>">
               <span class="menu-icon">
@@ -56,7 +57,7 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-
+      <?php endif;?>
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= site_url("Searchreport"); ?>">
               <span class="menu-icon">
@@ -73,6 +74,7 @@
               <span class="menu-title">Event Reservation</span>
             </a>
           </li>
+          <?php if(session()->get('UserRole') == 'Admin'):?>
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= site_url("admininventory"); ?>">
               <span class="menu-icon">
@@ -81,6 +83,7 @@
               <span class="menu-title">Inventory</span>
             </a>
           </li>
+          <?php endif;?>
           <li class="nav-item menu-items">
               <a class="nav-link" href="<?= site_url("adminhistory"); ?>">
               <span class="menu-icon">
@@ -89,6 +92,7 @@
               <span class="menu-title">Order History</span>
             </a>
           </li>
+          
           <li class="nav-item menu-items">
             <a class="nav-link" href="<?= site_url("adminpayment") ?>">
               <span class="menu-icon">
@@ -106,6 +110,8 @@
               <span class="menu-title">POS</span>
             </a>
           </li>
+
+          <?php if(session()->get('UserRole') == 'Admin'):?>
           <li class="nav-item nav-category">
             <span class="nav-link">Account Page</span>
           </li>
@@ -125,6 +131,7 @@
               <span class="menu-title">Manage User</span>
             </a>
           </li>
+          <?php endif;?>
 
         <div class="container-fluid page-body-wrapper">
           <nav class="navbar p-0 fixed-top d-flex flex-row">

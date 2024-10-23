@@ -68,6 +68,7 @@ class UserController extends BaseController
                 'profile_img' => 'profile.png',
                 'UserRole'    => $this->request->getVar('UserRole'),
                 'Username'    => $this->request->getVar('Username'),
+                'status'    => 1,
                 'Password'    => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
                 'address'     => $this->request->getVar('address'),
                 'birthdate'   => $this->request->getVar('birthdate'),
@@ -79,7 +80,7 @@ class UserController extends BaseController
             
             $this->user->insert($data);
             $this->sendVerificationEmail($this->request->getVar('Email'), $verificationToken);
-            return redirect()->to('/login');
+            return redirect()->to('/login')->with('msg', 'You are registered success Fully <br> See your email for you verification ');
 
     }
     
@@ -90,11 +91,12 @@ class UserController extends BaseController
    }
     public function verifyEmailReminder()
     {
-        return view('admin/verify_email_reminder');
+        return view('admin/verify_email');
     }
 
     private function sendVerificationEmail($email, $token)
     {
+
         $emailService = \Config\Services::email();
         $emailService->setTo($email);
         $emailService->setFrom('rontaledankeneth@gmail.com', 'crossroads');
@@ -106,13 +108,14 @@ class UserController extends BaseController
 
     public function verify($token)
     {
-        $userModel = new UsersModel();
-        $user = $userModel->where('verification_token', $token)->first();
-
+        $userModel = new UserModel();
+        $user = $userModel->where('code', $token)->first();
+        $data = ['status' => 'activated', 'code' => null];
         if ($user) {
-            $userModel->update($user['userID'], ['is_verified' => true, 'verification_token' => null]);
+            $userModel->update($user['UserID'], $data);
+            session()->set($data);
 
-            return redirect()->to('/signin')->with('message', 'Email verified successfully. You can now login.');
+            return redirect()->to('/')->with('message', 'Email verified successfully. You can now login.');
         }
 
         return redirect()->to('/login')->with('error', 'Invalid verification token.');
@@ -216,9 +219,10 @@ class UserController extends BaseController
                 $session->set($ses_data);
                 $session->remove('login_attempts'); // Reset login attempts
                 
-                if ($user['UserRole'] == 'Admin') {
+                if ($user['UserRole'] == 'Admin' || $user['UserRole'] == 'Staff') {
                     return redirect()->to('/adminhome');
-                } else {
+                }
+                elseif($user['UserRole'] == 'Customer' && $user['status'] == "Activated") {
                     return redirect()->to('/mainhome');
                 }
             } else {

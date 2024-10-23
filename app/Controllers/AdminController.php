@@ -2774,10 +2774,12 @@ class AdminController extends BaseController
     }
 
     public function login(){
-        $data['googleAuth'] =   '<a href="'. $this->googleClient->createAuthUrl() .'">Login With Google</a>';
+        $data['googleAuth'] = '<a class="google-login-btn" href="'. $this->googleClient->createAuthUrl() .'">
+            <img src="assets/images/icons/google.png" alt="Login with Google">
+        </a>';
         return view('/admin/login', $data);
     }
-
+    
     public function googleAuthLogin()
     {
         // Start the session
@@ -2837,6 +2839,7 @@ class AdminController extends BaseController
                     'LastName' => $data['familyName'] ?? " ",
                     'profile_img' => 'profile.png',
                     'UserRole' => 'Customer',
+                    'status' => '1',
                     'birthdate' => '1999-12-04',
                     'email' => $data['email'],
                     'CreatedAt' => $currentDateTime

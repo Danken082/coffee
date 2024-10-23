@@ -83,21 +83,12 @@ function updateSizePrice(selectElement) {
 }
 
 function decreaseQuantity(button) {
-    const index = button.dataset.index;
-    const quantityInput = document.getElementById(`quantity-${index}`);
-    if (quantityInput.value > 1) {
-        quantityInput.value--;
-        updateCartTotals();
-    }
+    updateCartTotals();
 }
 
 function increaseQuantity(button) {
-    const index = button.dataset.index;
-    const quantityInput = document.getElementById(`quantity-${index}`);
-    if (quantityInput.value < 100) {
-        quantityInput.value++;
         updateCartTotals();
-    }
+   
 }
 
 function loadCartData() {

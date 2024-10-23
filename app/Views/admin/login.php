@@ -12,6 +12,19 @@
     <link href="/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/login.css">
 </head>
+<style>
+  
+.google-login-btn img {
+    width: 100%;      
+    max-width: 15rem; 
+    height: 4rem;     
+    border-radius: 8px;        /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Soft shadow for a button effect */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover transition */
+}
+
+
+</style>
 <body>
     <div class="login-container">
     <?php if (session()->getFlashdata('error')): ?>
@@ -22,7 +35,7 @@
         <div class="login-card">
             <h4>Log in to your Account</h4>
             <?php if(session()->getFlashdata('msg')):?>
-                <div class="alert alert-warning">
+                <div class="alert alert-success">
                     <?= session()->getFlashdata('msg') ?>
                 </div>
             <?php endif;?>
@@ -43,6 +56,7 @@
                     ?>
                 </div> 
                                 <p class="register-link">Don't have an account yet? <a href="<?= site_url("register"); ?>">Register Now</a></p>
+                                <p class="home-link">back <a href="<?= site_url("/"); ?>">home</a></p>
             </form>
         </div>
     </div>
