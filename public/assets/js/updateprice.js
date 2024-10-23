@@ -88,7 +88,6 @@ function decreaseQuantity(button) {
 
 function increaseQuantity(button) {
         updateCartTotals();
-   
 }
 
 function loadCartData() {
