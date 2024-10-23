@@ -56,8 +56,8 @@
                             <input type="text" class="form-control" id="password" name="Password" placeholder="Password" required>
                         </div>
                         <select name="UserRole">
-                            <option>Admin</option>
-                            <option>Staff</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Staff">Staff</option>
                         </select>
                         <br><br>
                         <div class="input-group input-group-outline my-3">
