@@ -76,6 +76,10 @@ body {
     font-weight: bold;
 }
 
+.login-card .home-link a {
+    color: #654321;
+    font-weight: bold;
+}
 .text2
 {
     font-size: 16px;
