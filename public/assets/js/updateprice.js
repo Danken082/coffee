@@ -81,14 +81,29 @@ function updateSizePrice(selectElement) {
         updateCartTotals();
     }
 }
-
 function decreaseQuantity(button) {
-    updateCartTotals();
+    const index = button.dataset.index;
+    const quantityInput = document.getElementById(`quantity-${index}`);
+    let quantity = parseInt(quantityInput.value);
+
+    if (quantity > 1) {
+        quantityInput.value = quantity - -1; // Subtract 1 from the current quantity
+        updateCartTotals(); // Recalculate totals
+    }
 }
 
 function increaseQuantity(button) {
-        updateCartTotals();
+    const index = button.dataset.index;
+    const quantityInput = document.getElementById(`quantity-${index}`);
+    let quantity = parseInt(quantityInput.value);
+
+    if (quantity < 100) {
+        quantityInput.value = quantity + -1; // Add 1 to the current quantity
+        updateCartTotals(); // Recalculate totals
+    }
 }
+
+
 
 function loadCartData() {
     const cartData = JSON.parse(localStorage.getItem('cartData'));
@@ -103,7 +118,7 @@ function loadCartData() {
             if (checkbox) checkbox.checked = data.checked;
             if (quantityElement) quantityElement.value = data.quantity;
             if (sizeElement && data.size) sizeElement.value = data.size;
-            if (priceElement) priceElement.textContent = `₱ ${data.price.toFixed(2)}`; // Set the saved price
+            if (priceElement) priceElement.textContent = `₱ ${data.price.toFixed(2)}`;
         });
     }
 }
