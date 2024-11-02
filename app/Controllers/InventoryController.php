@@ -1083,7 +1083,6 @@ class InventoryController extends BaseController
                                
     return redirect()->to('inventorysalad')->with('msg', "The product you selected is now unavailable");     
     }
-
     public function getsoup()
     {
         $categ = 'Soup';
