@@ -66,6 +66,6 @@
         <script src="/assets/user/js/bootstrap-datepicker.js"></script>
         <script src="/assets/user/js/jquery.timepicker.min.js"></script>
         <script src="/assets/user/js/scrollax.min.js"></script>
-        <script src="/assets/user/js/main.js"></script>
+        <script src="/assets/user/js/main.js"></script> 
     </body>
 </html> 

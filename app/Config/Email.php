@@ -10,7 +10,7 @@ class Email extends BaseConfig
     
     
     public string $fromEmail  = 'rontaldankeneth@gmail.com';
-    public string $fromName   = 'crossroads';
+    public string $fromName   = 'Crossroads';
     public string $recipients = '';
 
     /**
@@ -41,7 +41,7 @@ class Email extends BaseConfig
     /**
      * SMTP Password
      */
-    public string $SMTPPass = 'lyte veey muah cetp';
+    public string $SMTPPass = 'vlis fltl jfsq dslb';
     /**
      * SMTP Port
      */
@@ -50,7 +50,7 @@ class Email extends BaseConfig
     /**
      * SMTP Timeout (in seconds)
      */
-    public int $SMTPTimeout = 5;
+    public int $SMTPTimeout = 15;
  
     /**
      * Enable persistent SMTP connections

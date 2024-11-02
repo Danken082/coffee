@@ -98,35 +98,35 @@ class CartController extends BaseController
 
 
   
-    public function home_cart()
-    {
-        $session = session();
-        $user = $session->get('UserID');
-        if (!$user) {
-            $session->setFlashdata('error', 'You need to login first before proceeding to the cart.');
-            return redirect()->to('/login');
-        }
-        $cartItems = $this->crt->where('CustomerID', $user)->findAll();
+      public function home_cart()
+      {
+          $session = session();
+          $user = $session->get('UserID');
+          if (!$user) {
+              $session->setFlashdata('error', 'You need to login first before proceeding to the cart.');
+              return redirect()->to('/login');
+          }
+          $cartItems = $this->crt->where('CustomerID', $user)->findAll();
 
-        $cartItemCount = count($cartItems);
+          $cartItemCount = count($cartItems);
 
-        $data = [
-            'cartItemCount' => $cartItemCount,
-            'cartItems' => $cartItems
-        ];
-    
-        $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.size, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
-        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
-        ->join('product_tbl', 'product_tbl.prod_id = cart_tbl.ProductID')
-        ->where('cart_tbl.CustomerID', $user)
-        ->findAll();
-        
-        $data['mycart'] = $this->crt->select('(SUM(total)) as sum')->where('cart_tbl.CustomerID', $user)->findAll();    
-        
-        
-        return view('/user/cart', $data);
-    }
-    
+          $data = [
+              'cartItemCount' => $cartItemCount,
+              'cartItems' => $cartItems
+          ];
+      
+          $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.size, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 
+          product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
+          ->join('product_tbl', 'product_tbl.prod_id = cart_tbl.ProductID')
+          ->where('cart_tbl.CustomerID', $user)
+          ->findAll();
+          
+          $data['mycart'] = $this->crt->select('(SUM(total)) as sum')->where('cart_tbl.CustomerID', $user)->findAll();    
+          
+          
+          return view('/user/cart', $data);
+      }
+      
 
     public function addtocart($price)
     { 
@@ -340,7 +340,7 @@ class CartController extends BaseController
 
       public function placeOrder()
       {
-          $selectedItems = $this->request->getVar('itemid');
+          $selectedItems = $this->request->getVar('items');
           $totalAmount = $this->request->getPost('total');
           $paymentMethod = $this->request->getPost('paymentMethod');
           $TotalProdPrice = $this->request->getPost('totalPrice');

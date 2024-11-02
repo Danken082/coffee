@@ -19,7 +19,8 @@ use App\Models\FeedbackModel;
 use App\Models\OrderModel;
 use App\Models\ReservationModel;
 use App\Models\FlavorModel;
-
+use Google\Auth\Credentials\ServiceAccountCredentials;
+use Google\Auth\HttpHandler\HttpHandlerFactory;
 use App\Models\ItemsModel;
 use CodeIgniter\API\ResponseTrait;
 
@@ -38,9 +39,11 @@ class AdminController extends BaseController
     private $reservation;
     private $usr;
     private $flvr;
+    private $credentials;
     public function __construct(){
 
         require_once APPPATH. "Libraries/vendor/autoload.php";
+        require_once "../vendor/autoload.php";
 
         $this->googleClient = new  \Google_Client();
         $this->googleClient->setClientId("36300776648-thftnf9uer0h93dv7q6bbamivtou9ofr.apps.googleusercontent.com");
@@ -63,8 +66,52 @@ class AdminController extends BaseController
         $this->flvr = new FlavorModel();
         $this->connector = new WindowsPrintConnector("POS58_Printer2");
         $this->printer  = new Printer($this->connector);
+        $this->credentials = new ServiceAccountCredentials("https://www.googleapis.com/auth/firebase.messaging", json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/js/pv_key.json"), true));
 
     }
+
+    public function mynotiftrial()
+    {
+        return view('noticationtrial');
+    }
+
+    public function sendNotif()
+{
+    // Fetch the access token
+    $token = $this->credentials->fetchAuthToken(HttpHandlerFactory::build());
+    
+    $ch = curl_init("https://fcm.googleapis.com/v1/projects/notification-app-58e23/messages:send");
+    
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $token['access_token']
+    ]);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
+        "message" => [
+            "token" => "dNf8xMrhqagrB4knK1izGV:APA91bFPUjqnRjl4NdjP48gDz7iHvUypgVnbrrNtphm5gbzPH_-9XSgGXl_YTNdr3JC8jp4UA333J9L5GhzKb4L834VydjxVd3g7Vdd8JJaouQz4xbLw1H0",
+            "token" => "fFEfhFqdH8uOZ1q-AogCTr:APA91bHIYhk3Kk30RKv31nsCbidNYEcG2HNo0fWa1WPOfSVBqD9QeBUf3tZZwzXc9LwCilxituM4upnF7YwatFngDKkcxGLHDxKBVZU30gMuGJpUikIbFEQ",
+            "notification" => [
+                "title" => "this is a Notif",
+                "body" => "hello",
+                "image" => "https://emojiisland.com/products/lady-beetle-emoji-png-icon"
+            ],
+            "webpush" => [
+                "fcm_options" => [
+                    "link" => "https://crossroadcoffeedeli.online/"
+                ]
+            ]
+        ]
+    ]));
+
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "post");
+
+$response = curl_exec($ch);
+
+curl_close($ch);
+
+return redirect()->to('trialnotif2');
+}
 
     public function adminprofile()
     { 
@@ -101,12 +148,12 @@ class AdminController extends BaseController
             $profileImg = $this->request->getFile('profile_img');
             if ($profileImg->isValid() && !$profileImg->hasMoved()) {
                 $newName = $profileImg->getName();
-                $profileImg->move(ROOTPATH . '/userassetsimages/adminuser/adminimages/', $newName);
+                $profileImg->move($_SERVER['DOCUMENT_ROOT'] . '/userassetsimages/adminuser/adminimages/', $newName);
                 $data['profile_img'] = $newName;
 
                 // Delete the old profile image if it's not the default image
-                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . '/userassetsimages/adminuser/adminimages/' . $currentProfileImg)) {
-                    unlink(ROOTPATH . '/userassetsimages/adminuser/adminimages/' . $currentProfileImg);
+                if ($currentProfileImg !== 'profile.png' && file_exists($_SERVER['DOCUMENT_ROOT'] . '/userassetsimages/adminuser/adminimages/' . $currentProfileImg)) {
+                    unlink($_SERVER['DOCUMENT_ROOT'] . '/userassetsimages/adminuser/adminimages/' . $currentProfileImg);
                 }
             }
 

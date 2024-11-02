@@ -52,7 +52,7 @@
                             <?php foreach($myCart as $index => $item):?>
                                 <tr class="text-center">
                                     <td><input type="checkbox" name="items[]" value="<?= $index ?>" class="item-checkbox"></td>
-                                    <td><input type="hidden" name="itemid[]" value="<?= $item['id'] ?>"></td>
+                                    <td><input type="checkbo" name="items[]" value="<?= $item['id'] ?>" class="item-checkbox"></td>
                                     <td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>"></td>
                                     <td class="product-name">
                                         <h3><?= $item['prod_name']?></h3>

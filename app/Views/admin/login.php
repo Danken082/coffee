@@ -56,6 +56,7 @@
                     ?>
                 </div> 
                                 <p class="register-link">Don't have an account yet? <a href="<?= site_url("register"); ?>">Register Now</a></p>
+                                <p class="register-link">I can't remembet my password<a href="<?= site_url("/forgetpassword"); ?>">Forget Password</a></p>
                                 <p class="home-link">back <a href="<?= site_url("/"); ?>">home</a></p>
             </form>
         </div>

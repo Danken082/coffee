@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pricePerItem = parseFloat(document.getElementById(`price-${itemId}`).innerText.replace('₱ ', ''));
         const totalCell = document.getElementById(`total-price-${itemId}`);
         const totalPrice = quantityInput.value * pricePerItem;
-        totalCell.innerText = '₱ ' + totalPrice.toFixed(2);
+        totalCell.innerText = totalPrice.toFixed(2);
 
         // Update hidden total input
         document.getElementById(`hidden-total-price-${itemId}`).value = totalPrice.toFixed(2);

@@ -318,3 +318,13 @@ $routes->get('myReservation', 'ReservationController::viewMyReservation');
 $routes->get('reports', 'AdminController::listReports');
 
 $routes->match(['get', 'post'], 'verify/(:any)', 'UserController::verify/$1');
+
+
+$routes->get('trialnotif2', 'AdminController::mynotiftrial');
+$routes->post('sendmynotif', 'AdminController::sendNotif');
+$routes->post('forgetpasswordAuth', 'UserController::forgetPassword');
+$routes->get('forgetpassword', 'UserController::viewForgetPassword');
+$routes->post('sendAuthCode', 'UserController::updateCode');
+$routes->get('verifyCode', 'UserController::verifyCode');
+$routes->post('verifyCodeAuth', 'UserController::verificationAuth');
+$routes->post('newPass', 'UserController::newPassword');

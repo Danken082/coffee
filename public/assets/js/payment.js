@@ -15,7 +15,7 @@ function calculateTotal() {
     var total = 0;
     document.querySelectorAll('.item-checkbox:checked').forEach(function (checkbox) {
         var row = checkbox.closest('tr');
-        var itemTotal = parseFloat(row.querySelector('.total').innerText.replace('₱', '').trim());
+        var itemTotal = parseFloat(row.querySelector('.total').innerText.replace('', '').trim());
         total += itemTotal;
     });
     document.getElementById('cart-total').innerText = '₱ ' + total.toFixed(2);
