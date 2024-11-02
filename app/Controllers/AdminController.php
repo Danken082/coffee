@@ -66,7 +66,7 @@ class AdminController extends BaseController
         $this->flvr = new FlavorModel();
         $this->connector = new WindowsPrintConnector("POS58_Printer2");
         $this->printer  = new Printer($this->connector);
-        $this->credentials = new ServiceAccountCredentials("https://www.googleapis.com/auth/firebase.messaging", json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/js/pv_key.json"), true));
+        // $this->credentials = new ServiceAccountCredentials("https://www.googleapis.com/auth/firebase.messaging", json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/js/pv_key.json"), true));
 
     }
 
