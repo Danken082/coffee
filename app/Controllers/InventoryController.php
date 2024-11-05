@@ -39,30 +39,30 @@ class InventoryController extends BaseController
             
             $addProduct = substr(md5(rand()), 0, 8);
         
-         
-            $data = [
-                'prod_name' => $_POST['prod_name'],
-                'prod_desc' => $_POST['prod_desc'],
-                'prod_quantity' => $_POST['prod_quantity'],
-                'prod_mprice' => $_POST['prod_mprice'],
-                'prod_lprice' => $_POST['prod_lprice'],
-                'prod_categ' => $_POST['prod_categ'],
-                'prod_code' => $addProduct,
-            
-                'product_status' => 'Available'
-            ];
-        
-          
-            $prodImg = $this->request->getFile('prod_img');
-          
-            if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-                $newName = $prodImg->getName();
-                $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-                $data['prod_img'] = $newName;
+            $uploadDir = 'assets/images/products/';
 
-             
-            
-            $prod->save($data);
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+        
+            $fileName = $_FILES['prod_img']['name'];
+        
+            $uploadFile = $uploadDir . $fileName;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile))
+            {
+                $data = [
+                    'prod_name' => $_POST['prod_name'],
+                    'prod_desc' => $_POST['prod_desc'],
+                    'prod_quantity' => $_POST['prod_quantity'],
+                    'prod_mprice' => $_POST['prod_mprice'],
+                    'prod_lprice' => $_POST['prod_lprice'],
+                    'prod_categ' => $_POST['prod_categ'],
+                    'prod_code' => $addProduct,
+                    'prod_img' => $fileName,
+                    'product_status' => 'Available'
+                ];
+                $prod->save($data);
+        
                 echo "<script>alert('Product added successfully.')</script>";
                 echo "<script>window.location.href='" . base_url('/myproducts') . "'</script>";
                 exit();
@@ -102,20 +102,22 @@ class InventoryController extends BaseController
             'prod_lprice' => $this->request->getPost('prod_lprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $hot->update($id, $postData);
         return redirect()->to(base_url('inventoryhotcoffee'));
@@ -127,7 +129,7 @@ class InventoryController extends BaseController
         $product = $hot->find($id);
         
         if (!empty($product['prod_img'])) {
-            $imagePath = $_SERVER['DOCUMENT_ROOT']. '/assets/images/products/' . $product['prod_img'];
+            $imagePath = 'assets/images/products/' . $product['prod_img'];
         
             if (file_exists($imagePath)) {
                 unlink($imagePath);
@@ -217,20 +219,22 @@ class InventoryController extends BaseController
             'prod_lprice' => $this->request->getPost('prod_lprice'),
         ];
 
-        $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $iced->update($id, $postData);
         return redirect()->to(base_url('inventoryicedcoffee'));
@@ -299,20 +303,22 @@ class InventoryController extends BaseController
             'prod_lprice' => $this->request->getPost('prod_lprice'),
         ];
 
-        $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $flav->update($id, $postData);
         return redirect()->to(base_url('inventoryflavoredcoffee'));
@@ -381,20 +387,22 @@ class InventoryController extends BaseController
             'prod_lprice' => $this->request->getPost('prod_lprice'),
         ];
 
-        $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $frap->update($id, $postData);
         return redirect()->to(base_url('inventoryfrappe'));
@@ -462,20 +470,22 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $lemon->update($id, $postData);
         return redirect()->to(base_url('inventorylemonade'));
@@ -544,20 +554,22 @@ class InventoryController extends BaseController
             'prod_lprice' => $this->request->getPost('prod_lprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $other->update($id, $postData);
         return redirect()->to(base_url('inventoryothers'));
@@ -625,20 +637,22 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $meal->update($id, $postData);
         return redirect()->to(base_url('inventorymeal'));
@@ -706,20 +720,22 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $chick->update($id, $postData);
         return redirect()->to(base_url('inventorychicken'));
@@ -787,20 +803,22 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $chickfill->update($id, $postData);
         return redirect()->to(base_url('inventorychickenfillet'));
@@ -868,20 +886,22 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $pasta->update($id, $postData);
         return redirect()->to(base_url('inventorypasta'));
@@ -949,20 +969,22 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $app->update($id, $postData);
         return redirect()->to(base_url('inventoryappetizer'));
@@ -1030,20 +1052,22 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $salad->update($id, $postData);
         return redirect()->to(base_url('inventorysalad'));
@@ -1083,86 +1107,6 @@ class InventoryController extends BaseController
                                
     return redirect()->to('inventorysalad')->with('msg', "The product you selected is now unavailable");     
     }
-    public function getsoup()
-    {
-        $categ = 'Soup';
-        $prod = new ProductModel();
-        $data['prod'] = $prod->soup($categ);
-        return view ('/inventory/soup', $data);
-    }
-
-    public function editsoup($id)
-    {
-        $esoup = new ProductModel();
-        $data['esoup'] = $esoup->find($id);
-        return view('/inventory/editsoup', $data);
-    }
-
-    public function updatesoup($id)
-    {
-        $soup = new ProductModel();
-        $productData = $soup->find($id);
-
-        $postData = [
-            'prod_name' => $this->request->getPost('prod_name'),
-            'prod_desc' => $this->request->getPost('prod_desc'),
-            'prod_quantity' => $this->request->getPost('prod_quantity'),
-            'prod_mprice' => $this->request->getPost('prod_mprice'),
-        ];
-
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
-
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
-        }
-        $soup->update($id, $postData);
-        return redirect()->to(base_url('inventorysoup'));
-    }
-    
-    public function deletesoup($id)
-    {
-        $soup = new ProductModel();
-        $product = $soup->find($id);
-        
-        if (!empty($product['prod_img'])) {
-            $imagePath = 'assets/images/products/' . $product['prod_img'];
-        
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-            }
-        }
-        $soup->delete($id);
-        return redirect()->to(base_url('inventorysoup'))->with('msg', "The product you selected has been deleted");
-    }
-
-    public function availabilitysoup()
-    {
-        $update = $this->request->getVar('update');
-        $updateAvailability = $this->myProduct($update);
-                              $this->updateProd($updateAvailability, $update);
-
-        return redirect()->to('inventorysoup')->with('msg', "The product you selected is now available");     
-    }
-
-    public function Unavailablesoup()
-    {
-        $unavailable = $this->request->getVar('update');
-
-        $updateUnavailability = $this->UnavailableProduct($unavailable);
-                                $this->updateAvailable($updateUnavailability);
-                               
-    return redirect()->to('inventorysoup')->with('msg', "The product you selected is now unavailable");     
-    }
 
     public function getsandwich()
     {
@@ -1191,20 +1135,22 @@ class InventoryController extends BaseController
             'prod_mprice' => $this->request->getPost('prod_mprice'),
         ];
 
-          $prodImg = $this->request->getFile('prod_img');
-          
-        if ($prodImg->isValid() && !$prodImg->hasMoved()) {
-            $newName = $prodImg->getName();
-            $prodImg->move($_SERVER['DOCUMENT_ROOT'] . '/assets/images/products/', $newName);
-            $postData['prod_img'] = $newName;
+        if (!empty($_FILES['prod_img']['name'])) {
+            $filename = $_FILES['prod_img']['name'];
+            $uploadDir = 'assets/images/products/';
+            $uploadFile = $uploadDir . $filename;
+            if (move_uploaded_file($_FILES['prod_img']['tmp_name'], $uploadFile)) {
+                $postData['prod_img'] = $filename;
 
-         
-        
-        
-        } else {
-            echo "<script>alert('Error uploading file.')</script>";
-            echo "<script>window.history.back()</script>";
-            exit();
+                if (!empty($productData['prod_img'])) {
+                    $previousImage = $uploadDir . $productData['prod_img'];
+                    if (file_exists($previousImage)) {
+                        unlink($previousImage);
+                    }
+                }
+            } else {
+                echo 'Error uploading file.';
+            }
         }
         $sand->update($id, $postData);
         return redirect()->to(base_url('inventorysandwich'));
