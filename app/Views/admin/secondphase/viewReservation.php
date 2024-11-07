@@ -88,6 +88,18 @@
             .btn-decline:hover {
                 background-color: #c82333;
             }
+            .image-container {
+                max-width: 20rem; /* Adjust based on desired image width */
+    
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem; /* Optional: rounds image corners */
+
+}
+
         </style>
     </head>
     <body>
@@ -112,7 +124,8 @@
                             <ul class="list-group">
                                 <form action="<?= base_url('AcceptReservation')?>" method="post">
                                     
-                                    <li class="list-group-item">
+                                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
                                         <h6>Customer Name: <?= htmlspecialchars($rsvData['FirstName'] . ' ' . $rsvData['LastName']) ?></h6>
                                         <p>Customer Message: <?= nl2br(htmlspecialchars($rsvData['Message'])) ?></p>
                                         <p>Count Of Persons: <?= (int)$rsvData['HCustomer'] ?> Customers</p>
@@ -123,7 +136,13 @@
                                             <p>Product Size: <?= htmlspecialchars($prod['size']) ?></p>
                                             <p>Product Price: ₱<?= number_format((float)$prod['totalPrice'], 2) ?></p>
                                         <?php endforeach; ?>
-                                    </li>
+                                    </div>
+
+                                    <!-- Image Section on the Right Side -->
+                                    <div class="image-container">
+                                        <img src="<?= base_url('assets/user/Epayment/') . $prodpic['Gpayment']?>" alt="PaymentCheck" class="img-fluid">
+                                    </div>
+                                </li>
 
                                     <li class="list-group-item">
                                         <?php if($rsvData['paymentStatus'] === 'ForObservation'): ?>

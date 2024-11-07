@@ -51,8 +51,9 @@
                             <div class="d-flex justify-content-between">
                     <select id="paymentStatusFilter" class="form-control w-25">
                         <option value="all">All</option>
-                        <option value="AcceptedOrder">Accepted order</option>
-                        <option value="ForObservation">OnObservation</option>
+                        <option value="CancelledReservation">Cancelled Reservation</option>
+                        <option value="AcceptedOrder">Accepted Reservation</option>
+                        <option value="ForObservation">Pending Reservation</option>
                     </select>
                 </div>
                         </div>

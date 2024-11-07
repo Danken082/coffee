@@ -61,14 +61,14 @@
 								<div class="form-group">
 									<div class="col-md-12">
 										<div class="radio">
-											<label><input type="radio" name="optradio" class="mr-2"> Cash on Delivery</label>
+											<label><input type="radio" name="payment" value="COD"class="mr-2"> Cash on Delivery</label>
 										</div>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-md-12">
 										<div class="radio">
-											<label><input type="radio" name="optradio" class="mr-2"> Gcash</label>
+											<label><input type="radio" name="payment" value="E-Payment"class="mr-2"> Gcash</label>
 										</div>
 									</div>
 								</div>

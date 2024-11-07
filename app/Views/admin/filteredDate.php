@@ -83,7 +83,7 @@
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="d-flex justify-content-between card-object">
                             <h6 class="text-white text-capitalize ps-3">Order History</h6>
-                            <form action="<?= base_url('exportReport/' .$toDate .'/'. $fromDate)?>" method="get">
+                            <form action="<?= base_url('previewReport/' .$toDate .'/'. $fromDate)?>" method="get">
                             <button class="btn btn-primary export" type="submit">Export </button>
                             </form>
                         </div>

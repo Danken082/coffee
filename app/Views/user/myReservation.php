@@ -82,7 +82,6 @@
         </div>
     </section>
 
-    <!-- Modal for Accepted Reservation -->
     <div class="modal fade" id="acceptReservationModal" tabindex="-1" role="dialog" aria-labelledby="acceptReservationLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -181,7 +180,9 @@
                     <p><strong>Total Price:</strong> $${reservation.totalPrice}</p>
                     <p><strong>Payment Status:</strong> ${reservation.paymentStatus}</p>
                     <p><strong>Message:</strong> ${reservation.Message || 'N/A'}</p>
-                    <!-- Add more details as needed -->
+                    <form action="<?= base_url('cancelreservation/')?>${reservation.TableCode}" method="post">
+                    <button type="submit" name="cancel" value="">Cancel order</button>
+                    </form>
                 `);
             });
 

@@ -2717,12 +2717,12 @@ return redirect()->to('trialnotif2');
             tbl_orders.amount_paid,tbl_orders.change_amount, product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity,
             product_tbl.prod_mprice, product_tbl.prod_lprice, product_tbl.prod_categ,')
             ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
-            ->where('DATE(order_date) >=', $toDate)->where('DATE(order_date) <=', $fromDate)
+            ->where('DATE(order_date) <=', $toDate)->where('DATE(order_date) >=', $fromDate)
             ->orderBy('DATE(order_date)','ASC')->findAll();
 
             $totalSum = $this->history->selectSum('tbl_orders.total_amount')
-            ->where('DATE(order_date) >=', $toDate)
-            ->where('DATE(order_date) <=', $fromDate)
+            ->where('DATE(order_date) <=', $toDate)
+            ->where('DATE(order_date) >=', $fromDate)
             ->first()['total_amount'];
     
         // Initialize HTML string
@@ -2793,7 +2793,13 @@ return redirect()->to('trialnotif2');
         $html .= "<tr>";
         $html .= "<td>" . htmlspecialchars($report['prod_name']) . "</td>";
         $html .= "<td>" . htmlspecialchars($report['prod_quantity']) . "</td>";
-        $html .= "<td>" . htmlspecialchars($report['size']) . "</td>";
+        if(!empty($report['size'])){
+            $html .= "<td>" . ucwords(htmlspecialchars($report['size'])) . "</td>";
+        }
+        else{
+            $html .= "<td>Regular</td>"; 
+        }
+       
         $html .= "<td>" . htmlspecialchars($report['total_amount']) . "</td>";
         $html .= "<td>" . (new \DateTime($report['order_date']))->format('F j, Y - H:i:s') . "</td>";
         $html .= "</tr>";
@@ -2807,18 +2813,47 @@ return redirect()->to('trialnotif2');
     $html .= "</tbody></table>";
     $html .= "Total Sales: $totalSum </body></html>";
            
-        // Load HTML content into Dompdf
         $dompdf->loadHtml($html);
     
-        // Set paper size and orientation
         $dompdf->setPaper('A4', 'landscape');
     
-        // Render PDF
         $dompdf->render();
     
-        // Output PDF to browser
         $dompdf->stream('Sales in '.(new \DateTime($toDate))->format('F j, Y'). ' - ' .(new \DateTime($fromDate))->format('F j, Y'));
     }
+
+
+
+        public function previewReport($fromDate, $toDate)
+        {
+
+            $data = [
+                'report' => $this->history
+                    ->select('tbl_orders.orderid, tbl_orders.CustomerID, tbl_orders.ProductID, 
+                              tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, 
+                              tbl_orders.order_date, tbl_orders.total_amount, tbl_orders.amount_paid, 
+                              tbl_orders.change_amount, product_tbl.prod_id, product_tbl.prod_name, 
+                              product_tbl.prod_quantity, product_tbl.prod_mprice, product_tbl.prod_lprice, 
+                              product_tbl.prod_categ')
+                    ->join('product_tbl', 'product_tbl.prod_id = tbl_orders.ProductID')
+                    ->where('DATE(order_date) <=', $toDate)
+                    ->where('DATE(order_date) >=', $fromDate)
+                    ->orderBy('DATE(order_date)', 'ASC')
+                    ->findAll(),
+                    
+                'totalSum' => $this->history
+                    ->selectSum('tbl_orders.total_amount')
+                    ->where('DATE(order_date) <=', $toDate)
+                    ->where('DATE(order_date) >=', $fromDate)
+                    ->first()['total_amount'],
+            
+                'fromDate' => $fromDate,
+                'toDate' => $toDate
+            ];
+            
+            return view('admin/secondphase/reportpreview', $data);
+            
+        }
 
     public function login(){
         $data['googleAuth'] = '<a class="google-login-btn" href="'. $this->googleClient->createAuthUrl() .'">
@@ -2939,7 +2974,7 @@ return redirect()->to('trialnotif2');
         product_tbl.prod_lprice, product_tbl.prod_img')
         ->join('user', 'user.UserID = tablereservation.CustomerID')
         ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID')
-        ->where('tablereservation.paymentStatus', 'Pending')
+       
         ->findAll(),
         'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
         'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
