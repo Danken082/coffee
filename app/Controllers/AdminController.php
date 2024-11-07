@@ -43,7 +43,7 @@ class AdminController extends BaseController
     public function __construct(){
 
         require_once APPPATH. "Libraries/vendor/autoload.php";
-        require_once "../vendor/autoload.php";
+        // require_once "../vendor/autoload.php";
 
         $this->googleClient = new  \Google_Client();
         $this->googleClient->setClientId("36300776648-thftnf9uer0h93dv7q6bbamivtou9ofr.apps.googleusercontent.com");
