@@ -48,22 +48,22 @@
             
                 <h2>Products</h2>
                 <div class="category-tabs">
-                        <button class="category-tab active" data-category="all">All</button>
+                <button class="category-tab active" data-category="all">All</button>
                         <button class="category-tab" data-category="app">Appetizer</button>
+                        <button class="category-tab" data-category="meal">Breakfast Meal</button>
+                        <button class="category-tab" data-category="chicken">Chicken Tenders</button>
+                        <button class="category-tab" data-category="chickenfillet">Crunchy Chicken Fillet</button>
                         <button class="category-tab" data-category="pasta">Pasta</button>
-                        <button class="category-tab" data-category="meal">Rice Meal</button>
                         <button class="category-tab" data-category="salad">Salad</button>
-                        <button class="category-tab" data-category="sand">Sandwich</button>
-                        <button class="category-tab" data-category="soup">Soup</button>
+                        <button class="category-tab" data-category="sand">Sub Sandwich</button>
                         <button class="category-tab" data-category="hot">Hot Coffee</button>
                         <button class="category-tab" data-category="iced">Iced Coffee</button>
                         <button class="category-tab" data-category="flav">Flavored Iced Coffee</button>
-                        <button class="category-tab" data-category="non">Non Coffee Frappe</button>
-                        <button class="category-tab" data-category="coffee">Coffee Frappe</button>
+                        <button class="category-tab" data-category="frap">Frappe Drinks</button>
+                        <button class="category-tab" data-category="lemon">Lemonade</button>
                         <button class="category-tab" data-category="other">Others</button>
                     </div>
                     <div class="products">
-                     
                         <?php foreach($app as $item): ?>
                             <div class="box" data-category="app">
                             <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
@@ -82,28 +82,6 @@
                                 <?php else:?>
                                     <p class="price">
                                         <span class="size-select">Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
-                                    </p>
-                                <?php endif;?>
-                                <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
-                            </div>
-                        <?php endforeach; ?>
-                        <?php foreach($pasta as $item): ?>
-                            <div class="box" data-category="pasta">
-                            <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
-                            <input type="hidden" value="<?= $HCustomer ?>" class="HCustomer">
-                            <input type="hidden" value="<?= $EventTitle ?>" class="EventTitle">
-                              <input type="hidden" value="<?= $EventDate ?>" class="EventDate">
-                              <input type="hidden" value="<?= $UpdatedContactNo ?>" class="updatedContactNo">
-                            <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
-                                <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
-                                <h3><a><?= $item['prod_name'] ?></a></h3>
-                                <?php if($item['prod_lprice'] == 0.00):?> 
-                                    <p class="price">
-                                        <span> ₱ <?= $item['prod_mprice'] ?> </span>
-                                    </p>
-                                <?php else:?>
-                                    <p class="price">
-                                        <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
                                     </p>
                                 <?php endif;?>
                                 <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
@@ -131,8 +109,73 @@
                                 <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
                             </div>
                         <?php endforeach; ?>
-                    <?php foreach($salad as $item): ?>
-
+                        <?php foreach($chicken as $item): ?>
+                            <div class="box" data-category="chicken">
+                            <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
+                            <input type="hidden" value="<?= $HCustomer ?>" class="HCustomer">
+                            <input type="hidden" value="<?= $EventTitle ?>" class="EventTitle">
+                              <input type="hidden" value="<?= $EventDate ?>" class="EventDate">
+                              <input type="hidden" value="<?= $UpdatedContactNo ?>" class="updatedContactNo">
+                            <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                                <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+                                <h3><a><?= $item['prod_name'] ?></a></h3>
+                                <?php if($item['prod_lprice'] == 0.00):?> 
+                                    <p class="price">
+                                        <span> ₱ <?= $item['prod_mprice'] ?> </span>
+                                    </p>
+                                <?php else:?>
+                                    <p class="price">
+                                        <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                                    </p>
+                                <?php endif;?>
+                                <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach($chickenfillet as $item): ?>
+                            <div class="box" data-category="chickenfillet">
+                            <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
+                            <input type="hidden" value="<?= $HCustomer ?>" class="HCustomer">
+                            <input type="hidden" value="<?= $EventTitle ?>" class="EventTitle">
+                              <input type="hidden" value="<?= $EventDate ?>" class="EventDate">
+                              <input type="hidden" value="<?= $UpdatedContactNo ?>" class="updatedContactNo">
+                            <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                                <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+                                <h3><a><?= $item['prod_name'] ?></a></h3>
+                                <?php if($item['prod_lprice'] == 0.00):?> 
+                                    <p class="price">
+                                        <span> ₱ <?= $item['prod_mprice'] ?> </span>
+                                    </p>
+                                <?php else:?>
+                                    <p class="price">
+                                        <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                                    </p>
+                                <?php endif;?>
+                                <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach($pasta as $item): ?>
+                            <div class="box" data-category="pasta">
+                            <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
+                            <input type="hidden" value="<?= $HCustomer ?>" class="HCustomer">
+                            <input type="hidden" value="<?= $EventTitle ?>" class="EventTitle">
+                              <input type="hidden" value="<?= $EventDate ?>" class="EventDate">
+                              <input type="hidden" value="<?= $UpdatedContactNo ?>" class="updatedContactNo">
+                            <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                                <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+                                <h3><a><?= $item['prod_name'] ?></a></h3>
+                                <?php if($item['prod_lprice'] == 0.00):?> 
+                                    <p class="price">
+                                        <span> ₱ <?= $item['prod_mprice'] ?> </span>
+                                    </p>
+                                <?php else:?>
+                                    <p class="price">
+                                        <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                                    </p>
+                                <?php endif;?>
+                                <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
+                            </div>
+                        <?php endforeach; ?>
+                        <?php foreach($salad as $item): ?>
                         <div class="box" data-category="salad">
                         <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
                             <input type="hidden" value="<?= $HCustomer ?>" class="HCustomer">
@@ -176,30 +219,7 @@
                             <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
                         </div>
                     <?php endforeach; ?>
-                    <?php foreach($soup as $item): ?>
-                        <div class="box" data-category="soup">
-                        <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
-                            <input type="hidden" value="<?= $HCustomer ?>" class="HCustomer">
-                            <input type="hidden" value="<?= $EventTitle ?>" class="EventTitle">
-                              <input type="hidden" value="<?= $EventDate ?>" class="EventDate">
-                              <input type="hidden" value="<?= $UpdatedContactNo ?>" class="updatedContactNo">
-                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
-                            <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
-                            <h3><a><?= $item['prod_name'] ?></a></h3>
-                            <?php if($item['prod_lprice'] == 0.00):?> 
-                                <p class="price">
-                                    <span>₱ <?= $item['prod_mprice'] ?> </span>
-                                </p>
-                            <?php else:?>
-                                <p class="price">
-                                    <span>Regular ₱ <?= $item['prod_mprice'] ?><br>Large ₱ <?= $item['prod_lprice'] ?> </span>
-                                </p>
-                            <?php endif;?>
-                            <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
-                        </div>
-                    <?php endforeach; ?>
                     <?php foreach($hot as $item): ?>
-                        
                         <div class="box" data-category="hot">
                              <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
                             <input type="hidden" value="<?= $HCustomer ?>" class="HCustomer">
@@ -214,6 +234,10 @@
                                     <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
                                 </p>
                                 <?php else:?>
+                                    <div class="price">
+                                        <span>Regular ₱ <?= $item['prod_mprice'] ?> </span><br>
+                                        <span>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                                    </div>
                                     <select class="size-select" data-regular-price="<?= $item['prod_mprice'] ?>" data-large-price="<?= $item['prod_lprice'] ?>">
                                         <option value="<?= $item['prod_mprice'] ?>">Regular</option>
                                         <option value="<?= $item['prod_lprice'] ?>">Large</option>
@@ -237,6 +261,10 @@
                                     <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
                                 </p>
                                 <?php else:?>
+                                    <div class="price">
+                                        <span>Regular ₱ <?= $item['prod_mprice'] ?> </span><br>
+                                        <span>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                                    </div>
                                     <select class="size-select" data-regular-price="<?= $item['prod_mprice'] ?>" data-large-price="<?= $item['prod_lprice'] ?>">
                                         <option value="<?= $item['prod_mprice'] ?>">Regular</option>
                                         <option value="<?= $item['prod_lprice'] ?>">Large</option>
@@ -260,6 +288,10 @@
                                     <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
                                 </p>
                                 <?php else:?>
+                                    <div class="price">
+                                        <span>Regular ₱ <?= $item['prod_mprice'] ?> </span><br>
+                                        <span>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                                    </div>
                                     <select class="size-select" data-regular-price="<?= $item['prod_mprice'] ?>" data-large-price="<?= $item['prod_lprice'] ?>">
                                         <option value="<?= $item['prod_mprice'] ?>">Regular</option>
                                         <option value="<?= $item['prod_lprice'] ?>">Large</option>
@@ -268,8 +300,8 @@
                             <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
                         </div>
                     <?php endforeach; ?>
-                    <?php foreach($non as $item): ?>
-                        <div class="box" data-category="non">
+                    <?php foreach($frap as $item): ?>
+                        <div class="box" data-category="frap">
                         <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
                             <input type="hidden" value="<?= $HCustomer ?>" class="HCustomer">
                             <input type="hidden" value="<?= $EventTitle ?>" class="EventTitle">
@@ -283,6 +315,10 @@
                                     <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
                                 </p>
                                 <?php else:?>
+                                    <div class="price">
+                                        <span>Regular ₱ <?= $item['prod_mprice'] ?> </span><br>
+                                        <span>Large ₱ <?= $item['prod_lprice'] ?> </span>
+                                    </div>
                                     <select class="size-select" data-regular-price="<?= $item['prod_mprice'] ?>" data-large-price="<?= $item['prod_lprice'] ?>">
                                         <option value="<?= $item['prod_mprice'] ?>">Regular</option>
                                         <option value="<?= $item['prod_lprice'] ?>">Large</option>
@@ -291,29 +327,28 @@
                             <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
                         </div>
                     <?php endforeach; ?>
-                    <?php foreach($coffee as $item): ?>
-                        <div class="box" data-category="coffee">
-                        <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
+                    <?php foreach($lemon as $item): ?>
+                            <div class="box" data-category="lemon">
+                            <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">
                             <input type="hidden" value="<?= $HCustomer ?>" class="HCustomer">
                             <input type="hidden" value="<?= $EventTitle ?>" class="EventTitle">
                               <input type="hidden" value="<?= $EventDate ?>" class="EventDate">
                               <input type="hidden" value="<?= $UpdatedContactNo ?>" class="updatedContactNo">
-                        <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
-                            <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
-                            <h3><a><?= $item['prod_name'] ?></a></h3>
-                            <?php if($item['prod_lprice'] == 0.00):?> 
-                                <p class="price">
-                                    <span>Regular ₱ <?= $item['prod_mprice'] ?> </span>
-                                </p>
+                            <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                                <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
+                                <h3><a><?= $item['prod_name'] ?></a></h3>
+                                <?php if($item['prod_lprice'] == 0.00):?> 
+                                    <p class="price">
+                                        <span> ₱ <?= $item['prod_mprice'] ?> </span>
+                                    </p>
                                 <?php else:?>
-                                    <select class="size-select" data-regular-price="<?= $item['prod_mprice'] ?>" data-large-price="<?= $item['prod_lprice'] ?>">
-                                        <option value="<?= $item['prod_mprice'] ?>">Regular</option>
-                                        <option value="<?= $item['prod_lprice'] ?>">Large</option>
-                                    </select>
-                                <?php endif;?><br><br>
-                            <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
-                        </div>
-                    <?php endforeach; ?>
+                                    <p class="price">
+                                        <span>Regular ₱ <?= $item['prod_mprice'] ?></span>
+                                    </p>
+                                <?php endif;?>
+                                <button class="btn btn-primary btn-outline-primary add-to-order" data-price="<?= $item['prod_mprice'] ?>">Add</button>
+                            </div>
+                        <?php endforeach; ?>
                     <?php foreach($other as $item): ?>
                         <div class="box" data-category="other">
                         <input type="hidden" value="<?= session()->get('UserID')?>" class="UserID">

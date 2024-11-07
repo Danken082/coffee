@@ -44,7 +44,9 @@ class UserController extends BaseController
     {   
         $verificationToken = substr(md5(rand()), 0, 8);
 
+       
         $rules = [
+
             'LastName' => 'required|min_length[2]',
             'FirstName' => 'required|min_length[2]',
             'gender' => 'required|min_length[2]',
@@ -56,36 +58,37 @@ class UserController extends BaseController
         ];
 
         if($this->validate($rules)){
-            $fcmToken = $this->request->getPost('token'); // Get the FCM token from the POST request
-            $email = $this->request->getVar('email');
-
-            $data = [
+        
+                $data = [
                 'LastName'    => $this->request->getVar('LastName'),
                 'FirstName'   => $this->request->getVar('FirstName'),
                 'gender'      => $this->request->getVar('gender'),
-                'email'       => $email,
+                'email'       => $this->request->getVar('email'),
                 'ContactNo'   => $this->request->getVar('ContactNo'),
                 'profile_img' => 'profile.png',
                 'UserRole'    => $this->request->getVar('UserRole'),
                 'Username'    => $this->request->getVar('Username'),
-                'token'       => $fcmToken,  
-                'status'      => 'pending',
+                'status'    => 1,
                 'Password'    => password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT),
                 'address'     => $this->request->getVar('address'),
                 'birthdate'   => $this->request->getVar('birthdate'),
                 'code'        =>  $verificationToken,
+                'status'      => 'pending'
             ];
 
+
+            
             $this->user->insert($data);
-            $this->sendVerificationEmail($email, $verificationToken);
-            return redirect()->to('/login')->with('msg', 'You are registered successfully! Check your email for verification.');
+            $this->sendVerificationEmail($this->request->getVar('Email'), $verificationToken);
+            return redirect()->to('/login')->with('msg', 'You are registered success Fully <br> See your email for you verification ');
 
-        } else {
-            $data['validation'] = $this->validator;
-            return view('admin/register', $data);
-        }
     }
-
+    
+    else{
+        $data['validation']= $this->validator;
+        return view('/admin/register', $data);
+    }
+   }
     public function verifyEmailReminder()
     {
         return view('admin/verify_email');
@@ -96,7 +99,7 @@ class UserController extends BaseController
 
         $emailService = \Config\Services::email();
         $emailService->setTo($email);
-        $emailService->setFrom('rontaledankeneth@gmail.com', 'Crossroads');
+        $emailService->setFrom('rontaledankeneth@gmail.com', 'crossroads');
         $emailService->setSubject('Email Verification');
         $emailService->setMessage("Please click the link below to verify your email address:\n\n" . base_url() . "/verify/$token");
 
@@ -219,7 +222,7 @@ class UserController extends BaseController
                 if ($user['UserRole'] == 'Admin' || $user['UserRole'] == 'Staff') {
                     return redirect()->to('/adminhome');
                 }
-                elseif($user['UserRole'] == 'Customer') {
+                elseif($user['UserRole'] == 'Customer' && $user['status'] == "Activated") {
                     return redirect()->to('/mainhome');
                 }
             } else {
@@ -489,12 +492,12 @@ class UserController extends BaseController
             $profileImg = $this->request->getFile('profile_img');
             if ($profileImg->isValid() && !$profileImg->hasMoved()) {
                 $newName = $profileImg->getName();
-                $profileImg->move($_SERVER['DOCUMENT_ROOT'] . '/userassetsimages/user/images/', $newName);
+                $profileImg->move(ROOTPATH . '/userassetsimages/user/images/', $newName);
                 $data['profile_img'] = $newName;
 
                 // Delete the old profile image if it's not the default image
-                if ($currentProfileImg !== 'profile.png' && file_exists($_SERVER['DOCUMENT_ROOT'] . '/userassetsimages/user/images/' . $currentProfileImg)) {
-                    unlink($_SERVER['DOCUMENT_ROOT'] . '/userassetsimages/user/images/' . $currentProfileImg);
+                if ($currentProfileImg !== 'profile.png' && file_exists(ROOTPATH . '/userassetsimages/user/images/' . $currentProfileImg)) {
+                    unlink(ROOTPATH . '/userassetsimages/user/images/' . $currentProfileImg);
                 }
             }
 
@@ -512,7 +515,7 @@ class UserController extends BaseController
         $profileImg = $currentUser['profile_img'];
         $defaultProfileImg = 'profile.png';
 
-        $profileImgPath = $_SERVER['DOCUMENT_ROOT'] . '/userassetsimages/user/images/' . $profileImg;
+        $profileImgPath = $_SERVER['DOCUMENT_ROOT'] . '/coffee/userassetsimages/user/images/' . $profileImg;
 
         if (!empty($profileImg) && $profileImg !== $defaultProfileImg && file_exists($profileImgPath)) {
             try {
@@ -557,8 +560,6 @@ class UserController extends BaseController
 
         return $prodOrder;
     }
-
- 
 
     private function insertOrder($prodOrder)
     {
@@ -612,119 +613,4 @@ class UserController extends BaseController
 
             echo $response;
     }
-
-    public function forgetPassword()
-    {
-        $username = $this->request->getPost('username');
-        $email    = $this->request->getPost('email');
-
-        $user = $this->user->where('email', $email)->first();
-        $data = ['search'=>$this->user->where('email', $email)->first(), 
-                 'email' => $email];
-
-        if(!isset($user['email']))
-        {
-            return redirect()->to('forgetpassword')->with('msg', 'Email Doesn`t Find Please Enter a Valid Email Address');
-        }
-        else{
-            return view('user/searchNameToChange', $data);
-            
-        }
-
-        
-    }
-
-    public function viewForgetPassword()
-    {
-        return view('user/forgetPassword');
-    }
-
-    public function updateCode()
-    {
-        try {
-            $email = $this->request->getVar('email');
-            $user = $this->user->where('email', $email)->first();
-        
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                throw new \InvalidArgumentException('Invalid email format.');
-            }
-
-            $verificationToken = substr(md5(rand()), 0, 8);
-            $data = ['code' => $verificationToken];
-
-            $result = $this->user->update($user['UserID'], $data);
-            $this->sendResetCode($email, $verificationToken);
-            if (!$result) {
-                throw new \Exception('Failed to update the user code.');
-            }
-
-            return redirect()->to('/verifyCode')->with('email', $email);
-
-        } catch (\Throwable $th) {
-            
-            log_message('error', $th->getMessage() . ": " . $th->getLine());
-        }
-    }
-
-    private function sendResetCode($email, $token)
-    {
-        $emailService = \Config\Services::email();
-        $emailService->setTo($email);
-        $emailService->setFrom('rontaledankeneth@gmail.com', 'Crossroads');
-        $emailService->setSubject('Email Verification');
-        $emailService->setMessage("Hello This is Your Verification Token Dont Share it to any one \n\n: $token");
-
-        $emailService->send();
-    }
-
-
-    public function verifyCode()
-    {
-        return view('user/code');
-    }
-
-    public function verificationAuth()
-    {
-        $code = $this->request->getVar('code');
-        $email = $this->request->getVar('email');
-        $data['email'] = $email;
-        $user = $this->user->where('email', $email)->first();
-    
-        if ($user) {
-            if ($user['code'] === $code) {
-                return view('user/newPassword', $data);
-            } else {
-                return redirect()->to('verifyCode')->with('email', $email)->with('msg', 'Please try again, the code is incorrect.');
-            }
-        } 
-        elseif(empty($email))
-        {
-            return redirect()->to('/login')->with('msg', ' Please check and try again.');
-        }
-        else {
-            return redirect()->to('verifyCode')->with('msg', 'Email not found. Please check and try again.');
-        }
-    }
-
-    public function newPassword()
-    {
-
-    try {
-
-      $pass =  $this->request->getVar('password');
-      $email = $this->request->getVar('email');
-      $user = $this->user->where('email', $email)->first();
-    
-      $data = ['Password' => password_hash($pass, PASSWORD_DEFAULT),
-               'code' => null];
-
-     $update =      $this->user->update($user['UserID'], $data);
-    
-     return redirect()->to('/login')->with('msg', 'Password Successfully Reset');
-     
-    } catch (\Throwable $th) {
-        log_message('error', $th->getMessage() . ": " . $th->getLine());
-    }
-    }
-    
 }
