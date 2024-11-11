@@ -4974,7 +4974,7 @@ return redirect()->to('trialnotif2');
         'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
     ];
 
-        return view('admin/viewEventReservation', $data);
+        return view('admin/ViewEventReservation', $data);
     }
 
 
