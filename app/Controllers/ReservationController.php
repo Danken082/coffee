@@ -290,6 +290,14 @@ class ReservationController extends BaseController
              ->join('product_tbl','product_tbl.prod_id = tablereservation.ProductID')
              ->join('user', 'user.UserID = tablereservation.CustomerID')
              ->where('tablereservation.TableCode', $tableCode)->findAll(),
+
+             'prodpic' => $this->rsv->select('tablereservation.quantity, tablereservation.size, tablereservation.TableCode, tablereservation.appointmentDate,
+             tablereservation.totalPrice, tablereservation.Gpayment, tablereservation.TableID, tablereservation.paymentStatus,tablereservation.HCustomer, tablereservation.Message,
+             tablereservation.reservationDate, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, product_tbl.prod_lprice, user.LastName, user.FirstName')
+             ->join('product_tbl','product_tbl.prod_id = tablereservation.ProductID')
+             ->join('user', 'user.UserID = tablereservation.CustomerID')
+             ->where('tablereservation.TableCode', $tableCode)->first(),
+
              'sumTotalOrder' => $this->rsv->select('SUM(totalPrice) as totalPrice')->where('tablereservation.TableCode', $tableCode)->first()
                 ];
 
@@ -361,6 +369,16 @@ class ReservationController extends BaseController
         return view('user/myReservation', $data);
     }
     
+    public function cancelReservation($reservationCode)
+    {
+
+        $data = [
+            'paymentStatus' => 'CancelledReservation'
+        ];
+        $this->rsv->where('TableCode', $reservationCode)->set($data)->update();
+
+        return redirect()->to('myReservation');
+    }
 } 
 
 

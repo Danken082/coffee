@@ -18,15 +18,18 @@
             justify-content: center;
             height: 100vh;
             padding: 20px;
+            overflow-y: hidden; /* Prevents body from scrolling */
         }
         .container {
             background-color: #ffffff;
             width: 100%;
             max-width: 400px;
+            max-height: 90vh; /* Limits the height of the container */
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            overflow-y: auto; /* Enables scrolling within the container */
         }
         .container h2 {
             color: #343a40;
@@ -63,6 +66,16 @@
         .image-upload input[type="file"] {
             display: none;
         }
+        .file-name, .preview-image {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #495057;
+        }
+        .preview-image {
+            max-width: 100%;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
         .gcash-image {
             margin-top: 20px;
             width: 100%;
@@ -82,8 +95,8 @@
         .submit-button:hover {
             background-color: #218838;
         }
-
-        /* Media Query for Mobile */
+        
+        /* Responsive Styles for Mobile */
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -93,6 +106,10 @@
             }
             .container p, .product-info p, .image-upload label, .submit-button {
                 font-size: 1em;
+            }
+            .preview-image {
+                max-width: 100%;  /* Ensure the image scales down on smaller screens */
+                height: auto;
             }
         }
         @media (max-width: 480px) {
@@ -107,20 +124,24 @@
                 padding: 10px;
                 font-size: 0.9em;
             }
+            .preview-image {
+                width: 100%;  /* Image takes full width on smaller screens */
+                height: auto;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <form action="<?= base_url('OrderOnline')?>" method="post" enctype="multipart/form-data">
-            <?= csrf_field(); ?> <!-- CSRF Protection -->
+            <p><small>Please Make It Fully Paid</small></p>
 
-            <input type="hidden" name="CustomerID" value="<?= base64_decode($CustomerID)?>">
-            <input type="hidden" name="ProductID" value="<?= base64_decode($ProductID)?>">
-            <input type="hidden" name="quantity" value="<?= base64_decode($quantity)?>">
-            <input type="hidden" name="size" value="<?= base64_decode($size)?>">
-            <input type="hidden" name="total" value="<?= base64_decode($total)?>">
-            <input type="hidden" name="barcode" value="<?= base64_decode($barcode)?>">
+            <input type="hidden" name="CustomerID" value="<?= $CustomerID?>">
+            <input type="hidden" name="ProductID" value="<?= $ProductID?>">
+            <input type="hidden" name="quantity" value="<?= $quantity?>">
+            <input type="hidden" name="size" value="<?= $size?>">
+            <input type="hidden" name="total" value="<?= $total?>">
+            <input type="hidden" name="barcode" value="<?= $barcode?>">
 
             <h2>Order Payment Preview</h2>
             <p>Hello, <?= session()->get('FirstName') . ' ' . ucwords(session()->get('LastName')) ?></p>
@@ -134,14 +155,40 @@
 
             <div class="image-upload">
                 <label for="fileUpload">Upload Payment Screenshot</label>
-                <input type="file" name="image" id="fileUpload" accept="image/*">
+                <input type="file" name="Paymentimage" id="fileUpload" accept="image/*" onchange="previewImage()">
+                <p class="file-name" id="fileName">No file selected</p>
             </div>
+            
+            <!-- Image preview -->
+            <img id="imagePreview" class="preview-image" src="#" alt="Image Preview" style="display: none;">
 
             <img class="gcash-image" src="<?= base_url('assets/images/gcash.jpg')?>" alt="Gcash Payment">
 
             <button class="submit-button">Submit Payment</button>
         </form>
     </div>
+
+    <script>
+        function previewImage() {
+            const fileInput = document.getElementById('fileUpload');
+            const fileNameDisplay = document.getElementById('fileName');
+            const imagePreview = document.getElementById('imagePreview');
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                }
+
+                reader.readAsDataURL(fileInput.files[0]);
+                fileNameDisplay.textContent = fileInput.files[0].name;
+            } else {
+                fileNameDisplay.textContent = 'No file selected';
+                imagePreview.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
- 

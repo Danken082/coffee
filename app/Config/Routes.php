@@ -218,6 +218,8 @@ $routes->match(['get', 'post'], 'ViewMonthlyReport', 'VisualizationController::c
 $routes->match(['get', 'post'], 'viewReportMonthly', 'VisualizationController::viewReportMonthly');
 $routes->match(['get', 'post'], 'salesReportPerMonth', 'VisualizationController::salesReportPerMonth');
 
+$routes->get('/previewReport/(:any)/(:any)', 'AdminController::previewReport/$1/$2');
+
 }
 
 $routes->match(['get', 'post'], 'GoToPayment', 'OrderController::paymentOrder');
@@ -245,6 +247,7 @@ $routes->get('/contact', 'UserController::home_contact', ['filter' => 'guestFilt
 $routes->get('/maincontact', 'UserController::home_maincontact',['filter'=>'cusFilter']);
 $routes->get('/cart', 'CartController::home_cart');
 $routes->post('user/checkouts/', 'OrderController::placeToOrder');
+$routes->post('OrderOnline', 'OrderController::OrderOnlinePayment');
 $routes->get('OrderMeal/(:any)', 'OrderController::myOrdersmeal/$1');
 $routes->get('OrderDrink/(:any)', 'OrderController::myOrdersdrink/$1');
 #for feedback
@@ -303,8 +306,8 @@ $routes->post('trialForexpense', 'VisualizationController::InsertExpenses');
 $routes->match(['get', 'post'], 'previewReservation', 'ReservationController::previewReservation');
 $routes->post('/saveReservation', 'AdminController::saveReservation');
 $routes->post('getResevartionData', 'ReservationController::getResevartionData');
-$routes->match(['get', 'post'], 'getData', 'ReservationController::paymentView');
-$routes->match(['get', 'post'], 'saveData', 'ReservationController::saveData');
+$routes->match(['get', 'post'], 'getData', 'ReservationController::paymentView', ['filter'=>'cusFilter']);
+$routes->match(['get', 'post'], 'saveData', 'ReservationController::saveData', ['filter'=>'cusFilter']);
 // $routes
 
 
@@ -328,3 +331,7 @@ $routes->post('sendAuthCode', 'UserController::updateCode');
 $routes->get('verifyCode', 'UserController::verifyCode');
 $routes->post('verifyCodeAuth', 'UserController::verificationAuth');
 $routes->post('newPass', 'UserController::newPassword');
+$routes->match(['get', 'post'], '/cancelreservation/(:any)', 'ReservationController::cancelReservation/$1', ['filter'=>'cusFilter']);
+
+$routes->get('/samplehi', 'AdminController::hello');
+

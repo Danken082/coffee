@@ -407,6 +407,13 @@ class OrderController extends BaseController
     {
         $orderCode = $this->generateAlphanumericBarcode();
 
+        $paymentType = $this->request->getVar('payment');
+        $CustomerID = $this->request->getVar('CustomerID');
+        $ProductID = $this->request->getVar('ProductID');
+        $quantity = $this->request->getVar('quantity');
+        $size = $this->request->getVar('size');
+        $total = $this->request->getVar('total');
+         $prodName = $this->prod->where('prod_id', $ProductID)->first();
         $data = [
             'CustomerID' => $this->request->getVar('CustomerID'),
             'ProductID' => $this->request->getVar('ProductID'),
@@ -414,15 +421,66 @@ class OrderController extends BaseController
             'size' => $this->request->getVar('size'),
             'total' => $this->request->getVar('total'),
             'barcode' => 'CrossroadsOnline-' .$orderCode,
-            'orderType' => 'DineIn',
+            'orderType' => 'ForDelivery',
             'orderStatus' => 'onProcess',
-            'reference_number' => 'this is an Cash Payment',
+            'prodName' => $prodName,
+            'reference_number' => 'this is Cash On Delivery',
 
         ];
+        if($paymentType == 'COD')
+        {
+
+        
 
         $this->order->insert($data);
 
-        return redirect()->to('/');
+        return redirect()->to('/mainhome');
+    }
+
+    elseif($paymentType == 'E-Payment')
+    {
+        return view('user/orderPayment', $data);
+    }
+
+    else{
+        return redirect()->to('user/checkouts/')->with('msg', 'Please select a Payment Method');
+    }
+    }
+
+    public function OrderOnlinePayment()
+    {
+        try {
+
+        $orderCode = $this->generateAlphanumericBarcode();
+        $data = [
+            'CustomerID' => $this->request->getVar('CustomerID'),
+            'ProductID' => $this->request->getVar('ProductID'),
+            'quantity' => $this->request->getVar('quantity'),
+            'size' => $this->request->getVar('size'),
+            'total' => $this->request->getVar('total'),
+            'barcode' => 'CrossroadsOnline-' .$orderCode,
+            'orderType' => 'ForDelivery',
+            'orderStatus' => 'onProcess',
+         
+            'reference_number' => 'this an E-Payment',
+
+        ];
+
+        $paymentImage = $this->request->getFile('Paymentimage');
+        if ($paymentImage->isValid() && !$paymentImage->hasMoved()) {
+            $newName = $paymentImage->getName();
+            $paymentImage->move($_SERVER['DOCUMENT_ROOT'] . '\assets\user\Epayment', $newName);
+            $data['ImagePayment'] = $newName;
+        }
+
+        $this->order->insert($data);
+        // var_dump($data);
+        return redirect()->to('mainshop')->with('msg', 'OrderedSuccessFul');
+    } catch (\Throwable $th) {
+        //throw $th;
+        echo 1;
+    }
+    
     }
 
 
