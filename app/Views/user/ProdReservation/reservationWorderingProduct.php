@@ -31,7 +31,7 @@
 <body>
     <main>
         <br>
-        <a href="<?= base_url('/mainhome')?>" style="background-color: transparent; color:black; font-size: 1.5em;">Back to Home</a>
+        <a href="<?= base_url('/mainhome')?>" style="background-color: transparent; color:white; font-size: 1.5em;">Back to Home</a>
         <div class="container">
             <div class="products-container">
                 <div class="search-bar-container">

@@ -43,6 +43,7 @@
 
             .button-back a:hover {
                 background-color: #0056b3;
+                color:white
             }
 
             .list-group-item {
@@ -75,13 +76,13 @@
 
             .edit-order-btn:hover {
                 background-color: #138496;
+                color:white;
             }
         </style>
     </head>
     <body>
         <div class="container-fluid mt-4">
             <div class="row">
-                <!-- Sidebar -->
                 <?php include('sidebar.php'); ?>
 
                 <div class="col-lg-9">
@@ -89,7 +90,7 @@
                     <div class="card">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3 d-flex justify-content-between align-items-center">
-                                <h6 class="text-white text-capitalize ps-3">Order Payment List</h6>
+                                <h6 class="text-white text-capitalize ps-3">Order Payment History</h6>
                                 <div class="button-back">
                                     <a href="javascript:history.back()">Back</a>
                                 </div>
