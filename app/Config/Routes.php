@@ -31,21 +31,21 @@ $routes->get('print-receipts', 'AdminController::printReceipt');
 if(session()->get('UserRole') === 'Admin' || session()->get('UserRole') === 'Staff' )
 {
 //viewOrders
-$routes->get('/viewOrderHistory/(:any)', 'AdminController::viewOrderHist/$1');
-$routes->get('/editOrder/(:any)', 'AdminController::editOrder/$1');
+$routes->get('/viewOrderHistory/(:any)', 'AdminController::viewOrderHist/$1', ['filter'=>'authFilter']);
+$routes->get('/editOrder/(:any)', 'AdminController::editOrder/$1', ['filter'=>'authFilter']);
 
 
 
-$routes->get('adminorderpayment', 'AdminController::viewOrders');
+$routes->get('adminorderpayment', 'AdminController::viewOrders', ['filter'=>'authFilter']);
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
-$routes->match(['get', 'post'],'VisualizationController/thisAllChart', 'VisualizationController::thisAllChart');
+$routes->match(['get', 'post'],'VisualizationController/thisAllChart', 'VisualizationController::thisAllChart', ['filter'=>'authFilter']);
 
 
 //reports
-$routes->match(['get', 'post'], 'reports', 'VisualizationController::salesReportPerDay');
-$routes->match(['get', 'post'], 'reportspermonths/(:any)', 'VisualizationController::salesReportPerMonthInyear/$1');
-$routes->match(['get', 'post'], 'reportsYear', 'VisualizationController::salesReportEveryYear');
+$routes->match(['get', 'post'], 'reports', 'VisualizationController::salesReportPerDay', ['filter'=>'authFilter']);
+$routes->match(['get', 'post'], 'reportspermonths/(:any)', 'VisualizationController::salesReportPerMonthInyear/$1', ['filter'=>'authFilter']);
+$routes->match(['get', 'post'], 'reportsYear', 'VisualizationController::salesReportEveryYear', ['filter'=>'authFilter']);
 //POS
 $routes->get('/admininventory', 'AdminController::inventory', ['filter'=>'authFilter']);
 $routes->get('/adminpayment', 'AdminController::orderpayment', ['filter'=>'authFilter']);
@@ -58,15 +58,15 @@ $routes->get('/adminmnguser', 'AdminController::mnguser', ['filter'=>'authFilter
 $routes->post('/adminadduser', 'AdminController::adduser', ['filter'=>'authFilter']);
 $routes->get('/admincustomer_user', 'AdminController::getcustomeruser', ['filter'=>'authFilter']);
 $routes->get('/adminprod', 'AdminController::products', ['filter'=>'authFilter']);
-$routes->get('/admineditprofile/(:any)', 'AdminController::edit_profile/$1');
-$routes->post('/updateadminprofile/(:any)', 'AdminController::updateadminprofile/$1');
+$routes->get('/admineditprofile/(:any)', 'AdminController::edit_profile/$1', ['filter'=>'authFilter']);
+$routes->post('/updateadminprofile/(:any)', 'AdminController::updateadminprofile/$1', ['filter'=>'authFilter']);
 $routes->get('/removeprofile/(:any)', 'AdminController::removeadminprofile/$1',['filter'=>'authFilter']);
-$routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1');
-$routes->get('admin/sidebar', 'AdminController::admin_side');
-$routes->get('viewOrders', 'AdminController::viewOrder');
-$routes->get('/adminpos', 'AdminController::pos');
-$routes->get('addingTable', 'AdminController::viewAddTable');
-$routes->post('AdminTable', 'AdminController::addingTable');
+$routes->get('/deleteuser/(:any)', 'AdminController::deleteuser/$1', ['filter'=>'authFilter']);
+$routes->get('admin/sidebar', 'AdminController::admin_side', ['filter'=>'authFilter']);
+$routes->get('viewOrders', 'AdminController::viewOrder', ['filter'=>'authFilter']);
+$routes->get('/adminpos', 'AdminController::pos', ['filter'=>'authFilter']);
+$routes->get('addingTable', 'AdminController::viewAddTable', ['filter'=>'authFilter']);
+$routes->post('AdminTable', 'AdminController::addingTable', ['filter'=>'authFilter']);
 #forAcceptingOrde
 
 $routes->post('AcceptthisOrder', 'AdminController::getPendingOrders');
@@ -219,6 +219,7 @@ $routes->match(['get', 'post'], 'viewReportMonthly', 'VisualizationController::v
 $routes->match(['get', 'post'], 'salesReportPerMonth', 'VisualizationController::salesReportPerMonth');
 
 $routes->get('/previewReport/(:any)/(:any)', 'AdminController::previewReport/$1/$2');
+$routes->get('adminitems', 'InventoryController::adminitems');
 
 }
 
@@ -314,6 +315,7 @@ $routes->match(['get', 'post'], 'saveData', 'ReservationController::saveData', [
 $routes->get('sampleNotif', 'ChatController::sampleNotif');
 $routes->get('viewReservation/(:any)', 'ReservationController::getReservationData/$1');
 $routes->match(['get', 'post'], 'AcceptReservation', 'ReservationController::AcceptReservation');
+$routes->match(['get', 'post'], 'DeclinedReservation', 'ReservationController::DeclinedReservation');
 
 
 $routes->get('flavor', 'AdminController::flvr');
@@ -333,5 +335,5 @@ $routes->post('verifyCodeAuth', 'UserController::verificationAuth');
 $routes->post('newPass', 'UserController::newPassword');
 $routes->match(['get', 'post'], '/cancelreservation/(:any)', 'ReservationController::cancelReservation/$1', ['filter'=>'cusFilter']);
 
-$routes->get('/samplehi', 'AdminController::hello');
+$routes->post('/samplehi', 'AdminController::hello');
 

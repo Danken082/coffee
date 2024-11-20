@@ -84,7 +84,7 @@
                         <div class="d-flex justify-content-between card-object">
                             <h6 class="text-white text-capitalize ps-3">Order History</h6>
                             <form action="<?= base_url('previewReport/' .$toDate .'/'. $fromDate)?>" method="get">
-                            <button class="btn btn-primary export" type="submit">Export </button>
+                            <button class="btn btn-primary export" type="submit">Preview Report </button>
                             </form>
                         </div>
                     </div>

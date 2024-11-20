@@ -222,7 +222,7 @@ class UserController extends BaseController
                 if ($user['UserRole'] == 'Admin' || $user['UserRole'] == 'Staff') {
                     return redirect()->to('/adminhome');
                 }
-                elseif($user['UserRole'] == 'Customer' && $user['status'] == "Activated") {
+                elseif($user['UserRole'] == 'Customer') {
                     return redirect()->to('/mainhome');
                 }
             } else {

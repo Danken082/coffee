@@ -64,66 +64,39 @@ class AdminController extends BaseController
         $this->raw = new ItemsModel();
         $this->reservation = new ReservationModel();
         $this->flvr = new FlavorModel();
-        $this->connector = new WindowsPrintConnector("POS58_Printer2");
-        $this->printer  = new Printer($this->connector);
+
+        $this->connector = new WindowsPrintConnector("smb://dan/POS-58");
+        $this->printer   = new Printer($this->connector);
+        
         // $this->credentials = new ServiceAccountCredentials("https://www.googleapis.com/auth/firebase.messaging", json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/js/pv_key.json"), true));
 
     }
 
     public function hello()
     {
-        // header("Content-Type: application/json");
-        // header("Access-Control-Allow-Origin: *"); // Allows any domain to access
-        // header("Access-Control-Allow-Methods: POST, GET, OPTIONS"); // Specify allowed methods
-        // header("Access-Control-Allow-Headers: Content-Type"); // Specify allowed headers
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Get the print data sent from the online server
+            $input = json_decode(file_get_contents('php://input'), true);
         
-        // // Handle OPTIONS preflight request
-        // if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-        //     http_response_code(200);
-        //     exit;
-        // }
-        // // Get the JSON input data
-        // $input = json_decode(file_get_contents("php://input"), true);
+            // Handle printing logic
+            try {
+                // Connect to the printer (using WindowsPrintConnector or NetworkPrintConnector)
+                $connector = new WindowsPrintConnector("POS-58");
+                $printer = new Printer($connector);
         
-        // // Log the input data for debugging
-        // file_put_contents('print-log.txt', print_r($input, true), FILE_APPEND);
+                // Print the receipt text
+                $printer->text($input['text']);
+                $printer->cut();  // Optionally cut the paper after printing
+                $printer->close();  // Close the printer connection
         
-        // if (!isset($input['data'])) {
-        //     echo json_encode(['status' => 'error', 'message' => 'No data received']);
-        //     exit;
-        // }
-        
-        // $data = $input['data'];
-        // $response = ['status' => 'error', 'message' => 'Failed to print.'];
-        
-        // try {
-        //     // Set up the printer connection (replace 'POS58' with your printer name)
-        //     $connector = new WindowsPrintConnector("POS58_Printer2");
-        //     $printer = new Printer($connector);
-        
-        //     // Print receipt header
-        //     $printer->text("Receipt\n");
-        //     $printer->text("============\n");
-            
-        //     // Print each item in the receipt
-        //     foreach ($data as $item) {
-        //         $printer->text($item['name'] . " - " . $item['price'] . "\n");
-        //     }
-        
-        //     $printer->text("============\n");
-        //     $printer->text("Thank you!\n");
-        //     $printer->cut(); // Cut the paper
-        //     $printer->close(); // Close the printer connection
-        
-        //     $response = ['status' => 'success', 'message' => 'Printed successfully.'];
-        // } catch (Exception $e) {
-        //     $response['message'] = $e->getMessage(); // Capture any errors
-        // }
-        
-        // // Return JSON response
-        // echo json_encode($response);
-
-        echo "1";
+                // Return a success message
+                echo "Print job successful!";
+            } catch (Exception $e) {
+                // In case of error, return an error message
+                http_response_code(500);
+                echo "Error: " . $e->getMessage();
+            }
+        }
     }
 
 
@@ -4961,14 +4934,12 @@ return redirect()->to('trialnotif2');
 
     public function eventReservation()
     {
-        $data = ['res' => $this->reservation->select('tablereservation.TableID, tablereservation.CustomerID, tablereservation.HCustomer,
-        tablereservation.ProductID, tablereservation.quantity, tablereservation.size, tablereservation.TableCode,
-        tablereservation.appointmentDate, tablereservation.totalPayment, tablereservation.paymentStatus, tablereservation.Message, tablereservation.reservationDate,
-        user.UserID, user.LastName, user.FirstName, user.email, user.ContactNo, product_tbl.prod_name, product_tbl.prod_mprice,
-        product_tbl.prod_lprice, product_tbl.prod_img')
+        $data = ['res' => $this->reservation->select('
+         MAX(tablereservation.TableCode) as TableCode,
+        MAX(tablereservation.appointmentDate) as appointmentDate, MAX(tablereservation.paymentStatus) as paymentStatus, MAX(tablereservation.reservationDate) as reservationDate,')
         ->join('user', 'user.UserID = tablereservation.CustomerID')
         ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID')
-       
+       ->groupBy('tablereservation.TableCode')
         ->findAll(),
         'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
         'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 

@@ -8,6 +8,7 @@ const enterPayment = document.getElementById('payment-input');
 const changeOutputs = document.getElementById('change-output');
 const DineTake = document.querySelector('.SelectDineTake');
 const paymentData = document.querySelector('.SelectPayment');
+
 let total = 0;
 let quantityTotal = 0;
 let additionalCharge = 0;
@@ -286,3 +287,65 @@ searchInput.addEventListener('input', () => {
         noProductMessage.style.display = 'block';
     }
 });
+
+function showOrderPreview() {
+    const modal = document.getElementById('orderModal');
+    const orderTable = document.getElementById('order-list');
+    const modalOrderList = document.getElementById('modal-order-list');
+    const modalOrderTotal = document.getElementById('modal-order-total');
+    const amountPay = document.getElementById('payment-input');
+
+    // Clear previous modal content
+    modalOrderList.innerHTML = '';
+
+    let grandTotal = 0;
+    const payment = parseFloat(amountPay.value) || 0; // Default to 0 if input is empty or invalid
+
+    // Check if the table contains any rows
+    const rows = Array.from(orderTable.tBodies[0].rows);
+    if (rows.length === 0) {
+        // Display a no-data message
+        modalOrderList.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align: center; font-weight: bold;">No orders to display</td>
+            </tr>
+        `;
+    } else {
+        rows.forEach(row => {
+            const productName = row.cells[0].textContent;
+            const productSize = row.cells[2].textContent || 'Regular';
+            const productQuantity = parseInt(row.querySelector('.quantity').textContent, 10);
+            const productPrice = parseFloat(row.querySelector('.price-cell').textContent.replace('₱ ', ''));
+            const totalPrice = productPrice * productQuantity;
+
+            grandTotal += totalPrice;
+
+            // Add order details to modal
+            modalOrderList.innerHTML += `
+                <tr>
+                    <td>${productName}</td>
+                    <td>${productSize}</td>
+                    <td>${productQuantity}</td>
+                    <td>₱ ${productPrice.toFixed(2)}</td>
+                    <td>₱ ${totalPrice.toFixed(2)}</td>
+                </tr>
+            `;
+        });
+
+        modalOrderTotal.innerHTML = `
+            Grand Total: ₱ ${grandTotal.toFixed(2)}<br>
+            Payment: ₱ ${payment.toFixed(2)}<br>
+            Change: ₱ ${(payment - grandTotal).toFixed(2)}
+        `;
+    }
+
+    // Show the modal
+    modal.classList.add('show');
+}
+
+// Function to close the modal
+function closeOrderPreview() {
+    const modal = document.getElementById('orderModal');
+    modal.classList.remove('show');
+}
+

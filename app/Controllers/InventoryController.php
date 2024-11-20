@@ -1335,7 +1335,9 @@ class InventoryController extends BaseController
         return view('/inventory/additems');
     }
 
-    // public function 
+    public function adminitems(){
+        return view('admin/items');
+    }
 
 
 }

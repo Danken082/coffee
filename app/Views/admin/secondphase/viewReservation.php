@@ -136,6 +136,9 @@
                                             <p>Product Size: <?= htmlspecialchars($prod['size']) ?></p>
                                             <p>Product Price: ₱<?= number_format((float)$prod['totalPrice'], 2) ?></p>
                                         <?php endforeach; ?>
+                                        <?php if($prodpic['paymentStatus'] == 'DeclineOrder' || 'CancelledReservation'):?>
+                                            <p>Reason For Cancellation or Declining: <?= $prodpic['ReasonDeclined']?></p>
+                                        <?php endif;?>
                                     </div>
 
                                     <!-- Image Section on the Right Side -->
@@ -147,12 +150,15 @@
                                     <li class="list-group-item">
                                         <?php if($rsvData['paymentStatus'] === 'ForObservation'): ?>
                                             <button type="submit" name="action" value="AcceptedOrder" class="btn-action btn-accept">Accept Reservation</button>
-                                            <button type="submit" name="action" value="DeclineOrder" class="btn-action btn-decline">Decline Reservation</button>
+                                            <a href="#" id="declined-Order" data-toggle="modal" class="btn-action btn-decline"data-target="#declinedOrderModal">This is a Declined Order</a>
                                         <?php elseif($rsvData['paymentStatus'] === 'AcceptedOrder'): ?>
                                             <button type="button" class="btn-action btn-accept" disabled>This Reservation is Accepted</button>
                                         <?php elseif($rsvData['paymentStatus'] === 'DeclineOrder'): ?>
-                                            <button type="button" class="btn-action btn-decline" disabled> This Reservation is Declined</button>
-                                        <?php else: ?>
+                                           
+                                            <a href="#" id="declined-Order" data-toggle="modal" class="btn-action btn-decline" data-target="#declinedOrderModal">Update Reason on Declining Reservation</a>
+                                            <?php elseif($rsvData['paymentStatus'] === 'CancelledReservation'): ?>
+                                                <button class="btn btn-secondary" disabled>Cancelled Order</button>
+                                            <?php else: ?>
                                             <p>Status Unknown</p>
                                         <?php endif; ?>
                                     </li>
@@ -167,6 +173,32 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="declinedOrderModal" tabindex="-1" role="dialog" aria-labelledby="declinedOrderModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <form action="<?= base_url('DeclinedReservation') ?>" method="post">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="declinedOrderModalLabel">Decline Order</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Please provide a reason for declining this order:</p>
+                            <div class="form-group">
+                                <label for="declineReasonInput">Reason:</label>
+                                <textarea id="declineReasonInput" name="declineReason" class="form-control" rows="4" placeholder="Enter your reason here..." required></textarea>
+                            </div>
+                            <input type="hidden" name="orderID" value="<?= htmlspecialchars($rsvData['TableCode']) ?>">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"  class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="submit" name="action"class="btn btn-danger">Submit Reason</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
             <!-- Scripts -->
             <script src="/assets/js/core/popper.min.js"></script>
@@ -177,6 +209,8 @@
             <script async defer src="https://buttons.github.io/buttons.js"></script>
             <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
             <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+         
         </div>
     </body>
+    
 </html>

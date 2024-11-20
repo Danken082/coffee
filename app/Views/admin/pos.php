@@ -332,12 +332,65 @@
                         <button id="pay-button">Pay</button><br><br>
                         <div id="change-output"></div>
                     </div>
-                    <button id="save-transaction-button">Save Transaction</button>
+                    <button class="btn btn-primary" id="previewPOSOrders"onclick="showOrderPreview()" >Preview Orders</button>
+    
                 </div>
             </div>
         </div>
     </main>
 
+    
+    <!-- Order Preview Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>Order Preview</p>
+
+            </div>
+            <div class="modal-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Size</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-order-list">
+
+                    </tbody>
+                </table>
+                <div class="text-end">
+                    <span id="modal-order-total">Grand Total: ₱0.00</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeOrderPreview()">Close</button>
+                <button class="btn btn-primary" onclick="window.print()">Print</button>
+            </div>
+        </div>
+    </div>
+
     <script src="/assets/js/pos.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const paymentInput = document.getElementById('payment-input');
+    const payButton = document.getElementById('previewPOSOrders');
+
+    // Add an event listener to the input field
+    paymentInput.addEventListener('input', () => {
+        // Enable the button if the input is not empty and greater than 0
+        if (paymentInput.value.trim() !== '' && parseFloat(paymentInput.value) > 0) {
+            payButton.disabled = false;
+        } else {
+            payButton.disabled = true;
+        }
+    });
+}); -->
+
+    <!-- </script>
 </body>
 </html>

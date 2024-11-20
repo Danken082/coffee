@@ -116,6 +116,7 @@
 
             <div class="form-group">
                 <label for="payment">Upload Your Proof of Payment Here:</label>
+                <h3>Please Pay Minimum is the Half or Full of Your Payment For Reservation</h3>
                 <input required type="file" name="payment" id="payment" accept=".jpg, .jpeg, .png, .gif">
     </div>
 
@@ -212,6 +213,7 @@
             const productDetailsDiv = document.createElement('div');
             productDetailsDiv.classList.add('product-details');
             productDetailsDiv.innerHTML = `
+
                 <p>Name: ${firstName}</p>
                 <p>Contact: ${contact}</p>
                 <p>Message: ${message}</p>

@@ -278,7 +278,7 @@ class ReservationController extends BaseController
             'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ',
             'Raw Materials')->first(),
-            'rsvData' => $this->rsv->select('tablereservation.quantity, tablereservation.size, tablereservation.TableCode, tablereservation.appointmentDate,
+            'rsvData' => $this->rsv->select('tablereservation.TableCode, tablereservation.quantity, tablereservation.size, tablereservation.TableCode, tablereservation.appointmentDate,
              tablereservation.totalPrice, tablereservation.Gpayment, tablereservation.paymentStatus,tablereservation.HCustomer, tablereservation.Message,
              tablereservation.reservationDate, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, product_tbl.prod_lprice, user.LastName, user.FirstName')
              ->join('product_tbl','product_tbl.prod_id = tablereservation.ProductID')
@@ -291,7 +291,7 @@ class ReservationController extends BaseController
              ->join('user', 'user.UserID = tablereservation.CustomerID')
              ->where('tablereservation.TableCode', $tableCode)->findAll(),
 
-             'prodpic' => $this->rsv->select('tablereservation.quantity, tablereservation.size, tablereservation.TableCode, tablereservation.appointmentDate,
+             'prodpic' => $this->rsv->select('tablereservation.quantity, tablereservation.size, tablereservation.ReasonDeclined, tablereservation.TableCode, tablereservation.appointmentDate,
              tablereservation.totalPrice, tablereservation.Gpayment, tablereservation.TableID, tablereservation.paymentStatus,tablereservation.HCustomer, tablereservation.Message,
              tablereservation.reservationDate, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, product_tbl.prod_lprice, user.LastName, user.FirstName')
              ->join('product_tbl','product_tbl.prod_id = tablereservation.ProductID')
@@ -333,6 +333,36 @@ class ReservationController extends BaseController
         
     }
 
+    public function DeclinedReservation()
+    {
+        $reservationId = $this->request->getVar('orderID');
+        $decReason = $this->request->getVar('declineReason');
+     $declined = $this->updateToDeclined($reservationId);
+                    $this->updateMyPendingtoDeclined($reservationId, $decReason, $declined);
+           return redirect()->to('/viewuserReservation');         
+    }
+
+    private function updateToDeclined($reservationId)
+    {
+        $decReason = $this->rsv->find($reservationId);
+
+        return $decReason;
+    }
+
+    private function updateMyPendingtoDeclined( $reservationId, $decReason, $declined)
+    {
+        $data = [
+                'paymentStatus' => 'DeclineOrder',
+                'ReasonDeclined' => $decReason,
+                'id' => $reservationId
+        ];
+
+        $this->rsv->where('TableCode', $reservationId)->set($data)->update();
+        // var_dump($data);
+        
+    }
+
+
     public function viewMyReservation()
     {
         $session = session();
@@ -342,28 +372,30 @@ class ReservationController extends BaseController
         $cartItems = $this->crt->where('CustomerID', $user)->findAll();
         $cartItemCount = count($cartItems);
     
-        // Retrieve reservations with necessary details
+        // // Retrieve reservations with necessary details
         $reservations = $this->rsv->select('tablereservation.*, 
                                             product_tbl.prod_name, 
                                             product_tbl.prod_lprice, 
                                             product_tbl.prod_mprice, 
                                             product_tbl.prod_img')
-                                ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID', 'left')
+                                ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID')
                                 ->where('tablereservation.CustomerID', $user)
-                                ->findAll();
+                                ->first();
     
 
                                 
         $data = [
             'cartItemCount' => $cartItemCount,
             'cartItems' => $cartItems,
-            'myReservation' => $this->rsv->select('tablereservation.quantity, tablereservation.size, tablereservation.TableCode, tablereservation.appointmentDate,
-                                                  tablereservation.totalPrice, tablereservation.Gpayment, tablereservation.paymentStatus, tablereservation.Message, tablereservation.reservationDate,
-                                                  product_tbl.prod_name, product_tbl.prod_lprice, product_tbl.prod_mprice, product_tbl.prod_img')
-                                           ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID', 'left')
+            'myReservation' => $this->rsv->select('MAX(tablereservation.quantity) as quantity, MAX(tablereservation.size) as size, MAX(tablereservation.TableCode) as tableCode, MAX(tablereservation.ReasonDeclined) as ReasonDeclined, MAX(tablereservation.appointmentDate) as appointmentDate,
+                                                  MAX(tablereservation.totalPrice) as totalPrice, MAX(tablereservation.TableCode) as TableCode, MAX(tablereservation.Gpayment) as Gpayment, MAX(tablereservation.paymentStatus) as paymentStatus, MAX(tablereservation.Message) as Message, MAX(tablereservation.reservationDate) as reservationDate,
+                                                  MAX(product_tbl.prod_name) as prod_name, MAX(product_tbl.prod_lprice) as prod_lprice, MAX(product_tbl.prod_mprice) as prod_mprice, MAX(product_tbl.prod_img) as prod_img')
+                                           ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID')
                                            ->where('tablereservation.CustomerID', $user)
+                                           ->groupBy('tablereservation.TableCode')
                                            ->findAll(),
-            'getCode' => $reservations,
+        'getCode' => $reservations
+         
         ];
     
         return view('user/myReservation', $data);
@@ -372,8 +404,11 @@ class ReservationController extends BaseController
     public function cancelReservation($reservationCode)
     {
 
+        $reasonCancel = $this->request->getPost('cancelReason');
+
         $data = [
-            'paymentStatus' => 'CancelledReservation'
+            'paymentStatus' => 'CancelledReservation',
+            'ReasonDeclined' => $reasonCancel
         ];
         $this->rsv->where('TableCode', $reservationCode)->set($data)->update();
 

@@ -218,6 +218,121 @@ h2 {
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
+
+.modal {
+    display: none; /* Hide modal by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.modal.show {
+    display: block; /* Show modal when 'show' class is added */
+}
+
+.modal-content {
+    background-color: white;
+    color:black !important;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.modal-header, .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.close-button {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    padding: 10px;
+}
+
+/* Print-specific styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .modal-content, .modal-content * {
+        visibility: visible;
+    }
+
+    .modal-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        font-size: 13px;
+        max-width: 58mm;
+        padding: 4px;
+    }
+
+    .order-list {
+        width: 100%;
+        table-layout: fixed;
+        margin: 0;
+        max-width: 100%;
+        overflow: auto;
+    }
+
+    /* Set specific column widths */
+    .order-list th:nth-child(1), .order-list td:nth-child(1) {
+        width: 10px; /* Item Name */
+    }
+    .order-list th:nth-child(2), .order-list td:nth-child(2) {
+        width: 20px; /* Size */
+    }
+    .order-list th:nth-child(3), .order-list td:nth-child(3) {
+        width: 20px; /* Quantity */
+    }
+    .order-list th:nth-child(4), .order-list td:nth-child(4) {
+        width: 20px; /* Price */
+    }
+    .order-list th:nth-child(5), .order-list td:nth-child(5) {
+        width: 20px; /* Total Price */
+    }
+
+    .order-list th, .order-list td {
+        padding: 3px;
+        font-size: 10px;
+        word-wrap: break-word;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .order-list th {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .order-list td {
+        text-align: left;
+    }
+
+    .order-list td:last-child {
+        text-align: right; /* Right-align total price */
+    }
+
+    .text-end {
+        text-align: left; /* Changed to left */
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .btn {
+        display: none; /* Hide buttons while printing */
+    }
+}
 @media (max-width: 768px) {
     .orders-container {
         position: relative;
