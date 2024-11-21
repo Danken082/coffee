@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Point of Sale</title>
     <link href="/assets/css/pos.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="assets/images/POSicon.png">
     <link href="https://fontawesome.com/"/>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 </head>
@@ -340,44 +341,41 @@
     </main>
 
     
-    <!-- Order Preview Modal -->
-    <div id="orderModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <p>Crossroad Coffee Deli <br></p>
-                <p>Tawiran Calapan City <br></p>
-                <p>Oriental Mindoro <br></p>
-                <p>Receipt <br></p>
-                <p><?= date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ?></p>
-
-            </div>
-            <div class="modal-body">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Item Name</th>
-                            <th>Size</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody id="modal-order-list">
-
-                    </tbody>
-                </table>
-                <div class="text-end">
-                    <span id="modal-order-total">Grand Total: ₱0.00</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeOrderPreview()">Close</button>
-                <button class="btn btn-primary" id="save-transaction-button" onclick="window.print()">Print</button>
-
-                
+   <!-- Order Preview Modal -->
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Crossroad Coffee Deli</h3>
+            <p>Tawiran Calapan City, Oriental Mindoro</p>
+            <hr>
+            <p><strong>Receipt</strong></p>
+            <p class="receipt-date"><?= date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ?></p>
+        </div>
+        <div class="modal-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="modal-order-list">
+                    <!-- Dynamic order list will be inserted here -->
+                </tbody>
+            </table>
+            <div class="text-end">
+                <span id="modal-order-total">Grand Total: ₱0.00</span>
             </div>
         </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeOrderPreview()">Close</button>
+            <button class="btn btn-primary" id="save-transaction-button" onclick="window.print()">Print</button>
+        </div>
     </div>
+</div>
 
     <script src="/assets/js/pos.js"></script>
 
