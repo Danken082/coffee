@@ -8,6 +8,7 @@ const enterPayment = document.getElementById('payment-input');
 const changeOutputs = document.getElementById('change-output');
 const DineTake = document.querySelector('.SelectDineTake');
 const paymentData = document.querySelector('.SelectPayment');
+const paymentButton = document.getElementById('previewPOSOrders');
 
 let total = 0;
 let quantityTotal = 0;
@@ -153,21 +154,21 @@ orderList.addEventListener('click', (event) => {
 
 
 /* PAYMENT */
-const payButton = document.getElementById('pay-button');
+// const payButton = document.getElementById('pay-button');
 const saveTransactionButton = document.getElementById('save-transaction-button');
 const paymentInput = document.getElementById('payment-input');
 const changeOutput = document.getElementById('change-output');
 
-payButton.addEventListener('click', () => {
-    const payment = parseFloat(paymentInput.value);
-    const change = payment - total;
+// payButton.addEventListener('click', () => {
+//     const payment = parseFloat(paymentInput.value);
+//     const change = payment - total;
 
-    if (change >= 0) {
-        changeOutput.textContent = `Change: ₱ ${change.toFixed(2)}`;
-    } else {
-        alert('Insufficient payment.');
-    }
-});
+//     if (change >= 0) {
+//         changeOutput.textContent = `Change: ₱ ${change.toFixed(2)}`;
+//     } else {
+//         alert('Insufficient payment.');
+//     }
+// });
 
 saveTransactionButton.addEventListener('click', () => {
     const payment = parseFloat(paymentInput.value);
@@ -239,7 +240,7 @@ saveTransactionButton.addEventListener('click', () => {
     });
 });
 
-/* CATEGORY */
+/* CATEGORY */  
 const categoryTabs = document.querySelectorAll('.category-tab');
 const productBoxes = document.querySelectorAll('.products .box');
 
@@ -286,6 +287,38 @@ searchInput.addEventListener('input', () => {
     } else {
         noProductMessage.style.display = 'block';
     }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const paymentInput = document.getElementById('payment-input');
+    const payButton = document.getElementById('previewPOSOrders'); 
+    const orderList = document.querySelector('.order-list tbody');
+
+    function hasOrders() {
+        return orderList.querySelectorAll('tr').length > 0;
+    }
+
+    function isPaymentSufficient() {
+        const paymentValue = parseFloat(paymentInput.value.trim()) || 0;
+        const totalAmount = parseFloat(totalPrice.textContent.replace('₱ ', '')) || 0;
+        return paymentValue >= totalAmount;
+    }
+
+
+    function togglePaymentButton() {
+        if (!hasOrders() && !isPaymentSufficient()) {
+            payButton.disabled = true;
+        } else {
+            payButton.disabled = false;
+        }
+    }
+
+    paymentInput.addEventListener('input', togglePaymentButton);
+
+    orderList.addEventListener('DOMSubtreeModified', togglePaymentButton);
+    
+    togglePaymentButton();
 });
 
 function showOrderPreview() {
@@ -348,4 +381,3 @@ function closeOrderPreview() {
     const modal = document.getElementById('orderModal');
     modal.classList.remove('show');
 }
-

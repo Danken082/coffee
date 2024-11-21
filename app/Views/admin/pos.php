@@ -329,10 +329,10 @@
                     <div class="payment-container">
                         
                         <input type="number" id="payment-input" placeholder="Enter payment amount"><br><br>
-                        <button id="pay-button">Pay</button><br><br>
+                        <!-- <button id="pay-button">Pay</button><br><br> -->
                         <div id="change-output"></div>
                     </div>
-                    <button class="btn btn-primary" id="previewPOSOrders"onclick="showOrderPreview()" >Preview Orders</button>
+                    <button class="btn btn-primary" id="previewPOSOrders"onclick="showOrderPreview()" disabled>Preview Orders</button>
     
                 </div>
             </div>
@@ -344,7 +344,11 @@
     <div id="orderModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <p>Order Preview</p>
+                <p>Crossroad Coffee Deli <br></p>
+                <p>Tawiran Calapan City <br></p>
+                <p>Oriental Mindoro <br></p>
+                <p>Receipt <br></p>
+                <p><?= date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ?></p>
 
             </div>
             <div class="modal-body">
@@ -368,29 +372,15 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" onclick="closeOrderPreview()">Close</button>
-                <button class="btn btn-primary" onclick="window.print()">Print</button>
+                <button class="btn btn-primary" id="save-transaction-button" onclick="window.print()">Print</button>
+
+                
             </div>
         </div>
     </div>
 
     <script src="/assets/js/pos.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const paymentInput = document.getElementById('payment-input');
-    const payButton = document.getElementById('previewPOSOrders');
-
-    // Add an event listener to the input field
-    paymentInput.addEventListener('input', () => {
-        // Enable the button if the input is not empty and greater than 0
-        if (paymentInput.value.trim() !== '' && parseFloat(paymentInput.value) > 0) {
-            payButton.disabled = false;
-        } else {
-            payButton.disabled = true;
-        }
-    });
-}); -->
-
-    <!-- </script>
+    
 </body>
 </html>

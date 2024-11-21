@@ -172,7 +172,7 @@ h2 {
     color: #ffffff; 
 }
 
-#pay-button, #save-transaction-button {
+#pay-button, #previewPOSOrders {
     background-color: #007bff;
     border: none;
     color: #fff;
@@ -183,7 +183,7 @@ h2 {
     margin-bottom: 10px;
 }
 
-#pay-button:hover, #save-transaction-button:hover {
+#pay-button:hover, #previewPOSOrders:hover {
     background-color: #0056b3; 
 }
 

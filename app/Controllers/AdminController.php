@@ -164,7 +164,8 @@ return redirect()->to('trialnotif2');
             $currentUser = $userModel->find($userId);
             $currentProfileImg = $currentUser['profile_img'];
 
-            $data = [
+            $data =
+            [
                 'LastName' => $this->request->getPost('LastName'),
                 'FirstName' => $this->request->getPost('FirstName'),
                 'gender' => $this->request->getPost('gender'),
@@ -256,19 +257,6 @@ return redirect()->to('trialnotif2');
        $savedData = [];
         $barOrderCode = $this->getBarcodeByOrder();
 
-        $this->printer->setJustification(Printer::JUSTIFY_CENTER);
-        $this->printer->text("Crossrods Coffee and Deli\n");
-        $this->printer->text("Tawiran Calapan City\n");
-        $this->printer->text("Oriental Mindoro\n");
-        $this->printer->text("Receipt\n");
-        $this->printer->text("\n");
-        $this->printer->text("------------------------------\n");
-        $this->printer->text("------------------------------\n");
-        $this->printer->text(date('F j, Y, g:i a', strtotime(date('Y-m-d H:i:s'))) ."\n");
-        $this->printer->text("------------------------------\n");
-   
-        $this->printer->text("Name    Quantity     Prize\n");
-
         $total = 0;
 
        foreach ($requestData as $item) {
@@ -282,8 +270,6 @@ return redirect()->to('trialnotif2');
             $orderCode = $barOrderCode;
     
 
-            $this->printer->text(sprintf("%-12s x%-10d P%5.2f\n", $productName, $totalquantity, $totalPrice));
-    
             $total += $totalPrice;
         
            $orderId = $this->history->insert([
@@ -1020,7 +1006,8 @@ return redirect()->to('trialnotif2');
          $this->raw->update($tomatosouce['rawID'], ['stocks' => $changetomat]);
         
      }
-     elseif ($productID == 42) {
+     elseif ($productID == 42)
+     {
          $tor = $totalquantity * .03;
          $changetor = $tortillas['stocks'] - $totalquantity;
          $on = $totalquantity * .03;
@@ -2172,23 +2159,6 @@ return redirect()->to('trialnotif2');
      
          
        }
-
-       $this->printer->text("------------------------------\n");
-       $this->printer->text( $DineTake . "\n"); 
-       $this->printer->text("------------------------------\n");
-        $this->printer->text("Total: P" . number_format($total, 2) . "\n");   
-       $this->printer->text("------------------------------\n");
-       $this->printer->text("\nAmount Paid: P" . number_format($amountPaid, 2) . "\n");
-       $this->printer->text("Change: P" . number_format($change, 2) . "\n");
-       $this->printer->text("------------------------------\n");
-       $this->printer->text("Thank you for choosing\n");
-       $this->printer->text("Crossroards Coffee and Deli\n");
-       $this->printer->text("Come Again\n");
-       $this->printer->text("------------------------------\n");
-       
-       $this->printer->cut();
-       $this->printer->close();
-
        return $this->response->setJSON([
            'success' => true,
            'data' => $savedData
