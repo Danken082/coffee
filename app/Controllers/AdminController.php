@@ -2,10 +2,6 @@
 
 namespace App\Controllers;
 
-use Mike42\Escpos\Printer;
-use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
-use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
-use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\CapabilityProfiles\SimpleCapabilityProfile;
 
 use App\Controllers\BaseController;
@@ -65,8 +61,6 @@ class AdminController extends BaseController
         $this->reservation = new ReservationModel();
         $this->flvr = new FlavorModel();
 
-        $this->connector = new WindowsPrintConnector("smb://dan/POS-58");
-        $this->printer   = new Printer($this->connector);
         
         // $this->credentials = new ServiceAccountCredentials("https://www.googleapis.com/auth/firebase.messaging", json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/js/pv_key.json"), true));
 
@@ -4833,6 +4827,7 @@ return redirect()->to('trialnotif2');
                     'UpdatedAt' => $currentDateTime
                 ];
                 $this->usr->updateUserData($data['id'], $userdata);
+
     
                 // Prepare session data
                 $ses_data = [
@@ -4886,6 +4881,8 @@ return redirect()->to('trialnotif2');
                 } else {
                     throw new Exception('Error fetching newly inserted user data');
                 }
+
+                $this->user->where('UserID', session()->get('UserID'))->set('is_active', 1)->update();
             }
     
             // Set session data

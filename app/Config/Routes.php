@@ -337,3 +337,10 @@ $routes->match(['get', 'post'], '/cancelreservation/(:any)', 'ReservationControl
 
 $routes->post('/samplehi', 'AdminController::hello');
 
+$routes->get('chatbot', 'ChatController::index');
+$routes->post('chatbot/getResponse', 'ChatController::getResponse');
+
+
+
+$routes->post('/message/sendMessage', 'ChatController::sendMessage'); // Send a message
+$routes->get('/message/fetchMessages/(:num)', 'ChatController::fetchMessages/$1'); // Fetch messages with a specific receiver ID
