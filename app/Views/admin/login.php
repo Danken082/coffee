@@ -13,18 +13,22 @@
     <link rel="stylesheet" href="/assets/css/login.css">
 </head>
 <style>
-  
-.google-login-btn img {
-    width: 100%;      
-    max-width: 15rem; 
-    height: 4rem;     
-    border-radius: 8px;        /* Rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Soft shadow for a button effect */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover transition */
+.google-login-btn {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
 }
 
-
+.google-login-btn img {
+    width: 100%;
+    max-width: 15rem;
+    height: 4rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
 </style>
+
 <body>
     <div class="login-container">
     <?php if (session()->getFlashdata('error')): ?>
@@ -49,15 +53,15 @@
                     <input type="password" name="password" class="form-control" id="password">
                     <button type="button" id="togglePassword" class="btn btn-outline-secondary"><i class="fa fa-eye"></i></button>
                 </div>
-            <div class="form-group">
+                <div class="form-group">
                     <button type="submit" class="btn btn-login">Login</button>
-                <?php 
-                    echo $googleAuth;
-                    ?>
-                </div> 
-                                <p class="register-link">Don't have an account yet? <a href="<?= site_url("register"); ?>">Register Now</a></p>
-                                <p class="register-link">I can't remembet my password<a href="<?= site_url("/forgetpassword"); ?>">Forget Password</a></p>
-                                <p class="home-link">back <a href="<?= site_url("/"); ?>">home</a></p>
+                    <div class="google-login-btn">
+                        <?php echo $googleAuth; ?>
+                    </div>
+                </div>
+                    <p class="register-link">Don't have an account yet? <a href="<?= site_url("register"); ?>">Register Now</a></p>
+                    <p class="register-link">I can't remembet my password <a href="<?= site_url("/forgetpassword"); ?>">Forget Password</a></p>
+                    <p class="home-link"><a href="<?= site_url("/"); ?>">Back to Home</a></p>
             </form>
         </div>
     </div>

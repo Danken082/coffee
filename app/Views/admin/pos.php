@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Point of Sale</title>
-    <link href="/assets/css/pos.css" rel="stylesheet" />
+    <title>Admin Point of Sale</title>
+    <link href="/assets/css/updatecss/pos.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="assets/images/POSicon.png">
     <link href="https://fontawesome.com/"/>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -377,7 +377,7 @@
     </div>
 </div>
 
-    <script src="/assets/js/pos.js"></script>
+    <script src="/assets/js/updatejs/pos.js"></script>
 
     
 </body>
