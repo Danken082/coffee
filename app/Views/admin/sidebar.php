@@ -236,34 +236,33 @@
     <script src="/assets/admin/dashboard.js"></script>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const markReadBtns = document.querySelectorAll('.mark-read-btn');
-    
-    markReadBtns.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
-            const url = this.href;
-            
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'X-CSRF-TOKEN': '<?= csrf_hash() ?>' // Adjust according to your CSRF token handling
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    this.closest('.dropdown-item').remove();
-                    // Update notification count if needed
-                } else {
-                    console.error('Failed to mark notification as read');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    });
-});
-</script>
-
+      document.addEventListener('DOMContentLoaded', function() {
+          const markReadBtns = document.querySelectorAll('.mark-read-btn');
+          
+          markReadBtns.forEach(button => {
+              button.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  const url = this.href;
+                  
+                  fetch(url, {
+                      method: 'POST',
+                      headers: {
+                          'X-Requested-With': 'XMLHttpRequest',
+                          'X-CSRF-TOKEN': '<?= csrf_hash() ?>' // Adjust according to your CSRF token handling
+                      }
+                  })
+                  .then(response => {
+                      if (response.ok) {
+                          this.closest('.dropdown-item').remove();
+                          // Update notification count if needed
+                      } else {
+                          console.error('Failed to mark notification as read');
+                      }
+                  })
+                  .catch(error => console.error('Error:', error));
+              });
+          });
+      });
+      </script>
   </body>
 </html>
