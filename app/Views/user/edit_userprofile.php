@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/assets/user/css/bootstrap/bootstrap.min1.css"/>
     <link href="https://fontawesome.com/"/>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/profile.css">
 </head>
 <body>
