@@ -17,6 +17,9 @@
         .card:hover {
             box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
         }
+        .pagination {
+            justify-content: center;
+        }
     </style>
     <body>
     <div class="container-fluid mt-4">
@@ -73,7 +76,7 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach($res as $res): ?>
-                                        <tr class="reservation-row" data-status="<?= $res['paymentStatus'] ?>">
+                                        <tr class="reservation-row" data-status="<?= $res['paymentStatus'] ?>" id="eventReservation">
                                             <td class="text-center">
                                                 <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= date('F j, Y h:i A', strtotime($res['reservationDate'])); ?></p>
                                             </td>
@@ -95,6 +98,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <nav>
+                        <ul class="pagination" id="paginationControls"></ul>
+                    </nav>
                     </div>
                 </div>
             </div>
@@ -141,5 +147,39 @@
                     });
                 });
             </script>
+            <script>
+    $(document).ready(function () {
+        const rowsPerPage = 7;
+        const rows = $('.reservation-row'); // Use class instead of id
+        const rowsCount = rows.length;
+        const pageCount = Math.ceil(rowsCount / rowsPerPage);
+
+        // Append pagination controls
+        for (let i = 1; i <= pageCount; i++) {
+            $('#paginationControls').append(`<li class="page-item"><a href="#" class="page-link">${i}</a></li>`);
+        }
+
+        // Show the first page of rows
+        displayPage(1);
+
+        // Click event for pagination controls
+        $('#paginationControls').on('click', '.page-link', function (e) {
+            e.preventDefault();
+            const page = parseInt($(this).text());
+            displayPage(page);
+        });
+
+        function displayPage(page) {
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+
+            rows.hide(); // Hide all rows
+            rows.slice(start, end).show(); // Show only the selected range
+
+            $('#paginationControls .page-item').removeClass('active');
+            $(`#paginationControls .page-item:eq(${page - 1})`).addClass('active');
+        }
+    });
+</script>
     </body>
 </html>

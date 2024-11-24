@@ -28,7 +28,7 @@
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
-                  <img src="<?= base_url()?>/coffee/userassetsimages/adminuser/adminimages/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="40">
+                  <img src="<?= base_url()?>userassetsimages/adminuser/adminimages/<?=session()->get('profile_img')?>" alt="pfp" class="rounded-circle img" width="40">
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">

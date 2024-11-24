@@ -17,6 +17,11 @@
         .card:hover {
             box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
         }
+        .pagination {
+            justify-content: center;
+        }
+
+
     </style>
 </head>
 
@@ -65,6 +70,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <nav>
+                        <ul class="pagination" id="paginationControls"></ul>
+                    </nav>
                     </div>
                 </div>
             </div>
@@ -77,47 +85,94 @@
         <script src="/assets/js/plugins/chartjs.min.js"></script>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="/assets/js/material-dashboard.min.js?v=3.1.0"></script>
-`        <script>
-        $(document).ready(function() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); 
-    const day = String(today.getDate()).padStart(2, '0');
-    const currentDate = `${year}-${month}-${day}`; 
-    $('#selectedDate').val(currentDate); 
+`      <script>
+    $(document).ready(function () {
+        const rowsPerPage = 5; // Number of rows to display per page
+        const historyBody = $('#historyBody'); // Table body
+        const paginationControls = $('#paginationControls'); // Pagination controls
 
+        // Set default date to today
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const currentDate = `${year}-${month}-${day}`;
+        $('#selectedDate').val(currentDate);
 
-    fetchOrderHistory(currentDate);
+        // Fetch and display order history
+        fetchOrderHistory(currentDate);
 
-    $('#filterButton').click(function() {
-        const selectedDate = $('#selectedDate').val();
-        if (!selectedDate) {
-            alert('Please select a valid date');
-            return;
-        }
-        fetchOrderHistory(selectedDate);
-    });
-
-    function fetchOrderHistory(selectedDate) {
-        $.ajax({
-            url: "<?= base_url('/filterDate') ?>",  // Ensure this route is correctly defined in your routes file
-            type: "GET",
-            data: { selectedDate: selectedDate },
-            success: function(response) {
-                if (response.trim() === '') {
-                    $('#historyBody').html('<tr><td colspan="6" class="text-center">No orders found for the selected date.</td></tr>');
-                } else {
-                    $('#historyBody').html(response);
-                }
-                console.log(response);
-            },
-            error: function() {
-                alert('An error occurred while fetching order history');
+        // Filter button click event
+        $('#filterButton').click(function () {
+            const selectedDate = $('#selectedDate').val();
+            if (!selectedDate) {
+                alert('Please select a valid date');
+                return;
             }
+            fetchOrderHistory(selectedDate);
         });
-    }
-});
-        </script>
+
+        function fetchOrderHistory(selectedDate) {
+            $.ajax({
+                url: "<?= base_url('/filterDate') ?>", // Ensure the route exists in your backend
+                type: "GET",
+                data: { selectedDate: selectedDate },
+                success: function (response) {
+                    if (response.trim() === '') {
+                        historyBody.html('<tr><td colspan="6" class="text-center">No orders found for the selected date.</td></tr>');
+                        paginationControls.empty();
+                    } else {
+                        historyBody.html(response);
+                        initializePagination();
+                    }
+                    console.log(response);
+                },
+                error: function () {
+                    alert('An error occurred while fetching order history');
+                }
+            });
+        }
+
+        // Initialize pagination
+        function initializePagination() {
+            const rows = historyBody.find('tr'); // Rows loaded via AJAX
+            const rowsCount = rows.length;
+            const pageCount = Math.ceil(rowsCount / rowsPerPage);
+
+            // Reset pagination controls
+            paginationControls.empty();
+
+            // Generate pagination buttons
+            for (let i = 1; i <= pageCount; i++) {
+                paginationControls.append(
+                    `<li class="page-item"><a href="#" class="page-link">${i}</a></li>`
+                );
+            }
+
+            // Show first page by default
+            displayPage(1);
+
+            // Handle pagination button clicks
+            paginationControls.on('click', '.page-link', function (e) {
+                e.preventDefault();
+                const page = parseInt($(this).text());
+                displayPage(page);
+            });
+        }
+
+        function displayPage(page) {
+            const rows = historyBody.find('tr');
+            const start = (page - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+
+            rows.hide(); // Hide all rows
+            rows.slice(start, end).show(); // Show only the current page rows
+
+            paginationControls.find('.page-item').removeClass('active');
+            paginationControls.find(`.page-item:nth-child(${page})`).addClass('active');
+        }
+    });
+</script>
 
 </body>
 </html>

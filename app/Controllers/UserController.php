@@ -258,6 +258,7 @@ class UserController extends BaseController
 
     public function logout(){
         session_destroy();
+        $this->user->where('UserID', session()->get('UserID'))->set('is_active', 0)->update();
         return redirect()->to('/');
     }
 
@@ -612,5 +613,123 @@ class UserController extends BaseController
             curl_close($ch);
 
             echo $response;
+    }
+
+
+    
+    //Forget Password view
+    
+    public function viewForgetPassword()
+    {
+        return view('user/forgetPassword');
+    }
+
+    public function forgetPassword()
+    {
+        $username = $this->request->getPost('username');
+        $email    = $this->request->getPost('email');
+
+        $user = $this->user->where('email', $email)->first();
+        $data = ['search'=>$this->user->where('email', $email)->first(), 
+                 'email' => $email];
+
+        if(!isset($user['email']))
+        {
+            return redirect()->to('forgetpassword')->with('msg', 'Email Doesn`t Find Please Enter a Valid Email Address');
+        }
+        else{
+            return view('user/searchNameToChange', $data);
+            
+        }
+
+        
+    }
+
+    public function updateCode()
+    {
+        try {
+            $email = $this->request->getVar('email');
+            $user = $this->user->where('email', $email)->first();
+        
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new \InvalidArgumentException('Invalid email format.');
+            }
+
+            $verificationToken = substr(md5(rand()), 0, 8);
+            $data = ['code' => $verificationToken];
+
+            $result = $this->user->update($user['UserID'], $data);
+            $this->sendResetCode($email, $verificationToken);
+            if (!$result) {
+                throw new \Exception('Failed to update the user code.');
+            }
+
+            return redirect()->to('/verifyCode')->with('email', $email);
+
+        } catch (\Throwable $th) {
+            
+            log_message('error', $th->getMessage() . ": " . $th->getLine());
+        }
+    }
+
+    private function sendResetCode($email, $token)
+    {
+        $emailService = \Config\Services::email();
+        $emailService->setTo($email);
+        $emailService->setFrom('rontaledankeneth@gmail.com', 'Crossroads');
+        $emailService->setSubject('Email Verification');
+        $emailService->setMessage("Hello This is Your Verification Token Dont Share it to any one \n\n: $token");
+
+        $emailService->send();
+    }
+
+
+    public function verifyCode()
+    {
+        return view('user/code');
+    }
+
+    public function verificationAuth()
+    {
+        $code = $this->request->getVar('code');
+        $email = $this->request->getVar('email');
+        $data['email'] = $email;
+        $user = $this->user->where('email', $email)->first();
+    
+        if ($user) {
+            if ($user['code'] === $code) {
+                return view('user/newPassword', $data);
+            } else {
+                return redirect()->to('verifyCode')->with('email', $email)->with('msg', 'Please try again, the code is incorrect.');
+            }
+        } 
+        elseif(empty($email))
+        {
+            return redirect()->to('/login')->with('msg', ' Please check and try again.');
+        }
+        else {
+            return redirect()->to('verifyCode')->with('msg', 'Email not found. Please check and try again.');
+        }
+    }
+
+    public function newPassword()
+    {
+
+    try {
+
+      $pass =  $this->request->getVar('password');
+      $email = $this->request->getVar('email');
+      $user = $this->user->where('email', $email)->first();
+    
+      $data = ['Password' => password_hash($pass, PASSWORD_DEFAULT),
+               'code' => null];
+
+     $update =      $this->user->update($user['UserID'], $data);
+    
+     return redirect()->to('/login')->with('msg', 'Password Successfully Reset');
+     
+    } catch (\Throwable $th) {
+        log_message('error', $th->getMessage() . ": " . $th->getLine());
+    }
     }
 }
