@@ -23,7 +23,7 @@
         </div>
     <?php endif; ?>
         <div class="login-card">
-            <h4>Forget Your Account</h4>
+            <h4>Forgot Your Password?</h4>
             <?php if(session()->getFlashdata('msg')):?>
                 <div class="alert alert-success">
                     <?= session()->getFlashdata('msg') ?>
@@ -37,8 +37,8 @@
              
             <div class="form-group">
                     <button type="submit" class="btn btn-login">Search</button>
-                                <p class="register-link">Remembet my Password? <a href="<?= site_url("/login"); ?>">Login</a></p>
-                                <p class="home-link">back <a href="<?= site_url("/"); ?>">home</a></p>
+                                <p class="register-link">Remember your Password? <a href="<?= site_url("/login"); ?>">Login</a></p>
+                                <p class="home-link"><a href="<?= site_url("/"); ?>">Back to Home</a></p>
             </form>
         </div>
     </div>
