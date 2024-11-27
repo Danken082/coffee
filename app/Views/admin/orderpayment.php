@@ -38,6 +38,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order Code</th>
+                                    <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Order Status</th>
                                     <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -48,6 +49,10 @@
                                     <tr>
                                         <td class="text-center">
                                             <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $orP['barcode']?></p>
+                                           
+                                        </td>
+                                        <td class="text-center">
+                                        <p class="text-xs text-primary mb-0 font-weight-bold barcode"><?= $orP['orderStatus']?></p>
                                         </td>
                                         <td class="align-middle text-center">
                                             <a href="<?= base_url('theorders/' .$orP['barcode'])?>" class="btn btn-info btn-sm view_data">View Order</a>

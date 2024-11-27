@@ -33,11 +33,10 @@
                         <table class="table">
                             <thead class="thead-primary">
                                 <tr class="text-center">
-                                    <th>Image</th>
+                                    <th>Product Picture</th>
+                                    <th>Order Code</th>
                                     <th>Product</th>
-                                    <th>Price</th>
                                     <th>Quantity</th>
-                                    <th>Total</th>
                                     <th>Status</th>
                                     <th>&nbsp;</th>
                                 </tr>
@@ -46,12 +45,13 @@
                                 <?php foreach($order as $item):?>
                                 <tr class="text-center">
                                     <td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>"></td>
+                                    <td class="price"><?= $item['barcode']?></td>
+                                   
                                     <td class="product-name">
                                         <h3><?= $item['prod_name']?></h3>
+                                    
                                     </td>
-                                    <td class="price">₱ <?= $item['prod_mprice']?></td>
-									<td class="quantity"><?= $item['quantity']?></td>
-                                    <td class="total">₱ <?= $item['total']?></td>
+                                	<td class="quantity"><?= $item['quantity']?></td>
                                     <td class="quantity">
                                         <div class="input-group mb-3">
                                             <h4><?= $item['orderStatus']?></h4>
@@ -71,7 +71,7 @@
                                                    data-toggle="modal" 
                                                    data-target="#getReasonForCancelationOrder" 
                                                    data-reservation='<?= htmlspecialchars(json_encode($item, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP), ENT_QUOTES, 'UTF-8') ?>'>
-                                                   Cancell Order?
+                                                   Cancel Order?
                                                 </a>
                                         <?php endif;?>
                                     </td>
@@ -124,9 +124,7 @@
                             <th>Image</th>
                             <th>Product</th>
                             <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -141,8 +139,6 @@
                                     ₱ <?=$c['prod_mprice']?>
                                 <?php endif; ?>
                             </td>
-                            <td class="quantity"><?=$c['quantity']?></td>
-                            <td class="total">₱ <?=$c['total']?></td>
                             <td>
                                 <form action="<?= base_url('/viewProd2/') .$c['prod_id'] ?>" method="post">
                                     <?php if($c['product_status'] === 'Unavailable'): ?>

@@ -177,7 +177,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-<p>1</p>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

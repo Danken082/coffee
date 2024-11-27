@@ -251,7 +251,10 @@ class OrderController extends BaseController
         order.paymentStatus, order.orderType, order.orderDate, order.total, order.quantity, order.size,
         order.barcode, order.orderStatus, product_tbl.prod_id, product_tbl.prod_img, product_tbl.prod_name, 
         product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
-        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')->where('order.CustomerID', $user)->where('order.orderStatus', 'AcceptOrder')->orwhere('order.orderStatus', 'onProcess')->findAll();
+        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')
+        
+        ->where('order.CustomerID', $user)
+        ->where('order.orderStatus', 'AcceptOrder')->orwhere('order.orderStatus', 'onProcess')->findAll();
         
         
         $data['orderhist'] = $this->order->select('order.ProductID,

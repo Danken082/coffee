@@ -136,6 +136,9 @@
 
                                             <li><strong>Total Amount:</strong> <?= $total['sum'] ?></li>
                                             <input type="hidden" name="sum" value="<?= $total['sum']?>">
+                                            <?php if($stat['orderStatus'] === 'CancelOrder'):?>
+                                                <li><strong>Reason Cancellation: </strong><?= $stat['reason']?></li>
+                                            <?php endif;?>
                                         </div>
 
                                         <div class="payment-image-container">
@@ -146,7 +149,12 @@
                                     </div>
 
                                     <div class="text-right">
+                                        <?php if($stat['orderStatus'] === 'onProcess'):?>
                                         <button type="submit" class="accept-btn">Accept</button>
+                                        <?php elseif($stat['orderStatus'] === 'CancelOrder'):?>
+                                            <button type="submit" style="background-color:grey;" disabled class="accept-btn">THIS IS A CANCELLED ORDER</button>
+                                        <?php endif;?>
+
                                     </div>
                                 </form>
                             </ul>

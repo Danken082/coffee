@@ -2247,8 +2247,8 @@ return redirect()->to('trialnotif2');
     
     public function home(){
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
        return view('/admin/home', $data);
     } 
@@ -2347,17 +2347,16 @@ return redirect()->to('trialnotif2');
     public function orderpayment(){
 
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
-        $data['order'] = $this->payment->select('order.orderID,order.barcode, user.UserID, product_tbl.prod_id, order.CustomerID, order.ProductID, order.total, order.orderStatus, 
-        order.quantity, order.size, order.orderDate, order.orderType, order.paymentStatus, user.LastName, 
-        user.FirstName, user.Username, user.ContactNo, user.address, user.gender, 
-        product_tbl.prod_img, product_tbl.prod_name, product_tbl.prod_mprice', 'product_tbl.prod_lprice, product_tbl.prod_decs')
+        $data['order'] = $this->payment->select('order.barcode, MAX(order.orderStatus) as orderStatus')
         ->join('product_tbl', 'order.ProductID = product_tbl.prod_id')
         ->join( 'user', 'order.CustomerID = user.UserID')
         ->where('orderStatus', 'onProcess')
-        ->orderBy('order.orderID', 'ASC')
+        ->orwhere('orderStatus', 'CancelOrder')
+        ->groupBy('order.barcode')
+
         ->findAll();
         return view('/admin/orderpayment', $data);
         
@@ -2394,8 +2393,8 @@ return redirect()->to('trialnotif2');
     public function gethistory()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->first(), 
         ];
         $history = new HistoryModel();
         $data['history'] = $history->findAll();
@@ -2417,8 +2416,8 @@ return redirect()->to('trialnotif2');
     public function getmanageuser()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
         $role = 'Admin';
         $user = new AdminUserModel();
@@ -4457,6 +4456,8 @@ return redirect()->to('trialnotif2');
     public function viewOrders()
     {
 
+        
+
      $data['order'] = $this->order->select('barcode, COUNT(*) as total_orders')->where('orderStatus','onProcess')
         ->groupBy('barcode')
         ->orderBy('barcode', 'ASC')
@@ -4509,6 +4510,17 @@ return redirect()->to('trialnotif2');
         ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')
         ->join('user', 'user.UserID = order.CustomerID')
         ->where('order.barcode', $barcode)->findAll();
+
+                //for Multi Data
+       $data['stat'] =  $this->order->select('order.orderID, order.CustomerID, order.ProductID, order.reason, order.paymentStatus,order.ImagePayment, 
+       order.orderType, order.orderDate, order.total, order.quantity, order.size, order.barcode, order.orderStatus,
+       product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity, product_tbl.prod_mprice, 
+       product_tbl.prod_lprice, product_tbl.prod_desc, product_tbl.prod_img, product_tbl.prod_categ, product_tbl.prod_code,
+       user.UserID, user.LastName, user.FirstName, user.email, user.address, user.ContactNo')
+       ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')
+       ->join('user', 'user.UserID = order.CustomerID')
+       ->where('order.barcode', $barcode)->first();
+
         $data['Image'] = $this->order->where('barcode', $barcode)->first();
         //for total
         $data['total'] = $this->order->select('(SUM(total)) as sum')->where('barcode', $barcode)->first();
@@ -4608,8 +4620,8 @@ return redirect()->to('trialnotif2');
     public function Searchreport()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         ];
 
         return view('admin/SearchReport', $data);
@@ -4908,8 +4920,8 @@ return redirect()->to('trialnotif2');
         ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID')
        ->groupBy('tablereservation.TableCode')
         ->findAll(),
-        'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->findAll(),
+        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->first(), 
     ];
 
         return view('admin/ViewEventReservation', $data);

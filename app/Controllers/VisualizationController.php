@@ -195,8 +195,8 @@ class VisualizationController extends BaseController
         ->findAll();
 
     $data = [
-        'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->findAll(),
+        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
         'salesByMonth' => $salesByMonth,
         'salesByYear' => $salesByYear,
         'totalsalesinyear' => $totalSalesInYear,
