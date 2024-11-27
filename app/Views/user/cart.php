@@ -52,7 +52,7 @@
                             <?php foreach($myCart as $index => $item):?>
                                 <tr class="text-center">
                                     <td><input type="checkbox" name="items[]" value="<?= $index ?>" class="item-checkbox"></td>
-                                    <td><input type="checkbo" name="items[]" value="<?= $item['id'] ?>" class="item-checkbox"></td>
+                                    <td><input type="hidden" hidden name="item[]" value="<?= $item['id'] ?>" class="item-checkbox"></td>
                                     <td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>"></td>
                                     <td class="product-name">
                                         <h3><?= $item['prod_name']?></h3>
@@ -136,6 +136,37 @@
 <script src="/assets/js/cart/totalquantity.js"></script>
 <script src="/assets/js/cart/checkbox.js"></script>
 <script src="/assets/js/cart/updateprice.js"></script>
+
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+    
+    const checkedItems = Array.from(document.querySelectorAll('input[name="items[]"]:checked'));
+    
+    if (checkedItems.length === 0) {
+        alert('Please select at least one item.');
+        event.preventDefault(); 
+        return;
+    }
+
+    const itemInputs = document.querySelectorAll('input[name="item[]"]');
+
+    const selectedItems = [];
+    itemInputs.forEach((input, index) => {
+
+        if (checkedItems.some(checkbox => checkbox.value == index)) {
+            selectedItems.push(input.value); // Add item to selectedItems array
+        }
+    });
+
+    const hiddenItemInput = document.createElement('input');
+    hiddenItemInput.type = 'hidden';
+    hiddenItemInput.name = 'selectedItems';  // The name of the input to send to the backend
+    hiddenItemInput.value = JSON.stringify(selectedItems); // Send the array as a JSON string
+    document.querySelector('form').appendChild(hiddenItemInput);
+});
+
+</script>
 
 
 

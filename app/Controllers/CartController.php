@@ -340,13 +340,20 @@ class CartController extends BaseController
 
       public function placeOrder()
       {
-          $selectedItems = $this->request->getVar('items');
+        $selectedItems = $this->request->getPost('selectedItems');
           $totalAmount = $this->request->getPost('total');
           $paymentMethod = $this->request->getPost('paymentMethod');
           $TotalProdPrice = $this->request->getPost('totalPrice');
           $totalQuantity = $this->request->getPost('quantity');
           $size = $this->request->getPost('size');
           
+
+          if ($selectedItems) {
+
+            $selectedItems = json_decode($selectedItems, true);
+
+          
+          }
           if (empty($selectedItems)) {
               return redirect()->to('/cart')->with('msg', 'No items selected for order');
           }
@@ -359,12 +366,12 @@ class CartController extends BaseController
             $orderBarcode = $this->generateAlphanumericBarcode();
 
             
-  
+  // var_dump($selectedItems);
             // Insert the same barcode for each item in the order
             foreach ($cartItems as &$item) {
                 $item['barcode'] = $orderBarcode;
             }
-            $this->insertOrder($cartItems, $paymentMethod, $reference_number, $totalAmount, $TotalProdPrice, $totalQuantity, $size);
+           $this->insertOrder($cartItems, $paymentMethod, $reference_number, $totalAmount, $TotalProdPrice, $totalQuantity, $size);
             $this->removedItemsFromcart($selectedItems);
             return redirect()->to('cart')->with('msg', 'Please Pay Your Order If the product is Already Received');
           }
@@ -604,6 +611,4 @@ class CartController extends BaseController
 
           var_dump($data);
         }
-
-        
 }
