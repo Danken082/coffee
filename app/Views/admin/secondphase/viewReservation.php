@@ -6,6 +6,7 @@
         <title>Admin Order Payment</title>
         <link rel="icon" type="image/png" href="/images/coffeelogo2.png">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
         <style>
             .card {
                 border: none;
@@ -143,7 +144,7 @@
 
                                     <!-- Image Section on the Right Side -->
                                     <div class="image-container">
-                                        <img src="<?= base_url('assets/user/Epayment/') . $prodpic['Gpayment']?>" alt="PaymentCheck" class="img-fluid">
+                                        <img src="<?= base_url('/coffee/assets/user/Epayment/') . $prodpic['Gpayment']?>" alt="PaymentCheck" class="img-fluid">
                                     </div>
                                 </li>
 

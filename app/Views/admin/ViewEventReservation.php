@@ -69,7 +69,7 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Reservation Date</th>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Reservation Code</th>
-                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Reservation Date</th>
+                                        <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Date Reserve</th>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Payment Status</th>
                                         <th class="text-uppercase text-secondary text-sm font-weight-bold opacity-7 text-center">Actions</th>
                                     </tr>

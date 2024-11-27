@@ -10,7 +10,7 @@
     <form action="<?= base_url('sendAuthCode')?>" method="post">
     <div class="container">
         <div class="profile-card">
-            <img src="<?= base_url('/userassetsimages/user/images/') . $search['profile_img'] ?>" alt="User Image"> 
+            <img src="<?= base_url('/coffee/userassetsimages/user/images/') . $search['profile_img'] ?>" alt="User Image"> 
             <div>
                 <h2><?= ucwords($search['FirstName']) ?> <?= ucwords($search['LastName']) ?></h2>
                 <input type="email" hidden name="email" value="<?= htmlspecialchars($email)?>">

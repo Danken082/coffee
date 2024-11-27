@@ -60,7 +60,7 @@
                     </div>
                 </div>
                     <p class="register-link">Don't have an account yet? <a href="<?= site_url("register"); ?>">Register Now</a></p>
-                    <p class="register-link">I can't remembet my password <a href="<?= site_url("/forgetpassword"); ?>">Forget Password</a></p>
+                    <p class="register-link">I can't remember my password <a href="<?= site_url("/forgetpassword"); ?>">Forget Password</a></p>
                     <p class="home-link"><a href="<?= site_url("/"); ?>">Back to Home</a></p>
             </form>
         </div>

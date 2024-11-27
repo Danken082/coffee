@@ -37,8 +37,8 @@
              
             <div class="form-group">
                     <button type="submit" class="btn btn-login">Search</button>
-                                <p class="register-link">Remember your Password? <a href="<?= site_url("/login"); ?>">Login</a></p>
-                                <p class="home-link"><a href="<?= site_url("/"); ?>">Back to Home</a></p>
+                    <p class="register-link">Remember your Password? <a href="<?= site_url("/login"); ?>">Login</a></p>
+                    <p class="home-link"><a href="<?= site_url("/"); ?>">Back to Home</a></p>
             </form>
         </div>
     </div>
