@@ -17,12 +17,10 @@ class ChatController extends BaseController
         public function index()
         {
 
-            $data = ['userAdmin' => $this->user->where('UserRole', 'Admin')->findAll()];
-            return view('chatbot', $data);
+            return view('chatbot');
         }
         public function sendMessage()
         {
-            // Get JSON input data from the request
             $request = service('request');
             $data = $request->getJSON(true);
         
@@ -40,7 +38,7 @@ class ChatController extends BaseController
         
             log_message('debug', 'Receiver ID: ' . $receiverId);
         
-            $messageModel = new \App\Models\ChatModel();
+            $messageModel = new ChatModel();
         
             $messageModel->save([
                 'sender_id' => $senderId,
@@ -68,6 +66,31 @@ class ChatController extends BaseController
                 ->findAll();
     
             return $this->response->setJSON($messages);
+        }
+
+        public function deleteMessage($messageId)
+        {
+            $messageModel = new ChatModel();
+    
+            // Fetch the message by ID to check if it belongs to the logged-in user
+            $message = $messageModel->find($messageId);
+            $senderId = session()->get('UserID');
+    
+            // Ensure the message exists and belongs to the logged-in user
+            if (!$message || $message['sender_id'] !== $senderId) {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Message not found or you do not have permission to delete this message.',
+                ]);
+            }
+    
+            // Delete the message
+            $messageModel->delete($messageId);
+    
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Message deleted successfully.',
+            ]);
         }
 
         public function getResponse()

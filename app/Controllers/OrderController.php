@@ -225,9 +225,24 @@ class OrderController extends BaseController
 
         $cartItemCount = count($cartItems);
 
+        $order = $this->order->select('order.orderID, order.CustomerID, order.ProductID, 
+        order.paymentStatus, order.orderType, order.orderDate, order.total, order.quantity, order.size,
+        order.barcode, order.orderStatus, product_tbl.prod_id, product_tbl.prod_img, product_tbl.prod_name, 
+        product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
+        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')->where('order.CustomerID', $user)->first();
+
+
+        $cancelOrder = $this->order->select('order.orderID, order.CustomerID, order.ProductID, 
+        order.paymentStatus, order.orderType, order.orderDate, order.total, order.quantity, order.size,
+        order.barcode, order.orderStatus, product_tbl.prod_id, product_tbl.prod_img, product_tbl.prod_name, 
+        product_tbl.prod_mprice, product_tbl.product_status, product_tbl.prod_lprice')
+        ->join('product_tbl', 'product_tbl.prod_id = order.ProductID')->where('order.CustomerID', $user)->where('order.orderStatus', 'CancelOrder')->findAll();
+
         $data = [
             'cartItemCount' => $cartItemCount,
-            'cartItems' => $cartItems
+            'cartItems' => $cartItems,
+            'orderCode' => $order,
+            'cancelOrder' => $cancelOrder
         ];
 
 
@@ -262,7 +277,20 @@ class OrderController extends BaseController
             ->groupBy('order.ProductID, order.CustomerID, product_tbl.prod_id')
             ->findAll();
             
-        return view('user/viewOrders', $data);  
+        return view('user/viewOrders', $data); 
+    }
+
+    public function cancellOrder($orderCode)
+    {
+        $cancel = $this->request->getPost('cancelReason');
+
+        $data =['reason' => $cancel,
+                'orderStatus' => 'CancelOrder'];
+
+        $this->order->where('barcode', $orderCode)->set($data)->update();
+
+
+
     }
 
 

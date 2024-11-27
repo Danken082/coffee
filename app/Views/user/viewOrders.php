@@ -7,7 +7,8 @@
 		<link rel="shortcut icon" type="image/png" href="/assets/images/coffeelogo.jpg">
 		<link rel="stylesheet" href="/assets/css/preloader.css">
 		<link rel="stylesheet" href="/assets/css/vieworder.css">
-  	</head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    </head>
 	<body>
     <div id="preloader"></div>
     <section class="home-slider owl-carousel">
@@ -64,7 +65,14 @@
                                                 <button type="submit">Order Received</button>
                                             </form>
                                         <?php else:?>
-                                            <h2>Please Wait</h2>
+                                            <h2 style="font-size:20px;">Please Wait</h2>
+                                            <a href="#" class="getPendingReservation" 
+                                                   class="btn btn-warning btn-sm" 
+                                                   data-toggle="modal" 
+                                                   data-target="#getReasonForCancelationOrder" 
+                                                   data-reservation='<?= htmlspecialchars(json_encode($item, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP), ENT_QUOTES, 'UTF-8') ?>'>
+                                                   Cancell Order?
+                                                </a>
                                         <?php endif;?>
                                     </td>
                                 </tr>
@@ -76,6 +84,35 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="getReasonForCancelationOrder" tabindex="-1" role="dialog" aria-labelledby="cancellReasonOrderLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cancel Reservation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?= base_url("/cancelOrder/" . $orderCode['barcode'])?>" method="post">
+                <label for="cancelReason">Reason for Cancellation:</label>
+                <textarea id="cancelReason" name="cancelReason" required maxlength="60" class="form-control" rows="4" 
+                          style="color: black !important; background-color: white !important; font-size: 14px;" 
+                          placeholder="Enter your reason here..."></textarea>
+
+                          <button type="submit" class="btn btn-primary btn-sm" 
+                                  style="color: black">
+                                  Submit Cancellation
+                          </button>
+
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="order-history-container">
         <h3>Order History</h3>
@@ -111,7 +148,7 @@
                                     <?php if($c['product_status'] === 'Unavailable'): ?>
                                         <button class="btn btn-primary btn-outline-primary" type="submit" disabled>Sold Out</button>
                                     <?php else: ?>
-                                        <p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('getProd/' .$c['prod_id'])?>">Order Again</a></p>
+                                        <p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$c['prod_id'])?>">Order Again</a></p>
                                         <button class="btn btn-primary btn-outline-primary" type="submit">Add to cart</button>
                                     <?php endif; ?>
                                 </form>
@@ -124,11 +161,66 @@
         </div>
     </div>
 
+    <div class="order-history-container">
+        <h3>Cancel Order</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped order-history-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($cancelOrder as $c): ?>
+                        <tr>
+                            <td><img src="<?="/assets/images/products/" .$c['prod_img']?>" alt="<?=$c['prod_name']?>"></td>
+                            <td><h3><a><?=$c['prod_name']?></a></h3></td>
+                            <td class="price">
+                                <?php if($c['prod_lprice'] > 0.00): ?>
+                                    Regular ₱ <?=$c['prod_mprice']?><br>Large ₱ <?=$c['prod_lprice']?>
+                                <?php else: ?>
+                                    ₱ <?=$c['prod_mprice']?>
+                                <?php endif; ?>
+                            </td>
+                            <td class="quantity"><?=$c['quantity']?></td>
+                            <td class="total">₱ <?=$c['total']?></td>
+                            <td>
+                                <form action="<?= base_url('/viewProd2/') .$c['prod_id'] ?>" method="post">
+                                    <?php if($c['product_status'] === 'Unavailable'): ?>
+                                        <button class="btn btn-primary btn-outline-primary" type="submit" disabled>Sold Out</button>
+                                    <?php else: ?>
+                                        <p><a class="btn btn-primary btn-outline-primary" href="<?= base_url('OrderMeal/' .$c['prod_id'])?>">Order Again</a></p>
+                                        <button class="btn btn-primary btn-outline-primary" type="submit">Add to cart</button>
+                                    <?php endif; ?>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
 	<?php include('viewOrdersmobile.php'); ?>
 	
 	<?php include('mainheader.php'); ?>
 	<?php include('footer.php'); ?>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
 	<script src="/assets/js/preloader.js"></script>
+
+    
 </body>
 </html>

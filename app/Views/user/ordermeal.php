@@ -9,7 +9,7 @@
 </head>
     <body>
     <div class="container">
-        <form action="<?= base_url('user/checkouts/') ?>" method="post">
+        <form action="<?= base_url('user/checkouts') ?>" method="post">
             <label for="ProductName" style="font-size:30px"></label>
                 <input type="hidden" name="ProductID" value="<?= $order['prod_id'] ?>" readonly>
                 <input type="hidden" name="prodName" value="<?= $order['prod_name'] ?>" readonly>

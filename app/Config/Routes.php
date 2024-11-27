@@ -37,6 +37,7 @@ $routes->get('/editOrder/(:any)', 'AdminController::editOrder/$1', ['filter'=>'a
 
 
 $routes->get('adminorderpayment', 'AdminController::viewOrders', ['filter'=>'authFilter']);
+
 $routes->get('/adminhome', 'AdminController::home', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'/admindash','VisualizationController::allChart', ['filter'=>'authFilter']);
 $routes->match(['get', 'post'],'VisualizationController/thisAllChart', 'VisualizationController::thisAllChart', ['filter'=>'authFilter']);
@@ -226,7 +227,6 @@ $routes->get('adminitems', 'InventoryController::adminitems');
 $routes->match(['get', 'post'], 'GoToPayment', 'OrderController::paymentOrder');
 
 
-$routes->get('hello', 'OrderController::hello');
 
 // $routes->get('hello', 'AdminController::Deduction');
 $routes->get('stocks', 'StocksController::Stocks');
@@ -247,7 +247,7 @@ $routes->get('/mainshop', 'UserController::home_mainshop',['filter'=>'cusFilter'
 $routes->get('/contact', 'UserController::home_contact', ['filter' => 'guestFilter']);
 $routes->get('/maincontact', 'UserController::home_maincontact',['filter'=>'cusFilter']);
 $routes->get('/cart', 'CartController::home_cart');
-$routes->post('user/checkouts/', 'OrderController::placeToOrder');
+$routes->match(['get', 'post'], '/user/checkouts/', 'OrderController::placeToOrder', ['filter'=>'cusFilter']);
 $routes->post('OrderOnline', 'OrderController::OrderOnlinePayment');
 $routes->get('OrderMeal/(:any)', 'OrderController::myOrdersmeal/$1');
 $routes->get('OrderDrink/(:any)', 'OrderController::myOrdersdrink/$1');
@@ -279,6 +279,7 @@ $routes->get('trycount', 'CartController::countOnCart');
 
 //viewing of orders
 $routes->get('myOrders', 'OrderController::viewOrders',['filter'=>'cusFilter']);
+$routes->match(['get', 'post'], 'cancelOrder/(:any)', 'OrderController::cancellOrder/$1');
 
 $routes->get('report', 'AdminController::report');
 
@@ -344,3 +345,10 @@ $routes->post('chatbot/getResponse', 'ChatController::getResponse');
 
 $routes->post('/message/sendMessage', 'ChatController::sendMessage'); // Send a message
 $routes->get('/message/fetchMessages/(:num)', 'ChatController::fetchMessages/$1'); // Fetch messages with a specific receiver ID
+$routes->get('message/deleteMessage/(:num)', 'ChatController::deleteMessage/$1');
+
+$routes->post('chatbot/getResponse', 'ChatController::getResponse');
+
+
+
+

@@ -129,6 +129,49 @@
                 height: auto;
             }
         }
+
+        .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Ensure it appears above everything else */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll for large images */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        border-radius: 8px;
+    }
+
+    .caption {
+        text-align: center;
+        color: white;
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .close:hover {
+        color: #bbb;
+    }
+
     </style>
 </head>
 <body>
@@ -162,7 +205,15 @@
             <!-- Image preview -->
             <img id="imagePreview" class="preview-image" src="#" alt="Image Preview" style="display: none;">
 
-            <img class="gcash-image" src="<?= base_url('assets/images/gcash.jpg')?>" alt="Gcash Payment">
+           <!-- GCash Image -->
+            <img class="gcash-image" src="<?= base_url('assets/images/gcash.jpg') ?>" alt="Gcash Payment" onclick="openModal()">
+
+            <!-- Modal -->
+            <div id="gcashModal" class="modal">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img class="modal-content" id="modalImage">
+                <div class="caption" id="caption"></div>
+            </div>
 
             <button class="submit-button">Submit Payment</button>
         </form>
@@ -189,6 +240,31 @@
                 imagePreview.style.display = 'none';
             }
         }
+    </script>
+
+    <script>
+        function openModal() {
+    const modal = document.getElementById('gcashModal');
+    const modalImg = document.getElementById('modalImage');
+    const gcashImg = document.querySelector('.gcash-image');
+    const captionText = document.getElementById('caption');
+
+    modal.style.display = 'block';
+    modalImg.src = gcashImg.src; // Use the GCash image as the modal content
+    captionText.textContent = gcashImg.alt; // Display the image's alt text as a caption
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('gcashModal');
+        modal.style.display = 'none';
+    }
+    window.onclick = function (event) {
+        const modal = document.getElementById('gcashModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    };
+
     </script>
 </body>
 </html>
