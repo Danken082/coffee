@@ -39,6 +39,7 @@
                             <thead class="thead-primary">
                                 <tr class="text-center">
                                     <th></th>
+                                    <th></th>
                                     <th>Image</th>
                                     <th>Product</th>
                                     <th>Size</th>
@@ -51,8 +52,8 @@
                             <tbody>
                             <?php foreach($myCart as $index => $item):?>
                                 <tr class="text-center">
-                                    <td><input type="checkbox" name="items[]" value="<?= $index ?>" class="item-checkbox"></td>
                                     <td><input type="hidden" hidden name="item[]" value="<?= $item['id'] ?>" class="item-checkbox"></td>
+                                    <td><input type="checkbox" name="items[]" value="<?= $index ?>" class="item-checkbox"></td>
                                     <td class="image-prod"><img class="menu-img img mb-4" src="<?="/assets/images/products/" .$item['prod_img']?>"></td>
                                     <td class="product-name">
                                         <h3><?= $item['prod_name']?></h3>

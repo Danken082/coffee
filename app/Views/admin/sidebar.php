@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="/assets/admin/style.css">
     <link rel="stylesheet" href="/assets/css/sidebar.css">
     <link rel="shortcut icon" href="/assets/images/tea.png" />
-    <link href="https://fontawesome.com/"/>
-      
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+    <link href="https://fontawesome.com/"/>      
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
   </head>
   
