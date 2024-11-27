@@ -180,9 +180,7 @@
              
                   <?php endif; ?>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item text-center text-primary" href="<?= site_url('all_notifications') ?>">
-                    View All Notifications
-                  </a>
+                  
                 </div>
               </li>
 
