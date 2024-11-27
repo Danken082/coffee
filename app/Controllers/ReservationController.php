@@ -210,7 +210,7 @@ class ReservationController extends BaseController
 
         if ($EPaymentFile && $EPaymentFile->isValid() && !$EPaymentFile->hasMoved()) {
             $newName = uniqid() . '.' . $EPaymentFile->getClientExtension();
-            if ($EPaymentFile->move(ROOTPATH . 'public/assets/user/Epayment/', $newName)) {
+            if ($EPaymentFile->move($_SERVER['DOCUMENT_ROOT'] . '/assets/user/Epayment/', $newName)) {
                 $gpayment = $newName;
             } else {
                 // Handle file move failure
