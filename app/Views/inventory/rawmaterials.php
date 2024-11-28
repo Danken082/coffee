@@ -33,6 +33,9 @@
                             <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Stocks</th>
 
                             
+                            <th class="text-white text-uppercase text-secondary text-sm font-weight-bold text-center">Category</th>
+
+                            
                             <th class="text-white text-center text-uppercase text-secondary text-sm font-weight-bold">Actions</th>
                         </tr>
                     </thead>
@@ -44,6 +47,9 @@
                                 </td>
                                 <td class="text-center">
                                     <p class="text-xs font-weight-bold"><?=$i['stocks']?> <?=$i['stock_type']?></p>
+                                </td>
+                                <td class="text-center">
+                                    <p class="text-xs font-weight-bold"><?=$i['item_categ']?></p>
                                 </td>
                    
                                 <td class="align-middle text-center">

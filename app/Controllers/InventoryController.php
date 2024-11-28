@@ -1260,7 +1260,7 @@ class InventoryController extends BaseController
     {
         $categ = 'Raw Materials';
         $item = new ItemsModel();
-        $data['item'] = $item->rawmats($categ);
+        $data['item'] = $item->orderBy('item_categ', 'ASC')->orderBy('name', 'ASC')->findAll();
         return view ('/inventory/rawmaterials', $data);
     }
 
@@ -1275,7 +1275,7 @@ class InventoryController extends BaseController
     {
         $item = new ItemsModel();
         $raw = $item->where('rawID', $id)->first();
-        $stockchange = $raw['stocks'] + $this->request->getVar('addstocks');
+        $stockchange = $raw['stocks'] + $this->request->getVar('stocks');
         $updatedData = [
             'name' => $this->request->getPost('name'),
             'stocks' =>  $stockchange,
@@ -1285,6 +1285,8 @@ class InventoryController extends BaseController
         $item->update($id, $updatedData);
 
         return redirect()->to(base_url('inventoryrawmats'));
+
+        // var_dump($updatedData);
     }
 
     public function deleteraw($id)

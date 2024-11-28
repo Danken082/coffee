@@ -17,6 +17,18 @@
     <link href="https://fontawesome.com/"/>      
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
+    <style>
+      .dropdown-menu {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+
+.dropdown-item .text-muted {
+  font-size: 12px;
+}
+
+    </style>
   </head>
   
   <body>
@@ -149,8 +161,8 @@
                   aria-expanded="false">
                   <i class="fa fa-solid fa-bell"></i>
                   <span class="bg-danger">
-                    <?php if ($count['notif'] > 0): ?>
-                      <?= $count['notif'] ?>
+                    <?php if ($count['notif'] > 0 || $countRes['res'] > 0): ?>
+                      <?= $count['notif'] + $countRes['res']?>
                     <?php endif; ?>
                   </span>
                 </a>
@@ -160,9 +172,10 @@
                   style="min-width: 300px;">
                   <h6 class="dropdown-header">Notifications</h6>
                   <div class="dropdown-divider"></div>
-                  <?php if ($count['notif'] == 0): ?>
+                  <?php if ($count['notif'] == 0 || $countRes['res'] == 0): ?>
                     <p class="dropdown-item text-muted">No new notifications</p>
-                    <?php else: ?>
+                    <?php elseif($count['notif'] > 0 || $countRes['res'] > 0): ?>
+                      <p class="dropdown-item text-muted">Supplies Notifications</p>
                     <?php foreach ($notif as $notif): ?>
                       <a class="dropdown-item preview-item" href="<?= site_url('rawNotif/' . $notif['rawID']) ?>">
                         <div class="preview-thumbnail">
@@ -176,11 +189,29 @@
                         </div>
                       </a>
                       <div class="dropdown-divider"></div>
+
                     <?php endforeach; ?>
-             
+
+                      <p class="dropdown-item text-muted">Reservation Notifications</p>
+                    <?php foreach ($notifRes as $notif): ?>
+                      <a class="dropdown-item preview-item" href="<?= site_url('viewReservation/' . $notif['TableCode']) ?>">
+                        <div class="preview-thumbnail">
+                          <div class="preview-icon bg-primary rounded-circle">
+                            <i class="fa fa-info text-white"></i>
+                          </div>
+                        </div>
+                        <div class="preview-item-content">
+                          <p class="preview-subject mb-1"><?= $notif['TableCode'] ?></p>
+                          <p class="text-muted mb-0"><?= date('F j, Y g:i A', strtotime($notif['appointmentDate'])) ?></p>
+                        </div>
+                      </a>
+                      <div class="dropdown-divider"></div>
+
+                    <?php endforeach; ?>
+
                   <?php endif; ?>
                   <div class="dropdown-divider"></div>
-                  
+                   
                 </div>
               </li>
 

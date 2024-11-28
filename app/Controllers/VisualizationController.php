@@ -8,7 +8,7 @@ use Mpdf\Mpdf;
 use App\Models\ItemsModel;
 
 use CodeIgniter\API\ResponseTrait;
-
+use App\Models\ReservationModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use \DateTime;
@@ -19,6 +19,7 @@ class VisualizationController extends BaseController
     private $vis;
     private $mpdf;
     private $raw;
+    private $reservation;
     use ResponseTrait;
 
     public function __construct()
@@ -26,6 +27,7 @@ class VisualizationController extends BaseController
         $this->vis = new HistoryModel();
         $this->mpdf = new Mpdf();
         $this->raw = new ItemsModel();
+        $this->reservation = new ReservationModel();
 
     }
     
@@ -45,8 +47,10 @@ class VisualizationController extends BaseController
          $year = date('Y');
      }
      $data = [
-        'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(),
+        'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
+        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
+        'countRes' => $this->reservation->select('Count(*) as res')->where('PaymentStatus', 'ForObservation')->first(),
+        'notifRes' => $this->raw->where('PaymentStatus', 'ForObservation')->findAll(),
         'month' => $month,
         'year' => $year
         ];
@@ -195,8 +199,10 @@ class VisualizationController extends BaseController
         ->findAll();
 
     $data = [
-        'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Raw Materials')->findAll(),
-        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+        'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
+        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
+        'countRes' => $this->reservation->select('Count(*) as res')->where('paymentStatus', 'ForObservation')->first(),
+        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
         'salesByMonth' => $salesByMonth,
         'salesByYear' => $salesByYear,
         'totalsalesinyear' => $totalSalesInYear,

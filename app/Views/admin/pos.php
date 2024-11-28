@@ -40,6 +40,7 @@
                         <?php foreach($app as $item): ?>
                             <div class="box" data-category="app">
                                 <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                                <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
                                 <?php if($item['prod_lprice'] == 0.00):?> 
@@ -57,6 +58,7 @@
                         <?php foreach($meal as $item): ?>
                             <div class="box" data-category="meal">
                             <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                            <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
                                 <?php if($item['prod_lprice'] == 0.00):?> 
@@ -73,6 +75,7 @@
                         <?php endforeach; ?>
                         <?php foreach($chicken as $item): ?>
                             <div class="box" data-category="chicken">
+                            <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
@@ -90,6 +93,7 @@
                         <?php endforeach; ?>
                         <?php foreach($chickenfillet as $item): ?>
                             <div class="box" data-category="chickenfillet">
+                            <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
@@ -116,6 +120,7 @@
                         <?php endforeach; ?>
                         <?php foreach($pasta as $item): ?>
                             <div class="box" data-category="pasta">
+                            <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
@@ -133,6 +138,7 @@
                         <?php endforeach; ?>
                         <?php foreach($salad as $item): ?>
                             <div class="box" data-category="salad">
+                            <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
@@ -150,6 +156,7 @@
                         <?php endforeach; ?>
                         <?php foreach($sand as $item): ?>
                             <div class="box" data-category="sand">
+                            <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
                                 <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                                 <h3><a><?= $item['prod_name'] ?></a></h3>
@@ -168,6 +175,7 @@
                     <?php foreach($hot as $item): ?>
                         <div class="box" data-category="hot">
                         <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                        <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -190,6 +198,7 @@
                     <?php foreach($iced as $item): ?>
                         <div class="box" data-category="iced">
                         <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                        <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -212,6 +221,7 @@
                     <?php foreach($flav as $item): ?>
                         <div class="box" data-category="flav">
                         <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                        <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -234,6 +244,7 @@
                     <?php foreach($frap as $item): ?>
                         <div class="box" data-category="frap">
                         <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                        <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -256,6 +267,7 @@
                     <?php foreach($lemon as $item): ?>
                         <div class="box" data-category="lemon">
                         <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                        <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
@@ -278,6 +290,7 @@
                     <?php foreach($other as $item): ?>
                         <div class="box" data-category="other">
                         <input type="hidden" class="prodID" value="<?= $item['prod_id']?>">
+                        <input type="hidden" class="prodCateg" value="<?= $item['prod_categ']?>">
                             <img class="menu-img img mb-4" src="<?= "/assets/images/products/" . $item['prod_img'] ?>" alt="<?= $item['prod_name'] ?>">
                             <h3><a><?= $item['prod_name'] ?></a></h3>
                             <?php if($item['prod_lprice'] == 0.00):?> 
