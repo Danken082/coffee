@@ -202,7 +202,7 @@ class VisualizationController extends BaseController
         'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
         'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
         'countRes' => $this->reservation->select('Count(*) as res')->where('paymentStatus', 'ForObservation')->first(),
-        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
+        'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         'salesByMonth' => $salesByMonth,
         'salesByYear' => $salesByYear,
         'totalsalesinyear' => $totalSalesInYear,

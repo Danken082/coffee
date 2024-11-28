@@ -43,6 +43,7 @@ orderButtons.forEach(button => {
         const product = button.parentElement;
         const productName = product.querySelector('h3').innerText;
         const productId = product.querySelector('.prodID').value;
+        const productcateg = product.querySelector('.prodCateg').value;
 
         let productPrice = parseFloat(button.dataset.price);
         let productSize = '';
@@ -88,7 +89,8 @@ orderButtons.forEach(button => {
             row.innerHTML = `
                 <td>${productName}</td>
                 <td hidden>${productId}</td>
-                <td class="size-cell">${productSize}</td>
+                <td hidden>${productcateg}</td>
+                <td class="size-cell">${productSize || 'Regular'}</td>
                 <td class="quantity-cell">
                     <button class="decrease">-</button>
                     <span class="quantity">1</span>
@@ -189,7 +191,8 @@ saveTransactionButton.addEventListener('click', () => {
     orderList.querySelectorAll('tr').forEach(row => {
         const productName = row.cells[0].textContent;
         const productId = row.cells[1].textContent;
-        const productsize = row.cells[2].textContent;
+        const productCategory = row.cells[2].textContent;
+        const productsize = row.cells[3].textContent;
         const totalPrice =  row.querySelector('.total-price-cell').textContent.replace('₱ ', '');
         const totalquantity = row.querySelector('.quantity').textContent;
         const amountPaid = payment;
@@ -198,6 +201,7 @@ saveTransactionButton.addEventListener('click', () => {
         paymentData.push({
             productName: productName,
             productId: productId,
+            productCategory: productCategory,
             productsize: productsize,
             totalPrice: totalPrice,
             total: total,
@@ -346,7 +350,7 @@ function showOrderPreview() {
     } else {
         rows.forEach(row => {
             const productName = row.cells[0].textContent;
-            const productSize = row.cells[2].textContent || 'Regular';
+            const productSize = row.cells[3].textContent || 'Regular';
             const productQuantity = parseInt(row.querySelector('.quantity').textContent, 10);
             const productPrice = parseFloat(row.querySelector('.price-cell').textContent.replace('₱ ', ''));
             const totalPrice = productPrice * productQuantity;

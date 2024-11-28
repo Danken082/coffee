@@ -444,7 +444,7 @@ return redirect()->to('trialnotif2');
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->where('paymentStatus', 'ForObservation')->first(),
-                        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
+                        'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
        return view('/admin/home', $data);
 
@@ -524,7 +524,7 @@ return redirect()->to('trialnotif2');
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->where('paymentStatus', 'ForObservation')->first(),
-                        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
+                        'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
         return view ('/admin/inventory', $data);
     }
@@ -550,7 +550,7 @@ return redirect()->to('trialnotif2');
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->where('paymentStatus', 'ForObservation')->first(),
-                        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
+                        'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
         $data['order'] = $this->payment->select('order.barcode, MAX(order.orderStatus) as orderStatus')
         ->join('product_tbl', 'order.ProductID = product_tbl.prod_id')
@@ -598,7 +598,7 @@ return redirect()->to('trialnotif2');
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->where('paymentStatus', 'ForObservation')->first(),
-                        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(), 
+                        'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(), 
         ];
         $history = new HistoryModel();
         $data['history'] = $history->findAll();
@@ -611,7 +611,7 @@ return redirect()->to('trialnotif2');
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->where('paymentStatus', 'ForObservation')->first(),
-                        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
+                        'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
             
         ];
         $role = 'Customer';
@@ -626,7 +626,7 @@ return redirect()->to('trialnotif2');
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->where('paymentStatus', 'ForObservation')->first(),
-                        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
+                        'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
         $role = 'Admin';
         $user = new AdminUserModel();
@@ -2832,7 +2832,7 @@ return redirect()->to('trialnotif2');
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->where('paymentStatus', 'ForObservation')->first(),
-                        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
+                        'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
 
         return view('admin/SearchReport', $data);
@@ -3136,7 +3136,7 @@ return redirect()->to('trialnotif2');
         'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
         'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
         'countRes' => $this->reservation->select('Count(*) as res')->where('PaymentStatus', 'ForObservation')->first(),
-        'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(), 
+        'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
     ];
 
         return view('admin/ViewEventReservation', $data);

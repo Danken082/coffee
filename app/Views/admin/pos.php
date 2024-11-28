@@ -391,7 +391,7 @@
     </div>
 </div>
 
-    <script src="/assets/js/updatejs/pos.js"></script>
+    <script src="/assets/js/pos.js"></script>
 
     
 </body>
