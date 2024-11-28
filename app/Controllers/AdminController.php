@@ -443,7 +443,7 @@ return redirect()->to('trialnotif2');
         $data= [
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
-            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->first(),
+            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
        return view('/admin/home', $data);
@@ -523,7 +523,7 @@ return redirect()->to('trialnotif2');
         $data= [
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
-            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->first(),
+            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
         return view ('/admin/inventory', $data);
@@ -549,7 +549,7 @@ return redirect()->to('trialnotif2');
         $data= [
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
-            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->first(),
+            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
         $data['order'] = $this->payment->select('order.barcode, MAX(order.orderStatus) as orderStatus')
@@ -597,7 +597,7 @@ return redirect()->to('trialnotif2');
         $data= [
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
-            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->first(),
+            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(), 
         ];
         $history = new HistoryModel();
@@ -610,7 +610,7 @@ return redirect()->to('trialnotif2');
         $data= [
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
-            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->first(),
+            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
             
         ];
@@ -625,7 +625,7 @@ return redirect()->to('trialnotif2');
         $data= [
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
-            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->first(),
+            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
         $role = 'Admin';
@@ -728,7 +728,7 @@ return redirect()->to('trialnotif2');
     {
         $data = [];
         $getID = $this->request->getPost('orderID');
-               
+        $productCategory = $this->request->getPost('prod_categ');
         $prodID = $this->request->getPost('prodID');
         $custID = $this->request->getPost('CustID');
         $quant = $this->request->getPost('quantity');
@@ -746,6 +746,55 @@ return redirect()->to('trialnotif2');
         $myOrders = $this->viewPendingOrders($getID);
                     $this->AcceptOrders($myOrders, $getID);
                     $this->toHistory($myOrders);
+
+                    $Discups = $this->raw->where("rawID", '25')->first();
+                    $WS      = $this->raw->where("rawID", '27')->first();
+                    $BS      = $this->raw->where("rawID", '30')->first();
+                    $GP      = $this->raw->where("rawID", '33')->first();
+                    $Salad   = $this->raw->where("rawID", '34')->first();
+                    $SW      = $this->raw->where("rawID", '35')->first();
+                    $RC      = $this->raw->where("rawID", '36')->first();
+                    $LCHC    = $this->raw->where("rawID", '37')->first();
+                    $LCIC    = $this->raw->where("rawID", '38')->first();
+                    $LCB     = $this->raw->where("rawID", '39')->first();
+                    $RCHC    = $this->raw->where("rawID", '40')->first();
+                    $RCIC    = $this->raw->where("rawID", '41')->first();
+                    $RCB     = $this->raw->where("rawID", '42')->first();
+        
+                    if ($size === "Large" && $productCategory === "Hot Coffee" && $prodID >= 32 && $prodID <= 41) {
+                        $HotCoffeeStock = $LCHC['stocks'] - $totalquantity;
+                        $WhiteStrawStock = $WS['stocks'] - $totalquantity;
+        
+                        $this->raw->where('rawID', $LCHC['rawID'])->set(['stocks' => $HotCoffeeStock])->update();
+                        $this->raw->where('rawID', $WS['rawID'])->set(['stocks' => $WhiteStrawStock])->update();
+                    } elseif ($size === "Large" && $productCategory === "Iced Coffee" && $prodID >= 42 && $prodID <= 44) {
+                        $IcedCoffeeStock = $LCIC['stocks'] - $totalquantity;
+                        $WhiteStrawStock = $WS['stocks'] - $totalquantity;
+        
+                        $this->raw->where('rawID', $LCIC['rawID'])->set(['stocks' => $IcedCoffeeStock])->update();
+                        $this->raw->where('rawID', $WS['rawID'])->set(['stocks' => $WhiteStrawStock])->update();
+                    }
+        
+                    if ($size === "meduim" && $productCategory === "Hot Coffee" && $prodID >= 32 && $prodID <= 41) {
+                        $HotCoffeeStock = $RCHC['stocks'] - $totalquantity;
+                        $WhiteStrawStock = $WS['stocks'] - $totalquantity;
+        
+                        $this->raw->where('rawID', $RCHC['rawID'])->set(['stocks' => $HotCoffeeStock])->update();
+                        $this->raw->where('rawID', $WS['rawID'])->set(['stocks' => $WhiteStrawStock])->update();
+                    } elseif ($size === "Regular" && $productCategory === "Iced Coffee" && $prodID >= 42 && $prodID <= 44) {
+                        $IcedCoffeeStock = $RCIC['stocks'] - $totalquantity;
+                        $WhiteStrawStock = $WS['stocks'] - $totalquantity;
+        
+                        $this->raw->where('rawID', $RCIC['rawID'])->set(['stocks' => $IcedCoffeeStock])->update();
+                        $this->raw->where('rawID', $WS['rawID'])->set(['stocks' => $WhiteStrawStock])->update();
+                    }
+        
+                    if (($prodID >= 1 && $prodID <= 3) || ($prodID >= 11 && $prodID <= 16)) {
+                        $GrapesPaperStock = $GP['stocks'] - $totalquantity;
+        
+                        $this->raw->where('rawID', $GP['rawID'])->set(['stocks' => $GrapesPaperStock])->update();
+                    }
+        
 
         return redirect()->to('adminpayment')->with('msg', 'Order is now Accepted');
         // var_dump($data);
@@ -2695,8 +2744,10 @@ return redirect()->to('trialnotif2');
     public function viewToAcceptorders($barcode)
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '2')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->first(), 
+            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
+            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
+            'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(), 
         ];
 
         //for Single data
@@ -2831,7 +2882,7 @@ return redirect()->to('trialnotif2');
         $data= [
             'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
-            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->first(),
+            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
 
@@ -2848,7 +2899,7 @@ return redirect()->to('trialnotif2');
             'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
             'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')
             ->where('item_categ', 'Raw Materials')->first(), 
-            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->first(),         'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
+            'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),         'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
             'report' => $this->history->select('tbl_orders.orderid, tbl_orders.CustomerID, tbl_orders.ProductID, tbl_orders.OrderID, 
             tbl_orders.quantity, tbl_orders.size, tbl_orders.orderCode, tbl_orders.order_date, tbl_orders.total_amount, 
             tbl_orders.amount_paid,tbl_orders.change_amount, product_tbl.prod_id, product_tbl.prod_name, product_tbl.prod_quantity,
@@ -3134,7 +3185,7 @@ return redirect()->to('trialnotif2');
         ->findAll(),
         'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
         'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
-        'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->first(),
+        'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
         'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
     ];
 

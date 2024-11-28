@@ -28,13 +28,13 @@
 <?php endif;?>
 
 <div id="preloader"></div>
-
+<form action="<?= base_url('CartController/placeOrder')?>" method="post"  enctype="multipart/form-data">
+            
 <section class="ftco-section ftco-cart">
     <div class="container">
         <div class="row">
             <div class="col-md-12 ftco-animate">
                 <div class="cart-list">
-                    <form action="<?= base_url('CartController/placeOrder')?>" method="post">
                         <table class="table">
                             <thead class="thead-primary">
                                 <tr class="text-center">
@@ -119,12 +119,57 @@
                                 <button type="submit" id="placeorder" class="btn btn-primary">Place to Checkout</button>
                             </div>
                         </div>  
-                    </form>
+
+                        
+
                 </div>
             </div>
         </div>
     </div>
+
+    
 </section>
+<style>
+     .form-group img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 10px;
+        }
+</style>
+
+<!-- E-Payment Modal -->
+<div class="modal fade" id="ePaymentModal" tabindex="-1" aria-labelledby="ePaymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ePaymentModalLabel">Upload Proof of Payment</h5>
+                <div class="form-group">
+                <p>Scan Gcash QrCode:</p>
+                <img src="<?= base_url()?>/assets/images/gcash.jpg" alt="#gcash qr" id="gcashQr">
+            </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="ePaymentForm">
+                    <div class="mb-3">
+                        <p>Please Scan this Gcash QR to pay <br> Pay full payment:</p>
+                        <label for="paymentImage" class="form-label">Upload Image</label>
+                        <input type="file" id="paymentImage" name="paymentImage" accept="image/*" class="form-control">
+                    </div>
+                    <div id="imagePreview" class="text-center mt-3"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-secondary" >Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+
 
 <?php include('mainheader.php'); ?>
 <?php include('footer.php'); ?>
@@ -168,6 +213,55 @@
 });
 
 </script>
+
+<script>
+    // Show modal when E-Payment is selected
+    document.querySelector('.paymentMethodSelector').addEventListener('change', function () {
+        if (this.value === 'Use_Online_Payment') {
+            $('#ePaymentModal').modal('show');
+        }
+    });
+
+    // Preview selected image
+    document.getElementById('paymentImage').addEventListener('change', function () {
+        const file = this.files[0];
+        const preview = document.getElementById('imagePreview');
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.innerHTML = `<img src="${e.target.result}" alt="Payment Proof" class="img-fluid" style="max-height: 200px;">`;
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.innerHTML = '';
+        }
+    });
+
+    // Save image and close modal
+    document.getElementById('savePaymentImage').addEventListener('click', function () {
+        const paymentImageInput = document.getElementById('paymentImage');
+
+        if (!paymentImageInput.files.length) {
+            alert('Please upload an image.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('paymentImage', paymentImageInput.files[0]);
+
+        // For demonstration: add the image filename to the main form as a hidden input
+        const hiddenImageInput = document.createElement('input');
+        hiddenImageInput.type = 'hidden';
+        hiddenImageInput.name = 'uploadedImage';
+        hiddenImageInput.value = paymentImageInput.files[0].name; // You can adjust this as per backend requirements
+        document.querySelector('form').appendChild(hiddenImageInput);
+
+        // Close modal
+        $('#ePaymentModal').modal('hide');
+    });
+</script>
+
 
 
 

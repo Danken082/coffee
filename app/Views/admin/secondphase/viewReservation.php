@@ -137,7 +137,7 @@
                                             <p>Product Size: <?= htmlspecialchars($prod['size']) ?></p>
                                             <p>Product Price: ₱<?= number_format((float)$prod['totalPrice'], 2) ?></p>
                                         <?php endforeach; ?>
-                                        <?php if($prodpic['paymentStatus'] == 'DeclineOrder' || 'CancelledReservation'):?>
+                                        <?php if($prodpic['paymentStatus'] == 'DeclineOrder' || 'CancelledReservation' && $prodpic['paymentStatus'] != 'ForObservation' && $prodpic['paymentStatus'] != 'AcceptedOrder'):?>
                                             <p>Reason For Cancellation or Declining: <?= $prodpic['ReasonDeclined']?></p>
                                         <?php endif;?>
                                     </div>
