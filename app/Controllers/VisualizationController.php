@@ -623,7 +623,7 @@ public function viewReportDaily($month, $year)
 
        ];
 
-       return view('admin/viewReportPerday', $data);
+       return view('admin/viewreportPerday', $data);
 
     }
     public function InsertExpenses()
