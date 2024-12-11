@@ -15,7 +15,7 @@ use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\CapabilityProfiles\SimpleCapabilityProfile;
-
+use App\Models\DeliveryfeeModel;
 
 
 class CartController extends BaseController
@@ -23,6 +23,8 @@ class CartController extends BaseController
     private $product;
     private $crt;
     private $order;
+
+    private $fee;
     public function __construct()
     {
         $this->product = new ProductModel();
@@ -30,6 +32,7 @@ class CartController extends BaseController
         $this->order = new OrderModel();
             // $this->load->library('/user/cart');
             // $this->load->model('ProductModel');
+        $this->fee = new DeliveryfeeModel();
     }  
     
     public function printReceipt()
@@ -100,6 +103,8 @@ class CartController extends BaseController
   
       public function home_cart()
       {
+
+        
           $session = session();
           $user = $session->get('UserID');
           if (!$user) {
@@ -109,10 +114,11 @@ class CartController extends BaseController
           $cartItems = $this->crt->where('CustomerID', $user)->findAll();
 
           $cartItemCount = count($cartItems);
-
+        $delfee =   $this->fee->first();
           $data = [
               'cartItemCount' => $cartItemCount,
-              'cartItems' => $cartItems
+              'cartItems' => $cartItems,
+              'delfee' => $delfee
           ];
       
           $data['myCart'] = $this->crt->select('cart_tbl.id, cart_tbl.size, cart_tbl.ProductID, cart_tbl.CustomerID, cart_tbl.total, cart_tbl.quantity, product_tbl.prod_id, 

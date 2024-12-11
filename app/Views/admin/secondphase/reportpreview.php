@@ -10,30 +10,26 @@
             margin: 1in;
         }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Times New Roman', serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
         }
         .container {
             width: 100%;
-            max-width: 1000px;
-            border: 2px solid #333;
+            max-width: 1100px;
             padding: 20px;
             background-color: #fff;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ddd;
         }
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         .header h2 {
-            font-size: 24px;
+            font-size: 28px;
             margin: 0;
         }
         .header p {
@@ -59,64 +55,41 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            table-layout: fixed;
             margin-top: 20px;
         }
         th, td {
-            padding: 10px;
-            text-align: left;
+            padding: 12px;
+            text-align: center;
             border: 1px solid #ddd;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
             font-size: 14px;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #2c3e50;
+            color: white;
             font-weight: bold;
         }
-        .scrollable {
-            max-height: 500px;
-            overflow-y: auto;
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header h2 {
-                font-size: 20px;
-            }
-            .header p {
-                font-size: 14px;
-            }
-            .export-button {
-                top: 10px;
-                left: 10px;
-                padding: 8px 12px;
-                font-size: 12px;
-            }
-            th, td {
-                font-size: 12px;
-                padding: 8px;
-            }
+        tr:hover {
+            background-color: #e1f5fe;
         }
-        /* Responsive Rotation for Mobile */
-        @media (max-width: 768px) and (orientation: portrait) {
-            body {
-                transform: rotate(-90deg);
-                transform-origin: left top;
-                width: 100vh;
-                height: 100vw;
-                overflow-x: hidden;
-                position: absolute;
-                top: 100%;
-                left: 0;
-            }
-            .container {
-                max-width: none;
-                height: auto;
-                padding: 10px;
-                border: none;
-            }
+        .signature-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .signature-box {
+            margin: 30px auto;
+            width: 50%;
+            text-align: center;
+            padding: 10px;
+            border-top: 2px solid #333;
+        }
+        .footer {
+            text-align: right;
+            font-size: 12px;
+            color: #555;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -127,7 +100,7 @@
         </form>
         <div class="header">
             <h2>Crossroads Coffee And Deli</h2>
-            <p>Sales Report</p>
+            <p><strong>Sales Report</strong></p>
             <p>From <?= (new \DateTime($fromDate))->format('F j, Y') ?> to <?= (new \DateTime($toDate))->format('F j, Y') ?></p>
         </div>
 
@@ -141,17 +114,17 @@
                     <th>Order Date</th>
                 </tr>
             </thead>
-            <tbody class="scrollable">
+            <tbody>
                 <?php if (!empty($report)): ?>
                     <?php foreach ($report as $item): ?>
                         <tr>
                             <td><?= htmlspecialchars($item['prod_name']) ?></td>
                             <td><?= htmlspecialchars($item['prod_quantity']) ?></td>
-                            <?php if(!empty($item['size'])):?>
+                            <?php if (!empty($item['size'])): ?>
                                 <td><?= ucwords(htmlspecialchars($item['size'])) ?></td>
-                            <?php else:?>
+                            <?php else: ?>
                                 <td>Regular</td>
-                            <?php endif;?>
+                            <?php endif; ?>
                             <td><?= htmlspecialchars($item['total_amount']) ?></td>
                             <td><?= (new \DateTime($item['order_date']))->format('F j, Y - H:i:s') ?></td>
                         </tr>
@@ -163,7 +136,19 @@
                 <?php endif; ?>
             </tbody>
         </table>
-        <p><small>Total Sales: <?= $totalSum?></small></p>
+        <p><strong>Total Sales: <?= $totalSum ?></strong></p>
+        <br>
+        <br>
+        <!-- Signature Section -->
+        <div class="signature-section">
+            <div class="signature-box">
+  
+              <p>Prepared By:</p>
+                <p><strong>Jose Gabriel Astruias</strong></p>
+                <p>Position: Owner</p>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>

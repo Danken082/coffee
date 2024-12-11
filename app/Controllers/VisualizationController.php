@@ -434,7 +434,7 @@ elseif($monthly < 0)
     // Write the spreadsheet to a file
     $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
     $writer->save($filename);
-
+    
     // Send the file to the browser for download
     header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     header('Content-Disposition: attachment; filename="' . basename($filename) . '"');

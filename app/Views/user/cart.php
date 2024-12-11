@@ -102,7 +102,7 @@
                                     </p>
                                     <p class="d-flex">
                                         <span>Delivery</span>
-                                        <span>₱ 50.00</span>
+                                        <span>₱ <?= $delfee['fee']?></span>
                                     </p>
                                     <select name="paymentMethod" class="paymentMethodSelector">
                                         <option selected disabled>Select Type Of Payment</option>
@@ -112,7 +112,7 @@
                                     <hr>
                                     <p class="d-flex total-price">
                                         <span>Total</span>
-                                        <span id="grand-total">₱ 50.00</span>
+                                        <span id="grand-total">₱ <?= $delfee['fee']?></span>
                                     </p>
                                     <input type="hidden" name="total" id="total-amount">
                                 </div>

@@ -27,9 +27,9 @@ class Database extends Config
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
-        'username'     => 'u262559041_coffeeledger',
-        'password'     => 'HelloWorld22113344',
-        'database'     => 'u262559041_coffeeledger',
+        'username'     => 'root',
+        'password'     => '',
+        'database'     => 'coffeeledgerdb',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

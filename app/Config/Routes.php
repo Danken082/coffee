@@ -350,5 +350,8 @@ $routes->get('message/deleteMessage/(:num)', 'ChatController::deleteMessage/$1')
 $routes->post('chatbot/getResponse', 'ChatController::getResponse');
 
 
+$routes->get('get-delivery-cost', 'AdminController::getfee');
+
+
 
 

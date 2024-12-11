@@ -153,67 +153,48 @@
             <ul class="navbar-nav navbar-nav-right">
               <!-- Notifications Dropdown -->
               <li class="nav-item dropdown">
-                <a 
-                  class="nav-link count-indicator dropdown-toggle" 
-                  id="notificationDropdown" 
-                  href="#" 
-                  data-toggle="dropdown" 
-                  aria-expanded="false">
-                  <i class="fa fa-solid fa-bell"></i>
-                  <span class="bg-danger">
-                    <?php if ($count['notif'] > 0 || $countRes['res'] > 0): ?>
-                      <?= $count['notif'] + $countRes['res']?>
-                    <?php endif; ?>
-                  </span>
-                </a>
-                <div 
-                  class="dropdown-menu dropdown-menu-right navbar-dropdown" 
-                  aria-labelledby="notificationDropdown" 
-                  style="min-width: 300px;">
-                  <h6 class="dropdown-header">Notifications</h6>
-                  <div class="dropdown-divider"></div>
-                  <?php if ($count['notif'] == 0 || $countRes['res'] == 0): ?>
-                    <p class="dropdown-item text-muted">No new notifications</p>
-                    <?php elseif($count['notif'] > 0 || $countRes['res'] > 0): ?>
-                      <p class="dropdown-item text-muted">Supplies Notifications</p>
-                    <?php foreach ($notif as $notif): ?>
-                      <a class="dropdown-item preview-item" href="<?= site_url('rawNotif/' . $notif['rawID']) ?>">
-                        <div class="preview-thumbnail">
-                          <div class="preview-icon bg-primary rounded-circle">
-                            <i class="fa fa-info text-white"></i>
-                          </div>
-                        </div>
-                        <div class="preview-item-content">
-                          <p class="preview-subject mb-1"><?= $notif['name'] ?></p>
-                          <p class="text-muted mb-0"><?= $notif['stocks'] ?></p>
-                        </div>
-                      </a>
-                      <div class="dropdown-divider"></div>
+    <a 
+      class="nav-link count-indicator dropdown-toggle" 
+      id="notificationDropdown" 
+      href="#" 
+      data-toggle="dropdown" 
+      aria-expanded="false">
+      <i class="fa fa-solid fa-bell"></i>
+      <span class="bg-danger">
+        <?= ($count['notif'] ?? 0) + ($countRes['res'] ?? 0); ?>
+      </span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown" style="min-width: 300px;">
+        <h6 class="dropdown-header">Notifications</h6>
+        <div class="dropdown-divider"></div>
+        <?php if (empty($notif) && empty($notifRes)): ?>
+            <p class="dropdown-item text-muted">No new notifications</p>
+        <?php else: ?>
+            <?php if (!empty($notif)): ?>
+                <p class="dropdown-item text-muted">Supplies Notifications</p>
+                <?php foreach ($notif as $item): ?>
+                    <a class="dropdown-item preview-item" href="<?= site_url('rawNotif/' . $item['rawID']) ?>">
+                        <p class="preview-subject mb-1"><?= $item['name'] ?></p>
+                        <p class="text-muted mb-0"><?= $item['stocks'] ?></p>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
 
-                    <?php endforeach; ?>
+            <?php if (!empty($notifRes)): ?>
+                <p class="dropdown-item text-muted">Reservation Notifications</p>
+                <?php foreach ($notifRes as $item): ?>
+                    <a class="dropdown-item preview-item" href="<?= site_url('viewReservation/' . $item['TableCode']) ?>">
+                        <p class="preview-subject mb-1"><?= $item['TableCode'] ?></p>
+                        <p class="text-muted mb-0"><?= date('F j, Y g:i A', strtotime($item['appointmentDate'])) ?></p>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+</li>
 
-                      <p class="dropdown-item text-muted">Reservation Notifications</p>
-                    <?php foreach ($notifRes as $notif): ?>
-                      <a class="dropdown-item preview-item" href="<?= site_url('viewReservation/' . $notif['TableCode']) ?>">
-                        <div class="preview-thumbnail">
-                          <div class="preview-icon bg-primary rounded-circle">
-                            <i class="fa fa-info text-white"></i>
-                          </div>
-                        </div>
-                        <div class="preview-item-content">
-                          <p class="preview-subject mb-1"><?= $notif['TableCode'] ?></p>
-                          <p class="text-muted mb-0"><?= date('F j, Y g:i A', strtotime($notif['appointmentDate'])) ?></p>
-                        </div>
-                      </a>
-                      <div class="dropdown-divider"></div>
-
-                    <?php endforeach; ?>
-
-                  <?php endif; ?>
-                  <div class="dropdown-divider"></div>
-                   
-                </div>
-              </li>
 
                 <li class="nav-item dropdown">
                   <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">

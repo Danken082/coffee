@@ -1,10 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    let deliveryCost = 0; // Initialize delivery cost
+
+    // Function to fetch the delivery cost from the server
+    async function fetchDeliveryCost() {
+        try {
+            const response = await fetch('/get-delivery-cost'); // Replace with your API endpoint
+            const data = await response.json();
+            deliveryCost = parseFloat(data.delivery_cost || 0); // Set the delivery cost dynamically
+            calculateTotals(); // Recalculate totals after fetching the delivery cost
+        } catch (error) {
+            console.error('Error fetching delivery cost:', error);
+        }
+    }
+
     // Function to calculate subtotal and total
     function calculateTotals() {
         const checkboxes = document.querySelectorAll('.item-checkbox');
         let subtotal = 0;
 
-        checkboxes.forEach(function(checkbox) {
+        checkboxes.forEach(function (checkbox) {
             if (checkbox.checked) {
                 const itemId = checkbox.value;
                 const totalCell = document.getElementById(`total-price-${itemId}`);
@@ -14,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('cart-total').innerText = '₱ ' + subtotal.toFixed(2);
 
-        const deliveryCost = 50; // Fixed delivery cost
         const total = subtotal + deliveryCost;
         document.getElementById('grand-total').innerText = '₱ ' + total.toFixed(2);
         document.getElementById('total-amount').value = total.toFixed(2);
@@ -26,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pricePerItem = parseFloat(document.getElementById(`price-${itemId}`).innerText.replace('₱ ', ''));
         const totalCell = document.getElementById(`total-price-${itemId}`);
         const totalPrice = quantityInput.value * pricePerItem;
-        totalCell.innerText = totalPrice.toFixed(2);
+        totalCell.innerText = `₱ ${totalPrice.toFixed(2)}`;
 
         // Update hidden total input
         document.getElementById(`hidden-total-price-${itemId}`).value = totalPrice.toFixed(2);
@@ -36,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event listeners for checkboxes
-    document.querySelectorAll('.item-checkbox').forEach(function(checkbox) {
+    document.querySelectorAll('.item-checkbox').forEach(function (checkbox) {
         checkbox.addEventListener('change', calculateTotals);
     });
 
@@ -63,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listener for size changes (if applicable)
     document.querySelectorAll('.size-selector').forEach(select => {
-        select.addEventListener('change', function() {
+        select.addEventListener('change', function () {
             const itemId = select.getAttribute('data-index');
             const selectedSize = select.value;
             const priceElement = document.getElementById(`price-${itemId}`);
@@ -80,6 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initial calculation when the page loads
-    calculateTotals();
+    // Fetch the delivery cost from the server and recalculate totals
+    fetchDeliveryCost();
 });

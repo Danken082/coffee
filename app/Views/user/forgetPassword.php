@@ -28,7 +28,7 @@
                 <div class="alert alert-success">
                     <?= session()->getFlashdata('msg') ?>
                 </div>
-            <?php endif;?>
+            <?php endif;?>  
             <form action="<?= base_url("forgetpasswordAuth"); ?>" role="form" method="POST">
                 <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Email</label>

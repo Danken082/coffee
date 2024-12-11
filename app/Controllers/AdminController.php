@@ -441,8 +441,8 @@ return redirect()->to('trialnotif2');
     
     public function home(){
         $data= [
-            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
+            'notif' => $this->raw->where('stocks <=', '50')->where('item_categ', 'Supplies')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '50')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
@@ -521,8 +521,8 @@ return redirect()->to('trialnotif2');
     public function inventory()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
+            'notif' => $this->raw->where('stocks <=', '50')->where('item_categ', 'Supplies')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '50')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
@@ -547,8 +547,8 @@ return redirect()->to('trialnotif2');
     public function orderpayment(){
 
         $data= [
-            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
+            'notif' => $this->raw->where('stocks <=', '50')->where('item_categ', 'Supplies')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '50')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
@@ -623,8 +623,8 @@ return redirect()->to('trialnotif2');
     public function getmanageuser()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
+            'notif' => $this->raw->where('stocks <=', '50')->where('item_categ', 'Supplies')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '50')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
@@ -2880,8 +2880,8 @@ return redirect()->to('trialnotif2');
     public function Searchreport()
     {
         $data= [
-            'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
+            'notif' => $this->raw->where('stocks <=', '50')->where('item_categ', 'Supplies')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '50')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
             'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
             'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
         ];
@@ -2896,8 +2896,8 @@ return redirect()->to('trialnotif2');
 
         
         $data= [
-            'notif' => $this->raw->where('stocks <=', '10')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
-            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '10')->where('stocks >=', '0')
+            'notif' => $this->raw->where('stocks <=', '50')->where('stocks >=', '0')->where('item_categ', 'Raw Materials')->findAll(),
+            'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '50')->where('stocks >=', '0')
             ->where('item_categ', 'Raw Materials')->first(), 
             'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),         'notifRes' => $this->reservation->where('paymentStatus', 'ForObservation')->findAll(),
             'report' => $this->history->select('tbl_orders.orderid, tbl_orders.CustomerID, tbl_orders.ProductID, tbl_orders.OrderID, 
@@ -2931,93 +2931,116 @@ return redirect()->to('trialnotif2');
             ->where('DATE(order_date) >=', $fromDate)
             ->first()['total_amount'];
     
-        // Initialize HTML string
-        $html = "<html>
-        <head>
-
-            <style>
-                table {
-                    width: 100%;
-                    border-collapse: collapse;
-                    table-layout: fixed;
-                }
-                th, td {
-                    padding: 8px;
-                    text-align: left;
-                    border-bottom: 1px solid #ddd;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                }
-                th {
-                    background-color: #f2f2f2;
-                    font-weight: bold;
-                }
-                .scrollable {
-                    max-height: 300px; /* Adjust as needed */
-                    overflow-y: auto;
-                }
-                .container {
-                    width: 100%;
-                    margin: 0 auto;
-                    padding: 20px;
-                    text-align: center;
-                }
-                .header {
-                    text-align: center;
-                    margin-bottom: 20px;
-                }
-                .header p {
-                    margin: 0;
-                    font-size: 16px;
-                }
-                h2 {
-                    margin-bottom: 0;
-                }
-            </style>
-        </head>
-        <body>
-        <div class='header'>
-        <h2>Crossroads Coffee And Deli</h2>
-        <p>Sales Report</p>
-        <p>From ". (new \DateTime($toDate))->format('F j, Y') . " to " . (new \DateTime($fromDate))->format('F j, Y') .  "</p>
-    </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Product Quantity</th>
-                        <th>Product Size</th>
-                        <th>Sales</th>
-                        <th>Order Date</th>
-                    </tr>
-                </thead>
-                <tbody class='scrollable'>"; // Add the 'scrollable' class to the tbody for scrolling
-    if(!empty($data['report'])){
+// Initialize HTML string
+$html = "<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header p {
+            margin: 0;
+            font-size: 16px;
+        }
+        h2 {
+            margin-bottom: 0;
+        }
+        .signature-section {
+            margin-top: 30px;
+            text-align: left;
+        }
+        .signature-box {
+            margin-top: 50px;
+            width: 300px;
+            text-align: center;
+            border-top: 2px solid #333;
+            margin-left: 0;
+        }
+        .footer {
+            text-align: right;
+            font-size: 12px;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class='header'>
+    <h2>Crossroads Coffee And Deli</h2>
+    <p>Sales Report</p>
+    <p>From " . (new \DateTime($toDate))->format('F j, Y') . " to " . (new \DateTime($fromDate))->format('F j, Y') . "</p>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Size</th>
+            <th>Sales</th>
+            <th>Order Date</th>
+        </tr>
+    </thead>
+    <tbody>"; // Removed unnecessary 'scrollable' class
+if (!empty($data['report'])) {
     // Loop through the report data and add rows to the table
     foreach ($data["report"] as $report) {
         $html .= "<tr>";
         $html .= "<td>" . htmlspecialchars($report['prod_name']) . "</td>";
-        $html .= "<td>" . htmlspecialchars($report['prod_quantity']) . "</td>";
-        if(!empty($report['size'])){
+        if (!empty($report['size'])) {
             $html .= "<td>" . ucwords(htmlspecialchars($report['size'])) . "</td>";
+        } else {
+            $html .= "<td>Regular</td>";
         }
-        else{
-            $html .= "<td>Regular</td>"; 
-        }
-       
         $html .= "<td>" . htmlspecialchars($report['total_amount']) . "</td>";
         $html .= "<td>" . (new \DateTime($report['order_date']))->format('F j, Y - H:i:s') . "</td>";
         $html .= "</tr>";
     }
-  
-    }
-    else {
-        $html .="<p>No Data Found</p>";
-    }
-    
-    $html .= "</tbody></table>";
-    $html .= "Total Sales: $totalSum </body></html>";
+} else {
+    $html .= "<tr><td colspan='5'>No data available</td></tr>";
+}
+$html .= "
+    </tbody>
+</table>
+<p><strong>Total Sales: " . htmlspecialchars($totalSum) . "</strong></p>
+
+<!-- Single Signature Section -->
+<div class='signature-section'>
+    <p>Prepared By:</p>
+    <div class='signature-box'>
+        <p><strong>Jose Gabriel Astruias</strong></p>
+        <p>Owner</p>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<div class='footer'>
+    <p>Generated on " . (new \DateTime())->format('F j, Y - H:i:s') . "</p>
+</div>
+</body>
+</html>";
            
         $dompdf->loadHtml($html);
     
@@ -3025,7 +3048,10 @@ return redirect()->to('trialnotif2');
     
         $dompdf->render();
     
-        $dompdf->stream('Sales in '.(new \DateTime($toDate))->format('F j, Y'). ' - ' .(new \DateTime($fromDate))->format('F j, Y'));
+        $dompdf->stream(
+            'Sales in ' . (new \DateTime($toDate))->format('F j, Y') . ' - ' . (new \DateTime($fromDate))->format('F j, Y'),
+            ['Attachment' => false]
+        );
     }
 
 
@@ -3183,8 +3209,8 @@ return redirect()->to('trialnotif2');
         ->join('product_tbl', 'product_tbl.prod_id = tablereservation.ProductID')
        ->groupBy('tablereservation.TableCode')
         ->findAll(),
-        'notif' => $this->raw->where('stocks <=', '5')->where('item_categ', 'Supplies')->findAll(),
-        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '5')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
+        'notif' => $this->raw->where('stocks <=', '50')->where('item_categ', 'Supplies')->findAll(),
+        'count' => $this->raw->select('Count(*) as notif')->where('stocks <=', '50')->where('stocks >=', '0')->where('item_categ', 'Supplies')->first(),
         'countRes' => $this->reservation->select('Count(*) as res')->groupBy('TableCode, TableID')->where('paymentStatus', 'ForObservation')->first(),
         'notifRes' => $this->reservation->select("MAX(appointmentDate) as appointmentDate, TableCode")->groupBy('TableCode')->where('paymentStatus', 'ForObservation')->findAll(),
     ];

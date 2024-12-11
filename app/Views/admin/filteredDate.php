@@ -70,6 +70,16 @@
         .font-weight-bold {
             font-weight: 700 !important;
         }
+        #iframeContainer {
+            margin-top: 20px;
+            display: none;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
     </style>
 </head>
 
@@ -83,12 +93,15 @@
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="d-flex justify-content-between card-object">
                             <h6 class="text-white text-capitalize ps-3">Order History</h6>
-                            <form action="<?= base_url('previewReport/' .$toDate .'/'. $fromDate)?>" method="get">
-                            <button class="btn btn-primary export" type="submit">Preview Report </button>
-                            </form>
+                            <div class="button-print">
+                                    <a class="btn btn-primary text-decoration-none" href="<?= base_url('previewReport/' .$toDate .'/'. $fromDate)?>" id="PrintButton">Preview</a>
+                                </div>
                         </div>
                     </div>
                     <div class="card-body px-4 pb-2">
+                    <div id="iframeContainer">
+                                    <iframe id="pdfIframe" src=""></iframe>
+                                </div>
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
@@ -127,7 +140,15 @@
                 </div>
             </div>
         </div>
-        
+        <script>
+            document.getElementById("PrintButton").addEventListener("click", function (event) {
+            event.preventDefault();
+            const pdfUrl = this.href;
+            document.getElementById("pdfIframe").src = pdfUrl;
+            document.getElementById("iframeContainer").style.display = "block";
+        });
+
+        </script>
         
         <script src="/assets/js/core/popper.min.js"></script>
         <script src="/assets/js/core/bootstrap.min.js"></script>
